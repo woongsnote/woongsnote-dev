@@ -1,5 +1,5 @@
 import React from "react";
-import LatestPostItem from "./LatestPostItem";
+import PostItem from "../posts/PostItem";
 import SectionHeader from "./SectionHeader";
 
 export default function LatestPosts() {
@@ -13,13 +13,13 @@ export default function LatestPosts() {
         />
 
         <div className="grid  gap-4 md:gap-6 xl:gap-8 mt-3">
-          <LatestPostItem
+          <PostItem
             title="New trends in Tech"
             date="July 19, 2021"
             description="This is a section of some simple filler text, also known as
           placeholder text."
           />
-          <LatestPostItem
+          <PostItem
             title="New trends in Tech"
             date="July 19, 2021"
             description="This is a section of some simple filler text, also known as

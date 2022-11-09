@@ -1,8 +1,8 @@
 import Link from "next/link";
 import React from "react";
-import { MyPost } from "../../types";
+import { Post } from "../../types";
 
-export default function PostItem({ title, description, date }: MyPost) {
+export default function PostItem({ title, description, date }: Post) {
   return (
     <Link href="/detail">
       <div className="flex flex-col w-full overflow-hidden gap-2 hover:bg-slate-100 rounded-lg p-2">

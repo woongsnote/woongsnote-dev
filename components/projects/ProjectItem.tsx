@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { MyProject } from "../../types";
+import { Project } from "../../types";
 
-export default function ProjectItem({ imageUrl, description, title }: MyProject) {
+export default function ProjectItem({ imageUrl, description, title }: Project) {
   return (
     <Link
       href="/detail"

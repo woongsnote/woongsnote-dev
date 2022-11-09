@@ -1,16 +1,10 @@
-export interface LatestPost {
-  imageUrl: string;
-  title: string;
-  date: string;
-}
-
-export interface MyPost {
+export interface Post {
   title: string;
   date: string;
   description: string;
 }
 
-export interface MyProject {
+export interface Project {
   imageUrl: string;
   title: string;
   description: string;
