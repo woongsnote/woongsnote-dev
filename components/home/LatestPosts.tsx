@@ -1,23 +1,30 @@
 import React from "react";
-import PostItem from "../posts/PostItem";
+import LatestPostItem from "./LatestPostItem";
 import SectionHeader from "./SectionHeader";
 
 export default function LatestPosts() {
   return (
-    <section className="mt-4">
-      <SectionHeader
-        title="Latest Posts"
-        linkTitle="All Posts"
-        linkAddress="/posts"
-      />
-      <div className="bg-white py-6 sm:py-8 lg:py-12">
-        <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 xl:gap-8">
-            <PostItem />
-            <PostItem />
-            <PostItem />
-            <PostItem />
-          </div>
+    <section className="my-4">
+      <div className="px-4 md:px-8 mx-auto">
+        <SectionHeader
+          title="최신 게시글"
+          linkTitle="전체보기"
+          linkAddress="/blog"
+        />
+
+        <div className="grid  gap-4 md:gap-6 xl:gap-8 mt-3">
+          <LatestPostItem
+            title="New trends in Tech"
+            date="July 19, 2021"
+            description="This is a section of some simple filler text, also known as
+          placeholder text."
+          />
+          <LatestPostItem
+            title="New trends in Tech"
+            date="July 19, 2021"
+            description="This is a section of some simple filler text, also known as
+          placeholder text."
+          />
         </div>
       </div>
     </section>

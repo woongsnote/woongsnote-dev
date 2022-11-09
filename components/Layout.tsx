@@ -16,7 +16,9 @@ export default function Layout({ children }: MyComponentProps) {
       </Head>
 
       <Header />
-      <main className="pt-12 pb-9 relative mx-auto container">{children}</main>
+      <main className="pt-12 relative mx-auto container max-w-screen-md">
+        {children}
+      </main>
       <Footer />
     </div>
   );
