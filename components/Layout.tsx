@@ -1,25 +1,29 @@
-import { ReactNode } from "react";
 import Head from "next/head";
+import { ReactNode } from "react";
 import Footer from "./Footer";
-import Header from "./Header";
+import AppBar from "./appbar";
+import BottomNav from "./bottom-nav";
 
-type MyComponentProps = {
+interface MyComponentProps {
+  title?: string;
   children: ReactNode;
-};
-export default function Layout({ children }: MyComponentProps) {
+}
+const Layout = ({ title, children }: MyComponentProps) => {
   return (
-    <div>
-      <Head>
-        <title>WoongsNote</title>
-        <meta name="description" content="NextJs Blog by Woongsnote" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      {title ? (
+        <Head>
+          <title>Woongsnote | {title}</title>
+        </Head>
+      ) : null}
 
-      <Header />
-      <main className="pt-10 relative mx-auto container max-w-screen-md pb-16 px-2 lg:px-0">
+      <AppBar />
+      <main className="pt-10 relative mx-auto container max-w-screen-md pb-20 px-2 lg:px-0">
         {children}
       </main>
-      <Footer />
-    </div>
+      <BottomNav />
+    </>
   );
-}
+};
+
+export default Layout;

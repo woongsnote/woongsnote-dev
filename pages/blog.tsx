@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../components/layout";
 import PostItem from "../components/posts/PostItem";
 
 export default function Blog() {

@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../components/layout";
 import Image from "next/image";
 import temp from "../public/profileImage.jpg";
 

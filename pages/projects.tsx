@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../components/layout";
 import ProjectItem from "../components/projects/ProjectItem";
 
 export default function Projects() {
