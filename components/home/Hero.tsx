@@ -1,9 +1,8 @@
-import React from "react";
 import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col justify-center items-center md:flex-row-reverse">
+    <section className="flex flex-col justify-center items-center md:flex-row-reverse py-8 mx-auto">
       <Image
         width={96}
         height={96}

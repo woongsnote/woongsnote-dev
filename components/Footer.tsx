@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Footer() {
   return (
     <footer className="text-black-400 bg-white w-full bottom-0 fixed z-50 h-10">

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import { Post } from "../../types";
 
 export default function PostItem({ title, description, date }: Post) {

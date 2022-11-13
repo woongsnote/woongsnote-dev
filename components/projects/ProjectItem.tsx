@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { Project } from "../../types";
 
 export default function ProjectItem({ imageUrl, description, title }: Project) {

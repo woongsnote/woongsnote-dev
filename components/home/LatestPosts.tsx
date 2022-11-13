@@ -1,4 +1,3 @@
-import React from "react";
 import PostItem from "../posts/PostItem";
 import SectionHeader from "./SectionHeader";
 
