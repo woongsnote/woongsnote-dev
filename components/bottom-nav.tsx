@@ -12,9 +12,11 @@ const BottomNav = () => {
   const router = useRouter();
   return (
     <>
-      <footer className="text-black-400 w-full h-10">
+      <footer className="text-black-400 w-full h-10 fixed bottom-14 md:bottom-0 bg-white md:border-t md:bg-zinc-100">
         <div className="container px-5 pt-2 mx-auto flex  sm:flex-row flex-col max-w-screen-md ">
-          <span className="text-md text-black">© 2022 woongsnote</span>
+          <span className="text-md text-black">
+            © 2022. woongsnote All rights reserved.
+          </span>
         </div>
       </footer>
       <div className="sm:hidden">
