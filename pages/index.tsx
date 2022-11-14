@@ -1,12 +1,12 @@
 import Page from "../components/page";
-import Hero from "../components/home/hero";
+import About from "../components/home/about";
 import LatestPosts from "../components/home/posts";
 import LatestProjects from "../components/home/projects";
 
 export default function Home() {
   return (
     <Page>
-      <Hero />
+      <About />
       <LatestPosts />
       <LatestProjects />
     </Page>

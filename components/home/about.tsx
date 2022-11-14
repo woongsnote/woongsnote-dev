@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Hero = () => {
+const About = () => {
   return (
     <section className="flex flex-col justify-center items-center md:flex-row-reverse py-8 mx-auto">
       <Image
@@ -21,4 +21,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default About;
