@@ -1,11 +1,10 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { AiFillHome, AiFillEdit, AiFillDatabase } from "react-icons/ai";
-import Footer from "./Footer";
 
 const links = [
   { label: "Home", href: "/", icon: <AiFillHome /> },
-  { label: "Blog", href: "/blog", icon: <AiFillEdit /> },
+  { label: "Blog", href: "/posts", icon: <AiFillEdit /> },
   { label: "Projects", href: "/projects", icon: <AiFillDatabase /> },
 ];
 
@@ -13,7 +12,11 @@ const BottomNav = () => {
   const router = useRouter();
   return (
     <>
-      <Footer />
+      <footer className="text-black-400 w-full h-10">
+        <div className="container px-5 pt-2 mx-auto flex  sm:flex-row flex-col max-w-screen-md ">
+          <span className="text-md text-black">© 2022 woongsnote</span>
+        </div>
+      </footer>
       <div className="sm:hidden">
         <nav className="fixed bottom-0 w-full border-t bg-zinc-100">
           <div className="mx-auto flex h-14 max-w-md items-center justify-around">
@@ -27,7 +30,7 @@ const BottomNav = () => {
                     : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
                 }`}
               >
-                {icon}
+                <span className="text-lg py-1">{icon}</span>
                 <span className="text-xs">{label}</span>
               </Link>
             ))}

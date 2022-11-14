@@ -1,5 +1,5 @@
-import Layout from "../components/layout";
+import Page from "../components/page";
 
 export default function About() {
-  return <Layout>About Me</Layout>;
+  return <Page>About Me</Page>;
 }

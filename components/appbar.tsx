@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const links = [
-  { label: "blog", href: "/blog" },
+  { label: "blog", href: "/posts" },
   { label: "projects", href: "/projects" },
 ];
 

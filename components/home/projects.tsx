@@ -1,7 +1,7 @@
-import SectionHeader from "./SectionHeader";
-import ProjectItem from "../projects/ProjectItem";
+import SectionHeader from "./header";
+import ProjectItem from "../projects/project";
 
-export default function LatestProjects() {
+const LatestProjects = () => {
   return (
     <section className="mt-4">
       <div className="px-4 md:px-8 mx-auto">
@@ -26,4 +26,6 @@ export default function LatestProjects() {
       </div>
     </section>
   );
-}
+};
+
+export default LatestProjects;

@@ -1,14 +1,14 @@
-import Layout from "../components/layout";
-import Hero from "../components/home/Hero";
-import LatestPosts from "../components/home/LatestPosts";
-import LatestProjects from "../components/home/LatestProjects";
+import Page from "../components/page";
+import Hero from "../components/home/hero";
+import LatestPosts from "../components/home/posts";
+import LatestProjects from "../components/home/projects";
 
 export default function Home() {
   return (
-    <Layout>
+    <Page>
       <Hero />
       <LatestPosts />
       <LatestProjects />
-    </Layout>
+    </Page>
   );
 }

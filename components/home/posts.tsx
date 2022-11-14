@@ -1,14 +1,14 @@
-import PostItem from "../posts/PostItem";
-import SectionHeader from "./SectionHeader";
+import PostItem from "../posts/post";
+import SectionHeader from "./header";
 
-export default function LatestPosts() {
+const LatestPosts = () => {
   return (
     <section className="my-4">
       <div className="px-4 md:px-8 mx-auto">
         <SectionHeader
           title="최신 게시글"
           linkTitle="전체보기"
-          linkAddress="/blog"
+          linkAddress="/posts"
         />
 
         <div className="grid  gap-4 md:gap-6 xl:gap-8 mt-3">
@@ -28,4 +28,6 @@ export default function LatestPosts() {
       </div>
     </section>
   );
-}
+};
+
+export default LatestPosts;

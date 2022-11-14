@@ -1,13 +1,11 @@
-import Layout from "../components/layout";
-import PostItem from "../components/posts/PostItem";
+import Page from "../../components/page";
+import Title from "../../components/page/title";
+import PostItem from "../../components/posts/post";
 
-export default function Blog() {
+const Posts = () => {
   return (
-    <Layout>
-      <div className="mx-auto flex flex-col p-2">
-        <h1 className="text-3xl font-bold py-2">Blog</h1>
-        <p>블로그입니다</p>
-      </div>
+    <Page>
+      <Title pageTitle="Blog" pageDescription="블로그입니다" />
 
       <div className="flex flex-col gap-4 md:gap-6 xl:gap-8">
         <PostItem
@@ -47,6 +45,8 @@ export default function Blog() {
           placeholder text."
         />
       </div>
-    </Layout>
+    </Page>
   );
-}
+};
+
+export default Posts;

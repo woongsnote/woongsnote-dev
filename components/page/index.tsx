@@ -1,14 +1,13 @@
 import Head from "next/head";
-import { ReactNode } from "react";
-import Footer from "./Footer";
-import AppBar from "./appbar";
-import BottomNav from "./bottom-nav";
+
+import AppBar from "../appbar";
+import BottomNav from "../bottom-nav";
 
 interface MyComponentProps {
   title?: string;
-  children: ReactNode;
+  children: React.ReactNode;
 }
-const Layout = ({ title, children }: MyComponentProps) => {
+const Page = ({ title, children }: MyComponentProps) => {
   return (
     <>
       {title ? (
@@ -19,11 +18,11 @@ const Layout = ({ title, children }: MyComponentProps) => {
 
       <AppBar />
       <main className="pt-10 relative mx-auto container max-w-screen-md pb-20 px-2 lg:px-0">
-        {children}
+        <div className="px-4 md:px-8 mx-auto">{children}</div>
       </main>
       <BottomNav />
     </>
   );
 };
 
-export default Layout;
+export default Page;

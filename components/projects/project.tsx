@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Project } from "../../types";
 
-export default function ProjectItem({ imageUrl, description, title }: Project) {
+const ProjectItem = ({ imageUrl, description, title }: Project) => {
   return (
     <Link
       href="/detail"
@@ -25,4 +25,6 @@ export default function ProjectItem({ imageUrl, description, title }: Project) {
       </div>
     </Link>
   );
-}
+};
+
+export default ProjectItem;

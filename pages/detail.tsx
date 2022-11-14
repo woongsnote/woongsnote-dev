@@ -1,10 +1,10 @@
-import Layout from "../components/layout";
+import Page from "../components/page";
 import Image from "next/image";
 import temp from "../public/profileImage.jpg";
 
 export default function Detail() {
   return (
-    <Layout>
+    <Page>
       <div id="post-header" className=" border-b-2 pb-2 mb-2">
         <h1 className="py-4 font-bold text-3xl">게시글 제목</h1>
         <span>작성일: 2022-11-13</span>
@@ -24,6 +24,6 @@ export default function Detail() {
         </div>
         <p>테스트 중입니다.</p>
       </div>
-    </Layout>
+    </Page>
   );
 }
