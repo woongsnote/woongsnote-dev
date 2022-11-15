@@ -4,8 +4,8 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "woongsnote",
-  "short_name": "woongsnote",
+  "name": "Woongsnote",
+  "short_name": "Woongsnote",
   "description": "woong's tech blog",
   "icons": [
     {
