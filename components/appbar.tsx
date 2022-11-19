@@ -22,7 +22,7 @@ const AppBar = () => {
                 <Link
                   key={label}
                   href={href}
-                  className={`text-sm w-12 ${
+                  className={`text-md w-12 ${
                     router.pathname === href
                       ? "text-indigo-500 dark:text-indigo-400 font-bold"
                       : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
