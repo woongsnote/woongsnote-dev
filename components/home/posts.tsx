@@ -12,7 +12,7 @@ const LatestPosts = ({ posts }: Props) => {
         <SectionHeader
           title="최신 게시글"
           linkTitle="전체보기"
-          linkAddress="/posts"
+          linkAddress="/blog"
         />
 
         <div className="grid  gap-4 md:gap-6 xl:gap-8 mt-3">

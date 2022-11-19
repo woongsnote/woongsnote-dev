@@ -4,7 +4,7 @@ import { AiFillHome, AiFillEdit, AiFillDatabase } from "react-icons/ai";
 
 const links = [
   { label: "Home", href: "/", icon: <AiFillHome /> },
-  { label: "Blog", href: "/posts", icon: <AiFillEdit /> },
+  { label: "Blog", href: "/blog", icon: <AiFillEdit /> },
   { label: "Projects", href: "/projects", icon: <AiFillDatabase /> },
 ];
 

@@ -1,10 +1,10 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import Page from "../../components/page";
 import Title from "../../components/page/title";
 import PostItem from "../../components/posts/post";
 import { getPosts } from "../api/get-posts";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   let { results } = await getPosts();
   return {
     props: {
@@ -15,6 +15,7 @@ export async function getServerSideProps() {
 interface Props {
   posts: [any];
 }
+
 const Posts: NextPage<Props> = ({ posts }) => {
   return (
     <Page>

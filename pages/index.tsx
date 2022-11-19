@@ -3,9 +3,9 @@ import About from "../components/home/about";
 import LatestPosts from "../components/home/posts";
 import LatestProjects from "../components/home/projects";
 import { getPosts } from "./api/get-posts";
-import { NextPage } from "next";
+import type { NextPage } from "next";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   let { results } = await getPosts();
   return {
     props: {
@@ -16,6 +16,7 @@ export async function getServerSideProps() {
 interface Props {
   posts: [any];
 }
+
 const Home: NextPage<Props> = (props) => {
   const latestPosts = props.posts.slice(0, 2);
 
