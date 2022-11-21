@@ -6,15 +6,14 @@ const withPWA = require("next-pwa")({
 });
 
 const nextConfig = withPWA({
+  experimental: {
+    appDir: true,
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-    ],
+    dangerouslyAllowSVG: true,
+    domains: ["images.unsplash.com", "thrangra.sirv.com"],
   },
 });
 
