@@ -20,7 +20,11 @@ const Blogs: NextPage = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      <div className="py-2">
+        <h2 className="text-3xl font-bold py-1 mb-2">Blog</h2>
+        <p>공부한 내용들을 기록합니다.</p>
+      </div>
+      <div className="">
         {blogs.map((blog) => (
           <Link key={blog.slug} href={`/blog/${blog.slug}`} className="group">
             <h3 className="mt-4 text-lg text-gray-700">{blog.title}</h3>

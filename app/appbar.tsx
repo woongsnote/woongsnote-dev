@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const links = [
   { label: "blog", href: "/blog" },
@@ -6,9 +8,11 @@ const links = [
 ];
 
 const AppBar = () => {
+  const pathName = usePathname();
+
   return (
     <div className="w-full fixed z-20 shadow-sm top-0 left-0">
-      <header className="border-b">
+      <header className="border-b bg-white dark:bg-black  text-black dark:text-white">
         <div className="flex sm:justify-between  items-center max-w-screen-md  mx-auto py-1 px-4 md:px-0">
           <Link href="/">
             <h1 className="text-xl font-bold text-center">Woongsnote</h1>
@@ -16,7 +20,15 @@ const AppBar = () => {
           <nav className="flex items-center">
             <ul className="hidden sm:flex gap-4">
               {links.map(({ label, href }) => (
-                <Link key={label} href={href} className={`text-md w-12 `}>
+                <Link
+                  key={label}
+                  href={href}
+                  className={`text-md w-12  ${
+                    pathName === href
+                      ? "text-indigo-500 dark:text-indigo-400 font-bold"
+                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+                  } `}
+                >
                   {label}
                 </Link>
               ))}
