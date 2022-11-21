@@ -1,9 +1,8 @@
 import { NextPage } from "next";
 import { use } from "react";
 import { ParsedUrlQuery } from "querystring";
-import { getBlogBySlug, getBlogs } from "../../../lib/blogs";
+import { getProjectBySlug, getProjects } from "../../../lib/projects";
 import ProjectHeader from "./ProjectHeader";
-
 interface Params extends ParsedUrlQuery {
   slug: string;
 }
@@ -11,27 +10,27 @@ interface Params extends ParsedUrlQuery {
 type Props = {
   params: Params;
 };
-const getInitialBlog = async (slug: string) => {
-  const blog = getBlogBySlug(slug);
-  return blog;
+const getInitialProject = async (slug: string) => {
+  const project = getProjectBySlug(slug);
+  return project;
 };
 
 const ProjectDetail: NextPage<Props> = ({ params }) => {
-  const blog = use(getInitialBlog(params.slug));
+  const project = use(getInitialProject(params.slug));
   return (
     <div className="w-full m-auto">
-      <ProjectHeader blog={blog} />
+      <ProjectHeader project={project} />
       <article className="prose lg:prose-xl">
-        <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+        <div dangerouslySetInnerHTML={{ __html: project.content }} />
       </article>
     </div>
   );
 };
 
 export function generateStaticParams() {
-  const blogs = getBlogs();
-  return blogs.map((blog) => ({
-    slug: blog.slug,
+  const projects = getProjects();
+  return projects.map((project) => ({
+    slug: project.slug,
   }));
 }
 
