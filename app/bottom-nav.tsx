@@ -1,16 +1,20 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AiFillHome, AiFillEdit, AiFillDatabase } from "react-icons/ai";
 
 const links = [
   { label: "Home", href: "/", icon: <AiFillHome /> },
-  { label: "Blog", href: "/blogs", icon: <AiFillEdit /> },
+  { label: "Blog", href: "/blog", icon: <AiFillEdit /> },
   { label: "Projects", href: "/projects", icon: <AiFillDatabase /> },
 ];
 
 const BottomNav = () => {
+  const pathName = usePathname();
+
   return (
     <>
-      <footer className="text-black-400 w-full h-10 fixed bottom-14 md:bottom-0  md:border-t">
+      <footer className="text-black-400 w-full h-10 fixed bottom-14 md:bottom-0  md:border-t bg-white text-black dark:bg-black dark:text-white">
         <div className="container px-5 pt-2 mx-auto flex  sm:flex-row flex-col max-w-screen-md ">
           <span className="text-md text-black">
             © 2022. woongsnote All rights reserved.
@@ -24,7 +28,11 @@ const BottomNav = () => {
               <Link
                 key={label}
                 href={href}
-                className={`text-sm w-full h-full flex flex-col items-center justify-center `}
+                className={`text-sm w-full h-full flex flex-col items-center justify-center ${
+                  pathName === href
+                    ? "text-indigo-500 dark:text-indigo-400"
+                    : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+                }`}
               >
                 <span className="text-lg py-1">{icon}</span>
                 <span className="text-xs">{label}</span>

@@ -18,7 +18,7 @@ const getInitialProject = async (slug: string) => {
 const ProjectDetail: NextPage<Props> = ({ params }) => {
   const project = use(getInitialProject(params.slug));
   return (
-    <div className="w-full m-auto">
+    <div className="w-full m-auto py-2">
       <ProjectHeader project={project} />
       <article className="prose lg:prose-xl">
         <div dangerouslySetInnerHTML={{ __html: project.content }} />

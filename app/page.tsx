@@ -27,7 +27,6 @@ const Page: NextPage = () => {
 
   return (
     <div>
-      {/* about Me */}
       <section className="flex flex-col justify-center items-center md:flex-row-reverse py-8 mx-auto">
         <Image
           width={96}
@@ -44,7 +43,6 @@ const Page: NextPage = () => {
           직관적인 인터페이스를 만들기 위해 노력합니다.
         </p>
       </section>
-      {/* Latest Posts */}
       <section className="py-4">
         <div className="flex justify-between px-2 items-center">
           <h2 className="text-lg font-bold">최근 게시글</h2>
@@ -66,9 +64,8 @@ const Page: NextPage = () => {
         </div>
       </section>
       <div className="h-10" />
-      {/* Latest Projects */}
       <section>
-        <div className="flex justify-between px-2 items-center">
+        <div className="flex justify-between px-2 items-center mb-2">
           <h2 className="text-lg font-bold">최근 프로젝트</h2>
           <Link href={"/projects"}>
             <button className="text-black hover:bg-slate-500 p-2 hover:text-white rounded-lg">
@@ -76,12 +73,12 @@ const Page: NextPage = () => {
             </button>
           </Link>
         </div>
-        <div>
+        <div className="grid sm:grid-cols-2 gap-4 md:gap-8">
           {projects.map((project) => (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className="group h-48 md:h-64 xl:h-96 flex flex-col bg-gray-100 rounded-lg shadow-lg overflow-hidden relative my-4"
+              className="group h-48 md:h-64 xl:h-96 flex flex-col bg-gray-100 rounded-lg shadow-lg overflow-hidden relative"
             >
               <Image
                 width={600}

@@ -20,7 +20,11 @@ const Projects: NextPage = () => {
   const projects = use(getInitialProjects());
 
   return (
-    <div>
+    <div className="py-2">
+      <div className="py-2">
+        <h2 className="text-3xl font-bold py-1 mb-2">Projects</h2>
+        <p>사이드&토이 프로젝트를 기록합니다.</p>
+      </div>
       <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 xl:gap-x-8">
         {projects.map((project) => (
           <Link
