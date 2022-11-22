@@ -14,9 +14,11 @@ const BottomNav = () => {
     <>
       <footer className="text-black-400 w-full h-10 fixed bottom-14 md:bottom-0 bg-white md:border-t md:bg-zinc-100">
         <div className="container px-5 pt-2 mx-auto flex  sm:flex-row flex-col max-w-screen-md ">
-          <span className="text-md text-black">
-            © 2022. woongsnote All rights reserved.
-          </span>
+          <p>
+            © 2022.
+            <span className="text-md text-black font-bold"> 문지웅 </span>
+            All rights reserved.
+          </p>
         </div>
       </footer>
       <div className="sm:hidden">
@@ -30,8 +32,7 @@ const BottomNav = () => {
                   router.pathname === href
                     ? "text-indigo-500 dark:text-indigo-400 "
                     : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-                }`}
-              >
+                }`}>
                 <span className="text-lg py-1">{icon}</span>
                 <span className="text-xs">{label}</span>
               </Link>
