@@ -23,6 +23,8 @@ const nextConfig = withPWA({
         hostname: "s3.us-west-2.amazonaws.com",
       },
     ],
+    dangerouslyAllowSVG: true,
+    domains: ["images.unsplash.com"],
   },
 });
 

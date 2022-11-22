@@ -1,13 +1,13 @@
 import Head from "next/head";
 
-import AppBar from "../appbar";
-import BottomNav from "../bottom-nav";
+import AppBar from "./appbar";
+import BottomNav from "./bottom-nav";
 
 interface MyComponentProps {
   title?: string;
   children: React.ReactNode;
 }
-const Page = ({ title, children }: MyComponentProps) => {
+const Layout = ({ title, children }: MyComponentProps) => {
   return (
     <>
       {title ? (
@@ -25,4 +25,4 @@ const Page = ({ title, children }: MyComponentProps) => {
   );
 };
 
-export default Page;
+export default Layout;

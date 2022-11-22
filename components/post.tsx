@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Post } from "../../types";
+import { Post } from "../types";
 
-const PostItem = ({ title, description, date, slug }: Post) => {
+const Post = ({ title, description, date }: Post) => {
   return (
     <Link href={`/blog/${slug}`}>
       <div className="flex flex-col w-full overflow-hidden gap-2 hover:bg-slate-100 rounded-lg p-2">
@@ -15,4 +15,4 @@ const PostItem = ({ title, description, date, slug }: Post) => {
   );
 };
 
-export default PostItem;
+export default Post;

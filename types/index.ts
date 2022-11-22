@@ -1,19 +1,11 @@
-export interface Post {
+export type Post = {
   title: string;
   date: string;
   description: string;
-  slug: string;
-}
+};
 
-export interface Project {
+export type Project = {
   imageUrl: string;
   title: string;
   description: string;
-  slug: string;
-}
-
-export interface SectionHead {
-  title: string;
-  linkTitle: string;
-  linkAddress: string;
-}
+};
