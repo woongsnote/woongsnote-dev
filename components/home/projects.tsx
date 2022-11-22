@@ -1,7 +1,10 @@
 import SectionHeader from "./header";
 import ProjectItem from "../projects/project";
 
-const LatestProjects = () => {
+interface Props {
+  projects: any[];
+}
+const LatestProjects = ({ projects }: Props) => {
   return (
     <section className="mt-4">
       <div className="px-4 md:px-8 mx-auto">
@@ -12,16 +15,22 @@ const LatestProjects = () => {
         />
 
         <div className="grid sm:grid-cols-2 gap-4 md:gap-6 xl:gap-8 mt-3">
-          <ProjectItem
-            imageUrl="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&q=75&fit=crop&w=600"
-            title="기술 블로그"
-            description="NextJs 기술 블로그"
-          />
-          <ProjectItem
-            imageUrl="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&q=75&fit=crop&w=600"
-            title="방구석 평론가"
-            description="영화 커뮤니티"
-          />
+          {projects &&
+            projects.map((project) => (
+              <ProjectItem
+                key={project.id}
+                title={project.properties.Title.title[0].plain_text}
+                imageUrl={
+                  project.cover.external
+                    ? project.cover.external.url
+                    : project.cover.file.url
+                }
+                description={
+                  project.properties.Description.rich_text[0]?.plain_text
+                }
+                slug={project.properties.slug.rich_text[0]?.plain_text}
+              />
+            ))}
         </div>
       </div>
     </section>

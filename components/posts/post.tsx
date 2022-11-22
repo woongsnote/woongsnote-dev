@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Post } from "../../types";
 
-const PostItem = ({ title, description, date }: Post) => {
+const PostItem = ({ title, description, date, slug }: Post) => {
   return (
-    <Link href={`/blog/${title}`}>
+    <Link href={`/blog/${slug}`}>
       <div className="flex flex-col w-full overflow-hidden gap-2 hover:bg-slate-100 rounded-lg p-2">
         <h2 className="text-gray-800 text-3xl font-bold ">{title}</h2>
 

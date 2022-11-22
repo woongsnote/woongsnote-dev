@@ -6,7 +6,11 @@ async function getProjects() {
   const myPosts = await notion.databases.query({
     database_id: databaseId,
     filter: {
-      or: [
+      and: [
+        {
+          property: "Published",
+          checkbox: { equals: true },
+        },
         {
           property: "Category",
           select: { equals: "Project" },
@@ -15,7 +19,7 @@ async function getProjects() {
     },
     sorts: [
       {
-        timestamp: "created_time",
+        property: "Created",
         direction: "descending",
       },
     ],

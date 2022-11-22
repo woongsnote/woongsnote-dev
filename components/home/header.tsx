@@ -3,12 +3,13 @@ import { SectionHead } from "../../types";
 
 const SectionHeader = ({ title, linkTitle, linkAddress }: SectionHead) => {
   return (
-    <div className="flex justify-between px-2">
-      <h2 className="text-lg font-bold">{title}</h2>
-      <Link href={linkAddress}>
-        <button className="text-black hover:bg-slate-500 p-2 hover:text-white rounded-lg">
-          {linkTitle}
-        </button>
+    <div className="flex justify-between px-2 items-center border-b">
+      <h2 className="text-lg font-bold py-2">{title}</h2>
+      <Link
+        href={linkAddress}
+        className="text-black text-center text-lg p-1 px-2 hover:bg-indigo-500 hover:text-white rounded-lg"
+      >
+        {linkTitle}
       </Link>
     </div>
   );

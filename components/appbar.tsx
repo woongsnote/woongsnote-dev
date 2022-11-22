@@ -10,8 +10,8 @@ const AppBar = () => {
   const router = useRouter();
 
   return (
-    <div className="w-full fixed z-20 shadow-sm top-0 left-0 bg-zinc-900">
-      <header className="border-b bg-zinc-100">
+    <div className="w-full fixed z-20 shadow-sm top-0 left-0 bg-white dark:bg-black text-black dark:text-white">
+      <header className="border-b ">
         <div className="flex sm:justify-between  items-center max-w-screen-md  mx-auto py-1 px-4 md:px-0">
           <Link href="/">
             <h1 className="text-xl font-bold text-center">Woongsnote</h1>
