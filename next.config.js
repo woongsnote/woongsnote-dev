@@ -6,6 +6,9 @@ const withPWA = require("next-pwa")({
 });
 
 const nextConfig = withPWA({
+  experimental: {
+    appDir: true,
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: {
