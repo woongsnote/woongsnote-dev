@@ -1,4 +1,3 @@
-import { NextPage } from "next";
 import { getBlogs } from "../lib/blogs";
 import { use } from "react";
 import Image from "next/image";
@@ -16,7 +15,7 @@ const shortify = (text: string, maxLength = 60) => {
   return text.substring(0, maxLength) + " ...";
 };
 
-const Page: NextPage = () => {
+export default function Page() {
   const blogs = use(getInitialBlogs());
   return (
     <div>
@@ -44,6 +43,4 @@ const Page: NextPage = () => {
       </div>
     </div>
   );
-};
-
-export default Page;
+}
