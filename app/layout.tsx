@@ -1,4 +1,6 @@
 import "../styles/globals.css";
+import BottomNav from "./BottomNav";
+import NavBar from "./NavBar";
 
 export default function RootLayout({
   children,
@@ -9,11 +11,11 @@ export default function RootLayout({
     <html>
       <head />
       <body>
-        <div className="bg-white">
-          <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-            {children}
-          </div>
-        </div>
+        <NavBar />
+        <main className="pt-10 relative mx-auto container max-w-screen-md pb-28 md:pb-16 px-2 lg:px-0">
+          <div className="px-4 pt-2 mx-auto">{children}</div>
+        </main>
+        <BottomNav />
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 import { getBlogs } from "../lib/blogs";
 import { use } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Intro from "./Intro";
 
 async function getInitialBlogs() {
   const fileNames = getBlogs();
@@ -17,30 +17,32 @@ const shortify = (text: string, maxLength = 60) => {
 
 export default function Page() {
   const blogs = use(getInitialBlogs());
+  //todo 날짜순 정렬 필요
+  const latestBlogs = blogs.length > 4 ? blogs.slice(0, 4) : blogs;
+
   return (
-    <div>
+    <>
+      <Intro />
       <div>
-        <h2 className="sr-only">Blogs</h2>
+        <h2 className="">최신 게시글</h2>
       </div>
 
-      <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        {blogs.map((blog) => (
-          <Link key={blog.slug} href={`/blogs/${blog.slug}`} className="group">
-            <div className=" relative aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-              <Image
-                fill
-                src={blog.coverImage}
-                alt={"/"}
-                className="h-full w-full object-cover object-center group-hover:opacity-75"
-              />
-            </div>
-            <h3 className="mt-4 text-sm text-gray-700">{blog.title}</h3>
-            <p className="mt-1 text-md font-medium text-gray-900">
+      <div className="grid grid-cols-1 gap-y-2 gap-x-6 xl:gap-x-8 py-2">
+        {latestBlogs.map((blog) => (
+          <Link
+            key={blog.slug}
+            href={`/blog/${blog.slug}`}
+            className="group hover:bg-slate-400 p-2 rounded-xl"
+          >
+            <h3 className="mt-4 text-xl font-bold text-gray-900 ">
+              {blog.title}
+            </h3>
+            <p className="mt-1 text-sm font-medium text-gray-600">
               {shortify(blog.description, 100)}
             </p>
           </Link>
         ))}
       </div>
-    </div>
+    </>
   );
 }
