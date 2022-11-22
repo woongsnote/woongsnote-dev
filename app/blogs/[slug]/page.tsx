@@ -1,4 +1,3 @@
-import { NextPage } from "next";
 import { use } from "react";
 import { ParsedUrlQuery } from "querystring";
 import { getBlogBySlug, getBlogs } from "../../../lib/blogs";
@@ -16,7 +15,7 @@ const getInitialBlog = async (slug: string) => {
   return blog;
 };
 
-const BlogDetail: NextPage<Props> = ({ params }) => {
+export default function BlogDetail({ params }: Props) {
   const blog = use(getInitialBlog(params.slug));
   return (
     <div className="w-2/3 m-auto">
@@ -26,7 +25,7 @@ const BlogDetail: NextPage<Props> = ({ params }) => {
       </article>
     </div>
   );
-};
+}
 
 export function generateStaticParams() {
   const blogs = getBlogs();
@@ -34,5 +33,3 @@ export function generateStaticParams() {
     slug: blog.slug,
   }));
 }
-
-export default BlogDetail;
