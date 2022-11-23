@@ -1,9 +1,65 @@
 ---
-title: "Markdown Extensive Example. How to write Markdown."
-description: Learn how to write markdown. This is just a testing blog.
-author: Filip Jerga
-authorImage: https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1540&q=50
-coverImage: https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1540&q=50
-date: "2022-04-20"
+title: 방구석 평론가
+description: 영화 정보 제공 및 후기 공유 커뮤니티 
+author: 문지웅
+authorImage: https://avatars.githubusercontent.com/u/83802168?v=4
+coverImage: https://user-images.githubusercontent.com/109592005/197546591-4c4d3d21-f046-455f-b3a4-80810d9ca811.png
+date: "2022-10-30"
 ---
 
+## 개요
+
+보고 싶은 영화에 대한 정보를 검색할 수 있고, 영화와 영화관 후기를 공유할 수 있는 커뮤니티를 구현했습니다.
+
+## 개발 기간
+
+- 2022.09.16 - 2022.10.28(6W)
+
+## 개발 인원
+
+- 7명 (프론트엔드 4명 / 백엔드 3명)
+
+## 사용한 기술
+
+- React, React Query, ContextAPI, Axios, Tailwind CSS, GitHub Actions, Amazon S3, ACM, CloudFront
+
+## 개발 내용
+
+- **Tailwind CSS**를 이용하여 서비스에 최적화된 **반응형 네비게이션**을 구현했습니다.
+
+- 챌린지를 한 눈에 볼 수 있는 챌린지 페이지를 구현했습니다.
+
+- 커뮤니티 페이지에 한 페이지에서 게시글을 10개씩 볼 수 있도록 페이지네이션을 적용했습니다.
+
+- 다양한 기능을 가진 **마이페이지**를 구현했습니다.
+  - 즐겨찾기 목록 확인
+  - 작성한 게시글 목록 확인
+  - 작성한 한줄평 전체 확인
+  - 대표배지 설정 및 초기화
+  - 닉네임 변경
+  - 회원 탈퇴
+
+- 효율적인 개발 환경 구성을 위해 GitHub Actions을 활용해서 CI/CD를 구축했습니다.
+
+- AWS의 S3, ACM, CloundFront를 이용해서, HTTPS를 적용한 웹 서비스를 배포했습니다.
+
+- 실제 유저를 모집해서 유저 피드백 54건을 받았고, 이를 바탕으로 바탕으로 서비스를 개선했습니다.
+- 개선 사항
+  - 챌린지 페이지 : 챌린지마다 사용자 달성률을 추가하여, 사용자에게 더 많은 정보를 제공할 수 있도록 개선했습니다.
+  - 커뮤니티 페이지: 제목 또는 내용으로 검색할 수 있도록 **검색 기능**을 추가해서, 사용성을 개선했습니다.
+  - 마이페이지 : 배지 목록에서, 아직 획득하지 못한 배지의 경우, 해당 배지 획득을 위해 남은 챌린지의 진행율을 추가하여 사용성을 개선했습니다.
+
+- 프론트엔드 리더 및 프로젝트 팀장으로 전체 프로젝트 관리 및 발표를 담당했습니다.
+
+## 트러블 슈팅
+
+- React Query 도입
+  - 프로젝트의 데이터가 대부분 서버에서 받아오는 데이터이다보니, React Query를 도입하게 되었습니다.
+  
+  - 이전 프로젝트들에서 상태관리 라이브러리로 Redux와 Redux Toolkit만 사용해서, React Query를 처음 시도한 것에서 어려움이 있었습니다.
+
+- Context API 적용
+  - 대표 배지를 변경할 때, localstorage에 저장하는 것만으로는, 즉각 반영이 되지 않았습니다.
+  - 이 문제를 Context API를 이용해서 해결할 수 있었습니다.
+
+ [📽️ 시연 영상](https://youtu.be/ilfDHnkgZ_w) |  [🖥️ 소스 코드](https://github.com/inno-final-team5/final-fe)

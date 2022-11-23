@@ -19,15 +19,17 @@ const nextConfig = withPWA({
       },
       {
         protocol: "https",
-        hostname: "www.notion.so",
+        hostname: "s3.us-west-2.amazonaws.com",
       },
       {
         protocol: "https",
-        hostname: "s3.us-west-2.amazonaws.com",
+        hostname: "avatars.githubusercontent.com",
       },
+      {
+        protocol: "https",
+        hostname: "user-images.githubusercontent.com"
+      }
     ],
-    dangerouslyAllowSVG: true,
-    domains: ["images.unsplash.com"],
   },
 });
 
