@@ -21,7 +21,7 @@ export default function BlogDetail({ params }: Props) {
     <div className="w-full m-auto">
       <BlogHeader blog={blog} />
       <article className="prose lg:prose-xl">
-        <div dangerouslySetInnerHTML={{ __html: blog.content }} />;
+        <div dangerouslySetInnerHTML={{ __html: blog.content }} />
       </article>
     </div>
   );
