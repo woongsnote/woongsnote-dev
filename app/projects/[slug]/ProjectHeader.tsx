@@ -17,8 +17,7 @@ const ProjectHeader: FunctionComponent<Props> = ({ project }) => {
               <div className="relative h-10 w-10 !mb-0">
                 <Image
                   priority
-                  layout="fill"
-                  objectFit="cover"
+                  fill
                   className="rounded-full"
                   src={project.authorImage}
                   alt=""
@@ -39,15 +38,15 @@ const ProjectHeader: FunctionComponent<Props> = ({ project }) => {
         </div>
         <div className="flex self-end">{/* Social Links Here */}</div>
       </div>
-      <h1 className="font-bold text-4xl mb-1">{project.title}</h1>
-      <h2 className="blog-detail-header-subtitle mb-2 text-xl text-gray-600">
+      <h1 className="font-bold text-3xl md:text-4xl mb-1">{project.title}</h1>
+      <h2 className="blog-detail-header-subtitle mb-2 text-md md:text-xl tsext-gray-600">
         {project.description}
       </h2>
-      <div className="h-96 bg-black mx-auto w-full relative">
+      <div className="h-96 bg-black mx-auto w-full relative rounded-xl">
         <Image
           priority
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="rounded-xl shadow-lg object-center"
           src={project.coverImage}
           alt=""
         />

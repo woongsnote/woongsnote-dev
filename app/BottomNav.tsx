@@ -5,8 +5,8 @@ import {
   AiFillHome,
   AiFillEdit,
   AiFillDatabase,
-  AiOutlineGithub,
 } from "react-icons/ai";
+import Footer from "./Footer";
 
 const links = [
   { label: "Home", href: "/", icon: <AiFillHome /> },
@@ -18,18 +18,7 @@ const BottomNav = () => {
   const pathname = usePathname();
   return (
     <>
-      <footer className="text-black-400 w-full h-10 fixed bottom-14 md:bottom-0 bg-white md:border-t ">
-        <div className="container px-5 pt-2 mx-auto flex flex-row max-w-screen-md items-center gap-5 justify-center">
-          <p>
-            © 2022.
-            <span className="text-md text-black font-bold"> 문지웅 </span>
-            All rights reserved.
-          </p>
-          <a href="https://github.com/woongsnote/">
-            <AiOutlineGithub size={24} />
-          </a>
-        </div>
-      </footer>
+      <Footer />
       <div className="sm:hidden">
         <nav className="fixed bottom-0 w-full border-t bg-white text-black">
           <div className="mx-auto flex h-14 max-w-md items-center justify-around">

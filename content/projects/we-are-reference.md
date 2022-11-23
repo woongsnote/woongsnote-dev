@@ -1,10 +1,10 @@
 ---
-title: "WeRef - We are Refenece."
+title: "WeRef - We are Refenece"
 description: 개발 공부 내용 및 레퍼런스 링크 공유 커뮤니티
 author: 문지웅
-authorImage: https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1540&q=50
+authorImage: https://avatars.githubusercontent.com/u/83802168?v=4
 coverImage: https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1540&q=50
-date: "2022-04-20"
+date: "2022-09-08"
 ---
 
 ## 개요
