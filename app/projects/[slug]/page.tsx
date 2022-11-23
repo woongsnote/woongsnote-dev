@@ -21,7 +21,7 @@ export default function ProjectDetail({ params }: Props) {
     <div className="w-full m-auto">
       <ProjectHeader project={project} />
       <article className="prose lg:prose-xl">
-        <div dangerouslySetInnerHTML={{ __html: project.content }} />;
+        <div dangerouslySetInnerHTML={{ __html: project.content }} />
       </article>
     </div>
   );
