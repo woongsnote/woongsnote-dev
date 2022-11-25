@@ -1,5 +1,5 @@
 ---
-title: "[회고] Next JS 블로그 프로젝트"
+title: "Next JS 블로그 기록"
 description: NextJS로 만드는 나만의 블로그
 author: 문지웅
 authorImage: https://avatars.githubusercontent.com/u/83802168?v=4
@@ -15,12 +15,20 @@ date: "2022-11-23"
 
 1. [x] Tailwind CSS를 이용해서 반응형으로 구현
 
-2. [x] next-pwa를 활용해서 PWA 적용
+2. [x] 모바일용 하단 네비게이션 적용
 
-## 앞으로 개발할 내용
+3. [x] .md 파일 HTML로 변환
+
+## Todo List
 
 - [ ] 게시글 날짜 순으로 정렬
 
 - [ ] 다크모드 추가
 
 - [ ] 검색엔진 최적화
+
+- [ ] PWA 적용
+
+## 참고 레퍼런스
+
+[바로가기](https://youtu.be/q4gErrkyR4A)

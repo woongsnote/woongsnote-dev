@@ -15,14 +15,14 @@ date: "2022-04-20"
 
 2022.09.16 - 2022.10.28(6W)
 
-## 기술
+## 개발 인원
+
+## 사용한 기술
 
 - React, React Query, ContextAPI, Axios, Tailwind CSS, GitHub Actions, Amazon S3, ACM, CloudFront
 
-## 담당 역할
+## 개발 내용
 
 - 회원가입 및 로그인 구현
-- 메인 페이지 구현
-- 서비스 배포
-
-## 트러블 슈팅
+- 두 가지 보기(쌓아보기, 리스트 보기)방식을 가진 메인 페이지 구현
+- Vercel을 이용한 서비스 배포
