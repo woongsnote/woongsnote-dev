@@ -1,5 +1,5 @@
 ---
-title: "[회고] Next JS 블로그 프로젝트"
+title: React Query
 description: NextJS로 만드는 나만의 블로그
 author: 문지웅
 authorImage: https://avatars.githubusercontent.com/u/83802168?v=4
