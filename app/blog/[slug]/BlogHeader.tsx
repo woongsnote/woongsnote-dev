@@ -12,24 +12,19 @@ const BlogHeader: FunctionComponent<Props> = ({ blog }) => {
       <div className="flex flex-row justify-between mb-2">
         <div className="flex items-center">
           <div className="flex-shrink-0">
-            <a href="#">
-              <span className="sr-only">{blog.author}</span>
-              <div className="relative h-10 w-10 !mb-0">
-                <Image
-                  priority
-                  fill
-                  className="rounded-full object-cover"
-                  src={blog.authorImage}
-                  alt=""
-                />
-              </div>
-            </a>
+            <div className="relative h-10 w-10 !mb-0">
+              <Image
+                priority
+                fill
+                className="rounded-full object-cover"
+                src={blog.authorImage}
+                alt=""
+              />
+            </div>
           </div>
           <div className="ml-3">
             <p className="text-sm font-medium text-gray-900 !mb-0">
-              <a href="#" className="hover:underline">
-                {blog.author}
-              </a>
+              <span>{blog.author}</span>
             </p>
             <div className="flex space-x-1 text-sm text-gray-500">
               <time dateTime={blog.date}>{blog.date}</time>
