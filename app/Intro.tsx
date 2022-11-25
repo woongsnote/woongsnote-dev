@@ -29,11 +29,13 @@ const Intro = () => {
         </Link>
         <a
           href="https://www.github.com/woongsnote"
+          aria-label="github"
           className="rounded-xl p-2 shadow-xl hover:scale-105">
           <BsGithub size={32} />
         </a>
         <a
           href="https://www.linkedin.com/in/woongsnote"
+          aria-label="linkedin"
           className="rounded-xl p-2 shadow-xl hover:scale-105">
           <BsLinkedin size={32} />
         </a>

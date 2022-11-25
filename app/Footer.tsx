@@ -10,10 +10,12 @@ const Footer = () => {
           All rights reserved.
         </p>
         <div className="flex flex-row gap-2 md:gap-4">
-          <a href="https://github.com/woongsnote/">
+          <a href="https://github.com/woongsnote/" aria-label="github">
             <BsGithub size={24} />
           </a>
-          <a href="https://www.linkedin.com/in/woongsnote">
+          <a
+            href="https://www.linkedin.com/in/woongsnote"
+            aria-label="linkedin">
             <BsLinkedin size={24} />
           </a>
         </div>
