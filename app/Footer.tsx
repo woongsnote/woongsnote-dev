@@ -2,7 +2,7 @@
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 const Footer = () => {
   return (
-    <footer className="text-black-400 w-full h-10 fixed bottom-14 md:bottom-0 bg-white md:border-t ">
+    <footer className="text-black-400 w-full h-10 fixed bottom-14 sm:bottom-0 bg-white sm:border-t ">
       <div className=" px-5 pt-2 mx-auto flex flex-row max-w-screen-md items-center gap-5 justify-center">
         <p>
           © 2022.
@@ -15,7 +15,8 @@ const Footer = () => {
           </a>
           <a
             href="https://www.linkedin.com/in/woongsnote"
-            aria-label="linkedin">
+            aria-label="linkedin"
+          >
             <BsLinkedin size={24} />
           </a>
         </div>

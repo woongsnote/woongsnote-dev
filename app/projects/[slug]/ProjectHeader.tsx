@@ -33,16 +33,16 @@ const ProjectHeader: FunctionComponent<Props> = ({ project }) => {
         </div>
       </div>
       <h1 className="font-bold text-3xl md:text-4xl mb-1">{project.title}</h1>
-      <h2 className="blog-detail-header-subtitle mb-2 text-md md:text-xl tsext-gray-600">
+      <h2 className="mb-2 text-md md:text-xl text-gray-600">
         {project.description}
       </h2>
       <div className="h-96 bg-black mx-auto w-full relative rounded-xl">
         <Image
           priority
           fill
-          className="rounded-xl shadow-lg object-center"
+          className="rounded-xl shadow-lg object-cover hover:object-contain"
           src={project.coverImage}
-          alt=""
+          alt="preview"
         />
       </div>
     </div>

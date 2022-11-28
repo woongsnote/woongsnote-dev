@@ -18,7 +18,7 @@ const BlogHeader: FunctionComponent<Props> = ({ blog }) => {
                 fill
                 className="rounded-full object-cover"
                 src={blog.authorImage}
-                alt=""
+                alt="author"
               />
             </div>
           </div>
@@ -37,13 +37,13 @@ const BlogHeader: FunctionComponent<Props> = ({ blog }) => {
       <h2 className="blog-detail-header-subtitle mb-2 text-md md:text-xl text-gray-600">
         {blog.description}
       </h2>
-      <div className="h-96 bg-black mx-auto w-full relative">
+      <div className="h-80 bg-black mx-auto w-full relative shadow-lg rounded-xl">
         <Image
           priority
           fill
           src={blog.coverImage}
-          alt=""
-          className="object-cover"
+          alt="cover"
+          className="object-contain"
         />
       </div>
     </div>

@@ -4,25 +4,34 @@ description: 독서 후기 앱 북적북적을 웹사이트로 구현
 author: 문지웅
 authorImage: https://avatars.githubusercontent.com/u/83802168?v=4
 coverImage: https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1540&q=50
-date: "2022-04-20"
+date: "2022-09-16"
 ---
 
 ## 개요
 
-독후감 기록앱을 웹사이트로 클론코딩하여 재해석했습니다.
-
-## 개발 기간
-
-2022.09.16 - 2022.10.28(6W)
-
-## 개발 인원
-
-## 사용한 기술
-
-- React, React Query, ContextAPI, Axios, Tailwind CSS, GitHub Actions, Amazon S3, ACM, CloudFront
+> 독후감 기록앱을 웹사이트로 클론코딩하여 재해석했습니다.
 
 ## 개발 내용
 
-- 회원가입 및 로그인 구현
-- 두 가지 보기(쌓아보기, 리스트 보기)방식을 가진 메인 페이지 구현
-- Vercel을 이용한 서비스 배포
+### 개발 기간
+
+2022.09.09 - 2022.09.15(1W)
+
+### 개발 인원
+
+- 4명 (프론트엔드 2명 / 백엔드 2명)
+- 프론트엔드 담당
+
+### 사용한 기술
+
+- React, Redux Toolkit, Axios, Tailwind CSS
+
+### 맡은 역할
+
+- **회원가입 및 로그인** 구현
+- 두 가지 보기(쌓아보기, 리스트 보기)방식을 가진 **메인 페이지** 구현
+- Vercel을 이용하여 웹 서비스 배포
+
+## 프로젝트 결과
+
+[🖥️ 소스 코드](https://github.com/bookbookw71/3team_FE)

@@ -9,7 +9,7 @@ date: "2022-01-04"
 
 ## 개요
 
-- 내가 본 영화들의 리뷰를 작성하고 관리하는 Android Application 입니다.
+> 내가 본 영화들의 리뷰를 작성하고 관리하는 Android Application 입니다.
 
 ### **목표**
 
@@ -54,7 +54,7 @@ date: "2022-01-04"
 
 ### 설계
 
-[화면_설계서.pdf](https://github.com/woongsnote/tmcb/files/8130702/_.pdf)
+[화면\_설계서.pdf](https://github.com/woongsnote/tmcb/files/8130702/_.pdf)
 
 ### 구현
 
@@ -62,20 +62,20 @@ date: "2022-01-04"
 
 1. **개발 환경**
 
-    | 종류 | 이름 |
-    | --- | --- |
-    | OS | Window10 & Window 11 |
-    | 프레임워크 | Android Native |
-    | 에디터 | Android Studio Fox |
-    | 빌더 | Android Studio Fox |
-    | 테마 | Material Design 3 |
-    | 테스트 기기 | Galaxy Note 10 plus |
-    | 스토어 등록 여부 | 등록 완료 |
+   | 종류             | 이름                 |
+   | ---------------- | -------------------- |
+   | OS               | Window10 & Window 11 |
+   | 프레임워크       | Android Native       |
+   | 에디터           | Android Studio Fox   |
+   | 빌더             | Android Studio Fox   |
+   | 테마             | Material Design 3    |
+   | 테스트 기기      | Galaxy Note 10 plus  |
+   | 스토어 등록 여부 | 등록 완료            |
 
 ### 테스트
 
-1. *Android Virtual Device*
-2. *Galaxy Note 10+*
+1. _Android Virtual Device_
+2. _Galaxy Note 10+_
 
 ### 출시
 

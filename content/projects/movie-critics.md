@@ -1,6 +1,6 @@
 ---
 title: 방구석 평론가
-description: 영화 정보 제공 및 후기 공유 커뮤니티 
+description: 영화 정보 제공 및 후기 공유 커뮤니티
 author: 문지웅
 authorImage: https://avatars.githubusercontent.com/u/83802168?v=4
 coverImage: https://user-images.githubusercontent.com/109592005/197546591-4c4d3d21-f046-455f-b3a4-80810d9ca811.png
@@ -26,7 +26,7 @@ date: "2022-10-30"
 
 - React, React Query, ContextAPI, Axios, Tailwind CSS, GitHub Actions, Amazon S3, ACM, CloudFront
 
-### 담당
+### 맡은 역할
 
 - **Tailwind CSS**를 이용하여 서비스에 최적화된 **반응형 네비게이션**을 구현했습니다.
 
@@ -35,6 +35,7 @@ date: "2022-10-30"
 - 커뮤니티 페이지에 한 페이지에서 게시글을 10개씩 볼 수 있도록 **페이지네이션**을 적용했습니다.
 
 - 다양한 기능을 가진 **마이페이지**를 구현했습니다.
+
   - 즐겨찾기한 영화 목록 확인
   - 작성한 게시글 목록 확인
   - 작성한 한줄평 전체 확인
@@ -43,11 +44,12 @@ date: "2022-10-30"
 
 - 효율적인 개발 환경 구성을 위해, **GitHub Actions**을 활용해서 **CI/CD**를 구축했습니다.
 
-- AWS의 S3, ACM, CloundFront를 이용해서, **HTTPS를 적용한 웹 서비스를 배포**했습니다.
+- AWS의 S3, ACM, CloudFront를 이용해서, **HTTPS를 적용한 웹 서비스를 배포**했습니다.
 
 - 실제 유저를 모집해서 유저 피드백 54건을 받았고, 이를 바탕으로 바탕으로 서비스를 개선했습니다.
 
 - 개선 사항
+
   - 챌린지 페이지 : 챌린지마다 사용자 달성률을 추가하여, 사용자에게 더 많은 정보를 제공할 수 있도록 개선했습니다.
   - 커뮤니티 페이지: 제목 또는 내용으로 검색할 수 있도록 **검색 기능**을 추가해서, 사용성을 개선했습니다.
   - 마이페이지 : 배지 목록에서, 아직 획득하지 못한 배지의 경우, 해당 배지 획득을 위해 남은 챌린지의 진행율을 추가하여 사용성을 개선했습니다.
@@ -57,8 +59,9 @@ date: "2022-10-30"
 ## 트러블 슈팅
 
 - React Query 도입
+
   - 프로젝트의 데이터가 대부분 서버에서 받아오는 데이터이기 때문에, **React Query**를 도입하게 되었습니다.
-  
+
   - 이전 프로젝트들에서 상태관리 라이브러리로 Redux와 Redux Toolkit만 사용해서, React Query를 처음 사용하다 보니, 적응하는 데에 약간의 러닝 커브가 있었으나, 극복하고 적용할 수 있었습니다.
 
 - Context API 적용
@@ -66,6 +69,8 @@ date: "2022-10-30"
   - 거쳐야 하는 props가 많은 상황이었고, redux toolkit을 써야 할 정도로 전역으로 관리할 상태가 많지는 않았습니다.
   - 이 문제를 React에서 제공해주는 Context, 즉 Context API를 적용해서 해결했습니다.
 
- [📽️ 시연 영상](https://youtu.be/ilfDHnkgZ_w) |  [🖥️ 소스 코드](https://github.com/inno-final-team5/final-fe) | [서비스 바로가기](https://www.moviecritic.site)
+## 프로젝트 결과
+
+[📽️ 시연 영상](https://youtu.be/ilfDHnkgZ_w) | [🖥️ 소스 코드](https://github.com/inno-final-team5/final-fe) | [서비스 바로가기](https://www.moviecritic.site)
 
 (※ 현재 RDS 비용 이슈로 서비스 이용은 불가한 상황입니다.)
