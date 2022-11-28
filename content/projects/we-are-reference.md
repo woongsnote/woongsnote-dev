@@ -1,5 +1,5 @@
 ---
-title: "WeRef - We are Refenece"
+title: "WeRef - We are Reference"
 description: 개발 공부 내용 및 레퍼런스 링크 공유 커뮤니티
 author: 문지웅
 authorImage: https://avatars.githubusercontent.com/u/83802168?v=4
@@ -9,13 +9,24 @@ date: "2022-09-08"
 
 ## 개요
 
-**개발 공부 중, 공부한 내용과 함께 참고할 만한 레퍼런스 링크 공유 커뮤니티.**
+> 공부한 내용과 참고할 만한 레퍼런스 링크를 공유하는 커뮤니티
 
-## 개발 기간
+## 개발 내용
+
+### 개발 기간
 
 2022.09.02 - 2022.09.08(1W)
 
-## 담당 역할
+### 개발 인원
+
+- 5명 (프론트엔드 3명 / 백엔드 2명)
+- 프론트엔드 담당
+
+### 담당 역할
 
 - 사용자가 작성한 게시글을 확인할 수 있는 **상세 페이지** 구현
 - 완성된 프로젝트를 Vercel을 이용해서 서비스 **배포**
+
+## 프로젝트 결과
+
+[🖥️ 소스 코드](https://github.com/woongsnote/weref)
