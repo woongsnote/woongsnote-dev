@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  main {
+    @apply pt-10 relative mx-auto container max-w-screen-md pb-28 md:pb-16 px-2 lg:px-0;
+  }
+}

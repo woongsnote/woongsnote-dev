@@ -5,10 +5,9 @@ const withPWA = require("next-pwa")({
   skipWaiting: true,
 });
 
-const nextConfig = withPWA({
-  experimental: {
-    appDir: true,
-  },
+const { withContentlayer } = require("next-contentlayer");
+
+const nextConfig = withContentlayer({
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -27,8 +26,8 @@ const nextConfig = withPWA({
       },
       {
         protocol: "https",
-        hostname: "user-images.githubusercontent.com"
-      }
+        hostname: "user-images.githubusercontent.com",
+      },
     ],
   },
 });
