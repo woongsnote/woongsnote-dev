@@ -1,0 +1,36 @@
+import Layout from "../../components/Layout";
+import PageHeader from "../../components/PageHeader";
+import { allProjects, Project } from "contentlayer/generated";
+import ProjectCard from "./ProjectCard";
+import { InferGetStaticPropsType } from "next";
+
+export async function getStaticProps() {
+  const projects = allProjects.sort(
+    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
+  );
+  return {
+    props: {
+      projects,
+    },
+  };
+}
+const Projects = ({
+  projects,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  return (
+    <Layout>
+      <PageHeader
+        title="Projects"
+        description="사이드 & 토이 프로젝트들을 기록합니다."
+      />
+
+      <div className="grid md:grid-cols-2 gap-8">
+        {projects.map((project: Project) => (
+          <ProjectCard key={project.slug} {...project} />
+        ))}
+      </div>
+    </Layout>
+  );
+};
+
+export default Projects;
