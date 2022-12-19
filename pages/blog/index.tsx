@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout";
 import PageHeader from "../../components/PageHeader";
-import PostCard from "./PostCard";
+import PostCard from "../../components/PostCard";
 import { InferGetStaticPropsType, NextPage, GetStaticPropsResult } from "next";
 import { allPosts, Post } from "contentlayer/generated";
 
@@ -22,7 +22,10 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <Layout>
-      <PageHeader title="Blog" description="공부한 내용들을 기록합니다." />
+      <PageHeader
+        title="Blog"
+        description="공부한 내용들과 후기들을 기록합니다."
+      />
 
       {posts.map((post) => (
         <PostCard key={post.title} {...post} />
