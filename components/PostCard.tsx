@@ -4,10 +4,14 @@ import { Post } from "contentlayer/generated";
 const PostCard = (post: Post) => {
   return (
     <Link key={post.slug} href={`/blog/${post.slug}`}>
-      <div className="py-3 hover:font-bold border px-2 rounded-xl my-2">
-        <h3 className="text-xl">{post.title}</h3>
-        <p className="text-sm">{post.description}</p>
-        <time>{post.date}</time>
+      <div className="py-3 px-2 my-2 hover:text-indigo-500">
+        <h3 className="text-xl font-bold">{post.title}</h3>
+        <p className="text-sm text-gray-500 dark:text-gray-300">
+          {post.description}
+        </p>
+        <time className="text-sm text-gray-500 dark:text-gray-300">
+          {post.date}
+        </time>
       </div>
     </Link>
   );
