@@ -8,7 +8,7 @@ const Intro = () => {
         height={96}
         src="/profileImage.jpg"
         alt="프로필이미지"
-        className="rounded-full pt-2"
+        className="rounded-full"
       />
       <p className="p-2 text-md lg:text-xl">
         안녕하세요. <span className="font-bold">문지웅</span>

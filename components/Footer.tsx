@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="text-black-400 w-full h-10 fixed bottom-14 sm:bottom-0 sm:border-t bg-white dark:bg-black">
       <div className=" px-5 pt-2 mx-auto flex flex-row max-w-screen-md items-center gap-5 justify-center">
         <p>
-          © 2022.
+          © 2023.
           <span className="text-md font-bold"> 문지웅 </span>
           All rights reserved.
         </p>
