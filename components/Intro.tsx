@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Intro = () => {
   return (
-    <div className="flex flex-col justify-center items-center py-2 sm:py-8 md:flex-row-reverse mx-auto">
+    <div className="flex flex-col justify-center items-center py-4 sm:py-8 md:flex-row-reverse mx-auto">
       <Image
         width={96}
         height={96}

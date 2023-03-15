@@ -18,17 +18,17 @@ const ThemeSwitch = () => {
     <div className="md:mx-4 md:px-2 flex justify-center">
       {currentTheme === "dark" ? (
         <button
-          className="p-1 border-2 rounded-md"
+          className="p-1 border-2 rounded-md hover:text-yellow-300"
           onClick={() => setTheme("light")}
         >
-          <BsSunFill />
+          <BsSunFill size={24} />
         </button>
       ) : (
         <button
-          className="p-1 border-2 rounded-md"
+          className="p-1 border-2 rounded-md hover:text-yellow-900"
           onClick={() => setTheme("dark")}
         >
-          <BsMoonFill />
+          <BsMoonFill size={24} />
         </button>
       )}
     </div>
