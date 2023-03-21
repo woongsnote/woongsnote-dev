@@ -44,7 +44,7 @@ const PostDetail: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <Layout>
       <DetailHeader data={post} />
-      <article className="prose lg:prose-xl dark:prose-invert">
+      <article className="prose dark:prose-invert lg:prose-xl mx-auto w-3/4">
         <Component />
       </article>
       <Utterance />
