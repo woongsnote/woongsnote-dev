@@ -4,7 +4,7 @@ const DetailHeader = ({ data }: any) => {
   return (
     <div className="py-2 mb-8">
       <h1 className="text-3xl font-bold mb-1">{data.title}</h1>
-      <h2 className="mb-2 text-md md:text-lg text-gray-600 dark:text-gray-400">
+      <h2 className="mb-2 text-md md:text-lg text-gray-700 dark:text-gray-300">
         {data.description}
       </h2>
       <div className="h-40 md:h-96 bg-black mx-auto w-3/4 relative rounded-xl">

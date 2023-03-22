@@ -1,4 +1,3 @@
-import Layout from "components/Layout";
 import PageHeader from "components/PageHeader";
 import PostCard from "components/PostCard";
 import { InferGetStaticPropsType, NextPage, GetStaticPropsResult } from "next";
@@ -21,7 +20,7 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   posts,
 }) => {
   return (
-    <Layout>
+    <>
       <PageHeader
         title="Blog"
         description="공부한 내용들과 후기들을 기록합니다."
@@ -30,7 +29,7 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       {posts.map((post) => (
         <PostCard key={post.title} {...post} />
       ))}
-    </Layout>
+    </>
   );
 };
 
