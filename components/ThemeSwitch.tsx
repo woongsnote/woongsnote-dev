@@ -15,19 +15,19 @@ const ThemeSwitch = () => {
   const currentTheme = theme === "system" ? systemTheme : theme;
 
   return (
-    <div className="md:mx-4 md:px-2 flex justify-center">
+    <div className="md:mx-4 md:px-2 flex justify-center mx-1">
       {currentTheme === "dark" ? (
         <button
+          aria-label="dark mode"
           className="p-1 rounded-md hover:text-yellow-300 rounded-full bg-gray-700"
-          onClick={() => setTheme("light")}
-        >
+          onClick={() => setTheme("light")}>
           <BsSunFill size={24} />
         </button>
       ) : (
         <button
+          aria-label="light mode"
           className="p-1 rounded-md hover:text-yellow-900 rounded-full shadow-lg"
-          onClick={() => setTheme("dark")}
-        >
+          onClick={() => setTheme("dark")}>
           <BsMoonFill size={24} />
         </button>
       )}
