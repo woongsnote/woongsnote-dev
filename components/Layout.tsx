@@ -1,12 +1,14 @@
 import Head from "next/head";
-
-import NavBar from "./NavBar";
+import Header from "./Header";
 import BottomNav from "./BottomNav";
+import { Inter } from "next/font/google";
 
 interface LayoutProps {
   title?: string;
   children: React.ReactNode;
 }
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const Layout = ({ title, children }: LayoutProps) => {
   return (
@@ -16,9 +18,8 @@ const Layout = ({ title, children }: LayoutProps) => {
           <title>Woongsnote | {title}</title>
         </Head>
       ) : null}
-
-      <NavBar />
-      <main>{children}</main>
+      <Header />
+      <main className={`${inter.variable} font-sans`}>{children}</main>
       <BottomNav />
     </>
   );

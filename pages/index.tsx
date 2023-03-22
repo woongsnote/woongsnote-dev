@@ -3,8 +3,8 @@ import type {
   InferGetStaticPropsType,
   GetStaticPropsResult,
 } from "next";
-import Layout from "../components/Layout";
-import Intro from "../components/Intro";
+import Layout from "components/Layout";
+import Intro from "components/Intro";
 import { allPosts, Post } from ".contentlayer/generated";
 import RecentPosts from "components/Recent/RecentPosts";
 

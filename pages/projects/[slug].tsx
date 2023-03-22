@@ -6,8 +6,8 @@ import {
   GetStaticPropsResult,
 } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import DetailHeader from "../../components/DetailHeader";
-import Layout from "../../components/Layout";
+import DetailHeader from "components/DetailHeader";
+import Layout from "components/Layout";
 
 export async function getStaticPaths() {
   const paths = allProjects.map((project) => ({

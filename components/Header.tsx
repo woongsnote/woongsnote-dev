@@ -7,12 +7,12 @@ const links = [
   { label: "projects", href: "/projects" },
 ];
 
-const NavBar = () => {
+const Header = () => {
   const pathname = usePathname();
 
   return (
-    <div className="w-full fixed z-20 shadow-sm top-0 left-0 bg-white dark:bg-black">
-      <header className="border-b ">
+    <header className="w-full fixed z-20 shadow-sm top-0 left-0 bg-white dark:bg-black">
+      <div className="border-b ">
         <div className="flex justify-between  items-center max-w-screen-lg mx-auto py-1">
           <Link href="/">
             <h1 className="text-3xl font-bold text-center ml-2">Woongsnote</h1>
@@ -36,9 +36,9 @@ const NavBar = () => {
             <ThemeSwitch />
           </nav>
         </div>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 };
 
-export default NavBar;
+export default Header;
