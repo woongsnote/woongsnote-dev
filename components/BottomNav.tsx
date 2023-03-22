@@ -16,7 +16,7 @@ const BottomNav = () => {
       <Footer />
       <div className="sm:hidden ">
         <nav className="fixed bottom-0 w-full border-t ">
-          <div className="mx-auto flex h-14 max-w-md items-center justify-around bg-white dark:bg-black">
+          <div className="mx-auto flex h-14 items-center justify-around bg-white dark:bg-black">
             {links.map(({ label, href, icon }) => (
               <Link
                 key={label}

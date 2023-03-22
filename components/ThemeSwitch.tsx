@@ -19,15 +19,17 @@ const ThemeSwitch = () => {
       {currentTheme === "dark" ? (
         <button
           aria-label="dark mode"
-          className="p-1 rounded-md hover:text-yellow-300 rounded-full bg-gray-700"
-          onClick={() => setTheme("light")}>
+          className="p-1 hover:text-yellow-300 rounded-full bg-gray-700"
+          onClick={() => setTheme("light")}
+        >
           <BsSunFill size={24} />
         </button>
       ) : (
         <button
           aria-label="light mode"
-          className="p-1 rounded-md hover:text-yellow-900 rounded-full shadow-lg"
-          onClick={() => setTheme("dark")}>
+          className="p-1 hover:text-yellow-900 rounded-full shadow-lg"
+          onClick={() => setTheme("dark")}
+        >
           <BsMoonFill size={24} />
         </button>
       )}

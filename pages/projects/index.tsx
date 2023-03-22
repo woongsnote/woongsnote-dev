@@ -18,7 +18,7 @@ const Projects = ({
   projects,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Layout>
+    <>
       <PageHeader
         title="Projects"
         description="사이드 & 토이 프로젝트들을 기록합니다."
@@ -29,7 +29,7 @@ const Projects = ({
           <ProjectCard key={project.slug} {...project} />
         ))}
       </div>
-    </Layout>
+    </>
   );
 };
 

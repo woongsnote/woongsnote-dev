@@ -1,5 +1,5 @@
 import { Post } from "contentlayer/generated";
-import RecentPost from "@RecentPost";
+import RecentPost from "./RecentPost";
 
 const RecentPosts = ({ posts }: { posts: Post[] }) => {
   return (

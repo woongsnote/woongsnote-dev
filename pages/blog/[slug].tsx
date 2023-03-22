@@ -7,7 +7,6 @@ import {
 } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import DetailHeader from "components/DetailHeader";
-import Layout from "components/Layout";
 import Utterance from "components/Utterance";
 
 export async function getStaticPaths() {
@@ -42,13 +41,13 @@ const PostDetail: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   const Component = useMDXComponent(post.body.code);
 
   return (
-    <Layout>
+    <>
       <DetailHeader data={post} />
       <article className="prose dark:prose-invert lg:prose-xl  mx-auto">
         <Component />
       </article>
       <Utterance />
-    </Layout>
+    </>
   );
 };
 
