@@ -1,6 +1,6 @@
-import Layout from "../../components/Layout";
-import PageHeader from "../../components/PageHeader";
-import PostCard from "../../components/PostCard";
+import Layout from "components/Layout";
+import PageHeader from "components/PageHeader";
+import PostCard from "components/PostCard";
 import { InferGetStaticPropsType, NextPage, GetStaticPropsResult } from "next";
 import { allPosts, Post } from "contentlayer/generated";
 

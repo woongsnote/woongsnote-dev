@@ -6,8 +6,8 @@ import {
   GetStaticPropsResult,
 } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import DetailHeader from "../../components/DetailHeader";
-import Layout from "../../components/Layout";
+import DetailHeader from "components/DetailHeader";
+import Layout from "components/Layout";
 import Utterance from "components/Utterance";
 
 export async function getStaticPaths() {
