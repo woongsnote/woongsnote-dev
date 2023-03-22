@@ -9,7 +9,7 @@ const Meta = () => (
     <meta name="theme-color" content="#4a90e2" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=0, viewport-fit=cover"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <link
       href="/icons/favicon-16x16.png"

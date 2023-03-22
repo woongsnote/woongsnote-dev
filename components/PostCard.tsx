@@ -9,9 +9,9 @@ const PostCard = (post: Post) => {
         <p className="text-sm text-gray-500 dark:text-gray-300">
           {post.description}
         </p>
-        <time className="text-sm text-gray-500 dark:text-gray-300">
+        {/* <time className="text-sm text-gray-500 dark:text-gray-300">
           {post.date}
-        </time>
+        </time> */}
       </div>
     </Link>
   );
