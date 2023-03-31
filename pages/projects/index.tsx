@@ -1,4 +1,3 @@
-import Layout from "components/Layout";
 import PageHeader from "components/PageHeader";
 import { allProjects, Project } from "contentlayer/generated";
 import ProjectCard from "components/ProjectCard";
