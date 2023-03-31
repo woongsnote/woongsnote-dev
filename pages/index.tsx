@@ -3,9 +3,9 @@ import type {
   InferGetStaticPropsType,
   GetStaticPropsResult,
 } from "next";
-import Intro from "components/Intro";
 import { allPosts, Post } from ".contentlayer/generated";
-import RecentPosts from "components/Recent/RecentPosts";
+import RecentPostList from "@/components/RecentPostList";
+import Banner from "@/components/Banner";
 
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{ posts: Post[] }>
@@ -26,8 +26,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <>
-      <Intro />
-      <RecentPosts posts={posts} />
+      <Banner />
+      <RecentPostList posts={posts} />
     </>
   );
 };
