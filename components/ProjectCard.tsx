@@ -6,7 +6,7 @@ const ProjectCard = (project: Project) => {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group h-48 md:h-64 xl:h-96 flex flex-col bg-gray-100 rounded-lg shadow-lg overflow-hidden relative"
+      className="group h-64 flex flex-col bg-gray-100 rounded-lg shadow-lg overflow-hidden relative"
     >
       <Image
         width={600}

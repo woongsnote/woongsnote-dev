@@ -1,9 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer base {
-  main {
-    @apply pt-10 relative mx-auto container max-w-screen-lg pb-28 md:pb-16 px-2 lg:px-0;
+    body {
+      @apply bg-white dark:bg-black;
+    }
   }
-}

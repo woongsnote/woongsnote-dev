@@ -2,8 +2,8 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <footer className="text-black-400 w-full fixed bottom-14 sm:bottom-0 sm:border-t bg-white dark:bg-black py-1">
-      <div className=" mx-auto flex flex-row items-center justify-center">
+    <footer className="text-black-400 w-full mx-auto bottom-16 fixed sm:bottom-2 bg-white dark:bg-black">
+      <div className=" mx-auto flex flex-row items-center justify-center w-full">
         <p>
           © 2023.
           <span className="text-md font-bold"> 문지웅 </span>
