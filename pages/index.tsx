@@ -7,6 +7,7 @@ import { allPosts, allProjects, Post, Project } from ".contentlayer/generated";
 import RecentPostList from "@/components/RecentPostList";
 import Banner from "@/components/Banner";
 import RecentProjectList from "@/components/RecentProjectList";
+import MainSectionHeader from "@/components/MainSectionHeader";
 
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{ posts: Post[]; projects: Project[] }>
