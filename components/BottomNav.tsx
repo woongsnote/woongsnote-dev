@@ -1,13 +1,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AiFillHome, AiFillEdit, AiFillDatabase } from "react-icons/ai";
 import Footer from "./Footer";
-
-const links = [
-  { label: "Home", href: "/", icon: <AiFillHome /> },
-  { label: "Blog", href: "/blog", icon: <AiFillEdit /> },
-  { label: "Projects", href: "/projects", icon: <AiFillDatabase /> },
-];
+import { Links } from "./Links";
 
 const BottomNav = () => {
   const pathname = usePathname();
@@ -17,9 +11,9 @@ const BottomNav = () => {
       <div className="sm:hidden">
         <nav className="fixed bottom-0 w-full border-t">
           <div className="mx-auto flex h-14 items-center justify-around bg-white dark:bg-black">
-            {links.map(({ label, href, icon }) => (
+            {Links.map(({ bottomLabel, href, icon }) => (
               <Link
-                key={label}
+                key={bottomLabel}
                 href={href}
                 className={`text-sm w-full h-full flex flex-col items-center justify-center ${
                   pathname === href
@@ -28,7 +22,7 @@ const BottomNav = () => {
                 }`}
               >
                 <span className="text-lg py-1">{icon}</span>
-                <span className="text-xs">{label}</span>
+                <span className="text-xs">{bottomLabel}</span>
               </Link>
             ))}
           </div>
