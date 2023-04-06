@@ -23,7 +23,7 @@ const Projects = ({
         description="사이드 & 토이 프로젝트들을 기록합니다."
       />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="mx-4 grid md:grid-cols-2 2xl:grid-cols-3 gap-8">
         {projects.map((project: Project) => (
           <ProjectCard key={project.slug} {...project} />
         ))}
