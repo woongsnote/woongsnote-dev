@@ -1,3 +1,4 @@
+import ProjectDetailHeader from "@/components/ProjectDetailHeader";
 import { allProjects, Project } from "contentlayer/generated";
 import {
   GetStaticPropsContext,
@@ -6,7 +7,6 @@ import {
   GetStaticPropsResult,
 } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import DetailHeader from "components/DetailHeader";
 
 export async function getStaticPaths() {
   const paths = allProjects.map((project) => ({
@@ -43,7 +43,7 @@ const PostDetail: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 
   return (
     <>
-      <DetailHeader data={project} />
+      <ProjectDetailHeader project={project} />
       <article className="prose prose-neutral lg:prose-xl dark:prose-invert mx-auto">
         <Component />
       </article>

@@ -1,15 +1,16 @@
+import { Project } from "@/.contentlayer/generated";
 import Image from "next/image";
 
-const DetailHeader = ({ data }: any) => {
+const ProjectDetailHeader = ({ project }: {project: Project}) => {
   return (
     <div className="py-2 mb-8">
-      <h1 className="text-3xl font-bold mb-1">{data.title}</h1>
+      <h1 className="text-5xl font-bold mb-1">{project.title}</h1>
       <h2 className="mb-2 text-md md:text-lg text-gray-700 dark:text-gray-300">
-        {data.description}
+        {project.description}
       </h2>
       <div className="h-40 md:h-96 bg-black mx-auto w-3/4 relative rounded-xl">
         <Image
-          src={data.coverImage}
+          src={project.coverImage}
           alt="coverImage"
           fill
           priority
@@ -20,4 +21,4 @@ const DetailHeader = ({ data }: any) => {
   );
 };
 
-export default DetailHeader;
+export default ProjectDetailHeader;
