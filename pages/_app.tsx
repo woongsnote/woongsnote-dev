@@ -13,12 +13,12 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Meta />
       <ThemeProvider attribute="class">
-        <Header />
         <main
           className={`${inter.variable} font-sans mx-auto pt-16 md:px-8 pb-28 md:pb-16 px-2 relative max-w-5xl`}>
+          <Header />
           <Component {...pageProps} />
+          <BottomNav />
         </main>
-        <BottomNav />
       </ThemeProvider>
     </>
   );
