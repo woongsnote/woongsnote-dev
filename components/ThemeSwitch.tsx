@@ -15,7 +15,7 @@ const ThemeSwitch = () => {
   const currentTheme = theme === "system" ? systemTheme : theme;
 
   return (
-    <div className=" flex justify-center z-50">
+    <div className="sm:ml-2 flex justify-center z-50">
       {currentTheme === "dark" ? (
         <button
           aria-label="dark mode"
@@ -26,7 +26,7 @@ const ThemeSwitch = () => {
       ) : (
         <button
           aria-label="light mode"
-          className="p-1 hover:text-yellow-900 rounded-full shadow-lg"
+          className="p-1 hover:text-yellow-700 rounded-full shadow-lg"
           onClick={() => setTheme("dark")}>
           <BsMoonFill size={28} />
         </button>
