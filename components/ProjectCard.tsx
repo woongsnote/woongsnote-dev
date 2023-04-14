@@ -12,7 +12,7 @@ const ProjectCard = (project: Project) => {
         width={600}
         height={100}
         src={project.coverImage}
-        loading="lazy"
+        priority
         alt="Project Description"
         className="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200"
       />
