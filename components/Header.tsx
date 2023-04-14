@@ -1,12 +1,13 @@
+'use client'
 import Link from "next/link";
 import Image from "next/image";
 import ThemeSwitch from "./ThemeSwitch";
 import NavBar from "./NavBar";
 
-const Header = () => {
+const Header=()=> {
   return (
-    <header className="flex items-center mx-auto justify-between space-x-2 px-2 font-bold w-full max-w-5xl fixed top-0 left-0 right-0 z-20 bg-white dark:bg-black">
-      <div className="flex justify-between items-center py-1 w-full mx-auto ">
+    <header className="sticky left-0 top-0 right-0 z-50 max-w-5xl items-center mx-auto bg-white dark:bg-[#111111]">
+      <div className="flex justify-between items-center py-1 w-full mx-auto  ">
         <Link href="/" className="flex flex-row space-x-2 items-center">
           <Image
             width={40}
@@ -24,6 +25,5 @@ const Header = () => {
       </div>
     </header>
   );
-};
-
+}
 export default Header;

@@ -8,13 +8,14 @@ const ProjectDetailHeader = ({ project }: { project: Project }) => {
       <h2 className="mb-2 text-md md:text-lg text-gray-700 dark:text-gray-300">
         {project.description}
       </h2>
-      <div className="h-96 mx-auto w-3/4 relative rounded-xl">
+      <div className="h-72 mx-auto w-3/4 relative rounded-xl items-center block justify-center">
         <Image
           src={project.coverImage}
           alt="coverImage"
           priority
-          fill
-          className="rounded-md w-auto h-auto object-contain"
+          width={360}
+          height={280}
+          className="rounded-md w-auto h-auto object-contain mx-auto"
         />
       </div>
     </div>

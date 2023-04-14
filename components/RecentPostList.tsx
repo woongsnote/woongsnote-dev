@@ -1,6 +1,6 @@
-import { Post } from "contentlayer/generated";
-import PostCard from "./PostCard";
+import { Post } from "@/.contentlayer/generated";
 import MainSectionHeader from "./MainSectionHeader";
+import PostCard from "./PostCard";
 
 const RecentPostList = ({ posts }: { posts: Post[] }) => {
   return (
@@ -8,7 +8,7 @@ const RecentPostList = ({ posts }: { posts: Post[] }) => {
       <MainSectionHeader title={"최신 포스트"} href={"/blog"} label={"ALL POSTS"} />
       <hr />
       <div className="grid gap-y-4 gap-x-6 xl:gap-x-8 pt-4">
-        {posts.slice(0, 3).map((post) => (
+        {posts.map((post) => (
           <PostCard key={post.slug} {...post} />
         ))}
       </div>
