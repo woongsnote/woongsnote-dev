@@ -1,31 +1,47 @@
 ---
 title: Next JS 기반 블로그
 description: NextJS 프레임워크 기반 블로그 구현
-coverImage: https://user-images.githubusercontent.com/83802168/231912345-c9a1ca67-4e84-4934-9659-35be7070e41e.png
+coverImage: https://user-images.githubusercontent.com/83802168/231983511-40a7c862-2c33-4b2a-add4-5cd074d5aff7.png
 date: "2022-11-26"
 ---
 
 ## 개요
 
-## 개발 기간
+> Next.js와 TypeScript로 직접 만든 기술 블로그
 
-2022.11.14 - ing
+## 개발 내용
 
-## 기술
+### 1. 개발 기간
 
-- React, Next JS, Tailwind CSS
+- 2022.11 - ing
 
-## 구현
+### 2. 기술 스택
 
-- Tailwind CSS를 이용한 반응형 네비게이션 구현
+- Framework: Next.js
+- Styling: Tailwind CSS
+- Content: MDX, ContentLayer
+- Deploy: Vercel
+- VCS: Git
 
-  - 태블릿 이상: 상단 네비게이션 적용
-  - 모바일: 하단 네비게이션 적용
+### 3. 구현
 
-- .mdx 파일 HTML로 변환
+- `Tailwind CSS` 를 이용한 반응형 네비게이션 구현
 
-- 다크모드 적용
+  - 태블릿 이상: 화면 상단에 네비게이션이 표시됩니다.
 
-## 트러블 슈팅
+  - 모바일: 앱 스타일로 하단 네비게이션을 적용했습니다.
 
-- Next JS 12 13 차이
+- `ContentLayer`를 이용하여 mdx로 작성한 게시글을 볼 수 있도록 구현했습니다.
+
+- **다크모드** 적용
+
+### 4. 트러블 슈팅
+
+- MDX 파일 변환 ▶ `ContentLayer`을 적용하여 해결!
+
+- Next.js의 버전 업(12 → 13)에 따른 디렉토리 구조 변화 ▶ 공식 문서를 참고해서 해결!
+
+### 5. 참고 자료
+
+- [NextJS](https://nextjs.org/docs)
+- [ContentLayer](https://www.contentlayer.dev)
