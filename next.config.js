@@ -8,6 +8,9 @@ const withPWA = require("next-pwa")({
 const { withContentlayer } = require("next-contentlayer");
 
 const nextConfig = withContentlayer({
+  experimental: {
+    appDir: true,
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: {
