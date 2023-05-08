@@ -1,12 +1,13 @@
-'use client'
+"use client";
 import Link from "next/link";
 import Image from "next/image";
-import ThemeSwitch from "./ThemeSwitch";
+import DarkModeToggleButton from "./DarkModeToggleButton";
 import NavBar from "./NavBar";
+import GitHubLink from "./GitHubLink";
 
-const Header=()=> {
+const Header = () => {
   return (
-    <header className="sticky left-0 top-0 right-0 z-50 max-w-5xl items-center mx-auto bg-white dark:bg-[#111111]">
+    <header className="sticky left-0 top-0 right-0 z-50 items-center mx-auto px-1 bg-white dark:bg-[#111111]">
       <div className="flex justify-between items-center py-1 w-full mx-auto  ">
         <Link href="/" className="flex flex-row space-x-2 items-center">
           <Image
@@ -20,10 +21,11 @@ const Header=()=> {
         </Link>
         <div className="flex items-center justify-between">
           <NavBar />
-          <ThemeSwitch />
+          <DarkModeToggleButton />
+          <GitHubLink />
         </div>
       </div>
     </header>
   );
-}
+};
 export default Header;
