@@ -15,7 +15,6 @@ const DarkModeToggleButton = () => {
   const currentTheme = theme === "system" ? systemTheme : theme;
 
   return (
-    // <div className="flex justify-center z-50">
     <>
       {currentTheme === "dark" ? (
         <button
@@ -35,7 +34,6 @@ const DarkModeToggleButton = () => {
         </button>
       )}
     </>
-    // </div>
   );
 };
 
