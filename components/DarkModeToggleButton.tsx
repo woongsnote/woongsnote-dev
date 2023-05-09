@@ -19,7 +19,7 @@ const DarkModeToggleButton = () => {
       {currentTheme === "dark" ? (
         <button
           aria-label="dark mode"
-          className="m-1 hover:text-yellow-300 rounded-full bg-gray-700"
+          className="m-1 hover:text-yellow-300 rounded-full"
           onClick={() => setTheme("light")}
         >
           <BsSunFill size={28} />
