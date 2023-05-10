@@ -11,7 +11,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
     <ThemeProvider attribute="class">
       <Header />
       <main
-        className={`${inter.variable} font-sans mx-auto pb-28 md:pb-16 px-2 relative max-w-5xl`}>
+        className={`${inter.variable} font-sans mx-auto pb-28 px-2 relative max-w-5xl md:px-0 md:pb-16`}>
         {children}
       </main>
       <BottomNav />
