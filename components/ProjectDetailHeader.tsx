@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const ProjectDetailHeader = ({ project }: { project: Project }) => {
   return (
-    <div className="py-2 mb- mx-24">
-      <h1 className="text-5xl font-bold mb-1">{project.title}</h1>
+    <div className="py-2 mb-8 md:mx-24">
+      <h1 className="text-3xl md:text-5xl font-bold mb-1">{project.title}</h1>
       <h2 className="mb-2 text-md md:text-lg text-gray-700 dark:text-gray-300">
         {project.description}
       </h2>
