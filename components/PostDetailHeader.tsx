@@ -1,4 +1,4 @@
-import { Post } from "@/.contentlayer/generated";
+import { Post } from "contentlayer/generated";
 
 const PostDetailHeader = ({ post }: { post: Post }) => {
   return (

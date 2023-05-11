@@ -1,4 +1,4 @@
-import { Project } from "@/.contentlayer/generated";
+import { Project } from "contentlayer/generated";
 import MainSectionHeader from "./MainSectionHeader";
 import ProjectCard from "./ProjectCard";
 

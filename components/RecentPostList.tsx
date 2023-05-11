@@ -1,4 +1,4 @@
-import { Post } from "@/.contentlayer/generated";
+import { Post } from "contentlayer/generated";
 import MainSectionHeader from "./MainSectionHeader";
 import PostCard from "./PostCard";
 

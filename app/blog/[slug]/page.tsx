@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import { allPosts } from "@/.contentlayer/generated";
-import Container from "@/components/Container";
-import PostDetailHeader from "@/components/PostDetailHeader";
+import { allPosts } from "contentlayer/generated";
+import { notFound } from "next/navigation";
+import Container from "components/Container";
+import PostDetailHeader from "components/PostDetailHeader";
 import Utterance from "components/Utterance";
+import DetailContainer from "components/DetailContainer";
 
 type Props = {
   params: { slug: string };
@@ -21,13 +23,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const PostDetail = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post.slug === params.slug);
 
-  const Content = useMDXComponent(post!!.body.code);
+  if (!post) notFound();
+
+  const Content = useMDXComponent(post.body.code);
   return (
     <Container>
-      <PostDetailHeader post={post!!} />
-      <article className="prose dark:prose-invert lg:prose-xl  mx-auto">
+      <PostDetailHeader post={post} />
+      <DetailContainer>
         <Content />
-      </article>
+      </DetailContainer>
       <Utterance />
     </Container>
   );

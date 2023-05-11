@@ -1,8 +1,8 @@
-import { allPosts, allProjects } from "@/.contentlayer/generated";
-import Banner from "@/components/Banner";
-import Container from "@/components/Container";
-import RecentPostList from "@/components/RecentPostList";
-import RecentProjectList from "@/components/RecentProjectList";
+import { allPosts, allProjects } from "contentlayer/generated";
+import Banner from "components/Banner";
+import Container from "components/Container";
+import RecentPostList from "components/RecentPostList";
+import RecentProjectList from "components/RecentProjectList";
 import { compareDesc } from "date-fns";
 
 export default function Home() {

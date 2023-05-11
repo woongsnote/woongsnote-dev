@@ -1,7 +1,7 @@
-import { allPosts } from "@/.contentlayer/generated";
-import Container from "@/components/Container";
-import PageHeader from "@/components/PageHeader";
-import PostCard from "@/components/PostCard";
+import { allPosts } from "contentlayer/generated";
+import Container from "components/Container";
+import PageHeader from "components/PageHeader";
+import PostCard from "components/PostCard";
 import { compareDesc } from "date-fns";
 
 export const metadata = {

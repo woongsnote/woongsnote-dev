@@ -1,4 +1,4 @@
-import { Project } from "@/.contentlayer/generated";
+import { Project } from "contentlayer/generated";
 import Image from "next/image";
 
 const ProjectDetailHeader = ({ project }: { project: Project }) => {
