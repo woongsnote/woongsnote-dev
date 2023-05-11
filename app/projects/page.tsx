@@ -1,7 +1,7 @@
-import { allProjects } from "@/.contentlayer/generated";
-import Container from "@/components/Container";
-import PageHeader from "@/components/PageHeader";
-import ProjectCard from "@/components/ProjectCard";
+import { allProjects } from "contentlayer/generated";
+import Container from "components/Container";
+import PageHeader from "components/PageHeader";
+import ProjectCard from "components/ProjectCard";
 import { compareDesc } from "date-fns";
 
 export const metadata = {
