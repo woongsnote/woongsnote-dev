@@ -12,15 +12,18 @@ hook은 함수형 컴포넌트에서 React의 기능을 '연결(hook into)'해�
 ## hook의 장점
 
 - hook을 사용하면 컴포넌트를 더 간결하고 재사용하기 쉽게 만들 수 있다.
+
   예를 들어, useState hook은 상태 관리를 쉽게 해주고, useEffect hook은 부수 효과(side effect)를 관리할 수 있게 해준다.
+
 - 커스텀 hook을 만들어서 다른 컴포넌트에서도 공통적으로 사용할 수 있는 로직을 분리할 수 있다.
 
 ## hook을 사용하는 방법
 
 hook은 함수형 컴포넌트 안에서만 호출할 수 있다.
-또한, hook은 항상 최상위에서만 호출해야 한다. 즉, 반복문, 조건문, 중첩된 함수 안에서는 hook을 호출하면 안된다. 이는 React가 hook이 호출되는 순서를 기억하고 상태를 올바르게 관리하기 위함이다.
+또한, hook은 항상 최상위에서만 호출해야 한다. 즉, 반복문, 조건문, 중첩된 함수 안에서는 hook을 호출하면 안된다. 
+이는 React가 hook이 호출되는 순서를 기억하고 상태를 올바르게 관리하기 위함이다.
 
-hook에 대해 더 알고 싶다면, 공식 문서(https://ko.reactjs.org/docs/hooks-intro.html)를 참고하세요.
+hook에 대해 더 알고 싶다면, [공식 문서](https://react.dev/reference/react)를 참고하기 바란다.
 
 ## 커스텀 훅
 
@@ -71,7 +74,7 @@ export default App;
 ```
 
 App 컴포넌트에서 useInput을 두 번 호출하여 name과 email을 생성한다.
-각각의 초기값은 빈 문자열이고, input 태그에 {...name}과 {...email}을 전달하여 value와 onChange를 바인딩한다.
+각각의 초기값은 빈 문자열이고, input 태그에 `{...name}` 과 `{...email}`을 전달하여 value와 onChange를 바인딩한다.
 이렇게 하면 input 태그의 값이 변경될 때마다 커스텀 훅의 value가 업데이트된다.
 커스텀 훅을 사용하면 React의 기본 훅을 활용하여 재사용 가능한 로직을 만들 수 있고, 커스텀 훅은 다양한 상황에 적용할 수 있다.
 
