@@ -1,13 +1,13 @@
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import { Links } from "./Links";
 
 const BottomNav = () => {
   const pathname = usePathname();
   return (
     <>
-      <Footer />
       <div className="sm:hidden">
         <nav className="fixed bottom-0 w-full border-t">
           <div className="mx-auto flex h-14 items-center justify-around bg-white dark:bg-black">
@@ -19,8 +19,7 @@ const BottomNav = () => {
                   pathname === href
                     ? "text-indigo-500 dark:text-indigo-400 "
                     : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-                }`}
-              >
+                }`}>
                 <span className="text-lg py-1">{icon}</span>
                 <span className="text-xs">{bottomLabel}</span>
               </Link>
