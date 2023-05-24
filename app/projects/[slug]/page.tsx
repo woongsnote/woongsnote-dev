@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { allProjects } from "contentlayer/generated";
 import { notFound } from "next/navigation";
-import Container from "components/Container";
-import ProjectDetailHeader from "components/ProjectDetailHeader";
-import Utterance from "components/Utterance";
-import DetailContainer from "components/DetailContainer";
+import DetailContainer from "app/components/DetailContainer";
+import ProjectDetailHeader from "app/components/ProjectDetailHeader";
+import Utterance from "app/components/Utterance";
 
 type Props = {
   params: { slug: string };
@@ -28,13 +27,13 @@ const ProjectDetail = ({ params }: { params: { slug: string } }) => {
   const Content = useMDXComponent(project.body.code);
 
   return (
-    <Container>
+    <>
       <ProjectDetailHeader project={project} />
       <DetailContainer>
         <Content />
       </DetailContainer>
       <Utterance />
-    </Container>
+    </>
   );
 };
 
