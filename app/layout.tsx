@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Container from "./components/Container";
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
 
 const inter = Inter({
   subsets: ["latin"],
-  display:'swap',
+  display: "swap",
   variable: "--font-inter",
 });
 
@@ -36,7 +37,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={`${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Container>{children}</Container>
+      </body>
     </html>
   );
 }
