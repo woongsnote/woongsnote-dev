@@ -3,7 +3,7 @@ import MainSectionHeader from "./MainSectionHeader";
 import PostList from "./PostList";
 import { getSortedDataList } from "utils/getData";
 
-const MAX_RECENT_POSTS = 3;
+const MAX_RECENT_POSTS = 4;
 
 const RecentPostListSection = () => {
 
