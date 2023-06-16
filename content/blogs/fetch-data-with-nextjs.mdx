@@ -4,10 +4,12 @@ description: NextJs로 API 데이터 fetching 하기
 date: 2023-06-12
 ---
 
+## 인트로
 
-요즘 핫한, `NextJs`로  TMDB API에서 인기 영화 데이터를 `fetching`하는 예제를 만들어 보려고 한다.
+요즘 핫한, `NextJs`로 TMDB API에서 인기 영화 데이터를 `fetching`하는 예제를 만들어 보려고 한다.
 영화 데이터를 가져올 때, 프레임워크 외에 `Axios`등의 추가적인 패키지를 설치하지 않고, NextJs 프레임워크의 fetch API만으로 구현하려고 한다.
 
+## 프로젝트 구현
 
 1. 먼저 프로젝트를 만들어 준다.
 
@@ -19,6 +21,7 @@ npx create-next-app@latest
 
 API Key 발급이 완료되면 모든 준비가 끝이 난다.
 발급된 API Key는 루트 디렉토리에 `.env.local` 파일을 생성하고, `NEXT_PUBLIC_TMDB_API_KEY` 이름으로 넣어준다.
+
 - NEXT_PUBLIC 이후는 원하는대로 작성해도 된다. [env 관련 NextJs 공식 문서](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables)
 - API key는 유출되면 안되므로, local에서만 볼 수 있어야 한다.
 
@@ -82,6 +85,12 @@ export default async function Home() {
 }
 ```
 
+4. 터미널에서 다음 명령어를 실행하여 Next.js 애플리케이션을 실행해보자.
+
+```Terminal
+npm run dev
+```
+
 ※ NextJs에서 제공해주는 Image 컴포넌트에서 웹 이미지를 사용하려면 `next.config.js` 파일에 이미지 파일의 웹 주소 등록이 필요하다.
 
 ```js
@@ -98,7 +107,10 @@ const nextConfig = {
 };
 ```
 
-특별한 문제가 없다면 아래와 같이 영화 목록을 확인할 수 있다.
+## 결론
 
+Next.js와 TypeScript를 사용하여 TMDB API의 인기 영화 목록을 표시하는 방법을 알아보았다. 인기 영화외에도 상영중인 영화, 개봉 예정 영화 등 다양한 종류의 영화목록을 가져올 수 있다.
+위 내용을 바탕으로 구현한 프로젝트는 아래 링크에서 확인할 수 있다.
 
-※ 해당 내용을 기반으로 기능을 추가해서 구현한 [프로젝트 링크](https://github.com/woongsnote/my-movie-recommend)
+- [깃허브 링크](https://github.com/woongsnote/my-movie-recommend)
+- [서비스 링크](https://my-movie-recommend.vercel.app)
