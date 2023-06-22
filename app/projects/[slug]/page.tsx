@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { allProjects } from "contentlayer/generated";
 import { notFound } from "next/navigation";
-import DetailContainer from "app/components/DetailContainer";
-import ProjectDetailHeader from "app/components/ProjectDetailHeader";
+import DetailContainer from "app/layouts/DetailContainer";
+import ProjectDetailHeader from "app/layouts/ProjectDetailHeader";
 import Utterance from "app/components/Utterance";
 
 type Props = {

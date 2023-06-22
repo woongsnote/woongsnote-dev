@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-// import Footer from "./Footer";
 import { Links } from "./Links";
 
 const BottomNav = () => {
