@@ -16,7 +16,7 @@ const ProjectCard = (project: Project) => {
         alt="Project Description"
         className="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200"
       />
-      <div className="bg-gradient-to-t from-gray-800 md:via-transparent to-transparent absolute inset-0 pointer-events-none"></div>
+      <div className="bg-gradient-to-t from-gray-900 md:via-transparent to-transparent absolute inset-0 pointer-events-none"></div>
       <div className="relative p-4 mt-auto">
         <h2 className="text-white text-xl font-semibold transition duration-100 mb-2">
           {project.title}

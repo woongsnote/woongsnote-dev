@@ -1,5 +1,5 @@
 import { Project, allProjects } from "contentlayer/generated";
-import MainSectionHeader from "./MainSectionHeader";
+import MainSectionHeader from "../layouts/MainSectionHeader";
 import ProjectList from "./ProjectList";
 import { getSortedDataList } from "utils/getData";
 

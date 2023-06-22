@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { allPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
-import PostDetailHeader from "app/components/PostDetailHeader";
+import PostDetailHeader from "app/layouts/PostDetailHeader";
 import Utterance from "app/components/Utterance";
-import DetailContainer from "app/components/DetailContainer";
+import DetailContainer from "app/layouts/DetailContainer";
 
 type Props = {
   params: { slug: string };

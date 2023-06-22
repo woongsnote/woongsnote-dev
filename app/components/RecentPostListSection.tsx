@@ -1,5 +1,5 @@
 import { Post, allPosts } from "contentlayer/generated";
-import MainSectionHeader from "./MainSectionHeader";
+import MainSectionHeader from "../layouts/MainSectionHeader";
 import PostList from "./PostList";
 import { getSortedDataList } from "utils/getData";
 

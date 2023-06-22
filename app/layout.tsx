@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Container from "./components/Container";
+import { Noto_Sans_KR } from "next/font/google";
+import Container from "./layouts/Container";
 
 export const metadata: Metadata = {
   title: {
@@ -24,9 +24,10 @@ export const metadata: Metadata = {
   },
 };
 
-const inter = Inter({
+const inter = Noto_Sans_KR({
   subsets: ["latin"],
-  display: "swap",
+  display: "auto",
+  weight: "300",
   variable: "--font-inter",
 });
 

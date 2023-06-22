@@ -1,4 +1,4 @@
-import BottomNav from "./BottomNav";
+import BottomNav from "../components/BottomNav";
 import Header from "./Header";
 import Footer from "./Footer";
 import Providers from "./Providers";
