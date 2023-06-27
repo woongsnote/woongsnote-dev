@@ -59,11 +59,22 @@ export const Project = defineDocumentType(() => ({
   },
 }));
 
+const options = {
+  theme:
+    'dracula',
+  keepBackground: false,
+  tokensMap: {
+    fn: 'entity.name.function',
+    str: 'entity.name.string'
+  },
+}
+
+
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [Post, Project],
   mdx: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypePrettyCode]
+    rehypePlugins: [[rehypePrettyCode, options]]
   },
 });
