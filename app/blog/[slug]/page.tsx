@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: post?.title };
 }
 
-const PostDetail = ({ params }: { params: { slug: string } }) => {
+const PostDetail = ({ params }: Props) => {
   const post = allPosts.find((post) => post.slug === params.slug);
 
   if (!post) notFound();
