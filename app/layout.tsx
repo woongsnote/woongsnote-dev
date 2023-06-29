@@ -1,34 +1,39 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
-import Container from "./layouts/Container";
+import './globals.css';
+import type { Metadata } from 'next';
+import { Noto_Sans_KR } from 'next/font/google';
+import Container from './layouts/Container';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.woongsnote.dev'),
   title: {
-    default: "Woongsnote",
-    template: "%s | Woongsnote",
+    default: 'Woongsnote',
+    template: '%s | Woongsnote',
   },
-  description: "NextJs Tech Blog by Woongsnote",
-  applicationName: "Woongsnote",
-  generator: "Next.js",
-  keywords: ["Next.js", "React", "TypeScript", "Web", "Frontend"],
-  themeColor: "#4a90e2",
-  manifest: "/manifest.json",
+  authors: [{ name: 'woongsnote' }],
+  description: 'Tech Blog by Woongsnote',
+  applicationName: "Woong's Tech Blog",
+  generator: 'Next.js',
+  keywords: ['Next.js', 'React', 'TypeScript', 'Web', 'Frontend'],
+  themeColor: '#4a90e2',
+  manifest: '/manifest.json',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: "Woongsnote",
-    description: "NextJs Tech Blog by Woongsnote",
-    url: "https://woongsnote.dev",
-    siteName: "Woongsnote",
-    locale: "ko-KR",
-    type: "website",
+    title: 'Woongsnote',
+    description: 'Tech Blog by Woongsnote',
+    url: 'https://woongsnote.dev',
+    siteName: "Woong's Tech Blog",
+    locale: 'ko-KR',
+    type: 'website',
   },
 };
 
 const inter = Noto_Sans_KR({
-  subsets: ["latin"],
-  display: "auto",
-  weight: "300",
-  variable: "--font-inter",
+  subsets: ['latin'],
+  display: 'auto',
+  weight: '300',
+  variable: '--font-inter',
 });
 
 export default function RootLayout({

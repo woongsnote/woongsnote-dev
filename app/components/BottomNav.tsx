@@ -1,7 +1,7 @@
-"use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Links } from "./Links";
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Links } from './Links';
 
 const BottomNav = () => {
   const pathname = usePathname();
@@ -16,9 +16,10 @@ const BottomNav = () => {
                 href={href}
                 className={`text-sm w-full h-full flex flex-col items-center justify-center ${
                   pathname === href
-                    ? "text-indigo-500 dark:text-indigo-400 "
-                    : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-                }`}>
+                    ? 'text-indigo-500 dark:text-indigo-400 '
+                    : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50'
+                }`}
+              >
                 <span className="text-lg py-1">{icon}</span>
                 <span className="text-xs">{bottomLabel}</span>
               </Link>
