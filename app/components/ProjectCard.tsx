@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Project } from "contentlayer/generated";
+import Link from 'next/link';
+import Image from 'next/image';
+import { Project } from 'contentlayer/generated';
 
 const ProjectCard = (project: Project) => {
   return (

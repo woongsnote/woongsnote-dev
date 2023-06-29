@@ -1,80 +1,78 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
-import remarkGfm from "remark-gfm";
-import rehypePrettyCode from "rehype-pretty-code";
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import remarkGfm from 'remark-gfm';
+import rehypePrettyCode from 'rehype-pretty-code';
 
 export const Post = defineDocumentType(() => ({
-  name: "Post",
-  filePathPattern: "blogs/*.mdx",
-  contentType: "mdx",
+  name: 'Post',
+  filePathPattern: 'blogs/*.mdx',
+  contentType: 'mdx',
   fields: {
     title: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     date: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     description: {
-      type: "string",
+      type: 'string',
       required: true,
     },
   },
   computedFields: {
     slug: {
-      type: "string",
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
+      type: 'string',
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
   },
 }));
 
 export const Project = defineDocumentType(() => ({
-  name: "Project",
-  filePathPattern: "projects/*.mdx",
-  contentType: "mdx",
+  name: 'Project',
+  filePathPattern: 'projects/*.mdx',
+  contentType: 'mdx',
   fields: {
     title: {
-      type: "string",
-      description: "The title of the post",
+      type: 'string',
+      description: 'The title of the post',
       required: true,
     },
     date: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     description: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     coverImage: {
-      type: "string",
+      type: 'string',
       required: true,
     },
   },
   computedFields: {
     slug: {
-      type: "string",
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
+      type: 'string',
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
   },
 }));
 
 const options = {
-  theme:
-    'dracula',
+  theme: 'dracula',
   keepBackground: false,
   tokensMap: {
     fn: 'entity.name.function',
-    str: 'entity.name.string'
+    str: 'entity.name.string',
   },
-}
-
+};
 
 export default makeSource({
-  contentDirPath: "content",
+  contentDirPath: 'content',
   documentTypes: [Post, Project],
   mdx: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, options]]
+    rehypePlugins: [[rehypePrettyCode, options]],
   },
 });

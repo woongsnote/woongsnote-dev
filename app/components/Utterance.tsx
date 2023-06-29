@@ -1,5 +1,5 @@
-'use client'
-import { memo } from "react";
+'use client';
+import { memo } from 'react';
 
 const Utterance = () => {
   return (
@@ -8,13 +8,13 @@ const Utterance = () => {
         if (!elem) {
           return;
         }
-        const scriptElement = document.createElement("script");
-        scriptElement.src = "https://utteranc.es/client.js";
+        const scriptElement = document.createElement('script');
+        scriptElement.src = 'https://utteranc.es/client.js';
         scriptElement.async = true;
-        scriptElement.setAttribute("repo", "woongsnote/woongsnote-dev");
-        scriptElement.setAttribute("issue-term", "pathname");
-        scriptElement.setAttribute("theme", "preferred-color-scheme");
-        scriptElement.crossOrigin = "anonymous";
+        scriptElement.setAttribute('repo', 'woongsnote/woongsnote-dev');
+        scriptElement.setAttribute('issue-term', 'pathname');
+        scriptElement.setAttribute('theme', 'preferred-color-scheme');
+        scriptElement.crossOrigin = 'anonymous';
         elem.appendChild(scriptElement);
       }}
     />

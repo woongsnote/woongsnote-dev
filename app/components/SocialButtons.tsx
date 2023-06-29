@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { BsGithub, BsLinkedin } from "react-icons/bs";
+import Link from 'next/link';
+import { BsGithub, BsLinkedin } from 'react-icons/bs';
 
 const SocialButtons = () => {
   return (

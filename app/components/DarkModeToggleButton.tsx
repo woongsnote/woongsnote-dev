@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import { BsSunFill, BsMoonFill } from "react-icons/bs";
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
+import { BsSunFill, BsMoonFill } from 'react-icons/bs';
 
 const DarkModeToggleButton = () => {
   const [mounted, setMounted] = useState(false);
@@ -12,15 +12,15 @@ const DarkModeToggleButton = () => {
 
   if (!mounted) return null;
 
-  const currentTheme = theme === "system" ? systemTheme : theme;
+  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   return (
     <>
-      {currentTheme === "dark" ? (
+      {currentTheme === 'dark' ? (
         <button
           aria-label="dark mode"
           className="m-1 hover:text-yellow-300 rounded-full"
-          onClick={() => setTheme("light")}
+          onClick={() => setTheme('light')}
         >
           <BsSunFill size={28} />
         </button>
@@ -28,7 +28,7 @@ const DarkModeToggleButton = () => {
         <button
           aria-label="light mode"
           className="m-1 hover:text-yellow-700 rounded-full"
-          onClick={() => setTheme("dark")}
+          onClick={() => setTheme('dark')}
         >
           <BsMoonFill size={28} />
         </button>
