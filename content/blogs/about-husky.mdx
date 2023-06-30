@@ -1,0 +1,81 @@
+---
+title: husky
+description: ESLint와 Prettier 자동화
+date: 2023-05-01
+---
+
+## 개요
+
+ESLint와 Prettier를 도입했더라도, 이를 적용하는 데 있어, 실수할 수 있는 가능성이 생긴다.
+이를 해결하기 위해서는 특정한 상황에서 **자동**으로 적용되도록 하면 된다.
+`commit`된 코드는 자동으로 `formatting`이 되야 하고, 코드를 `push`하기 위해서는 `lint`가 통과되어야한다면, 이를, 어떻게 자동화할 수 있을까?
+
+## git hook
+
+git hook을 도입해서 자동화를 구현할 수 있다. 여기서, git hook이란, git에서 특정 이벤트가 발생하기 전(pre), 후(post)로 특정 훅 동작을 실행할 수 있게 하는 것을 말한다.
+하지만, git hook은 설정하기가 까다롭기 때문에, 이를 해결해 줄 `husky`라는 라이브러리가 존재한다.
+
+`husky`는 git hook 설정을 도와주는 npm package로, git hook 설정을 편하게 할 수 있고, `npm install`과정에서 사전에 설정한 git hook 적용 또한 가능하다.
+이로 인해, 모든 팀원이 git hook 실행 되도록 설치하기 편하다.
+
+## husky 사용하기
+
+### **처음** husky를 세팅하는 경우
+
+1. 설치
+
+   ```bash
+   npm install husky --save-dev
+   ```
+
+2. husky 설정
+
+   ```bash
+   npx husky install
+   ```
+
+   - `npx husky install`: husky에 등록된 hook을 실제 .git에 적용시키기 위한 스크립트
+
+3. scripts 설정
+
+   ```json
+   //package.json
+   {
+     "scripts": {
+       "postinstall": "husky install", // 이후에 clone 받은 사람들은 자동으로 husky 설치
+       "format": "prettier --cache --write .", // prettier formatting
+       "lint": "eslint --cache ." // lint check
+     }
+   }
+   ```
+
+4. git hook 추가
+
+   ```bash
+   npx husky add .husky/pre-commit "npm run format"
+   ```
+
+   - commit 완료 전에 formatting하도록 설정
+
+   ```bash
+   npx husky add .husky/pre-push "npm run lint"
+   ```
+
+   - push 전에 lint 동작하도록 설정
+
+### 해당 프로젝트를 clone하는 경우
+
+이미 package.json에 정의되어 있어서 `npm install`만으로 자동으로 설정이 가능하다.
+
+## 결론
+
+Husky는 프론트엔드 개발자에게 Git 워크플로우 자동화를 제공하는 강력한 도구다.
+자동으로 품질 검사, 테스트 실행 등의 작업을 처리함으로써 개발자는 일관성을 유지하고 생산성을 높일 수 있다.
+Husky를 사용해서 프로젝트의 코드 품질과 협업 효율성을 향상시켜보자.
+
+참고로, Husky는 다양한 Git 훅을 지원하며, 사용자 정의 스크립트를 실행할 수 있다.
+자세한 내용은 Husky의 공식 문서를 참조하기 바란다.
+
+※ 공식 문서
+
+- [husky](https://typicode.github.io/husky/)
