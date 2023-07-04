@@ -22,10 +22,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Woongsnote',
     description: 'Tech Blog by Woongsnote',
-    url: 'https://woongsnote.dev',
+    url: 'https://www.woongsnote.dev',
     siteName: "Woong's Tech Blog",
     locale: 'ko-KR',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: "Woong's Tech Blog",
+      },
+    ],
   },
 };
 
