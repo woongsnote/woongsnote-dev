@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Links } from './NavBar/Links';
+import { Links } from './Links';
 
 const BottomNav = () => {
   const pathname = usePathname();
