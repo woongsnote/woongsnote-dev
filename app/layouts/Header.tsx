@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import DarkModeToggleButton from "app/components/DarkModeToggleButton";
-import GitHubLink from "app/components/GitHubLink";
-import NavBar from "app/components/NavBar";
+import DarkModeToggleButton from "app/layouts/NavBar/DarkModeToggleButton";
+import GitHubLink from "app/layouts/NavBar/GitHubLink";
+import NavBar from "app/layouts/NavBar/NavBar";
 
 
 const Header = () => {

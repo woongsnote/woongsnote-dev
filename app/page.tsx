@@ -1,6 +1,6 @@
-import Banner from "./components/Banner";
-import RecentPostListSection from "./components/RecentPostListSection";
-import RecentProjectListSection from "./components/RecentProjectListSection";
+import Banner from "./components/Home/Banner";
+import RecentPostListSection from "./components/Home/RecentPostListSection";
+import RecentProjectListSection from "./components/Home/RecentProjectListSection";
 
 export default function Home() {
 
