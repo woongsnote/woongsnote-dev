@@ -4,19 +4,22 @@ import rehypePrettyCode from 'rehype-pretty-code';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: 'blogs/*.mdx',
+  filePathPattern: `blogs/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
       type: 'string',
+      description: 'The title of the post',
       required: true,
     },
     date: {
-      type: 'string',
+      type: 'date',
+      description: 'The date of the post',
       required: true,
     },
     description: {
       type: 'string',
+      description: 'The description of the post',
       required: true,
     },
   },
@@ -30,24 +33,27 @@ export const Post = defineDocumentType(() => ({
 
 export const Project = defineDocumentType(() => ({
   name: 'Project',
-  filePathPattern: 'projects/*.mdx',
+  filePathPattern: `projects/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
       type: 'string',
-      description: 'The title of the post',
+      description: 'The title of the project',
       required: true,
     },
     date: {
-      type: 'string',
+      type: 'date',
+      description: 'The date of the project',
       required: true,
     },
     description: {
       type: 'string',
+      description: 'The description of the project',
       required: true,
     },
     coverImage: {
       type: 'string',
+      description: 'The coverImage of the project',
       required: true,
     },
   },
@@ -60,12 +66,8 @@ export const Project = defineDocumentType(() => ({
 }));
 
 const options = {
-  theme: 'dracula',
-  keepBackground: false,
-  tokensMap: {
-    fn: 'entity.name.function',
-    str: 'entity.name.string',
-  },
+  theme: 'dracula-soft',
+
 };
 
 export default makeSource({
