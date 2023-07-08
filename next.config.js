@@ -8,19 +8,15 @@ const nextConfig = withContentlayer({
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 's3.us-west-2.amazonaws.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
       },
       {
         protocol: 'https',
         hostname: 'user-images.githubusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
       },
     ],
   },
