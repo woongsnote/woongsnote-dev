@@ -1,4 +1,4 @@
-import { allProjects } from 'contentlayer/generated';
+import { Project, allProjects } from 'contentlayer/generated';
 import { ImageResponse } from 'next/server';
 
 export const runtime = 'edge';
@@ -12,9 +12,6 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function Image({ params }: { params: { slug: string } }) {
-  const project = allProjects.find((project) => project.slug === params.slug);
-  const imageData = project?.coverImage;
-
   return new ImageResponse(
     (
       <div
@@ -27,7 +24,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
           justifyContent: 'center',
         }}
       >
-        <img src={imageData} alt={alt} />
+        <span>{params.slug}</span>
       </div>
     ),
     { ...size }
