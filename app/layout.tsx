@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Noto_Sans_KR } from 'next/font/google';
 import Container from './layouts/Container';
+import localFont from 'next/font/local';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.woongsnote.dev'),
@@ -37,10 +37,9 @@ export const metadata: Metadata = {
   },
 };
 
-const inter = Noto_Sans_KR({
-  subsets: ['latin'],
-  display: 'auto',
-  weight: '300',
+const inter = localFont({
+  src: './fonts/PretendardVariable.woff2',
+  display: 'swap',
   variable: '--font-inter',
 });
 
