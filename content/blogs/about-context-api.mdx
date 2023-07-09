@@ -23,13 +23,13 @@ Provider에서는 value 속성을 통해 전달할 데이터를 설정하고, Co
 - React에서 Context API를 사용하여 사용자의 이름을 관리하는 예시 코드.
 
 ```javascript
-import React, { createContext, useState } from "react";
+import React, { createContext, useState } from 'react';
 
 // Context 생성
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
 
   const updateUsername = (newUsername) => {
     setUsername(newUsername);
@@ -48,8 +48,8 @@ export { UserContext, UserProvider };
 이제 위의 코드를 사용하여 사용자 이름을 관리하고 다른 컴포넌트에서 사용할 수 있다.
 
 ```javascript
-import React, { useContext, useState } from "react";
-import { UserContext, UserProvider } from "./UserContext";
+import React, { useContext, useState } from 'react';
+import { UserContext, UserProvider } from './UserContext';
 
 const App = () => {
   return (
@@ -61,7 +61,7 @@ const App = () => {
 
 const MainComponent = () => {
   const { username, updateUsername } = useContext(UserContext);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -70,12 +70,12 @@ const MainComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateUsername(inputValue);
-    setInputValue("");
+    setInputValue('');
   };
 
   return (
     <div>
-      <h1>Hello, {username || "Guest"}!</h1>
+      <h1>Hello, {username || 'Guest'}!</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -101,5 +101,3 @@ export default App;
 ## 결론
 
 따라서, Context API를 사용하면 props를 전달하지 않고도 데이터를 관리할 수 있으므로, 코드의 가독성과 유지보수성을 높일 수 있다.
-
-``toc

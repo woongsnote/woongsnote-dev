@@ -36,7 +36,7 @@ useInput은 input 태그의 value와 onChange 이벤트를 관리하는 훅이�
 useInput은 다음과 같이 작성할 수 있다.
 
 ```js
-import { useState } from "react";
+import { useState } from 'react';
 
 function useInput(initialValue) {
   const [value, setValue] = useState(initialValue);
@@ -56,12 +56,12 @@ useInput은 초기값을 인자로 받아서 value와 setValue를 useState로 �
 useInput을 사용하는 방법은 다음과 같다.
 
 ```js
-import React from "react";
-import useInput from "./useInput";
+import React from 'react';
+import useInput from './useInput';
 
 function App() {
-  const name = useInput(""); // 초기값은 빈 문자열
-  const email = useInput(""); // 초기값은 빈 문자열
+  const name = useInput(''); // 초기값은 빈 문자열
+  const email = useInput(''); // 초기값은 빈 문자열
 
   return (
     <div>
