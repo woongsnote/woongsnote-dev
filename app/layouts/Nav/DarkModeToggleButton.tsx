@@ -14,26 +14,24 @@ const DarkModeToggleButton = () => {
 
   const currentTheme = theme === 'system' ? systemTheme : theme;
 
+  const changeTheme = () => {
+    return currentTheme === 'dark' ? setTheme('light') : setTheme('dark');
+  };
+
   return (
-    <>
+    <button
+      aria-label="dark mode toggle"
+      className="m-1 rounded-full hover:text-yellow-700 dark:hover:text-yellow-300"
+      onClick={() => {
+        changeTheme();
+      }}
+    >
       {currentTheme === 'dark' ? (
-        <button
-          aria-label="dark mode"
-          className="m-1 hover:text-yellow-300 rounded-full"
-          onClick={() => setTheme('light')}
-        >
-          <BsSunFill size={28} />
-        </button>
+        <BsSunFill size={28} />
       ) : (
-        <button
-          aria-label="light mode"
-          className="m-1 hover:text-yellow-700 rounded-full"
-          onClick={() => setTheme('dark')}
-        >
-          <BsMoonFill size={28} />
-        </button>
+        <BsMoonFill size={28} />
       )}
-    </>
+    </button>
   );
 };
 
