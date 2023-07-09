@@ -23,54 +23,56 @@ date: 2023-06-26
    - 스토리북을 사용하기 위해서는 빈 프로젝트가 아니라, 프레임워크 기반으로 미리 만들어놓은 프로젝트가 필요하다.
    - 이를 위해, **vite**로 프로젝트를 만들어보자.
 
-```bash
-npm create vite@latest
-```
+   ```bash
+   npm create vite@latest
+   ```
 
-- vite로 프로젝트 생성 예시
+   - vite로 프로젝트 생성 예시
 
-```bash
- npm create vite@latest
-√ Project name: vite-storybook
-√ Select a framework: » React
-√ Select a variant: » TypeScript
+   ```bash
+   npm create vite@latest
+   √ Project name: vite-storybook
+   √ Select a framework: » React
+   √ Select a variant: » TypeScript
 
-Scaffolding project in D:\projects\vite-storybook...
+   Scaffolding project in D:\projects\vite-storybook...
 
-Done. Now run:
+   Done. Now run:
 
-  cd vite-storybook
-  npm install
-  npm run dev
-```
+     cd vite-storybook
+     npm install
+     npm run dev
+   ```
 
 2. 스토리북 설치
 
-- **스토리북을 사용할 프로젝트의 루트 디렉토리**에서 설치한다.
+   - **스토리북을 사용할 프로젝트의 루트 디렉토리**에서 설치한다.
 
-```bash
-npx storybook@latest init
-```
+   ```bash
+   npx storybook@latest init
+   ```
 
 3. 스토리북 실행
 
-- 스토리북 설치가 완료되면, 아래 명령어를 통해 확인할 수 있다.
+   - 스토리북 설치가 완료되면, 아래 명령어를 통해 확인할 수 있다.
 
-```bash
-npm run storybook
-```
+   ```bash
+   npm run storybook
+   ```
 
 4. 컴포넌트 구현
 
-- 스토리북 실행에 문제가 없다면, 스토리북을 사용할 준비는 모두 끝났으므로, 만들려고 했던 컴포넌트를 만들면 된다.
-- 스토리북 사용을 위해 달라지는 점은 `button.stories.ts`와 같은 스토리북용 파일이 추가로 필요하다는 것이다.
+   - 스토리북 실행에 문제가 없다면, 스토리북을 사용할 준비는 모두 끝났으므로, 만들려고 했던 컴포넌트를 만들면 된다.
+   - 스토리북 사용을 위해 달라지는 점은 `button.stories.ts`와 같은 스토리북용 파일이 추가로 필요하다는 것이다.
 
 ## 결론
 
 프로젝트를 구현할 때, 주로 페이지부터 만들고, 여러 번 사용되는 컴포넌트들을 따로 컴포넌트로 분리했었다.
 재사용이 가능한 컴포넌트를 먼저 만드는 방법이 더 효율적이라고 생각되서, 이후 프로젝트에 스토리북을 활용한 CDD를 적용해보려고 한다.
 
-**※ 공식 문서**
+---
+
+### ※공식 문서
 
 - [스토리북](https://storybook.js.org)
 - [Vite](https://vitejs.dev)

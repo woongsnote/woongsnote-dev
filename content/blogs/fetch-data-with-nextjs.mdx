@@ -13,99 +13,100 @@ date: 2023-06-12
 
 1. 먼저 프로젝트를 만들어 준다.
 
-```Terminal
-npx create-next-app@latest
-```
+   ```bash
+   npx create-next-app@latest
+   ```
 
 2. 프로젝트가 생성되면, 프로젝트에 사용할 `API Key`를 발급받아야 한다.
 
-API Key 발급이 완료되면 모든 준비가 끝이 난다.
-발급된 API Key는 루트 디렉토리에 `.env.local` 파일을 생성하고, `NEXT_PUBLIC_TMDB_API_KEY` 이름으로 넣어준다.
+   - API Key 발급이 완료되면 모든 준비가 끝이 난다.
+   - 발급된 API Key는 루트 디렉토리에 `.env.local` 파일을 생성하고, `NEXT_PUBLIC_TMDB_API_KEY` 이름으로 넣어준다.
 
-- NEXT_PUBLIC 이후는 원하는대로 작성해도 된다. [env 관련 NextJs 공식 문서](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables)
-- API key는 유출되면 안되므로, local에서만 볼 수 있어야 한다.
+   - `NEXT_PUBLIC` 이후는 원하는대로 작성해도 된다.
+   - [env 관련 NextJs 공식 문서](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables)
+   - API key는 유출되면 안되므로, local에서만 볼 수 있어야 한다.
 
 3. 이제 app 디렉토리의 page.tsx 파일로 이동해서 기존 내용을 지우고, 아래와 같이 작성해보자.
 
-```tsx
-// app/page.tsx
-import Image from "next/image";
+   ```tsx
+   // app/page.tsx
+   import Image from 'next/image';
 
-async function getPopularMovies() {
-  const url =
-    "https://api.themoviedb.org/3/movie/popular/?language=ko-KR&page=1&region=KR";
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: "Bearer " + process.env.NEXT_PUBLIC_TMDB_API_TOKEN,
-    },
-  };
-  const res = await fetch(url, options);
+   async function getPopularMovies() {
+     const url =
+       'https://api.themoviedb.org/3/movie/popular/?language=ko-KR&page=1&region=KR';
+     const options = {
+       method: 'GET',
+       headers: {
+         accept: 'application/json',
+         Authorization: 'Bearer ' + process.env.NEXT_PUBLIC_TMDB_API_TOKEN,
+       },
+     };
+     const res = await fetch(url, options);
 
-  if (!res.ok) {
-    throw new Error("Failed to Fetch Movie Data");
-  }
+     if (!res.ok) {
+       throw new Error('Failed to Fetch Movie Data');
+     }
 
-  return res.json();
-}
+     return res.json();
+   }
 
-interface Movies {
-  results: Movie[];
-}
+   interface Movies {
+     results: Movie[];
+   }
 
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-}
+   interface Movie {
+     id: number;
+     title: string;
+     poster_path: string;
+   }
 
-export default async function Home() {
-  const data: Movies = await getPopularMovies();
-  const popularMovies = data.results;
-  return (
-    <main>
-      <h2 className="text-center text-4xl m-2">인기 있는 영화 목록</h2>
-      <div className="grid grid-cols-4 m-4 gap-4">
-        {popularMovies.map((movie: Movie) => (
-          <div key={movie.id} className="rounded-xl p-2 overflow-hidden">
-            <Image
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              width={700}
-              height={700}
-              className="rounded-xl"
-            />
-            <span>{movie.title}</span>
-          </div>
-        ))}
-      </div>
-    </main>
-  );
-}
-```
+   export default async function Home() {
+     const data: Movies = await getPopularMovies();
+     const popularMovies = data.results;
+     return (
+       <main>
+         <h2 className="text-center text-4xl m-2">인기 있는 영화 목록</h2>
+         <div className="grid grid-cols-4 m-4 gap-4">
+           {popularMovies.map((movie: Movie) => (
+             <div key={movie.id} className="rounded-xl p-2 overflow-hidden">
+               <Image
+                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                 alt={movie.title}
+                 width={700}
+                 height={700}
+                 className="rounded-xl"
+               />
+               <span>{movie.title}</span>
+             </div>
+           ))}
+         </div>
+       </main>
+     );
+   }
+   ```
 
 4. 터미널에서 다음 명령어를 실행하여 Next.js 애플리케이션을 실행해보자.
 
-```Terminal
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
 
-※ NextJs에서 제공해주는 Image 컴포넌트에서 웹 이미지를 사용하려면 `next.config.js` 파일에 이미지 파일의 웹 주소 등록이 필요하다.
+5. NextJs에서 제공해주는 Image 컴포넌트에서 웹 이미지를 사용하려면 `next.config.js` 파일에 이미지 파일의 웹 주소 등록이 필요하다.
 
-```js
-const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "image.tmdb.org",
-        pathname: "/t/p/w500/*",
-      },
-    ],
-  },
-};
-```
+   ```js
+   const nextConfig = {
+     images: {
+       remotePatterns: [
+         {
+           protocol: 'https',
+           hostname: 'image.tmdb.org',
+           pathname: '/t/p/w500/*',
+         },
+       ],
+     },
+   };
+   ```
 
 ## 결론
 

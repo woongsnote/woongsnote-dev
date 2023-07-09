@@ -15,8 +15,8 @@ Redux는 상태를 하나의 객체로 저장하고, 이 객체를 스토어라�
 
 ```js
 {
-type: 'CHANGE_NAME',
-payload: 'Alice'
+  "type": "CHANGE_NAME",
+  "payload": "Alice"
 }
 ```
 
@@ -27,7 +27,7 @@ payload: 'Alice'
 ```js
 function userReducer(state = {}, action) {
   switch (action.type) {
-    case "CHANGE_NAME":
+    case 'CHANGE_NAME':
       return {
         ...state,
         name: action.payload,
@@ -56,5 +56,5 @@ Redux는 다음과 같은 경우에 사용하기 적합하다.
 
 Redux는 간단하고 작은 애플리케이션에서는 오버헤드가 될 수 있다. 또한 Redux는 학습 곡선이 다소 높으므로 초보자에게는 어려울 수 있다.
 
-Redux에 대해 더 자세히 알고 싶다면 공식 문서(https://redux.js.org/)나
-튜토리얼(https://redux.js.org/tutorials/essentials/part-1-overview-concepts)을 참고하기 바란다.
+Redux에 대해 더 자세히 알고 싶다면 [공식 문서](https://redux.js.org/)나
+[튜토리얼](https://redux.js.org/tutorials/essentials/part-1-overview-concepts)을 참고하기 바란다.
