@@ -1,10 +1,10 @@
-import { Project, allProjects } from "contentlayer/generated";
-import PageHeader from "app/layouts/PageHeader";
-import ProjectList from "app/components/Project/ProjectList";
-import { getSortedDataList } from "utils/getData";
+import { Project, allProjects } from 'contentlayer/generated';
+import PageHeader from 'app/layouts/PageHeader';
+import ProjectList from 'app/components/Project/ProjectList';
+import { getSortedDataList } from 'app/utils/getData';
 
 export const metadata = {
-  title: { absolute: "Projects | Woongsnote" },
+  title: { absolute: 'Projects | Woongsnote' },
 };
 
 export default function Projects() {

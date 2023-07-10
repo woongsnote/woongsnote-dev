@@ -1,7 +1,7 @@
 import { Post, allPosts } from 'contentlayer/generated';
 import PageHeader from 'app/layouts/PageHeader';
 import PostList from 'app/components/Post/PostList';
-import { getSortedDataList } from 'utils/getData';
+import { getSortedDataList } from 'app/utils/getData';
 
 export const metadata = {
   title: { absolute: 'Blog | Woongsnote' },
