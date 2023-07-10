@@ -27,13 +27,13 @@ const ProjectDetail = ({ params }: Props) => {
 
   if (!project) notFound();
 
-  const Content = useMDXComponent(project.body.code);
+  const MDXContent = useMDXComponent(project.body.code);
 
   return (
     <>
       <ProjectDetailHeader project={project} />
       <DetailContainer>
-        <Content />
+        <MDXContent />
       </DetailContainer>
       <Utterance />
     </>
