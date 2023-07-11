@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Providers from './Providers';
 
-const Container = ({ children }: { children: React.ReactNode }) => {
+const BaseLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Providers>
       <Header />
@@ -16,4 +16,4 @@ const Container = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default Container;
+export default BaseLayout;

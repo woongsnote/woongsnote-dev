@@ -1,6 +1,11 @@
 import { Post } from 'contentlayer/generated';
 import { format } from 'date-fns';
-const PostDetailHeader = ({ post }: { post: Post }) => {
+
+interface PostDetailHeaderProps{
+  post: Post
+}
+
+const PostDetailHeader = ({ post }: PostDetailHeaderProps) => {
   return (
     <section className="py-2 mb-8 md:mx-24 md:mt-2">
       <h1 className="text-3xl md:text-5xl font-bold mb-1">{post.title}</h1>

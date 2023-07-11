@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import Container from './layouts/Container';
+import BaseLayout from './layouts/BaseLayout';
 import localFont from 'next/font/local';
 
 export const metadata: Metadata = {
@@ -51,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${inter.variable}`} suppressHydrationWarning>
       <body>
-        <Container>{children}</Container>
+        <BaseLayout>{children}</BaseLayout>
       </body>
     </html>
   );

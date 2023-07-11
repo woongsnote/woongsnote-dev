@@ -3,7 +3,7 @@ import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 import PostDetailHeader from 'app/layouts/PostDetailHeader';
 import Utterance from 'app/components/Utterance';
-import DetailContainer from 'app/layouts/DetailContainer';
+import DetailLayout from 'app/layouts/DetailLayout';
 
 type Props = {
   params: { slug: string };
@@ -32,9 +32,9 @@ const PostDetail = ({ params }: Props) => {
   return (
     <>
       <PostDetailHeader post={post} />
-      <DetailContainer>
+      <DetailLayout>
         <MDXContent />
-      </DetailContainer>
+      </DetailLayout>
       <Utterance />
     </>
   );
