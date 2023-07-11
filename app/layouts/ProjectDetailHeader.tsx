@@ -1,7 +1,11 @@
 import { Project } from "contentlayer/generated";
 import Image from "next/image";
 
-const ProjectDetailHeader = ({ project }: { project: Project }) => {
+interface ProjectDetailHeaderProps {
+    project: Project 
+}
+
+const ProjectDetailHeader = ({ project }: ProjectDetailHeaderProps) => {
   return (
     <div className="py-2 mb-8 md:mx-24">
       <h1 className="text-3xl md:text-5xl font-bold mb-1">{project.title}</h1>

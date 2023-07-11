@@ -1,7 +1,7 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allProjects } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
-import DetailContainer from 'app/layouts/DetailContainer';
+import DetailLayout from 'app/layouts/DetailLayout';
 import ProjectDetailHeader from 'app/layouts/ProjectDetailHeader';
 import Utterance from 'app/components/Utterance';
 
@@ -32,9 +32,9 @@ const ProjectDetail = ({ params }: Props) => {
   return (
     <>
       <ProjectDetailHeader project={project} />
-      <DetailContainer>
+      <DetailLayout>
         <MDXContent />
-      </DetailContainer>
+      </DetailLayout>
       <Utterance />
     </>
   );
