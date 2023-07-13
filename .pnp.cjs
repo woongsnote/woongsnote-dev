@@ -48,6 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:b74add6086914b328473a261a7cd67f93130aaafc81ced405cdd510439e84abdbdd37e62dcc558cd9e223a8326e95b7d6c0fb1ff5b02bf0ed4836cea7b877bfa#npm:18.2.0"],\
             ["react-icons", "virtual:b74add6086914b328473a261a7cd67f93130aaafc81ced405cdd510439e84abdbdd37e62dcc558cd9e223a8326e95b7d6c0fb1ff5b02bf0ed4836cea7b877bfa#npm:4.10.1"],\
             ["reading-time", "npm:1.5.0"],\
+            ["rehype-highlight", "npm:6.0.0"],\
             ["rehype-pretty-code", "virtual:b74add6086914b328473a261a7cd67f93130aaafc81ced405cdd510439e84abdbdd37e62dcc558cd9e223a8326e95b7d6c0fb1ff5b02bf0ed4836cea7b877bfa#npm:0.10.0"],\
             ["remark", "npm:14.0.3"],\
             ["remark-gfm", "npm:3.0.1"],\
@@ -4275,6 +4276,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["hast-util-is-element", [\
+        ["npm:2.1.3", {\
+          "packageLocation": "./.yarn/cache/hast-util-is-element-npm-2.1.3-3051d610ff-9d988f6839.zip/node_modules/hast-util-is-element/",\
+          "packageDependencies": [\
+            ["hast-util-is-element", "npm:2.1.3"],\
+            ["@types/hast", "npm:2.3.4"],\
+            ["@types/unist", "npm:2.0.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["hast-util-parse-selector", [\
         ["npm:3.1.1", {\
           "packageLocation": "./.yarn/cache/hast-util-parse-selector-npm-3.1.1-5db0acb665-511d373465.zip/node_modules/hast-util-parse-selector/",\
@@ -4374,6 +4386,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["hast-util-to-text", [\
+        ["npm:3.1.2", {\
+          "packageLocation": "./.yarn/cache/hast-util-to-text-npm-3.1.2-922eb1f623-d17cf3344c.zip/node_modules/hast-util-to-text/",\
+          "packageDependencies": [\
+            ["hast-util-to-text", "npm:3.1.2"],\
+            ["@types/hast", "npm:2.3.4"],\
+            ["@types/unist", "npm:2.0.6"],\
+            ["hast-util-is-element", "npm:2.1.3"],\
+            ["unist-util-find-after", "npm:4.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["hast-util-whitespace", [\
         ["npm:2.0.1", {\
           "packageLocation": "./.yarn/cache/hast-util-whitespace-npm-2.0.1-0cb2b36fdf-431be6b2f3.zip/node_modules/hast-util-whitespace/",\
@@ -4393,6 +4418,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["hast-util-parse-selector", "npm:3.1.1"],\
             ["property-information", "npm:6.2.0"],\
             ["space-separated-tokens", "npm:2.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["highlight.js", [\
+        ["npm:11.8.0", {\
+          "packageLocation": "./.yarn/cache/highlight.js-npm-11.8.0-6ff1e42749-d2578a57ae.zip/node_modules/highlight.js/",\
+          "packageDependencies": [\
+            ["highlight.js", "npm:11.8.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5203,6 +5237,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["lower-case", "npm:2.0.2"],\
             ["tslib", "npm:2.6.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lowlight", [\
+        ["npm:2.9.0", {\
+          "packageLocation": "./.yarn/cache/lowlight-npm-2.9.0-c2672dfd4b-6fa0c74701.zip/node_modules/lowlight/",\
+          "packageDependencies": [\
+            ["lowlight", "npm:2.9.0"],\
+            ["@types/hast", "npm:2.3.4"],\
+            ["fault", "npm:2.0.1"],\
+            ["highlight.js", "npm:11.8.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6274,6 +6320,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:b74add6086914b328473a261a7cd67f93130aaafc81ced405cdd510439e84abdbdd37e62dcc558cd9e223a8326e95b7d6c0fb1ff5b02bf0ed4836cea7b877bfa#npm:18.2.0"],\
             ["react-icons", "virtual:b74add6086914b328473a261a7cd67f93130aaafc81ced405cdd510439e84abdbdd37e62dcc558cd9e223a8326e95b7d6c0fb1ff5b02bf0ed4836cea7b877bfa#npm:4.10.1"],\
             ["reading-time", "npm:1.5.0"],\
+            ["rehype-highlight", "npm:6.0.0"],\
             ["rehype-pretty-code", "virtual:b74add6086914b328473a261a7cd67f93130aaafc81ced405cdd510439e84abdbdd37e62dcc558cd9e223a8326e95b7d6c0fb1ff5b02bf0ed4836cea7b877bfa#npm:0.10.0"],\
             ["remark", "npm:14.0.3"],\
             ["remark-gfm", "npm:3.0.1"],\
@@ -7295,6 +7342,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["call-bind", "npm:1.0.2"],\
             ["define-properties", "npm:1.2.0"],\
             ["functions-have-names", "npm:1.2.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["rehype-highlight", [\
+        ["npm:6.0.0", {\
+          "packageLocation": "./.yarn/cache/rehype-highlight-npm-6.0.0-5179257139-5a70e7ad45.zip/node_modules/rehype-highlight/",\
+          "packageDependencies": [\
+            ["rehype-highlight", "npm:6.0.0"],\
+            ["@types/hast", "npm:2.3.4"],\
+            ["hast-util-to-text", "npm:3.1.2"],\
+            ["lowlight", "npm:2.9.0"],\
+            ["unified", "npm:10.1.2"],\
+            ["unist-util-visit", "npm:4.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8387,6 +8448,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["unique-slug", "npm:4.0.0"],\
             ["imurmurhash", "npm:0.1.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["unist-util-find-after", [\
+        ["npm:4.0.1", {\
+          "packageLocation": "./.yarn/cache/unist-util-find-after-npm-4.0.1-0f069ee279-bed7e7a1a8.zip/node_modules/unist-util-find-after/",\
+          "packageDependencies": [\
+            ["unist-util-find-after", "npm:4.0.1"],\
+            ["@types/unist", "npm:2.0.6"],\
+            ["unist-util-is", "npm:5.2.1"]\
           ],\
           "linkType": "HARD"\
         }]\
