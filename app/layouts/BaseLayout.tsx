@@ -3,7 +3,11 @@ import Header from './Header';
 import Footer from './Footer';
 import Providers from './Providers';
 
-const BaseLayout = ({ children }: { children: React.ReactNode }) => {
+interface BaseLayoutProps {
+  children: React.ReactNode;
+}
+
+const BaseLayout = ({ children }: BaseLayoutProps): React.ReactElement => {
   return (
     <Providers>
       <Header />

@@ -3,7 +3,7 @@ interface PageProps {
   description?: string;
 }
 
-const PageHeader = ({ title, description }: PageProps) => {
+const PageHeader = ({ title, description }: PageProps): React.ReactElement => {
   return (
     <div className="mt-2 md:mt-0">
       <h2 className="text-3xl font-bold md:pt-2">{title}</h2>

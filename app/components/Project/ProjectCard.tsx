@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Project } from 'contentlayer/generated';
 
-const ProjectCard = (project: Project) => {
+const ProjectCard = (project: Project): React.ReactElement => {
   return (
     <Link
       href={`/projects/${project.slug}`}

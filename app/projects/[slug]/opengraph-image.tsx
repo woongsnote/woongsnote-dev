@@ -27,6 +27,6 @@ export default async function Image({ params }: { params: { slug: string } }) {
         <span>{params.slug}</span>
       </div>
     ),
-    { ...size }
+    { ...size },
   );
 }

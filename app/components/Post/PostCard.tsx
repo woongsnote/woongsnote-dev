@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Post } from 'contentlayer/generated';
 import format from 'date-fns/format';
 
-const PostCard = (post: Post) => {
+const PostCard = (post: Post): React.ReactElement => {
   return (
     <Link href={`/blog/${post.slug}`} className="group">
       <article className="py-3 px-2 hover:text-indigo-500 shadow-md rounded-lg dark:border-2 dark:border-gray-500 md:group-hover:scale-105 transition-transform duration-200 ease-out flex flex-col md:flex-row md:gap-4">
