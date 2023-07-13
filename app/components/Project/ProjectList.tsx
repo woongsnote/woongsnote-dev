@@ -1,7 +1,11 @@
 import { Project } from 'contentlayer/generated';
 import ProjectCard from './ProjectCard';
 
-const ProjectList = ({ projects }: { projects: Project[] }) => {
+interface ProjectListProps {
+  projects: Project[];
+}
+
+const ProjectList = ({ projects }: ProjectListProps): React.ReactElement => {
   return (
     <div className="grid gap-x-8 gap-y-4 md:grid-cols-2 pt-6">
       {projects.map((project) => (

@@ -1,6 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import remarkGfm from 'remark-gfm';
-import rehypeHighlight from 'rehype-highlight'
+import rehypeHighlight from 'rehype-highlight';
 import rehypePrettyCode from 'rehype-pretty-code';
 
 export const Post = defineDocumentType(() => ({
@@ -68,7 +68,6 @@ export const Project = defineDocumentType(() => ({
 
 const options = {
   theme: 'dracula-soft',
-
 };
 
 export default makeSource({

@@ -5,7 +5,7 @@ import DarkModeToggleButton from './Nav/DarkModeToggleButton';
 import GitHubLink from './Nav/GitHubLink';
 import NavBar from './Nav/NavBar';
 
-const Header = () => {
+const Header = (): React.ReactElement => {
   return (
     <header className="sticky left-0 top-0 right-0 z-50 items-center mx-auto px-1 bg-white dark:bg-[#111111] border-b shadow-md">
       <div className="flex justify-between items-center py-1 w-full mx-auto  ">

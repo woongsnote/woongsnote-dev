@@ -5,11 +5,11 @@ import { getSortedDataList } from 'app/utils/getData';
 
 const MAX_RECENT_POSTS = 2;
 
-const RecentPostListSection = () => {
+const RecentPostListSection = (): React.ReactElement => {
   const posts: Post[] = getSortedDataList(allPosts, MAX_RECENT_POSTS);
 
   return (
-    <section className="mx-auto">
+    <section>
       <MainSectionHeader
         title={'최신 포스트'}
         href={'/blog'}

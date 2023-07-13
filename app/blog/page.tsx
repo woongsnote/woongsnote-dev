@@ -7,7 +7,7 @@ export const metadata = {
   title: { absolute: 'Blog | Woongsnote' },
 };
 
-export default function Blog() {
+export default function Blog(): React.ReactElement {
   const posts: Post[] = getSortedDataList(allPosts);
 
   return (

@@ -37,7 +37,7 @@ type DebounceCallback = (...args: any[]) => void;
 
 export const useDebounce = (
   callback: DebounceCallback,
-  delay: number
+  delay: number,
 ): DebounceCallback => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -50,7 +50,7 @@ export const useDebounce = (
         callback(...args);
       }, delay);
     },
-    [callback, delay]
+    [callback, delay],
   );
 
   return debounceCallback;
