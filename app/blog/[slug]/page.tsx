@@ -1,9 +1,7 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
-import PostDetailHeader from 'app/layouts/PostDetailHeader';
-import Utterance from 'app/components/Utterance';
-import DetailLayout from 'app/layouts/DetailLayout';
+import format from 'date-fns/format';
 
 type Props = {
   params: { slug: string };
@@ -22,22 +20,21 @@ export const generateMetadata = ({ params }: Props) => {
   };
 };
 
-const PostDetail = ({ params }: Props) => {
-  const post = allPosts.find((post) => post.slug === params.slug);
-
+export default function PostPage({ params }: Props)  {
+  const post =  allPosts.find((post) => post.slug === params.slug);
   if (!post) notFound();
 
   const MDXContent = useMDXComponent(post.body.code);
 
   return (
     <>
-      <PostDetailHeader post={post} />
-      <DetailLayout>
-        <MDXContent />
-      </DetailLayout>
-      <Utterance />
+      <time className="text-sm">
+          {format(new Date(post.date), 'yyyy년 MM월 dd일')}
+        </time>
+      <h1 className='mb-2'>{post.title}</h1>
+      <p className='text-xl my-0'>{post.description}</p>
+      <hr className="my-4" />
+      <MDXContent />
     </>
   );
 };
-
-export default PostDetail;
