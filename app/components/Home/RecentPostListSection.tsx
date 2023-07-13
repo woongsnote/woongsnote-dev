@@ -3,7 +3,7 @@ import MainSectionHeader from '../../layouts/MainSectionHeader';
 import PostList from '../Post/PostList';
 import { getSortedDataList } from 'app/utils/getData';
 
-const MAX_RECENT_POSTS = 4;
+const MAX_RECENT_POSTS = 2;
 
 const RecentPostListSection = () => {
   const posts: Post[] = getSortedDataList(allPosts, MAX_RECENT_POSTS);
