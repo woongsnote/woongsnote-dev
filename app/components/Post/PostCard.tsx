@@ -1,18 +1,15 @@
 import Link from 'next/link';
 import { Post } from 'contentlayer/generated';
-import { getYear, format } from 'date-fns';
+import format from 'date-fns/format';
 
 const PostCard = (post: Post) => {
   return (
     <Link href={`/blog/${post.slug}`} className="group">
       <article className="py-3 px-2 hover:text-indigo-500 shadow-md rounded-lg dark:border-2 dark:border-gray-500 md:group-hover:scale-105 transition-transform duration-200 ease-out flex flex-col md:flex-row md:gap-4">
-        <div className="flex flex-row md:flex-col gap-1 items-center md:justify-center text-gray-700 dark:text-gray-300 md:w-1/6">
-          <span className="text-sm">{getYear(new Date(post.date))}</span>
-          <span className="text-md">
-            {format(new Date(post.date), 'MMM dd')}
-          </span>
-        </div>
-        <div className="flex justify-center flex-col md:w-5/6">
+        <div className="flex justify-center flex-col">
+          <time className="text-sm text-gray-700 dark:text-gray-300">
+            {format(new Date(post.date), 'yyyy년 MM월 dd일')}
+          </time>
           <h2 className="text-xl font-bold md:text-2xl">{post.title}</h2>
           <p className="text-sm text-gray-700 dark:text-gray-300">
             {post.description}
