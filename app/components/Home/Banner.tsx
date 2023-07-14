@@ -1,4 +1,4 @@
-const Banner = () => {
+const Banner = (): React.ReactElement => {
   return (
     <div className="text-center mt-2 mb-4">
       <h1 className="text-3xl md:text-5xl mb-2 font-extrabold flex justify-center items-center">
