@@ -1,6 +1,6 @@
 interface PageProps {
   title: string;
-  description?: string;
+  description: string;
 }
 
 const PageHeader = ({ title, description }: PageProps): React.ReactElement => {
