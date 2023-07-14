@@ -1,4 +1,3 @@
-import { Project, allProjects } from 'contentlayer/generated';
 import { ImageResponse } from 'next/server';
 
 export const runtime = 'edge';

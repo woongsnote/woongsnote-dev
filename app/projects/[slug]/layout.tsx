@@ -1,6 +1,6 @@
 import Utterance from 'app/components/Utterance';
 
-export default function PostLayout({
+export default function ProjectLayout({
   children,
 }: {
   children: React.ReactElement;

@@ -2,11 +2,10 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allProjects } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import Utterance from 'app/components/Utterance';
 
-type Props = {
+interface Props {
   params: { slug: string };
-};
+}
 
 export const generateStaticParams = async () => {
   return allProjects.map((project) => ({ slug: project.slug }));
@@ -29,7 +28,7 @@ export default function ProjectPage({ params }: Props) {
   const MDXContent = useMDXComponent(project.body.code);
 
   return (
-    <article className="py-6 prose dark:prose-invert mx-auto">
+    <>
       <h1 className="mb-1">{project.title}</h1>
       <p className="mt-0 mb-2 text-gray-700 dark:text-gray-300">
         {project.description}
@@ -45,7 +44,6 @@ export default function ProjectPage({ params }: Props) {
         />
       </div>
       <MDXContent />
-      <Utterance />
-    </article>
+    </>
   );
 }
