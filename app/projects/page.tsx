@@ -1,5 +1,5 @@
 import { Project, allProjects } from 'contentlayer/generated';
-import PageHeader from 'app/layouts/PageHeader';
+import PageHeader from 'app/components/PageHeader';
 import ProjectList from 'app/components/Project/ProjectList';
 import { getSortedDataList } from 'app/utils/getData';
 

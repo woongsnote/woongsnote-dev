@@ -8,8 +8,18 @@ interface myLink {
 }
 
 export const Links: myLink[] = [
-  { label: '', bottomLabel: 'Home', href: '/', icon: <AiFillHome /> },
-  { label: 'Blog', bottomLabel: 'Blog', href: '/blog', icon: <AiFillEdit /> },
+  {
+    label: '',
+    bottomLabel: 'Home',
+    href: '/',
+    icon: <AiFillHome />,
+  },
+  {
+    label: 'Blog',
+    bottomLabel: 'Blog',
+    href: '/blog',
+    icon: <AiFillEdit />,
+  },
   {
     label: 'Projects',
     bottomLabel: 'Projects',

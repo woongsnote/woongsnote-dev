@@ -1,7 +1,10 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import BaseLayout from './layouts/BaseLayout';
 import localFont from 'next/font/local';
+import Providers from './components/Providers';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import BottomNav from './components/Nav/BottomNav';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.woongsnote.dev'),
@@ -51,7 +54,14 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${inter.variable}`} suppressHydrationWarning>
       <body>
-        <BaseLayout>{children}</BaseLayout>
+        <Providers>
+          <Header />
+          <main className="mx-auto pb-28 px-2 relative max-w-2xl md:px-0 md:pb-16">
+            {children}
+          </main>
+          <Footer />
+          <BottomNav />
+        </Providers>
       </body>
     </html>
   );
