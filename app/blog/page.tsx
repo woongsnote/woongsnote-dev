@@ -1,5 +1,5 @@
 import { Post, allPosts } from 'contentlayer/generated';
-import PageHeader from 'app/layouts/PageHeader';
+import PageHeader from 'app/components/PageHeader';
 import PostList from 'app/components/Post/PostList';
 import { getSortedDataList } from 'app/utils/getData';
 
