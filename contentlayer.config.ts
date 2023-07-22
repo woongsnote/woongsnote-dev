@@ -1,4 +1,8 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from 'contentlayer/source-files';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypePrettyCode from 'rehype-pretty-code';
@@ -32,6 +36,13 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
+const Tag = defineNestedType(() => ({
+  name: 'Tag',
+  fields: {
+    title: { type: 'string', required: true },
+  },
+}));
+
 export const Project = defineDocumentType(() => ({
   name: 'Project',
   filePathPattern: `projects/*.mdx`,
@@ -56,6 +67,11 @@ export const Project = defineDocumentType(() => ({
       type: 'string',
       description: 'The coverImage of the project',
       required: true,
+    },
+    tags: {
+      type: 'list',
+      description: 'The tags of the project',
+      of: Tag,
     },
   },
   computedFields: {
