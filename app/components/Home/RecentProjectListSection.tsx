@@ -12,7 +12,7 @@ const RecentProjectListSection = (): React.ReactElement => {
   );
 
   return (
-    <section className="mt-10">
+    <section className="mt-8">
       <MainSectionHeader
         title={'최신 프로젝트'}
         href={'/projects'}
