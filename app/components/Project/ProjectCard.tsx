@@ -7,26 +7,33 @@ const ProjectCard = ({
   coverImage,
   title,
   description,
+  tags,
 }: Project): React.ReactElement => {
   return (
     <Link
       href={`/projects/${slug}`}
-      className="card relative h-64 rounded-lg overflow-hidden shadow-md hover:scale-105"
+      className="overflow-hidden shadow-md  rounded-lg border hover:scale-105 transition duration-200"
     >
-      <Image
-        width={600}
-        height={100}
-        src={coverImage}
-        priority
-        alt="Project Description"
-        className="object-cover overflow-hidden"
-      />
-      <div className="card-content absolute bottom-0 left-0 p-4 w-full bg-black bg-opacity-60 text-white rounded-b-lg">
-        <h3 className="text-xl font-semibold">{title}</h3>
-        <p className="mt-1">{description}</p>
-      </div>
+      <article className="flex flex-col">
+        <Image
+          src={coverImage}
+          alt={title}
+          priority
+          width={600}
+          height={200}
+          className="h-48 object-center"
+        />
+        <h3 className="pl-2 pt-1 border-t font-semibold">{title}</h3>
+        <p className="pl-2 text-sm">{description}</p>
+        <div className="flex flex-row gap-2 p-2">
+          {tags?.map((tag) => (
+            <span key={tag._id} className="border rounded-lg p-1 text-xs">
+              {tag.title}
+            </span>
+          ))}
+        </div>
+      </article>
     </Link>
-    
   );
 };
 
