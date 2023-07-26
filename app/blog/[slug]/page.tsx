@@ -4,7 +4,9 @@ import { notFound } from 'next/navigation';
 import format from 'date-fns/format';
 
 interface Props {
-  params: { slug: string };
+  params: {
+    slug: string;
+  };
 }
 
 export const generateStaticParams = async () => {
@@ -28,9 +30,10 @@ export default function PostPage({ params }: Props) {
 
   return (
     <>
-      <time className="text-sm">
-        {format(new Date(post.date), 'yyyy년 MM월 dd일')}
-      </time>
+      <div className="flex flex-row justify-between items-center py-2 text-sm">
+        <time>{format(new Date(post.date), 'yyyy년 MM월 dd일')}</time>
+        <span>{post.readingTime ? `${post.readingTime.text}` : ''}</span>
+      </div>
       <h1 className="mb-2">{post.title}</h1>
       <p className="text-xl my-0">{post.description}</p>
       <hr className="my-4" />

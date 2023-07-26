@@ -6,6 +6,14 @@ import {
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypePrettyCode from 'rehype-pretty-code';
+import readingTime from 'reading-time';
+
+const Tag = defineNestedType(() => ({
+  name: 'Tag',
+  fields: {
+    title: { type: 'string', required: true },
+  },
+}));
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -27,19 +35,21 @@ export const Post = defineDocumentType(() => ({
       description: 'The description of the post',
       required: true,
     },
+    tags: {
+      type: 'list',
+      description: 'The tags of the project',
+      of: Tag,
+    },
   },
   computedFields: {
+    readingTime: {
+      type: 'json',
+      resolve: (doc) => readingTime(doc.body.raw),
+    },
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
-  },
-}));
-
-const Tag = defineNestedType(() => ({
-  name: 'Tag',
-  fields: {
-    title: { type: 'string', required: true },
   },
 }));
 
