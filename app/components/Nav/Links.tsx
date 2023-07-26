@@ -13,18 +13,18 @@ export const Links: LinkItem[] = [
     label: '',
     bottomLabel: 'Home',
     href: '/',
-    icon: <AiFillHome/> ,
+    icon: <AiFillHome />,
   },
   {
     label: 'Blog',
     bottomLabel: 'Blog',
     href: '/blog',
-    icon: <AiFillEdit/>,
+    icon: <AiFillEdit />,
   },
   {
     label: 'Projects',
     bottomLabel: 'Projects',
     href: '/projects',
-    icon: <AiFillDatabase/>,
+    icon: <AiFillDatabase />,
   },
 ];
