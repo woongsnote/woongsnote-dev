@@ -1,13 +1,13 @@
 import { AiFillHome, AiFillEdit, AiFillDatabase } from 'react-icons/ai';
 
-interface myLink {
+interface LinkItem {
   label: string;
   bottomLabel: string;
   href: string;
   icon: JSX.Element;
 }
 
-export const Links: myLink[] = [
+export const Links: LinkItem[] = [
   {
     label: '',
     bottomLabel: 'Home',
