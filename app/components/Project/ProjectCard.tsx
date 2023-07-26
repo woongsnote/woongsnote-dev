@@ -12,7 +12,7 @@ const ProjectCard = ({
   return (
     <Link
       href={`/projects/${slug}`}
-      className="overflow-hidden shadow-md  rounded-lg border hover:scale-105 transition duration-200"
+      className="overflow-hidden shadow-md rounded-lg border md:hover:scale-105 transition duration-200"
     >
       <article className="flex flex-col">
         <Image
