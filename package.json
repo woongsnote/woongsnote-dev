@@ -45,8 +45,11 @@
     "typescript": "^5.1.6"
   },
   "lint-staged": {
-    "*.tsx": "eslint --fix",
-    "*.ts": "eslint --fix"
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "packageManager": "yarn@3.6.1"
 }
