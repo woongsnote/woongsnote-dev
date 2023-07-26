@@ -1,10 +1,11 @@
+import { IconType } from 'react-icons';
 import { AiFillHome, AiFillEdit, AiFillDatabase } from 'react-icons/ai';
 
 interface LinkItem {
   label: string;
   bottomLabel: string;
   href: string;
-  icon: JSX.Element;
+  icon: React.ReactElement<IconType>;
 }
 
 export const Links: LinkItem[] = [
@@ -12,18 +13,18 @@ export const Links: LinkItem[] = [
     label: '',
     bottomLabel: 'Home',
     href: '/',
-    icon: <AiFillHome />,
+    icon: <AiFillHome/> ,
   },
   {
     label: 'Blog',
     bottomLabel: 'Blog',
     href: '/blog',
-    icon: <AiFillEdit />,
+    icon: <AiFillEdit/>,
   },
   {
     label: 'Projects',
     bottomLabel: 'Projects',
     href: '/projects',
-    icon: <AiFillDatabase />,
+    icon: <AiFillDatabase/>,
   },
 ];
