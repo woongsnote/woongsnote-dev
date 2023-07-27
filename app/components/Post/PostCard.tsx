@@ -22,7 +22,7 @@ const PostCard = ({
             <p className="flex flex-row gap-2 p-2">
               {tags?.map((tag) => (
                 <span
-                  key={tag._id}
+                  key={tag.title}
                   className="border rounded-lg p-1 text-xs text-gray-700 dark:text-gray-300"
                 >
                   {tag.title}

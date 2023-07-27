@@ -27,7 +27,7 @@ const ProjectCard = ({
         <p className="pl-2 text-sm">{description}</p>
         <div className="flex flex-row gap-2 p-2">
           {tags?.map((tag) => (
-            <span key={tag._id} className="border rounded-lg p-1 text-xs">
+            <span key={tag.title} className="border rounded-lg p-1 text-xs">
               {tag.title}
             </span>
           ))}
