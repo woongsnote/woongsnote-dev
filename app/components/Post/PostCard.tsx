@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Post } from 'contentlayer/generated';
 import format from 'date-fns/format';
+import TagItem from '../TagItem';
 
 const PostCard = ({
   slug,
@@ -19,16 +20,11 @@ const PostCard = ({
             {description}
           </p>
           <div className="flex flex-row items-center justify-between">
-            <p className="flex flex-row gap-2 p-2">
+            <div className="flex flex-row gap-2 p-2">
               {tags?.map((tag) => (
-                <span
-                  key={tag.title}
-                  className="border rounded-lg p-1 text-xs text-gray-700 dark:text-gray-300"
-                >
-                  {tag.title}
-                </span>
+                <TagItem key={tag.title} title={tag.title} />
               ))}
-            </p>
+            </div>
             <p className="text-xs md:text-sm text-right text-gray-700 dark:text-gray-300">
               <time>{format(new Date(date), 'yyyy년 MM월 dd일')}</time>
               <span> | {readingTime.text}</span>
