@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Project } from 'contentlayer/generated';
+import TagItem from '../TagItem';
 
 const ProjectCard = ({
   slug,
@@ -26,11 +27,7 @@ const ProjectCard = ({
         <h3 className="pl-2 pt-1 border-t font-semibold">{title}</h3>
         <p className="pl-2 text-sm">{description}</p>
         <div className="flex flex-row gap-2 p-2">
-          {tags?.map((tag) => (
-            <span key={tag.title} className="border rounded-lg p-1 text-xs">
-              {tag.title}
-            </span>
-          ))}
+          {tags?.map((tag) => <TagItem key={tag.title} title={tag.title} />)}
         </div>
       </article>
     </Link>
