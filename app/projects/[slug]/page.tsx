@@ -14,9 +14,23 @@ export const generateStaticParams = async () => {
 export const generateMetadata = ({ params }: Props) => {
   const project = allProjects.find((project) => project.slug === params.slug);
   if (!project) throw new Error(`Project not found for slug: ${params.slug}`);
+  const tags = project.tags?.map((tag) => tag.title).join(', ');
   return {
     title: project.title,
     description: project.description,
+    keywords: tags,
+    openGraph: {
+      title: project.title,
+      description: project.description,
+      images: [
+        {
+          url: project.coverImage,
+          width: 800,
+          height: 480,
+          alt: project.title,
+        },
+      ],
+    },
   };
 };
 
