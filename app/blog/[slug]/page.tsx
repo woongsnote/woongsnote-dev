@@ -16,9 +16,15 @@ export const generateStaticParams = async () => {
 export const generateMetadata = ({ params }: Props) => {
   const post = allPosts.find((post) => post.slug === params.slug);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
+  const tags = post.tags?.map((tag) => tag.title).join(', ');
   return {
     title: post.title,
     description: post.description,
+    keywords: tags,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+    },
   };
 };
 
