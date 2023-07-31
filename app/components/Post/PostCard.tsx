@@ -31,7 +31,7 @@ const PostCard = ({
             </p>
             <p className="text-xs md:text-sm text-right text-gray-700 dark:text-gray-300">
               <time>{format(new Date(date), 'yyyy년 MM월 dd일')}</time>
-              <span> ( {readingTime.text} )</span>
+              <span> | {readingTime.text}</span>
             </p>
           </div>
         </div>
