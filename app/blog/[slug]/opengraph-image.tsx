@@ -1,4 +1,3 @@
-import { allPosts } from 'contentlayer/generated';
 import { ImageResponse } from 'next/server';
 
 export const runtime = 'edge';
@@ -12,7 +11,6 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function Image({ params }: { params: { slug: string } }) {
-  const post = allPosts.find((post) => post.slug === params.slug);
   return new ImageResponse(
     (
       <div
@@ -76,7 +74,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
             lineHeight: 1.4,
           }}
         >
-          <span>{post?.title}</span>
+          <span>{params.slug}</span>
         </div>
       </div>
     ),
