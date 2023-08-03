@@ -36,12 +36,14 @@ export default function PostPage({ params }: Props) {
 
   return (
     <>
-      <div className="flex flex-row justify-between items-center py-2 text-sm">
-        <time>{format(new Date(post.date), 'yyyy년 MM월 dd일')}</time>
-        <span>{post.readingTime ? `${post.readingTime.text}` : ''}</span>
+      <hgroup>
+        <h1 className="mb-2">{post.title}</h1>
+        <h2 className="my-0">{post.description}</h2>
+      </hgroup>
+      <div className="flex flex-row justify-end items-center py-2 text-sm gap-1">
+        <time>{format(new Date(post.date), 'yyyy년 MM월 dd일')} </time>
+        <span>{post.readingTime ? `|  ${post.readingTime.text}` : ''}</span>
       </div>
-      <h1 className="mb-2">{post.title}</h1>
-      <p className="text-xl my-0">{post.description}</p>
       <hr className="my-4" />
       <MDXContent />
     </>
