@@ -12,7 +12,7 @@ export default function Blog(): React.ReactElement {
 
   return (
     <>
-      <PageHeader title="Blog" description="학습한 내용들을 기록합니다." />
+      <PageHeader title="Blog" description="학습한 지식들을 기록합니다." />
       <PostList posts={posts} />
     </>
   );

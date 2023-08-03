@@ -15,10 +15,12 @@ const PostCard = ({
     <Link href={`/blog/${slug}`} className="group">
       <article className="py-3 px-2 hover:text-indigo-500 shadow-md rounded-lg dark:border-2 dark:border-gray-500 md:group-hover:scale-105 transition-transform duration-200 ease-out flex flex-col md:gap-4">
         <div className="flex justify-center flex-col">
-          <h2 className="text-2xl font-bold md:text-2xl">{title}</h2>
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            {description}
-          </p>
+          <hgroup>
+            <h1 className="text-lg md:text-2xl font-bold">{title}</h1>
+            <h2 className="text-xs md:text-sm text-gray-700 dark:text-gray-300">
+              {description}
+            </h2>
+          </hgroup>
           <div className="flex flex-row items-center justify-between">
             <div className="flex flex-row gap-2 p-2">
               {tags?.map((tag) => (
