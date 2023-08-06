@@ -43,20 +43,21 @@ export default function ProjectPage({ params }: Props) {
 
   return (
     <>
-      <h1 className="mb-1">{project.title}</h1>
-      <p className="mt-0 mb-2 text-gray-700 dark:text-gray-300">
-        {project.description}
-      </p>
-      <div className="max-h-72 h-auto mx-auto w-full relative rounded-xl items-center block justify-center">
-        <Image
-          src={project.coverImage}
-          alt="coverImage"
-          priority
-          width={300}
-          height={200}
-          className="rounded-md w-auto h-auto object-contain mx-auto my-6"
-        />
-      </div>
+      <hgroup>
+        <h1>{project.title}</h1>
+        <h2 className="text-gray-600 dark:text-gray-300">
+          {project.description}
+        </h2>
+      </hgroup>
+
+      <Image
+        src={project.coverImage}
+        alt="coverImage"
+        width={512}
+        height={380}
+        className="rounded-lg w-auto h-auto object-cover shadow-md"
+      />
+
       <MDXContent />
     </>
   );
