@@ -44,7 +44,7 @@ export default function PostPage({ params }: Props) {
         <time>{format(new Date(post.date), 'yyyy년 MM월 dd일')} </time>
         <span>{post.readingTime ? `|  ${post.readingTime.text}` : ''}</span>
       </div>
-      <hr className="my-4" />
+      <hr />
       <MDXContent />
     </>
   );
