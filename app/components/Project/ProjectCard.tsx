@@ -21,8 +21,8 @@ const ProjectCard = ({
           alt={title}
           priority
           width={600}
-          height={200}
-          className="h-48 object-center"
+          height={600}
+          className="h-72 object-fit"
         />
         <h3 className="pl-2 pt-1 border-t font-semibold">{title}</h3>
         <p className="pl-2 text-sm">{description}</p>
