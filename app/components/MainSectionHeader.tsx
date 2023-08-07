@@ -17,7 +17,7 @@ const MainSectionHeader = ({
       <Link
         aria-label={`go to ${label} page`}
         href={href}
-        className="text-lg lg:text-2xl text-indigo-500 dark:text-indigo-400 font-bold"
+        className="text-lg lg:text-2xl hover:text-indigo-500 hover:dark:text-indigo-400 font-bold"
       >
         {label}
       </Link>
