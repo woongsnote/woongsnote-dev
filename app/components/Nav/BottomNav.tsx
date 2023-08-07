@@ -6,7 +6,7 @@ import { Links } from './Links';
 const BottomNav = (): React.ReactElement => {
   const pathname = usePathname();
   return (
-    <div className="sm:hidden">
+    <div className="md:hidden">
       <nav className="fixed bottom-0 w-full border-t">
         <div className="mx-auto flex h-14 items-center justify-around bg-white dark:bg-black">
           {Links.map(({ bottomLabel, href, icon }) => (
