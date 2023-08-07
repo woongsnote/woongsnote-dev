@@ -14,7 +14,7 @@ const CardHeader = ({
       priority
       width={600}
       height={600}
-      className="h-80 object-center w-auto"
+      className="rounded-t-lg object-cover h-80"
     />
   );
 };
