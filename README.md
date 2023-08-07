@@ -1,51 +1,44 @@
-# 기술 블로그 구현
+# 기술 블로그
 
-## 개요
+이 프로젝트는 **프론트엔드 개발**에 관해 배운 지식을 공유하기 위해 만든 블로그입니다.
 
-`Next.js`와 `TypeScript`를 사용해서 직접 구현한 기술 블로그
+`Next.js`를 Framework로, `TypeScript`를 언어로, `Tailwind CSS`를 CSS Framework로, `ContentLayer`를 컨텐츠 관리 도구로 사용했습니다.
 
-## 개발 내용
+`content`폴더의 내용을 교체하면 같은 UI를 갖는 새로운 블로그를 만들 수 있습니다. `posts`와 `projects`로 구현한 폴더 구조가 바뀌는 경우, `contentlayer.config.ts` 파일의 수정이 필요합니다. 수정하는 방법은 [공식 문서](https://www.contentlayer.dev/docs/getting-started-cddd76b7#2-define-content-schema)에 잘 설명되어 있습니다.
 
-### 1. 개발 기간
-
-- 2022.11 - ing
-
-### 2. 기술 스택
+## ⚒️ 기술 스택
 
 - Framework: `Next.js`
 - Styling: `Tailwind CSS`
 - Content: `MDX`, `ContentLayer`
 - Deploy: `Vercel`
 
-### 3. 구현 기능
+## 🗃️ 특징
 
-- `Tailwind CSS`를 사용해서 반응형 네비게이션을 구현했습니다.
+- `Light` / `Dark` 모드 토글
+- 반응형 네비게이션
+  - `width < 768px`: 하단 네비게이션 적용
+  - `width >= 768px`: 상단 네비게이션 적용
+- `SEO` 적용
+- `PWA` 지원
 
-  - **태블릿 이상**: 화면 상단에 네비게이션이 표시됩니다.
+## 🖥️ 미리보기
 
-  - **모바일**: 앱 스타일로 하단 네비게이션을 적용했습니다.
+![Web](https://github.com/woongsnote/woongsnote-dev/assets/83802168/d71b047c-d139-4f0b-b632-536b797c25cf)
 
-- `ContentLayer`를 이용하여 `mdx`로 작성한 게시글을 웹사이트에서 볼 수 있도록 구현했습니다.
+![Mobile](https://github.com/woongsnote/woongsnote-dev/assets/83802168/dfafb7fe-e75a-42c5-a31b-8a1f018609ae)
 
-- `next-themes`를 사용해서 **다크모드**를 적용했습니다.
+## 💡 성장 경험
 
-- `Vercel`을 통해 프로젝트를 **배포**했습니다.
+### `ContentLayer`적용
 
-### 4. 트러블 슈팅
+- `MDX`로 작성한 게시글을 보여줄 방법을 고민하던 중, `ContentLayer`라는 컨텐츠 관리 도구를 알게 되었습니다. `Next.js` 프로젝트에 적용하는 방법이 공식 홈페이지에 잘 설명되어 있어, 이를 토대로 **블로그**에 적용했습니다.
 
-- `MDX` 파일 변환
-  `MDX`로 작성한 게시글을 보여줄 방법을 고민하던 중, `ContentLayer`를 알게 되었습니다. `Content made easy for developers` 라는 공식 홈페이지의 문구대로 적용 방법이 간단하고, `build time`도 빠르고, `Next.js`도 지원해서, 블로그에 적용했습니다.
+### `App Router`적용
 
-- Next.js의 버전 업(12 → 13)에 따른 디렉토리 구조의 변화
-  초기 블로그는 `pages` 디렉토리 구조로 구현 했습니다. 이후 Next 13 버전과 함께 `App Router`가 등장했습니다. 초기에는 `Experimental` 상태여서 도입을 고려만 했었고, `13.4`버전부터 `Stable`되어, 이를 블로그에 적용했습니다.
+- 처음 블로그를 만들기 시작했을 때는 Next.js의 버전이 12버전이어서 Pages Router 방식만 존재했습니다. Next.js의 Major 버전이 **12**버전에서 **13**버전으로 업데이트되면서, App Router 방식이 등장했습니다. 초기에는 공식 홈페이지에서 이 방식을 production에 사용하는 것을 권장하지 않았기 때문에, App Router 방식으로 변경하는 방법에 관해 학습만 진행했습니다. **13.4** 버전에서부터 App Router 방식이 안정적으로 변경되었고, 이를 **블로그**에 적용했습니다.
 
-### 5. 참고 자료
+## 📜 참고 자료
 
 - [NextJS 공식 문서](https://nextjs.org/docs)
 - [ContentLayer 공식 문서](https://www.contentlayer.dev)
-
-## 구현 결과
-
-[서비스 링크](https://www.woongsnote.dev)
-
-![미리보기](https://github.com/woongsnote/woongsnote-dev/assets/83802168/c8c93375-e320-4002-94fd-344103a40e2a)
