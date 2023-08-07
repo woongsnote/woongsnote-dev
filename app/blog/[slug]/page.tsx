@@ -2,6 +2,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 import format from 'date-fns/format';
+import DetailHeaders from 'app/components/DetailHeaders';
 
 interface Props {
   params: {
@@ -36,10 +37,7 @@ export default function PostPage({ params }: Props) {
 
   return (
     <>
-      <hgroup>
-        <h1 className="mb-2">{post.title}</h1>
-        <h2 className="my-0">{post.description}</h2>
-      </hgroup>
+      <DetailHeaders title={post.title} description={post.description} />
       <div className="flex flex-row justify-end items-center py-2 text-sm gap-1">
         <time>{format(new Date(post.date), 'yyyy년 MM월 dd일')} </time>
         <span>{post.readingTime ? `|  ${post.readingTime.text}` : ''}</span>
