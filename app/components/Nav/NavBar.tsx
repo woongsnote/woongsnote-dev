@@ -7,7 +7,7 @@ const NavBar = (): React.ReactElement => {
 
   return (
     <nav className="flex items-center justify-center mx-2">
-      <ul className="hidden sm:flex gap-4">
+      <ul className="hidden md:flex gap-4">
         {Links.map(({ label, href }) => (
           <li key={label}>
             <Link
