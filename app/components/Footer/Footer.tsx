@@ -1,4 +1,4 @@
-const Footer = (): React.ReactElement => {
+export default function Footer(): React.ReactElement {
   return (
     <footer className="text-black-400 w-full left-0 bottom-14 py-2 fixed md:bottom-0 bg-white dark:bg-[#111111]">
       <div className="mx-auto flex flex-row items-center justify-center max-w-5xl">
@@ -10,6 +10,4 @@ const Footer = (): React.ReactElement => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

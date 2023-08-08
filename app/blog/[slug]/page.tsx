@@ -1,8 +1,7 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
-import format from 'date-fns/format';
-import DetailHeaders from 'app/components/DetailHeaders';
+import { DetailPageHeader, DetailPageInfo } from 'app/components/Detail';
 
 interface Props {
   params: {
@@ -37,11 +36,11 @@ export default function PostPage({ params }: Props) {
 
   return (
     <>
-      <DetailHeaders title={post.title} description={post.description} />
-      <div className="flex flex-row justify-end items-center py-2 text-sm gap-1">
-        <time>{format(new Date(post.date), 'yyyy년 MM월 dd일')} </time>
-        <span>{post.readingTime ? `|  ${post.readingTime.text}` : ''}</span>
-      </div>
+      <DetailPageHeader title={post.title} description={post.description} />
+      <DetailPageInfo
+        date={post.date}
+        readingTimeText={post.readingTime.text}
+      />
       <hr />
       <MDXContent />
     </>

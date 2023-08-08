@@ -1,18 +1,25 @@
 import { Project } from 'contentlayer/generated';
-import ProjectCard from './ProjectCard';
+import { Card } from '../Card';
 
 interface ProjectListProps {
   projects: Project[];
 }
 
-const ProjectList = ({ projects }: ProjectListProps): React.ReactElement => {
+export default function ProjectList({
+  projects,
+}: ProjectListProps): React.ReactElement {
   return (
     <div className="grid gap-x-8 gap-y-4 md:grid-cols-2 pt-6">
       {projects.map((project) => (
-        <ProjectCard key={project._id} {...project} />
+        <Card
+          key={project._id}
+          slug={`/projects/${project.slug}`}
+          title={project.title}
+          description={project.description}
+          coverImage={project.coverImage}
+          tags={project.tags}
+        />
       ))}
     </div>
   );
-};
-
-export default ProjectList;
+}

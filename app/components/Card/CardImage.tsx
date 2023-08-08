@@ -1,12 +1,14 @@
 import Image from 'next/image';
 
-const CardHeader = ({
-  coverImage,
-  title,
-}: {
+interface CardImageProps {
   coverImage: string;
   title: string;
-}) => {
+}
+
+export default function CardImage({
+  coverImage,
+  title,
+}: CardImageProps): React.ReactElement {
   return (
     <Image
       src={coverImage}
@@ -14,9 +16,7 @@ const CardHeader = ({
       priority
       width={600}
       height={600}
-      className="rounded-t-lg object-cover h-80"
+      className="object-cover h-80"
     />
   );
-};
-
-export default CardHeader;
+}

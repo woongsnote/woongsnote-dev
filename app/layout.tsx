@@ -2,9 +2,9 @@ import './globals.css';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Providers from './components/Providers';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import BottomNav from './components/Nav/BottomNav';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { BottomNav } from './components/Nav';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.woongsnote.dev'),
@@ -56,7 +56,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <Header />
-          <main className="mx-auto pb-28 px-2 max-w-5xl relative md:px-4 md:pb-16">
+          <main className="mx-auto pb-28 px-2 max-w-5xl relative md:pb-16">
             {children}
           </main>
           <Footer />

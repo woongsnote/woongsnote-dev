@@ -6,11 +6,11 @@ interface HeaderProps {
   label: string;
 }
 
-const MainSectionHeader = ({
+export default function MainSectionHeader({
   title,
   href,
   label,
-}: HeaderProps): React.ReactElement => {
+}: HeaderProps): React.ReactElement {
   return (
     <div className="flex flex-row justify-between items-center">
       <h2 className="text-2xl my-4 font-bold">{title}</h2>
@@ -23,6 +23,4 @@ const MainSectionHeader = ({
       </Link>
     </div>
   );
-};
-
-export default MainSectionHeader;
+}
