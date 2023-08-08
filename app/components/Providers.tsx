@@ -6,8 +6,8 @@ interface ProvidersProps {
   children: React.ReactNode;
 }
 
-const Providers = ({ children }: ProvidersProps): React.ReactElement => {
+export default function Providers({
+  children,
+}: ProvidersProps): React.ReactElement {
   return <ThemeProvider attribute="class">{children}</ThemeProvider>;
-};
-
-export default Providers;
+}

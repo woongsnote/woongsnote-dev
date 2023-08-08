@@ -1,6 +1,6 @@
 import { Post, allPosts } from 'contentlayer/generated';
-import PageHeader from 'app/components/PageHeader';
-import PostList from 'app/components/Post/PostList';
+import { PageHeader } from 'app/components/Page';
+import { PostList } from 'app/components/Post';
 import { getSortedDataList } from 'app/utils/getData';
 
 export const metadata = {

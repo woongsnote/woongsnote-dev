@@ -1,8 +1,7 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allProjects } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import DetailHeaders from 'app/components/DetailHeaders';
+import { DetailPageHeader, DetailPageImage } from 'app/components/Detail';
 
 interface Props {
   params: { slug: string };
@@ -44,14 +43,11 @@ export default function ProjectPage({ params }: Props) {
 
   return (
     <>
-      <DetailHeaders title={project.title} description={project.description} />
-      <Image
-        src={project.coverImage}
-        alt="coverImage"
-        width={512}
-        height={380}
-        className="rounded-lg w-auto h-auto object-cover shadow-md mx-auto"
+      <DetailPageHeader
+        title={project.title}
+        description={project.description}
       />
+      <DetailPageImage coverImage={project.coverImage} />
       <MDXContent />
     </>
   );
