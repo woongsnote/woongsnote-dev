@@ -24,9 +24,13 @@
 
 ## 🖥️ 미리보기
 
+- Desktop
+
 ![Web](https://github.com/woongsnote/woongsnote-dev/assets/83802168/d71b047c-d139-4f0b-b632-536b797c25cf)
 
-![Mobile](https://github.com/woongsnote/woongsnote-dev/assets/83802168/dfafb7fe-e75a-42c5-a31b-8a1f018609ae)
+- Mobile
+
+![Mobile](https://github.com/woongsnote/woongsnote-dev/assets/83802168/0e32014c-8a36-4d03-9337-cd1656f33d93)
 
 ## 💡 성장 경험
 
