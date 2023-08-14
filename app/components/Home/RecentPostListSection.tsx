@@ -18,7 +18,6 @@ export default function RecentPostListSection(): React.ReactElement {
         href={POST_SECTION_LINK}
         label={POST_SECTION_LABEL}
       />
-      <hr />
       <PostList posts={posts} />
     </section>
   );

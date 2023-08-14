@@ -8,6 +8,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        darkBlack: '#121212',
+      },
       fontFamily: {
         sans: ['var(--font-inter)'],
       },

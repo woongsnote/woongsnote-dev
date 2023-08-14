@@ -16,7 +16,7 @@ export default function CardImage({
       priority
       width={600}
       height={600}
-      className="object-cover h-80"
+      className="object-cover w-auto h-80 rounded-t-md"
     />
   );
 }
