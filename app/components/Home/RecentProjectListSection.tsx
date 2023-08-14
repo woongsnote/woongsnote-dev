@@ -21,7 +21,6 @@ export default function RecentProjectListSection(): React.ReactElement {
         href={PROJECT_SECTION_LINK}
         label={PROJECT_SECTION_LABEL}
       />
-      <hr />
       <ProjectList projects={recentProjects} />
     </section>
   );

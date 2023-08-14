@@ -8,7 +8,7 @@ const BottomNav = (): React.ReactElement => {
   return (
     <div className="md:hidden">
       <nav className="fixed bottom-0 w-full border-t">
-        <div className="mx-auto flex h-14 items-center justify-around bg-white dark:bg-black">
+        <div className="mx-auto flex h-14 items-center justify-around bg-white dark:bg-darkBlack">
           {Links.map(({ bottomLabel, href, icon }) => (
             <Link
               key={bottomLabel}
