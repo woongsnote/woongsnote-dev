@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { BsSunFill, BsMoonFill } from 'react-icons/bs';
 
-export default function DarkModeToggleButton(): React.ReactNode {
+export default function DarkModeToggleButton() {
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
 

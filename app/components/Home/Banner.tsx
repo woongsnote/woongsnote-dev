@@ -1,4 +1,4 @@
-export default function Banner(): React.ReactElement {
+export default function Banner() {
   return (
     <div className="text-center my-6">
       <h1 className="text-3xl md:text-5xl mb-2 font-extrabold flex justify-center items-center">

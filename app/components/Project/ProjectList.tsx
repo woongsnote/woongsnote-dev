@@ -5,9 +5,7 @@ interface ProjectListProps {
   projects: Project[];
 }
 
-export default function ProjectList({
-  projects,
-}: ProjectListProps): React.ReactElement {
+export default function ProjectList({ projects }: ProjectListProps) {
   return (
     <div className="grid gap-x-8 gap-y-4 md:grid-cols-2 pt-6">
       {projects.map((project) => (
