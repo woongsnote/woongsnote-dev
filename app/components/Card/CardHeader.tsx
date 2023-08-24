@@ -1,14 +1,13 @@
 import Image from 'next/image';
 
-interface CardImageProps {
+interface CardHeaderProps {
   coverImage: string;
   title: string;
 }
 
-export default function CardImage({
-  coverImage,
-  title,
-}: CardImageProps): React.ReactElement {
+export default function CardHeader({ coverImage, title }: CardHeaderProps) {
+  if (coverImage === '') return;
+
   return (
     <Image
       src={coverImage}
