@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Links } from './Links';
 
-const BottomNav = (): React.ReactElement => {
+const BottomNav = () => {
   const pathname = usePathname();
   return (
     <div className="md:hidden">

@@ -1,4 +1,4 @@
-export default function Footer(): React.ReactElement {
+export default function Footer() {
   return (
     <footer className="w-full left-0 bottom-14 py-2 fixed md:bottom-0 bg-white dark:bg-darkBlack text-center">
       <p>

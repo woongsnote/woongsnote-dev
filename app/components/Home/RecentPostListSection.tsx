@@ -8,7 +8,7 @@ const POST_SECTION_TITLE = '최신 포스트';
 const POST_SECTION_LINK = '/blog';
 const POST_SECTION_LABEL = 'ALL POSTS';
 
-export default function RecentPostListSection(): React.ReactElement {
+export default function RecentPostListSection() {
   const posts: Post[] = getSortedDataList(allPosts, MAX_RECENT_POSTS);
 
   return (

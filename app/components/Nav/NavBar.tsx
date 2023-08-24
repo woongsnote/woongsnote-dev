@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Links } from './Links';
 
-const NavBar = (): React.ReactElement => {
+const NavBar = () => {
   const pathname = usePathname();
 
   return (

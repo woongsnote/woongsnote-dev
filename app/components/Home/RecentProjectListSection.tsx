@@ -8,7 +8,7 @@ const PROJECT_SECTION_TITLE = '최신 프로젝트';
 const PROJECT_SECTION_LINK = '/projects';
 const PROJECT_SECTION_LABEL = 'ALL PROJECTS';
 
-export default function RecentProjectListSection(): React.ReactElement {
+export default function RecentProjectListSection() {
   const recentProjects: Project[] = getSortedDataList(
     allProjects,
     MAX_RECENT_PROJECTS,
