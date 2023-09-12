@@ -6,7 +6,7 @@ import { getSortedDataList } from 'app/utils/getData';
 const MAX_RECENT_PROJECTS = 2;
 const PROJECT_SECTION_TITLE = '최신 프로젝트';
 const PROJECT_SECTION_LINK = '/projects';
-const PROJECT_SECTION_LABEL = 'ALL PROJECTS';
+const PROJECT_SECTION_LABEL = '모든 프로젝트';
 
 export default function RecentProjectListSection() {
   const recentProjects: Project[] = getSortedDataList(
