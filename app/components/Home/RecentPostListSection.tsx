@@ -4,9 +4,9 @@ import { getSortedDataList } from 'app/utils/getData';
 import MainSectionHeader from './MainSectionHeader';
 
 const MAX_RECENT_POSTS = 2;
-const POST_SECTION_TITLE = '최신 포스트';
+const POST_SECTION_TITLE = '최신 게시글';
 const POST_SECTION_LINK = '/blog';
-const POST_SECTION_LABEL = 'ALL POSTS';
+const POST_SECTION_LABEL = '모든 게시글';
 
 export default function RecentPostListSection() {
   const posts: Post[] = getSortedDataList(allPosts, MAX_RECENT_POSTS);

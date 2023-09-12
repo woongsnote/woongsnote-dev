@@ -1,5 +1,5 @@
 import {
-  Banner,
+  HeroSection,
   RecentPostListSection,
   RecentProjectListSection,
 } from './components/Home';
@@ -7,7 +7,7 @@ import {
 export default function Home() {
   return (
     <>
-      <Banner />
+      <HeroSection />
       <RecentPostListSection />
       <RecentProjectListSection />
     </>

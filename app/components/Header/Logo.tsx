@@ -7,8 +7,8 @@ export default function Logo() {
   return (
     <Link href="/" className="flex flex-row space-x-2 items-center">
       <Image
-        width={40}
-        height={40}
+        width={48}
+        height={48}
         src={'/profile.png'}
         alt="프로필이미지"
         className="rounded-full"

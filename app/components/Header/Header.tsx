@@ -6,7 +6,7 @@ import Logo from './Logo';
 
 export default function Header() {
   return (
-    <header className="sticky left-0 top-0 right-0 z-50 items-center mx-auto bg-white dark:bg-darkBlack max-w-5xl py-1 justify-between flex">
+    <header className="sticky left-0 top-0 z-50 items-center bg-white dark:bg-darkBlack w-full sm:px-10 py-2 justify-between flex shadow-md dark:border-b-2">
       <Logo />
       <div className="flex items-center justify-between">
         <NavBar />
