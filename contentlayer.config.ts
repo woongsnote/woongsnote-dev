@@ -93,7 +93,7 @@ export const Project = defineDocumentType(() => ({
 }));
 
 const options = {
-  theme: 'dracula-soft',
+  theme: 'github-dark-dimmed',
 };
 
 export default makeSource({
@@ -101,6 +101,6 @@ export default makeSource({
   documentTypes: [Post, Project],
   mdx: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, options], rehypeHighlight],
+    rehypePlugins: [[rehypePrettyCode, options]],
   },
 });
