@@ -25,6 +25,7 @@ export default function PostList({ posts }: { posts: Post[] }) {
             date={post.date}
             tags={post.tags}
             readingTimeText={post.readingTime.text}
+            coverImage={post.coverImage}
           />
         ))}
       </div>
