@@ -4,7 +4,6 @@ import {
   makeSource,
 } from 'contentlayer/source-files';
 import remarkGfm from 'remark-gfm';
-import rehypeHighlight from 'rehype-highlight';
 import rehypePrettyCode from 'rehype-pretty-code';
 import readingTime from 'reading-time';
 
@@ -37,8 +36,13 @@ export const Post = defineDocumentType(() => ({
     },
     tags: {
       type: 'list',
-      description: 'The tags of the project',
+      description: 'The tags of the post',
       of: Tag,
+    },
+    coverImage: {
+      type: 'string',
+      description: 'The coverImage of the post',
+      required: false,
     },
   },
   computedFields: {
