@@ -1,0 +1,261 @@
+---
+title: QR Quasar
+description: react-qr-code를 활용한 QR 코드 생성기
+coverImage: https://github.com/woongsnote/woongsnote-dev/assets/83802168/eac29f60-c59c-44a3-8ed0-5dbc679f5b66
+date: 2023-09-04
+tags:
+  - title: Next.js
+  - title: react-qr-code
+---
+
+## 개요
+
+QR 코드 생성기를 구현했던 후기를 작성해보려 한다.
+Next.js와 TypeScript를 사용하여 Data를 입력하고 QR 코드를 생성하며, 생성된 QR 코드를 다운로드할 수 있는 웹 애플리케이션을 개발하는 방법이다.
+
+
+## QR 코드 소개
+
+QR 코드는 **Quick Response Code**의 약자로, 빠르고 쉽게 정보를 전달하는 데 사용되는 2차원 바코드다.
+이번 프로젝트에서는 Next.js와 TypeScript를 사용하여 QR 코드 생성기를 만들어보려고 한다.
+사용자가 입력한 데이터를 기반으로 QR 코드를 생성하고, 생성된 코드를 이미지로 저장할 수 있는 웹 애플리케이션을 구현할 것이다.
+
+## 프로젝트 구현
+
+1. 프로젝트 생성
+    
+    - 아래 명령어로 프로젝트를 생성한다. 
+
+    ```bash
+    npx create-next-app@latest
+    ```
+
+2. 패키지 설치
+
+    - 프로젝트 구현에 필요한 패키지를 설치한다.
+
+    ```bash
+    npm install react-qr-code file-saver @types/file-saver framer-motion
+    ```
+
+3. UI 구성
+
+    - 프로젝트의 UI를 구성하기 위해, 먼저, **제목** 부분과, **QR 생성기** 부분으로 나눕니다.
+    - QR 생성기에 입력 필드, QR 코드 생성 버튼, 그리고 QR 코드 표시 영역을 추가합니다.
+
+    ```tsx
+    // app/page.tsx
+
+    import QRGenerator from "@/components/QRGenerator";
+    import Title from "@/components/Title";
+
+    export default function Home() {
+      return (
+        <main>
+          <Title />
+          <QRGenerator />
+        </main>
+      );
+    }
+    ```
+
+4. 데이터 입력 컴포넌트 구현
+
+    - QR 코드에 들어갈 내용을 입력하기 위한 입력 필드를 구현합니다.
+
+    ```tsx
+    interface QRCodeInputProps {
+      value: string;
+      onChange: (value: string) => void;
+    }
+
+    const QRCodeInput = ({ value, onChange }: QRCodeInputProps) => {
+      return (
+        <input
+          type="text"
+          value={value}
+          className="border w-full md:w-3/4 mx-auto px-4 rounded-lg text-lg mt-4"
+          placeholder="Enter Text"
+          onChange={(e) => onChange(e.target.value)}
+          autoFocus
+        />
+      );
+    };
+
+    export default QRCodeInput;
+    ```
+
+5. QR 코드 생성 컴포넌트 구현
+
+    - QR 코드 생성을 위해 react-qr-code 라이브러리를 사용해서 구현했다. 
+
+    ```tsx
+    "use client"; // useState 사용을 위해, client component 사용
+
+    import { useState } from "react";
+    import saveAs from "file-saver";
+    import QRCode from "react-qr-code";
+    import { motion } from "framer-motion";
+    import QRCodeInput from "./QRCodeInput";
+    import Button from "./Button";
+
+    const QRGenerator = () => {
+      const [qrData, setQrData] = useState<string>("");
+      const [isGenerated, setIsGenerated] = useState<boolean>(false);
+
+      const handleInputChange = (value: string) => {
+        setQrData(value);
+        setIsGenerated(false);
+      };
+
+      const generateQRCode = () => {
+        if (qrData) {
+          setIsGenerated(true);
+        }
+      };
+
+      return (
+        <>
+          <QRCodeInput value={qrData} onChange={handleInputChange} />
+          <Button
+            onClick={generateQRCode}
+            disabled={qrData === ""}
+            title="Generate QR Code"
+          />
+          {isGenerated && (
+            <>
+              <div className="border p-2">
+                <QRCode value={qrData} />
+              </div>
+            </>
+          )}
+        </>
+      );
+    };
+
+    export default QRGenerator;
+    ```
+
+6. QR 코드 저장 기능 구현
+
+    - 생성된 QR 코드를 이미지로 저장하기 위해 file-saver 라이브러리를 사용했다.
+
+    ```tsx
+    import saveAs from "file-saver";  
+    // ...
+    const saveQRCode = () => {
+        if (isGenerated) {
+          const svgString = document.querySelector("svg")?.outerHTML;
+          
+          if (!svgString) return;
+
+          const blob = new Blob([svgString], { type: "image/svg+xml" });
+          saveAs(blob, "qrcode.svg");
+        }
+      };
+
+    // ...
+    ```
+7. QR Code 생성될 때, 애니메이션 추가
+
+    - QR Code가 생성될 때, framer-motion을 사용하여 애니메이션을 추가했다.
+
+    ```tsx
+    // ...          
+    <motion.div
+          className="border p-2"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          >
+          <QRCode value={qrData} />
+    </motion.div>
+    // ...
+    ```
+
+8. 완성된 QRGenerator 코드
+    - 위 내용이 모두 반영된 최종 컴포넌트의 코드다.
+
+    ```tsx
+    "use client";
+
+    import { useState } from "react";
+    import saveAs from "file-saver";
+    import QRCode from "react-qr-code";
+    import { motion } from "framer-motion";
+    import QRCodeInput from "./QRCodeInput";
+    import Button from "./Button";
+
+    const QRGenerator = () => {
+      const [qrData, setQrData] = useState<string>("");
+      const [isGenerated, setIsGenerated] = useState<boolean>(false);
+
+      const handleInputChange = (value: string) => {
+        setQrData(value);
+        setIsGenerated(false);
+      };
+
+      const generateQRCode = () => {
+        if (qrData) {
+          setIsGenerated(true);
+        }
+      };
+
+      const saveQRCode = () => {
+        if (isGenerated) {
+          const svgString = document.querySelector("svg")?.outerHTML;
+          
+          if (!svgString) return;
+
+          const blob = new Blob([svgString], { type: "image/svg+xml" });
+          saveAs(blob, "qrcode.svg");
+        }
+      };
+
+      return (
+        <>
+          <QRCodeInput value={qrData} onChange={handleInputChange} />
+          <Button
+            onClick={generateQRCode}
+            disabled={qrData === ""}
+            title="Generate QR Code"
+          />
+          {isGenerated && (
+            <>
+              <motion.div
+                className="border p-2"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <QRCode value={qrData} />
+              </motion.div>
+              <Button
+                onClick={saveQRCode}
+                disabled={!isGenerated}
+                title="Save QR Code"
+              />
+            </>
+          )}
+        </>
+      );
+    };
+
+    export default QRGenerator;
+    ```
+
+## 구현 결과
+
+- ![미리보기](https://github.com/woongsnote/woongsnote-dev/assets/83802168/dd343ff1-5518-467b-9ccb-5a902e5ca2bd)
+
+
+- [링크 바로가기](https://qr-quasar.vercel.app/)
+
+- [전체 소스 코드](https://github.com/woongsnote/qr-quasar)
+
+
+
+## 결론
+
+이미 만들어진 QR Code 라이브러리를 활용해서, 쉽고 빠르게 QR Code 생성기를 만들어 볼 수 있었다.
+
