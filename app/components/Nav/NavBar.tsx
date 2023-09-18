@@ -12,10 +12,10 @@ const NavBar = () => {
           <li key={label}>
             <Link
               href={href}
-              className={`text-lg lg:text-2xl ${
+              className={`text-lg lg:text-2xl hover:underline hover:underline-offset-8 ${
                 pathname === href
-                  ? 'text-indigo-500 dark:text-indigo-400 font-bold'
-                  : 'text-zinc-600 hover:text-indigo-500 dark:text-zinc-400 dark:hover:text-indigo-400'
+                  ? 'text-primary dark:text-secondary font-bold'
+                  : 'text-zinc-600 hover:text-primary dark:text-zinc-400 dark:hover:text-secondaray'
               }`}
             >
               {label}

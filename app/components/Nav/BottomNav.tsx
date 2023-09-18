@@ -15,7 +15,7 @@ const BottomNav = () => {
               href={href}
               className={`text-sm w-full h-full flex flex-col items-center justify-center ${
                 pathname === href
-                  ? 'text-indigo-500 dark:text-indigo-400 '
+                  ? 'text-primary dark:text-secondary'
                   : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50'
               }`}
             >

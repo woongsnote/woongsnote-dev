@@ -14,10 +14,9 @@ export default function MainSectionHeader({ title, href, label }: HeaderProps) {
       <Link
         aria-label={`go to ${label} page`}
         href={href}
-        className="text-lg lg:text-2xl hover:text-indigo-500 hover:dark:text-indigo-400 font-bold flex gap-2 items-center border-b-2"
+        className="text-lg lg:text-2xl hover:text-primary hover:dark:text-secondary font-bold flex gap-2 items-center hover:underline hover:underline-offset-4"
       >
         {label}
-        <BsArrowUpRight />
       </Link>
     </div>
   );
