@@ -14,8 +14,8 @@ export default function CardHeader({ coverImage, title }: CardHeaderProps) {
         src={coverImage}
         alt={title}
         priority
-        width={300}
-        height={300}
+        width={500}
+        height={500}
         className="w-full h-full rounded-t-md object-cover object-center"
       />
     </div>
