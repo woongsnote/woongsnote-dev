@@ -1,7 +1,7 @@
 import { Post, allPosts } from 'contentlayer/generated';
-import PostList from '../Post/PostList';
-import { getSortedDataList } from 'app/utils/getData';
+import { getSortedDataList } from 'app/lib/utils';
 import MainSectionHeader from './MainSectionHeader';
+import { PostList } from '../Post';
 
 const MAX_RECENT_POSTS = 2;
 const POST_SECTION_TITLE = '최신 게시글';
