@@ -1,6 +1,6 @@
 import { BsGithub } from 'react-icons/bs';
 
-const GITHUB_LINK = 'https://github.com/woongsnote/woongsnote-dev';
+const GITHUB_LINK = 'https://github.com/woongsnote';
 
 export default function GitHubLink() {
   return (

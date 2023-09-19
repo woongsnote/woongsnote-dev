@@ -1,12 +1,16 @@
 import Link from 'next/link';
 
-interface HeaderProps {
+type THeaderProps = {
   title: string;
   href: string;
   label: string;
-}
+};
 
-export default function MainSectionHeader({ title, href, label }: HeaderProps) {
+export default function MainSectionHeader({
+  title,
+  href,
+  label,
+}: THeaderProps) {
   return (
     <div className="flex flex-row justify-between items-center mt-2 text-xl lg:text-2xl font-semibold">
       <h2>{title}</h2>

@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  main {
+    @apply mx-auto pb-28 px-2 max-w-5xl relative md:pb-16;
+  }
+
+  header {
+    @apply sticky left-0 top-0 z-50 items-center bg-white dark:bg-darkBlack w-full sm:px-4 py-2 justify-between flex shadow-md dark:border-b-2;
+  }
+
+  footer {
+    @apply w-full left-0 bottom-14 py-2 fixed md:bottom-0 bg-white dark:bg-darkBlack text-center;
+  }
+}

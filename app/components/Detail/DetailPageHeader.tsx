@@ -1,12 +1,12 @@
-interface DetailHeaderProps {
+type TDetailHeaderProps = {
   title: string;
   description: string;
-}
+};
 
 export default function DetailPageHeader({
   title,
   description,
-}: DetailHeaderProps) {
+}: TDetailHeaderProps) {
   return (
     <div>
       <h1>{title}</h1>

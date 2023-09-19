@@ -1,9 +1,9 @@
-interface PageHeaderProps {
+type TPageHeaderProps = {
   title: string;
   description: string;
-}
+};
 
-const PageHeader = ({ title, description }: PageHeaderProps) => {
+const PageHeader = ({ title, description }: TPageHeaderProps) => {
   return (
     <div className="mt-2 md:mt-0">
       <h1 className="text-3xl font-bold md:pt-2">{title}</h1>

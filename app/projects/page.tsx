@@ -16,7 +16,7 @@ export default function Page() {
         title="Projects"
         description="직접 구현한 프로젝트들의 기록입니다."
       />
-      <Suspense fallback={<>Loading...</>}>
+      <Suspense fallback={<p>프로젝트 목록을 가져오는 중입니다.</p>}>
         <ProjectList projects={projects} />
       </Suspense>
     </>

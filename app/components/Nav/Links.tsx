@@ -1,14 +1,14 @@
 import { IconType } from 'react-icons';
 import { AiFillHome, AiFillEdit, AiFillDatabase } from 'react-icons/ai';
 
-interface LinkItem {
+type TLinkItem = {
   label: string;
   bottomLabel: string;
   href: string;
   icon: React.ReactElement<IconType>;
-}
+};
 
-export const Links: LinkItem[] = [
+export const Links: TLinkItem[] = [
   {
     label: '',
     bottomLabel: 'Home',

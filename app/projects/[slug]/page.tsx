@@ -1,17 +1,18 @@
-import { useMDXComponent } from 'next-contentlayer/hooks';
 import { allProjects } from 'contentlayer/generated';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import { DetailPageHeader, DetailPageImage } from 'app/components/Detail';
 
-interface Props {
+type Props = {
   params: { slug: string };
-}
-
-export const generateStaticParams = async () => {
-  return allProjects.map((project) => ({ slug: project.slug }));
 };
 
-export const generateMetadata = ({ params }: Props) => {
+export async function generateStaticParams() {
+  return allProjects.map((project) => ({ slug: project.slug }));
+}
+
+export function generateMetadata({ params }: Props): Metadata {
   const project = allProjects.find((project) => project.slug === params.slug);
   if (!project) throw new Error(`Project not found for slug: ${params.slug}`);
   const tags = project.tags?.map((tag) => tag.title).join(', ');
@@ -32,9 +33,9 @@ export const generateMetadata = ({ params }: Props) => {
       ],
     },
   };
-};
+}
 
-export default function ProjectPage({ params }: Props) {
+export default function Page({ params }: Props) {
   const project = allProjects.find((project) => project.slug === params.slug);
 
   if (!project) notFound();
@@ -47,6 +48,7 @@ export default function ProjectPage({ params }: Props) {
         title={project.title}
         description={project.description}
       />
+      <hr />
       <DetailPageImage coverImage={project.coverImage} />
       <MDXContent />
     </>
