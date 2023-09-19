@@ -3,10 +3,10 @@ import Utterance from 'app/components/Utterance';
 export default function ProjectLayout({
   children,
 }: {
-  children: React.ReactElement;
+  children: React.ReactNode;
 }) {
   return (
-    <article className="py-4 prose dark:prose-invert mx-auto lg:prose-lg prose-h1:mb-1 prose-h2:my-2">
+    <article className="py-6 prose dark:prose-invert mx-auto lg:prose-lg prose-h1:mb-1 prose-h2:my-2 prose-hr:my-4">
       {children}
       <Utterance />
     </article>

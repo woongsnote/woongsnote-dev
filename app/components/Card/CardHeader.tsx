@@ -1,11 +1,11 @@
 import Image from 'next/image';
 
-interface CardHeaderProps {
+type TCardHeaderProps = {
   coverImage: string;
   title: string;
-}
+};
 
-export default function CardHeader({ coverImage, title }: CardHeaderProps) {
+export default function CardHeader({ coverImage, title }: TCardHeaderProps) {
   if (coverImage === '') return;
 
   return (

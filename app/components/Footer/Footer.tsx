@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="w-full left-0 bottom-14 py-2 fixed md:bottom-0 bg-white dark:bg-darkBlack text-center">
+    <footer>
       <p>
         © 2023.
         <span className="text-md font-bold"> 문지웅 </span>

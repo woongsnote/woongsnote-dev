@@ -1,8 +1,10 @@
 import Image from 'next/image';
-interface DetailPageImageProps {
+
+export default function DetailPageImage({
+  coverImage,
+}: {
   coverImage: string;
-}
-export default function DetailPageImage({ coverImage }: DetailPageImageProps) {
+}) {
   return (
     <Image
       src={coverImage}
