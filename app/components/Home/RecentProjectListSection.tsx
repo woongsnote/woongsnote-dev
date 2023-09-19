@@ -1,7 +1,7 @@
 import { Project, allProjects } from 'contentlayer/generated';
 import MainSectionHeader from './MainSectionHeader';
-import ProjectList from '../Project/ProjectList';
-import { getSortedDataList } from 'app/utils/getData';
+import { getSortedDataList } from 'app/lib/utils';
+import { ProjectList } from '../Project';
 
 const MAX_RECENT_PROJECTS = 2;
 const PROJECT_SECTION_TITLE = '최신 프로젝트';
