@@ -2,7 +2,7 @@ import {
   HeroSection,
   RecentPostListSection,
   RecentProjectListSection,
-} from './components/Home';
+} from '@/components';
 
 export default function Home() {
   return (

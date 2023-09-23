@@ -1,6 +1,6 @@
 import { Post, Project, allPosts, allProjects } from 'contentlayer/generated';
 import { MetadataRoute } from 'next';
-import { getSortedDataList } from 'app/lib/utils';
+import { getSortedDataList } from '@/lib/utils';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.woongsnote.dev';
