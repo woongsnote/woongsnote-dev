@@ -43,7 +43,7 @@ export default function Page({ params }: Props) {
   const MDXContent = useMDXComponent(project.body.code);
 
   return (
-    <article>
+    <article className="py-6 prose dark:prose-invert mx-auto lg:prose-lg prose-h1:mb-1 prose-h2:my-2 prose-hr:my-4">
       <DetailPageHeader
         title={project.title}
         description={project.description}

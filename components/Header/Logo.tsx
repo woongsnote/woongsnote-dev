@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
 const Title = 'Woongsnote';
 
 export default function Logo() {
@@ -9,11 +8,10 @@ export default function Logo() {
       <Image
         width={48}
         height={48}
-        src={'/profile.png'}
-        alt="프로필이미지"
+        src={'/icons/icon-144x144.png'}
+        alt="logo"
         className="rounded-full"
       />
-      <h1 className="text-2xl font-bold text-center">{Title}</h1>
     </Link>
   );
 }

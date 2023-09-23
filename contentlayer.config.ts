@@ -89,6 +89,10 @@ export const Project = defineDocumentType(() => ({
     },
   },
   computedFields: {
+    readingTime: {
+      type: 'json',
+      resolve: (doc) => readingTime(doc.body.raw),
+    },
     slug: {
       type: 'string',
       resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
