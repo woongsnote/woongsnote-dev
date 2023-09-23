@@ -1,5 +1,5 @@
 import { Tag } from 'contentlayer/generated';
-import TagItem from './TagItem';
+import { TagItem } from '@/components';
 
 export default function TagList({ tags }: { tags: Tag[] | undefined }) {
   return (

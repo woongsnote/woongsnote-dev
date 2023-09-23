@@ -1,7 +1,6 @@
 import { Post, allPosts } from 'contentlayer/generated';
-import { getSortedDataList } from 'app/lib/utils';
-import MainSectionHeader from './MainSectionHeader';
-import { PostList } from '../Post';
+import { getSortedDataList } from '@/lib/utils';
+import { PostList, MainSectionHeader } from '@/components';
 
 const MAX_RECENT_POSTS = 2;
 

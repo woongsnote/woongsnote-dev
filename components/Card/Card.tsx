@@ -5,7 +5,7 @@ import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import CardFooter from './CardFooter';
 
-interface CardProps {
+type CardProps = {
   slug: string;
   title: string;
   description: string;
@@ -13,7 +13,7 @@ interface CardProps {
   coverImage?: string;
   date?: string;
   readingTimeText?: string;
-}
+};
 
 export default function Card({
   slug,

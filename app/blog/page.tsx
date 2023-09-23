@@ -1,11 +1,10 @@
 import { Post, allPosts } from 'contentlayer/generated';
 import { Suspense } from 'react';
-import { getSortedDataList } from 'app/lib/utils';
-import { PageHeader } from 'app/components/Page';
-import { SearchBar } from 'app/components/Search';
-import { PostList } from 'app/components/Post';
+import { Metadata } from 'next';
+import { getSortedDataList } from '@/lib/utils';
+import { PageHeader, SearchBar, PostList } from '@/components';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: { absolute: 'Blog | Woongsnote' },
 };
 

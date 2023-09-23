@@ -1,10 +1,8 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Providers from './components/Providers';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { BottomNav } from './components/Nav';
+import Providers from './providers';
+import { Header, Footer, BottomNav } from '@/components';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.woongsnote.dev'),

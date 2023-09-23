@@ -1,8 +1,8 @@
 import { allPosts } from 'contentlayer/generated';
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import { DetailPageHeader, DetailPageInfo } from 'app/components/Detail';
+import { DetailPageHeader, DetailPageInfo, Utterance } from '@/components';
 
 type Props = {
   params: { slug: string };
@@ -12,7 +12,7 @@ export async function generateStaticParams() {
   return allPosts.map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = allPosts.find((post) => post.slug === params.slug);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
   const tags = post.tags?.map((tag) => tag.title).join(', ');
@@ -35,7 +35,7 @@ export default function Page({ params }: Props) {
   const MDXContent = useMDXComponent(post.body.code);
 
   return (
-    <>
+    <article>
       <DetailPageHeader title={post.title} description={post.description} />
       <DetailPageInfo
         date={post.date}
@@ -43,6 +43,7 @@ export default function Page({ params }: Props) {
       />
       <hr />
       <MDXContent />
-    </>
+      <Utterance />
+    </article>
   );
 }

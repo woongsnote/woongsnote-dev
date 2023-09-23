@@ -1,7 +1,6 @@
 import { Project, allProjects } from 'contentlayer/generated';
-import MainSectionHeader from './MainSectionHeader';
-import { getSortedDataList } from 'app/lib/utils';
-import { ProjectList } from '../Project';
+import { getSortedDataList } from '@/lib/utils';
+import { MainSectionHeader, ProjectList } from '@/components';
 
 const MAX_RECENT_PROJECTS = 2;
 

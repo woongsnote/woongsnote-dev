@@ -1,5 +1,5 @@
 import { Tag } from 'contentlayer/generated';
-import TagList from './TagList';
+import TagList from '../Tag/TagList';
 
 type TCardBodyProps = {
   title: string;

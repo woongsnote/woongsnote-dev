@@ -1,11 +1,14 @@
 import format from 'date-fns/format';
 
-interface CardFooterProps {
+type TCardFooterProps = {
   date: string;
   readingTimeText: string;
-}
+};
 
-export default function CardFooter({ date, readingTimeText }: CardFooterProps) {
+export default function CardFooter({
+  date,
+  readingTimeText,
+}: TCardFooterProps) {
   if (date === '' || readingTimeText === '') return;
 
   return (

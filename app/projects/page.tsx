@@ -1,10 +1,10 @@
 import { Project, allProjects } from 'contentlayer/generated';
+import { Metadata } from 'next';
 import { Suspense } from 'react';
-import { getSortedDataList } from 'app/lib/utils';
-import { PageHeader } from 'app/components/Page';
-import { ProjectList } from 'app/components/Project';
+import { getSortedDataList } from '@/lib/utils';
+import { PageHeader, ProjectList } from '@/components';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: { absolute: 'Projects | Woongsnote' },
 };
 

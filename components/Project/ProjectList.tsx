@@ -1,15 +1,11 @@
 import { Project } from 'contentlayer/generated';
-import { Card } from '../Card';
+import { Card as ProjetCard } from '@/components';
 
-interface ProjectListProps {
-  projects: Project[];
-}
-
-export default function ProjectList({ projects }: ProjectListProps) {
+export default function ProjectList({ projects }: { projects: Project[] }) {
   return (
-    <div className="grid gap-x-8 gap-y-4 sm:grid-cols-2 pt-6">
+    <div className="grid gap-x-8 gap-y-4 pt-6">
       {projects.map((project) => (
-        <Card
+        <ProjetCard
           key={project._id}
           slug={`/projects/${project.slug}`}
           title={project.title}
