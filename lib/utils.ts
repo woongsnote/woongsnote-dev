@@ -10,3 +10,15 @@ export const getSortedDataList = <T extends { date: string }>(
 
   return maxNum ? sortedData.slice(0, maxNum) : sortedData;
 };
+
+export async function getPageFromParams<T extends { slug: string }>(
+  params: T,
+  data: Array<T>,
+) {
+  const slug = params.slug;
+  const page = data.find((doc) => doc.slug === slug);
+  if (!page) {
+    null;
+  }
+  return page;
+}

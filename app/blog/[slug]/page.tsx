@@ -1,19 +1,26 @@
-import { allPosts } from 'contentlayer/generated';
+import { Post, allPosts } from 'contentlayer/generated';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import { DetailPageHeader, DetailPageInfo, Utterance } from '@/components';
+import {
+  DetailPageHeader,
+  DetailPageInfo,
+  Utterance,
+  MDXComponents,
+} from '@/components';
+import { getPageFromParams } from '@/lib/utils';
 
-type Props = {
+type PageProps = {
   params: { slug: string };
 };
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<PageProps['params'][]> {
   return allPosts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = allPosts.find((post) => post.slug === params.slug);
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const post = (await getPageFromParams(params, allPosts)) as Post;
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
   const tags = post.tags?.map((tag) => tag.title).join(', ');
   return {
@@ -27,12 +34,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function Page({ params }: Props) {
-  const post = allPosts.find((post) => post.slug === params.slug);
+export default async function PostLayout({ params }: PageProps) {
+  const post = (await getPageFromParams(params, allPosts)) as Post;
 
   if (!post) notFound();
-
-  const MDXContent = useMDXComponent(post.body.code);
 
   return (
     <article className="py-6 prose dark:prose-invert mx-auto lg:prose-lg prose-h1:mb-1 prose-h2:my-2 prose-hr:my-4">
@@ -42,7 +47,7 @@ export default function Page({ params }: Props) {
         readingTimeText={post.readingTime.text}
       />
       <hr />
-      <MDXContent />
+      <MDXComponents code={post.body.code} />
       <Utterance />
     </article>
   );

@@ -21,3 +21,5 @@ export { default as RecentProjectListSection } from './Home/RecentProjectListSec
 export { default as DetailPageHeader } from './Detail/DetailPageHeader';
 export { default as DetailPageImage } from './Detail//DetailPageImage';
 export { default as DetailPageInfo } from './Detail/DetailPageInfo';
+
+export { MDXComponents } from './mdx-components';
