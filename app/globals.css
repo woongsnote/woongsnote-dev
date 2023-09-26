@@ -12,8 +12,6 @@
   }
 
   footer {
-    @apply w-full left-0 bottom-14 py-2 md:bottom-0 bg-white dark:bg-darkBlack text-center;
+    @apply w-full left-0 bottom-14 pt-2 pb-16 md:pb-2 md:bottom-0 bg-white dark:bg-darkBlack text-center;
   }
-
-
 }
