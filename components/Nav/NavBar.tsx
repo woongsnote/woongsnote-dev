@@ -15,7 +15,7 @@ const NavBar = () => {
               className={`text-lg lg:text-2xl hover:underline hover:underline-offset-8 ${
                 pathname === href
                   ? 'text-primary dark:text-secondary font-bold'
-                  : 'text-zinc-600 hover:text-primary dark:text-zinc-400 dark:hover:text-secondaray'
+                  : 'text-zinc-600 hover:text-primary dark:text-zinc-400 dark:hover:text-secondary'
               }`}
             >
               {label}
