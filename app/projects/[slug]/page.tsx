@@ -1,19 +1,26 @@
-import { allProjects } from 'contentlayer/generated';
+import { Project, allProjects } from 'contentlayer/generated';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import { DetailPageHeader, DetailPageImage, Utterance } from '@/components';
+import {
+  DetailPageHeader,
+  DetailPageImage,
+  Utterance,
+  MDXComponents,
+} from '@/components';
+import { getPageFromParams } from '@/lib/utils';
 
-type Props = {
+type PageProps = {
   params: { slug: string };
 };
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<PageProps['params'][]> {
   return allProjects.map((project) => ({ slug: project.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = allProjects.find((project) => project.slug === params.slug);
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const project = (await getPageFromParams(params, allProjects)) as Project;
   if (!project) throw new Error(`Project not found for slug: ${params.slug}`);
   const tags = project.tags?.map((tag) => tag.title).join(', ');
   return {
@@ -35,12 +42,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function Page({ params }: Props) {
-  const project = allProjects.find((project) => project.slug === params.slug);
+export default async function ProjectLayout({ params }: PageProps) {
+  const project = (await getPageFromParams(params, allProjects)) as Project;
 
   if (!project) notFound();
-
-  const MDXContent = useMDXComponent(project.body.code);
 
   return (
     <article className="py-6 prose dark:prose-invert mx-auto lg:prose-lg prose-h1:mb-1 prose-h2:my-2 prose-hr:my-4">
@@ -50,7 +55,7 @@ export default function Page({ params }: Props) {
       />
       <hr />
       <DetailPageImage coverImage={project.coverImage} />
-      <MDXContent />
+      <MDXComponents code={project.body.code} />
       <Utterance />
     </article>
   );
