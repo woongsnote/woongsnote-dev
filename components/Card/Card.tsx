@@ -27,7 +27,7 @@ const Card = ({
     <article className="group border-b px-2 py-4">
       <div className="flex flex-row justify-between items-center">
         {coverImage && (
-          <div className="hidden sm:block h-64 w-3/5 ">
+          <div className="hidden sm:block h-64 w-3/5">
             <Link href={slug}>
               <Image
                 src={coverImage}
@@ -41,9 +41,11 @@ const Card = ({
           </div>
         )}
         <div className="w-full flex flex-col px-4">
-          <time className="text-xs md:text-sm text-left text-gray-700 dark:text-gray-300">
-            {format(new Date(date ? date : ''), 'yyyy. MM. dd')}
-          </time>
+          {date && (
+            <time className="text-xs md:text-sm text-left text-gray-700 dark:text-gray-300">
+              {format(new Date(date ? date : ''), 'yyyy. MM. dd')}
+            </time>
+          )}
 
           <Link
             href={slug}
