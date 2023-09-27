@@ -3,19 +3,20 @@ import { Card as ProjetCard } from '@/components';
 
 export default function ProjectList({ projects }: { projects: Project[] }) {
   return (
-    <div className="grid pt-6">
+    <ul>
       {projects.map((project) => (
-        <ProjetCard
-          key={project._id}
-          slug={`/projects/${project.slug}`}
-          title={project.title}
-          description={project.description}
-          coverImage={project.coverImage}
-          tags={project.tags}
-          readingTimeText={project.readingTime.text}
-          date={project.date}
-        />
+        <li key={project._id}>
+          <ProjetCard
+            slug={`/projects/${project.slug}`}
+            title={project.title}
+            description={project.description}
+            coverImage={project.coverImage}
+            tags={project.tags}
+            readingTimeText={project.readingTime.text}
+            date={project.date}
+          />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
