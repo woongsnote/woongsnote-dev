@@ -108,7 +108,7 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Post, Project],
   mdx: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [[rehypePrettyCode, options]],
   },
 });
