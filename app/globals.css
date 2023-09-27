@@ -4,7 +4,7 @@
 
 @layer base {
   main {
-    @apply mx-auto pb-28 px-2 max-w-5xl relative md:pb-16;
+    @apply mx-auto pb-28 px-2 max-w-5xl relative md:pb-16 min-h-screen;
   }
 
   header {
