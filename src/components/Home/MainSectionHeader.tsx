@@ -12,7 +12,7 @@ export default function MainSectionHeader({
   label,
 }: THeaderProps) {
   return (
-    <div className="flex flex-row justify-between items-center mt-2 text-xl lg:text-2xl font-semibold">
+    <div className="flex flex-row justify-between items-center my-4 text-xl lg:text-2xl font-semibold">
       <h2>{title}</h2>
       <Link
         aria-label={label !== '' ? `go to ${label} page` : 'home'}

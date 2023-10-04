@@ -2,7 +2,7 @@
 const { withContentlayer } = require('next-contentlayer');
 
 const nextConfig = withContentlayer({
-  swcMinify: false,
+  swcMinify: true,
   images: {
     remotePatterns: [
       {
