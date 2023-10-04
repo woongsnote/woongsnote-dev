@@ -1,12 +1,7 @@
 import { Post, allPosts } from 'contentlayer/generated';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import {
-  DetailPageHeader,
-  DetailPageInfo,
-  Utterance,
-  MDXComponents,
-} from '@/components';
+import { DetailPageHeader, Utterance, MDXComponents } from '@/components';
 import { getPageFromParams } from '@/lib/utils';
 
 type PageProps = {
@@ -40,9 +35,10 @@ export default async function PostLayout({ params }: PageProps) {
   if (!post) notFound();
 
   return (
-    <article className="py-6 prose dark:prose-invert mx-auto lg:prose-lg prose-h1:mb-1 prose-h2:my-2 prose-hr:my-4">
-      <DetailPageHeader title={post.title} description={post.description} />
-      <DetailPageInfo
+    <article id="post">
+      <DetailPageHeader
+        title={post.title}
+        description={post.description}
         date={post.date}
         readingTimeText={post.readingTime.text}
       />

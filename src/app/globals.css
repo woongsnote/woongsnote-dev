@@ -4,7 +4,7 @@
 
 @layer base {
   main {
-    @apply mx-auto pb-28 px-2 max-w-5xl relative md:pb-16 min-h-screen;
+    @apply mx-auto pb-28 px-2 max-w-7xl w-full relative md:pb-16 min-h-screen;
   }
 
   header {
@@ -13,5 +13,9 @@
 
   footer {
     @apply w-full left-0 bottom-14 pt-2 pb-16 md:pb-2 md:bottom-0 bg-white dark:bg-darkBlack text-center;
+  }
+
+  article#post{
+    @apply py-6 prose dark:prose-invert mx-auto lg:prose-xl prose-h1:mb-2 prose-hr:my-4
   }
 }

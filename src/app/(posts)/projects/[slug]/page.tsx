@@ -48,10 +48,12 @@ export default async function ProjectLayout({ params }: PageProps) {
   if (!project) notFound();
 
   return (
-    <article className="py-6 prose dark:prose-invert mx-auto lg:prose-lg prose-h1:mb-1 prose-h2:my-2 prose-hr:my-4">
+    <article id="post">
       <DetailPageHeader
         title={project.title}
         description={project.description}
+        date={project.date}
+        readingTimeText={project.readingTime.text}
       />
       <hr />
       <DetailPageImage coverImage={project.coverImage} />
