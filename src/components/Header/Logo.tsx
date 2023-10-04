@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-const Title = 'Woongsnote';
 
 export default function Logo() {
   return (
@@ -12,6 +11,7 @@ export default function Logo() {
         alt="logo"
         className="rounded-full"
       />
+      <span className="text-lg lg:text-2xl">Woongsnote</span>
     </Link>
   );
 }
