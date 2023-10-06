@@ -36,7 +36,7 @@ export default function SearchBar() {
   };
 
   return (
-    <form className="relative mx-auto pt-2" onSubmit={submitHandler}>
+    <form className="relative mx-auto pt-2 px-2" onSubmit={submitHandler}>
       <input
         type="text"
         placeholder="검색할 제목을 입력하세요"

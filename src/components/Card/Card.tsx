@@ -24,7 +24,7 @@ const Card = ({
   readingTimeText,
 }: CardProps) => {
   return (
-    <article className="group border-b px-2 py-4 w-full flex items-center gap-8 hover:shadow-md hover:scale-105 transition">
+    <article className="group border-b-2 py-4 w-full flex items-center gap-8">
       {coverImage && (
         <div className="hidden md:block lg:h-60 basis-1/3">
           <Link href={slug}>
@@ -34,17 +34,17 @@ const Card = ({
               priority
               width={500}
               height={500}
-              className="w-full h-full rounded-lg object-center"
+              className="w-full h-full rounded-lg object-center "
             />
           </Link>
         </div>
       )}
       <div
-        className={`flex flex-col w-full justify-center h-full ${
+        className={`flex flex-col w-full justify-center h-full px-2 md:px-0 ${
           coverImage && 'md:basis-2/3'
         }`}
       >
-        <time className="text-sm md:text-md text-left text-gray-500 dark:text-gray-300">
+        <time className="text-sm md:text-md text-left text-gray-500 dark:text-gray-300 mb-2">
           {format(new Date(date), 'yyyy. MM. dd')}
         </time>
 

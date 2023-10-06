@@ -11,7 +11,7 @@ export default function Logo() {
         alt="logo"
         className="rounded-full"
       />
-      <span className="text-lg lg:text-2xl">Woongsnote</span>
+      <span className="text-lg lg:text-2xl font-bold">Woongsnote</span>
     </Link>
   );
 }
