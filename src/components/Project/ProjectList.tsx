@@ -3,7 +3,7 @@ import { Card as ProjetCard } from '@/components';
 
 export default function ProjectList({ projects }: { projects: Project[] }) {
   return (
-    <div className="grid grid-cols-1 gap-4">
+    <div className="grid grid-cols-1">
       {projects.map((project) => (
         <ProjetCard
           key={project._id}
