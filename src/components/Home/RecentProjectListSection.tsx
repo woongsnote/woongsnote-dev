@@ -11,7 +11,7 @@ export default function RecentProjectListSection() {
   );
 
   return (
-    <section className="mt-8 w-full px-2 md:px-0">
+    <section className="my-4 w-full mx-auto">
       <MainSectionHeader
         title="최신 프로젝트"
         href="/projects"

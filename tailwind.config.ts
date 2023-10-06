@@ -15,7 +15,7 @@ const config: Config = {
         darkBlack: '#121212',
       },
       fontFamily: {
-        sans: ['var(--font-inter)'],
+        sans: ['var(--font-pretendard)'],
       },
     },
   },

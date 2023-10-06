@@ -38,10 +38,10 @@ export const metadata: Metadata = {
   },
 };
 
-const inter = localFont({
+const pretendard = localFont({
   src: './fonts/PretendardVariable.woff2',
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-pretendard',
 });
 
 export default function RootLayout({
@@ -50,7 +50,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={`${inter.variable}`} suppressHydrationWarning>
+    <html
+      lang="ko"
+      className={`${pretendard.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <Providers>
           <Header />
