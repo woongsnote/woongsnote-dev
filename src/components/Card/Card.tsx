@@ -24,7 +24,7 @@ const Card = ({
   readingTimeText,
 }: CardProps) => {
   return (
-    <article className="group border-b-2 py-4 w-full flex items-center gap-8">
+    <article className="group py-4 w-full mx-auto flex items-center gap-8 rounded-md border p-2 shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2">
       {coverImage && (
         <div className="hidden md:block lg:h-60 basis-1/3">
           <Link href={slug}>
@@ -44,7 +44,7 @@ const Card = ({
           coverImage && 'md:basis-2/3'
         }`}
       >
-        <time className="text-sm md:text-md text-left text-gray-500 dark:text-gray-300 mb-2">
+        <time className="text-sm md:text-base text-left text-gray-500 dark:text-gray-300 mb-2">
           {format(new Date(date), 'yyyy. MM. dd')}
         </time>
 
@@ -52,7 +52,7 @@ const Card = ({
           href={slug}
           className=" hover:text-primary dark:hover:text-secondary hover:underline hover:underline-offset-8"
         >
-          <h2 className="text-2xl md:text-4xl font-extrabold mb-2">{title}</h2>
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-2">{title}</h2>
         </Link>
         <p className="text-sm md:text-xl text-gray-700 dark:text-gray-300">
           {description}

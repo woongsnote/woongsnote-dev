@@ -8,14 +8,14 @@
   }
 
   header {
-    @apply sticky left-0 top-0 z-50 items-center bg-white dark:bg-darkBlack w-full sm:px-4 py-2 justify-between flex shadow-md dark:border-b-2;
+    @apply sticky left-0 top-0 z-50 items-center bg-white dark:bg-darkBlack w-full sm:px-4 py-2 justify-between flex shadow-sm dark:border-b-2;
   }
 
   footer {
     @apply w-full left-0 bottom-14 pt-2 pb-16 md:pb-2 md:bottom-0 bg-white dark:bg-darkBlack text-center;
   }
 
-  article#post {
-    @apply py-6 prose dark:prose-invert mx-auto lg:prose-xl prose-h1:mb-2 prose-hr:my-4;
+  article.post {
+    @apply py-6 prose dark:prose-invert mx-auto lg:prose-xl prose-h1:mb-2 prose-hr:my-4 px-2 md:px-0;
   }
 }
