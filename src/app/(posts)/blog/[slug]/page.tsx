@@ -35,7 +35,7 @@ export default async function PostLayout({ params }: PageProps) {
   if (!post) notFound();
 
   return (
-    <article id="post">
+    <article className="post">
       <DetailPageHeader
         title={post.title}
         description={post.description}

@@ -1,6 +1,6 @@
 export default function HeroSection() {
   return (
-    <section className="flex text-center rounded-md h-40 items-center justify-center flex-col">
+    <section className="flex text-center rounded-md h-40 lg:h-64 items-center justify-center flex-col">
       <h1 className="text-4xl md:text-7xl font-extrabold my-2">
         Woong&acute;s Tech Blog
       </h1>
