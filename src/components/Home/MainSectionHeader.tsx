@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BsArrowUpRight } from 'react-icons/bs';
 
 type THeaderProps = {
   title: string;
@@ -12,14 +13,15 @@ export default function MainSectionHeader({
   label,
 }: THeaderProps) {
   return (
-    <div className="flex flex-row justify-between items-center my-4 text-xl lg:text-2xl font-semibold">
-      <h2>{title}</h2>
+    <div className="flex flex-row justify-between items-center my-4 font-semibold px-2 lg:px-0">
+      <h2 className="text-xl lg:text-3xl">{title}</h2>
       <Link
         aria-label={label !== '' ? `go to ${label} page` : 'home'}
         href={href}
-        className="hover:text-primary hover:dark:text-secondary flex gap-2 items-center hover:underline hover:underline-offset-4"
+        className="hover:text-primary hover:dark:text-secondary flex flex-row gap-2 items-center hover:border-b hover:border-primary hover:dark:border-secondary text-base lg:text-xl"
       >
         {label}
+        <BsArrowUpRight />
       </Link>
     </div>
   );
