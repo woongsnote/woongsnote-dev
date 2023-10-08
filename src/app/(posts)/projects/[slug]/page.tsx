@@ -48,7 +48,7 @@ export default async function ProjectLayout({ params }: PageProps) {
   if (!project) notFound();
 
   return (
-    <article id="post">
+    <article className="post">
       <DetailPageHeader
         title={project.title}
         description={project.description}
