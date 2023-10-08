@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Links } from './Links';
 
-const BottomNav = () => {
+export default function BottomNav() {
   const pathname = usePathname();
   return (
     <div className="md:hidden">
@@ -19,13 +19,12 @@ const BottomNav = () => {
                   : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50'
               }`}
             >
-              <span className="text-lg py-1">{icon}</span>
-              <span className="text-xs">{bottomLabel}</span>
+              <span className="text-2xl py-1">{icon}</span>
+              <span className="text-sm">{bottomLabel}</span>
             </Link>
           ))}
         </div>
       </nav>
     </div>
   );
-};
-export default BottomNav;
+}
