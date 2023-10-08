@@ -3,7 +3,6 @@
 import { Post } from 'contentlayer/generated';
 import { useSearchParams } from 'next/navigation';
 import { Card as PostCard } from '@/components';
-import Link from 'next/link';
 
 export default function PostList({ posts }: { posts: Post[] }) {
   const searchParams = useSearchParams();
@@ -24,7 +23,7 @@ export default function PostList({ posts }: { posts: Post[] }) {
     );
 
   return (
-    <div className="grid grid-cols-1 px-2 lg:px-0">
+    <div className="grid grid-cols-1 px-4 lg:px-0">
       {searchedList.map((post) => (
         <PostCard
           key={post._id}

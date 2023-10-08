@@ -14,7 +14,7 @@ type CardProps = {
   readingTimeText?: string;
 };
 
-const Card = ({
+export default function Card({
   slug,
   title,
   description,
@@ -22,9 +22,12 @@ const Card = ({
   coverImage,
   date,
   readingTimeText,
-}: CardProps) => {
+}: CardProps) {
   return (
-    <article className="group py-4 w-full mx-auto flex items-center gap-8 rounded-md border p-2 shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2">
+    <Link
+      href={slug}
+      className="group py-4 w-full mx-auto flex items-center gap-8 rounded-md border p-2 shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2"
+    >
       {coverImage && (
         <div className="hidden md:block lg:h-60 basis-1/3">
           <Link href={slug}>
@@ -63,8 +66,6 @@ const Card = ({
           {readingTimeText}
         </span>
       </div>
-    </article>
+    </Link>
   );
-};
-
-export default Card;
+}

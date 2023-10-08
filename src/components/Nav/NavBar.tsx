@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Links } from './Links';
 
-const NavBar = () => {
+export default function NavBar() {
   const pathname = usePathname();
 
   return (
@@ -25,6 +25,4 @@ const NavBar = () => {
       </ul>
     </nav>
   );
-};
-
-export default NavBar;
+}
