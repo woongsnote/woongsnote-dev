@@ -1,11 +1,9 @@
 import { Tag } from 'contentlayer/generated';
-import Link from 'next/link';
 import Image from 'next/image';
 import { format } from 'date-fns';
 import { TagList } from '@/components';
 
 type CardProps = {
-  slug: string;
   title: string;
   description: string;
   tags?: Tag[];
@@ -15,7 +13,6 @@ type CardProps = {
 };
 
 export default function Card({
-  slug,
   title,
   description,
   tags,
@@ -24,10 +21,7 @@ export default function Card({
   readingTimeText,
 }: CardProps) {
   return (
-    <Link
-      href={slug}
-      className="group py-4 w-full mx-auto flex items-center gap-8 rounded-md border p-2 shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 hover:cursor-pointer"
-    >
+    <article className="group py-4 w-full mx-auto flex items-center gap-8 rounded-md border p-2 shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 hover:cursor-pointer">
       <div className="hidden lg:block lg:h-56 basis-1/3">
         <Image
           src={coverImage ?? ''}
@@ -61,6 +55,6 @@ export default function Card({
           {readingTimeText}
         </span>
       </div>
-    </Link>
+    </article>
   );
 }
