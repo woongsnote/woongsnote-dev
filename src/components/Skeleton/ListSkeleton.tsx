@@ -1,5 +1,5 @@
 const SkeletonItem = () => (
-  <div className="border border-blue-300 shadow rounded-md p-4 w-full mx-auto">
+  <div className="border border-blue-300 shadow rounded-md p-4 w-full mx-auto my-4">
     <div className="animate-pulse flex space-x-4">
       <div className="hidden lg:block rounded-sm bg-slate-200 lg:h-48 lg:w-80"></div>
       <div className="flex-1 space-y-6 py-1">
