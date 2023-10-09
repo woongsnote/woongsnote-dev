@@ -22,3 +22,6 @@ export { default as DetailPageHeader } from './Detail/DetailPageHeader';
 export { default as DetailPageImage } from './Detail//DetailPageImage';
 
 export { MDXComponents } from './mdx-components';
+
+export { default as Author } from './Author/Author';
+export { default as ListSkeleton } from './Skeleton/ListSkeleton';
