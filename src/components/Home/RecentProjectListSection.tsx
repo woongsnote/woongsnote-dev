@@ -1,6 +1,6 @@
 import { Project, allProjects } from 'contentlayer/generated';
 import { getSortedDataList } from '@/lib/utils';
-import { MainSectionHeader, ProjectList } from '@/components';
+import { MainSectionHeader, CardList as ProjectList } from '@/components';
 
 const MAX_RECENT_PROJECTS = 2;
 
@@ -17,7 +17,7 @@ export default function RecentProjectListSection() {
         href="/projects"
         label="모든 프로젝트"
       />
-      <ProjectList projects={recentProjects} />
+      <ProjectList articles={recentProjects} type="project" />
     </section>
   );
 }

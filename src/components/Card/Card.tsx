@@ -42,7 +42,7 @@ export default function Card({
           {format(new Date(date), 'yyyy. MM. dd')}
         </time>
 
-        <h2 className="text-2xl md:text-3xl font-extrabold mb-2 hover:text-primary dark:hover:text-secondary hover:underline hover:underline-offset-8">
+        <h2 className="text-xl lg:text-3xl font-extrabold mb-2 hover:text-primary dark:hover:text-secondary hover:underline hover:underline-offset-8">
           {title}
         </h2>
 
