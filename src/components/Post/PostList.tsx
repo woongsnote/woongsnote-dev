@@ -24,7 +24,7 @@ export default function PostList({ posts }: { posts: Post[] }) {
     );
 
   return (
-    <ul>
+    <ul className="px-2 lg:px-0">
       {searchedList.map((post) => (
         <li key={post._id}>
           <Link href={`/blog/${post.slug}`}>
