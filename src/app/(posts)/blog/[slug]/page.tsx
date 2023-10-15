@@ -1,12 +1,7 @@
 import { Post, allPosts } from 'contentlayer/generated';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import {
-  DetailPageHeader,
-  Utterance,
-  MDXComponents,
-  DetailPageImage,
-} from '@/components';
+import { DetailPageHeader, Utterance, MDXComponents } from '@/components';
 import { getPageFromParams } from '@/lib/utils';
 
 type PageProps = {
@@ -48,7 +43,6 @@ export default async function PostLayout({ params }: PageProps) {
         readingTimeText={post.readingTime.text}
       />
       <hr />
-      <DetailPageImage coverImage={post.coverImage ? post.coverImage : ''} />
       <MDXComponents code={post.body.code} />
       <Utterance />
     </article>
