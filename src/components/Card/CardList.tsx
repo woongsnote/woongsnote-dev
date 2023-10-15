@@ -11,13 +11,9 @@ export default function CardList({ articles, type }: CardListProps) {
   const basePath = type === 'post' ? 'blog' : 'projects';
 
   return (
-    <section className="px-2 grid mt-4 sm:gap-4 lg:gap-8 lg:grid-cols-2 w-full">
+    <section className="px-2 md:px-4 grid mt-4 sm:gap-8 md:grid-cols-2 w-full mx-auto justify-items-stretch">
       {articles.map((article) => (
-        <Link
-          key={article._id}
-          href={`${basePath}/${article.slug}`}
-          className="col-span-1"
-        >
+        <Link key={article._id} href={`${basePath}/${article.slug}`}>
           <Card
             title={article.title}
             description={article.description}
