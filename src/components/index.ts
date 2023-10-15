@@ -4,6 +4,7 @@ export { default as BottomNav } from './Nav/BottomNav';
 export { default as NavBar } from './Nav/NavBar';
 
 export { default as Card } from './Card/Card';
+export { default as CardImage } from './Card/CardImage';
 export { default as CardList } from './Card/CardList';
 
 export { default as Utterance } from './Utterance';
@@ -26,3 +27,6 @@ export { MDXComponents } from './mdx-components';
 
 export { default as Author } from './Author/Author';
 export { default as ListSkeleton } from './Skeleton/ListSkeleton';
+
+export { default as ReadingTime } from './ReadingTime/ReadingTime';
+export { default as PublishedDate } from './PublishedDate/PublishedDate';
