@@ -14,6 +14,7 @@ export default function Blog() {
   return (
     <>
       <PageHeader title="Blog" description="학습한 지식들을 기록합니다." />
+
       <Suspense fallback={<ListSkeleton listLength={posts.length} />}>
         <PostList articles={posts} type="post" />
       </Suspense>

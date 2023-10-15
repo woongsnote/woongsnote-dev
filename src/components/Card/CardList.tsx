@@ -15,6 +15,7 @@ export default function CardList({ articles, type }: CardListProps) {
       {articles.map((article) => (
         <Link key={article._id} href={`${basePath}/${article.slug}`}>
           <Card
+            type={type}
             title={article.title}
             description={article.description}
             date={article.date}

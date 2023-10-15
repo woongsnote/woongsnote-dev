@@ -10,7 +10,6 @@ export { default as CardList } from './Card/CardList';
 export { default as Utterance } from './Utterance';
 export { default as SearchBar } from './Search/SearchBar';
 export { default as PageHeader } from './Page/PageHeader';
-export { default as PostList } from './Post/PostList';
 
 export { default as TagList } from './Tag/TagList';
 export { default as TagItem } from './Tag/TagItem';
