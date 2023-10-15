@@ -16,7 +16,9 @@ const nextConfig = withContentlayer({
       },
       {
         protocol: 'https',
-        hostname: 'www.woongsnote.dev',
+        hostname: 'woongsnote.dev',
+        port: '',
+        pathname: '/og/**',
       },
     ],
   },
