@@ -30,6 +30,14 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description: post.description,
+      images: [
+        {
+          url: `/og?title=${post.title}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
   };
 }
@@ -48,7 +56,7 @@ export default async function PostLayout({ params }: PageProps) {
         readingTimeText={post.readingTime.text}
       />
       <hr />
-      <DetailPageImage coverImage={post.coverImage!} />
+      <DetailPageImage coverImage={`/og?title=${post.title}`} />
       <MDXComponents code={post.body.code} />
       <Utterance />
     </article>
