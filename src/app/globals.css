@@ -16,6 +16,6 @@
   }
 
   article.post {
-    @apply py-6 prose dark:prose-invert mx-auto lg:prose-xl prose-h1:mb-2 prose-hr:my-4 px-2 md:px-0;
+    @apply w-full py-6 prose dark:prose-invert mx-auto prose-h1:mb-2 prose-hr:my-4 px-2 md:px-0;
   }
 }

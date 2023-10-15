@@ -52,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${pretendard.variable}`}
+      className={`${pretendard.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <body>

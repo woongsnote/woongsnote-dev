@@ -1,7 +1,6 @@
 import { Tag } from 'contentlayer/generated';
-import Image from 'next/image';
 import { format } from 'date-fns';
-import { TagList } from '@/components';
+import { CardImage, PublishedDate, ReadingTime } from '@/components';
 
 type CardProps = {
   title: string;
@@ -21,39 +20,26 @@ export default function Card({
   readingTimeText,
 }: CardProps) {
   return (
-    <article className="group py-4 w-full mx-auto flex items-center gap-8 rounded-md border p-2 shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 hover:cursor-pointer">
-      <div className="hidden lg:block lg:h-56 basis-1/3">
-        <Image
-          src={coverImage ?? ''}
-          alt={title}
-          priority
-          width={500}
-          height={500}
-          className="w-full h-full rounded-lg object-center transition-opacity"
-        />
-      </div>
+    <article className="group w-full max-w-md mx-auto flex flex-col items-center rounded-md border p-2 shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 hover:cursor-pointer hover:-translate-y-2 transition delay-150">
+      <CardImage cardImage={coverImage!} title={title} />
 
-      <div
-        className={`flex flex-col w-full justify-center h-full px-2 md:px-0 ${
-          coverImage ? 'lg:basis-2/3' : ''
-        }`}
-      >
-        <time className="text-sm md:text-base text-left text-gray-500 dark:text-gray-300 mb-2">
-          {format(new Date(date), 'yyyy. MM. dd')}
-        </time>
+      <div className="flex flex-col w-full justify-center px-2 md:px-0">
+        <span className="text-lg text-primary font-extrabold">
+          {tags![0].title}
+        </span>
 
-        <h2 className="text-xl lg:text-3xl font-extrabold mb-2 hover:text-primary dark:hover:text-secondary hover:underline hover:underline-offset-8">
+        <h2 className="text-lg lg:text-2xl font-extrabold mb-2 hover:text-primary dark:hover:text-secondary hover:underline hover:underline-offset-8">
           {title}
         </h2>
 
-        <p className="text-sm md:text-xl text-gray-700 dark:text-gray-300">
+        <p className="text-sm md:text-base text-gray-700 dark:text-gray-300">
           {description}
         </p>
 
-        <TagList tags={tags} />
-        <span className="text-sm text-right text-gray-700 dark:text-gray-300">
-          {readingTimeText}
-        </span>
+        <div className="flex justify-between mt-2 items-center text-sm text-gray-500 dark:text-gray-300">
+          <PublishedDate date={date} />
+          <ReadingTime readingTime={readingTimeText?.split('')[0] as string} />
+        </div>
       </div>
     </article>
   );
