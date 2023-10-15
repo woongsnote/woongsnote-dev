@@ -10,7 +10,9 @@ export default function Author() {
         height={48}
         className="rounded-full p-1 !my-0"
       />
-      <span className="text-sm lg:text-lg font-bold">Woongsnote</span>
+      <span className="text-sm lg:text-base font-semibold text-black dark:text-white">
+        Woongsnote
+      </span>
     </div>
   );
 }
