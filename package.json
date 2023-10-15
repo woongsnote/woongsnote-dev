@@ -24,6 +24,7 @@
     "rehype-pretty-code": "^0.10.1",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
+    "sharp": "^0.32.6",
     "shiki": "^0.14.5"
   },
   "devDependencies": {
