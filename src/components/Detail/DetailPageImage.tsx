@@ -6,13 +6,15 @@ export default function DetailPageImage({
   coverImage: string;
 }) {
   return (
-    <Image
-      src={coverImage}
-      alt="coverImage"
-      priority
-      width={512}
-      height={380}
-      className="rounded-lg w-auto h-auto object-cover shadow-md mx-auto"
-    />
+    <div className="w-full h-full flex items-center justify-center overflow-hidden">
+      <Image
+        src={coverImage}
+        alt="coverImage"
+        priority
+        width={500}
+        height={500}
+        className="rounded-lg w-auto h-auto object-cover shadow-md mx-auto"
+      />
+    </div>
   );
 }
