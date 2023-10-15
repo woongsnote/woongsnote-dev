@@ -33,8 +33,8 @@ export async function generateMetadata({
       images: [
         {
           url: project.coverImage,
-          width: 800,
-          height: 480,
+          width: 1200,
+          height: 630,
           alt: project.title,
         },
       ],

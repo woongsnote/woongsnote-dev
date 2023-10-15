@@ -1,5 +1,4 @@
 import { Tag } from 'contentlayer/generated';
-import { format } from 'date-fns';
 import { CardImage, PublishedDate, ReadingTime } from '@/components';
 
 type CardProps = {
@@ -9,6 +8,7 @@ type CardProps = {
   coverImage?: string;
   date: string;
   readingTimeText?: string;
+  type: 'post' | 'project';
 };
 
 export default function Card({
@@ -18,13 +18,14 @@ export default function Card({
   coverImage,
   date,
   readingTimeText,
+  type,
 }: CardProps) {
   return (
     <article className="group w-full mx-auto flex flex-col items-center rounded-md border shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 hover:cursor-pointer hover:-translate-y-2 transition delay-150">
-      <CardImage cardImage={coverImage!} title={title} />
+      <CardImage cardImage={coverImage!} title={title} type={type} />
 
-      <div className="flex flex-col w-full justify-center p-4">
-        <span className="text-sm lg:text-lg text-primary dark:text-secondary font-extrabold">
+      <div className="flex flex-col w-full justify-center p-4 gap-1">
+        <span className="w-fit inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-primary dark:text-secondary ring-1 ring-inset ring-blue-700/10">
           {tags![0].title}
         </span>
 
