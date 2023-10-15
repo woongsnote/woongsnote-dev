@@ -7,14 +7,14 @@ type CardImageProps = {
 
 export default function CardImage({ cardImage, title }: CardImageProps) {
   return (
-    <div className="hidden sm:flex sm:items-center sm:justify-center rounded-md h-48 mx-4 overflow-hidden mb-4">
+    <div className="hidden sm:flex sm:items-center sm:justify-center rounded-t-md h-40 lg:h-56 overflow-hidden w-full">
       <Image
         src={cardImage}
         alt={title}
         priority
         width={500}
         height={500}
-        className="w-full h-auto rounded-lg object-cover transition-opacity"
+        className="w-full h-auto object-cover transition-opacity"
       />
     </div>
   );

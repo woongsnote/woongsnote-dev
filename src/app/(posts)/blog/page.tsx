@@ -11,16 +11,6 @@ export const metadata: Metadata = {
 export default function Blog() {
   const posts: Post[] = getSortedDataList(allPosts);
 
-  // const categories = ['react', 'web'];
-
-  // let filteredList = [];
-
-  // posts.map((post) => {
-  //   if (post.tags && categories.includes(post.tags[0].title)) {
-  //     filteredList.push();
-  //   }
-  // });
-
   return (
     <>
       <PageHeader title="Blog" description="학습한 지식들을 기록합니다." />
