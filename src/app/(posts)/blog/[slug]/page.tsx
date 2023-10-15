@@ -56,7 +56,9 @@ export default async function PostLayout({ params }: PageProps) {
         readingTimeText={post.readingTime.text}
       />
       <hr />
-      <DetailPageImage coverImage={`/og?title=${post.title}`} />
+      <DetailPageImage
+        coverImage={`https://woongsnote.dev/og?title=${post.title}`}
+      />
       <MDXComponents code={post.body.code} />
       <Utterance />
     </article>
