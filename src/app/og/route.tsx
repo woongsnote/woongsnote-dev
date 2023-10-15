@@ -24,15 +24,14 @@ export async function GET(request: Request) {
             alignItems: 'center',
             justifyContent: 'center',
             backgroundImage:
-              'linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216))',
+              'linear-gradient(to bottom right, #00C0FF, #4218B8)',
             fontSize: 64,
             fontWeight: 600,
           }}
         >
-          <div style={{ marginTop: 40, color: 'white' }}>{title}</div>
+          <div style={{ color: 'white' }}>{title}</div>
         </div>
       ),
-
       {
         ...size,
       },
