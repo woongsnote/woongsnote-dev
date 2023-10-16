@@ -7,7 +7,7 @@ type CardProps = {
   tags?: Tag[];
   coverImage?: string;
   date: string;
-  readingTimeText: string;
+  readingTime: string;
   type: 'post' | 'project';
 };
 
@@ -17,21 +17,27 @@ export default function Card({
   tags,
   coverImage,
   date,
-  readingTimeText,
+  readingTime,
   type,
 }: CardProps) {
-  const category: string = tags?.[0]?.title || '';
+  const getCategory = (): string => {
+    return tags && tags.length > 0 ? tags[0].title : '';
+  };
 
-  const readingTime: string = readingTimeText?.split('')[0];
+  const category: string = getCategory();
 
   return (
     <article className="postCard group">
-      <CardImage cardImage={coverImage || ''} title={title} type={type} />
+      <CardImage
+        cardImage={coverImage ? coverImage : ''}
+        title={title}
+        type={type}
+      />
       <CardContent
         title={title}
         description={description}
         date={date}
-        readingTimeText={readingTime}
+        readingTime={readingTime}
         category={category}
       />
     </article>

@@ -3,28 +3,37 @@ import { Card } from '@/components';
 import Link from 'next/link';
 
 type CardListProps = {
-  articles: Post[] | Project[];
+  articles: (Post | Project)[];
   type: 'post' | 'project';
 };
 
 export default function CardList({ articles, type }: CardListProps) {
-  const basePath = type === 'post' ? 'blog' : 'projects';
+  const basePathType = {
+    post: 'blog',
+    project: 'projects',
+  };
+
+  const basePath = basePathType[type];
 
   return (
-    <section className="px-2 md:px-4 grid mt-4 sm:gap-8 md:grid-cols-2 w-full mx-auto justify-items-stretch">
-      {articles.map((article) => (
-        <Link key={article._id} href={`${basePath}/${article.slug}`}>
-          <Card
-            type={type}
-            title={article.title}
-            description={article.description}
-            date={article.date}
-            tags={article.tags}
-            readingTimeText={article.readingTime.text}
-            coverImage={article.coverImage}
-          />
-        </Link>
-      ))}
+    <section className="cardList">
+      {articles.length > 0 ? (
+        articles.map((article) => (
+          <Link key={article._id} href={`${basePath}/${article.slug}`}>
+            <Card
+              type={type}
+              title={article.title}
+              description={article.description}
+              date={article.date}
+              tags={article.tags}
+              readingTime={article.readingTime.text.charAt(0)}
+              coverImage={article.coverImage}
+            />
+          </Link>
+        ))
+      ) : (
+        <p>표시할 글이 없습니다!</p>
+      )}
     </section>
   );
 }

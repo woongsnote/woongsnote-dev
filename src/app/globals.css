@@ -4,7 +4,7 @@
 
 @layer base {
   main {
-    @apply mx-auto pb-28 max-w-5xl w-full relative md:pb-16 min-h-screen;
+    @apply mx-auto pb-28 container max-w-5xl px-2 lg:px-8 relative md:pb-16 min-h-screen;
   }
 
   header {
@@ -20,8 +20,11 @@
   }
 }
 
-@layer components{
-  .postCard{
-    @apply w-full mx-auto flex flex-col items-center rounded-md border shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 hover:-translate-y-2 transition delay-150
+@layer components {
+  .postCard {
+    @apply w-full mx-auto flex flex-col items-center rounded-md border shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 hover:-translate-y-2 transition delay-150;
+  }
+  .cardList {
+    @apply px-2 md:px-4 grid mt-4 sm:gap-8 md:grid-cols-2 w-full mx-auto justify-items-stretch;
   }
 }

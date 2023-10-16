@@ -4,7 +4,7 @@ type CardContentProps = {
   title: string;
   description: string;
   date: string;
-  readingTimeText: string;
+  readingTime: string;
   category: string;
 };
 
@@ -13,7 +13,7 @@ export default function CardContent({
   title,
   description,
   date,
-  readingTimeText,
+  readingTime,
 }: CardContentProps) {
   return (
     <div className="flex flex-col w-full justify-center p-4 gap-1">
@@ -31,7 +31,7 @@ export default function CardContent({
 
       <div className="flex justify-between mt-2 items-center text-sm text-gray-500 dark:text-gray-300">
         <PublishedDate date={date} />
-        <ReadingTime readingTime={readingTimeText?.split('')[0] as string} />
+        <ReadingTime readingTime={readingTime} />
       </div>
     </div>
   );

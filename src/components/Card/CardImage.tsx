@@ -8,7 +8,7 @@ type CardImageProps = {
 
 export default function CardImage({ cardImage, title, type }: CardImageProps) {
   return (
-    <div className="hidden sm:flex sm:items-center sm:justify-center rounded-t-md h-40 lg:h-56 overflow-hidden w-full">
+    <div className="hidden sm:flex sm:items-center sm:justify-center rounded-t-md h-40 lg:h-52 overflow-hidden w-full">
       <Image
         src={
           type === 'post'
