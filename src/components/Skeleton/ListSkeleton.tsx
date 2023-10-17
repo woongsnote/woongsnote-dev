@@ -25,5 +25,5 @@ export default function ListSkeleton({ listLength }: ListSkeletonProps) {
     <SkeletonItem key={index} />
   ));
 
-  return <section className="grid lg:grid-cols-2">{skelonItems}</section>;
+  return <section className="grid md:grid-cols-2">{skelonItems}</section>;
 }
