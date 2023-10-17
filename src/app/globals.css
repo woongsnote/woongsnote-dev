@@ -12,19 +12,19 @@
   }
 
   footer {
-    @apply w-full left-0 bottom-14 pt-2 pb-16 md:pb-2 md:bottom-0 bg-white dark:bg-darkBlack text-center;
+    @apply w-full left-0 bottom-14 pt-2 pb-16 md:pb-2 md:bottom-0 bg-gray-50 dark:bg-darkBlack text-start flex flex-row justify-between px-4;
   }
 
   article.post {
-    @apply w-full py-6 prose dark:prose-invert mx-auto prose-h1:mb-2 prose-hr:my-4 px-2 md:px-0 lg:prose-lg;
+    @apply container py-6 prose-sm prose sm:prose-base dark:prose-invert mx-auto prose-h1:mb-2 prose-hr:my-4 px-2 md:px-0 lg:prose-lg;
   }
 }
 
 @layer components {
   .postCard {
-    @apply w-full mx-auto flex flex-col items-center rounded-md border shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 hover:-translate-y-2 transition delay-150;
+    @apply w-full mx-auto flex flex-col items-center rounded-md shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 lg:hover:-translate-y-2 transition delay-150;
   }
   .cardList {
-    @apply px-2 md:px-4 grid mt-4 sm:gap-8 md:grid-cols-2 w-full mx-auto justify-items-stretch;
+    @apply px-2 md:px-4 grid mt-4 sm:gap-8 lg:px-10 2xl:px-32 lg:gap-16 md:grid-cols-2 w-full mx-auto;
   }
 }

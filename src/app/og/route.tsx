@@ -9,7 +9,7 @@ export async function GET(request: Request) {
     const hasTitle = searchParams.has('title');
     const title = hasTitle
       ? searchParams.get('title')?.slice(0, 100)
-      : 'My default title';
+      : 'Woongsnote';
 
     const size = { width: 1200, height: 630 };
 
