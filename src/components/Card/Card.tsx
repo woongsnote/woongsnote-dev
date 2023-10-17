@@ -38,7 +38,7 @@ export default function Card({
   const thumbnailImage: string = getThumbNailImage();
 
   return (
-    <article className="postCard group">
+    <article className="Card group">
       <CardImage cardImage={thumbnailImage} title={title} />
       <CardContent
         url={url}

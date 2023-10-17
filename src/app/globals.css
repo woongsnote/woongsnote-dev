@@ -4,13 +4,13 @@
 
 @layer base {
   main {
-    @apply mx-auto pb-28 container max-w-5xl px-2 lg:px-8 relative md:pb-16 min-h-screen;
+    @apply mx-auto pb-28 container px-2 lg:px-0 relative md:pb-16 min-h-screen;
   }
 
   header {
-    @apply sticky left-0 top-0 z-50 items-center bg-white dark:bg-darkBlack w-full sm:px-4 py-2 justify-between flex shadow-sm dark:border-b-2;
+    @apply sticky left-0 top-0 z-50 items-center bg-white dark:bg-darkBlack w-full px-2 py-2 justify-stretch grid grid-flow-col;
   }
-
+  
   footer {
     @apply w-full left-0 bottom-14 pt-2 pb-16 md:pb-2 md:bottom-0 bg-gray-50 dark:bg-darkBlack text-start flex flex-row justify-between px-4;
   }
@@ -21,10 +21,14 @@
 }
 
 @layer components {
-  .postCard {
-    @apply w-full mx-auto flex flex-col items-center rounded-md shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 lg:hover:-translate-y-2 transition delay-150;
+  .CardList {
+    @apply px-2 md:px-4 grid mt-4 sm:gap-8 lg:px-10 lg:gap-16 md:grid-cols-2 w-full mx-auto justify-items-stretch;
   }
-  .cardList {
-    @apply px-2 md:px-4 grid mt-4 sm:gap-8 lg:px-10 2xl:px-32 lg:gap-16 md:grid-cols-2 w-full mx-auto;
+
+  .Card {
+    @apply w-full mx-auto flex flex-col items-center rounded-md shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 lg:hover:-translate-y-2 transition delay-150 max-w-lg;
+  }
+  .CardImageContainer {
+    @apply hidden sm:flex sm:items-center sm:justify-center h-40 lg:h-52 xl:h-64 w-full border-x border-t rounded-t-md;
   }
 }

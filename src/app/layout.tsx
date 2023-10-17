@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Providers from './providers';
 import { Header, Footer, BottomNav } from '@/components';
-import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.woongsnote.dev'),
@@ -62,7 +61,6 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <BottomNav />
-          <ThemeSwitcher />
         </Providers>
       </body>
     </html>
