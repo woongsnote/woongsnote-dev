@@ -15,7 +15,7 @@ export default function CardList({ articles, type }: CardListProps) {
   const basePath = basePathType[type];
 
   return (
-    <section className="cardList">
+    <section className="CardList">
       {articles.length > 0 ? (
         articles.map((article) => (
           <Card

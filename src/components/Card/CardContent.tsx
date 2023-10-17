@@ -19,7 +19,7 @@ export default function CardContent({
   url,
 }: CardContentProps) {
   return (
-    <div className="flex flex-col w-full justify-center p-4 gap-1 border-x border-t md:border-t-0 border-b rounded-md lg:rounded-b-md">
+    <div className="flex flex-col w-full justify-center p-4 gap-1 border-x border-t md:border-t-0 border-b rounded-md lg:rounded-t-none lg:rounded-b-md">
       <span className="w-fit inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-primary dark:text-secondary ring-1 ring-inset ring-blue-700/10">
         {category}
       </span>
@@ -30,7 +30,7 @@ export default function CardContent({
         </h2>
       </Link>
 
-      <p className="text-xs lg:text-sm text-gray-700 dark:text-gray-300 mb-2">
+      <p className="text-sm lg:text-base text-gray-700 dark:text-gray-300 mb-2">
         {description}
       </p>
 
