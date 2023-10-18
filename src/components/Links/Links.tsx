@@ -1,30 +1,30 @@
 import { IconType } from 'react-icons';
 import { AiFillHome, AiFillEdit, AiFillDatabase } from 'react-icons/ai';
 
-type TLinkItem = {
+type LinkItem = {
   label: string;
   bottomLabel: string;
   href: string;
   icon: React.ReactElement<IconType>;
 };
 
-export const Links: TLinkItem[] = [
+export const Links: LinkItem[] = [
   {
-    label: '',
+    label: 'Home',
     bottomLabel: 'Home',
     href: '/',
     icon: <AiFillHome />,
   },
   {
-    label: 'Blog',
-    bottomLabel: 'Blog',
-    href: '/blog',
+    label: 'About',
+    bottomLabel: 'About',
+    href: '/about',
     icon: <AiFillEdit />,
   },
   {
-    label: 'Projects',
-    bottomLabel: 'Projects',
-    href: '/projects',
-    icon: <AiFillDatabase />,
+    label: 'Posts',
+    bottomLabel: 'Posts',
+    href: '/posts',
+    icon: <AiFillEdit />,
   },
 ];

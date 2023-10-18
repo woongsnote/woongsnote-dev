@@ -8,7 +8,7 @@ export default function Header() {
     <header>
       <Logo />
       <NavBar />
-      <ThemeSwitcher />
+      {/* <ThemeSwitcher /> */}
     </header>
   );
 }

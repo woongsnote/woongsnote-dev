@@ -8,14 +8,14 @@ type CardListProps = {
 
 export default function CardList({ articles, type }: CardListProps) {
   const basePathType = {
-    post: 'blog',
+    post: 'posts',
     project: 'projects',
   };
 
   const basePath = basePathType[type];
 
   return (
-    <section className="CardList">
+    <>
       {articles.length > 0 ? (
         articles.map((article) => (
           <Card
@@ -33,6 +33,6 @@ export default function CardList({ articles, type }: CardListProps) {
       ) : (
         <p>표시할 글이 없습니다!</p>
       )}
-    </section>
+    </>
   );
 }

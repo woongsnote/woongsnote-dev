@@ -29,3 +29,5 @@ export { default as ListSkeleton } from './Skeleton/ListSkeleton';
 
 export { default as ReadingTime } from './ReadingTime/ReadingTime';
 export { default as PublishedDate } from './PublishedDate/PublishedDate';
+
+export { default as SocialLinks } from './Links/SocialLinks';
