@@ -4,15 +4,15 @@
 
 @layer base {
   main {
-    @apply mx-auto pb-28 container px-2 lg:px-0 relative md:pb-16 min-h-screen;
+    @apply mx-auto pb-28 container px-2 lg:px-0 relative md:pb-16 max-w-5xl min-h-screen;
   }
 
   header {
-    @apply sticky left-0 top-0 z-50 items-center bg-white dark:bg-darkBlack w-full px-2 py-2 justify-stretch grid grid-flow-col;
+    @apply sticky left-0 top-0 z-50 items-center bg-white dark:bg-darkBlack w-full px-4 py-2 justify-stretch grid grid-flow-col shadow-sm;
   }
   
   footer {
-    @apply w-full left-0 bottom-14 pt-2 pb-16 md:pb-2 md:bottom-0 bg-gray-50 dark:bg-darkBlack text-start flex flex-row justify-between px-4;
+    @apply w-full left-0 bottom-0 pt-4 md:pb-4 md:bottom-0 bg-gray-50 dark:bg-darkBlack text-start flex flex-row justify-between px-4 pr-20;
   }
 
   article.post {
@@ -22,13 +22,17 @@
 
 @layer components {
   .CardList {
-    @apply px-2 md:px-4 grid mt-4 sm:gap-8 lg:px-10 lg:gap-16 md:grid-cols-2 w-full mx-auto justify-items-stretch;
+    @apply px-2 md:px-4 grid md:grid-cols-2 mt-4 sm:gap-8 lg:px-10 w-full mx-auto justify-items-stretch;
   }
 
   .Card {
-    @apply w-full mx-auto flex flex-col items-center rounded-md shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 lg:hover:-translate-y-2 transition delay-150 max-w-lg;
-  }
+    @apply mx-auto flex flex-row items-center rounded-md shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 col-span-1 w-full
+  }  
   .CardImageContainer {
-    @apply hidden sm:flex sm:items-center sm:justify-center h-40 lg:h-52 xl:h-64 w-full border-x border-t rounded-t-md;
+    @apply hidden sm:flex sm:items-center sm:justify-center h-48 lg:h-56 rounded-t-md basis-2/5 p-2;
+  }
+
+  .CardContentContainer{
+    @apply flex flex-col w-full justify-center p-2 gap-1 border lg:border-none rounded-lg lg:rounded-none
   }
 }

@@ -1,33 +1,28 @@
-import {
-  CardList as RecentPostList,
-  CardList as RecentProjectList,
-  HeroSection,
-  MainSectionHeader,
-} from '@/components';
+import { HeroSection, CardList as RecentPostList } from '@/components';
 import { getSortedDataList } from '@/lib/utils';
-import { allPosts, allProjects } from 'contentlayer/generated';
+import { allPosts } from 'contentlayer/generated';
+import Link from 'next/link';
 
 const MAX_ARTICLES = 2;
 
 export default function Home() {
   const recentPosts = getSortedDataList(allPosts, MAX_ARTICLES);
 
-  const recentProjects = getSortedDataList(allProjects, MAX_ARTICLES);
-
   return (
     <>
       <HeroSection />
-      <MainSectionHeader title="최신 게시글" href="/blog" label="모든 게시글" />
-      <RecentPostList articles={recentPosts} type={'post'} />
+      <h2 className="text-xl lg:text-3xl font-bold my-2 py-2 px-12 lg:px-0">
+        Latest Posts
+      </h2>
+      <section className="grid grid-cols-1 w-full gap-4 px-12 lg:px-0">
+        <RecentPostList articles={recentPosts} type={'post'} />
+      </section>
 
-      <hr className="w-full my-4 lg:my-10 border-none" />
-
-      <MainSectionHeader
-        title="최신 프로젝트"
-        href="/projects"
-        label="모든 프로젝트"
-      />
-      <RecentProjectList articles={recentProjects} type={'project'} />
+      <div className="flex items-center justify-center w-full mt-4">
+        <Link href={'/posts'} className="border p-2 rounded-lg">
+          View More
+        </Link>
+      </div>
     </>
   );
 }
