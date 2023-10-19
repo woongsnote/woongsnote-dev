@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 export default function Logo() {
   return (
-    <Link href="/" className="flex flex-row space-x-2 items-center">
-      <span className="text-lg lg:text-2xl font-bold">Woongsnote</span>
+    <Link href="/" className="text-lg lg:text-2xl font-bold col-span-1 w-fit">
+      Woongsnote
     </Link>
   );
 }

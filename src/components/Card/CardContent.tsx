@@ -1,5 +1,7 @@
-import { PublishedDate, ReadingTime } from '@/components';
+import { PublishedDate, ReadingTime, TagList } from '@/components';
 import Link from 'next/link';
+import Category from './Category';
+import { Tag } from 'contentlayer/generated';
 
 type CardContentProps = {
   title: string;
@@ -8,6 +10,7 @@ type CardContentProps = {
   readingTime: string;
   category: string;
   url: string;
+  tags: Tag[];
 };
 
 export default function CardContent({
@@ -17,22 +20,19 @@ export default function CardContent({
   date,
   readingTime,
   url,
+  tags,
 }: CardContentProps) {
   return (
     <div className="CardContentContainer">
-      <span className="w-fit inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-primary dark:text-secondary ring-1 ring-inset ring-blue-700/10">
-        {category}
-      </span>
-
+      <Category category={category} />
       <Link href={url} aria-label={`go to ${title}`}>
-        <h2 className="hover:text-primary hover:dark:text-secondary transition-all w-full hover:underline hover:underline-offset-8 text-lg lg:text-2xl font-bold mb-2">
+        <h2 className="hover:text-primary hover:dark:text-secondary transition-all w-full hover:underline hover:underline-offset-8 text-lg lg:text-xl font-bold">
           {title}
         </h2>
       </Link>
+      <p className="text-xs text-gray-700 dark:text-gray-300">{description}</p>
 
-      <p className="text-sm lg:text-base text-gray-700 dark:text-gray-300 mb-2">
-        {description}
-      </p>
+      <TagList tags={tags} />
 
       <div className="flex justify-between mt-2 items-center text-sm text-gray-500 dark:text-gray-300 w-full">
         <PublishedDate date={date} />

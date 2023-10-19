@@ -30,5 +30,7 @@ export function getPostsByCategory<T extends { category: string }>({
   category: string;
   data: Array<T>;
 }) {
-  return data.filter((post) => post.category === category);
+  if (category.match('All')) return data;
+
+  return data.filter((post) => post.category.match(category));
 }

@@ -14,7 +14,7 @@ export default function CardImage({ cardImage, title }: CardImageProps) {
         priority
         width={500}
         height={500}
-        className="w-full h-full object-cover rounded-md"
+        className="w-full h-full object-cover rounded-md border"
       />
     </div>
   );

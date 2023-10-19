@@ -1,0 +1,50 @@
+---
+title: 'Toodos'
+description: 추천 검색어 기능 구현
+coverImage: https://github.com/woongsnote/woongsnote-dev/assets/83802168/aa595461-4464-441e-a739-56e38ca9c425
+date: 2023-05-22
+tags:
+  - title: React
+  - title: TypeScript
+  - title: Axios
+category: Project
+---
+
+## ⭐ 개요
+
+> 주어진 코드를 리뷰하고, 개선하기
+
+## 🗂️ 개발 내용
+
+### 🗓️ 개발 기간
+
+- 2023.05.14 - 2023.05.17(1W)
+
+### 🧑‍💻 개발 인원
+
+- 8명(프론트엔드 8명)
+
+### ⚒️ 개발 스택
+
+- React, TypeScript, Axios
+
+### ⌨️ 구현 기능
+
+- 기존 코드 분석 및 개선
+
+  - 기존 코드를 **타입스크립트**로 **마이그레이션**.
+
+- 불필요한 API 호출을 줄이기 위해 `debounce` 구현
+- Axios를 사용해서 가져온 API 데이터로 **Drop down List** 구현
+
+### ✨ 성장 경험
+
+- 검색어를 입력하는 중에도 API를 호출한다면, 호출 횟수가 많아져서 효율적이지 않으므로, 사용자의 입력이 끝났을 때에만 호출할 수 있도록 **debounce**를 적용해야 한다.
+
+- CSS가 많이 필요하지 않아, CSS 프레임워크를 설치하지 않고 구현했다. vanilla CSS를 작성하면서, CSS 기본기를 단련할 수 있었다.
+
+### 🔍 Debounce
+
+Debounce는 버튼 클릭, 입력 변경, 스크롤 등의 이벤트에 대한 함수 호출 빈도를 제어하는 데 사용된다.
+특히, input의 `onChange`이벤트처럼 빠르게 발생할 수 있는 이벤트 핸들러를 다룰 때 유용하다.
+특정한 시간이 지난 후에만 함수를 실행시키는 방식으로 동작한다.

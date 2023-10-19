@@ -10,6 +10,7 @@ type CardProps = {
   readingTime: string;
   type: 'post' | 'project';
   url: string;
+  category: string;
 };
 
 export default function Card({
@@ -21,15 +22,10 @@ export default function Card({
   readingTime,
   type,
   url,
+  category,
 }: CardProps) {
-  const getCategory = (): string => {
-    return tags && tags.length > 0 ? tags[0].title : '';
-  };
-
-  const category: string = getCategory();
-
   const getThumbNailImage = () => {
-    if (!coverImage || type === 'post')
+    if (!coverImage || category === 'Tech' || category === 'Diary')
       return `https://woongsnote.dev/og?title=${title}`;
 
     return coverImage;
@@ -47,6 +43,7 @@ export default function Card({
         date={date}
         readingTime={readingTime}
         category={category}
+        tags={tags!}
       />
     </article>
   );
