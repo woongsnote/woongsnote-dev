@@ -3,17 +3,9 @@ import { Card } from '@/components';
 
 type CardListProps = {
   articles: Post[];
-  type: 'post' | 'project';
 };
 
-export default function CardList({ articles, type }: CardListProps) {
-  const basePathType = {
-    post: 'posts',
-    project: 'projects',
-  };
-
-  const basePath = basePathType[type];
-
+export default function CardList({ articles }: CardListProps) {
   if (articles.length < 1) return <p>표시할 글이 없습니다!</p>;
 
   return (
@@ -21,8 +13,7 @@ export default function CardList({ articles, type }: CardListProps) {
       {articles.map((article) => (
         <Card
           key={article._id}
-          url={`${basePath}/${article.slug}`}
-          type={type}
+          url={`posts/${article.slug}`}
           title={article.title}
           description={article.description}
           date={article.date}

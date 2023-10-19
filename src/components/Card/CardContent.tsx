@@ -26,15 +26,17 @@ export default function CardContent({
     <div className="CardContentContainer">
       <Category category={category} />
       <Link href={url} aria-label={`go to ${title}`}>
-        <h2 className="hover:text-primary hover:dark:text-secondary transition-all w-full hover:underline hover:underline-offset-8 text-lg lg:text-xl font-bold">
+        <h2 className="hover:text-primary hover:dark:text-secondary transition-all w-full hover:underline hover:underline-offset-8 text-lg lg:text-3xl font-bold">
           {title}
         </h2>
       </Link>
-      <p className="text-xs text-gray-700 dark:text-gray-300">{description}</p>
+      <p className="text-sm lg:text-lg text-gray-700 dark:text-gray-300">
+        {description}
+      </p>
 
       <TagList tags={tags} />
 
-      <div className="flex justify-between mt-2 items-center text-sm text-gray-500 dark:text-gray-300 w-full">
+      <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-300 w-full">
         <PublishedDate date={date} />
         <ReadingTime readingTime={readingTime} />
       </div>
