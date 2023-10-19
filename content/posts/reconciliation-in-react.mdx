@@ -1,0 +1,110 @@
+---
+title: Reconciliation
+description: React에서의 Reconciliation에 대한 설명 및 예시
+date: 2023-07-17
+tags:
+  - title: React
+  - title: Reconciliation
+category: Tech
+---
+
+## 개요
+
+**React**로 복잡한 애플리케이션을 구축할 때, 효율적인 렌더링을 위해 React의 핵심 기능 중 하나인 **Reconciliation**을 활용한다.
+React는 **상태 변화에 따라 UI를 업데이트**하기 위해 Reconciliation 프로세스를 사용한다.
+React에서의 **Reconciliation**의 개념에 대해 살펴보고, TypeScript를 사용한 예제 코드를 살펴보려고 한다.
+
+## Reconciliation이란?
+
+**Reconciliation**은 React가 **변경 사항**에 따라 **UI**를 가장 **효율적으로** **업데이트**할 수 있는 방법을 결정하는 프로세스다.
+이는 컴포넌트의 이전 상태와 현재 상태를 비교하여 실제로 업데이트가 필요한지 여부를 결정하는 데 사용된다.
+간단히 말해, Reconciliation은 **UI에서 업데이트, 생성 또는 삭제해야 할 부분을 결정**하는 **가상 DOM 차이 비교 알고리즘**과 같다.
+**DOM 업데이트를 최소화**함으로써 React는 **최적의 성능**을 **보장**한다.
+
+## Reconciliation의 중요성
+
+Reconciliation은 렌더링 프로세스의 최적화와 전반적인 애플리케이션 성능 향상에 중요한 역할을 한다.
+
+1. **최소화된 DOM 작업**
+
+   - DOM의 필요한 부분만 업데이트하여, 렌더링에 관련된 계산 오버헤드를 줄이며, 빠르고 부드러운 사용자 경험을 제공한다.
+
+2. **가상 DOM의 효율성**
+
+   - React의 가상 DOM은 애플리케이션 상태와 실제 DOM 사이에 중간 계층을 제공하여 Reconciliation을 통해 빠르고 효율적인 렌더링을 가능하게 한다.
+
+3. **불필요한 렌더링 회피**
+
+   - Reconciliation을 통해 React는 구성 요소를 다시 렌더링할 필요가 있는지 여부를 판단하여 불필요한 비용이 드는 업데이트를 방지한다.
+
+## Reconciliation 동작 방식
+
+Reconciliation이 작동하는 방식을 이해하기 위해 간단한 시나리오를 살펴보자. 아래는 아이템 목록을 렌더링하는 React 컴포넌트 코드다.
+
+```tsx
+interface ItemProps {
+  id: string;
+  name: string;
+}
+
+const Item = ({ id, name }: ItemProps) => {
+  return <div key={id}>{name}</div>;
+};
+
+const List = ({ items }: { items: ItemProps[] }) => {
+  return (
+    <div>
+      {items.map((item) => (
+        <Item key={item.id} id={item.id} name={item.name} />
+      ))}
+    </div>
+  );
+};
+```
+
+이제 **List** 컴포넌트의 items prop을 업데이트한다고 가정해보자. React는 이전 상태와 현재 상태를 비교하여 UI에 어떤 변경 UI에 어떤 변경 사항이 필요한지 판단하기 위해 아래와 같은 단계를 거친다.
+
+1. Diffing(비교)
+
+   - React는 조정 프로세스를 시작하기 위해 이전 렌더 트리(가상 DOM)와 새 렌더 트리를 비교한다. 두 트리 사이의 차이를 식별하고 어떤 변경 사항이 필요한지 결정한다.
+
+2. Updates(업데이트)
+
+   - React는 이전 단계에서 식별된 차이를 기반으로 개별 컴포넌트 수준에서 업데이트를 수행한다. 각 컴포넌트의 props를 확인하고 업데이트가 필요한지 여부를 판단한다.
+
+3. Re-rendering(재런더링)
+
+   - 업데이트가 필요한 경우, React는 컴포넌트와 그 자식을 다시 렌더링한다. 이렇게 함으로써 상태의 변경이 UI에 반영된다.
+
+4. Final DOM(최종 DOM)
+   - 마지막으로, React는 가상 DOM에 대한 변경 사항을 실제 DOM과 조정한다. 성능 부하를 최소화하기 위해 필요한 업데이트만 적용한다.
+
+## Reconciliation 최적화
+
+Reconciliation은 효율적인 프로세스이지만, 대량의 목록을 업데이트할 때는 **유일한 key prop**을 제공하는 것이 성능을 더욱 개선할 수 있는 경우가 있다. 이렇게 하면 React가 변경 사항을 쉽게 식별하고 불필요한 업데이트를 피할 수 있다.
+게다가, 함수형 컴포넌트를 memoize하고 props가 변경되지 않은 경우에는 재렌더링을 방지하기 위해 React.memo 고차 함수 컴포넌트(HOC)를 사용할 수 있다.
+
+React.memo와 유일한 key prop을 사용한 최적화 예제를 살펴보자.
+
+```tsx
+const MemoizedItem = React.memo(Item);
+
+const List = ({ items }: { items: ItemProps[] }) => {
+  return (
+    <div>
+      {items.map((item) => (
+        <MemoizedItem key={item.id} id={item.id} name={item.name} />
+      ))}
+    </div>
+  );
+};
+```
+
+이 예제에서 MemoizedItem은 이제 React.memo로 감싸져 있으며, 이를 통해 컴포넌트가 props가 변경되지 않은 한 재렌더링을 방지한다. 각 항목에 대해 고유한 key prop을 사용하면 React가 변경 사항을 쉽게 식별하고 조정 프로세스를 최적화할 수 있다.
+
+## 결론
+
+Reconciliation은 React에서 UI의 필요한 부분만 업데이트하고 렌더링하는 강력한 렌더링 최적화 기법이다.
+Reconciliation이 작동하는 방식을 이해하고, 유일한 key prop을 제공하고 React.memo를 사용하는 등의 최적화 기법을 활용함으로써 React 애플리케이션의 효율성을 더욱 향상시킬 수 있다.
+
+이 포스트가 React에서의 Reconciliation에 대해 알아보고, TypeScript를 사용한 유용한 코드 예제를 제공하는 데 도움이 되기를 바란다. 최적화하는 즐거움을 느껴보길 바란다!

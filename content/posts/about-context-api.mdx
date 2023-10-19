@@ -1,0 +1,107 @@
+---
+title: Context API
+description: Context API 소개
+date: 2023-03-06
+tags:
+  - title: React
+  - title: Context API
+category: Tech
+---
+
+## Context API는?
+
+**Context API**는 React의 상태 관리 기능 중 하나로, 여러 컴포넌트에서 공유되는 데이터를 관리하는 방법이다.
+
+일반적으로 React에서는 부모 컴포넌트에서 상태를 관리하고, 자식 컴포넌트에게 **props** 를 통해 전달한다.
+하지만, 프로젝트의 규모가 커지고 컴포넌트 트리의 깊이가 깊어질수록 props를 통한 데이터 전달이 복잡해질 수 있다.
+
+이때 Context API를 사용하면, 중간 컴포넌트에서 props를 전달하지 않고도 원하는 컴포넌트에서 공유할 수 있는 데이터를 제공할 수 있다.
+
+Context API는 **createContext()** 함수를 통해 생성한다.
+**createContext()** 함수는 **Provider**와 **Consumer**를 생성한다.
+Provider는 데이터를 제공하는 컴포넌트이고, Consumer는 데이터를 사용하는 컴포넌트다.
+Provider에서는 value 속성을 통해 전달할 데이터를 설정하고, Consumer에서는 이 값을 사용한다.
+
+## Context API 사용 예시
+
+- React에서 Context API를 사용하여 사용자의 이름을 관리하는 예시 코드.
+
+```javascript
+import React, { createContext, useState } from 'react';
+
+// Context 생성
+const UserContext = createContext();
+
+const UserProvider = ({ children }) => {
+  const [username, setUsername] = useState('');
+
+  const updateUsername = (newUsername) => {
+    setUsername(newUsername);
+  };
+
+  return (
+    <UserContext.Provider value={{ username, updateUsername }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+export { UserContext, UserProvider };
+```
+
+이제 위의 코드를 사용하여 사용자 이름을 관리하고 다른 컴포넌트에서 사용할 수 있다.
+
+```javascript
+import React, { useContext, useState } from 'react';
+import { UserContext, UserProvider } from './UserContext';
+
+const App = () => {
+  return (
+    <UserProvider>
+      <MainComponent />
+    </UserProvider>
+  );
+};
+
+const MainComponent = () => {
+  const { username, updateUsername } = useContext(UserContext);
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateUsername(inputValue);
+    setInputValue('');
+  };
+
+  return (
+    <div>
+      <h1>Hello, {username || 'Guest'}!</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleChange}
+          placeholder="Enter your name"
+        />
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  );
+};
+
+export default App;
+```
+
+위의 코드에서 `UserProvider` 컴포넌트로 사용자 이름을 관리할 수 있는 Context를 생성한다.
+`UserProvider`는 `username` 상태와 `updateUsername` 함수를 포함한 컨텍스트 값을 제공한다.
+`MainComponent`에서 `useContext`를 사용하여 `UserContext`를 가져온 다음, `username`과 `updateUsername`을 사용하여 사용자 이름을 업데이트한다.
+이름을 입력할 수 있는 입력란과 업데이트 버튼도 있다.
+이렇게 하면 `MainComponent`에서 사용자 이름을 업데이트하고, 다른 컴포넌트에서도 `UserContext`를 통해 사용자 이름을 사용할 수 있게 된다.
+
+## 결론
+
+따라서, Context API를 사용하면 props를 전달하지 않고도 데이터를 관리할 수 있으므로, 코드의 가독성과 유지보수성을 높일 수 있다.

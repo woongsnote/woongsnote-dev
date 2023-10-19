@@ -17,7 +17,7 @@ export default function DetailPageHeader({
     <>
       <h1>{title}</h1>
       <p className="text-gray-600 dark:text-gray-300 !mt-0">{description}</p>
-      <div className="w-full flex flex-row justify-between items-center text-sm gap-1 h-fit">
+      <div className="w-full flex flex-row justify-between items-center text-sm gap-1 h-fit px-2 lg:px-0">
         <Author />
         <p className="flex flex-col text-end">
           <PublishedDate date={date} />
