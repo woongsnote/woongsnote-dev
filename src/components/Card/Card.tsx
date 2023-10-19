@@ -8,7 +8,6 @@ type CardProps = {
   coverImage?: string;
   date: string;
   readingTime: string;
-  type: 'post' | 'project';
   url: string;
   category: string;
 };
@@ -20,7 +19,6 @@ export default function Card({
   coverImage,
   date,
   readingTime,
-  type,
   url,
   category,
 }: CardProps) {
