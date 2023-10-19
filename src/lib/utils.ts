@@ -1,15 +1,15 @@
 import { compareDesc } from 'date-fns';
 
-export const getSortedDataList = <T extends { date: string }>(
+export function getSortedDataList<T extends { date: string }>(
   data: T[],
   maxNum?: number,
-) => {
+) {
   const sortedData = data.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   );
 
   return maxNum ? sortedData.slice(0, maxNum) : sortedData;
-};
+}
 
 export async function getPageFromParams<T extends { slug: string }>(
   params: T,
@@ -21,4 +21,16 @@ export async function getPageFromParams<T extends { slug: string }>(
     null;
   }
   return page;
+}
+
+export function getPostsByCategory<T extends { category: string }>({
+  category,
+  data,
+}: {
+  category: string;
+  data: Array<T>;
+}) {
+  if (category.match('All')) return data;
+
+  return data.filter((post) => post.category.match(category));
 }

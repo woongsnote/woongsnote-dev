@@ -7,8 +7,9 @@ type CardProps = {
   tags?: Tag[];
   coverImage?: string;
   date: string;
-  readingTimeText: string;
-  type: 'post' | 'project';
+  readingTime: string;
+  url: string;
+  category: string;
 };
 
 export default function Card({
@@ -17,22 +18,30 @@ export default function Card({
   tags,
   coverImage,
   date,
-  readingTimeText,
-  type,
+  readingTime,
+  url,
+  category,
 }: CardProps) {
-  const category: string = tags?.[0]?.title || '';
+  const getThumbNailImage = () => {
+    if (!coverImage || category === 'Tech' || category === 'Diary')
+      return `https://woongsnote.dev/og?title=${title}`;
 
-  const readingTime: string = readingTimeText?.split('')[0];
+    return coverImage;
+  };
+
+  const thumbnailImage: string = getThumbNailImage();
 
   return (
-    <article className="postCard group">
-      <CardImage cardImage={coverImage || ''} title={title} type={type} />
+    <article className="Card group">
+      <CardImage cardImage={thumbnailImage} title={title} />
       <CardContent
+        url={url}
         title={title}
         description={description}
         date={date}
-        readingTimeText={readingTime}
+        readingTime={readingTime}
         category={category}
+        tags={tags!}
       />
     </article>
   );

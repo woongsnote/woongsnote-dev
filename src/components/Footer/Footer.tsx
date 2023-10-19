@@ -1,11 +1,11 @@
+import { SocialLinks } from '@/components';
+
 export default function Footer() {
   return (
     <footer>
-      <p>
-        © 2023.
-        <span className="text-base font-bold"> 문지웅 </span>
-        All rights reserved.
-      </p>
+      <p className="text-xs">© 2023. Woongsnote All rights reserved.</p>
+
+      <SocialLinks />
     </footer>
   );
 }
