@@ -1,39 +1,43 @@
 import Link from 'next/link';
-import React from 'react';
+import { ReactElement } from 'react';
 import { IconType } from 'react-icons';
-import { BsGithub, BsInstagram, BsLinkedin } from 'react-icons/bs';
+import {
+  RiGithubLine,
+  RiInstagramLine,
+  RiLinkedinBoxLine,
+} from 'react-icons/ri';
 
 type SocialLinkItem = {
   title: string;
   href: string;
-  icon: React.ReactElement<IconType>;
+  icon: ReactElement<IconType>;
 };
 
 const SocialLinkItems: SocialLinkItem[] = [
   {
     title: 'GitHub',
     href: 'https://github.com/woongsnote',
-    icon: <BsGithub />,
+    icon: <RiGithubLine />,
   },
   {
     title: 'Instagram',
     href: 'https://github.com/woongsnote',
-    icon: <BsInstagram />,
+    icon: <RiInstagramLine />,
   },
   {
     title: 'LinkedIn',
     href: 'https://github.com/woongsnote',
-    icon: <BsLinkedin />,
+    icon: <RiLinkedinBoxLine />,
   },
 ];
 
 export default function SocialLinks() {
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-2 w-fit h-fit">
       {SocialLinkItems.map((link) => (
         <Link
           key={link.title}
-          className="p-2 text-lg border rounded-full text-gray-500"
+          className="p-2 text-lg border rounded-full "
           href={link.href}
         >
           {link.icon}

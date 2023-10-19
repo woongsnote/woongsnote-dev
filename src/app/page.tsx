@@ -3,7 +3,7 @@ import { getSortedDataList } from '@/lib/utils';
 import { allPosts } from 'contentlayer/generated';
 import Link from 'next/link';
 
-const MAX_ARTICLES = 2;
+const MAX_ARTICLES = 3;
 
 export default function Home() {
   const recentPosts = getSortedDataList(allPosts, MAX_ARTICLES);
@@ -11,10 +11,10 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <h2 className="text-xl lg:text-3xl font-bold my-2 py-2 px-12 lg:px-0">
+      <h2 className="text-xl lg:text-3xl font-bold py-2 px-2 w-full col-span-1 lg:col-span-3">
         Latest Posts
       </h2>
-      <section className="grid grid-cols-1 w-full gap-4 px-12 lg:px-0">
+      <section className="CardList">
         <RecentPostList articles={recentPosts} type={'post'} />
       </section>
 

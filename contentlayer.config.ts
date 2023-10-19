@@ -16,7 +16,7 @@ const Tag = defineNestedType(() => ({
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `blogs/*.mdx`,
+  filePathPattern: `posts/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -44,6 +44,11 @@ export const Post = defineDocumentType(() => ({
       description: 'The coverImage of the post',
       required: false,
     },
+    category: {
+      type: 'string',
+      description: 'The category of the post',
+      required: true,
+    },
   },
   computedFields: {
     readingTime: {
@@ -57,48 +62,48 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
-export const Project = defineDocumentType(() => ({
-  name: 'Project',
-  filePathPattern: `projects/*.mdx`,
-  contentType: 'mdx',
-  fields: {
-    title: {
-      type: 'string',
-      description: 'The title of the project',
-      required: true,
-    },
-    date: {
-      type: 'date',
-      description: 'The date of the project',
-      required: true,
-    },
-    description: {
-      type: 'string',
-      description: 'The description of the project',
-      required: true,
-    },
-    coverImage: {
-      type: 'string',
-      description: 'The coverImage of the project',
-      required: true,
-    },
-    tags: {
-      type: 'list',
-      description: 'The tags of the project',
-      of: Tag,
-    },
-  },
-  computedFields: {
-    readingTime: {
-      type: 'json',
-      resolve: (doc) => readingTime(doc.body.raw),
-    },
-    slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
-    },
-  },
-}));
+// export const Project = defineDocumentType(() => ({
+//   name: 'Project',
+//   filePathPattern: `projects/*.mdx`,
+//   contentType: 'mdx',
+//   fields: {
+//     title: {
+//       type: 'string',
+//       description: 'The title of the project',
+//       required: true,
+//     },
+//     date: {
+//       type: 'date',
+//       description: 'The date of the project',
+//       required: true,
+//     },
+//     description: {
+//       type: 'string',
+//       description: 'The description of the project',
+//       required: true,
+//     },
+//     coverImage: {
+//       type: 'string',
+//       description: 'The coverImage of the project',
+//       required: true,
+//     },
+//     tags: {
+//       type: 'list',
+//       description: 'The tags of the project',
+//       of: Tag,
+//     },
+//   },
+//   computedFields: {
+//     readingTime: {
+//       type: 'json',
+//       resolve: (doc) => readingTime(doc.body.raw),
+//     },
+//     slug: {
+//       type: 'string',
+//       resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+//     },
+//   },
+// }));
 
 const options = {
   theme: 'github-dark-dimmed',
@@ -106,7 +111,7 @@ const options = {
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Post, Project],
+  documentTypes: [Post],
   mdx: {
     remarkPlugins: [],
     rehypePlugins: [[rehypePrettyCode, options]],

@@ -4,15 +4,15 @@
 
 @layer base {
   main {
-    @apply mx-auto pb-28 container px-2 lg:px-0 relative md:pb-16 max-w-5xl min-h-screen;
+    @apply mx-auto pb-10 container px-2 lg:px-0 relative max-w-5xl min-h-screen;
   }
 
   header {
-    @apply sticky left-0 top-0 z-50 items-center bg-white dark:bg-darkBlack w-full px-4 py-2 justify-stretch grid grid-flow-col shadow-sm;
+    @apply sticky left-0 top-0 z-50 items-center bg-white dark:bg-darkBlack w-full px-4 py-2 grid grid-flow-col grid-cols-2 lg:grid-cols-12 shadow-sm;
   }
-  
+
   footer {
-    @apply w-full left-0 bottom-0 pt-4 md:pb-4 md:bottom-0 bg-gray-50 dark:bg-darkBlack text-start flex flex-row justify-between px-4 pr-20;
+    @apply w-full left-0 right-0 bottom-14 pt-4 pb-16 md:pb-4 md:bottom-0 bg-gray-50 dark:bg-darkBlack text-start flex items-center flex-row justify-between px-2 lg:px-4;
   }
 
   article.post {
@@ -22,17 +22,28 @@
 
 @layer components {
   .CardList {
-    @apply px-2 md:px-4 grid md:grid-cols-2 mt-4 sm:gap-8 lg:px-10 w-full mx-auto justify-items-stretch;
+    @apply px-2 md:px-4 grid grid-cols-1 lg:grid-cols-3 justify-items-center mt-4 lg:px-4 w-full mx-auto gap-4 lg:gap-12;
   }
 
   .Card {
-    @apply mx-auto flex flex-row items-center rounded-md shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 my-2 col-span-1 w-full
-  }  
+    @apply mx-auto grid grid-cols-4 lg:grid-cols-1 lg:grid-rows-1 items-center rounded-md shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 border w-full;
+  }
   .CardImageContainer {
-    @apply hidden sm:flex sm:items-center sm:justify-center h-48 lg:h-56 rounded-t-md basis-2/5 p-2;
+    @apply hidden sm:flex sm:items-center sm:justify-center w-full grid-cols-1 lg:row-span-1 rounded-md p-2 h-40;
   }
 
-  .CardContentContainer{
-    @apply flex flex-col w-full justify-center p-2 gap-1 border lg:border-none rounded-lg lg:rounded-none
+  .CardContentContainer {
+    @apply flex flex-col w-full justify-center p-2 rounded-lg lg:rounded-none col-span-4 md:col-span-3 lg:col-span-1 row-span-1 gap-1;
+  }
+
+  .Category {
+    @apply w-fit inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-primary dark:text-secondary ring-1 ring-inset ring-blue-700/10;
+  }
+  .Project {
+    @apply bg-green-50 text-green-500 dark:text-green-700 ring-green-700/10;
+  }
+
+  .Diary {
+    @apply bg-pink-50 text-pink-500 dark:text-pink-700 ring-pink-700/10;
   }
 }

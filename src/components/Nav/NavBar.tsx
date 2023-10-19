@@ -8,7 +8,7 @@ export default function NavBar() {
   const navLinks = Links.filter((link) => link.label !== '');
 
   return (
-    <nav className="hidden sm:flex items-center justify-end justify-self-end y-2">
+    <nav className="hidden sm:flex items-center justify-end justify-self-end y-2 col-span-11">
       {navLinks.map(({ label, href }) => (
         <Link
           key={label}
