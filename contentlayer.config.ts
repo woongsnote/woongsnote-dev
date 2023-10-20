@@ -62,49 +62,6 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
-// export const Project = defineDocumentType(() => ({
-//   name: 'Project',
-//   filePathPattern: `projects/*.mdx`,
-//   contentType: 'mdx',
-//   fields: {
-//     title: {
-//       type: 'string',
-//       description: 'The title of the project',
-//       required: true,
-//     },
-//     date: {
-//       type: 'date',
-//       description: 'The date of the project',
-//       required: true,
-//     },
-//     description: {
-//       type: 'string',
-//       description: 'The description of the project',
-//       required: true,
-//     },
-//     coverImage: {
-//       type: 'string',
-//       description: 'The coverImage of the project',
-//       required: true,
-//     },
-//     tags: {
-//       type: 'list',
-//       description: 'The tags of the project',
-//       of: Tag,
-//     },
-//   },
-//   computedFields: {
-//     readingTime: {
-//       type: 'json',
-//       resolve: (doc) => readingTime(doc.body.raw),
-//     },
-//     slug: {
-//       type: 'string',
-//       resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
-//     },
-//   },
-// }));
-
 const options = {
   theme: 'github-dark-dimmed',
 };

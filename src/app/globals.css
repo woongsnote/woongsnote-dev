@@ -15,25 +15,25 @@
     @apply w-full left-0 right-0 bottom-14 pt-4 pb-16 md:pb-4 md:bottom-0 bg-gray-50 dark:bg-darkBlack text-start flex items-center flex-row justify-between px-2 lg:px-4;
   }
 
-  article.post {
+  article.Post {
     @apply container py-6 prose-sm prose sm:prose-base dark:prose-invert mx-auto prose-h1:mb-2 prose-hr:my-4 px-2 md:px-0 lg:prose-lg;
   }
 }
 
 @layer components {
   .CardList {
-    @apply px-2 md:px-4 grid grid-cols-1 lg:grid-cols-3 justify-items-center mt-4 lg:px-4 w-full mx-auto gap-4 lg:gap-12;
+    @apply px-2 md:px-4 grid grid-cols-1 justify-items-center mt-4 lg:px-4 w-full mx-auto gap-4;
   }
 
   .Card {
-    @apply mx-auto grid grid-cols-4 lg:grid-cols-1 lg:grid-rows-1 items-center rounded-md shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 border w-full;
+    @apply mx-auto grid grid-cols-4 items-center rounded-md shadow-md hover:bg-slate-100 hover:dark:bg-slate-700 border w-full justify-items-center gap-4;
   }
   .CardImageContainer {
-    @apply hidden sm:flex sm:items-center sm:justify-center w-full grid-cols-1 lg:row-span-1 rounded-md p-2 h-40;
+    @apply hidden sm:flex sm:items-center sm:justify-center w-full col-span-1 rounded-md p-2 h-40 justify-self-center;
   }
 
   .CardContentContainer {
-    @apply flex flex-col w-full justify-center p-2 rounded-lg lg:rounded-none col-span-4 md:col-span-3 lg:col-span-1 row-span-1 gap-1;
+    @apply flex flex-col w-full justify-center px-2 rounded-lg lg:rounded-none col-span-4 md:col-span-3 gap-3 py-2;
   }
 
   .Category {
