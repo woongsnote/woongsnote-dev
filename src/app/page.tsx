@@ -15,7 +15,7 @@ export default function Home() {
         Latest Posts
       </h2>
       <section className="CardList">
-        <RecentPostList articles={recentPosts} type={'post'} />
+        <RecentPostList articles={recentPosts} />
       </section>
 
       <div className="flex items-center justify-center w-full mt-4">
