@@ -21,12 +21,12 @@ const SocialLinkItems: SocialLinkItem[] = [
   },
   {
     title: 'Instagram',
-    href: 'https://github.com/woongsnote',
+    href: 'https://instagram.com/woongsnote',
     icon: <RiInstagramLine />,
   },
   {
     title: 'LinkedIn',
-    href: 'https://github.com/woongsnote',
+    href: 'https://linkedin.com/in/woongsnote',
     icon: <RiLinkedinBoxLine />,
   },
 ];
