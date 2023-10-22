@@ -2,12 +2,12 @@ import './globals.css';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Providers from './providers';
-import { Header, Footer, BottomNav } from '@/components';
+import { Header, Footer } from '@/components';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.woongsnote.dev'),
   title: {
-    default: 'Woongsnote',
+    default: 'woongsnote.dev',
     template: '%s | Woongsnote',
   },
   authors: [{ name: 'woongsnote' }],
@@ -60,7 +60,6 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
-          <BottomNav />
         </Providers>
       </body>
     </html>

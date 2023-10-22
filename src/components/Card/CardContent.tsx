@@ -26,11 +26,11 @@ export default function CardContent({
     <div className="CardContentContainer">
       <Category category={category} />
       <Link href={url} aria-label={`go to ${title}`}>
-        <h2 className="hover:text-primary hover:dark:text-secondary transition-all w-full hover:underline hover:underline-offset-8 text-lg lg:text-3xl font-bold">
+        <h2 className="hover:text-primary hover:dark:text-secondary transition-all w-full hover:underline hover:underline-offset-8 text-lg lg:text-3xl font-bold truncate">
           {title}
         </h2>
       </Link>
-      <p className="text-sm lg:text-lg text-gray-700 dark:text-gray-300">
+      <p className="text-sm lg:text-lg text-gray-700 dark:text-gray-300 w-full truncate">
         {description}
       </p>
 
