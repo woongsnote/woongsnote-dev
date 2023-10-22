@@ -33,11 +33,11 @@ const SocialLinkItems: SocialLinkItem[] = [
 
 export default function SocialLinks() {
   return (
-    <div className="flex flex-row gap-2 w-fit h-fit">
+    <div className="flex items-center justify-center w-fit gap-4">
       {SocialLinkItems.map((link) => (
         <Link
           key={link.title}
-          className="p-2 text-lg border rounded-full "
+          className="p-2 text-lg border rounded-full"
           href={link.href}
         >
           {link.icon}

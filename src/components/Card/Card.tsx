@@ -33,7 +33,7 @@ export default function Card({
 
   return (
     <article className="Card group">
-      <CardImage cardImage={thumbnailImage} title={title} />
+      <CardImage cardImage={thumbnailImage} title={title} url={url} />
       <CardContent
         url={url}
         title={title}

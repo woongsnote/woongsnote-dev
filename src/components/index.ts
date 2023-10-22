@@ -16,9 +16,6 @@ export { default as PageHeader } from './Page/PageHeader';
 export { default as TagList } from './Tag/TagList';
 export { default as TagItem } from './Tag/TagItem';
 
-export { default as MainSectionHeader } from './Home/MainSectionHeader';
-export { default as HeroSection } from './Home/HeroSection';
-
 export { default as DetailPageHeader } from './Detail/DetailPageHeader';
 export { default as DetailPageImage } from './Detail//DetailPageImage';
 
