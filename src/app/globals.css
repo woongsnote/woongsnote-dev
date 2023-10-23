@@ -26,14 +26,14 @@
   }
 
   .Card {
-    @apply mx-auto flex flex-col items-center rounded-lg shadow-sm hover:bg-slate-100 hover:dark:bg-slate-700 border w-full justify-items-center max-w-xl hover:shadow-lg h-full col-span-1 overflow-hidden;
+    @apply mx-auto flex flex-col items-center rounded-lg shadow-sm hover:bg-slate-100 hover:dark:bg-slate-700 border w-full justify-items-center max-w-xl hover:shadow-lg h-full col-span-1 overflow-hidden dark:border-2;
   }
   .CardImageContainer {
     @apply flex items-center justify-center w-full rounded-md justify-self-center h-1/3;
   }
 
   .CardContentContainer {
-    @apply flex flex-col w-full justify-center rounded-b-lg gap-3 h-2/3  bg-white dark:bg-darkBlack overflow-hidden p-4;
+    @apply flex flex-col w-full justify-center rounded-b-lg gap-3 h-2/3  bg-white dark:bg-[#282828] hover:dark:bg-gray-600 overflow-hidden p-2;
   }
 
   .Category {

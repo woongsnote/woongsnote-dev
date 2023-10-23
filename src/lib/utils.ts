@@ -34,3 +34,21 @@ export function getPostsByCategory<T extends { category: string }>({
 
   return data.filter((post) => post.category?.match(category));
 }
+
+export const getPageMetaData = (post: any) => {
+  const getTags = (tags: any) => {
+    const allTags = tags.map((tag: any) => {
+      return tag.name;
+    });
+    return allTags;
+  };
+
+  return {
+    id: post.id,
+    title: post.properties.Title.title[0].plain_text,
+    tags: getTags(post.properties.Tags.multi_select),
+    description: post.properties.Description.rich_text[0].plain_text,
+    // date: post.properties.Date.plain_text),
+    slug: post.properties.Slug.rich_text[0].plain_text,
+  };
+};

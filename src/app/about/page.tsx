@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function page() {
   return (
-    <section className="flex flex-col items-center gap-8 py-4">
+    <section className="flex flex-col items-center gap-8 p-4">
       <h2 className="text-xl lg:text-4xl font-bold">About Me</h2>
       <div className="flex flex-col lg:flex-row gap-2 items-center">
         <Image
@@ -10,6 +10,7 @@ export default function page() {
           width={300}
           height={300}
           alt="Profile"
+          priority
           className="rounded-lg"
         />
         <p className="text-base lg:text-lg">
