@@ -3,7 +3,7 @@ import { SocialLinks } from '@/components';
 
 export default function Profile() {
   return (
-    <div className="flex flex-row gap-6 items-center lg:justify-center p-2 h-fit w-full lg:p-4 mt-4 mx-auto border rounded-lg">
+    <div className="flex flex-row gap-6 items-center lg:justify-center p-2 h-fit w-full lg:w-fit lg:px-8 lg:py-4 m-10 border rounded-lg mx-auto">
       <div className="w-24 lg:w-32 border-4 flex items-center justify-center rounded-full col-span-3 lg:col-span-2">
         <Image
           src={'/profile.png'}

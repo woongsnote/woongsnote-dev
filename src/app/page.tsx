@@ -1,10 +1,8 @@
-import { ListSkeleton, CardList as PostList } from '@/components';
+import { CardList, ListSkeleton } from '@/components';
 import Profile from '@/components/Profile/Profile';
-import Tabs from '@/components/Tabs/Tabs';
+import { Tabs } from '@/components/Tabs/Tabs';
 import { getAllPosts } from '@/lib/notion';
-import { getPostsByCategory, getSortedDataList } from '@/lib/utils';
-// import { allPosts } from 'contentlayer/generated';
-
+import { getPostsByCategory } from '@/lib/utils';
 import { Suspense } from 'react';
 
 export default async function Home({
@@ -12,29 +10,20 @@ export default async function Home({
 }: {
   searchParams: { [key: string]: string };
 }) {
-  const allPosts = await getAllPosts();
-  // console.log(JSON.stringify(posts));
+  const posts = await getAllPosts();
 
-  // const filteredPosts = getPostsByCategory({
-  //   category: searchParams['category'],
-  //   data: allPosts,
-  // });
+  const filteredPosts = getPostsByCategory({
+    category: searchParams['category'],
+    data: posts,
+  });
 
   return (
     <>
       <Profile />
-
-      <div className="grid grid-cols-12 gap-4 justify-center p-4 lg:p-2">
-        <div className="col-span-12 lg:col-span-9">
-          <Tabs />
-
-          {/* <Suspense
-            fallback={<ListSkeleton listLength={filteredPosts.length} />}
-          >
-            <PostList articles={getSortedDataList(filteredPosts)} />
-          </Suspense> */}
-        </div>
-      </div>
+      <Tabs />
+      <Suspense fallback={<ListSkeleton listLength={filteredPosts.length} />}>
+        <CardList articles={filteredPosts} />
+      </Suspense>
     </>
   );
 }

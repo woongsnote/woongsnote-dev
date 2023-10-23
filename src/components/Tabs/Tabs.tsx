@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
-export default function Tabs() {
+export function Tabs() {
   const router = useRouter();
   const searchParams = useSearchParams()!;
 
@@ -19,7 +19,7 @@ export default function Tabs() {
   const categories = ['All', 'Tech', 'Diary', 'Project'];
 
   return (
-    <div className="mb-8 w-full lg:w-fit gap-8 flex flex-row justify-center text-center lg:text-start border shadow-md rounded-lg px-3 py-1 mx-auto lg:mx-0">
+    <div className="mb-8 w-full lg:w-fit gap-8 flex flex-row justify-center text-center lg:text-start border shadow-sm rounded-lg px-3 py-1 mx-auto">
       {categories.map((category) => (
         <button
           key={category}

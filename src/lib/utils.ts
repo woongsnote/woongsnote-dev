@@ -48,7 +48,9 @@ export const getPageMetaData = (post: any) => {
     title: post.properties.Title.title[0].plain_text,
     tags: getTags(post.properties.Tags.multi_select),
     description: post.properties.Description.rich_text[0].plain_text,
-    // date: post.properties.Date.plain_text),
+    date: post.properties.Date.date.start,
+    thumbnail: post.properties.Thumbnail.url,
     slug: post.properties.Slug.rich_text[0].plain_text,
+    category: post.properties.Category.select.name,
   };
 };

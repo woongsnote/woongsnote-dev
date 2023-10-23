@@ -1,4 +1,4 @@
-import { Tag } from 'contentlayer/generated';
+// import { Tag } from 'contentlayer/generated';
 import Image from 'next/image';
 import Link from 'next/link';
 import Category from './Category';
@@ -8,7 +8,7 @@ import { RiArrowRightLine } from 'react-icons/ri';
 type CardProps = {
   title: string;
   description: string;
-  tags?: Tag[];
+  tags?: string[];
   coverImage?: string;
   date: string;
   readingTime: string;

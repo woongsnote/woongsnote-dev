@@ -31,12 +31,12 @@ export const getAllPosts = async () => {
   });
 };
 
-export const getPostContent = cache(async (pageId: string) => {
+export const getPostContent = async (pageId: string) => {
   const res = await notionClient.blocks.children.list({ block_id: pageId });
   return res.results as BlockObjectResponse[];
-});
+};
 
-export const getPostBySlug = cache(async (slug: string) => {
+export const getPostBySlug = async (slug: string) => {
   const res = await notionClient.databases.query({
     database_id: process.env.NOTION_DATABASE_ID!,
     filter: {
@@ -47,4 +47,4 @@ export const getPostBySlug = cache(async (slug: string) => {
     },
   });
   return res.results[0] as PageObjectResponse | undefined;
-});
+};
