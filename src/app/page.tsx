@@ -1,5 +1,5 @@
 import { CardList, ListSkeleton } from '@/components';
-import Profile from '@/components/Profile/Profile';
+import { Profile } from '@/components/Profile';
 import { Tabs } from '@/components/Tabs/Tabs';
 import { getAllPosts } from '@/lib/notion';
 import { getPostsByCategory } from '@/lib/utils';

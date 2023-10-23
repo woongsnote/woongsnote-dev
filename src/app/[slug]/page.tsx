@@ -46,11 +46,16 @@ export default async function PostLayout({ params }: PageProps) {
 
   const html = await notionRenderer.render(...content);
 
+  const title = (post.properties.Title as any).title[0].plain_text;
+
   return (
     <Post
-      title={(post.properties.Title as any).title[0].plain_text}
+      title={title}
       content={html}
-      thumbnail={(post.properties.Thumbnail as any).url ?? ''}
+      thumbnail={
+        (post.properties.Thumbnail as any).url ??
+        `https://woongsnote.dev/og?title=${title}`
+      }
     />
   );
 }

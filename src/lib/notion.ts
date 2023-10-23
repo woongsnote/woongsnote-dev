@@ -8,6 +8,13 @@ import { getPageMetaData } from './utils';
 
 export const notionClient = new Client({ auth: process.env.NOTION_TOKEN });
 
+export const getDatabase = async (databaseId: string) => {
+  const response = await notionClient.databases.query({
+    database_id: databaseId,
+  });
+  return response.results;
+};
+
 export const getAllPosts = async () => {
   const posts = await notionClient.databases.query({
     database_id: process.env.NOTION_DATABASE_ID!,

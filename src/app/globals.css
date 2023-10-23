@@ -4,7 +4,7 @@
 
 @layer base {
   main {
-    @apply mx-auto pb-10 container px-2 lg:px-0 relative min-h-screen;
+    @apply mx-auto pb-10 container px-2 lg:px-0 relative min-h-screen max-w-3xl;
   }
 
   header {
@@ -12,7 +12,7 @@
   }
 
   footer {
-    @apply w-full left-0 right-0 bottom-14 pt-4 pb-16 md:pb-4 md:bottom-0 bg-gray-50 dark:bg-darkBlack text-start flex items-center flex-row justify-between px-2 lg:px-4;
+    @apply w-full left-0 right-0 bottom-14 py-4 md:bottom-0 bg-gray-50 dark:bg-darkBlack text-start flex items-center flex-row justify-between px-2 lg:px-4;
   }
 
   article.Post {

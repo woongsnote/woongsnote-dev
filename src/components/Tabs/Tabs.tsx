@@ -19,7 +19,7 @@ export function Tabs() {
   const categories = ['All', 'Tech', 'Diary', 'Project'];
 
   return (
-    <div className="mb-8 w-full lg:w-fit gap-8 flex flex-row justify-center text-center lg:text-start border shadow-sm rounded-lg px-3 py-1 mx-auto">
+    <div className="mb-4 w-full gap-8 flex flex-row justify-center text-center rounded-lg px-3 py-1 mx-auto">
       {categories.map((category) => (
         <button
           key={category}
@@ -30,7 +30,7 @@ export function Tabs() {
             searchParams.get('category') === category
               ? 'text-primary dark:text-secondary underline underline-offset-8 font-bold'
               : 'text-gray-500'
-          } px-2 py-1 text-lg font-semibold hover:text-primary hover:dark:text-secondary hover:underline hover:underline-offset-8`}
+          } px-2 py-1 text-lg font-semibold hover:text-primary hover:dark:text-secondary hover:underline hover:underline-offset-8 lg:text-3xl`}
         >
           {category}
         </button>
