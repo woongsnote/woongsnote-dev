@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { SocialLinks } from '@/components';
 
-export function Profile() {
+const Profile = () => {
   return (
-    <div className="flex flex-row gap-6 items-center lg:justify-start p-2 h-fit w-full lg:p-8 mx-auto border-b">
+    <div className="flex flex-row gap-6 items-center justify-center p-2 h-fit w-full lg:p-8 mx-auto border-b">
       <div className="w-24 lg:w-32 border-4 flex items-center justify-center rounded-full col-span-3 lg:col-span-2">
         <Image
           src={'/profile.png'}
@@ -24,4 +24,6 @@ export function Profile() {
       </div>
     </div>
   );
-}
+};
+
+export default Profile;

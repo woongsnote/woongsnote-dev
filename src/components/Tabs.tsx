@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
-export function Tabs() {
+const Tabs = () => {
   const router = useRouter();
   const searchParams = useSearchParams()!;
 
@@ -37,4 +37,6 @@ export function Tabs() {
       ))}
     </div>
   );
-}
+};
+
+export default Tabs;

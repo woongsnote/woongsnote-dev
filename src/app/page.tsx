@@ -1,6 +1,4 @@
-import { CardList, ListSkeleton } from '@/components';
-import { Profile } from '@/components/Profile';
-import { Tabs } from '@/components/Tabs/Tabs';
+import { CardList, ListSkeleton, Tabs, Profile } from '@/components';
 import { getAllPosts } from '@/lib/notion';
 import { getPostsByCategory } from '@/lib/utils';
 import { Suspense } from 'react';
@@ -22,7 +20,7 @@ export default async function Home({
       <Profile />
       <Tabs />
       <Suspense fallback={<ListSkeleton listLength={filteredPosts.length} />}>
-        <CardList articles={filteredPosts} />
+        <CardList posts={filteredPosts} />
       </Suspense>
     </>
   );

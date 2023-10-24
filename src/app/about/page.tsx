@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 export default function page() {
   return (
-    <section className="flex flex-col items-center gap-8 p-4">
-      <h2 className="text-xl lg:text-4xl font-bold">About Me</h2>
-      <div className="flex flex-col lg:flex-row gap-2 items-center">
+    <section className="flex flex-col items-center gap-8 p-4 max-w-3xl mx-auto">
+      <h2 className="text-2xl lg:text-4xl font-black">About Me</h2>
+      <div className="flex flex-col gap-8 items-center">
         <Image
           src={'/profile.png'}
           width={300}

@@ -54,3 +54,6 @@ export const getPageMetaData = (post: any) => {
     category: post.properties.Category.select.name,
   };
 };
+
+export const getThumbnail = (title: string): string =>
+  `https://woongsnote.dev/og?title=${title}`;
