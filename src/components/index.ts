@@ -1,28 +1,29 @@
-export { default as Header } from './Header/Header';
-export { default as Footer } from './Footer/Footer';
-export { default as BottomNav } from './Nav/BottomNav';
-export { default as NavBar } from './Nav/NavBar';
-export { default as Logo } from './Logo/Logo';
+export { default as Header } from './Header';
+export { default as Footer } from './Footer';
+export { default as BottomNav } from './BottomNav';
+export { default as NavBar } from './NavBar';
+export { default as Logo } from './Logo';
 
-export { Card } from './Card';
-export { CardList } from './Card/CardList';
+export { default as PostCard } from './PostCard';
+export { default as CardList } from './CardList';
 
 export { default as Utterance } from './Utterance';
-export { default as SearchBar } from './Search/SearchBar';
-export { default as PageHeader } from './Page/PageHeader';
+export { default as SearchBar } from './SearchBar';
+export { default as PageHeader } from './PageHeader';
 
-export { default as TagList } from './Tag/TagList';
-export { default as TagItem } from './Tag/TagItem';
+export { default as TagList } from './TagList';
 
-export { default as DetailPageHeader } from './Detail/DetailPageHeader';
-export { default as DetailPageImage } from './Detail//DetailPageImage';
+export { default as DetailPageHeader } from './DetailPageHeader';
 
 export { MDXComponents } from './mdx-components';
 
-export { default as Author } from './Author/Author';
-export { default as ListSkeleton } from './Skeleton/ListSkeleton';
+export { default as ListSkeleton } from './ListSkeleton';
 
-export { ReadingTime } from './ReadingTime/ReadingTime';
-export { default as PublishedDate } from './PublishedDate/PublishedDate';
+export { ReadingTime } from './ReadingTime';
+export { default as PublishedDate } from './PublishedDate';
 
-export { default as SocialLinks } from './Links/SocialLinks';
+export { default as SocialLinks } from './SocialLinks';
+export { default as Tabs } from './Tabs';
+export { default as Profile } from './Profile';
+export { default as Post } from './Post';
+export { default as ThemeSwitcher } from './ThemeSwitcher';

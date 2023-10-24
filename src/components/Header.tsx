@@ -1,8 +1,7 @@
 'use client';
 
-import { Logo } from '@/components';
-import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 import Link from 'next/link';
+import { Logo, ThemeSwitcher } from '@/components';
 
 export default function Header() {
   return (

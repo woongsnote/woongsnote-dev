@@ -21,9 +21,13 @@ type ListSkeletonProps = {
 };
 
 export default function ListSkeleton({ listLength }: ListSkeletonProps) {
-  const skelonItems = Array.from({ length: listLength }, (_, index) => (
+  const skeltonItems = Array.from({ length: listLength }, (_, index) => (
     <SkeletonItem key={index} />
   ));
 
-  return <section className="grid md:grid-cols-2">{skelonItems}</section>;
+  return (
+    <section className="grid md:grid-cols-2 lg:grid-cols-3">
+      {skeltonItems}
+    </section>
+  );
 }

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Links } from '../Links/Links';
+import { Links } from './NavLinks';
 
 export default function NavBar() {
   const pathname = usePathname();
