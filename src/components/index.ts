@@ -1,7 +1,5 @@
 export { default as Header } from './Header';
 export { default as Footer } from './Footer';
-export { default as BottomNav } from './BottomNav';
-export { default as NavBar } from './NavBar';
 export { default as Logo } from './Logo';
 
 export { default as PostCard } from './PostCard';
@@ -12,8 +10,6 @@ export { default as SearchBar } from './SearchBar';
 export { default as PageHeader } from './PageHeader';
 
 export { default as TagList } from './TagList';
-
-export { default as DetailPageHeader } from './DetailPageHeader';
 
 export { default as ListSkeleton } from './ListSkeleton';
 

@@ -51,13 +51,14 @@ export default async function PostLayout({ params }: PageProps) {
   const detailThumbnail: string = thumbnail ?? getPostThumbnail(title);
 
   return (
-    <Suspense>
+    <Suspense fallback={<p>게시글을 가져오는 중입니다!</p>}>
       <Post
         title={title}
         content={post.markdown.parent}
         thumbnail={detailThumbnail}
         date={date}
         tags={tags}
+        readingTimeText={post.readingTimeText}
       />
     </Suspense>
   );

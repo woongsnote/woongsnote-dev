@@ -8,3 +8,8 @@ export type TPost = {
   description: string;
   tags: string[];
 };
+
+export type SocialLink = {
+  title: string;
+  href: string;
+};
