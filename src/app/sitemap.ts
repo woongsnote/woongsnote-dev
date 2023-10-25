@@ -1,10 +1,25 @@
-import { Post, allPosts } from 'contentlayer/generated';
+import { getAllPosts } from '@/lib/notion';
+import { TPost } from '@/types';
 import { MetadataRoute } from 'next';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<
+  {
+    url: string;
+    lastModified?: string | Date | undefined;
+    changeFrequency?:
+      | 'always'
+      | 'hourly'
+      | 'daily'
+      | 'weekly'
+      | 'monthly'
+      | 'yearly'
+      | 'never'
+      | undefined;
+    priority?: number | undefined;
+  }[]
+> {
   const baseUrl = 'https://www.woongsnote.dev';
-
-  const posts: Post[] = allPosts;
+  const posts: TPost[] = await getAllPosts();
 
   const postUrls = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
