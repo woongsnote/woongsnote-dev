@@ -2,12 +2,7 @@ import Image from 'next/image';
 import 'supports-color';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import rehypePrettyCode from 'rehype-pretty-code';
-import { PublishedDate, TagList } from '@/components';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import rehypeStringify from 'rehype-stringify';
+import { PublishedDate, ReadingTime, TagList } from '@/components';
 
 type PostProps = {
   title: string;
@@ -15,10 +10,11 @@ type PostProps = {
   thumbnail: string;
   date: string;
   tags: string[];
+  readingTimeText: string;
 };
 
-const Post = async (props: PostProps) => {
-  const { title, content, thumbnail, date, tags } = props;
+const Post = (props: PostProps) => {
+  const { title, content, thumbnail, date, tags, readingTimeText } = props;
 
   return (
     <article className="w-full mb-10 flex flex-col pt-10 py-4 max-w-3xl mx-auto">
@@ -26,6 +22,7 @@ const Post = async (props: PostProps) => {
       <div className="flex flex-row items-center gap-2 justify-start w-full mx-auto my-4">
         <span className="font-bold">@woongsnote</span>
         <PublishedDate date={date} />
+        <ReadingTime readingTime={readingTimeText} />
       </div>
       <TagList tags={tags} />
       <hr className="my-4 w-full" />

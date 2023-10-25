@@ -1,6 +1,7 @@
 import { Client } from '@notionhq/client';
 import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import { NotionToMarkdown } from 'notion-to-md';
+import readingTime from 'reading-time';
 
 export const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
@@ -75,10 +76,12 @@ export const getPostBySlug = async (slug: string) => {
   const metadata = getPageMetaData(page);
   const mdBlocks = await n2m.pageToMarkdown(page.id);
   const mdString = n2m.toMarkdownString(mdBlocks);
+  const readingTimeText = readingTime(mdString.parent).text.split('')[0];
 
   return {
     metadata,
     markdown: mdString,
+    readingTimeText,
   };
 };
 export const getPostThumbnail = (title: string): string =>

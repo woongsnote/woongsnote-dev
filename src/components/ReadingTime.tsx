@@ -1,5 +1,3 @@
-import { RiTimerLine } from 'react-icons/ri';
-
 type ReadingTimeProps = {
   readingTime: string;
 };
@@ -7,8 +5,7 @@ type ReadingTimeProps = {
 export function ReadingTime({ readingTime }: ReadingTimeProps) {
   return (
     <span className="flex flex-row items-center justify-end gap-1 text-sm text-gray-500">
-      <RiTimerLine />
-      {readingTime}분
+      {`읽는데 ${readingTime}분`}
     </span>
   );
 }
