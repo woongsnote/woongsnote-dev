@@ -7,37 +7,37 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix",
-    "postinstall": "husky install"
+    "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "@notion-render/bookmark-plugin": "^0.0.2",
-    "@notion-render/client": "^0.0.2",
-    "@notion-render/hljs-plugin": "^0.0.2",
     "@notionhq/client": "^2.2.13",
-    "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
-    "encoding": "^0.1.13",
     "next": "latest",
-    "next-contentlayer": "^0.3.4",
     "next-themes": "^0.2.1",
+    "notion-to-md": "^3.1.1",
     "react": "latest",
     "react-dom": "latest",
     "react-icons": "^4.11.0",
+    "react-markdown": "^9.0.0",
     "reading-time": "^1.5.0",
     "rehype-highlight": "^7.0.0",
     "rehype-pretty-code": "^0.10.1",
+    "rehype-stringify": "^10.0.0",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.0.0",
     "sharp": "^0.32.6",
-    "shiki": "^0.14.5"
+    "shiki": "^0.14.5",
+    "unified": "^11.0.3"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "@types/node": "20.8.7",
+    "@types/node": "20.8.8",
     "@types/react": "18.2.31",
     "@types/react-dom": "^18.2.14",
     "autoprefixer": "^10.4.16",
+    "encoding": "^0.1.13",
     "eslint": "^8.52.0",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "^9.0.0",
@@ -45,7 +45,8 @@
     "lint-staged": "^15.0.2",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
-    "tailwindcss": "^3.3.3",
+    "supports-color": "^9.4.0",
+    "tailwindcss": "^3.3.4",
     "typescript": "^5.2.2"
   },
   "lint-staged": {
@@ -55,5 +56,5 @@
       "git add"
     ]
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@4.0.0"
 }

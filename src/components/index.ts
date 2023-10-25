@@ -15,8 +15,6 @@ export { default as TagList } from './TagList';
 
 export { default as DetailPageHeader } from './DetailPageHeader';
 
-export { MDXComponents } from './mdx-components';
-
 export { default as ListSkeleton } from './ListSkeleton';
 
 export { ReadingTime } from './ReadingTime';
@@ -27,3 +25,4 @@ export { default as Tabs } from './Tabs';
 export { default as Profile } from './Profile';
 export { default as Post } from './Post';
 export { default as ThemeSwitcher } from './ThemeSwitcher';
+export { default as Category } from './Category';

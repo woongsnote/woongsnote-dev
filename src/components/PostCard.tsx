@@ -1,14 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { TPost } from '@/types';
-import Category from './Category';
-import { PublishedDate, TagList } from '@/components';
-import { getThumbnail } from '@/lib/utils';
+import { PublishedDate, TagList, Category } from '@/components';
+import { getPostThumbnail } from '@/lib/notion';
 
 const PostCard = (post: TPost) => {
   const { title, thumbnail, category, date, description, slug, tags } = post;
 
-  const cardThumbnail = thumbnail ?? getThumbnail(post.title);
+  const cardThumbnail = thumbnail ?? getPostThumbnail(post.title);
 
   return (
     <article className="w-full">
