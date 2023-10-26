@@ -57,7 +57,7 @@ export default function PostPage({ params }: PageProps) {
   const thumbnail = coverImage ?? getPostThumbnail(title);
 
   return (
-    <article className="w-full mb-10 flex flex-col pt-6 py-4 max-w-3xl mx-auto">
+    <article className="w-full mb-10 flex flex-col pt-6 py-4 max-w-5xl mx-auto">
       <h1 className="text-3xl lg:text-5xl font-black">{title}</h1>
       <div className="flex items-center gap-2 justify-start w-full mx-auto my-4">
         <span className="font-bold">@woongsnote</span>
@@ -76,7 +76,7 @@ export default function PostPage({ params }: PageProps) {
           className="w-full h-60 lg:h-72 rounded-md object-cover"
         />
       </div>
-      <div className="text-base lg:text-xl mt-4 lg:max-w-3xl leading-10 prose dark:prose-invert items-center">
+      <div className="text-base lg:text-xl mt-4 lg:max-w-5xl leading-10 prose dark:prose-invert items-center mx-auto">
         <MDXComponents code={post.body.code} />
       </div>
     </article>
