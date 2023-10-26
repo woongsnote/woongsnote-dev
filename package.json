@@ -42,5 +42,12 @@
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
   "packageManager": "yarn@4.0.0"
 }

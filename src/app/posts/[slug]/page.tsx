@@ -58,7 +58,7 @@ export default function PostPage({ params }: PageProps) {
 
   return (
     <article className="w-full mb-10 flex flex-col pt-6 py-4 max-w-3xl mx-auto">
-      <h1 className="text-4xl lg:text-5xl font-black">{title}</h1>
+      <h1 className="text-3xl lg:text-5xl font-black">{title}</h1>
       <div className="flex items-center gap-2 justify-start w-full mx-auto my-4">
         <span className="font-bold">@woongsnote</span>
         <PublishedDate date={date} />

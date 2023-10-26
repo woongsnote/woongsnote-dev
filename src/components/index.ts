@@ -7,7 +7,6 @@ export { default as PostList } from './PostList';
 
 export { default as Utterance } from './Utterance';
 export { default as SearchBar } from './SearchBar';
-export { default as PageHeader } from './PageHeader';
 
 export { default as TagList } from './TagList';
 
