@@ -4,7 +4,7 @@ import { useCallback, useRef } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { AiOutlineReload, AiOutlineSearch } from 'react-icons/ai';
 
-export default function SearchBar() {
+const SearchBar = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams()!;
   const router = useRouter();
@@ -61,4 +61,6 @@ export default function SearchBar() {
       </button>
     </form>
   );
-}
+};
+
+export default SearchBar;

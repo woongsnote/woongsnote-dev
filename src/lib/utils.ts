@@ -11,18 +11,6 @@ export function getSortedDataList<T extends { date: string }>(
   return maxNum ? sortedData.slice(0, maxNum) : sortedData;
 }
 
-export async function getPageFromParams<T extends { slug: string }>(
-  params: T,
-  data: Array<T>,
-) {
-  const slug = params.slug;
-  const page = data.find((doc) => doc.slug === slug);
-  if (!page) {
-    null;
-  }
-  return page;
-}
-
 export function getPostsByCategory<T extends { category: string }>({
   category,
   data,
@@ -34,5 +22,6 @@ export function getPostsByCategory<T extends { category: string }>({
 
   return data.filter((post) => post.category?.match(category));
 }
-export const getPostThumbnail = (title: string): string =>
-  `${process.env.BASE_URL}/og?title=${title}`;
+export function getPostThumbnail(title: string): string {
+  return `${process.env.BASE_URL}/og?title=${title}`;
+}
