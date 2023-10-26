@@ -12,7 +12,7 @@ export { default as TagList } from './TagList';
 
 export { default as ListSkeleton } from './ListSkeleton';
 
-export { ReadingTime } from './ReadingTime';
+export { default as ReadingTime } from './ReadingTime';
 export { default as PublishedDate } from './PublishedDate';
 
 export { default as SocialLinks } from './SocialLinks';
@@ -21,4 +21,4 @@ export { default as Profile } from './Profile';
 export { default as ThemeSwitcher } from './ThemeSwitcher';
 export { default as Category } from './Category';
 
-export { MDXComponents } from './mdx-components';
+export { default as MDXComponents } from './mdx-components';
