@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <>
       <Profile />
-      <hr className="max-w-3xl mx-auto mb-2" />
-      <h2 className="text-xl lg:text-3xl font-black max-w-3xl mx-auto text-start">
+      <hr className="w-full mx-auto mb-2" />
+      <h2 className="text-xl lg:text-3xl font-black mx-auto text-start px-2">
         Latest Posts
       </h2>
       <Suspense fallback={<ListSkeleton listLength={MAIN_POSTS_LENGTH} />}>
