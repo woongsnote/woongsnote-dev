@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { SocialLink } from '@/types';
 import { ReactElement } from 'react';
 import { IconType } from 'react-icons';
 import {
@@ -7,9 +7,7 @@ import {
   RiLinkedinBoxLine,
 } from 'react-icons/ri';
 
-type SocialLinkItem = {
-  title: string;
-  href: string;
+type SocialLinkItem = SocialLink & {
   icon: ReactElement<IconType>;
 };
 
@@ -31,18 +29,28 @@ const SocialLinkItems: SocialLinkItem[] = [
   },
 ];
 
-export default function SocialLinks() {
+const ExtLink = (props: SocialLinkItem) => {
+  const { title, href, icon } = props;
+  return (
+    <a
+      href={href}
+      className="p-2 text-lg border rounded-full"
+      aria-label={`move to ${title}`}
+      target="_blank"
+    >
+      {icon}
+    </a>
+  );
+};
+
+const SocialLinks = () => {
   return (
     <div className="flex items-center justify-center w-fit gap-4">
       {SocialLinkItems.map((link) => (
-        <Link
-          key={link.title}
-          className="p-2 text-lg border rounded-full"
-          href={link.href}
-        >
-          {link.icon}
-        </Link>
+        <ExtLink key={link.title} {...link} />
       ))}
     </div>
   );
-}
+};
+
+export default SocialLinks;

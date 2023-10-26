@@ -5,7 +5,8 @@
 `content`폴더의 내용을 교체하면 같은 UI의 새로운 블로그를 만들 수 있습니다. `posts`와 `projects`로 구현한 폴더 구조가 바뀌는 경우, `contentlayer.config.ts` 파일의 수정이 필요합니다. 수정하는 방법은 [공식 문서](https://www.contentlayer.dev/docs/getting-started-cddd76b7#2-define-content-schema)에 잘 설명되어 있습니다.
 
 ## ⚒ 기술 스택
- `Next.js`, `TypeScript`, `Tailwind CSS`,`ContentLayer`
+
+`Next.js`, `TypeScript`, `Tailwind CSS`,`ContentLayer`
 
 ## 🗃️ 특징
 

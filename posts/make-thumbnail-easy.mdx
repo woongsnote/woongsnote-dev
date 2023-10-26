@@ -1,0 +1,125 @@
+---
+title: 섬네일 이미지 쉽게 생성하기
+description: Vercel/og를 사용해서 섬네일과 og image를 자동으로 생성하는 방법
+date: 2023-10-16
+tags:
+  - title: Next.js
+  - title: SEO
+category: Tech
+---
+
+## 섬네일, 매번 만들어야 하는가..?
+
+블로그에 글을 작성할 때, 섬네일(thumbnail)을 매번 직접 만드는 것은 번거로운 작업이다. 이를 해결하기 위해 [미니픽](https://mini-pick.vercel.app)을 직접 만들었지만, 제목 등을 직접 입력해야 하므로, 추가적인 작업 시간이 소요된다.
+`@vercel/og` 라이브러리를 도입해서 자동으로 이미지를 생성하도록 해서 이를 해결했다.
+
+## 어떻게 만들었는가?
+
+app router를 사용하는 상황에서, 만드는 방법은 아래와 같다.
+
+먼저, app 디렉토리에 og 폴더를 만들고, route.tsx 파일을 생성하고, 아래와 같이 구현했다.
+
+```tsx
+import { ImageResponse } from 'next/server';
+
+export const runtime = 'edge';
+
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+
+    const hasTitle = searchParams.has('title');
+    const title = hasTitle
+      ? searchParams.get('title')?.slice(0, 100)
+      : 'Woongsnote';
+
+    const size = { width: 1200, height: 630 };
+
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            height: '100%',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundImage:
+              'linear-gradient(to bottom right, #00C0FF, #4218B8)',
+            fontSize: 64,
+            fontWeight: 600,
+          }}
+        >
+          <div style={{ color: 'white' }}>{title}</div>
+        </div>
+      ),
+      {
+        ...size,
+      },
+    );
+  } catch (error) {
+    return new Response(`Failed to generate the Image`, { status: 500 });
+  }
+}
+```
+
+그리고, Metadata 설정하는 부분에서 아래와 같이 호출하면 된다.
+
+```tsx
+
+...
+    openGraph: {
+      images: [
+        {
+          url: `/og?title=${post.title}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+...
+
+```
+
+## 이 이미지를 섬네일로 사용하려면?
+
+Local 상태에서 build해서 test 했을 때는, 섬네일이 문제 없이 보였었다.
+하지만, 막상 배포하고 나니 **400** Error를 마주하게 되었고, 아래와 같은 방법으로 해결할 수 있었다.
+
+`next.config.js` 파일에 아래와 같이 image 주소의 Remote pattern을 추가했다.
+
+```js
+      {
+        protocol: 'https',
+        hostname: '배포한 url 주소',
+        port: '',
+        pathname: '/og/**',
+      },
+```
+
+image의 src에 들어갈 url 부분을 처음에는 OpenGraph Image와 동일하게 작성했었으나, 이를 아래와 같이 수정했고, 현재는 정상적으로 동작하고 있다.
+
+```tsx
+...
+
+const getThumbNailImage = () => {
+  if (!coverImage || category === 'Tech' || category === 'Diary')
+    return `${배포한 url}/og?title=${title}`;
+
+  return coverImage;
+};
+
+const thumbnailImage: string = getThumbNailImage();
+
+return(
+...
+  <CardImage cardImage={thumbnailImage} title={title} />
+...
+)
+```
+
+---
+
+- 참고 자료: [공식 문서](https://vercel.com/docs/functions/edge-functions/og-image-generation)

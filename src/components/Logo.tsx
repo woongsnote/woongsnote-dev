@@ -1,9 +1,11 @@
 import Link from 'next/link';
 
-export default function Logo() {
+const Logo = () => {
   return (
     <Link href="/" className="text-lg lg:text-2xl font-bold col-span-1 w-fit">
       {`woongsnote.dev`}
     </Link>
   );
-}
+};
+
+export default Logo;

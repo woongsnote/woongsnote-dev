@@ -1,26 +1,24 @@
-import { CardList, ListSkeleton, Tabs, Profile } from '@/components';
-import { getAllPosts } from '@/lib/notion';
-import { getPostsByCategory } from '@/lib/utils';
+import { allPosts, Post } from 'contentlayer/generated';
+import { PostList, ListSkeleton, Profile } from '@/components';
 import { Suspense } from 'react';
+import { getSortedDataList } from '@/lib/utils';
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string };
-}) {
-  const posts = await getAllPosts();
+const MAIN_POSTS_LENGTH = 3;
 
-  const filteredPosts = getPostsByCategory({
-    category: searchParams['category'],
-    data: posts,
-  });
-
+export default function Home() {
+  const latestPosts: Post[] = getSortedDataList(allPosts).slice(
+    0,
+    MAIN_POSTS_LENGTH,
+  );
   return (
     <>
       <Profile />
-      <Tabs />
-      <Suspense fallback={<ListSkeleton listLength={filteredPosts.length} />}>
-        <CardList posts={filteredPosts} />
+      <hr className="max-w-3xl mx-auto mb-2" />
+      <h2 className="text-xl lg:text-3xl font-black max-w-3xl mx-auto text-start">
+        Latest Posts
+      </h2>
+      <Suspense fallback={<ListSkeleton listLength={MAIN_POSTS_LENGTH} />}>
+        <PostList posts={latestPosts} />
       </Suspense>
     </>
   );
