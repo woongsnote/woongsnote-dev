@@ -34,3 +34,5 @@ export function getPostsByCategory<T extends { category: string }>({
 
   return data.filter((post) => post.category?.match(category));
 }
+export const getPostThumbnail = (title: string): string =>
+  `${process.env.BASE_URL}/og?title=${title}`;

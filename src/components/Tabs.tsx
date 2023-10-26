@@ -19,18 +19,20 @@ const Tabs = () => {
   const categories = ['All', 'Tech', 'Diary', 'Project'];
 
   return (
-    <div className="mb-4 w-full gap-8 flex flex-row justify-center text-center rounded-lg px-3 py-1 mx-auto">
+    <div className="my-4 w-fit gap-8 flex justify-center text-center rounded-lg px-3 py-1 mx-auto border-4">
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => {
-            router.push('/' + '?' + createQueryString('category', category));
+            router.push(
+              '/posts' + '?' + createQueryString('category', category),
+            );
           }}
           className={`${
             searchParams.get('category') === category
-              ? 'text-primary dark:text-secondary underline underline-offset-8 font-bold'
+              ? 'text-white font-bold border bg-primary dark:bg-secondary border-primary dark:border-secondary'
               : 'text-gray-500'
-          } px-2 py-1 text-lg font-semibold hover:text-primary hover:dark:text-secondary hover:underline hover:underline-offset-8 lg:text-3xl`}
+          } px-2 py-1 text-lg font-semibold rounded-lg hover:underline hover:underline-offset-8 lg:text-2xl`}
         >
           {category}
         </button>

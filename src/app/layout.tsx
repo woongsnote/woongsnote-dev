@@ -58,7 +58,9 @@ export default function RootLayout({
       <body>
         <Providers>
           <Header />
-          <main>{children}</main>
+          <main className="mx-auto pb-10 container px-2 lg:px-0 relative max-w-5xl min-h-screen">
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>
