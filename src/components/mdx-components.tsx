@@ -9,7 +9,9 @@ type MDXProps = {
   code: string;
 };
 
-export function MDXComponents({ code }: MDXProps) {
+const MDXComponents = ({ code }: MDXProps) => {
   const Component = useMDXComponent(code);
   return <Component components={components} />;
-}
+};
+
+export default MDXComponents;

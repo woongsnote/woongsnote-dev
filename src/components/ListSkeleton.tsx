@@ -20,7 +20,7 @@ type ListSkeletonProps = {
   listLength: number;
 };
 
-export default function ListSkeleton({ listLength }: ListSkeletonProps) {
+const ListSkeleton = ({ listLength }: ListSkeletonProps) => {
   const skeltonItems = Array.from({ length: listLength }, (_, index) => (
     <SkeletonItem key={index} />
   ));
@@ -30,4 +30,6 @@ export default function ListSkeleton({ listLength }: ListSkeletonProps) {
       {skeltonItems}
     </section>
   );
-}
+};
+
+export default ListSkeleton;

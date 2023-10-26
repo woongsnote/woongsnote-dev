@@ -3,7 +3,7 @@ import { getPostsByCategory, getSortedDataList } from '@/lib/utils';
 import { allPosts } from 'contentlayer/generated';
 import { Suspense } from 'react';
 
-export default async function Posts({
+export default function Posts({
   searchParams,
 }: {
   searchParams: { [key: string]: string };
