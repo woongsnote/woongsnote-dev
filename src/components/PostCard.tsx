@@ -28,7 +28,7 @@ const PostCard = (post: Post) => {
           width={500}
           height={500}
           priority
-          className="w-full h-auto object-cover rounded-lg border"
+          className="w-full h-full object-cover object-center rounded-lg border"
         />
       </div>
       <div className="p-4 flex flex-col gap-2 w-full lg:w-3/4">
