@@ -11,7 +11,7 @@ const PostList = ({ posts }: { posts: Post[] }) => {
         return (
           <li
             key={post._id}
-            className="shadow-sm border dark:border-2 rounded-md mb-4 lg:hover:shadow-lg overflow-hidden w-full mx-auto  max-w-3xl lg:hover:bg-slate-200"
+            className="shadow-sm border dark:border-2 rounded-md mb-4 lg:hover:shadow-lg overflow-hidden w-full mx-auto lg:hover:bg-slate-200"
           >
             <PostCard {...post} />
           </li>
