@@ -1,4 +1,5 @@
-const defaultCategory = `w-fit inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset`;
+const defaultCategory =
+  'w-fit inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset';
 const Category = ({ category }: { category: string }) => {
   if (category.match('Project'))
     return (

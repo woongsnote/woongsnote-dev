@@ -20,8 +20,8 @@ const PostCard = (post: Post) => {
   const readingTimeText = readingTime.text.split(' ')[0];
 
   return (
-    <article className="w-full flex items-center">
-      <div className="w-36 lg:w-40 h-24 p-2 rounded-lg">
+    <article className="w-full flex flex-col md:flex-row items-center">
+      <div className="w-full h-48 lg:w-40 lg:h-24 p-2 rounded-lg">
         <Image
           src={cardThumbnail}
           alt={title}

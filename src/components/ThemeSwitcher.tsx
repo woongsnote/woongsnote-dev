@@ -15,7 +15,7 @@ export default function ThemeSwitcher() {
   const currentTheme = theme === 'system' ? systemTheme : theme;
 
   const buttonStyle =
-    'w-fit h-fit hover:text-yellow-700 dark:hover:text-yellow-300 bg-transparent active:text-yellow-800';
+    'w-fit h-fit hover:text-black dark:hover:text-white bg-transparent text-gray-500 active:text-black';
 
   return (
     <div className="flex gap-2 border shadow-sm p-2 rounded-md">
@@ -36,9 +36,7 @@ export default function ThemeSwitcher() {
         <RiMoonLine />
       </button>
       <button
-        className={`${buttonStyle} ${
-          currentTheme === 'system' ? 'text-yellow-500' : ''
-        }`}
+        className={`${buttonStyle}`}
         onClick={() => {
           setTheme('system');
         }}
