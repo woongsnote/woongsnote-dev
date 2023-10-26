@@ -3,7 +3,7 @@ import { SocialLinks } from '@/components';
 
 const Profile = () => {
   return (
-    <div className="flex flex-row gap-6 items-center justify-center p-2 h-fit w-full lg:p-8 mx-auto border-b">
+    <div className="flex gap-6 items-center justify-center p-2 container lg:p-8 mx-auto">
       <div className="w-24 lg:w-32 border-4 flex items-center justify-center rounded-full col-span-3 lg:col-span-2">
         <Image
           src={'/profile.png'}
