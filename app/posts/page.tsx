@@ -17,11 +17,11 @@ export default function Posts({
   });
 
   return (
-    <>
+    <main className="container max-w-5xl mx-auto">
       <Tabs />
       <Suspense fallback={<ListSkeleton listLength={filteredPosts.length} />}>
         <PostList posts={filteredPosts} />
       </Suspense>
-    </>
+    </main>
   );
 }
