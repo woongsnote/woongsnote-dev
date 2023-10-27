@@ -72,7 +72,7 @@ export default function PostPage({ params }: PageProps) {
           className="w-full h-60 lg:h-72 rounded-md object-cover"
         />
       </div>
-      <div className="text-base lg:text-xl mt-4 lg:max-w-5xl leading-10 prose dark:prose-invert items-center mx-auto">
+      <div className="text-base lg:text-xl mt-4 w-full lg:max-w-5xl leading-10 prose dark:prose-invert items-center mx-auto">
         <MDXComponents code={post.body.code} />
       </div>
     </article>
