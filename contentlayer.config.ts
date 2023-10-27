@@ -52,7 +52,7 @@ export default makeSource({
         rehypePrettyCode,
         {
           options: {
-            theme: 'github-dark-dimmed',
+            theme: 'material-theme',
             defaultLang: 'plaintext',
           },
         },
