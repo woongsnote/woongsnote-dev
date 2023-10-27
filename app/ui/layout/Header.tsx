@@ -2,8 +2,8 @@ import Link from 'next/link';
 import Logo from '@/app/ui/Logo';
 
 const navLinks = [
-  { href: 'about', title: 'About' },
-  { href: 'posts', title: 'posts' },
+  { href: '/about', title: 'About' },
+  { href: '/posts', title: 'Posts' },
 ];
 
 export const Header = () => {
