@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  display: none;
+}
+
+.prose :not(pre) > code {
+  @apply dark:bg-gray-700 bg-gray-200 border-2 border-gray-200 dark:border-gray-700 font-mono font-normal align-middle py-0.5 px-1 rounded;
+}
