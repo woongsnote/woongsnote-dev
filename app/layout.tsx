@@ -52,7 +52,9 @@ export default function RootLayout({
       <body>
         <Providers>
           <Header />
-          {children}
+          <main className="mx-auto container px-0 max-w-5xl flex items-center my-0 relative min-h-screen justify-center">
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>
