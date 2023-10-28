@@ -49,10 +49,10 @@ export default function RootLayout({
       className={`${pretendard.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <body>
+      <body className="flex flex-col min-h-screen">
         <Providers>
           <Header />
-          <main className="mx-auto container px-0 max-w-5xl flex items-center my-0 relative min-h-screen justify-center">
+          <main className="mx-auto container px-0 my-0 flex flex-grow flex-col">
             {children}
           </main>
           <Footer />
