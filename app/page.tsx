@@ -1,5 +1,10 @@
-import { Profile } from '@/app/ui/profile';
+import { Profile, SocialLinks } from '@/app/ui/profile';
 
 export default function Home() {
-  return <Profile />;
+  return (
+    <div className="flex items-center flex-col">
+      <Profile />
+      <SocialLinks />
+    </div>
+  );
 }

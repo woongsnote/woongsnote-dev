@@ -19,10 +19,12 @@ export const Tabs = () => {
   const categories = ['All', 'Tech', 'Diary', 'Project'];
 
   return (
-    <div className="my-4 w-fit gap-8 flex justify-center text-center rounded-lg px-3 py-1 mx-auto border-4">
+    <div className="my-4 w-fit gap-8 flex justify-center text-center rounded-lg px-3 py-1 mx-auto">
       {categories.map((category) => (
         <button
           key={category}
+          aria-label={`filter posts by ${category}`}
+          role="button"
           onClick={() => {
             router.push(
               '/posts' + '?' + createQueryString('category', category),

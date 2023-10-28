@@ -21,7 +21,7 @@ export const PostCard = (post: Post) => {
 
   return (
     <article className="w-full flex flex-col items-center">
-      <div className="w-full h-48 p-2 rounded-lg">
+      <div className="w-full h-48 p-2 rounded-lg xl:h-60">
         <Image
           src={cardThumbnail}
           alt={title}
