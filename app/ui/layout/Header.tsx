@@ -16,6 +16,7 @@ export const Header = () => {
             <Link
               key={link.title}
               href={link.href}
+              aria-label={`move to ${link.title} page`}
               className="font-bold hover:text-primary text-base lg:text-xl"
             >
               {link.title}

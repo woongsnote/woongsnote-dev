@@ -16,9 +16,18 @@ export const ThemeSwitcher = () => {
     'w-fit h-fit hover:text-black dark:hover:text-white bg-transparent text-gray-500 p-1';
 
   const options = [
-    { icon: <RiSunLine />, text: 'light' },
-    { icon: <RiMoonLine />, text: 'dark' },
-    { icon: <RiComputerLine />, text: 'system' },
+    {
+      icon: <RiSunLine />,
+      text: 'light',
+    },
+    {
+      icon: <RiMoonLine />,
+      text: 'dark',
+    },
+    {
+      icon: <RiComputerLine />,
+      text: 'system',
+    },
   ];
 
   return (
@@ -26,6 +35,7 @@ export const ThemeSwitcher = () => {
       {options.map((opt) => (
         <button
           key={opt.text}
+          aria-label={`set ${opt.text} theme button`}
           className={`${buttonStyle} ${
             theme === opt.text && 'text-primary dark:text-secondary'
           }`}
