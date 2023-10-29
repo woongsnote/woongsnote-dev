@@ -13,13 +13,15 @@ import { PageProps } from '@/app/lib/types';
 
 export async function generateStaticParams() {
   return allPosts.map((post: Post) => ({
-    slug: post._raw.flattenedPath,
+    slug: post._raw.flattenedPath.split('/')[1],
   }));
 }
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const post = allPosts.find(
+    (post) => post._raw.flattenedPath.split('/')[1] === params.slug,
+  );
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
   const tags = post.tags?.map((tag) => tag.title).join(', ');
   return {
@@ -42,7 +44,9 @@ export async function generateMetadata({
 }
 
 export default function PostPage({ params }: PageProps) {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const post = allPosts.find(
+    (post) => post._raw.flattenedPath.split('/')[1] === params.slug,
+  );
 
   if (!post) notFound();
 
