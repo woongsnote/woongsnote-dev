@@ -39,11 +39,13 @@ export const Tabs = () => {
                 '/posts' + '?' + createQueryString('category', category),
               );
             }}
-            className={clsx('p-2 text-lg font-semibold lg:text-2xl', {
-              'font-bold underline decoration-4 underline-offset-8 decoration-primary dark:decoration-secondary':
-                searchParams.get('category') === category,
-              'text-gray-500': searchParams.get('category') !== category,
-            })}
+            className={clsx(
+              'p-2 text-lg font-semibold lg:text-2xl text-gray-500',
+              {
+                'font-bold underline decoration-4 underline-offset-8 decoration-primary dark:decoration-secondary text-black dark:text-white':
+                  searchParams.get('category') === category,
+              },
+            )}
           >
             {category} ({totalPosts})
           </button>
