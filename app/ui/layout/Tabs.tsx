@@ -23,10 +23,8 @@ export const Tabs = () => {
     return allPosts.filter((post) => post.category.match(category)).length;
   };
 
-  console.log(getPostsLength('Tech'));
-
   return (
-    <div className="my-4 w-fit gap-8 flex justify-center text-center rounded-lg px-3 py-1 mx-auto">
+    <div className="my-4 w-full gap-8 flex justify-center text-center mx-auto">
       {categories.map((category) => {
         const totalPosts =
           category === 'All' ? allPosts.length : getPostsLength(category);

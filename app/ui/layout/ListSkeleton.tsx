@@ -25,9 +25,5 @@ export const ListSkeleton = ({ listLength }: ListSkeletonProps) => {
     <SkeletonItem key={index} />
   ));
 
-  return (
-    <section className="grid md:grid-cols-2 lg:grid-cols-3">
-      {skeltonItems}
-    </section>
-  );
+  return <section className="grid grid-cols-1">{skeltonItems}</section>;
 };
