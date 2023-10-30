@@ -9,6 +9,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@giscus/react": "^2.3.0",
     "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
     "next": "latest",
