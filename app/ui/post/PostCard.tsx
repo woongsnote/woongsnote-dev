@@ -26,7 +26,7 @@ export const PostCard = ({
             width={800}
             height={480}
             priority
-            className="w-full h-full object-cover object-center rounded-lg border hover:scale-105 absolute transition-all duration-500 ease-in-out transform"
+            className="w-full h-full object-cover object-center rounded-lg hover:scale-105 absolute transition-all duration-500 ease-in-out transform"
           />
         </div>
         <div className="flex flex-col gap-2 p-2 w-full lg:basis-2/3">

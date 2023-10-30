@@ -32,6 +32,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react", "npm:18.2.33"],\
           ["@types/react-dom", "npm:18.2.14"],\
           ["autoprefixer", "virtual:e8df0c5ff1f75a00c37ffec1a66b3fe64a7cc099a0f5be979577764829547ab88305a355fff2429584c18e25fa5ceada5590f539975dd6d6ec61f2eab616c990#npm:10.4.16"],\
+          ["clsx", "npm:2.0.0"],\
           ["contentlayer", "npm:0.3.4"],\
           ["date-fns", "npm:2.30.0"],\
           ["encoding", "npm:0.1.13"],\
@@ -2693,6 +2694,15 @@ const RAW_RUNTIME_STATE =
           ["string-width", "npm:4.2.3"],\
           ["strip-ansi", "npm:6.0.1"],\
           ["wrap-ansi", "npm:7.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["clsx", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "./.yarn/cache/clsx-npm-2.0.0-afafbbe44a-943766d1b0.zip/node_modules/clsx/",\
+        "packageDependencies": [\
+          ["clsx", "npm:2.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -9813,6 +9823,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react", "npm:18.2.33"],\
           ["@types/react-dom", "npm:18.2.14"],\
           ["autoprefixer", "virtual:e8df0c5ff1f75a00c37ffec1a66b3fe64a7cc099a0f5be979577764829547ab88305a355fff2429584c18e25fa5ceada5590f539975dd6d6ec61f2eab616c990#npm:10.4.16"],\
+          ["clsx", "npm:2.0.0"],\
           ["contentlayer", "npm:0.3.4"],\
           ["date-fns", "npm:2.30.0"],\
           ["encoding", "npm:0.1.13"],\

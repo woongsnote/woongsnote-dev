@@ -1,5 +1,6 @@
 'use client';
 
+import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -18,11 +19,11 @@ export const Navbar = () => {
           key={title}
           href={href}
           aria-label={`move to ${title} page`}
-          className={`text-base lg:text-xl ${
-            pathname === href
-              ? 'border-b-4 rounded-b-sm border-primary dark:border-secondary font-bold'
-              : 'text-zinc-600 dark:text-zinc-400'
-          }`}
+          className={clsx('text-base lg:text-xl', {
+            'decoration-4 underline underline-offset-8 decoration-primary dark:decoration-secondary font-bold':
+              pathname === href,
+            'text-zinc-600 dark:text-zinc-400': pathname !== href,
+          })}
         >
           {title}
         </Link>
