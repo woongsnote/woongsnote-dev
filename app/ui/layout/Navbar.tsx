@@ -19,11 +19,13 @@ export const Navbar = () => {
           key={title}
           href={href}
           aria-label={`move to ${title} page`}
-          className={clsx('text-base lg:text-xl', {
-            'decoration-4 underline underline-offset-8 decoration-primary dark:decoration-secondary font-bold':
-              pathname === href,
-            'text-zinc-600 dark:text-zinc-400': pathname !== href,
-          })}
+          className={clsx(
+            'text-base lg:text-xl text-zinc-600 dark:text-zinc-400',
+            {
+              'decoration-4 underline underline-offset-8 decoration-primary dark:decoration-secondary font-bold text-black dark:text-white':
+                pathname === href,
+            },
+          )}
         >
           {title}
         </Link>
