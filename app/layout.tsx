@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${pretendard.variable} scroll-smooth`}
+      className={`${pretendard.variable} antialiased scroll-smooth`}
       suppressHydrationWarning
     >
       <body className="flex flex-col min-h-screen">

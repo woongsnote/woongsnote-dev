@@ -1979,6 +1979,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clsx@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "clsx@npm:2.0.0"
+  checksum: 943766d1b02fee3538c871e56638d87f973fbc2d6291ce221215ea436fdecb9be97ad323f411839c2d52c45640c449b1a53fbfe7e8b3d529b4e263308b630c9a
+  languageName: node
+  linkType: hard
+
 "color-convert@npm:^2.0.1":
   version: 2.0.1
   resolution: "color-convert@npm:2.0.1"
@@ -8215,6 +8222,7 @@ __metadata:
     "@types/react": "npm:18.2.33"
     "@types/react-dom": "npm:^18.2.14"
     autoprefixer: "npm:^10.4.16"
+    clsx: "npm:^2.0.0"
     contentlayer: "npm:^0.3.4"
     date-fns: "npm:^2.30.0"
     encoding: "npm:^0.1.13"

@@ -1,6 +1,7 @@
 'use client';
 
 import { allPosts } from '@/.contentlayer/generated';
+import clsx from 'clsx';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
@@ -38,11 +39,11 @@ export const Tabs = () => {
                 '/posts' + '?' + createQueryString('category', category),
               );
             }}
-            className={`${
-              searchParams.get('category') === category
-                ? 'text-white font-bold border bg-primary dark:bg-secondary border-primary dark:border-secondary'
-                : 'text-gray-500'
-            } px-2 py-1 text-lg font-semibold rounded-lg hover:underline hover:underline-offset-8 lg:text-2xl`}
+            className={clsx('p-2 text-lg font-semibold lg:text-2xl', {
+              'font-bold underline decoration-4 underline-offset-8 decoration-primary dark:decoration-secondary':
+                searchParams.get('category') === category,
+              'text-gray-500': searchParams.get('category') !== category,
+            })}
           >
             {category} ({totalPosts})
           </button>
