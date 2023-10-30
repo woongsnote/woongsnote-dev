@@ -14,15 +14,13 @@ import { PageProps } from '@/app/lib/types';
 
 export async function generateStaticParams() {
   return allPosts.map((post: Post) => ({
-    slug: post._raw.flattenedPath.split('/')[1],
+    slug: post.url,
   }));
 }
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const post = allPosts.find(
-    (post) => post._raw.flattenedPath.split('/')[1] === params.slug,
-  );
+  const post = allPosts.find((post) => post.url === params.slug);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
   const tags = post.tags?.map((tag) => tag.title).join(', ');
   return {
@@ -45,15 +43,11 @@ export async function generateMetadata({
 }
 
 export default function PostPage({ params }: PageProps) {
-  const post = allPosts.find(
-    (post) => post._raw.flattenedPath.split('/')[1] === params.slug,
-  );
+  const post = allPosts.find((post) => post.url === params.slug);
 
   if (!post) notFound();
 
   const { title, date, readingTime, coverImage, tags } = post;
-
-  const readingTimeText = readingTime.text.split(' ')[0];
 
   const thumbnail = coverImage ?? getPostThumbnail(title);
 
@@ -65,7 +59,7 @@ export default function PostPage({ params }: PageProps) {
         <div className="flex items-center gap-2 justify-start w-full mx-auto my-4">
           <span className="font-bold">@woongsnote</span>
           <PublishedDate date={date} />
-          <ReadingTime readingTime={readingTimeText} />
+          <ReadingTime readingTime={readingTime} />
         </div>
         <TagList tags={tags} />
       </section>
