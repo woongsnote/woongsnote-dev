@@ -1,18 +1,11 @@
-import Image from 'next/image';
+import { ProfileImage } from '@/app/ui/profile';
 
 export default function About() {
   return (
     <section className="flex flex-col items-center gap-8 p-4 max-w-3xl mx-auto">
       <h2 className="text-2xl lg:text-4xl font-black">About Me</h2>
       <div className="flex flex-col gap-8 items-center">
-        <Image
-          src={'/profile.png'}
-          width={300}
-          height={300}
-          alt="Profile"
-          priority
-          className="rounded-lg"
-        />
+        <ProfileImage />
         <p className="text-base lg:text-lg">
           <b>새로운 기술에 대한 호기심</b>과 <b>끊임없는 열정</b>을 가지고
           있습니다. <br /> 학습한 지식을 직접 구현한 블로그에 정리하고
