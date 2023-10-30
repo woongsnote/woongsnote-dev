@@ -26,6 +26,7 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@giscus/react", "virtual:e8df0c5ff1f75a00c37ffec1a66b3fe64a7cc099a0f5be979577764829547ab88305a355fff2429584c18e25fa5ceada5590f539975dd6d6ec61f2eab616c990#npm:2.3.0"],\
           ["@tailwindcss/typography", "virtual:e8df0c5ff1f75a00c37ffec1a66b3fe64a7cc099a0f5be979577764829547ab88305a355fff2429584c18e25fa5ceada5590f539975dd6d6ec61f2eab616c990#npm:0.5.10"],\
           ["@types/node", "npm:20.8.9"],\
           ["@types/react", "npm:18.2.33"],\
@@ -656,6 +657,33 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@giscus/react", [\
+      ["npm:2.3.0", {\
+        "packageLocation": "./.yarn/cache/@giscus-react-npm-2.3.0-ac0e8baedf-d1342d90c5.zip/node_modules/@giscus/react/",\
+        "packageDependencies": [\
+          ["@giscus/react", "npm:2.3.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:e8df0c5ff1f75a00c37ffec1a66b3fe64a7cc099a0f5be979577764829547ab88305a355fff2429584c18e25fa5ceada5590f539975dd6d6ec61f2eab616c990#npm:2.3.0", {\
+        "packageLocation": "./.yarn/__virtual__/@giscus-react-virtual-dac85d49a0/0/cache/@giscus-react-npm-2.3.0-ac0e8baedf-d1342d90c5.zip/node_modules/@giscus/react/",\
+        "packageDependencies": [\
+          ["@giscus/react", "virtual:e8df0c5ff1f75a00c37ffec1a66b3fe64a7cc099a0f5be979577764829547ab88305a355fff2429584c18e25fa5ceada5590f539975dd6d6ec61f2eab616c990#npm:2.3.0"],\
+          ["@types/react", "npm:18.2.33"],\
+          ["@types/react-dom", "npm:18.2.14"],\
+          ["giscus", "npm:1.3.0"],\
+          ["react", "npm:18.2.0"],\
+          ["react-dom", "virtual:e8df0c5ff1f75a00c37ffec1a66b3fe64a7cc099a0f5be979577764829547ab88305a355fff2429584c18e25fa5ceada5590f539975dd6d6ec61f2eab616c990#npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@grpc/grpc-js", [\
       ["npm:1.9.7", {\
         "packageLocation": "./.yarn/cache/@grpc-grpc-js-npm-1.9.7-c149cd5567-f3104888bf.zip/node_modules/@grpc/grpc-js/",\
@@ -791,6 +819,25 @@ const RAW_RUNTIME_STATE =
           ["@js-temporal/polyfill", "npm:0.4.4"],\
           ["jsbi", "npm:4.3.0"],\
           ["tslib", "npm:2.6.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@lit-labs/ssr-dom-shim", [\
+      ["npm:1.1.2", {\
+        "packageLocation": "./.yarn/cache/@lit-labs-ssr-dom-shim-npm-1.1.2-327f5934ca-a930f7de57.zip/node_modules/@lit-labs/ssr-dom-shim/",\
+        "packageDependencies": [\
+          ["@lit-labs/ssr-dom-shim", "npm:1.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@lit/reactive-element", [\
+      ["npm:1.6.3", {\
+        "packageLocation": "./.yarn/cache/@lit-reactive-element-npm-1.6.3-4828441e51-664c899bb0.zip/node_modules/@lit/reactive-element/",\
+        "packageDependencies": [\
+          ["@lit/reactive-element", "npm:1.6.3"],\
+          ["@lit-labs/ssr-dom-shim", "npm:1.1.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1737,6 +1784,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-scheduler-npm-0.16.4-aba8785e94-a57b0f10da.zip/node_modules/@types/scheduler/",\
         "packageDependencies": [\
           ["@types/scheduler", "npm:0.16.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/trusted-types", [\
+      ["npm:2.0.5", {\
+        "packageLocation": "./.yarn/cache/@types-trusted-types-npm-2.0.5-6fa19b23ee-e138a70a70.zip/node_modules/@types/trusted-types/",\
+        "packageDependencies": [\
+          ["@types/trusted-types", "npm:2.0.5"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4201,6 +4257,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["giscus", [\
+      ["npm:1.3.0", {\
+        "packageLocation": "./.yarn/cache/giscus-npm-1.3.0-e577c37252-7d55cd4dc2.zip/node_modules/giscus/",\
+        "packageDependencies": [\
+          ["giscus", "npm:1.3.0"],\
+          ["lit", "npm:2.8.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["github-from-package", [\
       ["npm:0.0.0", {\
         "packageLocation": "./.yarn/cache/github-from-package-npm-0.0.0-519f80c9a1-2a091ba07f.zip/node_modules/github-from-package/",\
@@ -5446,6 +5512,40 @@ const RAW_RUNTIME_STATE =
           ["log-update", "npm:5.0.1"],\
           ["rfdc", "npm:1.3.0"],\
           ["wrap-ansi", "npm:8.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["lit", [\
+      ["npm:2.8.0", {\
+        "packageLocation": "./.yarn/cache/lit-npm-2.8.0-92bb1333a4-aa64c1136b.zip/node_modules/lit/",\
+        "packageDependencies": [\
+          ["lit", "npm:2.8.0"],\
+          ["@lit/reactive-element", "npm:1.6.3"],\
+          ["lit-element", "npm:3.3.3"],\
+          ["lit-html", "npm:2.8.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["lit-element", [\
+      ["npm:3.3.3", {\
+        "packageLocation": "./.yarn/cache/lit-element-npm-3.3.3-2f9f9e38c0-7968e7f3ce.zip/node_modules/lit-element/",\
+        "packageDependencies": [\
+          ["lit-element", "npm:3.3.3"],\
+          ["@lit-labs/ssr-dom-shim", "npm:1.1.2"],\
+          ["@lit/reactive-element", "npm:1.6.3"],\
+          ["lit-html", "npm:2.8.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["lit-html", [\
+      ["npm:2.8.0", {\
+        "packageLocation": "./.yarn/cache/lit-html-npm-2.8.0-82f88d6ebf-3503e55e29.zip/node_modules/lit-html/",\
+        "packageDependencies": [\
+          ["lit-html", "npm:2.8.0"],\
+          ["@types/trusted-types", "npm:2.0.5"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -9707,6 +9807,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["woongsnote-dev", "workspace:."],\
+          ["@giscus/react", "virtual:e8df0c5ff1f75a00c37ffec1a66b3fe64a7cc099a0f5be979577764829547ab88305a355fff2429584c18e25fa5ceada5590f539975dd6d6ec61f2eab616c990#npm:2.3.0"],\
           ["@tailwindcss/typography", "virtual:e8df0c5ff1f75a00c37ffec1a66b3fe64a7cc099a0f5be979577764829547ab88305a355fff2429584c18e25fa5ceada5590f539975dd6d6ec61f2eab616c990#npm:0.5.10"],\
           ["@types/node", "npm:20.8.9"],\
           ["@types/react", "npm:18.2.33"],\
