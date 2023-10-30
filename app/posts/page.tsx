@@ -22,7 +22,6 @@ export default function Posts({
         <h2 className="font-black text-3xl">Posts</h2>
         <p>학습한 지식들과 구현한 프로젝트들의 기록입니다.</p>
       </section>
-
       <Tabs />
       <Suspense fallback={<ListSkeleton listLength={filteredPosts.length} />}>
         <PostList posts={filteredPosts} />

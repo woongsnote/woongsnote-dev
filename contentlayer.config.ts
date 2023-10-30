@@ -33,11 +33,11 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: 'string',
-      resolve: (post) => `${post._raw.flattenedPath}`,
+      resolve: (post) => `${post._raw.flattenedPath.split('/')[1]}`,
     },
     readingTime: {
       type: 'json',
-      resolve: (doc) => readingTime(doc.body.raw),
+      resolve: (doc) => readingTime(doc.body.raw).text.split(' ')[0],
     },
   },
 }));
