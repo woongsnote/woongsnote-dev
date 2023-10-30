@@ -5,3 +5,4 @@ export { PublishedDate } from './PublishedDate';
 export { ReadingTime } from './ReadingTime';
 export { TagList } from './TagList';
 export { MDXComponents } from './mdx-components';
+export { Comments } from './Comments';
