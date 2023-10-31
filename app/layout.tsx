@@ -52,7 +52,7 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen">
         <Providers>
           <Header />
-          <main className="mx-auto container px-0 my-0 flex flex-grow flex-col">
+          <main className="mx-auto container px-0 my-0 flex flex-grow flex-col max-w-7xl">
             {children}
           </main>
           <Footer />
