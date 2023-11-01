@@ -25,7 +25,7 @@ export const Tabs = () => {
   };
 
   return (
-    <div className="my-4 w-full gap-8 flex justify-center text-center mx-auto">
+    <div className="my-4 w-full gap-8 flex text-center mx-auto">
       {categories.map((category) => {
         const totalPosts =
           category === 'All' ? allPosts.length : getPostsLength(category);

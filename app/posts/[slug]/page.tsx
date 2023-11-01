@@ -22,7 +22,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const post = allPosts.find((post) => post.url === params.slug);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
-  const tags = post.tags?.map((tag) => tag.title).join(', ');
+  const tags = post.tags.join(', ');
   return {
     title: post.title,
     description: post.description,
@@ -47,9 +47,9 @@ export default function PostPage({ params }: PageProps) {
 
   if (!post) notFound();
 
-  const { title, date, readingTime, coverImage, tags } = post;
+  const { title, date, readingTime, imgUrl, tags } = post;
 
-  const thumbnail = coverImage ?? getPostThumbnail(title);
+  const thumbnail = imgUrl ?? getPostThumbnail(title);
 
   return (
     <article className="w-full mb-10 flex flex-col pt-6 py-4 max-w-5xl mx-auto px-4">
