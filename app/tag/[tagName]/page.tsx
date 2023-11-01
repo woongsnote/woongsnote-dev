@@ -1,0 +1,38 @@
+import { allPosts } from '@/.contentlayer/generated';
+import {
+  getAllTagsFromPost,
+  getPostsByTag,
+  getSortedPostList,
+} from '@/app/lib/utils';
+import { ListSkeleton } from '@/app/ui/layout';
+import { PageHeader } from '@/app/ui/layout/PageHeader';
+import { PostList, TagList } from '@/app/ui/post';
+import { Suspense } from 'react';
+
+export default function Tag({ params }: { params: { tagName: string } }) {
+  const { tagName } = params;
+  const sortedPosts = getSortedPostList(allPosts);
+  const searchedPosts = getPostsByTag({ tag: tagName, posts: sortedPosts });
+  const tags = getAllTagsFromPost(sortedPosts);
+  return (
+    <>
+      <PageHeader
+        title="Searched Posts"
+        description={`${params.tagName}에 대한 검색 결과입니다.`}
+      />
+      <div className="flex flex-row gap-8 xl:gap-28 mt-10">
+        <div className="md:basis-8/12 mt-4">
+          <Suspense
+            fallback={<ListSkeleton listLength={searchedPosts.length} />}
+          >
+            <PostList posts={searchedPosts} />
+          </Suspense>
+        </div>
+        <div className="hidden md:flex flex-col h-full p-2 md:basis-1/4">
+          <strong className="text-2xl mb-4">Tag</strong>
+          <TagList tags={tags} />
+        </div>
+      </div>
+    </>
+  );
+}

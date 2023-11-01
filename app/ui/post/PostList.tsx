@@ -6,12 +6,12 @@ export const PostList = ({ posts }: { posts: Post[] }) => {
   }
 
   return (
-    <ul className="px-4 w-full mx-auto grid grid-cols-1 xl:px-0">
+    <ul className="w-full grid grid-cols-1 xl:px-0 gap-y-4">
       {posts.map((post) => {
         return (
           <li
             key={post._id}
-            className="rounded-md hover:shadow-lg overflow-hidden w-full mx-auto hover:bg-slate-200 max-w-4xl dark:hover:bg-slate-700"
+            className="rounded-md overflow-hidden w-full mx-auto lg:max-w-4xl"
           >
             <PostCard {...post} />
           </li>
