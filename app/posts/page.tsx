@@ -1,10 +1,6 @@
 import { Post, allPosts } from 'contentlayer/generated';
 import { Suspense } from 'react';
-import {
-  getAllTagsFromPost as getAllTagsFromPosts,
-  getPostsByTag,
-  getSortedPostList,
-} from '@/app/lib/utils';
+import { getAllTagsFromPosts, getSortedPostList } from '@/app/lib/utils';
 import { ListSkeleton } from '@/app/ui/layout';
 import { PostList, TagList } from '@/app/ui/post';
 import { RecentPostList } from '../ui/post/RecentPostList';

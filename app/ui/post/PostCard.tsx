@@ -15,7 +15,7 @@ export const PostCard = ({
   const cardThumbnail = imgUrl ?? getPostThumbnail(title);
 
   return (
-    <Link href={`posts/${url}`}>
+    <Link href={`/posts/${url}`}>
       <div className="w-full flex flex-col lg:flex-row items-center">
         <div className="w-full lg:w-72 flex items-center justify-center rounded-lg h-60 lg:h-40 overflow-hidden relative">
           <Image
