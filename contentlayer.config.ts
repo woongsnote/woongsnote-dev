@@ -7,28 +7,18 @@ import readingTime from 'reading-time';
 import rehypePrettyCode from 'rehype-pretty-code';
 import remarkGfm from 'remark-gfm';
 
-const Tag = defineNestedType(() => ({
-  name: 'Tag',
-  fields: {
-    title: { type: 'string', required: true },
-  },
-}));
-
 export const Post = defineDocumentType(() => ({
   name: 'Post',
   filePathPattern: `**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
+    description: { type: 'string', required: true },
     date: { type: 'date', required: true },
     category: { type: 'string', required: true },
-    description: { type: 'string', required: true },
-    coverImage: { type: 'string', required: false },
-    tags: {
-      type: 'list',
-      of: Tag,
-      required: true,
-    },
+    imgUrl: { type: 'string', required: false },
+    tags: { type: 'list', of: { type: 'string' }, required: true },
+    isPublished: { type: 'boolean', required: true },
   },
   computedFields: {
     url: {

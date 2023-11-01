@@ -10,7 +10,9 @@ export const Profile = () => {
         <p className="text-lg lg:text-xl">
           안녕하세요. 프론트엔드 개발자{' '}
           <span className="font-bold">문지웅</span>입니다. <br />
-          새로운 기술을 학습하는 것을 좋아합니다.
+          <b>새로운 기술</b>을 학습하고 프로젝트에 적용하는 것을 즐깁니다.{' '}
+          <br />
+          최근에는 <b>Next.js</b>를 학습하고 있습니다.
         </p>
       </div>
     </section>
