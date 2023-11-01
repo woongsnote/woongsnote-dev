@@ -19,7 +19,7 @@ export function getPostThumbnail(title: string): string {
   return `${process.env.BASE_URL}/og?title=${title}`;
 }
 
-export function getAllTagsFromPost(arrays: Post[]): string[] {
+export function getAllTagsFromPosts(arrays: Post[]): string[] {
   const set: Set<string> = new Set();
   set.add('전체');
   arrays.map((post) => {
