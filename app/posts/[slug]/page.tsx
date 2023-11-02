@@ -46,7 +46,7 @@ export default function PostPage({ params }: PageProps) {
   const thumbnail = imgUrl ?? getPostThumbnail(title);
 
   return (
-    <article className="mx-auto mb-10 flex w-full max-w-5xl flex-col px-4 py-4 pt-6">
+    <article className="mx-auto mb-10 flex w-full max-w-5xl flex-col px-4 py-4 pt-6 shadow-lg rounded-lg">
       <PostHeader
         title={title}
         author="@woongsnote"
@@ -55,7 +55,7 @@ export default function PostPage({ params }: PageProps) {
         tags={tags}
       />
       <PostThumbnail title={title} thumbnail={thumbnail} />
-      <div className="prose mx-auto mt-4 w-full items-center text-base leading-10 dark:prose-invert lg:max-w-5xl lg:text-xl">
+      <div className="prose mx-auto mt-4 w-full items-center text-base leading-10 lg:max-w-5xl lg:text-xl text-content prose-headings:text-content prose-strong:text-content prose-blockquote:text-content">
         {post.body.code && <MDXComponents code={post.body.code} />}
       </div>
       <Comments />
