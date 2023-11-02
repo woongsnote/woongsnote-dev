@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { RiComputerLine, RiMoonLine, RiSunLine } from 'react-icons/ri';
+import clsx from 'clsx';
 export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -11,9 +12,6 @@ export const ThemeSwitcher = () => {
   }, []);
 
   if (!mounted) return null;
-
-  const buttonStyle =
-    'w-fit h-fit hover:text-black dark:hover:text-white bg-transparent text-gray-500 p-1';
 
   const options = [
     {
@@ -36,9 +34,10 @@ export const ThemeSwitcher = () => {
         <button
           key={opt.text}
           aria-label={`set ${opt.text} theme button`}
-          className={`${buttonStyle} ${
-            theme === opt.text && 'text-primary dark:text-secondary'
-          }`}
+          className={clsx(
+            'w-fit h-fit hover:text-primary bg-transparent text-gray-500 p-1',
+            { 'text-primary': theme === opt.text },
+          )}
           onClick={() => setTheme(opt.text)}
         >
           {opt.icon}

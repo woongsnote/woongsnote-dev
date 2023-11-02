@@ -1,16 +1,10 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Post, allPosts } from 'contentlayer/generated';
-import Image from 'next/image';
 import { getPostThumbnail } from '@/app/lib/utils';
-import {
-  PublishedDate,
-  ReadingTime,
-  TagList,
-  MDXComponents,
-  Comments,
-} from '@/app/ui/post';
+import { PostHeader, MDXComponents, Comments } from '@/app/ui/post';
 import { PageProps } from '@/app/lib/types';
+import { PostThumbnail } from '@/app/ui/post/PostThumbnail';
 
 export async function generateStaticParams() {
   return allPosts.map((post: Post) => ({
@@ -52,30 +46,17 @@ export default function PostPage({ params }: PageProps) {
   const thumbnail = imgUrl ?? getPostThumbnail(title);
 
   return (
-    <article className="w-full mb-10 flex flex-col pt-6 py-4 max-w-5xl mx-auto px-4">
-      <section className="border-b pb-4">
-        <h1 className="text-3xl lg:text-5xl font-black">{title}</h1>
-
-        <div className="flex items-center gap-2 justify-start w-full mx-auto my-4">
-          <span className="font-bold">@woongsnote</span>
-          <PublishedDate date={date} />
-          <ReadingTime readingTime={readingTime} />
-        </div>
-        <TagList tags={tags} />
-      </section>
-
-      <div className="max-w-xl overflow-hidden flex items-center mx-auto w-full p-4">
-        <Image
-          src={thumbnail}
-          alt={title}
-          width={800}
-          height={480}
-          priority
-          className="w-full h-60 lg:h-72 rounded-md object-cover"
-        />
-      </div>
-      <div className="text-base lg:text-xl mt-4 w-full lg:max-w-5xl leading-10 prose dark:prose-invert items-center mx-auto">
-        <MDXComponents code={post.body.code} />
+    <article className="mx-auto mb-10 flex w-full max-w-5xl flex-col px-4 py-4 pt-6">
+      <PostHeader
+        title={title}
+        author="@woongsnote"
+        date={date}
+        readingTime={readingTime}
+        tags={tags}
+      />
+      <PostThumbnail title={title} thumbnail={thumbnail} />
+      <div className="prose mx-auto mt-4 w-full items-center text-base leading-10 dark:prose-invert lg:max-w-5xl lg:text-xl">
+        {post.body.code && <MDXComponents code={post.body.code} />}
       </div>
       <Comments />
     </article>

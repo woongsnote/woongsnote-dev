@@ -46,13 +46,13 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${pretendard.variable} antialiased scroll-smooth`}
+      className={`${pretendard.variable} scroll-smooth antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex flex-col min-h-screen">
+      <body className="flex min-h-screen flex-col">
         <Providers>
           <Header />
-          <main className="mx-auto container p-2 my-0 flex flex-grow flex-col">
+          <main className="container mx-auto my-0 flex flex-grow flex-col p-2 bg-bkg">
             {children}
           </main>
           <Footer />
