@@ -28,10 +28,12 @@
 - 처음 블로그를 만들기 시작했을 때는 Next.js의 버전이 **12**버전이었고, Pages Router 방식만 존재했습니다. Next.js의 Major 버전이 **12**버전에서 **13**버전으로 Major 업데이트가 진행되고, `App Router` 방식이 등장했습니다. 초기에는 공식 홈페이지에서 이 방식을 production에 사용하는 것을 권장하지 않았기 때문에, App Router 방식으로 변경하는 방법에 관해 dev Branch에서 학습만 진행했습니다. `**Next.js 13.4**` 버전에서부터 App Router 방식이 Stable로 변경되어, 해당 Router방식을 **[블로그](https://woongsnote.dev)** 에 적용했습니다.
 
 ### Code Block Formatting - `Rehype Pretty Code`
+
 - Code Block 커스터마이징을 위해 `Rehype Pretty Code` 라이브러리를 적용했습니다.
 
 ### remark-GFM inTable issue
-- remark-gfm 버전이 3에서 4버전으로 업데이트 되면서 빌드할 떄, inTable issue가 생겼습니다. Contentlayer와의 호환성 issue로 판단되어, 3버전으로 다운그레이드했습니다.  
+
+- remark-gfm 버전이 3에서 4버전으로 업데이트 되면서 빌드할 떄, inTable issue가 생겼습니다. Contentlayer와의 호환성 issue로 판단되어, 3버전으로 다운그레이드했습니다.
 
 ## 📜 참고 자료
 

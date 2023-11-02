@@ -5,8 +5,8 @@ type PageHeaderProps = {
 
 export const PageHeader = ({ title, description }: PageHeaderProps) => {
   return (
-    <section className="py-10 container flex flex-col px-4 bg-gradient-to-r from-primary to-secondary dark:from-secondary dark:to-primary text-white items-center mt-1 xl:mx-auto rounded-md justify-center">
-      <h2 className="font-black text-3xl lg:text-5xl w-full">{title}</h2>
+    <section className="container mt-1 flex flex-col items-center justify-center rounded-md bg-gradient-to-r from-primary to-secondary px-4 py-10 text-white xl:mx-auto">
+      <h2 className="w-full text-3xl font-black lg:text-5xl">{title}</h2>
       <p className="w-full">{description}</p>
     </section>
   );

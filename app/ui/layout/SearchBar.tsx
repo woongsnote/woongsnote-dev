@@ -37,24 +37,24 @@ export const SearchBar = () => {
 
   return (
     <form
-      className="relative mx-auto pt-2 px-2 lg:px-0 mb-4"
+      className="relative mx-auto mb-4 px-2 pt-2 lg:px-0"
       onSubmit={submitHandler}
     >
       <input
         type="text"
         placeholder="검색할 제목을 입력하세요"
         ref={searchRef}
-        className="w-full pl-4 pr-14 py-2 rounded-md border-2 border-gray-300 focus:outline-none focus:border-blue-500"
+        className="w-full rounded-md border-2 border-gray-300 py-2 pl-4 pr-14 focus:border-blue-500 focus:outline-none"
       />
       <button
-        className="absolute right-8 top-0 mt-5 mr-4 text-center text-lg"
+        className="absolute right-8 top-0 mr-4 mt-5 text-center text-lg"
         type="button"
         onClick={clearSearchHandler}
       >
         <AiOutlineReload className="text-gray-400" />
       </button>
       <button
-        className="absolute right-0 top-0 mt-5 mr-4 text-center text-lg"
+        className="absolute right-0 top-0 mr-4 mt-5 text-center text-lg"
         type="submit"
       >
         <AiOutlineSearch className="text-gray-400" />

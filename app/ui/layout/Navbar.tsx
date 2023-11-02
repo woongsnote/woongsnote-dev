@@ -13,18 +13,19 @@ export const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex gap-8 items-center">
+    <div className="flex items-center gap-8">
       {navLinks.map(({ title, href }) => (
         <Link
           key={title}
           href={href}
           aria-label={`move to ${title} page`}
           className={clsx(
-            'text-base lg:text-xl text-zinc-600 dark:text-zinc-400',
+            'text-base lg:text-xl',
             {
-              'decoration-4 underline underline-offset-8 decoration-primary dark:decoration-secondary font-bold text-black dark:text-white':
+              'font-bold text-content underline decoration-primary decoration-4 underline-offset-8':
                 pathname === href,
             },
+            { 'text-gray-500': pathname !== href },
           )}
         >
           {title}
