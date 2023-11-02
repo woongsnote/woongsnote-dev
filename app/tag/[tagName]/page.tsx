@@ -20,8 +20,8 @@ export default function TagPage({ params }: { params: { tagName: string } }) {
         title="Searched Posts"
         description={`${params.tagName}에 대한 검색 결과는 총 ${searchedPosts.length}건입니다.`}
       />
-      <div className="flex flex-row gap-8 xl:gap-28 mt-10">
-        <div className="md:basis-8/12 mt-4">
+      <div className="mt-10 flex flex-row gap-8 xl:gap-28">
+        <div className="mt-4 md:basis-8/12">
           <Suspense
             fallback={<ListSkeleton listLength={searchedPosts.length} />}
           >
