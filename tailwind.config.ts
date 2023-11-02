@@ -10,9 +10,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#0496ff',
-        secondary: '#6366f1',
-        darkBlack: '#121212',
+        bkg: 'hsl(var(--color-bkg) / <alpha-value>)',
+        primary: 'hsl(var(--color-primary) / <alpha-value>)',
+        secondary: 'hsl(var(--color-secondary) / <alpha-value>)',
+        content: 'hsl(var(--color-content) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['var(--font-pretendard)'],

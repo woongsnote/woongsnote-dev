@@ -16,7 +16,7 @@ export const Category = ({ category }: CategoryProps) => {
             currentCategory === 'Project',
           'text-pink-500 dark:text-pink-700 ring-pink-700/10':
             currentCategory === 'Diary',
-          'text-primary dark:text-secondary ring-blue-700/10':
+          'text-primary dark:text-darkPrimary ring-blue-700/10':
             currentCategory === 'Tech',
         },
       )}

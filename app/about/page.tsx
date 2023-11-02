@@ -8,11 +8,11 @@ export default function About() {
         title="About Me"
         description="안녕하세요. 프론트엔드 개발자 문지웅입니다."
       />
-      <section className="flex flex-col md:flex-row items-center gap-8 p-4 mx-auto">
+      <section className="mx-auto flex flex-col items-center gap-8 p-4 md:flex-row">
         <div className="basis-1/4">
           <ProfileImage />
         </div>
-        <p className="text-sm lg:text-lg w-full max-w-3xl">
+        <p className="w-full max-w-3xl text-sm lg:text-lg">
           안녕하세요. 프론트엔드 개발자 문지웅입니다. <br />
           <br />
           <b>새로운 기술에 대한 호기심</b>과 <b>끊임없는 열정</b>을 가지고
