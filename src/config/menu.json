@@ -1,0 +1,19 @@
+{
+  "main": [
+    {
+      "name": "Home",
+      "url": "/",
+      "icon": "@icons/HomeIcon.astro"
+    },
+    {
+      "name": "About",
+      "url": "/about",
+      "icon": "@icons/HomeIcon.astro"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog",
+      "icon": "@icons/HomeIcon.astro"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+---
+import Base from '@layouts/Base.astro';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from '@components/FormattedDate.astro';
+import { Image } from 'astro:assets';
+import config from '@config/config.json';
+import { slugify } from '@utils/slug';
+import TagList from '@components/TagList.astro';
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, heroImage, categories, tags} =
+  Astro.props;
+
+
+---
+
+<Base meta_title={title} description={description} image={heroImage} blogpost>
+  <article class="p-4">
+    <section class="border-b pb-4">
+      <h1 class="text-3xl font-black lg:text-5xl">{title}</h1>
+      <div class="mx-auto my-4 flex w-full items-center justify-start gap-2">
+        <span class="font-bold">{config.author.name}</span>
+        <FormattedDate date={pubDate} />
+        <!-- <ReadingTimeText readingTime={readingTime} /> -->
+      </div>
+      <TagList tags={tags} />
+    </section>
+
+    <div class="rounded-lg block overflow-hidden mb-8 mt-2">
+      {
+        heroImage && (
+          <figure class="w-auto h-auto md:h-[480px] object-cover">
+            <Image
+              class="transition duration-300 ease-in-out hover:scale-110 cursor-progress"
+              src={heroImage}
+              alt={title}
+              width={960}
+              height={480}
+              decoding="async"
+              loading="lazy"
+            />
+          </figure>
+        )
+      }
+    </div>
+    <div
+      class="prose mx-auto mt-4 w-full items-center text-base leading-10 lg:max-w-5xl lg:text-xl text-content prose-headings:text-content prose-strong:text-content prose-blockquote:text-content"
+    >
+      <slot />
+    </div>
+  </article>
+</Base>
