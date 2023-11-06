@@ -18,18 +18,16 @@ const { title, description, pubDate, heroImage, tags, minutesRead } =
       tags={tags}
       minutesRead={minutesRead}
     />
-    <div class="mb-8 mt-2 block overflow-hidden rounded-lg">
+    <div class="mx-auto my-2 overflow-hidden rounded-xl border shadow-sm">
       {
         heroImage && (
-          <figure class="h-auto w-auto object-cover md:h-[480px]">
+          <figure class="mx-auto h-auto w-auto object-cover">
             <Image
-              class="cursor-progress transition duration-300 ease-in-out hover:scale-110"
               src={heroImage}
               alt={title}
               width={960}
               height={480}
-              decoding="async"
-              loading="lazy"
+              quality={'high'}
             />
           </figure>
         )

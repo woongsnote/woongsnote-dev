@@ -5,6 +5,7 @@ import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
 import Pagination from '@components/Pagination.astro';
 import config from '@config/config.json';
+import PageTitle from '@components/PageTitle.astro';
 
 export const prerender = true;
 
@@ -20,7 +21,7 @@ const { page } = Astro.props;
 ---
 
 <Base meta_title="Blog">
-  <h1 class="mt-4 text-2xl font-bold md:text-3xl">Blog</h1>
+  <PageTitle title="Blog"/>
   <Posts posts={page.data} />
   <Pagination
     length={page.lastPage}

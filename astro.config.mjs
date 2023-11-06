@@ -11,7 +11,17 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
-  integrations: [tailwind(), mdx(), sitemap()],
+  integrations: [
+    tailwind(),
+    mdx({
+      syntaxHighlight: 'shiki',
+      shikiConfig: {
+        theme: 'dracula',
+        wrap: true,
+      },
+    }),
+    sitemap(),
+  ],
   output: 'server',
   adapter: vercel(),
 });
