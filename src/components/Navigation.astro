@@ -1,29 +1,33 @@
 ---
 import menu from '@config/menu.json';
-import AboutIcon from '@icons/AboutIcon.astro';
+import HeaderLink from './HeaderLink.astro';
 import HomeIcon from '@icons/HomeIcon.astro';
+import AboutIcon from '@icons/AboutIcon.astro';
 import PostIcon from '@icons/PostIcon.astro';
 
-export type NavigationLink = {
+export type NavLink = {
   name: string;
   url: string;
 };
 
-const { main }: { main: NavigationLink[] } = menu;
+const { main }: { main: NavLink[] } = menu;
 ---
 
-<!-- icon for mobile text for desktop or mobile for hamburger -->
-<nav class="flex items-center gap-8">
+<nav class="flex items-center gap-4 lg:gap-8 text-gray-400">
   {
     main.map(({ name, url }) => (
-      <a href={url} aria-label={`move to ${name} page`} class="flex items-center gap-1">
-        <span class="block">
-          {name === 'Home' ? <HomeIcon /> : ''}
-          {name === 'About' ? <AboutIcon /> : ''}
-          {name === 'Blog' ? <PostIcon /> : ''}
+      <HeaderLink href={url} aria-label={`go to ${name} page`} class="flex gap-1">
+        <span class="md:hidden">
+          {name === 'Home' ? (
+            <HomeIcon />
+          ) : name === 'About' ? (
+            <AboutIcon />
+          ) : (
+            <PostIcon />
+          )}
         </span>
         <span class="hidden md:block">{name}</span>
-      </a>
+      </HeaderLink>
     ))
   }
 </nav>

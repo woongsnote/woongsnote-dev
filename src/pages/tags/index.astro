@@ -1,0 +1,14 @@
+---
+import TagItem from '@components/TagItem.astro';
+import Base from '@layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const allPosts = await getCollection('blog');
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+---
+
+<Base>
+  <h1>All Tags</h1>
+  <ul class="flex flex-wrap gap-4">
+    {tags.map((tag) => <TagItem title={tag} url={`/tags/${tag}`} />)}
+  </ul>
+</Base>
