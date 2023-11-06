@@ -1,3 +1,7 @@
 ---
-
+const { readingTime } = Astro.props;
 ---
+
+<span class="flex items-center justify-end gap-1 text-sm text-gray-500">
+  {`읽는 데 ${readingTime}분`}
+</span>

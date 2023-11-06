@@ -2,18 +2,15 @@
   "main": [
     {
       "name": "Home",
-      "url": "/",
-      "icon": "@icons/HomeIcon.astro"
+      "url": "/"
     },
     {
       "name": "About",
-      "url": "/about",
-      "icon": "@icons/HomeIcon.astro"
+      "url": "/about"
     },
     {
       "name": "Blog",
-      "url": "/blog",
-      "icon": "@icons/HomeIcon.astro"
+      "url": "/blog"
     }
   ]
 }

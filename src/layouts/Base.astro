@@ -7,6 +7,8 @@ import '@styles/global.css';
 
 import { ViewTransitions } from 'astro:transitions';
 import Hero from '@components/Hero.astro';
+import BaseHead from '@components/BaseHead.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from 'consts';
 
 export interface Props {
   title?: string;
@@ -18,27 +20,23 @@ export interface Props {
   blogpost?: boolean;
 }
 
-const {
-  title,
-  meta_title,
-  description,
-  blogpost,
-} = Astro.props;
+const { meta_title, description, blogpost } = Astro.props;
 ---
 
 <html lang={config.site.lang}>
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{meta_title}</title>
+    <BaseHead
+      title={meta_title || SITE_TITLE}
+      description={description || SITE_DESCRIPTION}
+    />
 
     <ViewTransitions />
   </head>
   <body class="bg-white dark:bg-zinc-900/50">
     <Header />
-    <main class="container mx-auto min-h-screen flex flex-col flex-grow max-w-screen-lg px-4">
+    <main
+      class="container mx-auto flex min-h-screen max-w-screen-lg flex-grow flex-col px-4"
+    >
       {!blogpost && <Hero />}
       <slot />
     </main>

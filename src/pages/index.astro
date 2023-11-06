@@ -9,7 +9,7 @@ const recentPosts = (await getCollection('blog')).sort(
 );
 ---
 
-<Base meta_title="woongsnote.dev" hero_title="Hello" hero_description="hello">
+<Base meta_title="woongsnote.dev">
   <Posts posts={recentPosts} />
   <HomePagination />
 </Base>
