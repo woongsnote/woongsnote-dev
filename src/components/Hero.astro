@@ -7,25 +7,26 @@ type techItem = string;
 
 const techStack: techItem[] = config.author.tech.split(', ');
 const socialLinks = social.socialLinks;
+import avatar from '@assets/avatar.png';
 ---
 
 <section class="bg-white dark:bg-zinc-900">
   <div
-    class="flex items-start justify-between max-w-screen-lg mx-auto py-4 sm:pb-12 px-4"
+    class="mx-auto flex max-w-screen-lg items-start justify-between px-2 py-4 sm:mb-4 border-b"
   >
-    <div class="rounded-lg w-3/5 lg:w-4/5">
+    <div class="w-3/5 rounded-lg lg:w-4/5">
       <h1
-        class="text-lg md:text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl mb-0"
+        class="mb-0 text-lg font-bold text-zinc-900 dark:text-white sm:text-3xl"
       >
         {config.author.name}
       </h1>
-      <p class="mt-1.5 text-sm md:text-base text-gray-500">
+      <p class="mt-1.5 text-sm text-gray-500 md:text-base">
         {config.author.bio}
       </p>
-      <div class="flex space-x-5 pt-4 m-auto">
-        {techStack?.map((item) => <span class="">#{item}</span>)}
+      <div class="m-auto flex space-x-5 pt-4">
+        {techStack?.map((item) => <span class="font-bold">#{item}</span>)}
       </div>
-      <div class="flex space-x-5 pt-8 m-auto">
+      <div class="m-auto flex space-x-5 pt-8">
         {
           socialLinks?.map((item) => (
             <a href={item.url} target="_blank" rel="noopener noreferrer">
@@ -40,11 +41,11 @@ const socialLinks = social.socialLinks;
     <div class="rounded-lg">
       <figure class="right-0">
         <Image
-          class="rounded-lg w-24 md:w-32"
+          class="w-24 rounded-lg md:w-32"
           width={512}
           height={512}
           alt={config.author.name}
-          src={config.author.avatar}
+          src={avatar}
         />
       </figure>
     </div>

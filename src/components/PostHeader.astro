@@ -7,7 +7,7 @@ const { title, pubDate, minutesRead, tags } = Astro.props;
 const readingTime = minutesRead.split(' ')[0];
 ---
 
-<section class="border-b pb-4">
+<section class="border-b pb-4 mb-8">
   <h1 class="text-3xl font-black lg:text-5xl">{title}</h1>
   <div class="mx-auto my-4 flex w-full items-center justify-start gap-2">
     <span class="font-bold">{config.author.name}</span>
