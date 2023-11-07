@@ -2,16 +2,17 @@
 import ComputerIcon from '@icons/ComputerIcon.astro';
 import MoonIcon from '@icons/MoonIcon.astro';
 import SunIcon from '@icons/SunIcon.astro';
-const currentTheme = 'system';
-
 const options = ['light', 'dark', 'system'];
 ---
 
 <!-- TODO -->
-<div class="flex gap-2 rounded-md border text-gray-400 px-2">
+<div class="flex gap-2 rounded-md border px-2 text-gray-400">
   {
     options.map((opt) => (
-      <button class="w-fit h-fit hover:text-primary bg-transparent text-gray-500 p-1">
+      <button
+        class="h-fit w-fit bg-transparent p-1 text-gray-500 hover:text-primary"
+        onclick={() => handleChangeTheme(opt)}
+      >
         {opt === 'light' ? (
           <SunIcon />
         ) : opt === 'dark' ? (
@@ -23,3 +24,15 @@ const options = ['light', 'dark', 'system'];
     ))
   }
 </div>
+
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme')!;
+    }
+    if (window.matchMedia('(prefers-color-schema: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  })();
+</script>
