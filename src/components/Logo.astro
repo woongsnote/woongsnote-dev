@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+import config from '@config/config.json';
+---
+
+<a href="/" class="text-lg lg:text-2xl font-bold col-span-1 w-fit">
+    <figure>
+      <Image
+        src={config.site.logo}
+        alt={config.site.title}
+        loading="lazy"
+        decoding="async"
+        width={512}
+        height={512}
+        class="w-16 rounded"
+      />
+    </figure>
+  </a>

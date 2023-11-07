@@ -1,0 +1,24 @@
+{
+  "site": {
+    "title": "woongsnote",
+    "base_url": "https://woongsnote.dev",
+    "base_path": "/",
+    "favicon": "/favicon.svg",
+    "logo": "/logo.png",
+    "lang": "kr",
+    "description": "tech blog by woongsnote",
+    "pageSize": 6
+  },
+  "features": {
+    "dark_mode": true
+  },
+  "metadata": {
+    "meta_author": "woongsnote",
+    "meta_description": "ha ha"
+  },
+  "author": {
+    "name": "@woongsnote",
+    "bio": "새로운 기술을 학습하고 적용하는 것을 즐기는 프론트엔드 개발자 문지웅입니다.",
+    "tech": "React, Next.js, TypeScript"
+  }
+}

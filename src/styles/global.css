@@ -1,0 +1,32 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Pretendard Variable', system-ui, sans-serif;
+  }
+}
+:root {
+  --color-primary: 207deg 90% 54%;
+  --color-secondary: 239deg 84% 67%;
+  --color-bkg: 360 100% 100%;
+  --color-content: 0deg 0% 0%;
+}
+:root[data-theme='dark'] {
+  --color-primary: 239deg 84% 67%;
+  --color-secondary: 207deg 90% 54%;
+  --color-bkg: 225deg 4% 18%;
+  --color-content: 360deg 100% 100%;
+}
+
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  display: none;
+}
+
+.prose :not(pre) > code {
+  @apply dark:bg-gray-700 bg-gray-200 border-2 border-gray-200 dark:border-gray-700 font-mono font-normal align-middle py-0.5 px-1 rounded;
+}

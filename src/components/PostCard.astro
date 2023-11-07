@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import FormattedDate from './FormattedDate.astro';
+const { title, heroImage, pubDate, slug, description } = Astro.props;
+---
+
+<article class="flex w-full flex-col items-start gap-2">
+  <div
+    class="h-auto w-full overflow-hidden rounded-lg border shadow-sm lg:h-40"
+  >
+    {
+      heroImage && (
+        <Image
+          class="transiton h-full w-full object-cover object-center duration-300 ease-in-out hover:scale-110"
+          src={heroImage}
+          alt={title}
+          width="960"
+          height="480"
+          quality="mid"
+        />
+      )
+    }
+  </div>
+  <div
+    class="flex items-center gap-x-4 text-xs text-zinc-900 dark:text-white lg:text-sm"
+  >
+    <FormattedDate date={pubDate} />
+  </div>
+  <div class="relative">
+    <h2
+      class="mt-3 text-xl font-semibold leading-6 text-zinc-900 group-hover:text-primary dark:text-white group-hover:dark:text-secondary"
+    >
+      <a
+        href={`/blog/${slug}`}
+        class="underline-offset-8 hover:text-primary hover:underline dark:hover:text-secondary"
+      >
+        <span class="inset-0">{title}</span>
+      </a>
+    </h2>
+    <p class="mt-3 line-clamp-2 text-sm leading-6 text-zinc-600">
+      {description}
+    </p>
+  </div>
+</article>
