@@ -1,0 +1,46 @@
+---
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import config from '@config/config.json';
+// import {createOgImage} from '@utils/createOgImage';
+import '@styles/global.css';
+
+import { ViewTransitions } from 'astro:transitions';
+import Hero from '@components/Hero.astro';
+import BaseHead from '@components/BaseHead.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from 'consts';
+
+export interface Props {
+  title?: string;
+  meta_title?: string;
+  description?: string;
+  image?: string;
+  noindex?: string;
+  canonical?: string;
+  blogpost?: boolean;
+}
+
+const { meta_title, description, blogpost } = Astro.props;
+---
+
+<html lang={config.site.lang}>
+  <head>
+    <BaseHead
+      title={meta_title || SITE_TITLE}
+      description={description || SITE_DESCRIPTION}
+    />
+
+    <ViewTransitions />
+  </head>
+  <body class="bg-white dark:bg-zinc-900/50">
+    <Header />
+    <main
+      class="container mx-auto flex min-h-screen max-w-screen-lg flex-grow flex-col px-4"
+    >
+      {!blogpost && <Hero />}
+      <slot />
+    </main>
+    <Footer />
+    <script></script>
+  </body>
+</html>

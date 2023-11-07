@@ -1,0 +1,27 @@
+---
+import PageTitle from '@components/PageTitle.astro';
+import TagIcon from '@icons/TagIcon.astro';
+import Base from '@layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const allPosts = await getCollection('blog');
+const { tag } = Astro.params;
+const filteredPosts = allPosts.filter((post) => post.data.tags.includes(tag!));
+const tagsLength = filteredPosts.length;
+const title = `Tag: ${tag}`;
+---
+
+<Base>
+  <PageTitle title={title} />
+  <p><b>{tag}</b>의 검색 결과는 <b>{tagsLength}</b>건 입니다.</p>
+
+  <ul class="mt-4 w-fit space-y-4 pl-8">
+    {
+      filteredPosts.map((post) => (
+        <li class="flex items-center space-x-1 text-lg hover:text-primary dark:hover:text-secondary">
+          <TagIcon />
+          <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
