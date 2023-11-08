@@ -1,0 +1,18 @@
+---
+import ComputerIcon from '@icons/ComputerIcon.astro';
+import MoonIcon from '@icons/MoonIcon.astro';
+import SunIcon from '@icons/SunIcon.astro';
+import ThemeButton from './ThemeButton.astro';
+---
+
+<div class="flex w-fit justify-between gap-2 rounded-md p-2">
+  <ThemeButton theme="light">
+    <SunIcon />
+  </ThemeButton>
+  <ThemeButton theme="dark">
+    <MoonIcon />
+  </ThemeButton>
+  <ThemeButton theme="system">
+    <ComputerIcon />
+  </ThemeButton>
+</div>

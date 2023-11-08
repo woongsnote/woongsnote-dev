@@ -1,0 +1,45 @@
+---
+const { theme } = Astro.props;
+---
+
+<theme-button>
+  <button
+    aria-label="theme button"
+    id={theme}
+    class:list={['hover:text-accent text-subContent']}
+  >
+    <slot />
+  </button>
+</theme-button>
+
+<script>
+  class ThemeButton extends HTMLElement {
+    constructor() {
+      super();
+
+      const themeButton = this.querySelector('button');
+
+      const theme = themeButton?.getAttribute('id') as string;
+
+      const currentTheme = localStorage.getItem('theme');
+
+      if (currentTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+
+      const setTheme = () => {
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      };
+
+      themeButton?.addEventListener('click', () => {
+        setTheme();
+        localStorage.setItem('theme', theme);
+      });
+    }
+  }
+  customElements.define('theme-button', ThemeButton);
+</script>
