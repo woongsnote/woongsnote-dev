@@ -17,7 +17,7 @@ const title = `Tag: ${tag}`;
   <ul class="mt-4 w-fit space-y-4 pl-8">
     {
       filteredPosts.map((post) => (
-        <li class="flex items-center space-x-1 text-lg hover:text-primary dark:hover:text-secondary">
+        <li class="flex items-center space-x-1 text-lg hover:text-primary">
           <TagIcon />
           <a href={`/blog/${post.slug}`}>{post.data.title}</a>
         </li>
