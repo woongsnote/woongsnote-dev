@@ -6,9 +6,9 @@ export default {
     extend: {
       colors: {
         bkg: 'hsl(var(--color-bkg) / <alpha-value>)',
-        primary: 'hsl(var(--color-primary) / <alpha-value>)',
-        secondary: 'hsl(var(--color-secondary) / <alpha-value>)',
         content: 'hsl(var(--color-content) / <alpha-value>)',
+        accent: 'hsl(var(--color-accent) / <alpha-value>)',
+        subContent: 'hsl(var(--color-sub-content) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['var(--font-pretendard)'],
