@@ -10,16 +10,16 @@
   }
 
   :root {
-    --color-primary: 207deg 90% 54%;
-    --color-secondary: 239deg 84% 67%;
     --color-bkg: 360 100% 100%;
     --color-content: 0deg 0% 0%;
+    --color-sub-content: 220deg 9% 26%; 
+    --color-accent: 207deg 90% 54%;
   }
   :root.dark {
-    --color-primary: 239deg 84% 67%;
-    --color-secondary: 207deg 90% 54%;
     --color-bkg: 225deg 4% 18%;
     --color-content: 360deg 100% 100%;
+    --color-sub-content: 210deg 3% 85%;
+    --color-accent: 239deg 84% 67%;
   }
 }
 .prose :not(pre) > code::before,
@@ -28,5 +28,5 @@
 }
 
 .prose :not(pre) > code {
-  @apply rounded border-2 border-gray-200 bg-gray-200 px-1 py-0.5 align-middle font-mono font-normal dark:border-gray-700 dark:bg-gray-700;
+  @apply rounded border-2 border-gray-200 bg-gray-200 px-1 py-0.5 align-middle font-mono font-normal text-content dark:border-gray-700 dark:bg-gray-700;
 }

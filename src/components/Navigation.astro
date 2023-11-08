@@ -13,7 +13,7 @@ export type NavLink = {
 const { main }: { main: NavLink[] } = menu;
 ---
 
-<nav class="flex items-center gap-4 lg:gap-8 text-gray-400">
+<nav class="flex items-center gap-4 lg:gap-8 text-subContent">
   {
     main.map(({ name, url }) => (
       <HeaderLink href={url} aria-label={`go to ${name} page`} class="flex gap-1">
