@@ -15,7 +15,7 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '');
   class:list={[
     className,
     { active: isActive },
-    `${isActive ? 'text-primary underline underline-offset-8' : ''}`,
+    `${isActive ? 'text-accent underline underline-offset-8' : ''}`,
     'lg:text-xl',
   ]}
   {...props}

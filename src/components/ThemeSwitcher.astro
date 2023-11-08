@@ -5,18 +5,14 @@ import SunIcon from '@icons/SunIcon.astro';
 import ThemeButton from './ThemeButton.astro';
 ---
 
-<div
-  class="flex w-fit justify-between gap-2 rounded-md p-2"
->
-  <ThemeButton id="light">
+<div class="flex w-fit justify-between gap-2 rounded-md p-2">
+  <ThemeButton theme="light">
     <SunIcon />
   </ThemeButton>
-  <ThemeButton id="dark">
+  <ThemeButton theme="dark">
     <MoonIcon />
   </ThemeButton>
-  <ThemeButton id="system">
+  <ThemeButton theme="system">
     <ComputerIcon />
   </ThemeButton>
 </div>
-
-<script></script>

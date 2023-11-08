@@ -18,7 +18,7 @@ const { title, description, pubDate, heroImage, tags, minutesRead } =
       tags={tags}
       minutesRead={minutesRead}
     />
-    <div class="mx-auto my-2 overflow-hidden rounded-xl border shadow-sm">
+    <div class="mx-auto my-2 overflow-hidden rounded-xl shadow-sm">
       {
         heroImage && (
           <figure class="mx-auto h-auto w-auto object-cover">
@@ -34,7 +34,7 @@ const { title, description, pubDate, heroImage, tags, minutesRead } =
       }
     </div>
     <div
-      class="prose mx-auto mt-4 w-full items-center text-base leading-10 text-content prose-headings:text-content prose-blockquote:text-content prose-strong:text-content lg:max-w-5xl lg:text-xl"
+      class="prose mx-auto mt-4 w-full items-center text-base leading-10 text-content dark:prose-invert lg:max-w-5xl lg:text-xl"
     >
       <slot />
     </div>
