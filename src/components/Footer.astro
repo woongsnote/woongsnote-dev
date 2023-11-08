@@ -1,19 +1,15 @@
 ---
-import ThemeSwitcher from '@components/ThemeSwitch.astro';
-import ThemeIcon from '@components/ThemeIcon.astro';
+import ThemeSwitcher from './ThemeSwitcher.astro';
 const year = new Date().getFullYear();
 ---
 
 <footer class="mx-auto max-w-screen-lg px-4 sm:px-6 lg:px-8">
-  <div
-    class="flex items-center justify-between border-t border-zinc-100 dark:border-zinc-900"
-  >
+  <div class="flex items-center justify-between border-t">
     <p
       class="my-4 text-center text-xs/relaxed text-zinc-500 dark:text-zinc-400"
     >
       &copy; {year}. woongsnote All rights reserved.
     </p>
-    <!-- <ThemeSwitcher /> -->
-    <ThemeIcon />
+    <ThemeSwitcher />
   </div>
 </footer>

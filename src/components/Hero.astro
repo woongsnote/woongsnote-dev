@@ -10,13 +10,13 @@ const socialLinks = social.socialLinks;
 import avatar from '@assets/avatar.png';
 ---
 
-<section class="bg-white dark:bg-zinc-900">
+<section>
   <div
     class="mx-auto mb-4 flex max-w-screen-lg items-start justify-between border-b px-2 py-4"
   >
     <div class="w-3/5 rounded-lg lg:w-4/5">
       <h1
-        class="mb-0 text-lg font-bold text-zinc-900 dark:text-white sm:text-3xl"
+        class="mb-0 text-lg font-bold sm:text-3xl text-content"
       >
         {config.author.name}
       </h1>
@@ -24,7 +24,7 @@ import avatar from '@assets/avatar.png';
         {config.author.bio}
       </p>
       <div class="m-auto flex space-x-5 pt-4">
-        {techStack?.map((item) => <span class="font-bold">#{item}</span>)}
+        {techStack?.map((item) => <span class="font-bold text-content">#{item}</span>)}
       </div>
       <div class="m-auto flex space-x-5 pt-8">
         {
