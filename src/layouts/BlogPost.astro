@@ -3,6 +3,7 @@ import Base from '@layouts/Base.astro';
 import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import PostHeader from '@components/PostHeader.astro';
+import Comments from '@components/react/Comments';
 
 type Props = CollectionEntry<'blog'>['data'] & { minutesRead: any };
 
@@ -34,9 +35,10 @@ const { title, description, pubDate, heroImage, tags, minutesRead } =
       }
     </div>
     <div
-      class="prose mx-auto mt-4 w-full items-center text-base leading-10 text-content dark:prose-invert lg:max-w-5xl lg:text-xl"
+      class="prose mx-auto my-4 w-full items-center text-base leading-10 text-content dark:prose-invert lg:max-w-5xl lg:text-xl"
     >
       <slot />
     </div>
+    <Comments client:idle />
   </article>
 </Base>
