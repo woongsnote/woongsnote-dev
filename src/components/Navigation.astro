@@ -13,10 +13,14 @@ export type NavLink = {
 const { main }: { main: NavLink[] } = menu;
 ---
 
-<nav class="flex items-center gap-4 lg:gap-8 text-subContent">
+<nav class="flex items-center gap-4 text-subContent lg:gap-8">
   {
     main.map(({ name, url }) => (
-      <HeaderLink href={url} aria-label={`go to ${name} page`} class="flex gap-1">
+      <HeaderLink
+        href={url}
+        aria-label={`go to ${name} page`}
+        class="flex gap-1"
+      >
         <span class="md:hidden">
           {name === 'Home' ? (
             <HomeIcon />
