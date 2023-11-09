@@ -3,7 +3,7 @@ import Base from '@layouts/Base.astro';
 import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import PostHeader from '@components/PostHeader.astro';
-import Comments from '@components/react/Comments';
+import Comments from '@components/Comments';
 
 type Props = CollectionEntry<'blog'>['data'] & { minutesRead: any };
 
@@ -39,6 +39,6 @@ const { title, description, pubDate, heroImage, tags, minutesRead } =
     >
       <slot />
     </div>
-    <Comments client:idle />
   </article>
+  <Comments client:idle />
 </Base>
