@@ -1,0 +1,39 @@
+---
+import config from '@config/config.json';
+import PostCard from '@components/PostCard.astro';
+
+const { posts } = Astro.props;
+
+type PostType = {
+  id: string;
+  slug: string;
+  body: string;
+  collection: string;
+  data: {
+    title: string;
+    description: string;
+    heroImage: string;
+    pubDate: Date;
+    categories: string[];
+    tags: string[];
+    author: string;
+  };
+};
+---
+
+<div class="mx-auto flex basis-3/4 flex-col gap-x-8 gap-y-4">
+  {
+    posts
+      ?.slice(0, config.site.pageSize)
+      .map((post: PostType) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          slug={post.slug}
+          heroImage={post.data.heroImage}
+          pubDate={post.data.pubDate}
+          categories={post.data.categories}
+        />
+      ))
+  }
+</div>

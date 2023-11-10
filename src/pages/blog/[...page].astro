@@ -18,11 +18,12 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
+const tags = [...new Set(page.data.map((post) => post.data.tags).flat())];
 ---
 
-<Base meta_title="Blog">
-  <PageTitle title="Blog"/>
-  <Posts posts={page.data} />
+<Base meta_title="Blog - woongsnote">
+  <PageTitle title="Blog" />
+  <Posts posts={page.data} tags={tags} />
   <Pagination
     length={page.lastPage}
     currentUrl={page.url.current}
