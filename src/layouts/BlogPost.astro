@@ -12,7 +12,7 @@ const { title, description, pubDate, heroImage, tags, minutesRead } =
 ---
 
 <Base meta_title={title} description={description} image={heroImage} blogpost>
-  <article class="p-4">
+  <article class="mx-auto flex flex-col p-4">
     <PostHeader
       title={title}
       pubDate={pubDate}
@@ -26,9 +26,9 @@ const { title, description, pubDate, heroImage, tags, minutesRead } =
             <Image
               src={heroImage}
               alt={title}
-              width={960}
-              height={480}
-              quality={'high'}
+              width="620"
+              height="288"
+              quality="mid"
             />
           </figure>
         )
@@ -39,6 +39,6 @@ const { title, description, pubDate, heroImage, tags, minutesRead } =
     >
       <slot />
     </div>
+    <Comments client:idle />
   </article>
-  <Comments client:idle />
 </Base>

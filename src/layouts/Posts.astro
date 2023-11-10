@@ -1,41 +1,16 @@
 ---
-import config from '@config/config.json';
-import PostCard from '@components/PostCard.astro';
+import PostList from '@components/PostList.astro';
+import TagList from '@components/TagList.astro';
 
-const { posts } = Astro.props;
-
-type PostType = {
-  id: string;
-  slug: string;
-  body: string;
-  collection: string;
-  data: {
-    title: string;
-    description: string;
-    heroImage: string;
-    pubDate: Date;
-    categories: string[];
-    tags: string[];
-    author: string;
-  };
-};
+const { posts, tags } = Astro.props;
 ---
 
-<div
-  class="mx-auto grid grid-cols-1 gap-x-8 gap-y-16 px-4 md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
->
-  {
-    posts
-      ?.slice(0, config.site.pageSize)
-      .map((post: PostType) => (
-        <PostCard
-          title={post.data.title}
-          description={post.data.description}
-          slug={post.slug}
-          heroImage={post.data.heroImage}
-          pubDate={post.data.pubDate}
-          categories={post.data.categories}
-        />
-      ))
-  }
+<div class="flex flex-col gap-8 lg:flex-row">
+  <PostList posts={posts} />
+  <div class="flex flex-col items-start lg:basis-1/4">
+    <span class="mb-2 w-full text-xl font-black text-content md:text-2xl"
+      >Tags</span
+    >
+    <TagList tags={tags} />
+  </div>
 </div>

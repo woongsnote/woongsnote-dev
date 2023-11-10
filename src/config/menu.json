@@ -7,10 +7,9 @@
     {
       "name": "About",
       "url": "/about"
-    },
-    {
-      "name": "Tags",
-      "url": "/tags"
+    },    {
+      "name": "Blog",
+      "url": "/blog"
     }
   ]
 }

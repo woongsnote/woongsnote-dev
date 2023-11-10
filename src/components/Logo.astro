@@ -3,7 +3,10 @@ import { Image } from 'astro:assets';
 import config from '@config/config.json';
 ---
 
-<a href="/" class="col-span-1 w-fit text-lg font-bold lg:text-2xl">
+<a
+  href="/"
+  class="col-span-1 w-fit rounded-md text-lg font-bold shadow-md lg:text-2xl"
+>
   <figure>
     <Image
       src={config.site.logo}
