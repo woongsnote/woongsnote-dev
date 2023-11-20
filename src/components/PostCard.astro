@@ -1,47 +1,45 @@
 ---
 import { Image } from 'astro:assets';
 import FormattedDate from './FormattedDate.astro';
-const { title, heroImage, pubDate, slug, description } = Astro.props;
+const { title, heroImage, pubDate, slug, description, categories } =
+  Astro.props;
 const url = `/blog/${slug}`;
 ---
 
-<article
-  class="flex w-full flex-col items-start gap-2 rounded-md border p-2 hover:shadow-lg md:flex-row"
+<a href={url}
+  class="flex w-full flex-col items-start gap-2 overflow-hidden rounded-lg border hover:shadow-lg relative"
 >
-  <div class="h-auto w-full overflow-hidden rounded-lg shadow-sm md:w-48">
+  <div class="h-36 w-full overflow-hidden shadow-sm">
     {
       heroImage && (
-        <a href={url}>
-          <figure class="transiton mx-auto h-auto w-auto object-cover object-center duration-300 ease-in-out hover:scale-110">
-            <Image
-              src={heroImage}
-              alt={title}
-              width="620"
-              height="288"
-              quality="mid"
-            />
-          </figure>
-        </a>
+        <figure class="transiton mx-auto h-full w-full object-cover duration-300 ease-in-out hover:scale-110">
+          <Image
+            src={heroImage}
+            alt={title}
+            width="620"
+            height="288"
+            quality="mid"
+            class="h-full w-full"
+          />
+        </figure>
       )
     }
   </div>
   <div
-    class="flex flex-col items-start gap-x-4 text-xs text-content lg:text-sm"
+    class="flex flex-col items-start gap-x-4 p-2 text-xs text-content lg:text-sm pb-12"
   >
     <FormattedDate date={pubDate} />
 
     <h2
-      class="mt-3 text-xl font-semibold leading-6 text-content group-hover:text-accent"
+      class="mt-2 text-xl font-semibold leading-6 text-content group-hover:text-accent"
     >
-      <a
-        href={url}
-        class="underline-offset-8 hover:text-accent hover:underline"
-      >
-        <span class="inset-0">{title}</span>
-      </a>
+      <span class="inset-0">{title}</span>
     </h2>
-    <p class="mt-1 line-clamp-2 text-sm leading-6 text-subContent">
+    <p class="mt-1 line-clamp-2 break-keep text-sm leading-6 text-subContent">
       {description}
     </p>
   </div>
-</article>
+  <div class="mt-1 flex gap-2 text-sm text-subContent px-2 py-2 absolute bottom-0">
+    {categories.map((category: string) => <span class="">#{category}</span>)}
+  </div>
+</a>
