@@ -6,13 +6,14 @@ const { title, heroImage, pubDate, slug, description, categories } =
 const url = `/blog/${slug}`;
 ---
 
-<a href={url}
-  class="flex w-full flex-col items-start gap-2 overflow-hidden rounded-lg border hover:shadow-lg relative"
+<a
+  href={url}
+  class="relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-lg border hover:shadow-lg max-w-xs"
 >
-  <div class="h-36 w-full overflow-hidden shadow-sm">
+  <div class="h-auto w-full overflow-hidden shadow-sm md:h-40">
     {
       heroImage && (
-        <figure class="transiton mx-auto h-full w-full object-cover duration-300 ease-in-out hover:scale-110">
+        <figure class="transiton mx-auto h-full w-full object-cover object-center duration-300 ease-in-out hover:scale-110">
           <Image
             src={heroImage}
             alt={title}
@@ -26,7 +27,7 @@ const url = `/blog/${slug}`;
     }
   </div>
   <div
-    class="flex flex-col items-start gap-x-4 p-2 text-xs text-content lg:text-sm pb-12"
+    class="flex flex-col items-start gap-x-4 p-2 pb-12 text-xs text-content lg:text-sm"
   >
     <FormattedDate date={pubDate} />
 
@@ -39,7 +40,9 @@ const url = `/blog/${slug}`;
       {description}
     </p>
   </div>
-  <div class="mt-1 flex gap-2 text-sm text-subContent px-2 py-2 absolute bottom-0">
+  <div
+    class="absolute bottom-0 mt-1 flex gap-2 px-2 py-2 text-sm text-subContent"
+  >
     {categories.map((category: string) => <span class="">#{category}</span>)}
   </div>
 </a>
