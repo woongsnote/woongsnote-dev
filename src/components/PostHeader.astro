@@ -9,7 +9,7 @@ const readingTime = minutesRead.split(' ')[0];
 
 <section class="mb-8 border-b pb-4 text-content">
   <h1 class="text-3xl font-black lg:text-5xl">{title}</h1>
-  <div class="mx-auto my-4 flex w-full items-center justify-start gap-4">
+  <div class="mx-auto my-4 flex w-full items-center justify-start gap-4 flex-wrap">
     <span class="font-bold">{config.author.name}</span>
     <FormattedDate date={pubDate} />
     <ReadingTimeText readingTime={readingTime} />
