@@ -1,18 +1,18 @@
 ---
-import ComputerIcon from '@icons/ComputerIcon.astro';
-import MoonIcon from '@icons/MoonIcon.astro';
 import SunIcon from '@icons/SunIcon.astro';
+import MoonIcon from '@icons/MoonIcon.astro';
 import ThemeButton from './ThemeButton.astro';
+import config from '@config/config.json';
+const defaultTheme = config.theme.defaultTheme;
 ---
 
-<div class="flex w-fit justify-between gap-2 rounded-md p-2">
-  <ThemeButton theme="light">
-    <SunIcon />
-  </ThemeButton>
-  <ThemeButton theme="dark">
-    <MoonIcon />
-  </ThemeButton>
-  <ThemeButton theme="system">
-    <ComputerIcon />
+<div class="flex">
+  <ThemeButton theme={defaultTheme}>
+    <span class="hidden dark:block">
+      <SunIcon />
+    </span>
+    <span class="dark:hidden">
+      <MoonIcon id="dark" />
+    </span>
   </ThemeButton>
 </div>
