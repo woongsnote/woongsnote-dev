@@ -21,7 +21,7 @@ type PostType = {
 };
 ---
 
-<div class="mx-auto grid basis-3/4 grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-3">
+<div class="mx-auto flex basis-3/4 flex-wrap gap-4 justify-center">
   {
     posts
       ?.slice(0, config.site.pageSize)
