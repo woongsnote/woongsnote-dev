@@ -1,25 +1,40 @@
 ---
-const { theme } = Astro.props;
+
 ---
 
 <theme-button>
   <button
     aria-label="theme button"
-    id={theme}
-    class:list={['text-subContent hover:text-accent']}
+    class:list={[
+      'rounded-full p-2 text-subContent shadow-lg hover:text-accent dark:border text-sm',
+    ]}
   >
     <slot />
   </button>
 </theme-button>
 
 <script>
+  const setTheme = (theme: 'light' | 'dark') => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
+
+  const updateStorage = (theme: 'light' | 'dark') => {
+    if (theme === 'dark') {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
   class ThemeButton extends HTMLElement {
     constructor() {
       super();
 
       const themeButton = this.querySelector('button');
-
-      const theme = themeButton?.getAttribute('id') as string;
 
       const currentTheme = localStorage.getItem('theme');
 
@@ -27,17 +42,17 @@ const { theme } = Astro.props;
         document.documentElement.classList.add('dark');
       }
 
-      const setTheme = () => {
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      };
-
       themeButton?.addEventListener('click', () => {
-        setTheme();
-        localStorage.setItem('theme', theme);
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          const changeMode = 'light';
+          setTheme(changeMode);
+          updateStorage(changeMode);
+        } else {
+          const changeMode = 'dark';
+          setTheme(changeMode);
+          updateStorage(changeMode);
+        }
       });
     }
   }

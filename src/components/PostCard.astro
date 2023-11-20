@@ -8,7 +8,7 @@ const url = `/blog/${slug}`;
 
 <a
   href={url}
-  class="relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-lg border hover:shadow-lg max-w-xs"
+  class="relative flex w-full md:max-w-xs flex-col items-start gap-2 overflow-hidden rounded-lg border hover:shadow-lg"
 >
   <div class="h-auto w-full overflow-hidden shadow-sm md:h-40">
     {
@@ -32,9 +32,9 @@ const url = `/blog/${slug}`;
     <FormattedDate date={pubDate} />
 
     <h2
-      class="mt-2 text-xl font-semibold leading-6 text-content group-hover:text-accent"
+      class="mt-2 text-xl font-semibold leading-6 text-content hover:text-accent hover:underline underline-offset-8"
     >
-      <span class="inset-0">{title}</span>
+      {title}
     </h2>
     <p class="mt-1 line-clamp-2 break-keep text-sm leading-6 text-subContent">
       {description}
