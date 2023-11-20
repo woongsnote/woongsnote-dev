@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: 'class',
@@ -11,7 +14,7 @@ export default {
         subContent: 'hsl(var(--color-sub-content) / <alpha-value>)',
       },
       fontFamily: {
-        sans: ['var(--font-pretendard)'],
+        sans: ['PretendardVariable', ...defaultTheme.fontFamily.sans],
       },
     },
   },
