@@ -3,13 +3,14 @@ import config from '@config/config.json';
 import FormattedDate from './FormattedDate.astro';
 import ReadingTimeText from './ReadingTimeText.astro';
 import TagList from './TagList.astro';
-const { title, pubDate, minutesRead, tags } = Astro.props;
+const { title, description, pubDate, minutesRead, tags } = Astro.props;
 const readingTime = minutesRead.split(' ')[0];
 ---
 
 <section class="mb-8 border-b pb-4 text-content">
   <h1 class="text-3xl font-black lg:text-5xl">{title}</h1>
-  <div class="mx-auto my-4 flex w-full items-center justify-start gap-4 flex-wrap">
+  <p class="mt-2">{description}</p>
+  <div class="mx-auto my-4 flex w-full items-center justify-start gap-4">
     <span class="font-bold">{config.author.name}</span>
     <FormattedDate date={pubDate} />
     <ReadingTimeText readingTime={readingTime} />
