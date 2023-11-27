@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import FormattedDate from './FormattedDate.astro';
+import Category from './Category.astro';
 const { title, heroImage, pubDate, slug, description, categories } =
   Astro.props;
 const url = `/blog/${slug}`;
@@ -8,7 +9,7 @@ const url = `/blog/${slug}`;
 
 <a
   href={url}
-  class="relative flex w-full md:max-w-xs flex-col items-start gap-2 overflow-hidden rounded-lg border hover:shadow-lg"
+  class="relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-lg border hover:shadow-lg md:max-w-xs"
 >
   <div class="h-auto w-full overflow-hidden shadow-sm md:h-40">
     {
@@ -27,22 +28,20 @@ const url = `/blog/${slug}`;
     }
   </div>
   <div
-    class="flex flex-col items-start gap-x-4 p-2 pb-12 text-xs text-content lg:text-sm"
+    class="flex w-full flex-col items-start gap-x-4 p-2 text-xs text-content lg:text-sm"
   >
-    <FormattedDate date={pubDate} />
+    <div class="flex w-full justify-between items-center">
+      <FormattedDate date={pubDate} />
+      <Category categories={categories} />
+    </div>
 
     <h2
-      class="mt-2 text-xl font-semibold leading-6 text-content hover:text-accent hover:underline underline-offset-8"
+      class="mt-2 text-xl font-semibold leading-6 text-content underline-offset-8 hover:text-accent hover:underline"
     >
       {title}
     </h2>
     <p class="mt-1 line-clamp-2 break-keep text-sm leading-6 text-subContent">
       {description}
     </p>
-  </div>
-  <div
-    class="absolute bottom-0 mt-1 flex gap-2 px-2 py-2 text-sm text-subContent"
-  >
-    {categories.map((category: string) => <span class="">#{category}</span>)}
   </div>
 </a>
