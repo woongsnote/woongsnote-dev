@@ -1,0 +1,9 @@
+---
+const { categories } = Astro.props;
+---
+
+{
+  categories.map((category: string) => (
+    <span class="text-xs bg-accent text-white rounded-md px-2 py-1">{category}</span>
+  ))
+}
