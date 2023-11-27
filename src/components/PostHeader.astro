@@ -2,7 +2,7 @@
 import config from '@config/config.json';
 import FormattedDate from './FormattedDate.astro';
 import ReadingTimeText from './ReadingTimeText.astro';
-import TagList from './TagList.astro';
+import TagItem from './TagItem.astro';
 const { title, description, pubDate, minutesRead, tags } = Astro.props;
 const readingTime = minutesRead.split(' ')[0];
 ---
@@ -15,5 +15,7 @@ const readingTime = minutesRead.split(' ')[0];
     <FormattedDate date={pubDate} />
     <ReadingTimeText readingTime={readingTime} />
   </div>
-  <TagList tags={tags} />
+  <div class="flex gap-x-3">
+    {tags.map((tag: string) => <TagItem url={`/tags/${tag}`} title={tag} />)}
+  </div>
 </section>
