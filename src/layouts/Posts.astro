@@ -5,7 +5,7 @@ import TagList from '@components/TagList.astro';
 const { posts, tags } = Astro.props;
 ---
 
-<div class="flex flex-col gap-8 lg:flex-row lg:gap-0">
+<div class="mx-auto flex w-full flex-col gap-8 lg:flex-row lg:gap-2">
   <PostList posts={posts} />
   <TagList tags={tags} />
 </div>
