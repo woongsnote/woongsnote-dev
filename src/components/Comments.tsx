@@ -18,7 +18,7 @@ const Comments = () => {
           repoId="R_kgDOIZVQXA"
           category="Comments"
           categoryId="DIC_kwDOIZVQXM4Caihi"
-          mapping="pathname"
+          mapping="url"
           strict="0"
           reactionsEnabled="1"
           emitMetadata="0"
