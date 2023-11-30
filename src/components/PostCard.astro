@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import FormattedDate from './FormattedDate.astro';
 import Category from './Category.astro';
+import CardImage from './CardImage.astro';
 const { title, heroImage, pubDate, slug, description, categories } =
   Astro.props;
 const url = `/blog/${slug}`;
@@ -11,26 +11,11 @@ const url = `/blog/${slug}`;
   href={url}
   class="relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-lg border hover:shadow-lg md:max-w-xs"
 >
-  <div class="h-auto w-full overflow-hidden shadow-sm md:h-40">
-    {
-      heroImage && (
-        <figure class="transiton mx-auto h-full w-full object-cover object-center duration-300 ease-in-out hover:scale-110">
-          <Image
-            src={heroImage}
-            alt={title}
-            width="620"
-            height="288"
-            quality="mid"
-            class="h-full w-full"
-          />
-        </figure>
-      )
-    }
-  </div>
+  <CardImage image={heroImage} title={title} />
   <div
     class="flex w-full flex-col items-start gap-x-4 p-2 text-xs text-content lg:text-sm"
   >
-    <div class="flex w-full justify-between items-center">
+    <div class="flex w-full items-center justify-between">
       <FormattedDate date={pubDate} />
       <Category categories={categories} />
     </div>
