@@ -1,0 +1,17 @@
+---
+import social from '@config/social';
+
+const socialLinks = social.socialLinks;
+---
+
+<div class="flex space-x-5">
+  {
+    socialLinks?.map((item) => (
+      <a href={item.url} target="_blank" rel="noopener noreferrer">
+        <figure>
+          <Fragment set:html={item.svg} />
+        </figure>
+      </a>
+    ))
+  }
+</div>
