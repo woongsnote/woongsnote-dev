@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 const { title, image } = Astro.props;
 ---
 
-<div class="h-auto w-full overflow-hidden shadow-sm md:h-44">
+<div class="h-auto w-full overflow-hidden shadow-sm md:h-44 rounded-lg">
   {
     image && (
       <figure class="transiton mx-auto h-full w-full object-cover object-center duration-300 ease-in-out hover:scale-110">
