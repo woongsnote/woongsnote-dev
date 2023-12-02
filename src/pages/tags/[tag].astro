@@ -10,9 +10,13 @@ const tagsLength = filteredPosts.length;
 const title = `Tag: ${tag}`;
 ---
 
-<Base>
+<Base title={title}>
   <PageTitle title={title} />
-  <p class="text-content align-baseline"><b>{tag}</b>의 검색 결과는 <span class="text-accent font-bold text-2xl">{tagsLength}</span>건 입니다.</p>
+  <p class="align-baseline text-2xl text-content">
+    <b>{tag}</b>의 검색 결과는 <span class="font-bold text-accent"
+      >{tagsLength}</span
+    >건 입니다.
+  </p>
 
   <ul class="mt-4 w-fit space-y-4 pl-8 text-content">
     {
