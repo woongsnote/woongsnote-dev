@@ -11,7 +11,7 @@ const { title, description, pubDate, heroImage, tags, minutesRead } =
   Astro.props;
 ---
 
-<Base meta_title={title} description={description} image={heroImage} blogpost>
+<Base title={title} description={description} image={heroImage} blogpost>
   <article class="mx-auto flex flex-col p-4">
     <PostHeader
       title={title}
