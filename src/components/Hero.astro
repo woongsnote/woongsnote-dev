@@ -10,13 +10,13 @@ const socialLinks = social.socialLinks;
 import avatar from '@assets/avatar.png';
 ---
 
-<section class="mb-4 border-b">
-  <div class="mx-auto mb-4 flex items-start justify-between py-4">
-    <div class="w-3/5 rounded-lg lg:w-4/5">
+<section class="mb-4 w-full border-b">
+  <div class="mx-auto mb-4 flex w-full items-start justify-between py-4">
+    <div class="w-full rounded-lg md:w-4/5">
       <h1 class="mb-0 text-lg font-black text-content sm:text-3xl">
         {config.author.name}
       </h1>
-      <p class="mt-1.5 text-sm text-subContent md:text-base break-keep">
+      <p class="mt-1.5 break-keep text-sm text-subContent md:text-base">
         {config.author.bio}
       </p>
       <div class="m-auto flex space-x-5 pt-4">
@@ -38,10 +38,10 @@ import avatar from '@assets/avatar.png';
         }
       </div>
     </div>
-    <div class="rounded-lg">
+    <div class="hidden rounded-lg md:block">
       <figure class="right-0">
         <Image
-          class="w-24 rounded-lg md:w-32"
+          class="w-32 rounded-lg"
           width={512}
           height={512}
           alt={config.author.name}
