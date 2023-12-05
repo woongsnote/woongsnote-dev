@@ -10,20 +10,17 @@ tags: [Next.js, TypeScript]
 
 ## 개요
 
-QR 코드 생성기를 구현했던 후기를 작성해보려 한다.
-Next.js와 TypeScript를 사용하여 Data를 입력하고 QR 코드를 생성하며, 생성된 QR 코드를 다운로드할 수 있는 웹 애플리케이션을 개발하는 방법이다.
+QR Code 생성기를 구현하는 방법을 작성해보려 한다. Next.js와 TypeScript를 사용하여 `Data`를 입력하고 생성 버튼을 클릭하면, `QR 코드`가 생성되고, 생성된 QR 코드는 바로 다운로드할 수 있는 서비스이다.
 
 ## QR 코드 소개
 
-QR 코드는 **Quick Response Code**의 약자로, 빠르고 쉽게 정보를 전달하는 데 사용되는 2차원 바코드다.
-이번 프로젝트에서는 Next.js와 TypeScript를 사용하여 QR 코드 생성기를 만들어보려고 한다.
-사용자가 입력한 데이터를 기반으로 QR 코드를 생성하고, 생성된 코드를 이미지로 저장할 수 있는 웹 애플리케이션을 구현할 것이다.
+**QR Code**는 **Quick Response Code**의 약자로, 빠르고 쉽게 정보를 전달하는 데 사용되는 2차원 바코드다.
 
 ## 프로젝트 구현
 
 1. 프로젝트 생성
 
-   - 아래 명령어로 프로젝트를 생성한다.
+   - 아래 명령어로 `Next.js` 프로젝트를 생성한다.
 
    ```bash
    npx create-next-app@latest
@@ -41,8 +38,8 @@ QR 코드는 **Quick Response Code**의 약자로, 빠르고 쉽게 정보를 �
 
 3. UI 구성
 
-   - 프로젝트의 UI를 구성하기 위해, 먼저, **제목** 부분과, **QR 생성기** 부분으로 나눕니다.
-   - QR 생성기에 입력 필드, QR 코드 생성 버튼, 그리고 QR 코드 표시 영역을 추가합니다.
+   - 프로젝트의 UI를 구성하기 위해, 먼저, **제목** 부분과, **QR 생성기** 부분으로 나눠서 구현할 것이다.
+   - QR 생성기에 입력 필드, QR 코드 생성 버튼, 그리고 QR 코드 표시 영역을 추가한다.
 
    ```tsx
    // app/page.tsx
@@ -62,7 +59,7 @@ QR 코드는 **Quick Response Code**의 약자로, 빠르고 쉽게 정보를 �
 
 4. 데이터 입력 컴포넌트 구현
 
-   - QR 코드에 들어갈 내용을 입력하기 위한 입력 필드를 구현합니다.
+   - QR 코드에 들어갈 내용을 입력하기 위한 입력 필드를 구현한다.
 
    ```tsx
    interface QRCodeInputProps {
@@ -88,7 +85,7 @@ QR 코드는 **Quick Response Code**의 약자로, 빠르고 쉽게 정보를 �
 
 5. QR 코드 생성 컴포넌트 구현
 
-   - QR 코드 생성을 위해 react-qr-code 라이브러리를 사용해서 구현했다.
+   - QR 코드 생성을 위해 react-qr-code 라이브러리를 사용해서 구현한다.
 
    ```tsx
    'use client'; // useState 사용을 위해, client component 사용
@@ -139,7 +136,7 @@ QR 코드는 **Quick Response Code**의 약자로, 빠르고 쉽게 정보를 �
 
 6. QR 코드 저장 기능 구현
 
-   - 생성된 QR 코드를 이미지로 저장하기 위해 file-saver 라이브러리를 사용했다.
+   - 생성된 QR 코드를 이미지로 저장하기 위해 `file-saver` 라이브러리를 사용했다.
 
    ```tsx
    import saveAs from 'file-saver';
@@ -177,7 +174,8 @@ QR 코드는 **Quick Response Code**의 약자로, 빠르고 쉽게 정보를 �
 
 8. 완성된 QRGenerator 코드
 
-- 위 내용이 모두 반영된 최종 컴포넌트의 코드다.
+- 위 내용이 모두 반영된 **최종 컴포넌트(QRGenerator)**의 코드다.
+
   ```tsx
   'use client';
 
