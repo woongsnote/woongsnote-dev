@@ -5,6 +5,7 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 import vercel from '@astrojs/vercel/serverless';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
+import rehypePrettyCode from 'rehype-pretty-code';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,11 +16,8 @@ export default defineConfig({
   integrations: [
     tailwind(),
     mdx({
-      syntaxHighlight: 'shiki',
-      shikiConfig: {
-        theme: 'dracula',
-        wrap: true,
-      },
+      syntaxHighlight: false,
+      rehypePlugins: [[rehypePrettyCode, { theme: 'one-dark-pro', grid: true }]],
     }),
     sitemap({
       changefreq: 'weekly',
