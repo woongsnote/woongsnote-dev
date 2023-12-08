@@ -19,8 +19,7 @@ npm install resend react-email @react-email/components -E
 
 2. 연락처 폼이 들어갈 컴포넌트를 구현한다.
 
-```tsx
-//ContactSection.tsx
+```tsx title="ContactSection.tsx"
 import ContactForm from './ContactForm';
 
 const ContactSection = () => {
@@ -48,8 +47,7 @@ export default ContactSection;
 
 3. 연락처 폼을 구현한다.
 
-```tsx
-//ContactForm.tsx
+```tsx title="ContactForm.tsx"
 'use client';
 
 import { sendEmail } from '@/app/actions';
@@ -107,7 +105,7 @@ export default ContactForm;
 
 - `app` 폴더에 `actions.ts` 파일을 추가하고 코드를 구현한다.
 
-```ts
+```ts title="app/actions.ts"
 'use server';
 
 import { getErrorMessage, validateString } from '@/utils/index';
