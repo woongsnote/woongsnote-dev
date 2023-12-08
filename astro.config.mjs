@@ -17,7 +17,14 @@ export default defineConfig({
     tailwind(),
     mdx({
       syntaxHighlight: false,
-      rehypePlugins: [[rehypePrettyCode, { theme: 'one-dark-pro', grid: true }]],
+      rehypePlugins: [
+        [
+          rehypePrettyCode,
+          {
+            theme: 'one-dark-pro',
+          },
+        ],
+      ],
     }),
     sitemap({
       changefreq: 'weekly',
