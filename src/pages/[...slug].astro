@@ -1,0 +1,24 @@
+---
+import Base from '@layouts/Base.astro';
+import { useStoryblokApi } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+const { slug } = Astro.params;
+
+const storyblokApi = useStoryblokApi();
+
+const { data } = await storyblokApi.get(
+  `cdn/stories/${slug === undefined ? 'home' : slug}`,
+  {
+    version: 'draft',
+    resolve_relations: ['latest-articles.articles'],
+  }
+);
+
+const content = data.story.content;
+console.log(content);
+---
+
+<Base>
+  <StoryblokComponent blok={content} />
+</Base>
