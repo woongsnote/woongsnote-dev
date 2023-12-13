@@ -1,6 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import config from '@config/config.json';
+import logoImage from '@assets/logo.png';
+
+const title = config.site.title;
 ---
 
 <a
@@ -9,8 +12,8 @@ import config from '@config/config.json';
 >
   <figure>
     <Image
-      src={config.site.logo}
-      alt={config.site.title}
+      src={logoImage}
+      alt={title}
       loading="lazy"
       decoding="async"
       width={512}
