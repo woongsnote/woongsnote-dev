@@ -1,0 +1,19 @@
+---
+import PageTitle from '@components/PageTitle.astro';
+import { renderRichText, storyblokEditable } from '@storyblok/astro';
+
+const { blok } = Astro.props;
+const title = blok.title;
+const renderedRichText = renderRichText(blok.content);
+---
+
+<section
+  class="flex w-full flex-grow flex-col gap-4 text-content lg:text-lg"
+  {...storyblokEditable(blok)}
+>
+  <PageTitle title={title} />
+  <div
+    class="prose dark:prose-invert lg:prose-lg mx-auto xl:prose-xl"
+    set:html={renderedRichText}
+  />
+</section>
