@@ -1,9 +1,7 @@
 ---
 import FormattedDate from './FormattedDate.astro';
-import Category from './Category.astro';
-import CardImage from './CardImage.astro';
-const { title, heroImage, pubDate, slug, description, categories } =
-  Astro.props;
+const { title, image, pubDate, slug, description, category } = Astro.props;
+
 const url = `/blog/${slug}`;
 ---
 
@@ -11,15 +9,20 @@ const url = `/blog/${slug}`;
   href={url}
   class="relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-lg hover:shadow-lg md:max-w-xs"
 >
-  <CardImage image={heroImage} title={title} />
+  <img
+    class="w-full rounded object-cover object-center md:h-36 lg:h-48"
+    src={`${image.filename}/m/360x240`}
+    alt={image.alt}
+  />
   <div
     class="flex w-full flex-col items-start gap-x-4 p-2 text-xs text-content lg:text-sm"
   >
     <div class="flex w-full items-center justify-between">
       <FormattedDate date={pubDate} />
-      <Category categories={categories} />
+      <span class="rounded-md bg-accent px-2 py-1 text-xs text-white"
+        >{category}</span
+      >
     </div>
-
     <h2
       class="mt-2 text-xl font-semibold leading-6 text-content underline-offset-8 hover:text-accent hover:underline"
     >

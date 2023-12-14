@@ -1,0 +1,17 @@
+---
+import { useStoryblokApi } from '@storyblok/astro';
+import Base from '@layouts/Base.astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+const { tag } = Astro.params;
+const title = `Tag: ${tag}`;
+const storyblokApi = useStoryblokApi();
+// const { data } = await storyblokApi.get(`cdn/stories/tags/${tag}`, {
+//   version: import.meta.env.DEV ? 'draft' : 'published',
+// });
+
+// const content = data.story.content;
+---
+
+<Base title={title}>
+  <!-- <StoryblokComponent blok={content} /> -->
+</Base>
