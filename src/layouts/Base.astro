@@ -26,10 +26,10 @@ const { title, description } = Astro.props;
     />
     <ViewTransitions />
   </head>
-  <body class="bg-bkg relative">
+  <body class="relative bg-bkg">
     <Header />
     <main
-      class="container mx-auto flex min-h-screen flex-grow flex-col px-4 pb-4 pt-20 max-w-5xl"
+      class="container mx-auto flex min-h-screen max-w-5xl flex-grow flex-col px-4 pb-4 pt-20"
     >
       <slot />
     </main>

@@ -7,7 +7,7 @@ const { blok } = Astro.props;
 const renderedRichText = renderRichText(blok.content);
 ---
 
-<article {...storyblokEditable(blok)} class="mx-auto flex w-full flex-col p-4">
+<article {...storyblokEditable(blok)} class="mx-auto flex w-full flex-col p-2 my-2">
   <PostHeader
     title={blok.title}
     description={blok.teaser}

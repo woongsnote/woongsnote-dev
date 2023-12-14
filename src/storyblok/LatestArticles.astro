@@ -1,23 +1,24 @@
 ---
-import ArticleCard from '../components/ArticleCard.astro'
-import { storyblokEditable } from '@storyblok/astro'
- 
-const { blok } = Astro.props
-let articles = blok.articles
+import HomePagination from '@components/HomePagination.astro';
+import PostList from '@components/PostList.astro';
+import TagList from '@components/TagList.astro';
+import { storyblokEditable } from '@storyblok/astro';
+
+const { blok } = Astro.props;
+let articles = blok.articles;
+
+const tags = [
+  ...new Set(articles.map((article: any) => article.content.tags).flat()),
+];
 ---
- 
-<section class="mt-4" {...storyblokEditable(blok)}>
-  <ul class="grid grid-cols-1 gap-6 md:grid-cols-3">
-    {
-      articles?.length &&
-        articles.map((article:any) => {
-          article.content.slug = article.slug
-          return (
-            <li>
-              <ArticleCard article={article.content} />
-            </li>
-          )
-        })
-    }
-  </ul>
+
+<section
+  class="mx-auto flex w-full flex-col gap-8 lg:gap-2"
+  {...storyblokEditable(blok)}
+>
+  <div class="flex flex-col lg:flex-row">
+    <PostList articles={articles} />
+    <TagList tags={tags} />
+  </div>
+  <HomePagination />
 </section>

@@ -1,0 +1,16 @@
+---
+import Base from '@layouts/Base.astro';
+import { useStoryblokApi } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+const storyblokApi = useStoryblokApi();
+
+const { data } = await storyblokApi.get(`cdn/stories/blog`, {
+  version: import.meta.env.DEV ? 'draft' : 'published',
+});
+const content = data.story.content;
+---
+
+<Base title="Blog">
+  <StoryblokComponent blok={content} />
+</Base>
