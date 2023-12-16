@@ -1,4 +1,5 @@
 ---
+import CardImage from './CardImage.astro';
 import FormattedDate from './FormattedDate.astro';
 const { title, image, pubDate, slug, description, category } = Astro.props;
 
@@ -9,11 +10,7 @@ const url = `/blog/${slug}`;
   href={url}
   class="relative flex w-full flex-col items-start gap-2 overflow-hidden rounded-lg hover:shadow-lg md:max-w-xs"
 >
-  <img
-    class="w-full rounded object-cover object-center md:h-36 lg:h-48"
-    src={`${image.filename}/m/360x240`}
-    alt={image.alt}
-  />
+  <CardImage image={image.filename} title={image.alt} />
   <div
     class="flex w-full flex-col items-start gap-x-4 p-2 text-xs text-content lg:text-sm"
   >
