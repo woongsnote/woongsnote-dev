@@ -1,5 +1,10 @@
 ---
 import PostCard from '@components/PostCard.astro';
+import type { ArticleStoryblok } from 'component-types-sb';
+
+interface Props {
+  articles: ArticleStoryblok[];
+}
 
 const { articles } = Astro.props;
 ---
@@ -7,17 +12,20 @@ const { articles } = Astro.props;
 <ul class="flex w-full flex-wrap justify-start gap-8 px-0 xl:basis-3/4">
   {
     articles?.length &&
-      articles.map((article: any) => {
+      articles.map((article) => {
+        if (article.content === undefined) return;
+
         article.content.slug = article.slug;
+
         return (
           <li>
             <PostCard
-              title={article.content.title}
-              description={article.content.teaser}
-              image={article.content.image}
-              slug={article.content.slug}
-              pubDate={article.content.pubDate}
-              category={article.content.category}
+              title={article.content?.title}
+              description={article.content?.teaser}
+              image={article.content?.image}
+              slug={article.content?.slug}
+              pubDate={article.content?.pubDate}
+              category={article.content?.category}
             />
           </li>
         );

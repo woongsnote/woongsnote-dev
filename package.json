@@ -8,7 +8,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate-sb-types": "storyblok-generate-ts source=./components.1017820.json target=./component-types-sb"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.2",
@@ -17,24 +18,26 @@
     "@astrojs/rss": "^4.0.1",
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/tailwind": "^5.0.3",
-    "@astrojs/vercel": "^6.0.2",
+    "@astrojs/vercel": "^6.1.0",
     "@giscus/react": "^2.3.0",
     "@storyblok/astro": "^3.1.0-next.3",
-    "astro": "^4.0.4",
+    "astro": "^4.0.5",
     "mdast-util-to-string": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reading-time": "^1.5.0",
     "rehype-pretty-code": "^0.12.1",
-    "vite": "^5.0.7"
+    "storyblok-rich-text-astro-renderer": "^2.0.0",
+    "vite": "^5.0.9"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "@types/react": "^18.2.43",
+    "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.17",
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.12.2",
     "prettier-plugin-tailwindcss": "^0.5.9",
+    "storyblok-generate-ts": "^2.0.1",
     "tailwindcss": "^3.3.6",
     "typescript": "^5.3.3",
     "vite-plugin-mkcert": "^1.17.1"

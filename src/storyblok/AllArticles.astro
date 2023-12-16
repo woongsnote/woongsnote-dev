@@ -3,6 +3,7 @@ import { storyblokEditable, useStoryblokApi } from '@storyblok/astro';
 import PageTitle from '@components/PageTitle.astro';
 import PostList from '@components/PostList.astro';
 import TagList from '@components/TagList.astro';
+import type { ArticleStoryblok } from 'component-types-sb';
 
 const { blok } = Astro.props;
 
@@ -15,11 +16,10 @@ const { data } = await storyblokApi.get(`cdn/stories`, {
   per_page: 4,
 });
 
-const articles = data.stories;
-console.log(articles);
+const articles: ArticleStoryblok[] = data.stories;
 
-const tags = [
-  ...new Set(articles.map((article: any) => article.content.tags).flat()),
+const tags: string[] = [
+  ...new Set(articles.map((article) => article.content?.tags).flat()),
 ];
 ---
 

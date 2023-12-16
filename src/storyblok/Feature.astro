@@ -1,22 +1,21 @@
 ---
-import { storyblokEditable } from '@storyblok/astro'
- 
- const { blok } = Astro.props
- console.log(blok)
- ---
-  
- <div
-   {...storyblokEditable(blok)}
-   class="w-full bg-[#f7f6fd] rounded-[5px] text-center overflow-hidden"
- >
-   <img
-     src={blok.image.filename}
-     alt={blok.image.alt}
-     class="w-full h-48 xl:h-72 object-cover"
-   />
-   <div class="px-12 py-6">
-     <h3 class="text-2xl text-[#1d243d] font-bold">
-       {blok.title}
-     </h3>
-   </div>
- </div>
+import { storyblokEditable } from '@storyblok/astro';
+
+const { blok } = Astro.props;
+---
+
+<div
+  {...storyblokEditable(blok)}
+  class="w-full overflow-hidden rounded-[5px] bg-[#f7f6fd] text-center"
+>
+  <img
+    src={blok.image.filename}
+    alt={blok.image.alt}
+    class="h-48 w-full object-cover xl:h-72"
+  />
+  <div class="px-12 py-6">
+    <h3 class="text-2xl font-bold text-[#1d243d]">
+      {blok.title}
+    </h3>
+  </div>
+</div>

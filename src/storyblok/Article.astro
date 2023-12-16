@@ -1,35 +1,28 @@
 ---
 import Comments from '@components/Comments';
 import PostHeader from '@components/PostHeader.astro';
+import PostThumbnail from '@components/PostThumbnail.astro';
 import { storyblokEditable, renderRichText } from '@storyblok/astro';
+import readingTime from 'reading-time';
 
 const { blok } = Astro.props;
 const renderedRichText = renderRichText(blok.content);
+const minutesToRead = readingTime(renderedRichText);
+
 ---
 
-<article {...storyblokEditable(blok)} class="mx-auto flex w-full flex-col p-2 my-2">
+<article {...storyblokEditable(blok)} class="">
   <PostHeader
     title={blok.title}
     description={blok.teaser}
     pubDate={blok.pubDate}
     tags={blok.tags}
-    minutesRead="3"
+    minutesRead={minutesToRead.text}
   />
-  <div
-    class="mx-auto mb-4 flex items-center justify-center overflow-hidden rounded-lg shadow-sm"
-  >
-    <figure
-      class="mx-auto h-auto w-auto object-cover object-center duration-300 ease-in-out hover:scale-110 md:h-72"
-    >
-      <img
-        src={`${blok.image.filename}/m/1600x0`}
-        alt={blok.image.alt}
-        width="960"
-        height="540"
-        class="h-full w-full"
-      />
-    </figure>
-  </div>
+  <PostThumbnail
+    image={`${blok.image.filename}/m/1600x0`}
+    alt={blok.image.alt}
+  />
   <div
     class="prose mx-auto my-4 w-full items-center text-base leading-10 text-content dark:prose-invert lg:max-w-5xl lg:text-xl"
     set:html={renderedRichText}
