@@ -24,7 +24,6 @@ QR Code 생성기를 구현하는 방법을 작성해보려 한다. Next.js와 T
 
    ```bash
    npx create-next-app@latest
-
    ```
 
 2. 패키지 설치
@@ -33,7 +32,6 @@ QR Code 생성기를 구현하는 방법을 작성해보려 한다. Next.js와 T
 
    ```bash
    npm install react-qr-code file-saver @types/file-saver framer-motion
-
    ```
 
 3. UI 구성
@@ -41,8 +39,7 @@ QR Code 생성기를 구현하는 방법을 작성해보려 한다. Next.js와 T
    - 프로젝트의 UI를 구성하기 위해, 먼저, **제목** 부분과, **QR 생성기** 부분으로 나눠서 구현할 것이다.
    - QR 생성기에 입력 필드, QR 코드 생성 버튼, 그리고 QR 코드 표시 영역을 추가한다.
 
-   ```tsx
-   // app/page.tsx
+   ```tsx title="app/page.tsx"
 
    import QRGenerator from '@/components/QRGenerator';
    import Title from '@/components/Title';
@@ -61,7 +58,7 @@ QR Code 생성기를 구현하는 방법을 작성해보려 한다. Next.js와 T
 
    - QR 코드에 들어갈 내용을 입력하기 위한 입력 필드를 구현한다.
 
-   ```tsx
+   ```tsx title="QRCodeInput.tsx"
    interface QRCodeInputProps {
      value: string;
      onChange: (value: string) => void;
@@ -87,7 +84,7 @@ QR Code 생성기를 구현하는 방법을 작성해보려 한다. Next.js와 T
 
    - QR 코드 생성을 위해 react-qr-code 라이브러리를 사용해서 구현한다.
 
-   ```tsx
+   ```tsx title="QRGenerator.tsx"
    'use client'; // useState 사용을 위해, client component 사용
 
    import { useState } from 'react';
@@ -134,7 +131,7 @@ QR Code 생성기를 구현하는 방법을 작성해보려 한다. Next.js와 T
    export default QRGenerator;
    ```
 
-6. QR 코드 저장 기능 구현
+6. QR 코드 저장 기능에 대한 함수 구현
 
    - 생성된 QR 코드를 이미지로 저장하기 위해 `file-saver` 라이브러리를 사용했다.
 
@@ -157,7 +154,7 @@ QR Code 생성기를 구현하는 방법을 작성해보려 한다. Next.js와 T
 
 7. QR Code 생성될 때, 애니메이션 추가
 
-   - QR Code가 생성될 때, framer-motion을 사용하여 애니메이션을 추가했다.
+   - QR Code가 생성될 때, `framer-motion`을 사용하여 애니메이션을 추가했다.
 
    ```tsx
    // ...
@@ -176,7 +173,7 @@ QR Code 생성기를 구현하는 방법을 작성해보려 한다. Next.js와 T
 
 - 위 내용이 모두 반영된 **최종 컴포넌트(QRGenerator)**의 코드다.
 
-  ```tsx
+  ```tsx title="QRGenerator.tsx"
   'use client';
 
   import { useState } from 'react';
