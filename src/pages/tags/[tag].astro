@@ -1,17 +1,31 @@
 ---
-import { useStoryblokApi } from '@storyblok/astro';
+import PageTitle from '@components/PageTitle.astro';
+import TagIcon from '@icons/TagIcon.astro';
 import Base from '@layouts/Base.astro';
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import { getCollection } from 'astro:content';
+const allPosts = await getCollection('blog');
 const { tag } = Astro.params;
+const filteredPosts = allPosts.filter((post) => post.data.tags.includes(tag!));
+const tagsLength = filteredPosts.length;
 const title = `Tag: ${tag}`;
-const storyblokApi = useStoryblokApi();
-// const { data } = await storyblokApi.get(`cdn/stories/tags/${tag}`, {
-//   version: import.meta.env.DEV ? 'draft' : 'published',
-// });
-
-// const content = data.story.content;
 ---
 
 <Base title={title}>
-  <!-- <StoryblokComponent blok={content} /> -->
+  <PageTitle title={title} />
+  <p class="align-baseline text-2xl text-content">
+    <b>{tag}</b>의 검색 결과는 <span class="font-bold text-accent"
+      >{tagsLength}</span
+    >건 입니다.
+  </p>
+
+  <ul class="mt-4 w-fit space-y-4 pl-8 text-content">
+    {
+      filteredPosts.map((post) => (
+        <li class="flex items-center space-x-1 text-lg hover:text-accent">
+          <TagIcon />
+          <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
 </Base>

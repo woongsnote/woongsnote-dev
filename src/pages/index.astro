@@ -1,19 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
 import HomePagination from '@components/HomePagination.astro';
 import Base from '@layouts/Base.astro';
-import { useStoryblokApi } from '@storyblok/astro';
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import ARticles from '@layouts/Articles.astro';
 
-const storyblokApi = useStoryblokApi();
+const RECENT_POSTS_MAX = 6;
 
-const { data } = await storyblokApi.get('cdn/stories/home', {
-  version: import.meta.env.DEV ? 'draft' : 'published',
-  resolve_relations: ['latest-articles.articles'],
-});
-
-const content = data.story.content;
+const recentPosts = (await getCollection('blog'))
+  .sort((a, b) => b .data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, RECENT_POSTS_MAX);
+  
+const tags = [
+  ...new Set(
+    recentPosts.map((post) => post.data.tags).flat()
+  ),
+];
 ---
 
-<Base>
-  <StoryblokComponent blok={content} />
+<Base title="woongsnote.dev">
+  <ARticles posts={recentPosts} tags={tags} />
+  <HomePagination />
 </Base>

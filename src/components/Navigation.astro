@@ -4,6 +4,7 @@ import HeaderLink from './HeaderLink.astro';
 import HomeIcon from '@icons/HomeIcon.astro';
 import AboutIcon from '@icons/AboutIcon.astro';
 import PostIcon from '@icons/PostIcon.astro';
+import TagIcon from '@icons/TagIcon.astro';
 
 export type NavLink = {
   name: string;
@@ -26,8 +27,10 @@ const { main }: { main: NavLink[] } = menu;
             <HomeIcon />
           ) : name === 'About' ? (
             <AboutIcon />
-          ) : (
+          ) : name === 'Blog' ? (
             <PostIcon />
+          ) : (
+            <TagIcon />
           )}
         </span>
         <span class="hidden md:block">{name}</span>
