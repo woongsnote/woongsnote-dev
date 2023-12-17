@@ -1,34 +1,39 @@
 ---
+import config from '@config/config.json';
 import PostCard from '@components/PostCard.astro';
-import type { ArticleStoryblok } from 'component-types-sb';
 
-interface Props {
-  articles: ArticleStoryblok[];
-}
+const { posts } = Astro.props;
 
-const { articles } = Astro.props;
+type PostType = {
+  id: string;
+  slug: string;
+  body: string;
+  collection: string;
+  data: {
+    title: string;
+    description: string;
+    heroImage: string;
+    pubDate: Date;
+    categories: string[];
+    tags: string[];
+    author: string;
+  };
+};
 ---
 
-<ul class="flex w-full flex-wrap justify-start gap-8 px-0 xl:basis-3/4">
+<section class="flex w-full flex-wrap justify-start gap-8 px-0 xl:basis-3/4">
   {
-    articles?.length &&
-      articles.map((article) => {
-        if (article.content === undefined) return;
-
-        article.content.slug = article.slug;
-
-        return (
-          <li>
-            <PostCard
-              title={article.content?.title}
-              description={article.content?.teaser}
-              image={article.content?.image}
-              slug={article.content?.slug}
-              pubDate={article.content?.pubDate}
-              category={article.content?.category}
-            />
-          </li>
-        );
-      })
+    posts
+      ?.slice(0, config.site.pageSize)
+      .map((post: PostType) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          slug={post.slug}
+          heroImage={post.data.heroImage}
+          pubDate={post.data.pubDate}
+          categories={post.data.categories}
+        />
+      ))
   }
-</ul>
+</section>

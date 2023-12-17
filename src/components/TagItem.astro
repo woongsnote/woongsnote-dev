@@ -1,9 +1,11 @@
 ---
-const { title } = Astro.props;
+const { url, title } = Astro.props;
 ---
 
-<span
-  class="w-fit rounded-lg border p-1 px-2 py-1 text-xs font-bold text-content hover:border-accent hover:bg-accent hover:text-white hover:shadow-lg dark:hover:text-black lg:text-base"
->
-  {title}
-</span>
+<a href={url}>
+  <span
+    class="w-fit rounded-lg border p-1 px-2 py-1 text-xs font-bold text-content hover:border-accent hover:bg-accent hover:text-white hover:shadow-lg dark:hover:text-black lg:text-base"
+  >
+    {title}
+  </span>
+</a>
