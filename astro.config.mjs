@@ -7,7 +7,6 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import rehypePrettyCode from 'rehype-pretty-code';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://woongsnote.dev',
   markdown: {
@@ -42,6 +41,5 @@ export default defineConfig({
       enabled: true,
     },
     imageService: true,
-    devImageService: 'sharp',
   }),
 });

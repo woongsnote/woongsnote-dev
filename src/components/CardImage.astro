@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-
 const { title, image } = Astro.props;
 ---
 
@@ -8,12 +6,11 @@ const { title, image } = Astro.props;
   {
     image && (
       <figure class="transiton mx-auto h-full w-full object-cover object-center duration-300 ease-in-out hover:scale-110">
-        <Image
+        <img
           src={image}
           alt={title}
           width="320"
           height="180"
-          quality="mid"
           class="h-full w-full"
         />
       </figure>
