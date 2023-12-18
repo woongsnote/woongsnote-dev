@@ -1,11 +1,13 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import Base from '@layouts/Base.astro';
-import Pagination from '@components/Pagination.astro';
 import config from '@config/config.json';
+import Base from '@layouts/Base.astro';
+import Posts from '@layouts/Posts.astro';
 import PageTitle from '@components/PageTitle.astro';
-import Articles from '@layouts/Articles.astro';
+import Pagination from '@components/Pagination.astro';
+import PostList from '@components/PostList.astro';
+import TagList from '@components/TagList.astro';
 
 export const prerender = true;
 
@@ -23,7 +25,10 @@ const tags = [...new Set(page.data.map((post) => post.data.tags).flat())];
 
 <Base title="Blog - woongsnote">
   <PageTitle title="Blog" />
-  <Articles posts={page.data} tags={tags} />
+  <Posts>
+    <PostList posts={page.data} />
+    <TagList tags={tags} />
+  </Posts>
   <Pagination
     length={page.lastPage}
     currentUrl={page.url.current}
