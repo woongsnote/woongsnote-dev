@@ -8,16 +8,20 @@ author: 'woongsnote'
 tags: ['Next.js', 'Server Actions', 'Resend', 'React Email']
 ---
 
+## 개요
+
 **포트폴리오**를 구현하면서, `Resend`와 `React Email`을 사용해서, **연락처 폼**을 구현했던 방법에 대해
 정리하려고 한다.
 
-1. `Resend`와 `React-Email`을 사용하기 위해, 패키지를 설치한다.
+## 구현 방법
+
+### 1. `Resend`와 `React-Email`을 사용하기 위해, 패키지를 설치한다.
 
 ```bash
 npm install resend react-email @react-email/components -E
 ```
 
-2. 연락처 폼이 들어갈 컴포넌트를 구현한다.
+### 2. `ContactSection` 컴포넌트를 구현한다.
 
 ```tsx title="ContactSection.tsx"
 import ContactForm from './ContactForm';
@@ -45,7 +49,7 @@ const ContactSection = () => {
 export default ContactSection;
 ```
 
-3. 연락처 폼을 구현한다.
+### 3. `ContactForm` 컴포넌트를 구현한다.
 
 ```tsx title="ContactForm.tsx"
 'use client';
@@ -101,9 +105,9 @@ const ContactForm = () => {
 export default ContactForm;
 ```
 
-4. Server Action을 구현한다.
+### 4. `SubmitButton`의 동작을 구현한다.
 
-- `app` 폴더에 `actions.ts` 파일을 추가하고 코드를 구현한다.
+- Next.js에서 제공해주는 Server Actions을 사용하기 위해, `app` 폴더에 `actions.ts` 파일을 추가하고 코드를 구현한다.
 
 ```ts title="app/actions.ts"
 'use server';
@@ -160,10 +164,19 @@ export async function sendEmail(formData: FormData) {
 }
 ```
 
-이제, 필요한 기능에 대한 구현은 완료되었다. 로컬로 실행한 후에 정상적으로 메일이 도착한다면, 완성이 된 것이다.
+## 테스트
 
-<b> ※ Resend를 사용하기 위해서는 API 키 발급과 도메인 등록이 필요하다!</b>
+이제, 필요한 기능에 대한 구현은 완료되었다.
+아래 명령어로 로컬에서 실행해보자.
 
+```bash
+npm run dev
+```
 
+[localhost](localhost:3000)에서 보낸 메일이, 메일함에 정상적으로 도착한다면, 완성이다.
+
+---
+
+** ※ Resend를 사용하기 위해서는 API 키 발급과 도메인 등록이 필요하다! **
 
 만약 전체 코드가 궁금하다면, [여기](https://github.com/woongsnote/my-portfolio)에서 확인할 수 있다.
