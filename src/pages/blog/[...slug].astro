@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-import Article from '@layouts/Article.astro';
+import BlogPost from '@layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -17,6 +17,6 @@ const { Content, remarkPluginFrontmatter } = await post.render();
 export const prerender = true;
 ---
 
-<Article {...post.data} minutesRead={remarkPluginFrontmatter.minutesRead}>
+<BlogPost {...post.data} minutesRead={remarkPluginFrontmatter.minutesRead}>
   <Content />
-</Article>
+</BlogPost>
