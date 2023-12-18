@@ -2,22 +2,23 @@
 import { getCollection } from 'astro:content';
 import HomePagination from '@components/HomePagination.astro';
 import Base from '@layouts/Base.astro';
-import ARticles from '@layouts/Articles.astro';
+import Posts from '@layouts/Posts.astro';
+import PostList from '@components/PostList.astro';
+import TagList from '@components/TagList.astro';
 
 const RECENT_POSTS_MAX = 6;
 
 const recentPosts = (await getCollection('blog'))
-  .sort((a, b) => b .data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, RECENT_POSTS_MAX);
-  
-const tags = [
-  ...new Set(
-    recentPosts.map((post) => post.data.tags).flat()
-  ),
-];
+
+const tags = [...new Set(recentPosts.map((post) => post.data.tags).flat())];
 ---
 
 <Base title="woongsnote.dev">
-  <ARticles posts={recentPosts} tags={tags} />
+  <Posts>
+    <PostList posts={recentPosts} />
+    <TagList tags={tags} />
+  </Posts>
   <HomePagination />
 </Base>
