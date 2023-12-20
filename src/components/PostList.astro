@@ -22,18 +22,20 @@ type PostType = {
 ---
 
 <section class="flex w-full flex-wrap justify-start gap-8 px-0 xl:basis-3/4">
-  {
-    posts
-      ?.slice(0, config.site.pageSize)
-      .map((post: PostType) => (
-        <PostCard
-          title={post.data.title}
-          description={post.data.description}
-          slug={post.slug}
-          heroImage={post.data.heroImage}
-          pubDate={post.data.pubDate}
-          categories={post.data.categories}
-        />
+  <ul>
+    {
+      posts?.slice(0, config.site.pageSize).map((post: PostType) => (
+        <li>
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            slug={post.slug}
+            heroImage={post.data.heroImage}
+            pubDate={post.data.pubDate}
+            categories={post.data.categories}
+          />
+        </li>
       ))
-  }
+    }
+  </ul>
 </section>
