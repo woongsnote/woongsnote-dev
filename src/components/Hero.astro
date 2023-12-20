@@ -1,12 +1,10 @@
 ---
-import { Image } from 'astro:assets';
 import config from '@config/config.json';
+import SocialLinks from './SocialLinks.astro';
+import ProfileImage from './ProfileImage.astro';
 
 type techItem = string;
-
 const techStack: techItem[] = config.author.tech.split(', ');
-import avatar from '@assets/avatar.png';
-import SocialLinks from './SocialLinks.astro';
 ---
 
 <section class="mb-4 w-full border-b">
@@ -31,13 +29,7 @@ import SocialLinks from './SocialLinks.astro';
     </div>
     <div class="hidden rounded-lg md:block">
       <figure class="right-0">
-        <Image
-          class="w-32 rounded-lg"
-          width={512}
-          height={512}
-          alt={config.author.name}
-          src={avatar}
-        />
+        <ProfileImage />
       </figure>
     </div>
   </div>
