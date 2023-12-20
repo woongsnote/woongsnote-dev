@@ -6,6 +6,7 @@ import Posts from '@layouts/Posts.astro';
 import PostList from '@components/PostList.astro';
 import TagList from '@components/TagList.astro';
 import config from '@config/config.json';
+import Hero from '@components/Hero.astro';
 
 const RECENT_POSTS_MAX = config.site.pageSize;
 
@@ -17,6 +18,7 @@ const tags = [...new Set(recentPosts.map((post) => post.data.tags).flat())];
 ---
 
 <Base title="woongsnote.dev">
+  <Hero />
   <Posts>
     <PostList posts={recentPosts} />
     <TagList tags={tags} />
