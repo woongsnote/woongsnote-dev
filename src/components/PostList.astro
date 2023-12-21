@@ -21,7 +21,7 @@ type PostType = {
 };
 ---
 
-<section class="flex w-full flex-wrap justify-start gap-8 px-0 xl:basis-3/4">
+<div class="flex w-full flex-wrap gap-4 px-0">
   {
     posts
       ?.slice(0, config.site.pageSize)
@@ -36,4 +36,4 @@ type PostType = {
         />
       ))
   }
-</section>
+</div>

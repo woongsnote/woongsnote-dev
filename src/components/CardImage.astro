@@ -3,18 +3,18 @@ import { Image } from 'astro:assets';
 const { title, image } = Astro.props;
 ---
 
-<div class="h-auto w-full overflow-hidden shadow-sm md:h-44 rounded-lg">
-  {
-    image && (
-      <figure class="transiton mx-auto h-full w-full object-cover object-center duration-300 ease-in-out hover:scale-110">
-        <Image
-          src={image}
-          alt={title}
-          width="320"
-          height="180"
-          class="h-full w-full"
-        />
-      </figure>
-    )
-  }
+<div
+  class="h-auto w-full overflow-hidden rounded-lg shadow-sm md:h-40 md:w-80"
+>
+  <figure
+    class="transiton mx-auto h-full w-full object-cover object-center duration-300 ease-in-out hover:scale-110"
+  >
+    <Image
+      src={image}
+      alt={title}
+      width="960"
+      height="540"
+      class="h-full w-full"
+    />
+  </figure>
 </div>
