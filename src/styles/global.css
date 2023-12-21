@@ -16,6 +16,18 @@
     --color-accent: 239deg 84% 67%;
   }
 }
+
+.prose pre > code {
+  display: grid;
+}
+
+.prose figcaption[data-rehype-pretty-code-title] {
+  @apply px-5 py-3 font-mono text-sm font-bold text-gray-800 bg-gray-200 border border-b-0 border-gray-200 rounded-t-lg dark:text-gray-200 dark:border-gray-700 dark:bg-gray-800;
+}
+.prose figcaption[data-rehype-pretty-code-title] + pre {
+  @apply mt-0 rounded-t-none;
+}
+
 .prose :not(pre) > code::before,
 .prose :not(pre) > code::after {
   display: none;
