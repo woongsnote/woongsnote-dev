@@ -9,24 +9,25 @@ const url = `/blog/${slug}`;
 
 <a
   href={url}
-  class="relative my-4 flex w-full flex-col items-start gap-2 overflow-hidden rounded-lg hover:shadow-lg md:flex-row"
+  class="my-4 w-full flex-col gap-2 overflow-hidden rounded-lg hover:shadow-lg"
 >
-  <CardImage image={heroImage} title={title} />
-  <div
-    class="flex w-full flex-col items-start gap-x-4 p-2 text-xs text-content lg:text-sm"
-  >
-    <div class="flex w-full items-center justify-between">
-      <FormattedDate date={pubDate} />
-      <Category categories={categories} />
-    </div>
-
-    <h2
-      class="mt-2 text-xl font-semibold leading-6 text-content underline-offset-8 hover:text-accent hover:underline"
+  <article class="flex w-full gap-2 flex-col md:flex-row">
+    <CardImage image={heroImage} title={title} />
+    <div
+      class="flex w-full flex-col items-start gap-x-4 p-2 text-xs text-content lg:text-sm"
     >
-      {title}
-    </h2>
-    <p class="mt-1 line-clamp-2 break-keep text-sm leading-6 text-subContent">
-      {description}
-    </p>
-  </div>
+      <div class="flex w-full items-center justify-between">
+        <FormattedDate date={pubDate} />
+        <Category categories={categories} />
+      </div>
+      <h2
+        class="mt-2 text-xl font-semibold leading-6 text-content underline-offset-8 hover:text-accent hover:underline lg:text-2xl"
+      >
+        {title}
+      </h2>
+      <p class="mt-1 line-clamp-2 break-keep text-sm leading-6 text-subContent">
+        {description}
+      </p>
+    </div>
+  </article>
 </a>
