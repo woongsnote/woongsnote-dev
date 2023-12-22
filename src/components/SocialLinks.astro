@@ -7,7 +7,13 @@ const socialLinks = social.socialLinks;
 <div class="flex space-x-5">
   {
     socialLinks?.map((item) => (
-      <a href={item.url} target="_blank" rel="noopener noreferrer">
+      <a
+        href={item.url}
+        target="_blank"
+        role="link"
+        aria-label="social-link button"
+        aria-describedby={`${item.name} icon`}
+      >
         <figure>
           <Fragment set:html={item.svg} />
         </figure>

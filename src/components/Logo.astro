@@ -8,17 +8,12 @@ const title = config.site.title;
 
 <a
   href="/"
-  class="col-span-1 w-fit rounded-md text-lg font-bold shadow-md lg:text-2xl"
+  class="flex h-14 w-14 items-center justify-center rounded-md shadow-md"
+  aria-labelledby="logo"
 >
-  <figure>
-    <Image
-      src={logoImage}
-      alt={title}
-      loading="lazy"
-      decoding="async"
-      width={512}
-      height={512}
-      class="w-16 rounded"
-    />
-  </figure>
+  <Image
+    src={logoImage}
+    alt={title}
+    class="h-full w-full rounded-lg"
+  />
 </a>
