@@ -7,7 +7,7 @@
     --color-bkg: 360 100% 100%;
     --color-content: 0deg 0% 0%;
     --color-sub-content: 220deg 9% 26%;
-    --color-accent: 207deg 90% 54%;
+    --color-accent: 210 93% 51%;
   }
   :root.dark {
     --color-bkg: 225deg 4% 18%;
