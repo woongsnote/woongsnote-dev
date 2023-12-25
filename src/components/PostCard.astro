@@ -9,7 +9,7 @@ interface Props {
 }
 const { post } = Astro.props;
 
-const { title, description, image, publishedDate, categories, tags } = post.data;
+const { title, description, image, publishedDate, category, tags } = post.data;
 
 const slug = post.slug;
 const url = `/blog/${slug}`;
@@ -17,11 +17,11 @@ const mainTag = tags[0];
 ---
 
 <article class="flex w-full flex-col gap-4 md:flex-row">
-  <CardImage image={image} title={title} url={url} />
+  <CardImage image={image.url} title={title} url={url} />
   <div
     class="flex w-full flex-col items-start gap-x-4 gap-y-2 p-2 text-content lg:text-sm"
   >
-    <Category categories={categories} />
+    <Category category={category} />
     <a href={url}>
       <h2
         class="mt-2 text-xl font-semibold leading-6 text-content underline-offset-8 hover:text-accent hover:underline lg:text-2xl"

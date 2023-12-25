@@ -1,17 +1,28 @@
 ---
+import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import Base from '@layouts/Base.astro';
 import TagIcon from '@icons/TagIcon.astro';
+import { getTags } from '@utils/getTags';
+
+export const getStaticPaths = (async () => {
+  const allPosts = await getCollection('blog');
+  const uniqueTags = getTags(allPosts);
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}) satisfies GetStaticPaths;
 
 const { tag } = Astro.params;
-
-const taggedPosts = (
-  await getCollection('blog', ({ data }) => {
-    return data.tags.includes(tag!);
-  })
-).sort((a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf());
-
-const tagsLength = taggedPosts.length;
+const { posts } = Astro.props;
+const tagsLength = posts.length;
 const title = `Tag: ${tag}`;
 ---
 
@@ -23,7 +34,7 @@ const title = `Tag: ${tag}`;
   </h2>
   <ul class="mt-4 w-fit space-y-4 pl-8 text-content">
     {
-      taggedPosts.map((post) => (
+      posts.map((post) => (
         <li class="flex items-center space-x-1 text-lg hover:text-accent">
           <TagIcon />
           <a href={`/blog/${post.slug}`}>{post.data.title}</a>

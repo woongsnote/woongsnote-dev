@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { post, minutesToReadText } = Astro.props;
-const { title, description, publishedDate: pubDate, tags } = post.data;
+const { title, description, publishedDate: publishedDate, tags } = post.data;
 const author = config.author.name;
 const readingTime = minutesToReadText.split(' ')[0];
 ---
@@ -23,7 +23,7 @@ const readingTime = minutesToReadText.split(' ')[0];
     class="mx-auto my-4 flex w-full flex-wrap items-center justify-start gap-4"
   >
     <span class="font-bold">{author}</span>
-    <FormattedDate date={pubDate} />
+    <FormattedDate date={publishedDate} />
     <ReadingTimeText readingTime={readingTime} />
   </div>
   <div class="flex flex-wrap gap-x-3">
