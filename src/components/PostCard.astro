@@ -1,15 +1,23 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import Category from './Category.astro';
 import CardImage from './CardImage.astro';
-const { title, heroImage, pubDate, slug, description, categories, tags } =
-  Astro.props;
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+const { post } = Astro.props;
+
+const { title, description, image, publishedDate, categories, tags } = post.data;
+
+const slug = post.slug;
 const url = `/blog/${slug}`;
 const mainTag = tags[0];
 ---
 
-<article class="flex w-full flex-col gap-2 md:flex-row">
-  <CardImage image={heroImage} title={title} url={url} />
+<article class="flex w-full flex-col gap-4 md:flex-row">
+  <CardImage image={image} title={title} url={url} />
   <div
     class="flex w-full flex-col items-start gap-x-4 gap-y-2 p-2 text-content lg:text-sm"
   >
@@ -25,10 +33,10 @@ const mainTag = tags[0];
       {description}
     </p>
     <div class="flex flex-wrap gap-2">
-      <a href=`/tags/${mainTag}` class="font-bold text-accent uppercase">
+      <a href=`/tags/${mainTag}` class="font-bold uppercase text-accent">
         {mainTag}
       </a>
-      <FormattedDate date={pubDate} />
+      <FormattedDate date={publishedDate} />
     </div>
   </div>
 </article>
