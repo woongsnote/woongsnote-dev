@@ -1,21 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
-import HomePagination from '@components/HomePagination.astro';
+import config from '@config/config.json';
 import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
-import config from '@config/config.json';
+import { getTags } from '@utils/getTags';
 import Hero from '@components/Hero.astro';
-
-const RECENT_POSTS_LENGTH = config.site.pageSize;
+import HomePagination from '@components/HomePagination.astro';
 
 const recentPosts = (await getCollection('blog'))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, RECENT_POSTS_LENGTH);
+  .sort((a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf())
+  .slice(0, config.site.pageSize);
 
-const tags = [...new Set(recentPosts.map((post) => post.data.tags).flat())];
+const tags = getTags(recentPosts);
 ---
 
-<Base title="woongsnote.dev">
+<Base pageTitle="woongsnote.dev">
   <Hero />
   <Posts posts={recentPosts} tags={tags} />
   <HomePagination />

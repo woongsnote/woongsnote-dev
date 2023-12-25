@@ -1,27 +1,42 @@
 ---
-import PageTitle from '@components/PageTitle.astro';
-import TagIcon from '@icons/TagIcon.astro';
-import Base from '@layouts/Base.astro';
+import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-const allPosts = await getCollection('blog');
+import Base from '@layouts/Base.astro';
+import TagIcon from '@icons/TagIcon.astro';
+import { getTags } from '@utils/getTags';
+
+export const prerender = true
+
+export const getStaticPaths = (async () => {
+  const allPosts = await getCollection('blog');
+  const uniqueTags = getTags(allPosts);
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}) satisfies GetStaticPaths;
+
 const { tag } = Astro.params;
-const filteredPosts = allPosts
-  .filter((post) => post.data.tags.includes(tag!))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const tagsLength = filteredPosts.length;
+const { posts } = Astro.props;
+const tagsLength = posts.length;
 const title = `Tag: ${tag}`;
 ---
 
-<Base title={title}>
-  <PageTitle title={title} />
-  <p class="align-baseline text-2xl text-content">
-    <b>{tag}</b>의 검색 결과는 <span class="font-bold text-accent"
-      >{tagsLength}</span
-    >건 입니다.
-  </p>
+<Base pageTitle={title}>
+  <h2 class="mt-2 align-baseline text-lg text-content lg:text-4xl">
+    <span class="rounded-lg p-1 font-black text-accent">{tag}</span> 태그가
+    포함된 게시글은 총 <span class="font-bold text-accent">{tagsLength}</span>건
+    입니다.
+  </h2>
   <ul class="mt-4 w-fit space-y-4 pl-8 text-content">
     {
-      filteredPosts.map((post) => (
+      posts.map((post) => (
         <li class="flex items-center space-x-1 text-lg hover:text-accent">
           <TagIcon />
           <a href={`/blog/${post.slug}`}>{post.data.title}</a>

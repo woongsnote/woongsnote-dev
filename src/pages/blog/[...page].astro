@@ -6,22 +6,22 @@ import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
 import Pagination from '@components/Pagination.astro';
 import PageHeader from '@components/PageHeader.astro';
+import { getTags } from '@utils/getTags';
 
 export const prerender = true;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await getCollection('blog');
-  const formattedPosts = posts.sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  const allPosts = (await getCollection('blog')).sort(
+    (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
   );
-  return paginate(formattedPosts, { pageSize: config.site.pageSize });
+  return paginate(allPosts, { pageSize: config.site.pageSize });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-const tags = [...new Set(page.data.map((post) => post.data.tags).flat())];
+const tags = getTags(page.data);
 ---
 
-<Base title="Blog - woongsnote">
+<Base pageTitle="Blog - woongsnote">
   <PageHeader
     title="Blog"
     description="학습한 지식들과 구현했던 프로젝트들에 대한 기록입니다."

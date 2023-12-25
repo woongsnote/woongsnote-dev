@@ -3,19 +3,30 @@ import config from '@config/config.json';
 import FormattedDate from './FormattedDate.astro';
 import ReadingTimeText from './ReadingTimeText.astro';
 import TagItem from './TagItem.astro';
-const { title, description, pubDate, minutesRead, tags } = Astro.props;
-const readingTime = minutesRead.split(' ')[0];
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  minutesToReadText: string;
+}
+
+const { post, minutesToReadText } = Astro.props;
+const { title, description, publishedDate: publishedDate, tags } = post.data;
+const author = config.author.name;
+const readingTime = minutesToReadText.split(' ')[0];
 ---
 
 <section class="mb-8 border-b pb-4 text-content">
   <h1 class="text-3xl font-black lg:text-5xl">{title}</h1>
   <p class="mt-2">{description}</p>
-  <div class="mx-auto my-4 flex w-full items-center justify-start gap-4 flex-wrap">
-    <span class="font-bold">{config.author.name}</span>
-    <FormattedDate date={pubDate} />
+  <div
+    class="mx-auto my-4 flex w-full flex-wrap items-center justify-start gap-4"
+  >
+    <span class="font-bold">{author}</span>
+    <FormattedDate date={publishedDate} />
     <ReadingTimeText readingTime={readingTime} />
   </div>
-  <div class="flex gap-x-3 flex-wrap">
+  <div class="flex flex-wrap gap-x-3">
     {tags.map((tag: string) => <TagItem url={`/tags/${tag}`} title={tag} />)}
   </div>
 </section>
