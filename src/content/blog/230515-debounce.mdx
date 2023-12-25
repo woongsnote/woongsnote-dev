@@ -1,9 +1,11 @@
 ---
 title: 'Debounce(디바운스)란?'
 description: 'Debounce(디바운스)에 관한 정리'
-pubDate: '2023-05-15'
-heroImage: '/images/blog-placeholder.jpg'
-categories: ['Tech']
+publishedDate: '2023-05-15'
+image:
+  url: '/images/blog-placeholder.jpg'
+  alt: 'Debounce(디바운스)란?'
+category: 'Tech'
 author: 'woongsnote'
 tags: ['React', 'Debounce']
 ---
@@ -41,7 +43,7 @@ type DebounceCallback = (...args: any[]) => void;
 
 export const useDebounce = (
   callback: DebounceCallback,
-  delay: number,
+  delay: number
 ): DebounceCallback => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -54,7 +56,7 @@ export const useDebounce = (
         callback(...args);
       }, delay);
     },
-    [callback, delay],
+    [callback, delay]
   );
 
   return debounceCallback;
