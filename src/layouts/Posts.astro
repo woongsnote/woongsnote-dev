@@ -1,6 +1,13 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import PostList from '@components/PostList.astro';
 import TagList from '@components/TagList.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  tags: string[];
+}
+
 const { posts, tags } = Astro.props;
 ---
 

@@ -8,29 +8,28 @@ import { ViewTransitions } from 'astro:transitions';
 import { SITE_DESCRIPTION, SITE_TITLE } from 'consts';
 
 export interface Props {
-  title?: string;
+  pageTitle?: string;
   description?: string;
   image?: string;
   noindex?: string;
   canonical?: string;
-  blogpost?: boolean;
 }
 
-const { title, description, blogpost } = Astro.props;
+const { pageTitle, description } = Astro.props;
 ---
 
 <html lang={config.site.lang}>
   <head>
     <BaseHead
-      title={title || SITE_TITLE}
+      title={pageTitle || SITE_TITLE}
       description={description || SITE_DESCRIPTION}
     />
     <ViewTransitions />
   </head>
-  <body class="bg-bkg relative">
+  <body class="relative bg-bkg">
     <Header />
     <main
-      class="container mx-auto flex min-h-screen flex-grow flex-col px-4 pb-4 pt-28 max-w-7xl"
+      class="container mx-auto flex min-h-screen max-w-7xl flex-grow flex-col px-4 pb-4 pt-28"
     >
       <slot />
     </main>
