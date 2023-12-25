@@ -4,6 +4,8 @@ const { categories } = Astro.props;
 
 {
   categories.map((category: string) => (
-    <span class="text-xs bg-accent text-white rounded-md px-2 py-1">{category}</span>
+    <span class="rounded-md bg-accent px-2 py-1 text-xs font-black text-white dark:text-black lg:text-sm">
+      {category}
+    </span>
   ))
 }

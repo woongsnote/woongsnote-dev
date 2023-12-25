@@ -21,11 +21,10 @@ type PostType = {
 };
 ---
 
-<div class="flex w-full flex-wrap gap-4 px-0">
+<ul class="flex w-full flex-col gap-8 px-0">
   {
-    posts
-      ?.slice(0, config.site.pageSize)
-      .map((post: PostType) => (
+    posts?.slice(0, config.site.pageSize).map((post: PostType) => (
+      <li class="w-full">
         <PostCard
           title={post.data.title}
           description={post.data.description}
@@ -33,7 +32,9 @@ type PostType = {
           heroImage={post.data.heroImage}
           pubDate={post.data.pubDate}
           categories={post.data.categories}
+          tags={post.data.tags}
         />
-      ))
+      </li>
+    ))
   }
-</div>
+</ul>
