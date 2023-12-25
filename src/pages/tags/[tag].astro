@@ -5,6 +5,8 @@ import Base from '@layouts/Base.astro';
 import TagIcon from '@icons/TagIcon.astro';
 import { getTags } from '@utils/getTags';
 
+export const prerender = true
+
 export const getStaticPaths = (async () => {
   const allPosts = await getCollection('blog');
   const uniqueTags = getTags(allPosts);
