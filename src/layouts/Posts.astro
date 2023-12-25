@@ -1,7 +1,10 @@
 ---
-
+import PostList from '@components/PostList.astro';
+import TagList from '@components/TagList.astro';
+const { posts, tags } = Astro.props;
 ---
 
 <section class="mx-auto my-2 flex w-full flex-col gap-12 lg:flex-row">
-  <slot />
+  <PostList posts={posts} />
+  <TagList tags={tags} />
 </section>

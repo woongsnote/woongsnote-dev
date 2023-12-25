@@ -5,8 +5,6 @@ import config from '@config/config.json';
 import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
 import Pagination from '@components/Pagination.astro';
-import PostList from '@components/PostList.astro';
-import TagList from '@components/TagList.astro';
 import PageHeader from '@components/PageHeader.astro';
 
 export const prerender = true;
@@ -28,10 +26,7 @@ const tags = [...new Set(page.data.map((post) => post.data.tags).flat())];
     title="Blog"
     description="학습한 지식들과 구현했던 프로젝트들에 대한 기록입니다."
   />
-  <Posts>
-    <PostList posts={page.data} />
-    <TagList tags={tags} />
-  </Posts>
+  <Posts posts={page.data} tags={tags} />
   <Pagination
     length={page.lastPage}
     currentUrl={page.url.current}
