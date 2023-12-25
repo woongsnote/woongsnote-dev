@@ -5,8 +5,7 @@ import CardImage from './CardImage.astro';
 const { title, heroImage, pubDate, slug, description, categories, tags } =
   Astro.props;
 const url = `/blog/${slug}`;
-const tag = tags[0];
-console.log(tag);
+const mainTag = tags[0];
 ---
 
 <article class="flex w-full flex-col gap-2 md:flex-row">
@@ -26,8 +25,8 @@ console.log(tag);
       {description}
     </p>
     <div class="flex flex-wrap gap-2">
-      <a href=`/tags/${tag}` class="font-bold text-accent">
-        {tag}
+      <a href=`/tags/${mainTag}` class="font-bold text-accent uppercase">
+        {mainTag}
       </a>
       <FormattedDate date={pubDate} />
     </div>
