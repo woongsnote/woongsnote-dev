@@ -5,7 +5,9 @@ import Base from '@layouts/Base.astro';
 import { getCollection } from 'astro:content';
 const allPosts = await getCollection('blog');
 const { tag } = Astro.params;
-const filteredPosts = allPosts.filter((post) => post.data.tags.includes(tag!));
+const filteredPosts = allPosts
+  .filter((post) => post.data.tags.includes(tag!))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const tagsLength = filteredPosts.length;
 const title = `Tag: ${tag}`;
 ---
@@ -17,7 +19,6 @@ const title = `Tag: ${tag}`;
       >{tagsLength}</span
     >건 입니다.
   </p>
-
   <ul class="mt-4 w-fit space-y-4 pl-8 text-content">
     {
       filteredPosts.map((post) => (

@@ -2,32 +2,33 @@
 import FormattedDate from './FormattedDate.astro';
 import Category from './Category.astro';
 import CardImage from './CardImage.astro';
-const { title, heroImage, pubDate, slug, description, categories } =
+const { title, heroImage, pubDate, slug, description, categories, tags } =
   Astro.props;
 const url = `/blog/${slug}`;
+const mainTag = tags[0];
 ---
 
-<a
-  href={url}
-  class="my-4 w-full flex-col gap-2 overflow-hidden rounded-lg hover:shadow-lg"
->
-  <article class="flex w-full gap-2 flex-col md:flex-row">
-    <CardImage image={heroImage} title={title} />
-    <div
-      class="flex w-full flex-col items-start gap-x-4 p-2 text-xs text-content lg:text-sm"
-    >
-      <div class="flex w-full items-center justify-between">
-        <FormattedDate date={pubDate} />
-        <Category categories={categories} />
-      </div>
+<article class="flex w-full flex-col gap-2 md:flex-row">
+  <CardImage image={heroImage} title={title} url={url} />
+  <div
+    class="flex w-full flex-col items-start gap-x-4 gap-y-2 p-2 text-content lg:text-sm"
+  >
+    <Category categories={categories} />
+    <a href={url}>
       <h2
         class="mt-2 text-xl font-semibold leading-6 text-content underline-offset-8 hover:text-accent hover:underline lg:text-2xl"
       >
         {title}
       </h2>
-      <p class="mt-1 line-clamp-2 break-keep text-sm leading-6 text-subContent">
-        {description}
-      </p>
+    </a>
+    <p class="mt-1 line-clamp-2 break-keep text-sm leading-6 text-subContent">
+      {description}
+    </p>
+    <div class="flex flex-wrap gap-2">
+      <a href=`/tags/${mainTag}` class="font-bold text-accent uppercase">
+        {mainTag}
+      </a>
+      <FormattedDate date={pubDate} />
     </div>
-  </article>
-</a>
+  </div>
+</article>

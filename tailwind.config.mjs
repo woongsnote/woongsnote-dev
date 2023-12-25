@@ -12,6 +12,7 @@ export default {
         content: 'hsl(var(--color-content) / <alpha-value>)',
         accent: 'hsl(var(--color-accent) / <alpha-value>)',
         subContent: 'hsl(var(--color-sub-content) / <alpha-value>)',
+        white: 'hsl(var(--color-white) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['PretendardVariable', ...defaultTheme.fontFamily.sans],

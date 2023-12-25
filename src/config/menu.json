@@ -11,10 +11,6 @@
     {
       "name": "Blog",
       "url": "/blog"
-    },
-    {
-      "name": "Tags",
-      "url": "/tags"
     }
   ]
 }
