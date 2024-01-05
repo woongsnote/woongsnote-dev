@@ -1,9 +1,19 @@
 ---
+type Props = {
+  category: string;
+};
 const { category } = Astro.props;
 ---
 
 <span
-  class="rounded-md bg-accent px-2 py-1 text-xs font-black text-white lg:text-sm dark:text-black"
+  class:list={[
+    'rounded-md px-2 py-1 text-xs font-black text-white lg:text-sm',
+    category === 'Project'
+      ? 'bg-blue-700'
+      : category === 'Diary'
+        ? 'bg-green-700'
+        : 'bg-gray-700',
+  ]}
 >
   {category}
 </span>
