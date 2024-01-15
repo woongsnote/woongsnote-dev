@@ -1,7 +1,7 @@
 ---
-interface Props {
+type Props = {
   date: Date;
-}
+};
 
 const { date } = Astro.props;
 
@@ -11,7 +11,7 @@ const dateOptions: Object = {
   day: 'numeric',
 };
 
-const publishedDate = new Date(date).toLocaleDateString('en-US', dateOptions);
+const publishedDate = new Date(date).toLocaleDateString('ko-kR', dateOptions);
 ---
 
 <time class="flex items-center">

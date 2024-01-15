@@ -18,17 +18,18 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-const tags = getTags(page.data);
+
+const tags: string[] = getTags(page.data);
 ---
 
-<Base pageTitle="Blog - woongsnote">
+<Base pageTitle="Blog | woongsnote">
   <PageHeader
     title="Blog"
     description="학습한 지식들과 구현했던 프로젝트들에 대한 기록입니다."
   />
   <Posts posts={page.data} tags={tags} />
   <Pagination
-    length={page.lastPage}
+    pageLength={page.lastPage}
     currentUrl={page.url.current}
     currentPage={page.currentPage}
     firstUrl={`/blog/`}

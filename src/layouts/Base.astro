@@ -7,13 +7,13 @@ import config from '@config/config.json';
 import { ViewTransitions } from 'astro:transitions';
 import { SITE_DESCRIPTION, SITE_TITLE } from 'consts';
 
-export interface Props {
+export type Props = {
   pageTitle?: string;
   description?: string;
   image?: string;
   noindex?: string;
   canonical?: string;
-}
+};
 
 const { pageTitle, description } = Astro.props;
 ---

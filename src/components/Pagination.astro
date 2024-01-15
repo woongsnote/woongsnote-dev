@@ -2,14 +2,28 @@
 import NextIcon from '@icons/ArrowRightIcon.astro';
 import PrevIcon from '@icons/ArrowLeftIcon.astro';
 
-const { length, currentPage, firstUrl, prevUrl, nextUrl } = Astro.props;
-const paginationList = Array.from({ length }, (_, i) => i + 1);
+type Props = {
+  pageLength: number;
+  currentUrl: string;
+  currentPage: number;
+  firstUrl: string;
+  prevUrl: string | undefined;
+  nextUrl: string | undefined;
+  lastUrl: string;
+};
+
+const { pageLength, currentPage, firstUrl, prevUrl, nextUrl } = Astro.props;
+
+const paginationList: number[] = Array.from(
+  { length: pageLength },
+  (_, i) => i + 1
+);
 ---
 
 <nav class="my-6">
   <ol class="flex justify-center gap-3 text-xs font-medium">
     {
-      prevUrl ? (
+      prevUrl && (
         <li>
           <a
             href={prevUrl}
@@ -19,7 +33,7 @@ const paginationList = Array.from({ length }, (_, i) => i + 1);
             <PrevIcon />
           </a>
         </li>
-      ) : null
+      )
     }
     {
       paginationList?.map((num) => (
@@ -36,7 +50,7 @@ const paginationList = Array.from({ length }, (_, i) => i + 1);
       ))
     }
     {
-      nextUrl ? (
+      nextUrl && (
         <li>
           <a
             href={nextUrl}
@@ -46,7 +60,7 @@ const paginationList = Array.from({ length }, (_, i) => i + 1);
             <NextIcon />
           </a>
         </li>
-      ) : null
+      )
     }
   </ol>
 </nav>

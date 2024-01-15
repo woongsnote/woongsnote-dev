@@ -1,20 +1,15 @@
 ---
 import { Image } from 'astro:assets';
-import config from '@config/config.json';
-import logoImage from '@assets/logo.png';
-
-const title = config.site.title;
+import logoImage from '@assets/logo.png';;
 ---
 
 <a
   href="/"
   class="flex h-14 w-14 items-center justify-center rounded-md shadow-md"
-  aria-label="Home"
-  aria-labelledby="description"
+  aria-label="Go to Homepage"
 >
-  <Image
-    src={logoImage}
-    alt={title}
-    class="h-full w-full rounded-lg"
-  />
+  <figure aria-hidden="true">
+    <Image src={logoImage} alt='home' class="h-full w-full rounded-lg" />
+  </figure>
+  <span class="sr-only">Go to Homepage</span>
 </a>
