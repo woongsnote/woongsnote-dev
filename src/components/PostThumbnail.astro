@@ -1,10 +1,16 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
+
+type Props = {
+  image: string;
+  alt: string;
+};
+
 const { image, alt } = Astro.props;
 ---
 
 <div
-  class="mx-auto mb-4 flex items-center justify-center overflow-hidden w-fit rounded-lg"
+  class="mx-auto mb-4 flex w-fit items-center justify-center overflow-hidden rounded-lg"
 >
   <figure
     class="mx-auto h-auto w-auto object-cover object-center duration-300 ease-in-out hover:scale-110 md:h-72"

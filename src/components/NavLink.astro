@@ -1,12 +1,6 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
-
-// type Props = HTMLAttributes<'a'>;
-
 const { href, class: className, ...props } = Astro.props;
-
 const { pathname } = Astro.url;
-
 const isActive =
   href === pathname ||
   (pathname.startsWith(href) && pathname[href.length] === '/');
