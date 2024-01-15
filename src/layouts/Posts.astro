@@ -1,17 +1,14 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import PostList from '@components/PostList.astro';
-import TagList from '@components/TagList.astro';
 
-interface Props {
+type Props = {
   posts: CollectionEntry<'blog'>[];
-  tags: string[];
-}
+};
 
-const { posts, tags } = Astro.props;
+const { posts } = Astro.props;
 ---
 
 <section class="mx-auto my-2 flex w-full flex-col gap-12 lg:flex-row">
   <PostList posts={posts} />
-  <TagList tags={tags} />
 </section>
