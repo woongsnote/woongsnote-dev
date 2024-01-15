@@ -9,10 +9,10 @@ const { category } = Astro.props;
   class:list={[
     'rounded-md px-2 py-1 text-xs font-black text-white lg:text-sm uppercase',
     category === 'Project'
-      ? 'text-blue-700'
+      ? 'bg-blue-700'
       : category === 'Diary'
-        ? 'text-green-700'
-        : 'text-gray-700',
+        ? 'bg-green-700'
+        : 'bg-gray-700',
   ]}
 >
   {category}

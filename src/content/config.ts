@@ -13,13 +13,13 @@ const blog = defineCollection({
     // Publication date of the blog post
     publishedDate: z.string().transform((str) => new Date(str)),
 
-    // URL of the hero image for the blog post
+    // URL of the image for the blog post
     image: z.object({
       url: z.string(), // Source URL of the image
       alt: z.string(), // Alternative text for the image
     }),
 
-    // category that the blog post belongs to, defaulting to 'others'
+    // category that the blog post belongs
     category: z.string(),
 
     // Tags associated with the blog post

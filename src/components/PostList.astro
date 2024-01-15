@@ -3,17 +3,16 @@ import config from '@config/config.json';
 import PostCard from './PostCard.astro';
 import type { CollectionEntry } from 'astro:content';
 
-interface Props {
+type Props = {
   posts: CollectionEntry<'blog'>[];
-}
+};
 
 const { posts } = Astro.props;
-const POSTS_PER_PAGE = config.site.pageSize
 ---
 
 <ul class="flex w-full flex-col gap-8 px-0">
   {
-    posts?.slice(0, POSTS_PER_PAGE).map((post) => (
+    posts.slice(0, config.site.pageSize).map((post) => (
       <li class="w-full">
         <PostCard post={post} />
       </li>

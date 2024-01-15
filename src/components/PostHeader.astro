@@ -5,10 +5,10 @@ import ReadingTimeText from './ReadingTimeText.astro';
 import TagItem from './TagItem.astro';
 import type { CollectionEntry } from 'astro:content';
 
-interface Props {
+type Props = {
   post: CollectionEntry<'blog'>;
   minutesToReadText: string;
-}
+};
 
 const { post, minutesToReadText } = Astro.props;
 const { title, description, publishedDate: publishedDate, tags } = post.data;
