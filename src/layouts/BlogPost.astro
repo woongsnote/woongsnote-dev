@@ -5,10 +5,10 @@ import Base from '@layouts/Base.astro';
 import PostHeader from '@components/PostHeader.astro';
 import Comments from '@components/Comments';
 
-interface Props {
+type Props = {
   post: CollectionEntry<'blog'>;
   minutesToReadText: string;
-}
+};
 
 const { post, minutesToReadText } = Astro.props;
 const { title, description, image } = post.data;

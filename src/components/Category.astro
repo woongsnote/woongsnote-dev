@@ -7,7 +7,7 @@ const { category } = Astro.props;
 
 <span
   class:list={[
-    'rounded-md px-2 py-1 text-xs font-black text-white lg:text-sm',
+    'rounded-md px-2 py-1 text-xs font-black text-white lg:text-sm uppercase',
     category === 'Project'
       ? 'bg-blue-700'
       : category === 'Diary'

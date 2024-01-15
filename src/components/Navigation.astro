@@ -1,22 +1,34 @@
 ---
-import menu from '@config/menu.json';
 import NavLink from './NavLink.astro';
 import HomeIcon from '@icons/HomeIcon.astro';
 import AboutIcon from '@icons/AboutIcon.astro';
 import PostIcon from '@icons/PostIcon.astro';
 import TagIcon from '@icons/TagIcon.astro';
 
-export type NavLinkPrpos = {
+type NavLink = {
   name: string;
   url: string;
 };
 
-const { main }: { main: NavLinkPrpos[] } = menu;
+const navLinks: NavLink[] = [
+  {
+    name: 'Home',
+    url: '/',
+  },
+  {
+    name: 'About',
+    url: '/about',
+  },
+  {
+    name: 'Blog',
+    url: '/blog',
+  },
+];
 ---
 
 <nav class="flex items-center gap-4 p-2 text-subContent lg:gap-8">
   {
-    main.map(({ name, url }) => (
+    navLinks.map(({ name, url }) => (
       <NavLink
         href={url}
         aria-label={`go to ${name} page`}
