@@ -11,10 +11,14 @@ type Props = {
 };
 
 const { post, minutesToReadText } = Astro.props;
-const { title, description, image } = post.data;
+const { title, description, image, cover } = post.data;
 ---
 
-<Base pageTitle={title} description={description} image={image.url}>
+<Base
+  pageTitle={title}
+  description={description}
+  image={cover ? cover.src : image?.url}
+>
   <article class="mx-auto flex w-full flex-col">
     <PostHeader post={post} minutesToReadText={minutesToReadText} />
     <div
@@ -24,7 +28,7 @@ const { title, description, image } = post.data;
         class="mx-auto h-auto w-auto object-cover object-center duration-300 ease-in-out hover:scale-110 md:h-72"
       >
         <Image
-          src={image.url}
+          src={cover ? cover.src : image?.url!}
           alt={title}
           width="960"
           height="540"

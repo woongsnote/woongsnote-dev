@@ -16,6 +16,7 @@ const { post } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await post.render();
 
 export const prerender = true;
+console.log(post)
 ---
 
 <BlogPost post={post} minutesToReadText={remarkPluginFrontmatter.minutesRead}>
