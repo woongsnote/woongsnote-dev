@@ -3,19 +3,21 @@ import { getCollection } from 'astro:content';
 import config from '@config/config.json';
 import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
-import { getTags } from '@utils/getTags';
 import Hero from '@components/Hero.astro';
-import HomePagination from '@components/HomePagination.astro';
 
 const recentPosts = (await getCollection('blog'))
-  .sort((a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf())
+  .sort(
+    (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
+  )
   .slice(0, config.site.pageSize);
-
-const tags = getTags(recentPosts);
 ---
 
 <Base pageTitle="woongsnote.dev">
   <Hero />
-  <Posts posts={recentPosts} tags={tags} />
-  <HomePagination />
+  <div class="flex w-full items-center justify-between">
+    <h2 class="text-2xl font-black">최신 글</h2>
+    <a href="/blog">더 보기</a>
+    <!-- <HomePagination /> -->
+  </div>
+  <Posts posts={recentPosts} />
 </Base>
