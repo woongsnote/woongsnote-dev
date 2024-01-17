@@ -4,6 +4,7 @@ import FormattedDate from './FormattedDate.astro';
 import ReadingTimeText from './ReadingTimeText.astro';
 import TagItem from './TagItem.astro';
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 
 type Props = {
   post: CollectionEntry<'blog'>;
@@ -11,22 +12,36 @@ type Props = {
 };
 
 const { post, minutesToReadText } = Astro.props;
-const { title, description, publishedDate: publishedDate, tags } = post.data;
+const { title, description, publishedDate, tags, category, cover, image } =
+  post.data;
 const author = config.author.name;
 const readingTime = minutesToReadText.split(' ')[0];
 ---
 
-<section class="mb-8 border-b pb-4 text-content">
+<section class="mb-4 flex flex-col items-center gap-4 pb-4 text-content">
   <h1 class="text-3xl font-black lg:text-5xl">{title}</h1>
-  <p class="mt-2">{description}</p>
-  <div
-    class="mx-auto my-4 flex w-full flex-wrap items-center justify-start gap-4"
-  >
+  <p>{description}</p>
+  <div class="flex flex-col items-center gap-4 sm:flex-row">
     <span class="font-bold">{author}</span>
     <FormattedDate date={publishedDate} />
     <ReadingTimeText readingTime={readingTime} />
   </div>
-  <div class="flex flex-wrap gap-x-3">
+  <div class="flex flex-wrap items-center gap-x-3">
     {tags.map((tag: string) => <TagItem url={`/tags/${tag}`} title={tag} />)}
   </div>
+  {
+    category === 'Project' && (
+      <div class="mx-auto flex items-center justify-center overflow-hidden rounded-lg shadow-sm">
+        <figure class="mx-auto h-auto w-auto object-cover object-center duration-300 ease-in-out hover:scale-110 md:h-72">
+          <Image
+            src={cover ? cover.src : image?.url!}
+            alt={title}
+            width="960"
+            height="540"
+            class="h-full w-full"
+          />
+        </figure>
+      </div>
+    )
+  }
 </section>
