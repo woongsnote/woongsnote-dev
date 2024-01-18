@@ -18,12 +18,14 @@ const url = `/blog/${slug}`;
 const mainTag = tags[0];
 ---
 
-<article class="flex w-full flex-col items-center gap-2 md:flex-row">
+<article class="mx-auto flex w-full max-w-sm flex-col items-center">
   <CardImage image={cover ? cover.src : image?.url} title={title} url={url} />
   <div
     class="flex w-full flex-col items-start gap-x-4 gap-y-1 p-2 text-content lg:text-sm"
   >
-    <div class="flex list-disc items-center gap-4 w-full justify-between text-sm">
+    <div
+      class="flex w-full list-disc items-center justify-between gap-4 text-sm"
+    >
       <Category category={category} />
       <a href=`/tags/${mainTag}` class="font-bold uppercase text-accent">
         {mainTag}
@@ -32,7 +34,7 @@ const mainTag = tags[0];
     </div>
     <a href={url}>
       <h2
-        class="mt-2 text-xl font-semibold leading-6 text-content underline-offset-8 hover:text-accent hover:underline lg:text-2xl"
+        class="mt-2 text-xl font-semibold leading-6 text-content underline-offset-8 hover:text-accent hover:underline"
       >
         {title}
       </h2>

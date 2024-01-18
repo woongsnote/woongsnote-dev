@@ -10,12 +10,6 @@ type Props = {
 const { posts } = Astro.props;
 ---
 
-<ul class="flex w-full flex-col gap-8 px-0">
-  {
-    posts.slice(0, config.site.pageSize).map((post) => (
-      <li class="w-full">
-        <PostCard post={post} />
-      </li>
-    ))
-  }
-</ul>
+<div class="grid w-full gap-8 md:grid-cols-2 lg:grid-cols-3">
+  {posts.slice(0, config.site.pageSize).map((post) => <PostCard post={post} />)}
+</div>

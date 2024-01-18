@@ -7,7 +7,7 @@
     "logo": "/logo.png",
     "lang": "kr",
     "description": "tech blog by woongsnote",
-    "pageSize": 5
+    "pageSize": 6
   },
   "features": {
     "dark_mode": true
