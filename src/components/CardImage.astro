@@ -3,10 +3,7 @@ import { Image } from 'astro:assets';
 const { title, image, url } = Astro.props;
 ---
 
-<a
-  class="h-auto w-full overflow-hidden rounded-lg shadow-sm md:h-40 md:w-80"
-  href={url}
->
+<a class="h-auto w-full overflow-hidden rounded-lg shadow-sm" href={url}>
   <figure
     class="transiton mx-auto h-full w-full object-cover object-center duration-300 ease-in-out hover:scale-110"
   >
