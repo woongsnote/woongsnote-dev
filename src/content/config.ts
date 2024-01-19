@@ -1,4 +1,3 @@
-import { nullable } from 'astro/zod';
 import { defineCollection, z } from 'astro:content';
 
 // Define the blog collection

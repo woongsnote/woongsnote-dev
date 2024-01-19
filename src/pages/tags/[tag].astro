@@ -5,16 +5,19 @@ import Base from '@layouts/Base.astro';
 import TagIcon from '@icons/TagIcon.astro';
 import { getTags } from '@utils/getTags';
 
-export const prerender = true
+export const prerender = true;
 
 export const getStaticPaths = (async () => {
   const allPosts = await getCollection('blog');
   const uniqueTags = getTags(allPosts);
 
   return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post) =>
-      post.data.tags.includes(tag)
-    );
+    const filteredPosts = allPosts
+      .filter((post) => post.data.tags.includes(tag))
+      .sort(
+        (a, b) =>
+          b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
+      );
     return {
       params: { tag },
       props: { posts: filteredPosts },
@@ -29,19 +32,24 @@ const title = `Tag: ${tag}`;
 ---
 
 <Base pageTitle={title}>
-  <h2 class="mt-2 align-baseline text-lg text-content lg:text-4xl">
-    <span class="rounded-lg p-1 font-black text-accent">{tag}</span> 태그가
-    포함된 게시글은 총 <span class="font-bold text-accent">{tagsLength}</span>건
+  <h2 class="mt-2 align-baseline text-2xl text-content md:text-4xl">
+    <span class="rounded-lg p-1 font-black text-accent">{tag}</span> 태그가 포함된
+    게시글은 총 <span class="font-bold text-accent">{tagsLength}</span>건
     입니다.
   </h2>
-  <ul class="mt-4 w-fit space-y-4 pl-8 text-content">
+  <section
+    class="mt-4 grid w-full gap-4 text-content md:grid-cols-2 lg:grid-cols-3"
+  >
     {
       posts.map((post) => (
-        <li class="flex items-center space-x-1 text-lg hover:text-accent">
+        <a
+          href={`/blog/${post.slug}`}
+          class="flex items-center space-x-1 text-lg hover:text-accent gap-x-2"
+        >
           <TagIcon />
-          <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-        </li>
+          {post.data.title}
+        </a>
       ))
     }
-  </ul>
+  </section>
 </Base>
