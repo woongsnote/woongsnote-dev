@@ -18,10 +18,12 @@ const author = config.author.name;
 const readingTime = minutesToReadText.split(' ')[0];
 ---
 
-<section class="mb-4 flex flex-col items-center gap-4 pb-4 text-content">
+<section class="mb-4 flex w-full flex-col items-center gap-4 pb-4 text-content">
   <h1 class="text-3xl font-black lg:text-5xl">{title}</h1>
   <p>{description}</p>
-  <div class="flex flex-col items-center gap-4 sm:flex-row">
+  <div
+    class="mx-auto flex flex-col items-center justify-center gap-2 sm:flex-row lg:gap-4"
+  >
     <span class="font-bold">{author}</span>
     <FormattedDate date={publishedDate} />
     <ReadingTimeText readingTime={readingTime} />
