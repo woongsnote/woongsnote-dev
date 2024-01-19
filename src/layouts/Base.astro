@@ -6,6 +6,7 @@ import config from '@config/config.json';
 
 import { ViewTransitions } from 'astro:transitions';
 import { SITE_DESCRIPTION, SITE_TITLE } from 'consts';
+import { Analytics } from '@vercel/analytics/react';
 
 export type Props = {
   pageTitle?: string;
@@ -34,6 +35,7 @@ const { pageTitle, description } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <Analytics />
     <script></script>
   </body>
 </html>
