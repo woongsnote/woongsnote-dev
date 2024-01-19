@@ -6,7 +6,6 @@ import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
 import Pagination from '@components/Pagination.astro';
 import PageHeader from '@components/PageHeader.astro';
-import { getTags } from '@utils/getTags';
 
 export const prerender = true;
 
@@ -18,8 +17,6 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-
-const tags: string[] = getTags(page.data);
 ---
 
 <Base pageTitle="Blog | woongsnote">
@@ -27,7 +24,7 @@ const tags: string[] = getTags(page.data);
     title="Blog"
     description="학습한 지식들과 구현했던 프로젝트들에 대한 기록입니다."
   />
-  <Posts posts={page.data} tags={tags} />
+  <Posts posts={page.data} />
   <Pagination
     pageLength={page.lastPage}
     currentUrl={page.url.current}
