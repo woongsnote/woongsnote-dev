@@ -1,10 +1,9 @@
 ---
-import config from '@config/config.json';
+import config from '@config/site-config';
 import SocialLinks from './SocialLinks.astro';
 import ProfileImage from './ProfileImage.astro';
 
-type techItem = string;
-const techStack: techItem[] = config.author.tech.split(', ');
+const techStack: string[] = config.author.tech.split(', ');
 ---
 
 <section class="mb-4 w-full border-b">

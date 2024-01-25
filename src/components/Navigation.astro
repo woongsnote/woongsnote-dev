@@ -4,26 +4,8 @@ import HomeIcon from '@icons/HomeIcon.astro';
 import AboutIcon from '@icons/AboutIcon.astro';
 import PostIcon from '@icons/PostIcon.astro';
 import TagIcon from '@icons/TagIcon.astro';
-
-type NavLink = {
-  name: string;
-  url: string;
-};
-
-const navLinks: NavLink[] = [
-  {
-    name: 'Home',
-    url: '/',
-  },
-  {
-    name: 'About',
-    url: '/about',
-  },
-  {
-    name: 'Blog',
-    url: '/blog',
-  },
-];
+import config from '@config/site-config';
+const navLinks = config.navLinks;
 ---
 
 <nav class="flex items-center gap-4 p-2 text-subContent lg:gap-8">
