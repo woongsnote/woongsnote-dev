@@ -1,24 +1,19 @@
 ---
-import { getCollection } from 'astro:content';
-import config from '@config/config.json';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import config from '@config/site-config';
 import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
 import Hero from '@components/Hero.astro';
 import HomePagination from '@components/HomePagination.astro';
+import { sortPostsByDateDesc } from '@utils/data-util';
 
-const recentPosts = (await getCollection('blog'))
-  .sort(
-    (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
-  )
+const recentPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
+  .sort(sortPostsByDateDesc)
   .slice(0, config.site.pageSize);
 ---
 
 <Base pageTitle="woongsnote.dev">
   <Hero />
-  <div class="flex w-full items-center justify-between text-content mb-4">
-    <h2 class="text-2xl font-black">최신 글</h2>
-    <a href="/blog">더 보기</a>
-  </div>
   <Posts posts={recentPosts} />
   <HomePagination />
 </Base>
