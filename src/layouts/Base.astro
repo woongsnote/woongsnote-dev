@@ -15,7 +15,7 @@ export type Props = {
   canonical?: string;
 };
 
-const { pageTitle, description } = Astro.props;
+const { pageTitle, description, image } = Astro.props;
 ---
 
 <html lang={config.site.lang}>
@@ -23,6 +23,7 @@ const { pageTitle, description } = Astro.props;
     <BaseHead
       title={pageTitle || SITE_TITLE}
       description={description || SITE_DESCRIPTION}
+      image={image || ''}
     />
     <ViewTransitions />
   </head>
