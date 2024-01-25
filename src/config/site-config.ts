@@ -1,6 +1,88 @@
+type SocialLink = {
+  name: string;
+  url: string;
+  svg: string;
+};
+
+type NavLink = {
+  name: string;
+  url: string;
+};
+
+type SiteConfig = {
+  site: {
+    title: string;
+    base_url: string;
+    base_path: string;
+    favicon: string;
+    logo: string;
+    lang: string;
+    description: string;
+    pageSize: number;
+  };
+  features: {
+    dark_mode: boolean;
+  };
+  metadata: {
+    meta_author: string;
+    meta_description: string;
+  };
+  author: {
+    name: string;
+    bio: string;
+    tech: string;
+  };
+  theme: {
+    defaultTheme: string;
+  };
+  socialLinks: SocialLink[];
+
+  navLinks: NavLink[];
+};
+
 const username = 'woongsnote';
 
-export default {
+const siteConfig: SiteConfig = {
+  site: {
+    title: 'woongsnote',
+    base_url: 'https://woongsnote.dev',
+    base_path: '/',
+    favicon: '/favicon.svg',
+    logo: '/logo.png',
+    lang: 'kr',
+    description: 'tech blog by woongsnote',
+    pageSize: 6,
+  },
+  features: {
+    dark_mode: true,
+  },
+  metadata: {
+    meta_author: `${username}`,
+    meta_description:
+      '개발 관련 학습한 지식과 구현한 프로젝트들을 기록하기 위한 공간.',
+  },
+  author: {
+    name: `${username}`,
+    bio: '안녕하세요. 문지웅입니다. 이 블로그는 제가 학습한 지식을 정리하고 구현한 프로젝트들을 기록하기 위한 공간입니다.',
+    tech: 'React, Next.js, TypeScript',
+  },
+  theme: {
+    defaultTheme: 'light',
+  },
+  navLinks: [
+    {
+      name: 'Home',
+      url: '/',
+    },
+    {
+      name: 'About',
+      url: '/about',
+    },
+    {
+      name: 'Blog',
+      url: '/blog',
+    },
+  ],
   socialLinks: [
     {
       name: 'github',
@@ -19,3 +101,5 @@ export default {
     },
   ],
 };
+
+export default siteConfig;

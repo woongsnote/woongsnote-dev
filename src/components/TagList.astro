@@ -1,5 +1,9 @@
 ---
 import TagItem from './TagItem.astro';
+
+type Props = {
+  tags: string[];
+};
 const { tags } = Astro.props;
 ---
 
@@ -9,7 +13,7 @@ const { tags } = Astro.props;
   >
   <div class="flex flex-wrap gap-3">
     {
-      tags?.map((tag: string) => {
+      tags?.map((tag) => {
         return <TagItem url={`/tags/${tag}`} title={tag} />;
       })
     }
