@@ -1,6 +1,7 @@
 ---
+import PostCard from '@components/PostCard.astro';
 import type { CollectionEntry } from 'astro:content';
-import PostList from '@components/PostList.astro';
+import config from '@config/config.json';
 
 type Props = {
   posts: CollectionEntry<'blog'>[];
@@ -9,6 +10,6 @@ type Props = {
 const { posts } = Astro.props;
 ---
 
-<section class="mx-auto my-2 flex w-full flex-col gap-12 lg:flex-row">
-  <PostList posts={posts} />
+<section class="grid w-full gap-8 md:grid-cols-2 lg:grid-cols-3">
+  {posts.slice(0, config.site.pageSize).map((post) => <PostCard post={post} />)}
 </section>

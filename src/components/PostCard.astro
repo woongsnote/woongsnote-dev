@@ -13,14 +13,14 @@ const { post } = Astro.props;
 const { title, description, image, publishedDate, category, tags, cover } =
   post.data;
 
-const slug = post.slug;
+const slug = post.slug.slice(7);
 const url = `/blog/${slug}`;
 const mainTag = tags[0];
 ---
 
 <a
   href={url}
-  class="mx-auto flex w-full max-w-sm flex-col items-center rounded-lg border hover:scale-105 hover:shadow-lg"
+  class="mx-auto flex w-full max-w-sm flex-col items-center rounded-lg border hover:scale-105 hover:shadow-lg dark:border-gray-700"
 >
   <CardImage image={cover ? cover.src : image?.url} title={title} url={url} />
   <div
