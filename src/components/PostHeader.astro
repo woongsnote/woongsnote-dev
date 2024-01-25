@@ -1,10 +1,8 @@
 ---
-import config from '@config/site-config';
 import FormattedDate from './FormattedDate.astro';
 import ReadingTimeText from './ReadingTimeText.astro';
 import TagItem from './TagItem.astro';
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
 import PostThumbnail from './PostThumbnail.astro';
 
 type Props = {
@@ -13,9 +11,8 @@ type Props = {
 };
 
 const { post, minutesToReadText } = Astro.props;
-const { title, description, publishedDate, tags, category, cover, image } =
+const { title, description, publishedDate, tags, category, cover, author } =
   post.data;
-const author = config.author.name;
 const readingTime = minutesToReadText.split(' ')[0];
 ---
 
@@ -34,7 +31,7 @@ const readingTime = minutesToReadText.split(' ')[0];
   </div>
   {
     category === 'Project' && (
-      <PostThumbnail image={cover ? cover.src : image?.url!} alt={title} />
+      <PostThumbnail image={cover.src} alt={title} />
     )
   }
 </section>
