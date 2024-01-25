@@ -20,7 +20,7 @@ const blog = defineCollection({
         alt: z.string(), // Alternative text for the image
       }).optional(),
 
-      cover: image().optional(),
+      cover: image(),
 
       coverAlt: z.string().optional(),
 
