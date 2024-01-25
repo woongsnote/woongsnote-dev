@@ -43,7 +43,7 @@ const title = `Tag: ${tag}`;
     {
       posts.map((post) => (
         <a
-          href={`/blog/${post.slug}`}
+          href={`/blog/${post.slug.slice(7)}`}
           class="flex items-center space-x-1 text-lg hover:text-accent gap-x-2"
         >
           <TagIcon />
