@@ -15,10 +15,12 @@ const blog = defineCollection({
       publishedDate: z.string().transform((str) => new Date(str)),
 
       // URL of the image for the blog post
-      image: z.object({
-        url: z.string(), // Source URL of the image
-        alt: z.string(), // Alternative text for the image
-      }).optional(),
+      image: z
+        .object({
+          url: z.string(), // Source URL of the image
+          alt: z.string(), // Alternative text for the image
+        })
+        .optional(),
 
       cover: image(),
 

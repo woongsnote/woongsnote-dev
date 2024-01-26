@@ -4,6 +4,7 @@ import Base from '@layouts/Base.astro';
 import PostHeader from '@components/PostHeader.astro';
 import Comments from '@components/Comments';
 import config from '@config/site-config';
+
 type Props = {
   post: CollectionEntry<'blog'>;
   minutesToReadText: string;
@@ -11,7 +12,7 @@ type Props = {
 
 const { post, minutesToReadText } = Astro.props;
 const { title, description } = post.data;
-const ogImage = `${config.site.base_url}/blog/${post.slug.slice(7)}/og.png`;
+const ogImage = `${config.site.base_url}/blog/${post.slug}/og.png`;
 ---
 
 <Base
