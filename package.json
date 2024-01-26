@@ -27,6 +27,8 @@
     "react-dom": "^18.2.0",
     "reading-time": "^1.5.0",
     "rehype-pretty-code": "^0.12.6",
+    "satori": "^0.10.11",
+    "satori-html": "^0.3.2",
     "vite": "^5.0.12"
   },
   "devDependencies": {
