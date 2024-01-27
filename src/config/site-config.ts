@@ -25,6 +25,7 @@ type SiteConfig = {
   };
   metadata: {
     meta_author: string;
+    meta_title: string;
     meta_description: string;
   };
   author: {
@@ -58,8 +59,9 @@ const siteConfig: SiteConfig = {
   },
   metadata: {
     meta_author: `${username}`,
+    meta_title: 'woongsnote.dev',
     meta_description:
-      '개발 관련 학습한 지식과 구현한 프로젝트들을 기록하기 위한 공간.',
+      '개발 관련 학습한 지식과 구현한 프로젝트들을 기록하기 위한 공간입니다.',
   },
   author: {
     name: `@${username}`,
