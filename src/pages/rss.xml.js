@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import { SITE_TITLE, SITE_DESCRIPTION } from 'consts';
+import config from "@config/site-config"
 
 /**
  * Retrieves a collection of blog posts and generates an RSS feed.
@@ -11,8 +11,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from 'consts';
 export async function GET(context) {
   const posts = await getCollection('blog');
   return rss({
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
+    title: config.metadata.meta_title,
+    description: config.metadata.meta_description,
     site: context.site,
     items: posts.map((post) => ({
       ...post.data,
