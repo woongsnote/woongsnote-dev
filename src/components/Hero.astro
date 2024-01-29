@@ -8,23 +8,21 @@ const techStack: string[] = config.author.tech.split(', ');
 
 <section class="mb-4 w-full border-b">
   <div class="mx-auto mb-4 flex w-full items-start justify-between">
-    <div class="w-full rounded-lg md:w-4/5">
+    <div class="flex w-full flex-col gap-4 rounded-lg md:w-4/5">
       <h1 class="mb-0 text-lg font-black text-content sm:text-3xl">
         {config.author.name}
       </h1>
-      <p class="mt-1.5 break-keep text-sm text-subContent md:text-base">
+      <p class="break-keep text-sm text-subContent md:text-base lg:text-xl">
         {config.author.bio}
       </p>
-      <div class="m-auto flex space-x-5 pt-4">
+      <div class="flex space-x-5">
         {
           techStack?.map((item) => (
             <span class="font-bold text-content">#{item}</span>
           ))
         }
       </div>
-      <div class="mt-4">
-        <SocialLinks />
-      </div>
+      <SocialLinks />
     </div>
     <div class="hidden rounded-lg md:block">
       <figure class="right-0">
