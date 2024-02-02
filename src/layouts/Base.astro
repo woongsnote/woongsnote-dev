@@ -15,12 +15,15 @@ export type Props = {
 };
 
 const { pageTitle, description, image } = Astro.props;
+const title = pageTitle
+  ? `${pageTitle} | ${config.site.title}`
+  : config.site.title;
 ---
 
 <html lang={config.site.lang}>
   <head>
     <BaseHead
-      title={pageTitle || config.metadata.meta_title}
+      title={title}
       description={description || config.metadata.meta_description}
       image={image}
     />
