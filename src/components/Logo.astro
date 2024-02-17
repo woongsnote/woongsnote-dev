@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import logoImage from '@assets/logo.png';;
+import logoImage from '@assets/logo.png';
 ---
 
 <a
@@ -9,7 +9,12 @@ import logoImage from '@assets/logo.png';;
   aria-label="Go to Homepage"
 >
   <figure aria-hidden="true">
-    <Image src={logoImage} alt='home' class="h-full w-full rounded-lg" />
+    <Image
+      src={logoImage}
+      alt="home"
+      class="h-full w-full rounded-lg"
+      loading="eager"
+    />
   </figure>
   <span class="sr-only">Go to Homepage</span>
 </a>
