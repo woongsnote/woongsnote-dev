@@ -1,0 +1,16 @@
+---
+import FormattedDate from './FormattedDate.astro';
+
+type Props = {
+  category?: string;
+  mainTag: string;
+  publishedDate: Date;
+};
+
+const { mainTag, publishedDate } = Astro.props;
+---
+
+<div class="flex w-full items-center justify-between px-1.5 pb-1 text-sm">
+  <span class="font-bold uppercase text-accent">{mainTag}</span>
+  <FormattedDate date={publishedDate} />
+</div>

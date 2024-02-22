@@ -1,0 +1,21 @@
+---
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<div
+  class="my-2 flex w-full flex-col items-start gap-x-4 gap-y-2 px-1.5 text-content md:h-24 lg:text-sm"
+>
+  <h2
+    class="text-xl font-semibold text-content underline-offset-8 hover:text-accent hover:underline"
+  >
+    {title}
+  </h2>
+  <p class="mt-1 line-clamp-2 break-keep text-sm text-subContent">
+    {description}
+  </p>
+</div>

@@ -7,7 +7,8 @@ import Hero from '@components/Hero.astro';
 import HomePagination from '@components/HomePagination.astro';
 import { sortPostsByDateDesc } from '@utils/data-util';
 
-const recentPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
+const allPosts = await getCollection('posts');
+const recentPosts: CollectionEntry<'posts'>[] = allPosts
   .sort(sortPostsByDateDesc)
   .slice(0, config.site.pageSize);
 ---

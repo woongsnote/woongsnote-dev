@@ -7,15 +7,10 @@ type Props = {
 const { tags } = Astro.props;
 ---
 
-<div class="hidden w-full basis-1/4 flex-col md:flex">
-  <span class="mb-2 w-full text-xl font-black text-content md:text-2xl"
-    >Tags</span
-  >
-  <div class="flex flex-wrap gap-3">
-    {
-      tags?.map((tag) => {
-        return <TagItem url={`/tags/${tag}`} title={tag} />;
-      })
-    }
-  </div>
+<div class="flex flex-wrap gap-3">
+  {
+    tags?.map((tag) => {
+      return <TagItem title={tag} />;
+    })
+  }
 </div>

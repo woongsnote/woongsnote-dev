@@ -2,6 +2,7 @@
 import config from '@config/site-config';
 import SocialLinks from './SocialLinks.astro';
 import ProfileImage from './ProfileImage.astro';
+import TechStack from './TechStack.astro';
 
 const techStack: string[] = config.author.tech.split(', ');
 ---
@@ -15,13 +16,7 @@ const techStack: string[] = config.author.tech.split(', ');
       <p class="break-keep text-sm text-subContent md:text-base lg:text-xl">
         {config.author.bio}
       </p>
-      <div class="flex space-x-5">
-        {
-          techStack?.map((item) => (
-            <span class="font-bold text-content">#{item}</span>
-          ))
-        }
-      </div>
+      <TechStack />
       <SocialLinks />
     </div>
     <div class="hidden rounded-lg md:block">
