@@ -1,0 +1,14 @@
+---
+import CardImage from './CardImage.astro';
+
+type Props = {
+  title: string;
+  image: string;
+};
+
+const { title, image } = Astro.props;
+---
+
+<div class="w-full">
+  <CardImage title={title} image={image} />
+</div>

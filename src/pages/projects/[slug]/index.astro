@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import ProjectArticle from '@layouts/ProjectArticle.astro';
+
+export const getStaticPaths = (async () => {
+  const projectEntries = await getCollection('projects');
+
+  return projectEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await entry.render();
+
+export const prerender = true;
+---
+
+<ProjectArticle
+  project={entry}
+  minutesToReadText={remarkPluginFrontmatter.minutesRead}
+>
+  <Content />
+</ProjectArticle>

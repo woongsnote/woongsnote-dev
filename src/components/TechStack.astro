@@ -1,0 +1,12 @@
+---
+import config from '@config/site-config';
+const techStack: string[] = config.author.tech.split(', ');
+---
+
+<div class="flex space-x-5 text-sm">
+  {
+    techStack?.map((item) => (
+      <span class="font-bold text-content">#{item}</span>
+    ))
+  }
+</div>

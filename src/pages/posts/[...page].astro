@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import config from '@config/site-config';
+import Base from '@layouts/Base.astro';
+import Posts from '@layouts/Posts.astro';
+import Pagination from '@components/Pagination.astro';
+import PageHeader from '@components/PageHeader.astro';
+import { sortPostsByDateDesc } from '@utils/data-util';
+
+export const prerender = true;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allPosts = (await getCollection('posts')).sort(sortPostsByDateDesc);
+  return paginate(allPosts, { pageSize: config.site.pageSize });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<Base pageTitle="Posts">
+  <PageHeader
+    title="Posts"
+    description="학습한 지식들에 대한 기록입니다."
+  />
+  <Posts posts={page.data} />
+  <Pagination
+    pageLength={page.lastPage}
+    currentUrl={page.url.current}
+    currentPage={page.currentPage}
+    firstUrl={`/posts/`}
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+    lastUrl={`/posts/${page.lastPage}`}
+  />
+</Base>

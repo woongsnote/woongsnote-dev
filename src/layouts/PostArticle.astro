@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from '@layouts/Base.astro';
+import PostHeader from '@components/PostHeader.astro';
+import Comments from '@components/Comments';
+import config from '@config/site-config';
+
+type Props = {
+  post: CollectionEntry<'posts'>;
+  minutesToReadText: string;
+};
+
+const { post, minutesToReadText } = Astro.props;
+---
+
+<Base pageTitle={post.data.title} description={post.data.description}>
+  <article class="mx-auto flex w-full flex-col">
+    <PostHeader post={post} minutesToReadText={minutesToReadText} />
+    <div
+      class="prose mx-auto my-4 w-full items-center text-base leading-10 text-content dark:prose-invert lg:max-w-5xl lg:text-xl"
+    >
+      <slot />
+    </div>
+    <Comments client:idle />
+  </article>
+</Base>

@@ -1,30 +1,31 @@
 ---
 import FormattedDate from './FormattedDate.astro';
+import PostThumbnail from './PostThumbnail.astro';
 import ReadingTimeText from './ReadingTimeText.astro';
 import TagItem from './TagItem.astro';
 import type { CollectionEntry } from 'astro:content';
+import TagList from './TagList.astro';
 
 type Props = {
-  post: CollectionEntry<'posts'>;
+  project: CollectionEntry<'projects'>;
   minutesToReadText: string;
 };
 
-const { post, minutesToReadText } = Astro.props;
+const { project, minutesToReadText } = Astro.props;
 const { title, description, publishedDate, tags, category, cover, author } =
-  post.data;
+  project.data;
 const readingTime = minutesToReadText.split(' ')[0];
 ---
 
 <section class="flex w-full flex-col items-center gap-4 pb-4 pt-2 text-content">
   <div
-    class="mx-auto flex flex-col items-center justify-center gap-2 text-sm sm:flex-row lg:gap-4"
+    class="mx-auto flex flex-col items-center justify-center gap-4 text-sm sm:flex-row"
   >
     <FormattedDate date={publishedDate} />
     <ReadingTimeText readingTime={readingTime} />
   </div>
   <h1 class="text-3xl font-black lg:text-5xl">{title}</h1>
   <p>{description}</p>
-  <div class="flex flex-wrap items-center gap-x-3">
-    {tags.map((tag: string) => <TagItem url={`/tags/${tag}`} title={tag} />)}
-  </div>
+  <TagList tags={tags} />
+  <PostThumbnail image={cover.src} alt={title} />
 </section>
