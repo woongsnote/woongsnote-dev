@@ -12,7 +12,7 @@ const recentPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
   .slice(0, config.site.pageSize);
 ---
 
-<Base pageTitle='Home'>
+<Base pageTitle="Home">
   <Hero />
   <Posts posts={recentPosts} />
   <HomePagination />

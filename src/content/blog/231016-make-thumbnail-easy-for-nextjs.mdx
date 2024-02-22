@@ -5,10 +5,9 @@ cover: '../../assets/blog-placeholder.jpg'
 publishedDate: '2023-10-16'
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Nextjs', 'thumbnail','OgImage','Vercel']
+tags: ['Nextjs', 'thumbnail', 'OgImage', 'Vercel']
 slug: 'make-thumbnail-easy-for-nextjs'
 ---
-
 
 ## 섬네일, 매번 만들어야 하는가..?
 
@@ -61,7 +60,7 @@ export async function GET(request: Request) {
       ),
       {
         ...size,
-      },
+      }
     );
   } catch (error) {
     return new Response(`Failed to generate the Image`, { status: 500 });
