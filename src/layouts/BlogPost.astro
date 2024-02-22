@@ -15,11 +15,7 @@ const { title, description } = post.data;
 const ogImage = `${config.site.base_url}/blog/${post.slug}/og.png`;
 ---
 
-<Base
-  pageTitle={title}
-  description={description}
-  image={ogImage}
->
+<Base pageTitle={title} description={description} image={ogImage}>
   <article class="mx-auto flex w-full flex-col">
     <PostHeader post={post} minutesToReadText={minutesToReadText} />
     <div
