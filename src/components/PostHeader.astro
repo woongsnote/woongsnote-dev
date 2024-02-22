@@ -29,9 +29,5 @@ const readingTime = minutesToReadText.split(' ')[0];
   <div class="flex flex-wrap items-center gap-x-3">
     {tags.map((tag: string) => <TagItem url={`/tags/${tag}`} title={tag} />)}
   </div>
-  {
-    category === 'Project' && (
-      <PostThumbnail image={cover.src} alt={title} />
-    )
-  }
+  {category === 'Project' && <PostThumbnail image={cover.src} alt={title} />}
 </section>
