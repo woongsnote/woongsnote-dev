@@ -10,8 +10,7 @@ type Props = {
 
 const { post } = Astro.props;
 
-const { title, description, publishedDate, category, tags, cover } =
-  post.data;
+const { title, description, publishedDate, category, tags, cover } = post.data;
 
 const slug = post.slug;
 const url = `/blog/${slug}`;
