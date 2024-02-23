@@ -4,12 +4,10 @@ import Logo from '@components/Logo.astro';
 import ThemeSwitcher from './ThemeSwitcher.astro';
 ---
 
-<header class="fixed left-0 z-20 w-full bg-bkg shadow-sm">
-  <div
-    class="container flex max-w-5xl items-center justify-between gap-2 px-2 py-4 sm:gap-4"
-  >
-    <Logo />
-    <Navigation />
-    <ThemeSwitcher />
-  </div>
+<header
+  class="fixed left-0 top-0 z-20 flex w-full items-center justify-between bg-bkg p-4 shadow-sm"
+>
+  <Logo />
+  <Navigation />
+  <ThemeSwitcher />
 </header>

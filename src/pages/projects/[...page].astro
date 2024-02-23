@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import config from '@config/site-config';
+import Base from '@layouts/Base.astro';
+import Pagination from '@components/Pagination.astro';
+import PageHeader from '@components/PageHeader.astro';
+import { sortProjectsByDateDesc } from '@utils/data-util';
+import Projects from '@layouts/Projects.astro';
+
+export const prerender = true;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allProjects = (await getCollection('projects')).sort(
+    sortProjectsByDateDesc
+  );
+  return paginate(allProjects, { pageSize: config.site.pageSize });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<Base pageTitle="Projects">
+  <PageHeader title="Projects" description="구현한 프로젝트들입니다." />
+  <Projects projects={page.data} />
+  <Pagination
+    pageLength={page.lastPage}
+    currentUrl={page.url.current}
+    currentPage={page.currentPage}
+    firstUrl={`/projects/`}
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+    lastUrl={`/projects/${page.lastPage}`}
+  />
+</Base>
