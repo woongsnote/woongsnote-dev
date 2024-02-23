@@ -10,8 +10,7 @@ type Props = {
 
 const { project } = Astro.props;
 
-const { title, description, publishedDate, category, tags, cover } =
-  project.data;
+const { title, description, publishedDate, tags, cover } = project.data;
 
 const slug = project.slug;
 const mainTag = tags[0];
