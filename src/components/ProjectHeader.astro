@@ -2,7 +2,6 @@
 import FormattedDate from './FormattedDate.astro';
 import PostThumbnail from './PostThumbnail.astro';
 import ReadingTimeText from './ReadingTimeText.astro';
-import TagItem from './TagItem.astro';
 import type { CollectionEntry } from 'astro:content';
 import TagList from './TagList.astro';
 
@@ -12,8 +11,7 @@ type Props = {
 };
 
 const { project, minutesToReadText } = Astro.props;
-const { title, description, publishedDate, tags, category, cover, author } =
-  project.data;
+const { title, description, publishedDate, tags, cover } = project.data;
 const readingTime = minutesToReadText.split(' ')[0];
 ---
 
