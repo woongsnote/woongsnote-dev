@@ -1,0 +1,184 @@
+---
+title: 'Next.js 14에서 이메일을 보내는 방법'
+cover: '../../assets/blog-placeholder.jpg'
+coverAlt: 'Next.js 14에서 이메일을 보내는 방법'
+description: 'Next.js의 App Router 및 Server Actions를 사용하여 이메일을 보내는 방법'
+publishedDate: 2023-11-27
+category: 'Tech'
+author: 'woongsnote'
+tags: ['Nextjs', 'Server Actions', 'Resend', 'React Email']
+slug: 'next14-send-email'
+---
+
+## 개요
+
+**포트폴리오**를 구현하면서, `Resend`와 `React Email`을 사용해서, **연락처 폼**을 구현했던 방법에 대해
+정리하려고 한다.
+
+## 구현 방법
+
+### 1. `Resend`와 `React-Email`을 사용하기 위해, 패키지를 설치한다.
+
+```bash
+npm install resend react-email @react-email/components -E
+```
+
+### 2. `ContactSection` 컴포넌트를 구현한다.
+
+```tsx title="ContactSection.tsx"
+import ContactForm from './ContactForm';
+
+const ContactSection = () => {
+  return (
+    <section
+      id="contact"
+      className="flex w-full flex-col justify-center gap-4 py-20"
+    >
+      <h2 className="text-center text-3xl font-black drop-shadow-lg lg:text-5xl">
+        Contact Me
+      </h2>
+      <p className="mb-4 text-center text-sm md:text-lg">
+        <a href="mailto:woongsnote@gmail.com" className="underline">
+          이메일
+        </a>
+        로 직접 연락하시거나, 아래 폼으로 연락하실 수 있습니다.
+      </p>
+      <ContactForm />
+    </section>
+  );
+};
+
+export default ContactSection;
+```
+
+### 3. `ContactForm` 컴포넌트를 구현한다.
+
+```tsx title="ContactForm.tsx"
+'use client';
+
+import { sendEmail } from '@/app/actions';
+import { toast } from 'react-hot-toast';
+import SubmitButton from './SubmitButton';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+
+const ContactForm = () => {
+  return (
+    <form
+      action={async (formData) => {
+        const { data, error } = await sendEmail(formData);
+        if (error) {
+          toast.error(error);
+          return;
+        }
+        toast.success('이메일이 성공적으로 전송되었습니다!');
+      }}
+      className="mx-auto flex w-full max-w-3xl flex-col gap-4 p-4"
+    >
+      <div className="flex w-full flex-col justify-between gap-4">
+        <Input
+          type="text"
+          placeholder="이름"
+          maxLength={20}
+          className=""
+          name="senderName"
+          required
+        />
+        <Input
+          type="email"
+          placeholder="이메일"
+          maxLength={200}
+          className=""
+          name="senderEmail"
+          required
+        />
+      </div>
+      <Textarea
+        name="message"
+        placeholder="내용"
+        maxLength={5000}
+        minLength={5}
+      />
+      <SubmitButton />
+    </form>
+  );
+};
+
+export default ContactForm;
+```
+
+### 4. `SubmitButton`의 동작을 구현한다.
+
+- Next.js에서 제공해주는 Server Actions을 사용하기 위해, `app` 폴더에 `actions.ts` 파일을 추가하고 코드를 구현한다.
+
+```ts title="app/actions.ts"
+'use server';
+
+import { getErrorMessage, validateString } from '@/utils/index';
+import { Resend } from 'resend';
+import { EmailTemplate } from '@/components/EmailTemplate';
+import { renderAsync } from '@react-email/render';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+export async function sendEmail(formData: FormData) {
+  const senderName = formData.get('senderName');
+  const senderEmail = formData.get('senderEmail');
+  const message = formData.get('message');
+
+  if (!validateString(senderEmail, 500)) {
+    return {
+      error: 'Invalid Sender Email',
+    };
+  }
+  if (!validateString(senderName, 500)) {
+    return {
+      error: 'Invalid Sender Name',
+    };
+  }
+  if (!validateString(message, 5000)) {
+    return {
+      error: 'Invalid Message',
+    };
+  }
+  const html = await renderAsync(
+    EmailTemplate({
+      senderEmail: senderEmail as string,
+      senderName: senderName as string,
+      message: message as string,
+    }),
+    { pretty: true }
+  );
+  try {
+    const { data } = await resend.emails.send({
+      from: '보내는 사람 주소',
+      to: '받는 사람 주소',
+      subject: 'Message from Contact Form',
+      reply_to: senderEmail as string,
+      html: html,
+    });
+    return { data };
+  } catch (error: unknown) {
+    return {
+      error: getErrorMessage(error),
+    };
+  }
+}
+```
+
+## 테스트
+
+이제, 필요한 기능에 대한 구현은 완료되었다.
+아래 명령어로 로컬에서 실행해보자.
+
+```bash
+npm run dev
+```
+
+[localhost:3000](localhost:3000)에서 보낸 메일이, 메일함에 정상적으로 도착한다면, 완성이다.
+
+---
+
+**※ Resend를 사용하기 위해서는 API 키 발급과 도메인 등록이 필요하다!**
+
+만약 전체 코드가 궁금하다면, [여기](https://github.com/woongsnote/my-portfolio)에서 확인할 수 있다.

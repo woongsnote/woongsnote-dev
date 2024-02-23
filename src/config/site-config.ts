@@ -81,8 +81,12 @@ const siteConfig: SiteConfig = {
       url: '/about',
     },
     {
-      name: 'Blog',
-      url: '/blog',
+      name: 'Posts',
+      url: '/posts',
+    },
+    {
+      name: 'Projects',
+      url: '/projects',
     },
   ],
   socialLinks: [

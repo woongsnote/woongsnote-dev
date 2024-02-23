@@ -1,42 +1,26 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import FormattedDate from './FormattedDate.astro';
-import Category from './Category.astro';
-import CardImage from './CardImage.astro';
+import CardFooter from './CardFooter.astro';
+import CardHeader from './CardHeader.astro';
+import CardBody from './CardBody.astro';
 
 type Props = {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<'posts'>;
 };
 
 const { post } = Astro.props;
 
-const { title, description, publishedDate, category, tags, cover } = post.data;
+const { title, description, publishedDate, tags, cover } = post.data;
 
 const slug = post.slug;
-const url = `/blog/${slug}`;
 const mainTag = tags[0];
 ---
 
 <a
-  href={url}
-  class="mx-auto flex w-full max-w-sm flex-col items-center rounded-lg border hover:scale-105 hover:shadow-lg dark:border-gray-700"
+  href={`/posts/${slug}`}
+  class="mx-auto flex w-full flex-col items-center rounded-lg border hover:scale-105 hover:shadow-lg dark:border-gray-700"
 >
-  <CardImage image={cover.src} title={title} />
-  <div
-    class="mt-2 flex w-full flex-col items-start gap-x-4 gap-y-2 px-1.5 text-content lg:text-sm"
-  >
-    <h2
-      class="mt-2 text-xl font-semibold text-content underline-offset-8 hover:text-accent hover:underline"
-    >
-      {title}
-    </h2>
-    <p class="mt-1 line-clamp-2 break-keep text-sm text-subContent">
-      {description}
-    </p>
-    <div class="mb-1 flex w-full items-center justify-between">
-      <Category category={category} />
-      <span class="font-bold uppercase">{mainTag}</span>
-      <FormattedDate date={publishedDate} />
-    </div>
-  </div>
+  <CardHeader title={title} image={cover.src} />
+  <CardBody title={title} description={description} />
+  <CardFooter mainTag={mainTag} publishedDate={publishedDate} />
 </a>
