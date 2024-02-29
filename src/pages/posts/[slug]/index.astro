@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import PostArticle from '@layouts/PostArticle.astro';
+import Article from '@layouts/Article.astro';
 
 export const getStaticPaths = (async () => {
   const blogEntries = await getCollection('posts');
@@ -13,14 +13,21 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { entry } = Astro.props;
+
 const { Content, remarkPluginFrontmatter } = await entry.render();
+
+const { title, description, publishedDate, tags } = entry.data;
 
 export const prerender = true;
 ---
 
-<PostArticle
-  post={entry}
+<Article
+  articleType="post"
+  title={title}
+  description={description}
+  publishedDate={publishedDate}
+  tags={tags}
   minutesToReadText={remarkPluginFrontmatter.minutesRead}
 >
   <Content />
-</PostArticle>
+</Article>

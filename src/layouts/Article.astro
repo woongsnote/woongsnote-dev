@@ -1,0 +1,59 @@
+---
+import Base from '@layouts/Base.astro';
+import Comments from '@components/Comments';
+import FormattedDate from '@components/FormattedDate.astro';
+import PostThumbnail from '@components/PostThumbnail.astro';
+import ReadingTimeText from '@components/ReadingTimeText.astro';
+import TagList from '@components/TagList.astro';
+
+type Props = {
+  articleType: 'post' | 'project';
+  minutesToReadText: string;
+  title: string;
+  description: string;
+  publishedDate: Date;
+  tags: string[];
+  cover?: any;
+};
+
+const {
+  minutesToReadText,
+  title,
+  description,
+  publishedDate,
+  tags,
+  articleType,
+  cover,
+} = Astro.props;
+
+const readingTime = minutesToReadText.split(' ')[0];
+---
+
+<Base pageTitle={title} description={description}>
+  <article class="mx-auto flex w-full max-w-5xl flex-col">
+    <section
+      class="flex w-full flex-col items-center gap-4 pb-4 pt-2 text-content"
+    >
+      <div
+        class="mx-auto flex flex-col items-center justify-center gap-2 text-sm sm:flex-row lg:gap-4"
+      >
+        <FormattedDate date={publishedDate} />
+        <ReadingTimeText readingTime={readingTime} />
+      </div>
+      <h1 class="text-3xl font-black lg:text-5xl">{title}</h1>
+      <p>{description}</p>
+      <TagList tags={tags} />
+      {
+        articleType === 'project' && (
+          <PostThumbnail image={cover.src} alt={title} />
+        )
+      }
+    </section>
+    <div
+      class="prose mx-auto my-4 w-full items-center text-base leading-10 text-content dark:prose-invert lg:max-w-5xl lg:text-xl"
+    >
+      <slot />
+    </div>
+    <Comments client:idle />
+  </article>
+</Base>

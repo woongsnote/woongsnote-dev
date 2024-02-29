@@ -22,7 +22,7 @@ const { page } = Astro.props;
 
 <Base pageTitle="Projects">
   <PageHeader title="Projects" description="구현한 프로젝트들입니다." />
-  <Projects projects={page.data} />
+  <Projects projects={page.data} pageSize={config.site.pageSize} />
   <Pagination
     pageLength={page.lastPage}
     currentUrl={page.url.current}
