@@ -1,15 +1,29 @@
 ---
-import PostCard from '@components/PostCard.astro';
 import type { CollectionEntry } from 'astro:content';
-import config from '@config/site-config';
+import Cards from './Cards.astro';
+import Card from '@components/Card.astro';
 
 type Props = {
   posts: CollectionEntry<'posts'>[];
+  pageSize: number;
 };
 
-const { posts } = Astro.props;
+const { posts, pageSize } = Astro.props;
 ---
 
-<section class="grid w-full gap-8 md:grid-cols-2 lg:grid-cols-3">
-  {posts.slice(0, config.site.pageSize).map((post) => <PostCard post={post} />)}
-</section>
+<Cards>
+  {
+    posts
+      .slice(0, pageSize)
+      .map((post) => (
+        <Card
+          title={post.data.title}
+          description={post.data.description}
+          publishedDate={post.data.publishedDate}
+          tags={post.data.tags}
+          cover={post.data.cover}
+          link={`/posts/${post.slug}`}
+        />
+      ))
+  }
+</Cards>

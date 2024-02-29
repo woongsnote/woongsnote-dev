@@ -9,7 +9,9 @@ type Props = {
 const { title, image } = Astro.props;
 ---
 
-<div class="h-auto w-full overflow-hidden rounded-t-lg shadow-sm md:h-44">
+<div
+  class="h-auto w-full overflow-hidden rounded-t-lg shadow-sm md:h-40 xl:h-52"
+>
   {
     image && (
       <figure class="transiton mx-auto size-full object-cover object-center duration-300 ease-in-out hover:scale-110">
