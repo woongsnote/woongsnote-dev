@@ -15,6 +15,6 @@ const recentPosts: CollectionEntry<'posts'>[] = allPosts
 
 <Base pageTitle="Home">
   <Hero />
-  <Posts posts={recentPosts} />
+  <Posts posts={recentPosts} pageSize={config.site.pageSize} />
   <HomePagination />
 </Base>
