@@ -1,19 +1,29 @@
 ---
-import ProjectCard from '@components/ProjectCard.astro';
 import type { CollectionEntry } from 'astro:content';
-import config from '@config/site-config';
+import Cards from './Cards.astro';
+import Card from '@components/Card.astro';
 
 type Props = {
   projects: CollectionEntry<'projects'>[];
+  pageSize: number;
 };
 
-const { projects } = Astro.props;
+const { projects, pageSize } = Astro.props;
 ---
 
-<section class="grid w-full gap-8 md:grid-cols-2 lg:grid-cols-3">
+<Cards>
   {
     projects
-      .slice(0, config.site.pageSize)
-      .map((project) => <ProjectCard project={project} />)
+      .slice(0, pageSize)
+      .map((project) => (
+        <Card
+          title={project.data.title}
+          description={project.data.description}
+          publishedDate={project.data.publishedDate}
+          tags={project.data.tags}
+          cover={project.data.cover}
+          link={`/projects/${project.slug}`}
+        />
+      ))
   }
-</section>
+</Cards>
