@@ -4,7 +4,7 @@
 
 처음 블로그 개발을 시작했을 때는, `Next.js`와 `Contentlayer`의 조합으로 구현했습니다.
 
-현재는 `Astro` 기반으로 운영 중입니다.
+현재는 [`Astro`](https://astro.build) 기반으로 개발 및 운영 중입니다.
 
 ---
 
@@ -18,20 +18,78 @@
 
 ## 🗃️ 주요 기능
 
-### ✨ 구현한 기능
-
-- [x] `TailwindCSS` 기반으로 반응형 UI 구현.
-- [x] `Tag` 선택하면, 선택한 Tag가 포함된 게시글 목록 확인 가능
-
-- [x] `SEO` 적용
-- [x] `Light` / `Dark` 모드
-
-### 구현 중이거나 구현 고려 중인 기능
-
-- [ ] `PWA` 지원
-- [ ] `Toc` 지원
+- [x] `Tailwind CSS` 기반으로 반응형 UI 구현.
+- [x] `SEO` 적용.
+- [x] `Light` / `Dark` Mode 지원.
+- [x] `Giscus`를 통해 게시글에 대한 댓글 기능 지원.
 
 ---
+
+## 프로젝트 구조
+
+📦src
+┣ 📂assets
+┣ 📂components
+┃ ┣ 📜BaseHead.astro
+┃ ┣ 📜Card.astro
+┃ ┣ 📜CardBody.astro
+┃ ┣ 📜CardFooter.astro
+┃ ┣ 📜CardHeader.astro
+┃ ┣ 📜CardImage.astro
+┃ ┣ 📜Category.astro
+┃ ┣ 📜Comments.tsx
+┃ ┣ 📜Footer.astro
+┃ ┣ 📜FormattedDate.astro
+┃ ┣ 📜Header.astro
+┃ ┣ 📜Hero.astro
+┃ ┣ 📜HomePagination.astro
+┃ ┣ 📜Logo.astro
+┃ ┣ 📜Navigation.astro
+┃ ┣ 📜NavLink.astro
+┃ ┣ 📜PageHeader.astro
+┃ ┣ 📜Pagination.astro
+┃ ┣ 📜PostThumbnail.astro
+┃ ┣ 📜ProfileImage.astro
+┃ ┣ 📜ReadingTimeText.astro
+┃ ┣ 📜SocialLinks.astro
+┃ ┣ 📜TagItem.astro
+┃ ┣ 📜TagList.astro
+┃ ┣ 📜TechStack.astro
+┃ ┣ 📜ThemeButton.astro
+┃ ┗ 📜ThemeSwitcher.astro
+┣ 📂config
+┃ ┗ 📜site-config.ts
+┣ 📂content
+┃ ┣ 📂posts
+┃ ┣ 📂projects
+┃ ┗ 📜config.ts
+┣ 📂icons
+┣ 📂layouts
+┃ ┣ 📜Article.astro
+┃ ┣ 📜Base.astro
+┃ ┣ 📜Cards.astro
+┃ ┣ 📜Posts.astro
+┃ ┗ 📜Projects.astro
+┣ 📂pages
+┃ ┣ 📂posts
+┃ ┃ ┣ 📂[slug]
+┃ ┃ ┃ ┗ 📜index.astro
+┃ ┃ ┗ 📜[...page].astro
+┃ ┣ 📂projects
+┃ ┃ ┣ 📂[slug]
+┃ ┃ ┃ ┗ 📜index.astro
+┃ ┃ ┗ 📜[...page].astro
+┃ ┣ 📂tags
+┃ ┃ ┗ 📂[tag]
+┃ ┣ 📜404.astro
+┃ ┣ 📜about.astro
+┃ ┣ 📜index.astro
+┃ ┗ 📜rss.xml.js
+┣ 📂styles
+┃ ┗ 📜global.css
+┣ 📂utils
+┃ ┗ 📜data-util.ts
+┗ 📜env.d.ts
 
 ## 🖥️ 구현 결과
 
