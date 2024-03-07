@@ -3,8 +3,8 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import config from '@config/site-config';
 import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
-import Hero from '@components/Hero.astro';
-import HomePagination from '@components/HomePagination.astro';
+import Hero from '@components/Hero/Hero.astro';
+import ViewMore from '@components/Page/ViewMore.astro';
 import { sortPostsByDateDesc } from '@utils/data-util';
 
 const allPosts = await getCollection('posts');
@@ -16,5 +16,5 @@ const recentPosts: CollectionEntry<'posts'>[] = allPosts
 <Base pageTitle="Home">
   <Hero />
   <Posts posts={recentPosts} pageSize={config.site.pageSize} />
-  <HomePagination />
+  <ViewMore />
 </Base>
