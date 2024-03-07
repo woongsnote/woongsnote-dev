@@ -3,8 +3,8 @@ import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import config from '@config/site-config';
 import Base from '@layouts/Base.astro';
-import Pagination from '@components/Pagination.astro';
-import PageHeader from '@components/PageHeader.astro';
+import Pagination from '@components/Page/Pagination.astro';
+import PageHeader from '@components/Page/PageHeader.astro';
 import { sortProjectsByDateDesc } from '@utils/data-util';
 import Projects from '@layouts/Projects.astro';
 
