@@ -1,14 +1,17 @@
 ---
 import config from '@config/site-config';
-import SocialLinks from './SocialLinks.astro';
-import ProfileImage from './ProfileImage.astro';
+import SocialLinks from '../Common/SocialLinks.astro';
+import ProfileImage from '../Common/ProfileImage.astro';
 import TechStack from './TechStack.astro';
 ---
 
 <section class="mb-4 w-full border-b px-2">
   <div class="mx-auto mb-4 flex w-full items-start justify-between">
-    <div class="flex w-full flex-col gap-4 rounded-lg md:w-4/5">
-      <h1 class="mb-0 text-lg font-black text-content sm:text-3xl">
+    <div class="flex w-full flex-col gap-4 rounded-lg">
+      <figure>
+        <ProfileImage />
+      </figure>
+      <h1 class="text-xl font-black text-content sm:text-3xl">
         {config.author.name}
       </h1>
       <p class="break-keep text-sm text-subContent md:text-base lg:text-xl">
@@ -16,11 +19,6 @@ import TechStack from './TechStack.astro';
       </p>
       <TechStack />
       <SocialLinks />
-    </div>
-    <div class="hidden rounded-lg md:block">
-      <figure class="right-0">
-        <ProfileImage />
-      </figure>
     </div>
   </div>
 </section>
