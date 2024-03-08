@@ -5,16 +5,17 @@ import logoImage from '@assets/logo.png';
 
 <a
   href="/"
-  class="flex size-14 items-center justify-center rounded-md shadow-md"
+  class="flex place-items-center gap-2"
   aria-label="Go to Homepage"
 >
   <figure aria-hidden="true">
     <Image
       src={logoImage}
       alt="home"
-      class="size-full rounded-lg"
+      class="size-12 rounded-md shadow-lg"
       loading="eager"
     />
   </figure>
+  <span class="hidden md:block text-2xl font-black text-content drop-shadow-lg">Woongsnote</span>
   <span class="sr-only">Go to Homepage</span>
 </a>

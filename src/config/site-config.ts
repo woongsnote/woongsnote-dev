@@ -65,7 +65,8 @@ const siteConfig: SiteConfig = {
   },
   author: {
     name: `@${username}`,
-    bio: '안녕하세요. 프론트엔드 개발자 문지웅입니다. 이 블로그는 제가 학습한 지식을 정리하고, 구현한 프로젝트들을 기록하기 위한 공간입니다.',
+    bio: `안녕하세요. 프론트엔드 개발자 문지웅입니다.
+    이 블로그는 제가 학습한 지식을 정리하고, 구현한 프로젝트들을 기록하기 위한 공간입니다.`,
     tech: 'React, Next.js, TypeScript',
   },
   theme: {
