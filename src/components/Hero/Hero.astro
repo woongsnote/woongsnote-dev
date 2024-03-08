@@ -1,24 +1,12 @@
 ---
-import config from '@config/site-config';
 import SocialLinks from '../Common/SocialLinks.astro';
 import ProfileImage from '../Common/ProfileImage.astro';
+import Bio from './Bio.astro';
 import TechStack from './TechStack.astro';
 ---
 
-<section class="mb-4 w-full border-b px-2">
-  <div class="mx-auto mb-4 flex w-full items-start justify-between">
-    <div class="flex w-full flex-col gap-4 rounded-lg">
-      <figure>
-        <ProfileImage />
-      </figure>
-      <h1 class="text-xl font-black text-content sm:text-3xl">
-        {config.author.name}
-      </h1>
-      <p class="break-keep text-sm text-subContent md:text-base lg:text-xl">
-        {config.author.bio}
-      </p>
-      <TechStack />
-      <SocialLinks />
-    </div>
-  </div>
+<section class="mb-4 flex w-full flex-col gap-4 border-b p-2">
+  <ProfileImage />
+  <Bio />
+  <TechStack />
 </section>
