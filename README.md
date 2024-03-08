@@ -29,68 +29,80 @@
 
 ```
 📦src
-┣ 📂assets
-┣ 📂components
-┃ ┣ 📜BaseHead.astro
-┃ ┣ 📜Card.astro
-┃ ┣ 📜CardBody.astro
-┃ ┣ 📜CardFooter.astro
-┃ ┣ 📜CardHeader.astro
-┃ ┣ 📜CardImage.astro
-┃ ┣ 📜Category.astro
-┃ ┣ 📜Comments.tsx
-┃ ┣ 📜Footer.astro
-┃ ┣ 📜FormattedDate.astro
-┃ ┣ 📜Header.astro
-┃ ┣ 📜Hero.astro
-┃ ┣ 📜HomePagination.astro
-┃ ┣ 📜Logo.astro
-┃ ┣ 📜Navigation.astro
-┃ ┣ 📜NavLink.astro
-┃ ┣ 📜PageHeader.astro
-┃ ┣ 📜Pagination.astro
-┃ ┣ 📜PostThumbnail.astro
-┃ ┣ 📜ProfileImage.astro
-┃ ┣ 📜ReadingTimeText.astro
-┃ ┣ 📜SocialLinks.astro
-┃ ┣ 📜TagItem.astro
-┃ ┣ 📜TagList.astro
-┃ ┣ 📜TechStack.astro
-┃ ┣ 📜ThemeButton.astro
-┃ ┗ 📜ThemeSwitcher.astro
-┣ 📂config
-┃ ┗ 📜site-config.ts
-┣ 📂content
-┃ ┣ 📂posts
-┃ ┣ 📂projects
-┃ ┗ 📜config.ts
-┣ 📂icons
-┣ 📂layouts
-┃ ┣ 📜Article.astro
-┃ ┣ 📜Base.astro
-┃ ┣ 📜Cards.astro
-┃ ┣ 📜Posts.astro
-┃ ┗ 📜Projects.astro
-┣ 📂pages
-┃ ┣ 📂posts
-┃ ┃ ┣ 📂[slug]
-┃ ┃ ┃ ┗ 📜index.astro
-┃ ┃ ┗ 📜[...page].astro
-┃ ┣ 📂projects
-┃ ┃ ┣ 📂[slug]
-┃ ┃ ┃ ┗ 📜index.astro
-┃ ┃ ┗ 📜[...page].astro
-┃ ┣ 📂tags
-┃ ┃ ┗ 📂[tag]
-┃ ┣ 📜404.astro
-┃ ┣ 📜about.astro
-┃ ┣ 📜index.astro
-┃ ┗ 📜rss.xml.js
-┣ 📂styles
-┃ ┗ 📜global.css
-┣ 📂utils
-┃ ┗ 📜data-util.ts
-┗ 📜env.d.ts
+ ┣ 📂assets
+ ┣ 📂components
+ ┃ ┣ 📂Card
+ ┃ ┃ ┣ 📜Card.astro
+ ┃ ┃ ┣ 📜CardBody.astro
+ ┃ ┃ ┣ 📜CardFooter.astro
+ ┃ ┃ ┣ 📜CardHeader.astro
+ ┃ ┃ ┣ 📜CardImage.astro
+ ┃ ┃ ┗ 📜Category.astro
+ ┃ ┣ 📂Common
+ ┃ ┃ ┣ 📜BaseHead.astro
+ ┃ ┃ ┣ 📜FormattedDate.astro
+ ┃ ┃ ┣ 📜ProfileImage.astro
+ ┃ ┃ ┗ 📜SocialLinks.astro
+ ┃ ┣ 📂Footer
+ ┃ ┃ ┗ 📜Footer.astro
+ ┃ ┣ 📂Header
+ ┃ ┃ ┣ 📜Header.astro
+ ┃ ┃ ┣ 📜Logo.astro
+ ┃ ┃ ┣ 📜Navigation.astro
+ ┃ ┃ ┗ 📜NavLink.astro
+ ┃ ┣ 📂Hero
+ ┃ ┃ ┣ 📜Bio.astro
+ ┃ ┃ ┣ 📜Hero.astro
+ ┃ ┃ ┗ 📜TechStack.astro
+ ┃ ┣ 📂Page
+ ┃ ┃ ┣ 📜PageHeader.astro
+ ┃ ┃ ┣ 📜Pagination.astro
+ ┃ ┃ ┗ 📜ViewMore.astro
+ ┃ ┣ 📂Post
+ ┃ ┃ ┣ 📜Comments.tsx
+ ┃ ┃ ┣ 📜PostThumbnail.astro
+ ┃ ┃ ┣ 📜ReadingTimeText.astro
+ ┃ ┃ ┣ 📜TagItem.astro
+ ┃ ┃ ┗ 📜TagList.astro
+ ┃ ┗ 📂Theme
+ ┃ ┃ ┣ 📜ThemeButton.astro
+ ┃ ┃ ┗ 📜ThemeSwitcher.astro
+ ┣ 📂config
+ ┃ ┗ 📜site-config.ts
+ ┣ 📂content
+ ┃ ┣ 📂posts
+ ┃ ┣ 📂projects
+ ┃ ┣ 📂schemas
+ ┃ ┃ ┣ 📜blogSchema.ts
+ ┃ ┃ ┗ 📜projectSchema.ts
+ ┃ ┗ 📜config.ts
+ ┣ 📂icons
+ ┣ 📂layouts
+ ┃ ┣ 📜Article.astro
+ ┃ ┣ 📜Base.astro
+ ┃ ┣ 📜Cards.astro
+ ┃ ┣ 📜Posts.astro
+ ┃ ┗ 📜Projects.astro
+ ┣ 📂pages
+ ┃ ┣ 📂posts
+ ┃ ┃ ┣ 📂[slug]
+ ┃ ┃ ┃ ┗ 📜index.astro
+ ┃ ┃ ┗ 📜[...page].astro
+ ┃ ┣ 📂projects
+ ┃ ┃ ┣ 📂[slug]
+ ┃ ┃ ┃ ┗ 📜index.astro
+ ┃ ┃ ┗ 📜[...page].astro
+ ┃ ┣ 📂tags
+ ┃ ┃ ┗ 📂[tag]
+ ┃ ┣ 📜404.astro
+ ┃ ┣ 📜about.astro
+ ┃ ┣ 📜index.astro
+ ┃ ┗ 📜rss.xml.js
+ ┣ 📂styles
+ ┃ ┗ 📜global.css
+ ┣ 📂utils
+ ┃ ┗ 📜data-util.ts
+ ┗ 📜env.d.ts
 ```
 
 ## 🖥️ 구현 결과
