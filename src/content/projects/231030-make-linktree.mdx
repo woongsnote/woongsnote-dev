@@ -38,7 +38,7 @@ import LinkList from '@components/LinkList';
 
 function App() {
   return (
-    <div className="flex min-h-screen flex-col bg-bkg p-2 text-white">
+    <div className="bg-bkg flex min-h-screen flex-col p-2 text-white">
       <div className="container m-1 mx-auto flex max-w-xs flex-grow flex-col items-center gap-4 rounded-lg px-4 py-2">
         <UserInfo />
         <SocialLinkList />
@@ -56,62 +56,65 @@ export default App;
 
 각 컴포넌트의 구성은 아래와 같다.
 
-### 1. UserInfo.tsx
+1. UserInfo.tsx
 
-```tsx title="UserInfo.tsx"
-import ProfileImage from '@components/ProfileImage';
+- 사용자의 기본 정보를 보여주기 위한 UserInfo 부분이다.
 
-function UserInfo() {
-  return (
-    <div className="flex flex-col items-center">
-      <ProfileImage />
-      <h2 className="text-lg font-bold">문지웅(@woongsnote)</h2>
-      <p className="text-sm">Front-End Developer</p>
-    </div>
-  );
-}
+  ```tsx title="UserInfo.tsx"
+  import ProfileImage from '@components/ProfileImage';
 
-export default UserInfo;
-```
+  function UserInfo() {
+    return (
+      <div className="flex flex-col items-center">
+        <ProfileImage />
+        <h2 className="text-lg font-bold">문지웅(@woongsnote)</h2>
+        <p className="text-sm">Front-End Developer</p>
+      </div>
+    );
+  }
+  export default UserInfo;
+  ```
 
-### 2. SocialLinkList
+2. SocialLinkList
 
-```tsx title="SocialLinkList.tsx"
-import { MyLinks } from './Links';
+- SNS 링크들을 Map 함수를 이용해서 icon으로 나타냈다.
 
-function SocialLinkList() {
-  return (
-    <div className="flex flex-wrap gap-2">
-      {MyLinks.map((item, index) => (
-        <a href={item.url} key={index} className="text-2xl">
-          {item.icon}
-        </a>
-      ))}
-    </div>
-  );
-}
+  ```tsx title="SocialLinkList.tsx"
+  import { MyLinks } from './Links';
 
-export default SocialLinkList;
-```
+  function SocialLinkList() {
+    return (
+      <div className="flex flex-wrap gap-2">
+        {MyLinks.map((item, index) => (
+          <a href={item.url} key={index} className="text-2xl">
+            {item.icon}
+          </a>
+        ))}
+      </div>
+    );
+  }
 
-### 3. LinkList
+  export default SocialLinkList;
+  ```
 
-```tsx title="LinkList.tsx"
-import LinkItem from './LinkItem';
-import { MyLinks } from './Links';
+3. LinkList
 
-function LinkList() {
-  return (
-    <div className="flex w-full flex-col gap-4">
-      {MyLinks.map((item, index) => (
-        <LinkItem key={index} title={item.title} url={item.url} />
-      ))}
-    </div>
-  );
-}
+   ```tsx title="LinkList.tsx"
+   import LinkItem from './LinkItem';
+   import { MyLinks } from './Links';
 
-export default LinkList;
-```
+   function LinkList() {
+     return (
+       <div className="flex w-full flex-col gap-4">
+         {MyLinks.map((item, index) => (
+           <LinkItem key={index} title={item.title} url={item.url} />
+         ))}
+       </div>
+     );
+   }
+
+   export default LinkList;
+   ```
 
 ## 구현 결과
 
