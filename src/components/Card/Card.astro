@@ -1,7 +1,9 @@
 ---
-import CardFooter from '../Card/CardFooter.astro';
-import CardHeader from '../Card/CardHeader.astro';
-import CardBody from '../Card/CardBody.astro';
+import Thumbnail from './Thumbnail.astro';
+import Title from './Title.astro';
+import Tag from './Tag.astro';
+import Description from './Description.astro';
+import FormattedDate from '@components/Common/FormattedDate.astro';
 
 type Props = {
   title: string;
@@ -10,17 +12,26 @@ type Props = {
   tags: string[];
   cover?: any;
   link: string;
+  category?: string;
 };
 
-const { title, description, publishedDate, tags, cover, link } = Astro.props;
+const { title, description, publishedDate, tags, cover, link, category } =
+  Astro.props;
 const mainTag = tags[0];
 ---
 
-<a
-  href={link}
-  class="mx-auto flex w-full max-w-sm flex-col items-center rounded-lg border hover:scale-105 hover:shadow-lg dark:border-gray-700"
->
-  <CardHeader title={title} image={cover.src} />
-  <CardBody title={title} description={description} />
-  <CardFooter mainTag={mainTag} publishedDate={publishedDate} />
-</a>
+<article class="group relative">
+  <a href={link} class="mx-auto flex w-full max-w-3xl flex-col rounded-lg">
+    <div class="flex gap-4">
+      <Thumbnail image={cover.src} title={title} />
+      <div>
+        <Title title={title} />
+        <Description description={description} />
+        <p class="flex gap-2 text-sm text-content">
+          <FormattedDate date={publishedDate} />
+          <Tag tag={mainTag} />
+        </p>
+      </div>
+    </div>
+  </a>
+</article>
