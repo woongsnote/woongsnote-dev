@@ -9,6 +9,10 @@ import rehypePrettyCode from 'rehype-pretty-code';
 
 export default defineConfig({
   site: 'https://woongsnote.dev',
+  redirects: {
+    '/blog': '/posts',
+    '/posts/undefined': '/posts',
+  },
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
