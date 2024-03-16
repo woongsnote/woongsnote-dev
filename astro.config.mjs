@@ -10,7 +10,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 export default defineConfig({
   site: 'https://woongsnote.dev',
   redirects: {
-    '/blog': '/posts',
+    '/blog/[...slug]': '/posts/[...slug]',
     '/posts/undefined': '/posts',
   },
   markdown: {
