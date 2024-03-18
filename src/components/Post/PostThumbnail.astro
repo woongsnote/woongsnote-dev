@@ -10,18 +10,16 @@ const { image, alt } = Astro.props;
 ---
 
 <div
-  class="mx-auto flex items-center justify-center overflow-hidden rounded-lg shadow-sm"
->
+  class="mx-auto flex items-center justify-center overflow-hidden rounded-lg shadow-sm">
   <figure
-    class="mx-auto h-auto w-auto object-cover object-center duration-300 ease-in-out hover:scale-110 md:h-72"
-  >
+    class="mx-auto h-auto w-full max-w-lg object-cover object-center duration-300 ease-in-out hover:scale-110">
     <Image
       src={image}
       alt={alt}
       width="960"
       height="540"
       loading="eager"
-      class="h-full w-full"
+      class="size-full"
     />
   </figure>
 </div>

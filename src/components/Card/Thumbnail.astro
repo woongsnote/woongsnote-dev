@@ -12,13 +12,13 @@ const { title, image } = Astro.props;
 <div class="hidden overflow-hidden rounded-lg md:block">
   {
     image && (
-      <figure class="transiton object-cover object-center duration-300 ease-in-out hover:scale-110">
+      <figure class="transiton w-40 ">
         <Image
           src={image}
           alt={title}
-          width={960}
-          height={540}
-          class="h-auto w-36 rounded-lg"
+          width={320}
+          height={180}
+          class="rounded-lg object-cover object-center duration-300 ease-in-out hover:scale-110"
           loading="eager"
         />
       </figure>
