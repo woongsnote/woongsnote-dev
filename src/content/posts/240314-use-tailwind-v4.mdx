@@ -1,0 +1,126 @@
+---
+title: '프로젝트에 Tailwind CSS v4를 적용하는 방법'
+cover: '../../assets/blog-placeholder.jpg'
+coverAlt: '프레임워크 별 TailWind CSS v4 적용 방법'
+description: '프레임워크 별 TailWind CSS v4 적용 방법'
+publishedDate: 2024-03-14
+category: 'Tech'
+author: 'woongsnote'
+tags: ['TailwindCSS', 'Nextjs', 'Vite', 'Astro']
+slug: 'use-tailwind-v4'
+---
+
+## 개요
+
+현재, TailwindCSS의 최신 버전은 `3`버전이고, 조만간 `4`로 업데이트 될 예정이다.
+`v4`가 `v3`와 많은 변경사항이 있고, 프로젝트에 적용하는 방법 또한 달라질 예정이어서 프레임워크 별로 해당 내용을 정리해보려고 한다.
+`Next.js`, `Vite`, `Astro` 프로젝트에서 Tailwind CSS의 v4를 설치하는 방법에 대해 살펴보자.
+
+## 프레임워크별 사용법
+
+### 1. Next.js
+
+1. `Tailwind CSS` 설치
+
+   ```bash title="install tailwind css"
+   npm install tailwindcss@next @tailwindcss/postcss@next -D
+   ```
+
+2. `tailwind.config.ts` 제거
+
+   - 기존에 3버전의 tailwind가 설치된 경우, `tailwind.config.js` 파일이 존재하므로 이를 제거한다.
+
+3. `postcss` 파일 수정
+
+   - `postcss.config.js` 파일을 아래와 같이 수정한다.
+
+   ```js title="postcss.config.js"
+   export default {
+     plugins: {
+       '@tailwindcss/postcss': {},
+     },
+   };
+   ```
+
+4. `globals.css` 수정
+
+   ```css title="globals.css"
+   @import 'tailwindcss';
+   ```
+
+### 2. Vite
+
+1. `Tailwind CSS` 설치
+
+   ```bash title="install tailwind css"
+   npm install tailwindcss@next @tailwindcss/vite@next -D
+   ```
+
+2. `vite.config.ts`에 tailwindcss 플러그인 추가
+
+   ```ts title="vite.config.ts"
+   import { defineConfig } from 'vite';
+   import tailwindcss from '@tailwindcss/vite';
+   import react from '@vitejs/plugin-react-swc';
+
+   export default defineConfig({
+     plugins: [react(), tailwindcss()],
+   });
+   ```
+
+3. `App.css` 초기화
+
+4. `index.css` 수정
+
+   ```css title="index.css"
+   @import 'tailwindcss';
+   ```
+
+5. `App.tsx`에 적용
+
+   ```tsx
+   function App() {
+     return <div className="text-4xl font-bold">Hello Tailwind 4</div>;
+   }
+
+   export default App;
+   ```
+
+### 3. Astro
+
+1. `Tailwind CSS` 설치
+
+   ```bash title="install tailwind css"
+   npm install tailwindcss@next @tailwindcss/postcss@next -D
+   ```
+
+2. `postcss` 파일 생성 및 플러그인 추가
+
+   ```js title="postcss.config.mjs"
+   export default {
+     plugins: {
+       '@tailwindcss/postcss': {},
+     },
+   };
+   ```
+
+3. src 폴더에 `app.css` 추가
+
+   ```css title="app.css"
+   @import 'tailwindcss';
+   ```
+
+4. index.astro에 `app.css` import 추가
+
+   ```astro title="index.astro"
+   import "../app.css";
+   ```
+
+## 참고
+
+- <a href="https://tailwindcss.com/blog/tailwindcss-v4-alpha" target="_blank">
+    TailwindCSS v4
+  </a>
+- <a href="https://youtu.be/YzQrHnlWyZ0?si=GiKrhGh8m4cD1dpQ" target="_blank">
+    Youtube Link
+  </a>
