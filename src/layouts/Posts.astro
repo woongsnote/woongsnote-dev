@@ -4,7 +4,7 @@ import Cards from './Cards.astro';
 import Card from '@components/Card/Card.astro';
 
 type Props = {
-  posts: CollectionEntry<'posts'>[];
+  posts: CollectionEntry<'blog'>[];
   pageSize: number;
 };
 
@@ -22,7 +22,7 @@ const { posts, pageSize } = Astro.props;
           publishedDate={post.data.publishedDate}
           tags={post.data.tags}
           cover={post.data.cover}
-          link={`/posts/${post.slug}`}
+          link={`/blog/${post.slug}`}
           category={post.data.category}
         />
       ))

@@ -7,7 +7,8 @@ type Props = {
 const { title, description } = Astro.props;
 ---
 
-<section class="mb-4 flex flex-col gap-2 text-content">
+<section
+  class="mx-auto mb-4 flex w-full max-w-5xl flex-col gap-2 border-b pb-4 text-content">
   <h1 class="text-2xl font-black md:text-3xl">
     {title}
   </h1>

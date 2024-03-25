@@ -4,7 +4,7 @@ export const blogSchema = ({ image }: { image: ImageFunction }) =>
     title: z.string(),
     description: z.string(),
     publishedDate: z.date(),
-    cover: image().optional(),
+    cover: image(),
     coverAlt: z.string().optional(),
     category: z.string(),
     tags: z.array(z.string()),

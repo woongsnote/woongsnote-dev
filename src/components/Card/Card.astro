@@ -1,7 +1,5 @@
 ---
-import Thumbnail from './Thumbnail.astro';
 import Title from './Title.astro';
-import Tag from './Tag.astro';
 import Description from './Description.astro';
 import FormattedDate from '@components/Common/FormattedDate.astro';
 import Category from './Category.astro';
@@ -11,29 +9,23 @@ type Props = {
   description: string;
   publishedDate: Date;
   tags: string[];
-  cover?: ImageMetadata;
   link: string;
   category?: string;
 };
 
-const { title, description, publishedDate, tags, cover, link, category } =
-  Astro.props;
+const { title, description, publishedDate, tags, link, category } = Astro.props;
 const mainTag = tags[0];
 ---
 
-<article class="group relative">
+<article
+  class="group relative transform transition duration-200 hover:translate-x-3">
   <a href={link} class="mx-auto flex w-full max-w-3xl flex-col rounded-lg">
-    <div class="flex items-center gap-4">
-      <Thumbnail image={cover} title={title} />
-      <div>
-        {category && <Category category={category} />}
-        <Title title={title} />
-        <Description description={description} />
-        <p class="flex gap-2 text-sm text-content">
-          <FormattedDate date={publishedDate} />
-          <Tag tag={mainTag} />
-        </p>
-      </div>
-    </div>
+    {category && <Category category={category} />}
+    <Title title={title} />
+    <Description description={description} />
+    <p class="flex gap-2 text-sm text-content">
+      <FormattedDate date={publishedDate} />
+      <span>― {mainTag}</span>
+    </p>
   </a>
 </article>
