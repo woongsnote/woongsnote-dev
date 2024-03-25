@@ -21,7 +21,6 @@ const { posts, pageSize } = Astro.props;
           description={post.data.description}
           publishedDate={post.data.publishedDate}
           tags={post.data.tags}
-          cover={post.data.cover}
           link={`/blog/${post.slug}`}
           category={post.data.category}
         />
