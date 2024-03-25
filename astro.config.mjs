@@ -8,11 +8,7 @@ import react from '@astrojs/react';
 import rehypePrettyCode from 'rehype-pretty-code';
 
 export default defineConfig({
-  site: 'https://woongsnote.dev',
-  redirects: {
-    '/blog/[...slug]': '/posts/[...slug]',
-    '/posts/undefined': '/posts',
-  },
+  site: 'https://www.woongsnote.dev',
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },

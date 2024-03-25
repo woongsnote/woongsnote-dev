@@ -34,100 +34,18 @@ slug: 'woongsnote'
 - `Light` / `Dark` Mode 지원.
 - `Giscus`를 활용한 댓글 기능 지원.
 
----
-
-## 프로젝트 구조
-
-```
-📦src
- ┣ 📂assets
- ┣ 📂components
- ┃ ┣ 📂Card
- ┃ ┃ ┣ 📜Card.astro
- ┃ ┃ ┣ 📜CardBody.astro
- ┃ ┃ ┣ 📜CardFooter.astro
- ┃ ┃ ┣ 📜CardHeader.astro
- ┃ ┃ ┣ 📜CardImage.astro
- ┃ ┃ ┗ 📜Category.astro
- ┃ ┣ 📂Common
- ┃ ┃ ┣ 📜BaseHead.astro
- ┃ ┃ ┣ 📜FormattedDate.astro
- ┃ ┃ ┣ 📜ProfileImage.astro
- ┃ ┃ ┗ 📜SocialLinks.astro
- ┃ ┣ 📂Footer
- ┃ ┃ ┗ 📜Footer.astro
- ┃ ┣ 📂Header
- ┃ ┃ ┣ 📜Header.astro
- ┃ ┃ ┣ 📜Logo.astro
- ┃ ┃ ┣ 📜Navigation.astro
- ┃ ┃ ┗ 📜NavLink.astro
- ┃ ┣ 📂Hero
- ┃ ┃ ┣ 📜Bio.astro
- ┃ ┃ ┣ 📜Hero.astro
- ┃ ┃ ┗ 📜TechStack.astro
- ┃ ┣ 📂Page
- ┃ ┃ ┣ 📜PageHeader.astro
- ┃ ┃ ┣ 📜Pagination.astro
- ┃ ┃ ┗ 📜ViewMore.astro
- ┃ ┣ 📂Post
- ┃ ┃ ┣ 📜Comments.tsx
- ┃ ┃ ┣ 📜PostThumbnail.astro
- ┃ ┃ ┣ 📜ReadingTimeText.astro
- ┃ ┃ ┣ 📜TagItem.astro
- ┃ ┃ ┗ 📜TagList.astro
- ┃ ┗ 📂Theme
- ┃ ┃ ┣ 📜ThemeButton.astro
- ┃ ┃ ┗ 📜ThemeSwitcher.astro
- ┣ 📂config
- ┃ ┗ 📜site-config.ts
- ┣ 📂content
- ┃ ┣ 📂posts
- ┃ ┣ 📂projects
- ┃ ┣ 📂schemas
- ┃ ┃ ┣ 📜blogSchema.ts
- ┃ ┃ ┗ 📜projectSchema.ts
- ┃ ┗ 📜config.ts
- ┣ 📂icons
- ┣ 📂layouts
- ┃ ┣ 📜Article.astro
- ┃ ┣ 📜Base.astro
- ┃ ┣ 📜Cards.astro
- ┃ ┣ 📜Posts.astro
- ┃ ┗ 📜Projects.astro
- ┣ 📂pages
- ┃ ┣ 📂posts
- ┃ ┃ ┣ 📂[slug]
- ┃ ┃ ┃ ┗ 📜index.astro
- ┃ ┃ ┗ 📜[...page].astro
- ┃ ┣ 📂projects
- ┃ ┃ ┣ 📂[slug]
- ┃ ┃ ┃ ┗ 📜index.astro
- ┃ ┃ ┗ 📜[...page].astro
- ┃ ┣ 📂tags
- ┃ ┃ ┗ 📂[tag]
- ┃ ┣ 📜404.astro
- ┃ ┣ 📜about.astro
- ┃ ┣ 📜index.astro
- ┃ ┗ 📜rss.xml.js
- ┣ 📂styles
- ┃ ┗ 📜global.css
- ┣ 📂utils
- ┃ ┗ 📜data-util.ts
- ┗ 📜env.d.ts
-```
-
 ## 버전 변경
 
 - `v0`: Next.js(v12)과 ContentLayer를 사용
 - `v1`: Next.js(v13)으로 version Up
-- `v2`: Astro로 프레임워크 변경
-- `v3(Current)`: Astro v4 등장에 따른 version Up
+- `v2`: Astro(v3)로 프레임워크 변경
+- `v3(Current)`: Astro v4 적용
 
 ## 🖥️ 구현 결과
 
 - [사이트 링크](https://www.woongsnote.dev)
 
-## 💡 트러블 슈팅
+## 💡 기술적 고민 & 트러블 슈팅
 
 ### 1. Next.js
 
