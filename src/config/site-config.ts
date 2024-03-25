@@ -45,7 +45,7 @@ const username = 'woongsnote';
 
 const siteConfig: SiteConfig = {
   site: {
-    title: 'woongsnote',
+    title: 'Woongsnote',
     base_url: 'https://www.woongsnote.dev',
     base_path: '/',
     favicon: '/favicon.svg',
@@ -59,14 +59,14 @@ const siteConfig: SiteConfig = {
   },
   metadata: {
     meta_author: `${username}`,
-    meta_title: 'woongsnote.dev',
+    meta_title: 'www.woongsnote.dev',
     meta_description:
       '개발 관련 학습한 지식과 구현한 프로젝트들을 기록하기 위한 공간입니다.',
   },
   author: {
     name: `@${username}`,
-    bio: `안녕하세요. 문지웅입니다.
-    이 블로그는 개발 관련 학습한 지식을 정리하고, 구현한 프로젝트들을 기록하기 위한 공간입니다.`,
+    bio: `안녕하세요. 개발자 문지웅입니다.
+    새로운 기술을 학습하는 것을 즐기고, 아이디어를 시각적으로 구현하는 것을 좋아합니다.`,
     tech: 'React, Next.js, TypeScript',
   },
   theme: {
@@ -78,16 +78,8 @@ const siteConfig: SiteConfig = {
       url: '/',
     },
     {
-      name: 'About',
-      url: '/about',
-    },
-    {
-      name: 'Posts',
-      url: '/posts',
-    },
-    {
-      name: 'Projects',
-      url: '/projects',
+      name: 'Blog',
+      url: '/blog',
     },
   ],
   socialLinks: [

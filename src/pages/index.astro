@@ -7,13 +7,12 @@ import Hero from '@components/Hero/Hero.astro';
 import ViewMore from '@components/Page/ViewMore.astro';
 import { sortPostsByDateDesc } from '@utils/data-util';
 
-const allPosts = await getCollection('posts');
-const recentPosts: CollectionEntry<'posts'>[] = allPosts
+const recentPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
   .sort(sortPostsByDateDesc)
   .slice(0, config.site.pageSize);
 ---
 
-<Base pageTitle="Home">
+<Base>
   <Hero />
   <ViewMore />
   <Posts posts={recentPosts} pageSize={config.site.pageSize} />

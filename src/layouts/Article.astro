@@ -7,13 +7,13 @@ import ReadingTimeText from '@components/Post/ReadingTimeText.astro';
 import TagList from '@components/Post/TagList.astro';
 
 type Props = {
-  articleType: 'post' | 'project';
   minutesToReadText: string;
   title: string;
   description: string;
   publishedDate: Date;
   tags: string[];
-  cover?: ImageMetadata;
+  cover: ImageMetadata;
+  category: string;
 };
 
 const {
@@ -22,8 +22,8 @@ const {
   description,
   publishedDate,
   tags,
-  articleType,
   cover,
+  category,
 } = Astro.props;
 
 const readingTime = minutesToReadText.split(' ')[0];
@@ -41,11 +41,7 @@ const readingTime = minutesToReadText.split(' ')[0];
       <h1 class="text-2xl font-black lg:text-5xl">{title}</h1>
       <p>{description}</p>
       <TagList tags={tags} />
-      {
-        articleType === 'project' && cover && (
-          <PostThumbnail image={cover} alt={title} />
-        )
-      }
+      {category === 'Project' && <PostThumbnail image={cover} alt={title} />}
     </section>
     <div
       class="prose mx-auto my-4 w-full items-center break-keep text-base leading-10 text-content dark:prose-invert lg:max-w-5xl lg:text-xl">

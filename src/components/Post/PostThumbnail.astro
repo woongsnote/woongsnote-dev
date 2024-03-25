@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 
 type Props = {
-  image?: ImageMetadata;
+  image: ImageMetadata;
   alt: string;
 };
 
@@ -11,18 +11,15 @@ const { image, alt } = Astro.props;
 
 <div
   class="mx-auto flex items-center justify-center overflow-hidden rounded-lg shadow-sm">
-  {
-    image && (
-      <figure class="mx-auto h-auto w-full max-w-lg object-cover object-center duration-300 ease-in-out hover:scale-110">
-        <Image
-          src={image}
-          alt={alt}
-          width="960"
-          height="540"
-          loading="eager"
-          class="size-full"
-        />
-      </figure>
-    )
-  }
+  <figure
+    class="mx-auto h-auto w-full max-w-lg object-cover object-center duration-300 ease-in-out hover:scale-110">
+    <Image
+      src={image}
+      alt={alt}
+      width="960"
+      height="540"
+      loading="eager"
+      class="size-full"
+    />
+  </figure>
 </div>

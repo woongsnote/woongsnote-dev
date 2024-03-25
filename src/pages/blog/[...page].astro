@@ -5,27 +5,29 @@ import config from '@config/site-config';
 import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
 import Pagination from '@components/Page/Pagination.astro';
-import PageHeader from '@components/Page/PageHeader.astro';
 import { sortPostsByDateDesc } from '@utils/data-util';
 
 export const prerender = true;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const allPosts = (await getCollection('posts')).sort(sortPostsByDateDesc);
+  const allPosts = (await getCollection('blog')).sort(sortPostsByDateDesc);
   return paginate(allPosts, { pageSize: config.site.pageSize });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
 ---
 
-<Base pageTitle="Posts">
-  <PageHeader title="Posts" description="학습한 지식들에 대한 기록입니다." />
+<Base pageTitle="Blog">
+  <h1
+    class="mx-auto mb-4 w-full max-w-5xl pb-4 text-2xl font-black text-content md:text-3xl">
+    Blog Posts
+  </h1>
   <Posts posts={page.data} pageSize={config.site.pageSize} />
   <Pagination
     pageLength={page.lastPage}
     currentUrl={page.url.current}
     currentPage={page.currentPage}
-    firstUrl={`/posts/`}
+    firstUrl={`/blog/`}
     prevUrl={page.url.prev}
     nextUrl={page.url.next}
     lastUrl={`/posts/${page.lastPage}`}
