@@ -6,12 +6,10 @@ import config from '@config/site-config';
 
 import { ViewTransitions } from 'astro:transitions';
 
-export type Props = {
+type Props = {
   pageTitle?: string;
   description?: string;
   image?: string;
-  noindex?: string;
-  canonical?: string;
 };
 
 const { pageTitle, description, image } = Astro.props;
