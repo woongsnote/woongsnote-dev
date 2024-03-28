@@ -6,7 +6,12 @@ import ThemeSwitcher from '../Theme/ThemeSwitcher.astro';
 
 <header
   class="fixed top-0 z-20 flex w-full items-stretch justify-between bg-bkg/90 px-2 pt-2 backdrop-blur-sm">
-  <Logo />
-  <Navigation />
-  <ThemeSwitcher />
+  <div
+    class="mx-auto flex w-full max-w-5xl items-center justify-between text-lg lg:text-2xl">
+    <Logo />
+    <div class="flex items-center">
+      <Navigation />
+      <ThemeSwitcher />
+    </div>
+  </div>
 </header>

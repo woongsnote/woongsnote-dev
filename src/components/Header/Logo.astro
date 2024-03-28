@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import logoImage from '@assets/logo.png';
 ---
 
-<a href="/" class="flex place-items-center gap-2 md:hidden" aria-label="Go to Homepage">
+<a href="/" class="flex place-items-center gap-2" aria-label="Go to Homepage">
   <figure aria-hidden="true">
     <Image
       src={logoImage}
@@ -12,7 +12,7 @@ import logoImage from '@assets/logo.png';
       loading="eager"
     />
   </figure>
-  <span class="hidden text-2xl font-black text-content drop-shadow-lg md:block"
+  <span class="hidden font-black text-content drop-shadow-lg md:block"
     >Woongsnote</span
   >
   <span class="sr-only">Go to Homepage</span>
