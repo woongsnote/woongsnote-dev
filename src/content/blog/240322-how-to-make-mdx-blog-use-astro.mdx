@@ -1,6 +1,6 @@
 ---
 title: Astro로 MDX 블로그를 구현하는 방법
-description: Astro와 Tailwind CSS를 사용해서 블로그를 구현하는 방법을 단계별로 정리
+description: Astro와 Tailwind CSS를 사용해서 블로그를 구현하는 방법의 단계별 정리
 cover: '../../assets/blog-placeholder.jpg'
 publishedDate: 2024-03-22
 category: 'Tech'
@@ -87,21 +87,21 @@ Tailwind가 잘 설치되었는지 확인하기 위해,`src/pages/indexe.astro`�
 
 ```astro title="src/pages/index.astro"
 ---
+
 ---
 
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-      <h1 class="text-3xl font-black text-blue-500">Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1 class="text-3xl font-black text-blue-500">Astro</h1>
+  </body>
 </html>
-
 ```
 
 ## 3. 프로젝트에 @astro/mdx 추가
@@ -117,8 +117,7 @@ npx astro add mdx
 `src` 폴더에 `content` 폴더를 생성한다.
 `content` 폴더에 `blog` 폴더를 만들고 `my-first-post.mdx`파일을 생성한다.
 
-**※ `Content Collection`을 위한 예약어로 `content`폴더를 생성해야 한다. `content` 폴더 하위에 생성하는 폴더 이름은 원하는 이름으로 생성해도 된다.**
-
+**※ `Content Collection`을 위한 예약어이기 때문에 `content`폴더를 생성해야 한다. `content` 폴더 하위에 생성하는 폴더 이름은 원하는 이름으로 생성해도 된다.**
 
 ```text
 📦src
@@ -168,7 +167,13 @@ export const collections = {
 };
 ```
 
-**※ `schema`를 여러 개 생성해야 한다면, 별도의 파일로 분리해서 관리할 수도 있다.** 
+**※ `schema`를 여러 개 생성해야 한다면, `schemas` 폴더를 생성하고, 각 `schema`를 파일로 관리할 수도 있다.**
+
+```text
+📦schemas
+ ┣ 📜blogSchema.ts
+ ┗ 📜projectSchema.ts
+```
 
 ## 5. 첫 번째 게시글 렌더링
 
@@ -178,10 +183,10 @@ export const collections = {
 ---
 title: 첫 번째 게시글
 description: 첫 번째 게시글입니다.
-cover: "../../assets/blog-placeholder.jpg"
+cover: '../../assets/blog-placeholder.jpg'
 publishedDate: 2024-03-22
-category: "Tech"
-tags: ["Astro", "Blog", "MDX", "TailwindCSS"]
+category: 'Tech'
+tags: ['Astro', 'MDX', 'TailwindCSS']
 ---
 
 첫 번째 게시글입니다.
@@ -201,20 +206,20 @@ tags: ["Astro", "Blog", "MDX", "TailwindCSS"]
 
 ```astro title="src/pages/blog/[slug].astro"
 ---
-import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
 
 export const getStaticPaths = (async () => {
-  const blogEntries = await getCollection("blog");
+  const blogEntries = await getCollection('blog');
 
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
+  return blogEntries.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
   }));
 }) satisfies GetStaticPaths;
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { post } = Astro.props;
+const { Content } = await post.render();
 ---
 
 <html>
@@ -239,6 +244,7 @@ const { Content } = await entry.render();
 ---
 
 ---
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -261,7 +267,7 @@ BaseLayout를 import해서 `index.astro`와 `[slug].astro`에 적용하면, 아�
 
 ```astro title="index.astro"
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout>
@@ -271,18 +277,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 ```astro title="[slug].astro"
 ---
-import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
 
 type Props = {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<'blog'>;
 };
 
 export const getStaticPaths = (async () => {
-  const blogPosts = await getCollection("blog");
+  const blogPosts = await getCollection('blog');
 
   return blogPosts.map((post) => ({
     params: { slug: post.slug },
@@ -302,7 +308,7 @@ const { title, description, cover } = post.data;
     <Image
       src={cover}
       alt={title}
-      class="object-cover object-center rounded-lg mx-auto block"
+      class="mx-auto block rounded-lg object-cover object-center"
       width={300}
       height={300}
     />
@@ -323,14 +329,15 @@ const { title, description, cover } = post.data;
  ┣ 📜my-second-post.mdx
  ┗ 📜my-third-post.mdx
 ```
+
 게시글 목록을 가져오기 위해 `index.astro`를 아래와 같이 수정한다.
 
 ```astro title="src/pages/index.astro"
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-const allPosts = await getCollection("blog");
+const allPosts = await getCollection('blog');
 ---
 
 <BaseLayout>
@@ -344,12 +351,12 @@ const allPosts = await getCollection("blog");
     }
   </ul>
 </BaseLayout>
-
 ```
 
 ## 7. 디자인 수정하기
 
 BaseLayout에 Tailwind class를 추가해서, 디자인을 수정한다.
+
 ```astro title="BaseLayout.astro"
 ---
 
@@ -364,7 +371,7 @@ BaseLayout에 Tailwind class를 추가해서, 디자인을 수정한다.
     <title>Astro</title>
   </head>
   <body>
-    <main class="max-w-5xl mx-auto p-2">
+    <main class="mx-auto max-w-5xl p-2">
       <slot />
     </main>
   </body>
@@ -375,18 +382,18 @@ BaseLayout에 Tailwind class를 추가해서, 디자인을 수정한다.
 
 ```astro title="[slug].astro"
 ---
-import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
 
 type Props = {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<'blog'>;
 };
 
 export const getStaticPaths = (async () => {
-  const blogPosts = await getCollection("blog");
+  const blogPosts = await getCollection('blog');
 
   return blogPosts.map((post) => ({
     params: { slug: post.slug },
@@ -406,7 +413,7 @@ const { title, description, cover } = post.data;
     <Image
       src={cover}
       alt={title}
-      class="object-cover object-center rounded-lg mx-auto block"
+      class="mx-auto block rounded-lg object-cover object-center"
       width={300}
       height={300}
     />
@@ -431,10 +438,10 @@ npm install rehype-pretty-code
 패키지가 설치되고 나면, `astro.config.mjs`에 추가해주도록 하자.
 
 ```js
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-import mdx from "@astrojs/mdx";
-import rehypePrettyCode from "rehype-pretty-code";
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import mdx from '@astrojs/mdx';
+import rehypePrettyCode from 'rehype-pretty-code';
 
 // https://astro.build/config
 export default defineConfig({
@@ -446,14 +453,13 @@ export default defineConfig({
         [
           rehypePrettyCode,
           {
-            theme: "one-dark-pro",
+            theme: 'one-dark-pro',
           },
         ],
       ],
     }),
   ],
 });
-
 ```
 
 ## 9. Metadata
@@ -463,7 +469,6 @@ Metadata 관리를 위해, `src`에 `components` 폴더를 만들고, `Metadata.
 
 ```astro title="Metadata.astro"
 ---
-
 type Props = {
   title: string;
   description: string;
@@ -492,17 +497,36 @@ const { title, description, image } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
-
 ```
 
 생성한 Metadata.astro 파일을 `BaseLayout`에서 `import` 해준다.
 
 ```astro title="BaseLayout.astro"
+---
+import Metadata from '../components/Metadata.astro';
 
+type Props = {
+  title: string;
+  description: string;
+  image: string;
+};
 
+const { title, description, image } = Astro.props;
+---
+
+<html>
+  <head>
+    <Metadata title={title} description={description} image={image} />
+  </head>
+  <body>
+    <main class="mx-auto max-w-5xl p-2">
+      <slot />
+    </main>
+  </body>
+</html>
 ```
 
-## 10. 빌드해보기
+## 10. 빌드 및 배포
 
 오류가 없는지 확인하기 위해, 빌드해서 실행해보도록 하자.
 아래 명령어로, 빌드를 진행할 수 있다.
@@ -513,9 +537,6 @@ npm run build
 
 **※ 빌드 단계에서 문제가 있다면 빌드 자체가 되지 않는다!**
 
-## 12. 배포
-
 사용하고 싶은 플랫폼(ex. Vercel, Netlify, github-pages)을 이용해서, 배포를 진행하면 된다.
-
 
 최종 완성된 소스 코드는 [여기](https://github.com/woongsnote/minimal-astro-blog)에서 볼 수 있다.
