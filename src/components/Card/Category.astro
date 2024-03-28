@@ -5,12 +5,6 @@ type Props = {
 const { category } = Astro.props;
 ---
 
-<span
-  class:list={[
-    'rounded-md font-black',
-    category === 'Diary'
-      ? 'text-green-700 dark:text-green-300'
-      : 'text-content',
-  ]}>
+<span class="rounded-md font-black text-content">
   {category}
 </span>
