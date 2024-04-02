@@ -9,4 +9,5 @@ export const blogSchema = ({ image }: { image: ImageFunction }) =>
     category: z.string(),
     tags: z.array(z.string()),
     author: z.string(),
+    readingTime: z.number().optional(),
   });
