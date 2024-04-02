@@ -7,7 +7,7 @@ import ReadingTimeText from '@components/Post/ReadingTimeText.astro';
 import TagList from '@components/Post/TagList.astro';
 
 type Props = {
-  minutesToReadText: string;
+  minutesToRead: number;
   title: string;
   description: string;
   publishedDate: Date;
@@ -17,7 +17,7 @@ type Props = {
 };
 
 const {
-  minutesToReadText,
+  minutesToRead,
   title,
   description,
   publishedDate,
@@ -25,18 +25,18 @@ const {
   cover,
   category,
 } = Astro.props;
-
-const readingTime = minutesToReadText.split(' ')[0];
 ---
 
 <Base pageTitle={title} description={description}>
   <article class="mx-auto flex w-full max-w-5xl flex-col">
     <section
-      class="flex w-full flex-col items-center gap-4 break-keep pb-4 pt-2 text-content">
+      class="flex w-full flex-col items-center gap-4 break-keep pb-4 pt-2 text-content"
+    >
       <div
-        class="mx-auto flex items-center justify-center gap-2 text-sm sm:flex-row lg:gap-4">
+        class="mx-auto flex items-center justify-center gap-2 text-sm sm:flex-row lg:gap-4"
+      >
         <FormattedDate date={publishedDate} />
-        <ReadingTimeText readingTime={readingTime} />
+        <ReadingTimeText readingTime={minutesToRead} />
       </div>
       <h1 class="text-2xl font-black lg:text-5xl">{title}</h1>
       <p>{description}</p>
@@ -44,7 +44,8 @@ const readingTime = minutesToReadText.split(' ')[0];
       {category === 'Project' && <PostThumbnail image={cover} alt={title} />}
     </section>
     <div
-      class="prose mx-auto my-4 w-full items-center break-keep text-base leading-10 text-content dark:prose-invert lg:max-w-5xl lg:text-xl">
+      class="prose mx-auto my-4 w-full items-center break-keep text-base leading-10 text-content dark:prose-invert lg:max-w-5xl lg:text-xl"
+    >
       <slot />
     </div>
     <Comments client:idle />
