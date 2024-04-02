@@ -74,6 +74,10 @@ const siteConfig: SiteConfig = {
   },
   navLinks: [
     {
+      name: 'Home',
+      url: '/',
+    },
+    {
       name: 'About',
       url: '/about',
     },

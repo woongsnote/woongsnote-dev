@@ -1,8 +1,6 @@
 ---
 import NavLink from './NavLink.astro';
-import PostIcon from '@icons/PostIcon.astro';
 import config from '@config/site-config';
-import AboutIcon from '@icons/AboutIcon.astro';
 const navLinks = config.navLinks;
 ---
 
@@ -13,10 +11,6 @@ const navLinks = config.navLinks;
         href={url}
         aria-label={`go to ${name} page`}
         class="flex gap-1 hover:text-accent">
-        <span class="md:hidden">
-          {name === 'About' && <AboutIcon />}
-          {name === 'Blog' && <PostIcon />}
-        </span>
         <span class="hidden md:block">{name}</span>
       </NavLink>
     ))
