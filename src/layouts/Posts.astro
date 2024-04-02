@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import Cards from './Cards.astro';
 import Card from '@components/Card/Card.astro';
 
 type Props = {
@@ -11,7 +10,7 @@ type Props = {
 const { posts, pageSize } = Astro.props;
 ---
 
-<Cards>
+<section class="mx-auto flex w-full max-w-5xl flex-col items-start space-y-8">
   {
     posts
       .slice(0, pageSize)
@@ -23,7 +22,8 @@ const { posts, pageSize } = Astro.props;
           tags={post.data.tags}
           link={`/blog/${post.slug}`}
           category={post.data.category}
+          readingTime={post.data.readingTime}
         />
       ))
   }
-</Cards>
+</section>
