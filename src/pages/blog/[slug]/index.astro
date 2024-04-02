@@ -26,8 +26,9 @@ export const prerender = true;
   description={description}
   publishedDate={publishedDate}
   tags={tags}
-  minutesToReadText={remarkPluginFrontmatter.minutesRead}
+  minutesToRead={remarkPluginFrontmatter.minutesRead.split(' ')[0]}
   cover={cover}
-  category={category}>
+  category={category}
+>
   <Content />
 </Article>

@@ -15,11 +15,18 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
+
+const posts = await getCollection('blog');
+for (const post of posts) {
+  const { remarkPluginFrontmatter } = await post.render();
+  post.data.readingTime = remarkPluginFrontmatter.minutesRead.split(' ')[0];
+}
 ---
 
 <Base pageTitle="Blog">
   <h1
-    class="mx-auto mb-4 w-full max-w-5xl pb-4 text-2xl font-black text-content md:text-3xl">
+    class="mx-auto mb-4 w-full max-w-5xl pb-4 text-2xl font-black text-content md:text-3xl"
+  >
     Blog Posts
   </h1>
   <Posts posts={page.data} pageSize={config.site.pageSize} />

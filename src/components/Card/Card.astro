@@ -3,6 +3,7 @@ import Title from './Title.astro';
 import Description from './Description.astro';
 import FormattedDate from '@components/Common/FormattedDate.astro';
 import Category from './Category.astro';
+import ReadingTimeText from '@components/Post/ReadingTimeText.astro';
 
 type Props = {
   title: string;
@@ -11,21 +12,25 @@ type Props = {
   tags: string[];
   link: string;
   category?: string;
+  readingTime?: number;
 };
 
-const { title, description, publishedDate, tags, link, category } = Astro.props;
+const { title, description, publishedDate, tags, link, category, readingTime } =
+  Astro.props;
 const mainTag = tags[0];
 ---
 
 <article
-  class="group relative transform transition duration-200 hover:translate-x-3">
+  class="group relative transform transition duration-200 hover:translate-x-3"
+>
   <a href={link} class="mx-auto flex w-full max-w-3xl flex-col rounded-lg">
     {category && <Category category={category} />}
     <Title title={title} />
     <Description description={description} />
-    <p class="flex gap-2 text-sm text-content">
+    <p class="flex w-full items-center gap-2 text-sm text-content">
       <FormattedDate date={publishedDate} />
-      <span>― {mainTag}</span>
+      {readingTime && <ReadingTimeText readingTime={readingTime} />}
+      <span class="w-fit">― {mainTag}</span>
     </p>
   </a>
 </article>
