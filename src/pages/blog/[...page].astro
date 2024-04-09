@@ -6,6 +6,7 @@ import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
 import Pagination from '@components/Page/Pagination.astro';
 import { sortPostsByDateDesc } from '@utils/data-util';
+import PageHeader from '@components/Page/PageHeader.astro';
 
 export const prerender = true;
 
@@ -24,11 +25,7 @@ for (const post of posts) {
 ---
 
 <Base pageTitle="Blog">
-  <h1
-    class="mx-auto mb-4 w-full max-w-5xl pb-4 text-2xl font-black text-content md:text-3xl"
-  >
-    Blog Posts
-  </h1>
+  <PageHeader title='Blog' description='개발 관련 학습한 지식의 기록입니다.'/>
   <Posts posts={page.data} pageSize={config.site.pageSize} />
   <Pagination
     pageLength={page.lastPage}

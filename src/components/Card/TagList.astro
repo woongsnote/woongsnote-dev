@@ -1,0 +1,13 @@
+---
+import Tag from './Tag.astro';
+
+type Props = {
+  tags: string[];
+};
+
+const { tags } = Astro.props;
+---
+
+<div class="flex flex-wrap items-center gap-2 lg:gap-4 break-keep text-xs">
+  {tags.map((tag) => <Tag tag={tag} />)}
+</div>
