@@ -78,12 +78,12 @@ const siteConfig: SiteConfig = {
       url: '/',
     },
     {
-      name: 'About',
-      url: '/about',
-    },
-    {
       name: 'Blog',
       url: '/blog',
+    },
+    {
+      name: 'About',
+      url: '/about',
     },
   ],
   socialLinks: [
