@@ -4,8 +4,8 @@ import config from '@config/site-config';
 import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
 import Hero from '@components/Hero/Hero.astro';
-import ViewMore from '@components/Page/ViewMore.astro';
 import { sortPostsByDateDesc } from '@utils/data-util';
+import PageHeader from '@components/Page/PageHeader.astro';
 
 const recentPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
   .sort(sortPostsByDateDesc)
@@ -14,6 +14,6 @@ const recentPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
 
 <Base>
   <Hero />
-  <ViewMore />
+  <PageHeader title='최근 글'/>
   <Posts posts={recentPosts} pageSize={config.site.pageSize} />
 </Base>

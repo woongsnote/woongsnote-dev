@@ -1,4 +1,6 @@
 ---
+import CalendarIcon from '@icons/CalendarIcon.astro';
+
 type Props = {
   date: Date;
 };
@@ -14,6 +16,7 @@ const dateOptions: Object = {
 const publishedDate = new Date(date).toLocaleDateString('ko-kR', dateOptions);
 ---
 
-<span class="whitespace-nowrap text-subContent">
+<span class="flex items-center gap-1 whitespace-nowrap text-subContent">
+  <CalendarIcon />
   {publishedDate}
 </span>

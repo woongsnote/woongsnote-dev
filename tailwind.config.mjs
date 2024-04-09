@@ -8,10 +8,11 @@ export default {
   theme: {
     container: {
       center: true,
+      padding: '1rem',
     },
     extend: {
       colors: {
-        bkg: 'hsl(var(--color-bkg) / <alpha-value>)',
+        background: 'hsl(var(--color-background) / <alpha-value>)',
         content: 'hsl(var(--color-content) / <alpha-value>)',
         accent: 'hsl(var(--color-accent) / <alpha-value>)',
         subContent: 'hsl(var(--color-sub-content) / <alpha-value>)',
