@@ -1,22 +1,13 @@
 ---
 import config from '@config/site-config';
+import SocialLink from './SocialLink.astro';
 const socialLinks = config.socialLinks;
 ---
 
-<div class="flex space-x-5">
+<div class="flex gap-4">
   {
-    socialLinks.map((socialLink) => (
-      <a
-        href={socialLink.url}
-        target="_blank"
-        aria-label="social-link button"
-        aria-describedby={`${socialLink.name} icon`}
-      >
-        <figure>
-          <Fragment set:html={socialLink.svg} />
-        </figure>
-        <span class="sr-only">Go to {socialLink.name} page</span>
-      </a>
+    socialLinks.map(({ name, svg, url }) => (
+      <SocialLink name={name} svg={svg} url={url} />
     ))
   }
 </div>

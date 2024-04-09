@@ -3,16 +3,16 @@ import { Image } from 'astro:assets';
 import logoImage from '@assets/logo.png';
 ---
 
-<a href="/" class="flex place-items-center gap-2" aria-label="Go to Homepage">
+<a href="/" class="flex place-items-center gap-1" aria-label="Go to Homepage">
   <figure aria-hidden="true">
     <Image
       src={logoImage}
       alt="home"
-      class="size-12 rounded-md shadow-lg"
+      class="size-8 rounded-md"
       loading="eager"
     />
   </figure>
-  <span class="hidden font-black text-content drop-shadow-lg md:block"
+  <span class="inline-block font-black text-content drop-shadow-lg"
     >Woongsnote</span
   >
   <span class="sr-only">Go to Homepage</span>
