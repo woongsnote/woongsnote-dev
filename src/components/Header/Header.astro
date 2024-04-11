@@ -1,11 +1,6 @@
 ---
 import Navigation from '@components/Nav/Navigation.astro';
 import ThemeSwitcher from '../Theme/ThemeSwitcher.astro';
-import config from '@config/site-config';
-import SocialLink from '@components/Common/SocialLink.astro';
-const githubLink = config.socialLinks.filter(
-  (link) => link.name === 'github'
-)[0];
 ---
 
 <header
@@ -13,12 +8,7 @@ const githubLink = config.socialLinks.filter(
   <div
     class="container mx-auto flex h-14 w-full max-w-screen-2xl items-center text-lg lg:text-2xl">
     <Navigation />
-    <div class="flex flex-1 items-center justify-end gap-4">
-      <SocialLink
-        name={githubLink.name}
-        svg={githubLink.svg}
-        url={githubLink.url}
-      />
+    <div class="flex flex-1 items-center justify-end">
       <ThemeSwitcher />
     </div>
   </div>

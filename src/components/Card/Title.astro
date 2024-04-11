@@ -1,11 +1,14 @@
 ---
 type Props = {
   title: string;
+  link: string;
 };
 
-const { title } = Astro.props;
+const { title, link } = Astro.props;
 ---
 
-<h2 class="w-fit text-lg font-black text-content hover:text-accent lg:text-2xl">
-  {title}
+<h2 class="text-lg font-black text-content lg:text-2xl">
+  <a href={link} class="hover:text-accent">
+    {title}
+  </a>
 </h2>
