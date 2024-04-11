@@ -25,8 +25,8 @@ for (const post of posts) {
 ---
 
 <Base pageTitle="Blog">
-  <PageHeader title='Blog' description='개발 관련 학습한 지식의 기록입니다.'/>
-  <Posts posts={page.data} pageSize={config.site.pageSize} />
+  <PageHeader title="Blog" description="개발 관련 학습한 지식의 기록입니다." />
+  <Posts posts={page.data} pageSize={config.site.pageSize * 2} />
   <Pagination
     pageLength={page.lastPage}
     currentUrl={page.url.current}
