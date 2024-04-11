@@ -7,13 +7,11 @@ import config from '@config/site-config';
 const defaultTheme = config.theme.defaultTheme;
 ---
 
-<div class="flex">
-  <ThemeButton theme={defaultTheme}>
-    <span class="hidden dark:block">
-      <SunIcon />
-    </span>
-    <span class="dark:hidden">
-      <MoonIcon id="dark" />
-    </span>
-  </ThemeButton>
-</div>
+<ThemeButton theme={defaultTheme}>
+  <span class="hidden dark:block">
+    <SunIcon />
+  </span>
+  <span class="dark:hidden">
+    <MoonIcon id="dark" />
+  </span>
+</ThemeButton>
