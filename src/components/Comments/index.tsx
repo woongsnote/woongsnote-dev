@@ -23,8 +23,8 @@ const Comments = () => {
           reactionsEnabled="1"
           emitMetadata="0"
           inputPosition="top"
-          theme="dark_dimmed"
-          lang="ko"
+          theme="dark_tritanopia"
+          lang="en"
           loading="lazy"
         />
       ) : null}

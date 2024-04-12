@@ -29,6 +29,25 @@ body {
 .prose pre > code {
   display: grid;
 }
+
+.prose pre::-webkit-scrollbar {
+  display: none;
+}
+
+.prose pre {
+  scrollbar-width: none;
+}
+
+.prose pre span[data-line] {
+  @apply inline-block px-4 py-0.5 leading-snug;
+}
+
+.prose code span[data-highlighted-line] {
+  @apply border-y-0 border-l-2 border-blue-400 border-transparent 
+         bg-indigo-400 bg-opacity-10 pl-[calc(0.5rem-2px)] dark:border-blue-500
+         dark:bg-slate-700 md:pl-[calc(1rem-2px)];
+}
+
 .prose figcaption[data-rehype-pretty-code-title] {
   @apply rounded-t-lg border border-b-0 border-gray-200 bg-gray-200 px-5 py-3 font-mono text-sm font-bold text-gray-800 dark:border-none dark:bg-gray-800 dark:text-gray-200;
 }
