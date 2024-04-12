@@ -65,7 +65,7 @@ const siteConfig: SiteConfig = {
   },
   author: {
     name: `@${username}`,
-    bio: `안녕하세요. 개발자 문지웅입니다.
+    bio: `안녕하세요. 문지웅입니다.
     새로운 기술을 학습하는 것을 즐기고, 아이디어를 시각적으로 구현하는 것을 좋아합니다.`,
     tech: 'React, Next.js, TypeScript',
   },

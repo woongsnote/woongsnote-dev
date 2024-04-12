@@ -1,0 +1,41 @@
+---
+import FormattedDate from '@components/Date/FormattedDate.astro';
+import TagList from '@components/Tag/TagList.astro';
+
+type Props = {
+  title: string;
+  description: string;
+  publishedDate: Date;
+  tags: string[];
+  link: string;
+  category: string;
+};
+
+const { title, description, publishedDate, tags, link, category } = Astro.props;
+
+const READ_MORE = '읽으러가기 →';
+---
+
+<article
+  class="group relative flex w-full flex-col gap-2 break-keep border-b py-2">
+  <span class="w-fit rounded-md text-sm font-black text-content">
+    {category}
+  </span>
+  <h2 class="text-lg font-black text-content lg:text-2xl">
+    <a href={link} class="hover:text-accent">
+      {title}
+    </a>
+  </h2>
+  <TagList tags={tags} />
+  <p class="line-clamp-2 break-keep text-sm text-subContent">
+    {description}
+  </p>
+  <div class="flex items-center justify-between text-sm text-content">
+    <FormattedDate date={publishedDate} />
+    <a
+      href={link}
+      class="inline-flex items-center justify-center whitespace-nowrap underline-offset-4 hover:text-accent"
+      >{READ_MORE}
+    </a>
+  </div>
+</article>
