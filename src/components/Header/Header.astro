@@ -1,12 +1,11 @@
 ---
 import Navigation from '@components/Nav/Navigation.astro';
-import ThemeSwitcher from '../Theme/ThemeSwitcher.astro';
+import ThemeSwitcher from '@components/Theme/ThemeSwitcher.astro';
 ---
 
 <header
   class="fixed top-0 z-20 flex w-full border-b bg-background/90 backdrop-blur-sm">
-  <div
-    class="container mx-auto flex h-14 w-full max-w-screen-2xl items-center text-lg lg:text-2xl">
+  <div class="container mx-auto flex h-12 w-full max-w-screen-2xl items-center">
     <Navigation />
     <div class="flex flex-1 items-center justify-end">
       <ThemeSwitcher />
