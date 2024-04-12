@@ -15,14 +15,33 @@ Astro와 TailwindCSS를 사용해서 MDX 블로그를 구현하는 방법을 단
 
 먼저, 터미널에서 Astro 프로젝트를 생성한다.
 
-```bash
+```bash title="create astro project"
 npm create astro@latest
 ```
 
 명령어를 실행하면, 아래와 같은 절차로 프로젝트를 생성할 수 있다.
 
-<details>
-<summary> 프로젝트 생성 순서</summary>
+### 프로젝트 생성 순서
+
+```bash
+   dir   Where should we create your new project?
+         ./my-astro-blog
+
+  tmpl   How would you like to start your new project?
+         Empty
+
+    ts   Do you plan to write TypeScript?
+         Yes
+
+   use   How strict should TypeScript be?
+         Strict
+
+  deps   Install dependencies?
+         Yes
+
+   git   Initialize a new git repository?
+         Yes
+```
 
 1. create-astro를 설치할 지 물어보면, `y`를 눌러 설치
 
@@ -36,24 +55,23 @@ npm create astro@latest
 
 6. TypeScript의 strict 설정 - 권장 사항에 맞춰 `strict` 선택
 
-7. git repository 를 초기화할 지 결정 - 추후 배포를 위해 `init` 선택
+7. Install dependencies - 기본 패키지 설치를 위해 `yes` 선택 // `no`를 선택해도 추후 설치 가능
 
-</details>
+8. git repository 를 초기화할 지 결정 - 추후 배포를 위해 `init` 선택
 
-프로젝트가 문제 없이 생성되었는지 확인하기 위해, VS Code에서 방금 만든 폴더를 열고, 아래 명령어로 실행한다.
+9. 프로젝트가 문제 없이 생성되었는지 확인하기 위해, `VS Code`에서 방금 만든 폴더를 열고, 아래 명령어 실행(터미널에서 바로 Vs Cdoe 실행 명령어: `code .`)
 
-```bash
+```bash title="run dev server"
 npm run dev
 ```
 
-정상적으로 실행되면, 스타일링을 위해 `Tailwind CSS`를 추가해보자.
+정상적으로 실행되면, 스타일링을 위해 `Tailwind CSS`를 설치한다.
 
 ## 2. Tailwind CSS 추가
 
-아래 명령어를 사용해서 Tailwind CSS를 추가한다.
-Astro에서 제공해주는 Integration을 이용해서 설치하는 방법이다.
+아래 명령어를 사용해서 Tailwind CSS를 추가한다. 해당 명령어는 Astro에서 제공해주는 Integration을 이용해서 설치하는 방법이다.
 
-```bash
+```bash title="install tailwindcss"
 npx astro add tailwind
 ```
 
@@ -61,14 +79,14 @@ npx astro add tailwind
 
 ※ 해당 명령어가 정상적으로 동작하지 않는다면, 아래 명령어로 직접 설치할 수도 있다.
 
-```bash
+```bash title="npm install tailwindcss"
 npm install @astrojs/tailwind tailwindcss
 ```
 
 TailwindCSS 설치가 완료되었다면, 블로그 게시글 스타일링을 위해 `@tailwindcss/typography` 플러그인을 추가해야 한다.
 패키지를 설치하고, `tailwind.config.mjs` 파일에 플러그인을 추가한다.
 
-```bash
+```bash title="npm install typography"
 npm install -D @tailwindcss/typography
 ```
 
@@ -83,7 +101,8 @@ export default {
 };
 ```
 
-Tailwind가 잘 설치되었는지 확인하기 위해,`src/pages/indexe.astro`에서 h1에 class를 추가해보자.
+Tailwind가 잘 설치되었는지 확인하기 위해,`src/pages/indexe.astro`에서 h1에 class를 추가해서 테스트해본다.
+※ Astro는 `className`이 아닌 `class`임을 주의해야 한다.
 
 ```astro title="src/pages/index.astro"
 ---
@@ -108,7 +127,7 @@ Tailwind가 잘 설치되었는지 확인하기 위해,`src/pages/indexe.astro`�
 
 `MDX`파일 렌더링을 위해 `Astro`에서 제공하는 `@astro/mdx`를 설치한다.
 
-```bash
+```bash title="install mdx"
 npx astro add mdx
 ```
 
@@ -119,7 +138,7 @@ npx astro add mdx
 
 **※ `Content Collection`을 위한 예약어이기 때문에 `content`폴더를 생성해야 한다. `content` 폴더 하위에 생성하는 폴더 이름은 원하는 이름으로 생성해도 된다.**
 
-```text
+```text {2,3} title="src/content"
 📦src
  ┣ 📂content
  ┃ ┗ 📂blog
@@ -131,7 +150,7 @@ npx astro add mdx
 
 타입 안정성을 위해 `content` 폴더에 `config.ts` 파일을 생성한다.
 
-```text
+```text {5} title="src/content/config.ts"
 📦src
  ┣ 📂content
  ┃ ┣ 📂blog
@@ -169,7 +188,7 @@ export const collections = {
 
 **※ `schema`를 여러 개 생성해야 한다면, `schemas` 폴더를 생성하고, 각 `schema`를 파일로 관리할 수도 있다.**
 
-```text
+```text title="schemas"
 📦schemas
  ┣ 📜blogSchema.ts
  ┗ 📜projectSchema.ts
@@ -192,7 +211,7 @@ tags: ['Astro', 'MDX', 'TailwindCSS']
 첫 번째 게시글입니다.
 ```
 
-**※ src 폴더에 `assets` 폴더를 만들고, `thumbnail`에 사용할 이미지를 추가한다. 만약 content 폴더 안에 이미지를 담는다면, `cover: "./blog-placeholder.jpg"`와 같이 수정할 수 있다.**
+**※ src 폴더에 `assets` 폴더를 만들고, `thumbnail`에 사용할 이미지를 추가한다. 만약 `content` 폴더 안에 이미지를 담는다면, `cover: "./blog-placeholder.jpg"`와 같이 수정할 수 있다.**
 
 게시글 작성이 완료되면, `pages`폴더의 `blog`폴더에, `[slug].astro` 파일을 생성한다.
 
@@ -238,7 +257,7 @@ const { Content } = await post.render();
 
 **※ 만약, `<head>` 부분이 없이 `<Content />`만 입력하면 한글이 깨지는 현상을 볼 수 있을 것이다.**
 
-`index.astro`와 공통인 부분을 해당 부분을 layouts 폴더에 `BaseLayout.astro` 파일로 분리한다.
+`index.astro`와 공통인 부분을 해당 부분을 `layouts` 폴더에 `BaseLayout.astro` 파일로 분리한다.
 
 ```astro title="src/layouts/BaseLayout.astro"
 ---
@@ -431,13 +450,13 @@ const { title, description, cover } = post.data;
 게시글을 작성하다 보면, Code Block을 추가해야 하는데, Code Block의 커스터마이징을 위해 `rehype-pretty-code`를 사용하려고 한다.
 아래 명령어로 설치해준다.
 
-```bash
+```bash title="install rehype-pretty-code"
 npm install rehype-pretty-code
 ```
 
 패키지가 설치되고 나면, `astro.config.mjs`에 추가해주도록 하자.
 
-```js
+```js title="astro.config.mjs"
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
