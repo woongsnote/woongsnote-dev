@@ -12,8 +12,8 @@ const isActive =
     className,
     { active: isActive },
     `${isActive ? 'font-bold text-accent' : ''}`,
-    'drop-shadow-lg',
   ]}
-  {...props}>
+  {...props}
+>
   <slot />
 </a>
