@@ -1,7 +1,8 @@
 ---
-import Bio from './Bio.astro';
+import config from '@config/site-config';
 ---
 
-<section class="mx-auto mb-4 flex w-full max-w-5xl flex-col gap-4 md:mb-10">
-  <Bio />
-</section>
+<h2
+  class="mx-auto mb-8 w-full max-w-3xl whitespace-pre-line break-keep text-center text-lg text-content lg:mb-20 lg:text-xl">
+  {config.author.bio}
+</h2>

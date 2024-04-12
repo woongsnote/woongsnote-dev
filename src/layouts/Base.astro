@@ -1,11 +1,10 @@
 ---
-import BaseHead from '@components/Common/BaseHead.astro';
+import { ViewTransitions } from 'astro:transitions';
+import config from '@config/site-config';
+import BaseHead from '@components/Base/BaseHead.astro';
 import Header from '@components/Header/Header.astro';
 import Footer from '@components/Footer/Footer.astro';
 import MobileNav from '@components/Nav/MobileNav.astro';
-
-import config from '@config/site-config';
-import { ViewTransitions } from 'astro:transitions';
 
 type Props = {
   pageTitle?: string;
@@ -28,7 +27,7 @@ const title = pageTitle
     />
     <ViewTransitions />
   </head>
-  <body class="bg-background relative flex min-h-screen flex-col">
+  <body class="relative flex min-h-screen flex-col bg-background">
     <Header />
     <main class="container flex-grow pb-4 pt-20">
       <slot />
