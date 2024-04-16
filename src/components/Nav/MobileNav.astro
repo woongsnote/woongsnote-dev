@@ -4,7 +4,6 @@ import config from '@config/site-config';
 import PostIcon from '@icons/PostIcon.astro';
 import AboutIcon from '@icons/AboutIcon.astro';
 import HomeIcon from '@icons/HomeIcon.astro';
-import ProjectIcon from '@icons/ProjectIcon.astro';
 
 const navLinks = config.navLinks;
 ---
@@ -19,7 +18,6 @@ const navLinks = config.navLinks;
         class="flex flex-1 flex-col items-center justify-center py-2 text-sm hover:text-accent">
         {name === 'Home' && <HomeIcon />}
         {name === 'About' && <AboutIcon />}
-        {name === 'Coding' && <ProjectIcon />}
         {name === 'Blog' && <PostIcon />}
         <span>{name}</span>
       </NavLink>
