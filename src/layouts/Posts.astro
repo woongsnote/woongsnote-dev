@@ -10,7 +10,7 @@ type Props = {
 const { posts, pageSize } = Astro.props;
 ---
 
-<ul class="mx-auto w-full max-w-4xl">
+<ul class="mx-auto mt-4 w-full max-w-4xl space-y-4">
   {
     posts.slice(0, pageSize).map((post) => (
       <li>

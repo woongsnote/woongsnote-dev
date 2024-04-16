@@ -12,7 +12,8 @@ const navLinks = config.navLinks.filter((nav) => nav.name !== 'Home');
       <NavLink
         href={url}
         aria-label={`go to ${name} page`}
-        class="flex gap-1 hover:text-accent">
+        class="flex gap-1 hover:font-black hover:text-accent"
+      >
         <span class="hidden md:block">{name}</span>
       </NavLink>
     ))
