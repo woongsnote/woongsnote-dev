@@ -12,8 +12,8 @@ const recentPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
   .slice(0, config.site.pageSize);
 ---
 
-<Base>
+<Base pageTitle="Home">
   <Hero />
-  <PageHeader title="최근 글" />
+  <PageHeader title="Latest Posts" />
   <Posts posts={recentPosts} pageSize={config.site.pageSize} />
 </Base>

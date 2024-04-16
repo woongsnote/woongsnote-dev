@@ -2,7 +2,14 @@ import type { CollectionEntry } from 'astro:content';
 
 type Post = CollectionEntry<'blog'>;
 
-export const sortPostsByDateDesc = (postA: Post, postB: Post) => {
+type WithPublishedDate = {
+  data: { publishedDate: Date };
+};
+
+export const sortPostsByDateDesc = <T extends WithPublishedDate>(
+  postA: T,
+  postB: T
+) => {
   return (
     postB.data.publishedDate.valueOf() - postA.data.publishedDate.valueOf()
   );
