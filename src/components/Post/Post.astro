@@ -17,8 +17,7 @@ const { title, description, publishedDate, tags, link, category } = Astro.props;
 ---
 
 <article
-  class="group relative w-full overflow-hidden break-keep rounded-lg p-2 transition-all hover:bg-gray-100 hover:dark:bg-gray-700"
->
+  class="group relative w-full overflow-hidden break-keep rounded-lg p-2 drop-shadow-lg transition-all ease-in-out hover:bg-gray-100 hover:dark:bg-gray-700">
   <a href={link} class="flex flex-col space-y-2">
     <Header category={category} publishedDate={publishedDate} />
     <Title title={title} />
