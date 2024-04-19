@@ -8,10 +8,9 @@ const { title, description } = Astro.props;
 ---
 
 <section
-  class="mx-auto flex w-full max-w-4xl flex-col gap-2 border-b pb-2 text-content"
->
-  <h2 class="mx-auto mb-4 w-full text-4xl font-black text-content lg:text-5xl">
+  class="mx-auto flex w-full max-w-4xl flex-col space-y-4 border-b py-4 text-content">
+  <h2 class="mx-auto w-full text-4xl font-black text-content lg:text-5xl">
     {title}
   </h2>
-  {description && <p class="mb-2 text-sm lg:text-lg">{description}</p>}
+  {description && <p class="text-sm lg:text-lg">{description}</p>}
 </section>

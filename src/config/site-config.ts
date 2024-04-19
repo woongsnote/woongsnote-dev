@@ -18,7 +18,6 @@ type SiteConfig = {
     logo: string;
     lang: string;
     description: string;
-    pageSize: number;
   };
   features: {
     dark_mode: boolean;
@@ -52,7 +51,6 @@ const siteConfig: SiteConfig = {
     logo: '/logo.png',
     lang: 'kr',
     description: 'tech blog by woongsnote',
-    pageSize: 5,
   },
   features: {
     dark_mode: true,
@@ -65,8 +63,7 @@ const siteConfig: SiteConfig = {
   },
   author: {
     name: `@${username}`,
-    bio: `안녕하세요. 문지웅입니다.
-    새로운 기술을 학습하는 것을 즐기고, 아이디어를 시각적으로 구현하는 것을 좋아합니다.`,
+    bio: `안녕하세요. 문지웅입니다. 학습한 새로운 기술과 지식으로 아이디어를 시각적으로 구현하는 것을 좋아합니다.`,
     tech: 'React, Next.js, TypeScript',
   },
   theme: {
