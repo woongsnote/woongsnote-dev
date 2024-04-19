@@ -1,19 +1,19 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import config from '@config/site-config';
 import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
 import { sortPostsByDateDesc } from '@utils/data-util';
 import Hero from '@components/Hero/Hero.astro';
 import PageHeader from '@components/PageHeader/PageHeader.astro';
 
+const LATEST_POSTS = 4;
 const recentPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
   .sort(sortPostsByDateDesc)
-  .slice(0, config.site.pageSize);
+  .slice(0, LATEST_POSTS);
 ---
 
 <Base pageTitle="Home">
   <Hero />
   <PageHeader title="Latest Posts" />
-  <Posts posts={recentPosts} pageSize={config.site.pageSize} />
+  <Posts posts={recentPosts} pageSize={LATEST_POSTS} />
 </Base>
