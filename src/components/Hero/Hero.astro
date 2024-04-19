@@ -1,8 +1,15 @@
 ---
-import config from '@config/site-config';
+const blogTitleText = "Woong\u00B4s Tech Blog"; 
+const description =
+  '학습한 지식과 구현한 프로젝트들을 기록하기 위한 공간입니다.';
 ---
 
-<section
-  class="mx-auto mb-8 w-full max-w-4xl whitespace-pre-line break-keep text-center text-lg text-content lg:mb-20 lg:text-xl">
-  {config.author.bio}
+<section class="w-full py-12 text-center text-content md:py-24 lg:py-32">
+  <div
+    class="container flex flex-col items-center justify-center space-y-4 break-keep">
+    <h1 class="text-4xl font-black sm:text-5xl md:text-6xl lg:text-7xl">
+      {blogTitleText}
+    </h1>
+    <p class="text-subContent md:text-xl">{description}</p>
+  </div>
 </section>
