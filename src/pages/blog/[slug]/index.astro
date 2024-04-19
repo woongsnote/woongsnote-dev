@@ -17,8 +17,6 @@ const { entry } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await entry.render();
 
 const { title, description, publishedDate, tags, cover, category } = entry.data;
-
-export const prerender = true;
 ---
 
 <Article
