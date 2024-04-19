@@ -9,6 +9,9 @@ const allPosts = (await getCollection('blog')).sort(sortPostsByDateDesc);
 ---
 
 <Base pageTitle="Blog">
-  <PageHeader title="Blog" description="개발 관련 학습한 지식의 기록입니다." />
+  <PageHeader
+    title="Blog"
+    description="개발 관련 학습한 지식과 프로젝트의 기록입니다."
+  />
   <Posts posts={allPosts} />
 </Base>
