@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
 import config from '@config/site-config';
 import BaseHead from '@components/Base/BaseHead.astro';
 import Header from '@components/Header/Header.astro';
@@ -19,14 +18,13 @@ const title = pageTitle
 ---
 
 <!doctype html>
-<html lang={config.site.lang}>
+<html lang={config.site.lang} transition:animate="none">
   <head>
     <BaseHead
       title={title}
       description={description || config.metadata.meta_description}
       image={image}
     />
-    <ViewTransitions />
   </head>
   <body class="relative flex min-h-screen flex-col bg-background">
     <Header />
