@@ -14,6 +14,6 @@ const recentPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
 
 <Base pageTitle="Home">
   <Hero />
-  <PageHeader title="Latest Posts" />
+  <PageHeader title="최신 글" />
   <Posts posts={recentPosts} pageSize={LATEST_POSTS} />
 </Base>
