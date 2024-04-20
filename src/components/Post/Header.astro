@@ -9,7 +9,7 @@ type Props = {
 const { category, publishedDate } = Astro.props;
 ---
 
-<div class="flex gap-x-2 text-sm">
+<div class="flex items-center gap-x-2 text-xs sm:text-sm">
   <Category category={category} />
   <span class="text-content">|</span>
   <FormattedDate date={publishedDate} />
