@@ -3,8 +3,6 @@ import TagList from '@components/Tag/TagList.astro';
 import Header from './Header.astro';
 import Title from './Title.astro';
 import Description from './Description.astro';
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
 
 type Props = {
   title: string;
@@ -13,16 +11,20 @@ type Props = {
   tags: string[];
   link: string;
   category: string;
-  image: ImageMetadata;
 };
 
-const { title, description, publishedDate, tags, link, category, image } =
-  Astro.props;
+const { title, description, publishedDate, tags, link, category } = Astro.props;
 ---
 
 <article
-  class="group relative w-full overflow-hidden break-keep rounded-lg p-1 transition-all ease-in-out hover:bg-gray-100 hover:drop-shadow-lg hover:dark:bg-gray-700">
-  <a href={link} class="flex flex-col space-y-2">
+  class="group relative w-full overflow-hidden break-keep rounded-lg transition-all ease-in-out hover:bg-gray-100/90 hover:backdrop-blur hover:dark:bg-gray-700/90"
+>
+  <a
+    href={link}
+    class="flex flex-col space-y-2 p-1 lg:p-2"
+    data-astro-history="auto"
+    data-astro-prefetch="tap"
+  >
     <Header category={category} publishedDate={publishedDate} />
     <Title title={title} />
     <TagList tags={tags} />

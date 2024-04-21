@@ -9,6 +9,9 @@ import rehypePrettyCode from 'rehype-pretty-code';
 
 export default defineConfig({
   site: 'https://www.woongsnote.dev',
+  prefetch: {
+    prefetchAll: false,
+  },
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
