@@ -4,8 +4,9 @@ import ThemeSwitcher from '@components/Theme/ThemeSwitcher.astro';
 ---
 
 <header
-  class="fixed top-0 z-20 flex w-full border-b bg-background/90 backdrop-blur-sm">
-  <div class="container mx-auto flex h-12 w-full max-w-screen-2xl items-center">
+  class="fixed top-0 z-20 flex w-full bg-background/90 shadow-sm backdrop-blur-sm"
+>
+  <div class="container flex h-12 w-full items-center">
     <Navigation />
     <div class="flex flex-1 items-center justify-end">
       <ThemeSwitcher />
