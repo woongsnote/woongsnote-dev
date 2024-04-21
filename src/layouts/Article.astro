@@ -28,9 +28,9 @@ const {
 ---
 
 <Base pageTitle={title} description={description}>
-  <article class="mx-auto flex w-full max-w-4xl flex-col py-2">
+  <article class="container mx-auto flex flex-col pt-4">
     <section
-      class="flex w-full flex-col items-center gap-4 break-keep pb-4 pt-2 text-content"
+      class="flex w-full flex-col items-center gap-4 break-keep py-4 text-content"
     >
       <div
         class="mx-auto flex items-center justify-center gap-2 text-sm sm:flex-row lg:gap-4"
@@ -38,13 +38,15 @@ const {
         <FormattedDate date={publishedDate} />
         <ReadingTimeText readingTime={minutesToRead} />
       </div>
-      <h1 class="text-2xl font-black md:text-3xl lg:text-5xl">{title}</h1>
-      <p>{description}</p>
+      <h1 class="text-center text-2xl font-black md:text-3xl lg:text-4xl">
+        {title}
+      </h1>
+      <p class="text-center">{description}</p>
       <TagList tags={tags} />
       {category === 'Project' && <PostThumbnail image={cover} alt={title} />}
     </section>
     <div
-      class="prose mx-auto my-4 w-full items-center break-keep text-base leading-10 text-content dark:prose-invert lg:max-w-5xl lg:text-xl"
+      class="prose mx-auto w-full items-center break-keep p-2 text-base leading-10 text-content dark:prose-invert lg:prose-xl lg:text-xl"
     >
       <slot />
     </div>
