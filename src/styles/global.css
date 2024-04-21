@@ -63,11 +63,3 @@ body {
 .prose :not(pre) > code {
   @apply rounded border-2 border-gray-200 bg-gray-200 px-1 py-0.5 align-middle font-mono font-normal text-content dark:border-gray-700 dark:bg-gray-700;
 }
-
-@font-face {
-  font-family: 'PretendardVariable';
-  src: url('/fonts/PretendardVariable.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}

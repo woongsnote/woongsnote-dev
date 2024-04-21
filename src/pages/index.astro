@@ -4,16 +4,21 @@ import Base from '@layouts/Base.astro';
 import Posts from '@layouts/Posts.astro';
 import { sortPostsByDateDesc } from '@utils/data-util';
 import Hero from '@components/Hero/Hero.astro';
-import PageHeader from '@components/PageHeader/PageHeader.astro';
 
-const LATEST_POSTS = 4;
+const MAX_LATEST_POSTS = 4;
+const LATEST_POSTS_TITLE = '최신 글';
+const HOME_TITLE = 'Home';
 const recentPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
   .sort(sortPostsByDateDesc)
-  .slice(0, LATEST_POSTS);
+  .slice(0, MAX_LATEST_POSTS);
 ---
 
-<Base pageTitle="Home">
+<Base pageTitle={HOME_TITLE}>
   <Hero />
-  <PageHeader title="최신 글" />
-  <Posts posts={recentPosts} pageSize={LATEST_POSTS} />
+  <h2
+    class="mx-auto my-4 w-full border-b pb-4 text-3xl font-black text-content lg:text-5xl"
+  >
+    {LATEST_POSTS_TITLE}
+  </h2>
+  <Posts posts={recentPosts} pageSize={MAX_LATEST_POSTS} />
 </Base>

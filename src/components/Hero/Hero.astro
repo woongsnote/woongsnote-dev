@@ -4,19 +4,26 @@ const blogDescription = '학습한 지식과 구현한 프로젝트의 아카이
 const viewMore = '읽으러가기';
 ---
 
-<section class="w-full py-12 md:py-24 lg:py-32">
-  <div class="flex flex-col items-center justify-center space-y-4">
+<section
+  class="my-4 w-full rounded-lg bg-gradient-to-r from-blue-500 to-teal-500 py-8 lg:py-12"
+>
+  <div
+    class="flex flex-col items-center justify-center space-y-4 drop-shadow-lg lg:space-y-8"
+  >
     <h1
-      class="bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-3xl font-bold tracking-tight text-transparent drop-shadow-lg sm:text-5xl md:text-6xl lg:text-7xl lg:!leading-normal">
+      class="text-3xl font-bold !leading-normal tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+    >
       {blogTitleText}
     </h1>
     <p
-      class="animate-fadeIn mx-auto max-w-2xl break-keep text-center text-lg text-subContent md:text-xl">
+      class="animate-fadeIn mx-auto max-w-2xl break-keep text-center text-lg text-gray-100 md:text-xl lg:text-2xl"
+    >
       {blogDescription}
     </p>
     <a
       href="/blog"
-      class="rounded bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 font-bold text-white transition-all ease-in-out hover:scale-110 hover:from-cyan-600 hover:to-blue-600">
+      class="transform rounded-md border px-6 py-2 text-base font-medium text-white transition duration-300 ease-in-out hover:scale-110 md:px-8 md:py-3 md:text-lg"
+    >
       {viewMore}
     </a>
   </div>
