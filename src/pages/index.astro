@@ -16,8 +16,7 @@ const recentPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
 <Base pageTitle={HOME_TITLE}>
   <Hero />
   <h2
-    class="mx-auto my-4 w-full border-b pb-4 text-3xl font-black text-content lg:text-5xl"
-  >
+    class="mx-auto my-4 w-full max-w-5xl border-b pb-4 text-3xl font-black text-content lg:text-5xl">
     {LATEST_POSTS_TITLE}
   </h2>
   <Posts posts={recentPosts} pageSize={MAX_LATEST_POSTS} />
