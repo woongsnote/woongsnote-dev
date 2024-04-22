@@ -12,8 +12,7 @@ const allPosts = (await getCollection('blog')).sort(sortPostsByDateDesc);
 
 <Base pageTitle={blogTitle}>
   <section
-    class="mx-auto flex w-full flex-col space-y-4 border-b py-4 text-content"
-  >
+    class="mx-auto flex w-full max-w-5xl flex-col space-y-4 border-b py-4 text-content">
     <h1 class="mx-auto w-full text-4xl font-black text-content lg:text-5xl">
       {blogTitle}
     </h1>
