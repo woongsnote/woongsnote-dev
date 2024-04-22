@@ -4,7 +4,6 @@ import BaseHead from '@components/Base/BaseHead.astro';
 import Header from '@components/Header/Header.astro';
 import Footer from '@components/Footer/Footer.astro';
 import MobileNav from '@components/Nav/MobileNav.astro';
-import { fade } from 'astro:transitions';
 
 type Props = {
   pageTitle?: string;
@@ -19,7 +18,7 @@ const title = pageTitle
 ---
 
 <!DOCTYPE html>
-<html lang={config.site.lang} transition:animate="none">
+<html lang={config.site.lang}>
   <head>
     <BaseHead
       title={title}
@@ -29,10 +28,7 @@ const title = pageTitle
   </head>
   <body class="relative flex min-h-screen flex-col bg-background">
     <Header />
-    <main
-      class="container flex-grow pb-4 pt-12"
-      transition:animate={fade({ duration: '0.4s' })}
-    >
+    <main class="container flex-grow pb-4 pt-12">
       <slot />
     </main>
     <Footer />
