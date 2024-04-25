@@ -11,7 +11,8 @@ const { url, name, svg } = Astro.props;
   href={url}
   target="_blank"
   aria-label="social-link button"
-  aria-describedby={`${name} icon`}>
+  aria-describedby={`${name} icon`}
+>
   <figure>
     <Fragment set:html={svg} />
   </figure>
