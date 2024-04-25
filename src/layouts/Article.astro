@@ -28,7 +28,9 @@ const {
 ---
 
 <Base pageTitle={title} description={description}>
-  <article class="container mx-auto flex flex-col pt-4">
+  <article
+    class="bg-articleBackground container mx-auto mt-4 flex max-w-5xl flex-col rounded-lg py-4"
+  >
     <section
       class="flex w-full flex-col items-center gap-4 break-keep pb-6 text-content"
     >
@@ -46,7 +48,7 @@ const {
       {category === 'Project' && <PostThumbnail image={cover} alt={title} />}
     </section>
     <div
-      class="prose mx-auto mt-4 w-full items-center break-keep p-2 text-base leading-10 text-content dark:prose-invert lg:prose-xl"
+      class="prose mx-auto my-4 w-full break-keep text-base leading-10 text-content dark:prose-invert lg:prose-xl"
     >
       <slot />
     </div>
