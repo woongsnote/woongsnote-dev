@@ -9,12 +9,14 @@
     --color-sub-content: 220deg 9% 26%;
     --color-accent: 235 83% 53%;
     --color-white: 0deg 0% 98%;
+    --color-article-background: 211 60% 93%
   }
   :root.dark {
     --color-background: 222.2 84% 4.9%;
     --color-content: 360deg 100% 100%;
     --color-sub-content: 210deg 3% 85%;
     --color-accent: 210deg 100% 56%;
+    --color-article-background: 222.2 48% 34%
   }
 }
 
