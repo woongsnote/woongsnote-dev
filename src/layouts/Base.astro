@@ -12,12 +12,13 @@ type Props = {
 };
 
 const { pageTitle, description, image } = Astro.props;
+
 const title = pageTitle
   ? `${pageTitle} | ${config.site.title}`
   : config.site.title;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={config.site.lang}>
   <head>
     <BaseHead
