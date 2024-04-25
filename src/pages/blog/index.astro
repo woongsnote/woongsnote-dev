@@ -1,22 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '@layouts/Base.astro';
-import Posts from '@layouts/Posts.astro';
-import { sortPostsByDateDesc } from '@utils/data-util';
-
-const blogTitle = 'Blog';
-const blogDescription = '개발 관련 학습한 지식과 프로젝트의 기록입니다.';
-
-const allPosts = (await getCollection('blog')).sort(sortPostsByDateDesc);
+import PostList from '@components/PostList/PostList.astro';
+import BlogHeader from '@components/Blog/BlogHeader.astro';
 ---
 
-<Base pageTitle={blogTitle}>
-  <section
-    class="mx-auto flex w-full max-w-5xl flex-col space-y-4 border-b py-4 text-content">
-    <h1 class="mx-auto w-full text-4xl font-black text-content lg:text-5xl">
-      {blogTitle}
-    </h1>
-    <p class="text-sm lg:text-lg">{blogDescription}</p>
-  </section>
-  <Posts posts={allPosts} />
+<Base pageTitle="Blog">
+  <BlogHeader />
+  <PostList />
 </Base>
