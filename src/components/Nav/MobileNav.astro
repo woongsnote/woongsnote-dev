@@ -9,13 +9,15 @@ const navLinks = config.navLinks;
 ---
 
 <nav
-  class="fixed bottom-0 left-0 z-50 mx-auto flex w-full items-center justify-between border-t bg-background text-subContent md:hidden md:gap-10">
+  class="fixed bottom-0 left-0 z-50 mx-auto flex w-full items-center justify-between border-t bg-background text-subContent md:hidden md:gap-10"
+>
   {
     navLinks.map(({ name, url }) => (
       <NavLink
         href={url}
         aria-label={`go to ${name} page`}
-        class="flex flex-1 flex-col items-center justify-center py-2 text-sm hover:text-accent">
+        class="flex flex-1 flex-col items-center justify-center py-2 text-sm hover:text-accent"
+      >
         {name === 'Home' && <HomeIcon />}
         {name === 'About' && <AboutIcon />}
         {name === 'Blog' && <PostIcon />}

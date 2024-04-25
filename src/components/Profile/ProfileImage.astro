@@ -3,11 +3,13 @@ import { Image } from 'astro:assets';
 import profile from '@assets/avatar.png';
 ---
 
-<figure>
-  <Image
-    class="size-16 rounded-lg md:size-24"
-    alt="profile"
-    src={profile}
-    loading="eager"
-  />
-</figure>
+<div class="m-2 flex items-center justify-center">
+  <figure>
+    <Image
+      class="size-16 rounded-lg md:size-24"
+      alt="profile"
+      src={profile}
+      loading="eager"
+    />
+  </figure>
+</div>
