@@ -1,13 +1,19 @@
 ---
 import PostList from '@components/PostList/PostList.astro';
+import { sortPostsByDateDesc } from '@utils/data-util';
+import { type CollectionEntry, getCollection } from 'astro:content';
 
 const LATEST_POSTS_SIZE = 5;
 const TITLE = '최신 글';
+
+const latestPosts: CollectionEntry<'blog'>[] = (
+  await getCollection('blog')
+).sort(sortPostsByDateDesc);
 ---
 
 <h2
-  class="mx-auto mt-4 w-full max-w-5xl border-b pb-2 text-3xl font-black text-content lg:mt-8 lg:text-5xl"
+  class="mx-auto my-4 w-full max-w-5xl border-b pb-2 text-3xl font-black text-content lg:my-8 lg:text-5xl"
 >
   {TITLE}
 </h2>
-<PostList pageSize={LATEST_POSTS_SIZE} />
+<PostList pageSize={LATEST_POSTS_SIZE} posts={latestPosts} />
