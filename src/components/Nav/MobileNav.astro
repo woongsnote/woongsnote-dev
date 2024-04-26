@@ -1,27 +1,25 @@
 ---
 import NavLink from './NavLink.astro';
-import config from '@config/site-config';
+import { NAV_ITEMS } from '@config/site-config';
 import PostIcon from '@icons/PostIcon.astro';
 import AboutIcon from '@icons/AboutIcon.astro';
 import HomeIcon from '@icons/HomeIcon.astro';
-
-const navLinks = config.navLinks;
 ---
 
 <nav
   class="fixed bottom-0 left-0 z-50 mx-auto flex w-full items-center justify-between border-t bg-background text-subContent md:hidden md:gap-10"
 >
   {
-    navLinks.map(({ name, url }) => (
+    NAV_ITEMS.map(({ title, href }) => (
       <NavLink
-        href={url}
-        aria-label={`go to ${name} page`}
+        href={href}
+        aria-label={`go to ${title} page`}
         class="flex flex-1 flex-col items-center justify-center py-2 text-sm hover:text-accent"
       >
-        {name === 'Home' && <HomeIcon />}
-        {name === 'About' && <AboutIcon />}
-        {name === 'Blog' && <PostIcon />}
-        <span>{name}</span>
+        {title === 'Home' && <HomeIcon />}
+        {title === 'About' && <AboutIcon />}
+        {title === 'Blog' && <PostIcon />}
+        <span>{title}</span>
       </NavLink>
     ))
   }

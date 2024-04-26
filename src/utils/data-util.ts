@@ -8,10 +8,17 @@ export const sortPostsByDateDesc = (postA: Post, postB: Post) => {
   );
 };
 
-export const getUniqueTags = (posts: Post[]): string[] => {
-  return [...new Set(posts.map((post) => post.data.tags).flat())];
+type Acc = {
+  [year: string]: CollectionEntry<'blog'>[];
 };
 
-export const getPostsByTag = (posts: Post[], tag: string): Post[] => {
-  return posts.filter((post) => post.data.tags.includes(tag));
+export const filterPostsByYear = (posts: Post[]) => {
+  return posts.reduce((acc: Acc, post) => {
+    const year = post.data.publishedDate.getFullYear().toString();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(post);
+    return acc;
+  }, {});
 };

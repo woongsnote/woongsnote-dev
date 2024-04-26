@@ -1,20 +1,16 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
-import { sortPostsByDateDesc } from '@utils/data-util';
+import { type CollectionEntry } from 'astro:content';
 import Post from '@components/Post/Post.astro';
 
 type Props = {
+  posts: CollectionEntry<'blog'>[];
   pageSize?: number;
 };
 
-const { pageSize } = Astro.props;
-
-const posts: CollectionEntry<'blog'>[] = (await getCollection('blog')).sort(
-  sortPostsByDateDesc
-);
+const { posts, pageSize } = Astro.props;
 ---
 
-<ul class="mx-auto mt-4 w-full max-w-5xl space-y-4 lg:mt-8 lg:space-y-6">
+<ul class="mx-auto flex w-full max-w-4xl flex-col gap-4">
   {
     posts.slice(0, pageSize).map((post) => (
       <li>
