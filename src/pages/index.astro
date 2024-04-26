@@ -2,9 +2,10 @@
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Home/Hero.astro';
 import LatestPosts from '@components/Home/LatestPosts.astro';
+import { HOME } from '@config/site-config';
 ---
 
-<Base>
+<Base pageTitle={HOME.title} description={HOME.description}>
   <Hero />
   <LatestPosts />
 </Base>

@@ -1,12 +1,11 @@
 ---
-import config from '@config/site-config';
+import { SOCIALS } from '@config/site-config';
 import SocialLink from './SocialLink.astro';
-const socialLinks = config.socialLinks;
 ---
 
 <div class="flex gap-4">
   {
-    socialLinks.map(({ name, svg, url }) => (
+    SOCIALS.map(({ name, svg, url }) => (
       <SocialLink name={name} svg={svg} url={url} />
     ))
   }
