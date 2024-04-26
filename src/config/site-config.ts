@@ -1,4 +1,4 @@
-import type { NavItem, SiteConfig, Socials, MetaData } from 'src/types';
+import type { NavItem, SiteConfig, Socials, MetaData } from '@types';
 
 export const username = 'woongsnote';
 
@@ -48,17 +48,17 @@ export const NAV_ITEMS: NavItem[] = [
 
 export const HOME: MetaData = {
   title: 'Home',
-  description: '',
+  description: `Woong's technology blog with latest archived articles and projects.`,
 };
 
 export const BLOG: MetaData = {
-  title: '',
-  description: '',
+  title: 'Blog',
+  description: 'A collection of knowledge and projects related to development',
 };
 
-export const PROJECTS: MetaData = {
-  title: '',
-  description: '',
+export const ABOUT: MetaData = {
+  title: 'About Me',
+  description: `This is Woong's self-introduction page.`,
 };
 
 export const SOCIALS: Socials[] = [
