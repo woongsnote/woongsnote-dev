@@ -17,11 +17,11 @@ const { title, description, publishedDate, tags, link, category } = Astro.props;
 ---
 
 <article
-  class="group relative w-full overflow-hidden break-keep rounded-lg transition-all ease-in-out hover:bg-gray-100/90 hover:backdrop-blur hover:dark:bg-gray-700/90"
+  class="group relative w-full overflow-hidden break-keep rounded-lg border p-2 transition-colors duration-300 ease-in-out hover:bg-gray-100/90 hover:backdrop-blur hover:dark:bg-gray-700/90 lg:p-4"
 >
   <a
     href={link}
-    class="flex flex-col space-y-2 p-1 lg:p-2"
+    class="flex flex-col space-y-2"
     data-astro-history="auto"
     data-astro-prefetch="tap"
   >
