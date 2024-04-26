@@ -7,14 +7,7 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@layouts/*": ["src/layouts/*"],
-      "@components/*": ["src/components/*"],
-      "@config/*": ["src/config/*"],
-      "@content/*": ["src/content/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"],
-      "@icons/*": ["src/icons/*"],
-      "@assets/*": ["src/assets/*"]
+      "@*": ["./src/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
