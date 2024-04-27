@@ -9,6 +9,8 @@ tags: ['Astro', 'Blog', 'MDX', 'TailwindCSS']
 slug: 'how-to-make-mdx-blog-use-astro'
 ---
 
+## Intro
+
 Astro와 TailwindCSS를 사용해서 MDX 블로그를 구현하는 방법을 단계별로 나눠 정리해보려고 한다.
 
 ## 1. Astro 프로젝트 생성
@@ -109,6 +111,7 @@ Tailwind가 잘 설치되었는지 확인하기 위해,`src/pages/indexe.astro`�
 
 ---
 
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -213,17 +216,17 @@ tags: ['Astro', 'MDX', 'TailwindCSS']
 
 **※ src 폴더에 `assets` 폴더를 만들고, `thumbnail`에 사용할 이미지를 추가한다. 만약 `content` 폴더 안에 이미지를 담는다면, `cover: "./blog-placeholder.jpg"`와 같이 수정할 수 있다.**
 
-게시글 작성이 완료되면, `pages`폴더의 `blog`폴더에, `[slug].astro` 파일을 생성한다.
+게시글 작성이 완료되면, `pages/blog`폴더에, `[...slug].astro` 파일을 생성한다.
 
 ```text
 📦pages
  ┣ 📂blog
- ┃ ┗ 📜[slug].astro
+ ┃ ┗ 📜[...slug].astro
 ```
 
-`[slug].astro` 파일의 내용은 아래와 같다.
+`[...slug].astro` 파일의 내용은 아래와 같다.
 
-```astro title="src/pages/blog/[slug].astro"
+```astro title="src/pages/blog/[...slug].astro"
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
@@ -241,6 +244,7 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -257,7 +261,7 @@ const { Content } = await post.render();
 
 **※ 만약, `<head>` 부분이 없이 `<Content />`만 입력하면 한글이 깨지는 현상을 볼 수 있을 것이다.**
 
-`index.astro`와 공통인 부분을 해당 부분을 `layouts` 폴더에 `BaseLayout.astro` 파일로 분리한다.
+`index.astro`와 공통인 부분을 해당 부분을 `layouts` 폴더에 `BaseLayout.astro` 파일로 분리한다. 분리한 파일들의 코드는 아래와 같다.
 
 ```astro title="src/layouts/BaseLayout.astro"
 ---
@@ -294,7 +298,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 ```
 
-```astro title="[slug].astro"
+```astro title="[...slug].astro"
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
