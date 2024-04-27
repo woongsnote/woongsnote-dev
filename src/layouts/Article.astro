@@ -28,11 +28,11 @@ const {
 ---
 
 <Base pageTitle={title} description={description}>
-  <article
-    class="container mx-auto mt-4 flex max-w-5xl flex-col rounded-lg bg-articleBackground py-4"
+  <div
+    class="container mx-auto my-4 mt-4 flex w-full flex-col break-keep rounded-lg bg-articleBackground px-8 py-4 text-content"
   >
     <section
-      class="flex w-full flex-col items-center gap-4 break-keep pb-6 text-content"
+      class="flex w-full flex-col items-center justify-center gap-4 break-keep text-content"
     >
       <div
         class="mx-auto flex items-center justify-center gap-2 text-sm sm:flex-row lg:gap-4"
@@ -47,11 +47,11 @@ const {
       <TagList tags={tags} />
       {category === 'Project' && <PostThumbnail image={cover} alt={title} />}
     </section>
-    <div
-      class="prose mx-auto my-4 w-full break-keep text-base leading-10 text-content dark:prose-invert lg:prose-xl"
+    <article
+      class="prose w-full max-w-screen-lg dark:prose-invert md:prose-lg lg:prose-xl"
     >
       <slot />
-    </div>
+    </article>
     <Comments client:idle />
-  </article>
+  </div>
 </Base>
