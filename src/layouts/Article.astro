@@ -29,10 +29,10 @@ const {
 
 <Base pageTitle={title} description={description}>
   <article
-    class="container mx-auto mt-4 flex max-w-5xl flex-col rounded-lg bg-articleBackground py-4"
+    class="container prose mx-auto my-4 mt-4 flex w-full max-w-screen-lg flex-col break-keep rounded-lg bg-articleBackground px-8 py-4 leading-10 text-content dark:prose-invert md:prose-lg lg:prose-xl"
   >
-    <section
-      class="flex w-full flex-col items-center gap-4 break-keep pb-6 text-content"
+    <div
+      class="not-prose flex w-full flex-col items-center gap-4 break-keep text-content"
     >
       <div
         class="mx-auto flex items-center justify-center gap-2 text-sm sm:flex-row lg:gap-4"
@@ -46,12 +46,8 @@ const {
       <p class="text-center">{description}</p>
       <TagList tags={tags} />
       {category === 'Project' && <PostThumbnail image={cover} alt={title} />}
-    </section>
-    <div
-      class="prose mx-auto my-4 w-full break-keep text-base leading-10 text-content dark:prose-invert lg:prose-xl"
-    >
-      <slot />
     </div>
+    <slot />
     <Comments client:idle />
   </article>
 </Base>
