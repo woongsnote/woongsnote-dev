@@ -1,5 +1,4 @@
 ---
-import TagList from '@components/Tag/TagList.astro';
 import Header from './Header.astro';
 import Title from './Title.astro';
 import Description from './Description.astro';
@@ -27,7 +26,6 @@ const { title, description, publishedDate, tags, link, category } = Astro.props;
   >
     <Header category={category} publishedDate={publishedDate} />
     <Title title={title} />
-    <TagList tags={tags} />
     <Description description={description} />
   </a>
 </article>
