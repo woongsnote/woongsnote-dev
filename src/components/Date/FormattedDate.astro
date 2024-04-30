@@ -1,17 +1,12 @@
 ---
+import { format } from 'date-fns';
 type Props = {
   date: Date;
 };
 
 const { date } = Astro.props;
 
-const dateOptions: Object = {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
-};
-
-const publishedDate = new Date(date).toLocaleDateString('ko-kR', dateOptions);
+const publishedDate = format(date, 'M월 d, yyyy');
 ---
 
 <span class="whitespace-nowrap">
