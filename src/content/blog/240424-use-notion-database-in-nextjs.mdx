@@ -55,35 +55,258 @@ API key를 발급받는다.
 
 노션 데이터베이스의 데이터를 가져오기 위해, 아래 패키지를 설치하도록 하자.
 
-- @notionhq/client: ㅎ
-- @notion-render/client: ㅎ
+- @notionhq/client: Notion API 사용을 위함
+- @notion-render/client: 가져온 데이터 렌더링을 위함.
 
 ```bash title="install packages"
 npm install @notionhq/client @notion-render/client
 ```
 
+utils 폴더를 생성하고, notion.ts 파일을 생성한다.
+
+```ts title="utils/notion.ts"
+import 'server-only';
+import { Client } from '@notionhq/client';
+import {
+  BlockObjectResponse,
+  DatabaseObjectResponse,
+  PageObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints';
+import { NotionRenderer } from '@notion-render/client';
+import hljsPlugin from '@notion-render/hljs-plugin';
+import { TNotionPage } from '@/app/types';
+
+export const notionClient = new Client({
+  auth: process.env.NOTION_TOKEN,
+});
+
+const databaseId = process.env.NOTION_DATABASE_ID!;
+
+const filter = {};
+
+export const queryNotionPages = async (
+  pageSize?: number,
+  level?: string
+): Promise<TNotionPage[]> => {
+  try {
+    const response = await notionClient.databases.query({
+      database_id: databaseId,
+      page_size: pageSize,
+      filter: {
+        and: [
+          {
+            property: 'Status',
+            status: {
+              equals: 'Published',
+            },
+          },
+          {
+            property: 'Level',
+            select: {
+              equals: level ?? '',
+            },
+          },
+        ],
+      },
+      sorts: [
+        {
+          property: 'PublishedDate',
+          direction: 'descending',
+        },
+      ],
+    });
+    return response.results as (DatabaseObjectResponse & TNotionPage)[];
+  } catch (error) {
+    console.error('Error occurred while fetching pages:', error);
+    throw new Error('Failed to fetch pages. Please try again later.');
+  }
+};
+
+export const getLatestPosts = async (): Promise<TNotionPage[]> => {
+  return queryNotionPages(5);
+};
+
+export const getAllPosts = async (): Promise<TNotionPage[]> => {
+  return queryNotionPages();
+};
+
+export const getPostsByLevel = async (
+  level: string
+): Promise<TNotionPage[]> => {
+  return queryNotionPages(0, level);
+};
+
+export const getPageDataBySlug = async (slug: string) => {
+  try {
+    const response = await notionClient.databases.query({
+      database_id: databaseId,
+      filter: {
+        property: 'Slug',
+        rich_text: {
+          equals: slug,
+        },
+      },
+    });
+    return response.results[0] as PageObjectResponse & TNotionPage;
+  } catch (error) {
+    console.error('Error occurred while fetching page:', error);
+    throw new Error('Failed to fetch page. Please try again later.');
+  }
+};
+
+export const getPageContent = async (pageId: string) => {
+  try {
+    const response = await notionClient.blocks.children.list({
+      block_id: pageId,
+    });
+    return response.results as BlockObjectResponse[];
+  } catch (error) {
+    console.error('Error occurred while fetching page contents:', error);
+    throw new Error('Failed to fetch page contents. Please try again later.');
+  }
+};
+
+export const renderPageContent = async (content: BlockObjectResponse[]) => {
+  const notionRenderer = new NotionRenderer({
+    client: notionClient,
+  });
+
+  notionRenderer.use(hljsPlugin({}));
+
+  return await notionRenderer.render(...content);
+};
+```
+
 ### 6. 페이지 렌더링
+
+```tsx title="app/page.tsx"
+import { Suspense } from 'react';
+import { getLatestPosts } from '@/app/utils/notion';
+import { Hero, Loading, PostList } from '@/app/components';
+import { LATEST_POSTS } from '@/app/lib/constants';
+
+export default async function Home() {
+  const latestPosts = await getLatestPosts();
+
+  return (
+    <>
+      <Hero />
+      <Suspense fallback={<Loading arrayLength={LATEST_POSTS} />}>
+        <PostList posts={latestPosts!} />
+      </Suspense>
+    </>
+  );
+}
+```
 
 App router를 사용할 것이므로, app 폴더 안에 posts 폴더를 만들고, 그 안에 page.tsx 파일을 생성한다.
 
 ```tsx title="posts/page.tsx"
+import { Suspense } from 'react';
+import type { Metadata } from 'next';
+import { getAllPosts, getPostsByLevel } from '@/app/utils/notion';
+import { Loading, PostList, Levels } from '@/app/components';
+import { TNotionPage } from '@/app/types';
 
+export const metadata: Metadata = {
+  title: 'Posts',
+};
+
+type Props = {
+  searchParams: { [key: string]: string };
+};
+
+export default async function PostsPage({ searchParams }: Props) {
+  let allPosts: TNotionPage[] | undefined = [];
+
+  if (!searchParams || searchParams.level === 'All') {
+    allPosts = await getAllPosts();
+  } else {
+    allPosts = await getPostsByLevel(searchParams.level);
+  }
+
+  return (
+    <>
+      <Levels />
+      <Suspense fallback={<Loading arrayLength={allPosts?.length} />}>
+        {allPosts ? <PostList posts={allPosts} /> : <>No Posts</>}
+      </Suspense>
+    </>
+  );
+}
 ```
 
 posts 폴더 안에 `[slug]` 폴더를 생성하고, 그 안에 page.tsx 파일을 생성한다. slug 를 기반으로 상세 페이지를 생성하기 위함이다.
 
 ```tsx title="[slug]/page.tsx"
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import {
+  getPageContent,
+  getPageDataBySlug,
+  renderPageContent,
+} from '@/app/utils/notion';
+import { PostHeader, Post, Comments } from '@/app/components';
 
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getPageDataBySlug(params.slug);
+
+  const title = post?.properties.Title.title[0].plain_text;
+  const description = post?.properties.Description.rich_text[0].plain_text;
+
+  return {
+    title: title,
+    description: description,
+    openGraph: {
+      title: title,
+      description: description,
+    },
+  };
+}
+
+export default async function PostPage({ params }: Props) {
+  const post = await getPageDataBySlug(params.slug);
+  try {
+    if (!post) {
+      throw new Error('Post not found');
+    }
+  } catch (error) {
+    notFound();
+  }
+
+  const content = await getPageContent(post.id);
+
+  const html = await renderPageContent(content!);
+
+  return (
+    <article className="m-4 mx-auto flex w-full flex-col rounded-lg border-2 p-4">
+      <PostHeader
+        title={post.properties.Title?.title[0]?.plain_text}
+        description={post.properties.Description?.rich_text[0]?.plain_text}
+        publishedDate={post.properties.PublishedDate?.date.start}
+        problemLink={post.properties.ProblemLink?.url}
+        level={post.properties.Level?.select.name}
+      />
+      <Post content={html} />
+      <Comments />
+    </article>
+  );
+}
 ```
 
 ### 7. 배포
 
 프로젝트가 정상적으로 동작한다면, Vercel을 통해서 배포해보자.
-[Vercel](https://vercel.com)에 접속해서, 프로젝트를 `import`하고, 이전에 만들었던 `.env` 파일의 환경 변수를 등록하자.
+[Vercel](https://vercel.com)에 접속해서, 프로젝트를 `import`하고,
+Settings의 Environment Variables에 이전에 만들었던 `.env` 파일의 환경 변수를 등록하자.
 
 배포가 완료되면, 생성된 URL로 접속해본다. 오류없이 동작한다면 모든 단계가 완료되었다.
 
 ## 구현 결과
 
-- 사이트 주소: https://99club-coding-study.vercel.app
-- Github : https://github.com/woongsnote/99club-coding-study
+- 99Club: https://99club-coding-study.vercel.app
+- Github: https://github.com/woongsnote/99club-coding-study
