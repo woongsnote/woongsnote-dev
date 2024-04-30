@@ -30,7 +30,7 @@ const {
 
 <Base pageTitle={title} description={description}>
   <article
-    class="container prose mx-auto my-4 mt-4 flex w-full max-w-4xl flex-col break-keep rounded-lg bg-articleBackground py-4 text-content dark:prose-invert prose-h1:mb-2"
+    class="container prose mx-auto my-4 mt-4 flex w-full max-w-4xl flex-col break-keep rounded-lg bg-articleBackground py-4 text-content dark:prose-invert xl:prose-lg prose-h1:mb-2 lg:px-8"
   >
     <a
       href="/blog"
@@ -56,6 +56,6 @@ const {
       )
     }
     <slot />
+    <Comments client:idle />
   </article>
-  <Comments client:idle />
 </Base>
