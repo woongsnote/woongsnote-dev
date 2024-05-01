@@ -1,12 +1,10 @@
 ---
-import Logo from '@components/Header/Logo.astro';
 import NavLink from './NavLink.astro';
 import { NAV_ITEMS } from '@config/site-config';
 const navLinks = NAV_ITEMS.filter((nav) => nav.title !== 'Home');
 ---
 
 <nav class="flex items-center space-x-4 text-subContent lg:space-x-6">
-  <Logo />
   {
     navLinks.map(({ title, href }) => (
       <NavLink
