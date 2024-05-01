@@ -10,7 +10,7 @@ type Props = {
 const { posts, pageSize } = Astro.props;
 ---
 
-<ul class="mx-auto flex w-full max-w-5xl flex-col gap-4">
+<ul class="mx-auto flex w-full max-w-5xl flex-col gap-4 px-2 lg:gap-8">
   {
     posts.slice(0, pageSize).map((post) => (
       <li>
