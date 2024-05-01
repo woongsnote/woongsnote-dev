@@ -7,12 +7,11 @@ type Props = {
   title: string;
   description: string;
   publishedDate: Date;
-  tags: string[];
   link: string;
   category: string;
 };
 
-const { title, description, publishedDate, tags, link, category } = Astro.props;
+const { title, description, publishedDate, link, category } = Astro.props;
 ---
 
 <article

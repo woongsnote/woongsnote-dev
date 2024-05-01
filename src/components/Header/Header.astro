@@ -1,14 +1,19 @@
 ---
 import Navigation from '@components/Nav/Navigation.astro';
 import ThemeSwitcher from '@components/Theme/ThemeSwitcher.astro';
+import Logo from './Logo.astro';
 ---
 
 <header
-  class="fixed top-0 z-20 flex w-full bg-background/90 shadow-sm backdrop-blur-sm"
+  class="fixed top-0 z-20 flex w-full bg-background/90 saturate-100 backdrop-blur-sm"
 >
-  <div class="container flex h-12 w-full items-center">
-    <Navigation />
-    <div class="flex flex-1 items-center justify-end">
+  <div
+    class="mx-auto flex h-12 w-full max-w-4xl items-center rounded-md p-2 shadow-sm lg:mt-2"
+  >
+    <Logo />
+    <div class="flex flex-1 items-center justify-end gap-4">
+      <Navigation />
+      <span class="hidden text-content md:block"> | </span>
       <ThemeSwitcher />
     </div>
   </div>
