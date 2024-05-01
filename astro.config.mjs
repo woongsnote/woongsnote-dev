@@ -9,8 +9,8 @@ import rehypePrettyCode from 'rehype-pretty-code';
 
 export default defineConfig({
   site: 'https://www.woongsnote.dev',
-  prefetch: {
-    prefetchAll: false,
+  redirects: {
+    '/posts/[...slug]': '/blog/[...slug]',
   },
   markdown: {
     remarkPlugins: [remarkReadingTime],
