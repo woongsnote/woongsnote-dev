@@ -6,16 +6,17 @@ import Footer from '@components/Footer/Footer.astro';
 import MobileNav from '@components/Nav/MobileNav.astro';
 
 type Props = {
-  pageTitle?: string;
+  pageTitle: string;
   description?: string;
   image?: string;
 };
 
 const { pageTitle, description, image } = Astro.props;
 
-const title = pageTitle
-  ? `${pageTitle} | ${config.site.title}`
-  : config.site.title;
+const title =
+  pageTitle !== 'Home'
+    ? `${pageTitle} | ${config.site.title}`
+    : `${config.site.title} - ${config.site.description}`;
 ---
 
 <!doctype html>
@@ -29,7 +30,7 @@ const title = pageTitle
   </head>
   <body class="relative flex min-h-screen flex-col bg-background">
     <Header />
-    <main class="container max-w-4xl flex-grow pb-4 pt-12">
+    <main class="mx-auto w-full max-w-5xl flex-grow px-2 pb-4 pt-12">
       <slot />
     </main>
     <Footer />

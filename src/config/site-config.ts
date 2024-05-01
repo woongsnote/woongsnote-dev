@@ -10,7 +10,7 @@ export const SITE: SiteConfig = {
     favicon: '/favicon.svg',
     logo: '/logo.png',
     lang: 'kr',
-    description: 'tech blog by woongsnote',
+    description: `Woong's technical blog`,
   },
   features: {
     dark_mode: true,
