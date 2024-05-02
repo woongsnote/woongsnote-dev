@@ -1,5 +1,5 @@
 ---
-title: 'Next.js에서 섬네일 이미지 자동으로 생성하기'
+title: 'Next.js에서 섬네일 이미지 쉽게 생성하기'
 description: 'Vercel/og를 사용해서 섬네일과 OG(Open Graph) image를 자동으로 생성하는 방법'
 cover: '../../assets/blog-placeholder.jpg'
 publishedDate: 2023-10-16
@@ -108,6 +108,52 @@ Local 상태에서 `yarn build && yarn start`로 build해서 test했을 때는, 
 
 섬네일 이미지의 src의 경로를 `/og?title=${title}`에서 `${"배포한 url 주소"}/og?title=${title}` 로 수정 후 다시 배포했고, 현재는 정상적으로 동작한다. 😊
 
----
+<div style={{ width: '100%', height: '1px', backgroundColor: 'gray' }}></div>
 
-- 참고 자료: [공식 문서](https://vercel.com/docs/functions/edge-functions/og-image-generation)
+2024.05.02 내용 추가
+
+og-image를 생성하려는 폴더에 `opengraph-image.tsx` 파일을 아래와 같이 생성한다.
+
+```tsx title="opengraph-image.tsx"
+import { ImageResponse } from 'next/og';
+
+//Image metadata
+export const alt = 'Alt text'; 
+export const size = {
+  width: 1200,
+  height: 630,
+};
+
+export const contentType = 'image/png';
+
+// Image generation
+// dynamic하게 생성하려면 params 추가
+export default async function Image() {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          color: 'white',
+          textShadow: `rgba(0, 0, 0, 0.4) 2px 2px 4px`,
+          border: 'none',
+        }}
+      >
+        <h2 style={{ fontSize: 56 }}>How to make thumbnail Easy</h2>
+      </div>
+    ),
+    {
+      ...size,
+    }
+  );
+}
+```
+
+- 참고 자료: [Vercel_og-image-generation](https://vercel.com/docs/functions/edge-functions/og-image-generation)
+- 참고 자료: [Nextjs_opengraph-image](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
