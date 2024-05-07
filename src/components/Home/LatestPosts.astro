@@ -11,9 +11,11 @@ const latestPosts: CollectionEntry<'blog'>[] = (
 ).sort(sortPostsByDateDesc);
 ---
 
-<h2
-  class="mx-auto my-4 w-full max-w-5xl border-b pb-2 text-3xl font-black text-content lg:my-8 lg:text-5xl"
->
-  {TITLE}
-</h2>
-<PostList pageSize={LATEST_POSTS_SIZE} posts={latestPosts} />
+<section class="flex flex-col space-y-4">
+  <span
+    class="my-4 w-full max-w-5xl border-b pb-2 text-3xl font-black text-content lg:my-8 lg:pb-4 lg:text-5xl"
+  >
+    {TITLE}
+  </span>
+  <PostList pageSize={LATEST_POSTS_SIZE} posts={latestPosts} />
+</section>

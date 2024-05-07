@@ -5,25 +5,23 @@ const blogDescription =
 const viewMore = '읽으러가기';
 ---
 
-<section class="my-4 w-full py-8 lg:py-12">
-  <div
-    class="flex flex-col items-center justify-center space-y-4 lg:space-y-8"
+<section
+  class="my-4 flex w-full flex-col items-center justify-center space-y-4 py-8 lg:space-y-8 lg:py-12"
+>
+  <h1
+    class="break-keep text-center text-2xl font-bold tracking-tighter text-content sm:text-3xl md:text-4xl lg:text-5xl"
   >
-    <h1
-      class="break-keep text-center text-2xl font-bold tracking-tighter text-content sm:text-3xl md:text-4xl lg:text-5xl"
-    >
-      {blogTitleText}
-    </h1>
-    <p
-      class="animate-fadeIn mx-auto max-w-2xl break-keep text-center text-sm text-subContent lg:text-lg"
-    >
-      {blogDescription}
-    </p>
-    <a
-      href="/blog"
-      class="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-6 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-    >
-      {viewMore}
-    </a>
-  </div>
+    {blogTitleText}
+  </h1>
+  <p
+    class="animate-fadeIn mx-auto max-w-2xl break-keep text-center text-sm text-subContent lg:text-lg"
+  >
+    {blogDescription}
+  </p>
+  <a
+    href="/blog"
+    class="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-6 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+  >
+    {viewMore}
+  </a>
 </section>
