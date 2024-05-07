@@ -1,11 +1,11 @@
 ---
 import Base from '@layouts/Base.astro';
 import FormattedDate from '@components/Date/FormattedDate.astro';
-import Comments from '@components/Comments';
 import PostThumbnail from '@components/Thumbnail/PostThumbnail.astro';
 import ReadingTimeText from '@components/ReadingTime/ReadingTimeText.astro';
 import TagList from '@components/Tag/TagList.astro';
 import ArrowLeftIcon from '@icons/ArrowLeftIcon.astro';
+import PostComments from '@components/Comments/PostComments.astro';
 
 type Props = {
   minutesToRead: number;
@@ -29,33 +29,32 @@ const {
 ---
 
 <Base pageTitle={title} description={description}>
-  <article
-    class="container prose mx-auto my-4 mt-4 flex w-full max-w-4xl flex-col break-keep rounded-lg bg-articleBackground py-4 text-content dark:prose-invert xl:prose-lg prose-h1:mb-2 lg:px-8"
-  >
-    <a
-      href="/blog"
-      class="not-prose flex w-fit items-center rounded-lg border p-1 text-content"
-      aria-label="go blog page"><ArrowLeftIcon /></a
+  <div class="container mt-4 rounded-lg bg-articleBackground py-4">
+    <article
+      id="article"
+      role="article"
+      class="prose mx-auto flex w-full max-w-4xl flex-col break-keep bg-articleBackground text-content dark:prose-invert xl:prose-lg prose-h1:mb-2 prose-h1:leading-tight"
     >
-    <div
-      class="not-prose mx-auto mb-4 flex items-center justify-center gap-2 text-sm text-subContent sm:flex-row lg:gap-4"
-    >
-      <FormattedDate date={publishedDate} />
-      <ReadingTimeText readingTime={minutesToRead} />
-    </div>
-    <h1 class="text-center">
-      {title}
-    </h1>
-    <p class="!my-1 text-center">{description}</p>
-    <div class="not-prose my-4 flex justify-center">
-      <TagList tags={tags} />
-    </div>
-    {
-      category === 'Project' && cover && (
-        <PostThumbnail image={cover} alt={title} />
-      )
-    }
-    <slot />
-    <Comments client:idle />
-  </article>
+      <div
+        class="not-prose mx-auto mb-4 flex items-center justify-center gap-2 text-sm text-subContent sm:flex-row lg:gap-4"
+      >
+        <FormattedDate date={publishedDate} />
+        <ReadingTimeText readingTime={minutesToRead} />
+      </div>
+      <h1 class="text-center">
+        {title}
+      </h1>
+      <p class="!my-1 text-center">{description}</p>
+      <div class="not-prose my-4 flex justify-center">
+        <TagList tags={tags} />
+      </div>
+      {
+        category === 'Project' && cover && (
+          <PostThumbnail image={cover} alt={title} />
+        )
+      }
+      <slot />
+    </article>
+    <PostComments />
+  </div>
 </Base>
