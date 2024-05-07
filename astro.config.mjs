@@ -4,21 +4,15 @@ import mdx from '@astrojs/mdx';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import vercel from '@astrojs/vercel/static';
 import sitemap from '@astrojs/sitemap';
-import react from '@astrojs/react';
 import rehypePrettyCode from 'rehype-pretty-code';
 
 export default defineConfig({
   site: 'https://www.woongsnote.dev',
-  redirects: {
-    '/posts/[...slug]': '/blog/[...slug]',
-  },
-  markdown: {
-    remarkPlugins: [remarkReadingTime],
-  },
   integrations: [
     tailwind(),
     mdx({
       syntaxHighlight: false,
+      remarkPlugins: [remarkReadingTime],
       rehypePlugins: [
         [
           rehypePrettyCode,
@@ -33,7 +27,6 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
     }),
-    react(),
   ],
   output: 'static',
   adapter: vercel({
