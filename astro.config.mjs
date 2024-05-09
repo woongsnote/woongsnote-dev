@@ -6,6 +6,13 @@ import vercel from '@astrojs/vercel/static';
 import sitemap from '@astrojs/sitemap';
 import rehypePrettyCode from 'rehype-pretty-code';
 
+const prettyCodeOptions = {
+  theme: {
+    dark: 'one-dark-pro',
+    light: 'github-light',
+  },
+};
+
 export default defineConfig({
   site: 'https://www.woongsnote.dev',
   integrations: [
@@ -13,14 +20,7 @@ export default defineConfig({
     mdx({
       syntaxHighlight: false,
       remarkPlugins: [remarkReadingTime],
-      rehypePlugins: [
-        [
-          rehypePrettyCode,
-          {
-            theme: 'one-dark-pro',
-          },
-        ],
-      ],
+      rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
     }),
     sitemap({
       changefreq: 'daily',

@@ -4,6 +4,7 @@ import BaseHead from '@components/Base/BaseHead.astro';
 import Header from '@components/Header/Header.astro';
 import Footer from '@components/Footer/Footer.astro';
 import MobileNav from '@components/Nav/MobileNav.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 type Props = {
   pageTitle: string;
@@ -27,10 +28,11 @@ const title =
       description={description || config.metadata.meta_description}
       image={image}
     />
+    <ViewTransitions />
   </head>
   <body class="relative flex min-h-screen flex-col bg-background">
     <Header />
-    <main class="container mx-auto max-w-4xl flex-grow px-2 pb-4 pt-12 lg:px-0">
+    <main class="container mx-auto max-w-4xl flex-grow px-2 pb-4 pt-12">
       <slot />
     </main>
     <Footer />
