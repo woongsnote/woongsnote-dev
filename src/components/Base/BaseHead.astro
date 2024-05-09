@@ -1,7 +1,6 @@
 ---
 import '@styles/global.css';
 import SpeedInsights from '@vercel/speed-insights/astro';
-import { ViewTransitions } from 'astro:transitions';
 
 type Props = {
   title: string;
@@ -43,4 +42,3 @@ const { title, description, image = '/opengraph-image.png' } = Astro.props;
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <SpeedInsights />
-<ViewTransitions fallback="swap" />
