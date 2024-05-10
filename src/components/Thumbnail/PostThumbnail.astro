@@ -9,17 +9,17 @@ type Props = {
 const { image, alt } = Astro.props;
 ---
 
-<div class="mx-auto flex items-center justify-center overflow-hidden">
-  <figure
-    class="mx-auto h-auto w-full max-w-lg rounded-lg object-cover object-center duration-300 ease-in-out hover:scale-110"
-  >
+<div
+  class="relative mx-auto flex h-72 w-96 items-center overflow-hidden rounded-lg"
+>
+  <figure class="m-0">
     <Image
       src={image}
       alt={alt}
       width="960"
       height="540"
       loading="eager"
-      class="size-full rounded-lg"
+      class="size-full rounded-lg object-cover transition-transform duration-300 hover:scale-110"
     />
   </figure>
 </div>
