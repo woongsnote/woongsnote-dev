@@ -24,7 +24,7 @@ export default defineConfig({
     }),
     sitemap({
       changefreq: 'daily',
-      priority: 0.7,
+      priority: 1.0,
       lastmod: new Date(),
     }),
   ],
