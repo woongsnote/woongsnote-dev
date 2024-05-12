@@ -1,0 +1,21 @@
+---
+const { heading } = Astro.props;
+---
+
+<li>
+  <a
+    href={'#' + heading.slug}
+    class="text-accent underline-offset-4 hover:underline"
+  >
+    {heading.text}
+  </a>
+  {
+    heading.subHeadings.length > 0 && (
+      <ul class="ps-2">
+        {heading.subHeadings.map((subHeading: any) => (
+          <Astro.self heading={subHeading} />
+        ))}
+      </ul>
+    )
+  }
+</li>
