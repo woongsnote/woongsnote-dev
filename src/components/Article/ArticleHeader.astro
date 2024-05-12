@@ -1,0 +1,23 @@
+---
+import FormattedDate from '@components/Date/FormattedDate.astro';
+import ReadingTimeText from '@components/ReadingTime/ReadingTimeText.astro';
+import TagList from '@components/Tag/TagList.astro';
+
+const { minutesToRead, title, description, publishedDate, tags, category } =
+  Astro.props;
+---
+
+<section
+  class="mt-2 flex w-full flex-col gap-4 rounded-t-md bg-articleBackground p-4 text-content"
+>
+  <h2 class="text-xl font-semibold">{category}</h2>
+  <h1 class="text-3xl font-black lg:text-5xl">
+    {title}
+  </h1>
+  <p class="!my-0">{description}</p>
+  <div class="flex items-center gap-2">
+    <FormattedDate date={publishedDate} />
+    <ReadingTimeText readingTime={minutesToRead} />
+  </div>
+  <TagList tags={tags} />
+</section>
