@@ -13,7 +13,9 @@ slug: 'how-to-make-mdx-blog-use-astro'
 
 `Astro`와 `TailwindCSS`를 사용해서 `MDX` 블로그를 구현하는 방법을 단계별로 나눠 정리해보려고 한다.
 
-## 1. Astro 프로젝트 생성
+## 구현 방법
+
+### 1. Astro 프로젝트 생성
 
 먼저, 터미널에서 Astro 프로젝트를 생성한다.
 
@@ -23,7 +25,7 @@ npm create astro@latest
 
 명령어를 실행하면, 아래와 같은 절차로 프로젝트를 생성할 수 있다.
 
-### 프로젝트 생성 순서
+**※ 프로젝트 생성 순서**
 
 ```bash
    dir   Where should we create your new project?
@@ -69,7 +71,7 @@ npm run dev
 
 정상적으로 실행되면, 스타일링을 위해 `Tailwind CSS`를 설치한다.
 
-## 2. Tailwind CSS 추가
+### 2. Tailwind CSS 추가
 
 아래 명령어를 사용해서 Tailwind CSS를 추가한다. 해당 명령어는 Astro에서 제공해주는 Integration을 이용해서 설치하는 방법이다.
 
@@ -126,7 +128,7 @@ Tailwind가 잘 설치되었는지 확인하기 위해,`src/pages/indexe.astro`�
 </html>
 ```
 
-## 3. 프로젝트에 @astro/mdx 추가
+### 3. 프로젝트에 @astro/mdx 추가
 
 `MDX`파일 렌더링을 위해 `Astro`에서 제공하는 `@astro/mdx`를 설치한다.
 
@@ -134,7 +136,7 @@ Tailwind가 잘 설치되었는지 확인하기 위해,`src/pages/indexe.astro`�
 npx astro add mdx
 ```
 
-## 4. Content Collection 구성
+### 4. Content Collection 구성
 
 `src` 폴더에 `content` 폴더를 생성한다.
 `content` 폴더에 `blog` 폴더를 만들고 `my-first-post.mdx`파일을 생성한다.
@@ -197,7 +199,7 @@ export const collections = {
  ┗ 📜projectSchema.ts
 ```
 
-## 5. 첫 번째 게시글 렌더링
+### 5. 첫 번째 게시글 렌더링
 
 화면에 보여줄 첫 번째 게시글을 작성한다.
 
@@ -342,7 +344,7 @@ const { title, description, cover } = post.data;
 </BaseLayout>
 ```
 
-## 6. 게시글 목록 렌더링
+### 6. 게시글 목록 렌더링
 
 게시글 목록을 만들기 위해, `blog` 폴더에 새로운 MDX 파일을 추가한다.
 
@@ -376,7 +378,7 @@ const allPosts = await getCollection('blog');
 </BaseLayout>
 ```
 
-## 7. 디자인 수정하기
+### 7. 디자인 수정하기
 
 BaseLayout에 Tailwind class를 추가해서, 디자인을 수정한다.
 
@@ -449,7 +451,7 @@ const { title, description, cover } = post.data;
 
 그 외에 바꾸고 싶은 스타일이 있는 경우, 수정을 진행하도록 하자.
 
-## 8. rehype-pretty-code 추가
+### 8. rehype-pretty-code 추가
 
 게시글을 작성하다 보면, Code Block을 추가해야 하는데, Code Block의 커스터마이징을 위해 `rehype-pretty-code`를 사용하려고 한다.
 아래 명령어로 설치해준다.
@@ -485,7 +487,7 @@ export default defineConfig({
 });
 ```
 
-## 9. Metadata
+### 9. Metadata 설정
 
 Metadata 관리를 위해, `src`에 `components` 폴더를 만들고, `Metadata.astro` 파일을 생성하자.
 `Metadata.astro`의 코드는 아래와 같다.
@@ -549,7 +551,7 @@ const { title, description, image } = Astro.props;
 </html>
 ```
 
-## 10. 빌드 및 배포
+### 10. 빌드 및 배포
 
 오류가 없는지 확인하기 위해, 빌드해서 실행해보도록 하자.
 아래 명령어로, 빌드를 진행할 수 있다.
@@ -561,5 +563,7 @@ npm run build
 **※ 빌드 단계에서 문제가 있다면 빌드 자체가 되지 않는다!**
 
 사용하고 싶은 플랫폼(ex. Vercel, Netlify, github-pages)을 이용해서, 배포를 진행하면 된다.
+
+## 구현 결과
 
 최종 완성된 소스 코드는 [여기](https://github.com/woongsnote/minimal-astro-blog)에서 볼 수 있다.

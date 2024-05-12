@@ -1,0 +1,14 @@
+---
+import TOC from '@components/TOC/TOC.astro';
+
+const { headings } = Astro.props;
+---
+
+{
+  headings && headings.length > 0 && (
+    <aside class="sticky  top-14 float-right w-full text-content">
+      <h3 class="mb-2 text-lg font-bold">목차</h3>
+      <TOC headings={headings} />
+    </aside>
+  )
+}
