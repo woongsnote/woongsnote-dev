@@ -1,12 +1,17 @@
 ---
 import Base from '@layouts/Base.astro';
-import FormattedDate from '@components/Date/FormattedDate.astro';
-import PostThumbnail from '@components/Thumbnail/PostThumbnail.astro';
-import ReadingTimeText from '@components/ReadingTime/ReadingTimeText.astro';
-import TagList from '@components/Tag/TagList.astro';
 import PostComments from '@components/Comments/PostComments.astro';
+import ArticleHeader from '@components/Article/ArticleHeader.astro';
+import ArticleToc from '@components/Article/ArticleToc.astro';
+import PostThumbnail from '@components/Thumbnail/PostThumbnail.astro';
 
-type Props = {
+type Heading = {
+  depth: number;
+  slug: string;
+  text: string;
+};
+
+export type Props = {
   minutesToRead: number;
   title: string;
   description: string;
@@ -14,6 +19,7 @@ type Props = {
   tags: string[];
   cover?: ImageMetadata;
   category: string;
+  headings: Heading[];
 };
 
 const {
@@ -24,36 +30,34 @@ const {
   tags,
   cover,
   category,
+  headings,
 } = Astro.props;
 ---
 
 <Base pageTitle={title} description={description}>
-  <div class="my-4 rounded-lg bg-articleBackground p-2 lg:p-4">
-    <article
-      id="article"
-      role="article"
-      class="prose mx-auto flex flex-col break-keep bg-articleBackground text-content dark:prose-invert lg:prose-lg prose-h1:mb-2 prose-h1:leading-tight"
-    >
-      <div
-        class="not-prose mx-auto mb-4 flex items-center justify-center gap-2 text-sm text-subContent sm:flex-row lg:gap-4"
-      >
-        <FormattedDate date={publishedDate} />
-        <ReadingTimeText readingTime={minutesToRead} />
-      </div>
-      <h1 class="text-center">
-        {title}
-      </h1>
-      <p class="!my-1 text-center">{description}</p>
-      <div class="not-prose my-4 flex justify-center">
-        <TagList tags={tags} />
-      </div>
-      {
-        category === 'Project' && cover && (
-          <PostThumbnail image={cover} alt={title} />
-        )
-      }
-      <slot />
-    </article>
-    <PostComments />
-  </div>
+  <ArticleHeader
+    minutesToRead={minutesToRead}
+    title={title}
+    description={description}
+    publishedDate={publishedDate}
+    tags={tags}
+    cover={cover}
+    category={category}
+  />
+  <section class="flex rounded-b-md bg-articleBackground p-4">
+    <div class="w-3/4">
+      <article class="prose w-full dark:prose-invert lg:prose-lg">
+        {
+          category === 'Project' && cover && (
+            <PostThumbnail image={cover} alt={title} />
+          )
+        }
+        <slot />
+      </article>
+      <PostComments />
+    </div>
+    <div class="w-1/4">
+      <ArticleToc headings={headings} />
+    </div>
+  </section>
 </Base>

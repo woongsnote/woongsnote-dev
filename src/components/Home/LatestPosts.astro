@@ -3,7 +3,7 @@ import PostList from '@components/PostList/PostList.astro';
 import { sortPostsByDateDesc } from '@utils/data-util';
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-const LATEST_POSTS_SIZE = 5;
+const LATEST_POSTS_SIZE = 4;
 const TITLE = '최신 글';
 
 const latestPosts: CollectionEntry<'blog'>[] = (
@@ -13,7 +13,7 @@ const latestPosts: CollectionEntry<'blog'>[] = (
 
 <section class="flex flex-col space-y-4">
   <span
-    class="my-4 w-full max-w-5xl border-b pb-2 text-3xl font-black text-content lg:my-8 lg:pb-4 lg:text-5xl"
+    class="my-4 border-b pb-2 text-3xl font-black text-content lg:my-8 lg:pb-4 lg:text-5xl"
   >
     {TITLE}
   </span>
