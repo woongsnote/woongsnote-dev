@@ -31,6 +31,10 @@
 
 - [사이트 링크](https://www.woongsnote.dev)
 
+- 미리보기
+
+  ![preview](/src/assets/woongsnote.jpg)
+
 ---
 
 ## 트러블 슈팅
