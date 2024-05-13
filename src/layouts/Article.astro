@@ -44,9 +44,11 @@ const {
     cover={cover}
     category={category}
   />
-  <section class="flex rounded-b-md bg-articleBackground p-4 gap-1">
-    <div class="w-full md:w-3/4">
-      <article class="prose w-full dark:prose-invert lg:prose-lg">
+  <section
+    class="flex max-w-5xl gap-1 break-keep rounded-b-md bg-articleBackground p-4"
+  >
+    <div class="mx-auto w-full lg:w-3/4">
+      <article class="prose w-full dark:prose-invert xl:prose-xl">
         {
           category === 'Project' && cover && (
             <PostThumbnail image={cover} alt={title} />
@@ -56,7 +58,7 @@ const {
       </article>
       <PostComments />
     </div>
-    <div class="hidden md:block md:w-1/4">
+    <div class="hidden lg:block lg:w-1/4">
       <ArticleToc headings={headings} />
     </div>
   </section>

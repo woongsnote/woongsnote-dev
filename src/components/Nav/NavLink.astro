@@ -1,5 +1,5 @@
 ---
-const { href ,title, class: className, ...props } = Astro.props;
+const { href, title, class: className, ...props } = Astro.props;
 const { pathname } = Astro.url;
 const isActive =
   href === pathname ||
