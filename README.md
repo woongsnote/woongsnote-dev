@@ -33,7 +33,7 @@
 
 - 미리보기
 
-  ![preview](/src/assets/woongsnote.png)
+  ![preview](/src/assets/woongsnote.jpg)
 
 ---
 
