@@ -32,6 +32,8 @@ const {
   category,
   headings,
 } = Astro.props;
+
+const isHeadings = headings && headings.length > 0;
 ---
 
 <Base pageTitle={title} description={description}>
@@ -45,10 +47,10 @@ const {
     category={category}
   />
   <section
-    class="flex max-w-5xl gap-1 break-keep rounded-b-md bg-articleBackground p-4"
+    class="flex w-full max-w-5xl gap-4 break-keep rounded-b-md bg-articleBackground p-4"
   >
-    <div class="mx-auto w-full lg:w-3/4">
-      <article class="prose w-full dark:prose-invert xl:prose-xl">
+    <div class:list={['w-full', `${isHeadings ? 'lg:w-3/4' : ''}`]}>
+      <article class="prose w-full max-w-5xl dark:prose-invert xl:prose-xl">
         {
           category === 'Project' && cover && (
             <PostThumbnail image={cover} alt={title} />
@@ -58,8 +60,6 @@ const {
       </article>
       <PostComments />
     </div>
-    <div class="hidden lg:block lg:w-1/4">
-      <ArticleToc headings={headings} />
-    </div>
+    {isHeadings && <ArticleToc headings={headings} />}
   </section>
 </Base>
