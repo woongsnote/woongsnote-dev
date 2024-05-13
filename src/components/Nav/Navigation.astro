@@ -7,11 +7,7 @@ const navLinks = NAV_ITEMS.filter((nav) => nav.title !== 'Home');
 <nav class="flex items-center space-x-4 text-subContent lg:space-x-6">
   {
     navLinks.map(({ title, href }) => (
-      <NavLink
-        href={href}
-        aria-label={`go to ${title} page`}
-        class="flex gap-1 hover:text-accent"
-      >
+      <NavLink title={title} href={href} class="flex gap-1 hover:text-accent">
         <span class="hidden md:block">{title}</span>
       </NavLink>
     ))
