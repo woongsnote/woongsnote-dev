@@ -1,1 +1,5 @@
-* text eol=lf
+* text=auto
+
+*.png binary 
+
+*.mdx linguist-detectable=false

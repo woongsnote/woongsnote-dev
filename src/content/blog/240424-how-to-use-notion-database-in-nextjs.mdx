@@ -59,14 +59,14 @@ slug: 'how-to-use-notion-database-in-nextjs'
 
 노션 데이터베이스의 데이터를 가져오기 위해, 아래 패키지를 설치하도록 하자.
 
-- @notionhq/client: Notion API 사용을 위해 설치
-- @notion-render/client: 가져온 데이터 렌더링을 위해 설치
+    ```bash title="install packages"
+    npm install @notionhq/client @notion-render/client
+    ```
 
-```bash title="install packages"
-npm install @notionhq/client @notion-render/client
-```
+- @notionhq/client: Notion API 사용을 위해 설치한다.
+- @notion-render/client: 가져온 데이터 렌더링을 위해 설치한다.
 
-`utils` 폴더를 생성하고, 그 안에 `notion.ts` 파일을 생성한다.
+`utils` 폴더를 생성하고, 그 안에 `notion.ts` 파일을 생성해서, 노션 데이터베이스의 데이터를 가져오기 위한 함수를 구현한다.
 
 ```ts title="utils/notion.ts"
 import 'server-only';
@@ -340,7 +340,7 @@ export const renderPageContent = async (
 
 3. 배포가 완료되면, 생성된 URL로 접속해서 정상적으로 보이는지 확인한다. 오류없이 동작한다면 모든 단계가 완료되었다.
 
-이제 노션에서 글을 작성하면, 다시 배포를 진행하지 않아도, 게시글이 자동으로 업데이트 될 것이다.
+이제 노션에서 글을 작성하면, 프로젝트를 다시 배포하지 않아도, 게시글이 자동으로 업데이트 될 것이다.
 
 ## 구현 결과
 
