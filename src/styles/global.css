@@ -7,9 +7,11 @@
     --color-background: 360 100% 100%;
     --color-content: 0deg 0% 0%;
     --color-sub-content: 220deg 9% 26%;
-    --color-accent: 235 83% 53%;
+    --color-accent: 224 86% 56%;
     --color-white: 0deg 0% 98%;
     --color-article-background: 211 60% 93%;
+    --color-scrollbar-background: #fff;
+    --color-scrollbar-thumb-background: #3063f0;
   }
   :root.dark {
     --color-background: 222.2 84% 4.9%;
@@ -17,31 +19,28 @@
     --color-sub-content: 210deg 3% 85%;
     --color-accent: 210deg 100% 56%;
     --color-article-background: 222 22% 22%;
+    --color-scrollbar-background: #000;
+    --color-scrollbar-thumb-background: #1f8fff;
   }
 }
 
 ::-webkit-scrollbar {
   width: 6px;
-  height: 6px;
 }
 
 :target {
-  scroll-margin-top: 60px; 
+  scroll-margin-top: 60px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--color-scrollbar-background);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--color-accent);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--color-scrollbar-thumb-background);
+  border-radius: 24px;
 }
 
 .prose pre > code {
