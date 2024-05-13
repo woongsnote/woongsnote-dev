@@ -44,8 +44,8 @@ const {
     cover={cover}
     category={category}
   />
-  <section class="flex rounded-b-md bg-articleBackground p-4">
-    <div class="w-3/4">
+  <section class="flex rounded-b-md bg-articleBackground p-4 gap-1">
+    <div class="w-full md:w-3/4">
       <article class="prose w-full dark:prose-invert lg:prose-lg">
         {
           category === 'Project' && cover && (
@@ -56,7 +56,7 @@ const {
       </article>
       <PostComments />
     </div>
-    <div class="w-1/4">
+    <div class="hidden md:block md:w-1/4">
       <ArticleToc headings={headings} />
     </div>
   </section>
