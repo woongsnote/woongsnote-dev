@@ -3,8 +3,15 @@ type Props = {
   category: string;
 };
 const { category } = Astro.props;
+const categoryColors: { [key: string]: string } = {
+  Tech: 'text-gray-500',
+  Project: 'text-blue-500',
+  Diary: 'text-green-500',
+};
+
+const textColorClass = categoryColors[category];
 ---
 
-<span class="w-fit rounded-md">
+<span class=`w-fit rounded-md ${textColorClass}`>
   {category}
 </span>
