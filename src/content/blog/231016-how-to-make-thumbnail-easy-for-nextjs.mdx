@@ -89,11 +89,14 @@ export async function GET(request: Request) {
 
 ## 이 이미지를 섬네일로 사용하는 방법은?
 
-Local 상태에서 `yarn build && yarn start`로 build해서 test했을 때는, 섬네일이 정상적으로 나왔었다.
+Next.js에서 제공하는 `<Image />` 컴포넌트에 og image로 생성한 url을 입력하면 섬네일로 사용할 수 있다.
 
+## 배포 후에 만난 오류
+
+Local 상태에서 `yarn build && yarn start`로 build해서 test했을 때는, 섬네일이 정상적으로 나왔었다.
 하지만, 배포하고 나서 접속했을 때는, **400** Error를 마주하게 되었다.
 
-해당 에러에 대해 검색해 본 결과, 이미지 주소의 Remote Patttern이 빠졌음을 알았다.
+해당 에러에 대해 검색해 본 결과, 이미지 주소의 Remote Patttern이 빠져서 생긴 오류임을 확인했다.
 
 `next.config.js` 파일에 아래와 같이 image 주소의 Remote pattern을 추가하고,
 
