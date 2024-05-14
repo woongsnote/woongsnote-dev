@@ -109,15 +109,17 @@ Local 상태에서 `yarn build && yarn start`로 build해서 test했을 때는, 
       },
 ```
 
-섬네일 이미지의 src의 경로를 `/og?title=${title}`에서 `${"배포한 url 주소"}/og?title=${title}` 로 수정 후 다시 배포했고, 현재는 정상적으로 동작한다. 😊
+섬네일 이미지의 src의 경로를 `/og?title=${title}`에서 `${"배포한 url 주소"}/og?title=${title}` 로 수정 후 다시 배포해서 정상적으로 동작하는 것을 확인했다.
 
 <div style={{ width: '100%', height: '1px', backgroundColor: 'gray' }}></div>
 
-2024.05.02 내용 추가
+## 최신 버전 내용 추가(2024.05)
+
+공식 문서에 추가된 내용이 있어 이를 기록한다.
 
 og-image를 생성하려는 폴더에 `opengraph-image.tsx` 파일을 아래와 같이 생성한다.
 
-```tsx title="opengraph-image.tsx"
+```tsx title="opengraph-image.tsx - static image"
 import { ImageResponse } from 'next/og';
 
 //Image metadata
@@ -130,7 +132,6 @@ export const size = {
 export const contentType = 'image/png';
 
 // Image generation
-// dynamic하게 생성하려면 params 추가
 export default async function Image() {
   return new ImageResponse(
     (
@@ -155,6 +156,14 @@ export default async function Image() {
       ...size,
     }
   );
+}
+```
+
+※ slug 등을 사용해서 동적으로 생성하고자 한다면 아래와 같이 params를 추가해서 사용할 수 있다.
+
+```tsx title="opengraph-image.tsx - dynamic params"
+export default function Image({ params }: { params: { slug: string } }) {
+  // ...
 }
 ```
 
