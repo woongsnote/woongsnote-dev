@@ -20,6 +20,7 @@ export type Props = {
   cover?: ImageMetadata;
   category: string;
   headings: Heading[];
+  slug: string;
 };
 
 const {
@@ -31,12 +32,17 @@ const {
   cover,
   category,
   headings,
+  slug,
 } = Astro.props;
 
 const isHeadings = headings && headings.length > 0;
 ---
 
-<Base pageTitle={title} description={description}>
+<Base
+  pageTitle={title}
+  description={description}
+  image={`${import.meta.env.SITE}/blog/${slug}/og.png`}
+>
   <ArticleHeader
     minutesToRead={minutesToRead}
     title={title}
