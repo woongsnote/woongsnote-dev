@@ -3,6 +3,8 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import Article from '@layouts/Article.astro';
 import { sortPostsByDateDesc } from '@utils/data-util';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const allPosts = (await getCollection('blog')).sort(sortPostsByDateDesc);
 
