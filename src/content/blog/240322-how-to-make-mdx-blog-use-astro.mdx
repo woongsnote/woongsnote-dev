@@ -82,7 +82,7 @@ TailwindCSS 설치가 완료되었다면, 블로그의 각 게시글 스타일�
     npm install -D @tailwindcss/typography
     ```
 
-    ```js title="tailwind.config.mjs"
+    ```js {7} title="tailwind.config.mjs"
     /** @type {import('tailwindcss').Config} */
     export default {
       content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -393,7 +393,7 @@ BaseLayout에 Tailwind class를 추가해서, 디자인을 수정한다.
 
 게시글의 경우, Tailwind CSS의 `Typography` 플러그인를 사용하기 위해, `<article>`에 `prose` class를 추가해준다.
 
-```astro title="[slug].astro"
+```astro {27} title="[slug].astro"
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
@@ -446,7 +446,7 @@ const { title, description, cover } = post.data;
 
 패키지가 설치되고 나면, `astro.config.mjs`에 추가해주도록 하자.
 
-```js title="astro.config.mjs"
+```js {4, 10-20} title="astro.config.mjs"
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
@@ -512,7 +512,7 @@ const { title, description, image } = Astro.props;
 
 생성한 Metadata.astro 파일을 `BaseLayout`에서 `import` 해준다.
 
-```astro title="BaseLayout.astro"
+```astro {2, 15} title="BaseLayout.astro"
 ---
 import Metadata from '../components/Metadata.astro';
 
