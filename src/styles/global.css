@@ -60,9 +60,7 @@
 }
 
 .prose code span[data-highlighted-line] {
-  @apply border-y-0 border-l-2 border-blue-400 border-transparent 
-         bg-indigo-400 bg-opacity-10 pl-[calc(0.5rem-2px)] dark:border-blue-500
-         dark:bg-slate-700 md:pl-[calc(1rem-2px)];
+  @apply border-y-0 border-l-2 border-blue-400 bg-opacity-50 pl-[calc(0.5rem-2px)] dark:border-blue-500 md:pl-[calc(1rem-2px)];
 }
 
 .prose figcaption[data-rehype-pretty-code-title] {
