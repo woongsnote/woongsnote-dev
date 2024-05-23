@@ -5,8 +5,8 @@ type Props = {
 const { category } = Astro.props;
 const categoryColors: { [key: string]: string } = {
   Tech: 'text-content',
-  Project: 'text-blue-500',
-  Diary: 'text-green-500',
+  Project: 'text-accent',
+  Diary: 'text-green-700 dark:text-green-300',
 };
 
 const textColorClass = categoryColors[category];
