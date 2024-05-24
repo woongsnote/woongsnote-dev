@@ -1,10 +1,14 @@
 ---
 import NavLink from './NavLink.astro';
 import { NAV_ITEMS } from '@config/site-config';
+
 const navLinks = NAV_ITEMS.filter((nav) => nav.title !== 'Home');
 ---
 
-<nav class="flex items-center space-x-4 text-subContent lg:space-x-6">
+<nav
+  class="flex items-center space-x-4 text-subContent lg:space-x-6"
+  role="navigation"
+>
   {
     navLinks.map(({ title, href }) => (
       <NavLink title={title} href={href} class="flex gap-1 hover:text-accent">
