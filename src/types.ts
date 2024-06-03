@@ -36,7 +36,7 @@ export type NavItem = {
   href: string;
 };
 
-export type Socials = {
+export type Links = {
   name: string;
   url: string;
   svg: string;
