@@ -23,6 +23,15 @@ export default {
       fontFamily: {
         sans: ['PretendardVariable', ...defaultTheme.fontFamily.sans],
       },
+      keyframes: {
+        moveRight: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(1rem)' },
+        },
+      },
+      animation: {
+        moveRight: 'moveRight 0.5s forwards',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
