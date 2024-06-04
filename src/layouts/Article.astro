@@ -34,8 +34,6 @@ const {
   headings,
   slug,
 } = Astro.props;
-
-const isHeadings = headings && headings.length > 0;
 ---
 
 <Base
@@ -43,29 +41,16 @@ const isHeadings = headings && headings.length > 0;
   description={description}
   image={`${import.meta.env.SITE}/blog/${slug}/og.png`}
 >
-  <ArticleHeader
-    minutesToRead={minutesToRead}
-    title={title}
-    description={description}
-    publishedDate={publishedDate}
-    tags={tags}
-    cover={cover}
-    category={category}
-  />
-  <section
-    class="flex w-full max-w-5xl gap-4 break-keep rounded-b-md bg-articleBackground p-4"
-  >
-    <div class:list={['w-full', `${isHeadings ? 'lg:w-3/4' : ''}`]}>
-      <article class="prose w-full max-w-5xl dark:prose-invert xl:prose-xl lg:p-4">
-        {
-          category === 'Project' && cover && (
-            <PostThumbnail image={cover} alt={title} />
-          )
-        }
-        <slot />
-      </article>
-      <PostComments />
-    </div>
-    {isHeadings && <ArticleToc headings={headings} />}
-  </section>
+  <div class="flex w-full max-w-4xl flex-col space-y-4">
+    <ArticleHeader
+      minutesToRead={minutesToRead}
+      title={title}
+      description={description}
+      publishedDate={publishedDate}
+      tags={tags}
+      cover={cover}
+      category={category}
+    />
+    <slot />
+  </div>
 </Base>
