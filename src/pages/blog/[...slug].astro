@@ -1,5 +1,9 @@
 ---
-import Article from '@layouts/Article.astro';
+import ArticleHeader from '@components/Article/ArticleHeader.astro';
+import ArticleToc from '@components/Article/ArticleToc.astro';
+import PostComments from '@components/Comments/PostComments.astro';
+import PostThumbnail from '@components/Thumbnail/PostThumbnail.astro';
+import Base from '@layouts/Base.astro';
 import { getEntry } from 'astro:content';
 
 const { slug } = Astro.params;
@@ -17,18 +21,32 @@ if (post === undefined) {
 const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
 const { title, description, publishedDate, tags, cover, category } = post.data;
+
+const isHeadings = headings && headings.length > 0;
 ---
 
-<Article
-  title={title}
-  description={description}
-  publishedDate={publishedDate}
-  tags={tags}
-  minutesToRead={remarkPluginFrontmatter.minutesRead.split(' ')[0]}
-  cover={cover}
-  category={category}
-  headings={headings}
-  slug={post.slug}
->
-  <Content />
-</Article>
+<Base pageTitle={title} description={description}>
+  <div class="mx-auto flex w-full max-w-4xl flex-col space-y-4">
+    <ArticleHeader
+      minutesToRead={remarkPluginFrontmatter.minutesRead.split(' ')[0]}
+      title={title}
+      description={description}
+      publishedDate={publishedDate}
+      tags={tags}
+      cover={cover}
+      category={category}
+    />
+    {isHeadings && <ArticleToc headings={headings} />}
+    <article
+      class="prose mx-auto !mt-0 w-full max-w-4xl rounded-b-md dark:prose-invert xl:prose-xl"
+    >
+      {
+        category === 'Project' && cover && (
+          <PostThumbnail image={cover} alt={title} />
+        )
+      }
+      <Content />
+    </article>
+    <PostComments />
+  </div>
+</Base>
