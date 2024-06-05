@@ -4,7 +4,7 @@ import ArticleHeader from '@components/Article/ArticleHeader.astro';
 import ArticleToc from '@components/Article/ArticleToc.astro';
 import PostComments from '@components/Comments/PostComments.astro';
 import PostThumbnail from '@components/Thumbnail/PostThumbnail.astro';
-import Layout from '@layouts/Layout.astro';
+import Layout from '@layouts/BaseLayout.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 
@@ -29,7 +29,7 @@ const { title, description, publishedDate, tags, cover, category } = post.data;
 const isHeadings = headings && headings.length > 0;
 ---
 
-<Layout pageTitle={title} description={description}>
+<Layout title={title} description={description}>
   <div class="mx-auto flex w-full max-w-4xl flex-col space-y-4">
     <ArticleHeader
       minutesToRead={remarkPluginFrontmatter.minutesRead.split(' ')[0]}

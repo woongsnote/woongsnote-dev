@@ -1,10 +1,10 @@
 ---
 import ProfileImage from '@components/Profile/ProfileImage.astro';
-import Layout from '@layouts/Layout.astro';
+import Layout from '@layouts/BaseLayout.astro';
 import { ABOUT } from '@config/site-config';
 ---
 
-<Layout pageTitle={ABOUT.title} description={ABOUT.description}>
+<Layout title={ABOUT.title} description={ABOUT.description}>
   <ProfileImage />
   <div
     class="prose mx-auto flex flex-col break-keep text-content lg:prose-lg prose-p:my-4"
