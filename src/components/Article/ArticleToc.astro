@@ -4,9 +4,13 @@ import TOC from '@components/TOC/TOC.astro';
 const { headings } = Astro.props;
 ---
 
-<div class="hidden lg:block lg:w-1/4">
-  <aside class="sticky top-14 float-right w-full p-2 text-content">
-    <h3 class="mb-2 text-lg font-bold">목차</h3>
-    <TOC headings={headings} />
-  </aside>
-</div>
+<details
+  open
+  class="mx-auto mt-8 w-full max-w-3xl rounded-lg border border-black/15 text-content dark:border-white/20"
+>
+  <summary
+    class="cursor-pointer px-3 py-1.5 transition-colors hover:bg-black/5 dark:hover:bg-white/5"
+    >목차</summary
+  >
+  <TOC headings={headings} />
+</details>

@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-import Base from '@layouts/Base.astro';
+import Layout from '@layouts/Layout.astro';
 import PostList from '@components/PostList/PostList.astro';
 import BlogHeader from '@components/Blog/BlogHeader.astro';
 import { sortPostsByDateDesc, filterPostsByYear } from '@utils/data-util';
@@ -15,7 +15,7 @@ const posts = filterPostsByYear(allPosts);
 const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
-<Base pageTitle={BLOG.title} description={BLOG.description}>
+<Layout pageTitle={BLOG.title} description={BLOG.description}>
   <BlogHeader />
   <div class="mx-auto mt-4 space-y-4 lg:space-y-8">
     {
@@ -29,4 +29,4 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
       ))
     }
   </div>
-</Base>
+</Layout>
