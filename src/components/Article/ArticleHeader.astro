@@ -8,17 +8,17 @@ const { minutesToRead, title, description, publishedDate, tags, category } =
 ---
 
 <section
-  class="mt-2 flex w-full flex-col gap-2 break-keep rounded-t-md bg-articleBackground p-4 text-content lg:gap-4"
+  class="mx-auto flex w-full flex-col gap-2 break-keep rounded-t-md py-4 text-content lg:gap-4"
 >
-  <div class="flex flex-col gap-4 md:flex-row">
-    <h2 class="text-xl font-semibold">{category}</h2>
+  <div class="flex flex-col gap-4 text-sm md:flex-row lg:text-xl">
+    <h2 class="font-semibold">{category}</h2>
     <span class="hidden text-content md:block">|</span>
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-2 text-sm lg:text-xl">
       <FormattedDate date={publishedDate} />
       <ReadingTimeText readingTime={minutesToRead} />
     </div>
   </div>
-  <h1 class="text-3xl font-black lg:text-5xl">
+  <h1 class="text-3xl font-semibold lg:text-4xl">
     {title}
   </h1>
   <p class="!my-0">{description}</p>

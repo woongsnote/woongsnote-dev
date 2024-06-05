@@ -5,22 +5,20 @@
 @layer base {
   :root {
     --color-background: 360 100% 100%;
-    --color-content: 0deg 0% 0%;
-    --color-sub-content: 220deg 9% 26%;
+    --color-content: 0 0% 0%;
+    --color-sub-content: 220 9% 26%;
     --color-accent: 224 86% 56%;
-    --color-white: 0deg 0% 98%;
-    --color-article-background: 211 60% 93%;
+    --color-white: 0 0% 98%;
     --color-scrollbar-background: #fff;
-    --color-scrollbar-thumb-background: #e2edf8;
+    --color-scrollbar-thumb-background: #2e62ef;
   }
   :root.dark {
     --color-background: 222.2 84% 4.9%;
-    --color-content: 360deg 100% 100%;
-    --color-sub-content: 210deg 3% 85%;
-    --color-accent: 210deg 100% 56%;
-    --color-article-background: 222 22% 22%;
+    --color-content: 360 100% 100%;
+    --color-sub-content: 210 3% 85%;
+    --color-accent: 210 100% 56%;
     --color-scrollbar-background: #000;
-    --color-scrollbar-thumb-background: #2c3344;
+    --color-scrollbar-thumb-background: #1f8fff;
   }
 }
 
@@ -94,5 +92,5 @@ code[data-theme*=' '] span {
 }
 
 [data-rehype-pretty-code-figure] pre {
-  @apply bg-[--shiki-light-bg] px-0 dark:bg-[--shiki-dark-bg];
+  @apply border bg-[--shiki-light-bg] px-0 dark:border-none dark:bg-[--shiki-dark-bg];
 }
