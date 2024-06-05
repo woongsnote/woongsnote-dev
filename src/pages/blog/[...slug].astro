@@ -1,22 +1,26 @@
 ---
+import type { GetStaticPaths } from 'astro';
 import ArticleHeader from '@components/Article/ArticleHeader.astro';
 import ArticleToc from '@components/Article/ArticleToc.astro';
 import PostComments from '@components/Comments/PostComments.astro';
 import PostThumbnail from '@components/Thumbnail/PostThumbnail.astro';
-import Base from '@layouts/Base.astro';
-import { getEntry } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
-const { slug } = Astro.params;
+export const prerender = true;
 
-if (slug === undefined) {
-  throw new Error('Slug is required');
-}
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}) satisfies GetStaticPaths;
 
-const post = await getEntry('blog', slug);
+type Props = CollectionEntry<'blog'>;
 
-if (post === undefined) {
-  return Astro.redirect('/404');
-}
+const post = Astro.props;
 
 const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
@@ -25,7 +29,7 @@ const { title, description, publishedDate, tags, cover, category } = post.data;
 const isHeadings = headings && headings.length > 0;
 ---
 
-<Base pageTitle={title} description={description}>
+<Layout pageTitle={title} description={description}>
   <div class="mx-auto flex w-full max-w-4xl flex-col space-y-4">
     <ArticleHeader
       minutesToRead={remarkPluginFrontmatter.minutesRead.split(' ')[0]}
@@ -37,8 +41,9 @@ const isHeadings = headings && headings.length > 0;
       category={category}
     />
     {isHeadings && <ArticleToc headings={headings} />}
+    <hr class="my-10" />
     <article
-      class="prose mx-auto !mt-0 w-full max-w-4xl rounded-b-md dark:prose-invert xl:prose-xl"
+      class="prose mx-auto w-full rounded-b-md dark:prose-invert xl:prose-xl"
     >
       {
         category === 'Project' && cover && (
@@ -49,4 +54,4 @@ const isHeadings = headings && headings.length > 0;
     </article>
     <PostComments />
   </div>
-</Base>
+</Layout>
