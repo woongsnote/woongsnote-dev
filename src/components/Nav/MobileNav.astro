@@ -14,12 +14,11 @@ import HomeIcon from '@icons/HomeIcon.astro';
       <NavLink
         href={href}
         aria-label={`go to ${title} page`}
-        class="flex flex-1 flex-col items-center justify-center py-2 text-sm hover:text-accent"
+        class="flex flex-1 flex-col items-center justify-center py-4 text-sm hover:text-accent"
       >
         {title === 'Home' && <HomeIcon />}
         {title === 'About' && <AboutIcon />}
         {title === 'Blog' && <PostIcon />}
-        <span>{title}</span>
       </NavLink>
     ))
   }
