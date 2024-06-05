@@ -12,9 +12,7 @@ const latestPosts: CollectionEntry<'blog'>[] = (
 ---
 
 <section class="flex flex-col space-y-4">
-  <span
-    class="my-4 border-b pb-2 text-3xl font-black text-content lg:my-8 lg:pb-4 lg:text-5xl"
-  >
+  <span class="pb-2 text-3xl font-black text-content">
     {TITLE}
   </span>
   <PostList pageSize={LATEST_POSTS_SIZE} posts={latestPosts} />

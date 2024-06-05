@@ -1,10 +1,10 @@
 ---
 import ProfileImage from '@components/Profile/ProfileImage.astro';
-import Base from '@layouts/Base.astro';
+import Layout from '@layouts/Layout.astro';
 import { ABOUT } from '@config/site-config';
 ---
 
-<Base pageTitle={ABOUT.title} description={ABOUT.description}>
+<Layout pageTitle={ABOUT.title} description={ABOUT.description}>
   <ProfileImage />
   <div
     class="prose mx-auto flex flex-col break-keep text-content lg:prose-lg prose-p:my-4"
@@ -31,4 +31,4 @@ import { ABOUT } from '@config/site-config';
       것입니다.
     </p>
   </div>
-</Base>
+</Layout>
