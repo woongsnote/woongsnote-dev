@@ -1,11 +1,11 @@
 ---
-import Layout from '@layouts/Layout.astro';
+import Layout from '@layouts/BaseLayout.astro';
 import Hero from '@components/Home/Hero.astro';
 import LatestPosts from '@components/Home/LatestPosts.astro';
 import { HOME } from '@config/site-config';
 ---
 
-<Layout pageTitle={HOME.title} description={HOME.description}>
+<Layout title={HOME.title} description={HOME.description}>
   <Hero />
   <LatestPosts />
 </Layout>
