@@ -10,7 +10,7 @@
     --color-accent: 224 86% 56%;
     --color-white: 0 0% 98%;
     --color-scrollbar-background: #fff;
-    --color-scrollbar-thumb-background: #2e62ef;
+    --color-scrollbar-thumb-background: #e5e7ebe6;
   }
   :root.dark {
     --color-background: 222.2 84% 4.9%;
@@ -18,7 +18,7 @@
     --color-sub-content: 210 3% 85%;
     --color-accent: 210 100% 56%;
     --color-scrollbar-background: #000;
-    --color-scrollbar-thumb-background: #1f8fff;
+    --color-scrollbar-thumb-background: #374151d9;
   }
 }
 
