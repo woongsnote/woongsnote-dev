@@ -1,18 +1,13 @@
 ---
-import { Image } from 'astro:assets';
-import logoImage from '@assets/logo.png';
+import { SITE as siteConfig } from '@config/site-config';
+const siteName = siteConfig.site.title;
 ---
 
-<a href="/" class="flex place-items-center" aria-label="Go to Homepage">
-  <figure aria-hidden="true">
-    <Image
-      src={logoImage}
-      alt="home"
-      class="size-10 rounded-md"
-      loading="eager"
-      width="64"
-      height="64"
-    />
-  </figure>
+<a
+  href="/"
+  class="flex place-items-center text-lg font-bold text-content px-1"
+  aria-label="Go to Homepage"
+>
+  <span>{siteName}</span>
   <span class="sr-only">Go to Homepage</span>
 </a>
