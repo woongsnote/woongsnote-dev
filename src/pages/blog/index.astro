@@ -17,16 +17,12 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
 
 <Layout title={BLOG.title} description={BLOG.description}>
   <BlogHeader />
-  <div class="mx-auto mt-4 space-y-4 lg:space-y-8">
-    {
-      years.map((year) => (
-        <section class="flex flex-col space-y-4 lg:space-y-8">
-          <span class="text-2xl font-bold text-content lg:text-3xl">
-            {year}
-          </span>
-          <PostList posts={posts[year]} />
-        </section>
-      ))
-    }
-  </div>
+  {
+    years.map((year) => (
+      <section class="flex flex-col space-y-4 lg:space-y-8 mb-4">
+        <span class="text-2xl font-bold text-content lg:text-3xl">{year}</span>
+        <PostList posts={posts[year]} />
+      </section>
+    ))
+  }
 </Layout>
