@@ -30,7 +30,9 @@ export default defineConfig({
   ],
   output: 'server',
   adapter: vercel({
-    isr: true,
+    isr: {
+      expiration: 60 * 60 * 24,
+    },
     webAnalytics: {
       enabled: true,
     },

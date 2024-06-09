@@ -24,7 +24,7 @@ export default {
       keyframes: {
         moveRight: {
           '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(1rem)' },
+          '100%': { transform: 'translateX(0.5rem)' },
         },
       },
       animation: {

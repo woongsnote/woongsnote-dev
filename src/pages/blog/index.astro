@@ -19,8 +19,8 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
   <BlogHeader />
   {
     years.map((year) => (
-      <section class="flex flex-col space-y-4 lg:space-y-8 mb-4">
-        <span class="text-2xl font-bold text-content lg:text-3xl">{year}</span>
+      <section class="my-8 flex flex-col">
+        <span class="text-2xl font-bold text-content lg:text-3xl mb-2">{year}</span>
         <PostList posts={posts[year]} />
       </section>
     ))
