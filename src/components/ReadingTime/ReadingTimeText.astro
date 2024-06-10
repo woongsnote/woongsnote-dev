@@ -1,5 +1,5 @@
 ---
-import Icon from '@components/Icon/index.astro';
+import { Icon } from 'astro-icon/components';
 
 type Props = {
   readingTime: number;
@@ -9,6 +9,6 @@ const { readingTime } = Astro.props;
 ---
 
 <span class="flex w-fit items-center gap-1 text-content">
-  <Icon name="timer" />
+  <Icon name="timer" class="inline-block size-6" />
   {`읽는 데 ${readingTime}분`}
 </span>
