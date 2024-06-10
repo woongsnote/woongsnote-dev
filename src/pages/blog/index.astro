@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import Layout from '@layouts/BaseLayout.astro';
-import PostList from '@components/PostList/PostList.astro';
+import PostList from '@components/Posts/PostList.astro';
 import BlogHeader from '@components/Blog/BlogHeader.astro';
 import { sortPostsByDateDesc, filterPostsByYear } from '@utils/data-util';
 import { BLOG } from '@config/site-config';
@@ -20,7 +20,9 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
   {
     years.map((year) => (
       <section class="my-8 flex flex-col">
-        <span class="text-2xl font-bold text-content lg:text-3xl mb-2">{year}</span>
+        <span class="mb-2 text-2xl font-bold text-content lg:text-3xl">
+          {year}
+        </span>
         <PostList posts={posts[year]} />
       </section>
     ))

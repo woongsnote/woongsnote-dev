@@ -1,25 +1,22 @@
 ---
 import { type CollectionEntry } from 'astro:content';
-import Post from '@components/PostCard/Post.astro';
+import Post from './Card.astro';
 
 type Props = {
   posts: CollectionEntry<'blog'>[];
-  pageSize?: number;
 };
 
-const { posts, pageSize } = Astro.props;
+const { posts } = Astro.props;
 ---
 
 <ul class="mx-auto flex w-full max-w-5xl flex-col gap-4 md:gap-8">
   {
-    posts.slice(0, pageSize).map((post) => (
+    posts.map((post) => (
       <li>
         <Post
           title={post.data.title}
           description={post.data.description}
-          publishedDate={post.data.publishedDate}
           link={`/blog/${post.slug}`}
-          category={post.data.category}
         />
       </li>
     ))

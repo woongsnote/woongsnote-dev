@@ -3,14 +3,20 @@ import FormattedDate from '@components/Date/FormattedDate.astro';
 import ReadingTimeText from '@components/ReadingTime/ReadingTimeText.astro';
 import TagList from '@components/Tag/TagList.astro';
 
-const { minutesToRead, title, description, publishedDate, tags, category } =
-  Astro.props;
+type Props = {
+  title: string;
+  description: string;
+  publishedDate: Date;
+  tags: string[];
+  minutesToRead: number;
+};
+
+const { minutesToRead, title, description, publishedDate, tags } = Astro.props;
 ---
 
 <section
   class="mx-auto flex w-full flex-col gap-2 break-keep rounded-t-md text-content lg:gap-4"
 >
-  <h2 class="w-fit text-lg font-semibold">{category}</h2>
   <h1 class="text-3xl font-semibold lg:text-4xl">
     {title}
   </h1>
