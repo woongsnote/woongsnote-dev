@@ -1,6 +1,5 @@
 ---
-import SunIcon from '@icons/SunIcon.astro';
-import MoonIcon from '@icons/MoonIcon.astro';
+import Icon from '@/components/Icon/index.astro';
 import ThemeButton from './ThemeButton.astro';
 import { SITE as config } from '@config/site-config';
 
@@ -9,9 +8,9 @@ const defaultTheme = config.theme.defaultTheme;
 
 <ThemeButton theme={defaultTheme}>
   <span class="dark:hidden">
-    <SunIcon />
+    <Icon name="sun" />
   </span>
   <span class="hidden dark:block">
-    <MoonIcon id="dark" />
+    <Icon name="moon" />
   </span>
 </ThemeButton>

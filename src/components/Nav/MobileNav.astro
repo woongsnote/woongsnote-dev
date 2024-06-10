@@ -1,9 +1,7 @@
 ---
 import NavLink from './NavLink.astro';
 import { NAV_ITEMS } from '@config/site-config';
-import PostIcon from '@icons/PostIcon.astro';
-import AboutIcon from '@icons/AboutIcon.astro';
-import HomeIcon from '@icons/HomeIcon.astro';
+import Icon from '@components/Icon/index.astro';
 ---
 
 <nav
@@ -16,9 +14,9 @@ import HomeIcon from '@icons/HomeIcon.astro';
         aria-label={`go to ${title} page`}
         class="flex flex-1 flex-col items-center justify-center py-4 text-sm hover:text-accent"
       >
-        {title === 'Home' && <HomeIcon />}
-        {title === 'About' && <AboutIcon />}
-        {title === 'Blog' && <PostIcon />}
+        {title === 'Home' && <Icon name="home" />}
+        {title === 'About' && <Icon name="about" />}
+        {title === 'Blog' && <Icon name="post" />}
       </NavLink>
     ))
   }
