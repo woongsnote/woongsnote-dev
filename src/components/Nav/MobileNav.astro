@@ -7,7 +7,7 @@ const navIconStyle = 'size-6 inline-block';
 ---
 
 <nav class="fixed bottom-0 left-0 z-50 mx-auto w-full md:hidden">
-  <ul class="flex flex-col items-center justify-between border-t bg-background text-subContent md:gap-10">
+  <ul class="flex items-center justify-between border-t bg-background text-subContent md:gap-10">
     {NAV_ITEMS.map(({ title, href }) => (
       <li class="flex flex-1 flex-col items-center justify-center py-4 text-sm hover:text-accent">
         <NavLink href={href} aria-label={`go to ${title} page`}>
