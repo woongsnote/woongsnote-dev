@@ -1,10 +1,13 @@
 ---
+import { Icon } from 'astro-icon/components';
 type Props = {
   url: string;
   name: string;
-  svg: string;
 };
-const { url, name, svg } = Astro.props;
+const { url, name } = Astro.props;
+
+const iconStyle =
+  'size-6 cursor-pointer text-gray-400 hover:text-accent fill-current hover:scale-110';
 ---
 
 <a
@@ -13,8 +16,6 @@ const { url, name, svg } = Astro.props;
   aria-label={`${name} link`}
   aria-describedby={`${name} icon`}
 >
-  <figure>
-    <Fragment set:html={svg} />
-  </figure>
+  <Icon name={name} class={iconStyle} />
   <span class="sr-only">Go to {name} page</span>
 </a>
