@@ -39,5 +39,4 @@ export type NavItem = {
 export type Links = {
   name: string;
   url: string;
-  svg: string;
 };
