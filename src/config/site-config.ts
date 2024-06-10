@@ -1,4 +1,4 @@
-import type { NavItem, SiteConfig, Links, MetaData } from '@types';
+import type { NavItem, SiteConfig, Links, MetaData } from '@utils/types';
 
 export const username = 'woongsnote';
 
