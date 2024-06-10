@@ -5,6 +5,7 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 import vercel from '@astrojs/vercel/serverless';
 import sitemap from '@astrojs/sitemap';
 import rehypePrettyCode from 'rehype-pretty-code';
+import icon from 'astro-icon';
 
 const prettyCodeOptions = {
   theme: {
@@ -13,6 +14,7 @@ const prettyCodeOptions = {
   },
 };
 
+// https://astro.build/config
 export default defineConfig({
   site: 'https://www.woongsnote.dev',
   integrations: [
@@ -27,6 +29,7 @@ export default defineConfig({
       priority: 1.0,
       lastmod: new Date(),
     }),
+    icon(),
   ],
   output: 'server',
   adapter: vercel({

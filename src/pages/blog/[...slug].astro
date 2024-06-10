@@ -40,8 +40,8 @@ const isHeadings = headings && headings.length > 0;
     category={category}
   />
   {isHeadings && <ArticleToc headings={headings} />}
-  <hr class="my-10" />
   <article class="prose mx-auto w-full max-w-3xl dark:prose-invert">
+    <hr class="my-10" />
     {
       category === 'Project' && cover && (
         <PostThumbnail image={cover} alt={title} />
