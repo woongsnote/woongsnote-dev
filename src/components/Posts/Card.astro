@@ -6,9 +6,11 @@ type Props = {
 };
 
 const { title, description, link } = Astro.props;
+let srTitle = link.replace(/-/g, ' ');
+srTitle = srTitle.charAt(0).toUpperCase() + srTitle.slice(1);
 ---
 
-<a href={link} aria-label={title}>
+<a href={`/blog/${link}`} aria-label={`Read More about ${srTitle}`}>
   <article
     class="group relative w-full overflow-hidden break-keep rounded-lg p-2 transition-all duration-300 ease-in-out hover:animate-moveRight hover:bg-gray-100/90 hover:dark:bg-gray-700/90"
   >
