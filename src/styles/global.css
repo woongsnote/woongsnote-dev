@@ -94,3 +94,7 @@ code[data-theme*=' '] span {
 [data-rehype-pretty-code-figure] pre {
   @apply border bg-[--shiki-light-bg] px-0 dark:border-none dark:bg-[--shiki-dark-bg];
 }
+
+@view-transition {
+  navigation: auto; /* enabled! */
+}
