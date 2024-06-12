@@ -7,11 +7,7 @@ type Props = {
 
 const { title, description, link } = Astro.props;
 
-const generateAriaLabel = (title: string): string => {
-  return `더 읽기: ${title}`;
-};
-
-const ariaLabel = generateAriaLabel(title);
+const ariaLabel: string = `더 읽기: ${title}`;
 ---
 
 <a href={`/blog/${link}`} aria-label={ariaLabel}>
