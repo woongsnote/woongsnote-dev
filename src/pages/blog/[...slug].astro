@@ -29,7 +29,11 @@ const { title, description, publishedDate, tags, cover, category } = post.data;
 const isHeadings = headings && headings.length > 0;
 ---
 
-<Layout title={title} description={description} image={`/blog/${post.slug}/og.png`}>
+<Layout
+  title={title}
+  description={description}
+  image={`/blog/${post.slug}/og.png`}
+>
   <ArticleHeader
     minutesToRead={remarkPluginFrontmatter.minutesRead.split(' ')[0]}
     title={title}
