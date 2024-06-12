@@ -16,7 +16,7 @@ const currentPath = Astro.url.pathname;
     {
       NAV_ITEMS.map(({ title, href }) => (
         <li class="flex flex-1 flex-col items-center justify-center py-4 text-sm hover:text-accent">
-          <NavLink href={href} aria-label={`go to ${title} page`} active={currentPath === href}>
+          <NavLink href={href} aria-label={`go to ${title} page`}>
             {title === 'Home' && <Icon name="home" class={navIconStyle} />}
             {title === 'About' && <Icon name="about" class={navIconStyle} />}
             {title === 'Blog' && <Icon name="post" class={navIconStyle} />}
