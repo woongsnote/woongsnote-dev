@@ -1,8 +1,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { ImageResponse } from '@vercel/og';
 
-export const prerender = true;
-
 interface Props {
   params: { slug: string };
   props: { post: CollectionEntry<'blog'> };
