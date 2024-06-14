@@ -1,0 +1,34 @@
+---
+import PostComments from '@components/Comments/PostComments.astro';
+import BaseLayout from './BaseLayout.astro';
+import ArticleHeader from '@components/Article/ArticleHeader.astro';
+import ArticleToc from '@components/Article/ArticleToc.astro';
+import PostThumbnail from '@components/Article/ArticleThumbnail.astro';
+
+const { frontmatter, ogImage, isHeadings, minutesToRead, headings } =
+  Astro.props;
+
+const { title, description, publishedDate, tags, category, cover } =
+  frontmatter;
+---
+
+<BaseLayout title={title} description={description} image={ogImage}>
+  <ArticleHeader
+    minutesToRead={minutesToRead}
+    title={title}
+    description={description}
+    publishedDate={publishedDate}
+    tags={tags}
+  />
+  {isHeadings && <ArticleToc headings={headings} />}
+  <article class="prose mx-auto w-full max-w-3xl dark:prose-invert">
+    <hr class="my-10" />
+    {
+      category === 'Project' && cover && (
+        <PostThumbnail image={cover} alt={title} />
+      )
+    }
+    <slot />
+    <PostComments />
+  </article>
+</BaseLayout>

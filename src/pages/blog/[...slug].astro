@@ -1,10 +1,6 @@
 ---
+import PostLayout from '@layouts/PostLayout.astro';
 import type { GetStaticPaths } from 'astro';
-import ArticleHeader from '@components/Article/ArticleHeader.astro';
-import ArticleToc from '@components/Article/ArticleToc.astro';
-import PostComments from '@components/Comments/PostComments.astro';
-import PostThumbnail from '@components/Thumbnail/PostThumbnail.astro';
-import Layout from '@layouts/BaseLayout.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 
@@ -22,32 +18,14 @@ const post = Astro.props;
 
 const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
-const { title, description, publishedDate, tags, cover, category } = post.data;
-
 const isHeadings = headings && headings.length > 0;
 ---
 
-<Layout
-  title={title}
-  description={description}
-  image={`/blog/${post.slug}/og.png`}
+<PostLayout
+  frontmatter={post.data}
+  isHeadings={isHeadings}
+  minutesToRead={remarkPluginFrontmatter.minutesRead.split(' ')[0]}
+  headings={headings}
 >
-  <ArticleHeader
-    minutesToRead={remarkPluginFrontmatter.minutesRead.split(' ')[0]}
-    title={title}
-    description={description}
-    publishedDate={publishedDate}
-    tags={tags}
-  />
-  {isHeadings && <ArticleToc headings={headings} />}
-  <article class="prose mx-auto w-full max-w-3xl dark:prose-invert">
-    <hr class="my-10" />
-    {
-      category === 'Project' && cover && (
-        <PostThumbnail image={cover} alt={title} />
-      )
-    }
-    <Content />
-  </article>
-  <PostComments />
-</Layout>
+  <Content />
+</PostLayout>
