@@ -1,0 +1,54 @@
+---
+import Comments from '@components/Article/Comments.astro';
+import BaseLayout from './BaseLayout.astro';
+import Header from '@components/Article/Header.astro';
+import Toc from '@components/Article/Toc.astro';
+import Thumbnail from '@components/Article/Thumbnail.astro';
+
+type Props = {
+  title: string;
+  description: string;
+  publishedDate: Date;
+  tags: string[];
+  category: string;
+  cover: ImageMetadata;
+  ogImage: string;
+  minutesToRead: number;
+  isHeadings: boolean;
+  headings: any;
+};
+
+const {
+  title,
+  description,
+  publishedDate,
+  tags,
+  category,
+  cover,
+  ogImage,
+  minutesToRead,
+  isHeadings,
+  headings,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={ogImage}>
+  <Header
+    minutesToRead={minutesToRead}
+    title={title}
+    description={description}
+    publishedDate={publishedDate}
+    tags={tags}
+  />
+  {isHeadings && <Toc headings={headings} />}
+  <article class="prose mx-auto w-full max-w-3xl dark:prose-invert">
+    <hr class="my-10" />
+    {
+      category === 'Project' && cover && (
+        <Thumbnail image={cover} alt={title} />
+      )
+    }
+    <slot />
+    <Comments />
+  </article>
+</BaseLayout>

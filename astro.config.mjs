@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import { remarkReadingTime } from './remark-reading-time.mjs';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel/static';
 import sitemap from '@astrojs/sitemap';
 import rehypePrettyCode from 'rehype-pretty-code';
 import icon from 'astro-icon';
@@ -31,11 +31,8 @@ export default defineConfig({
     }),
     icon(),
   ],
-  output: 'server',
+  output: 'static',
   adapter: vercel({
-    isr: {
-      expiration: 60 * 60 * 24,
-    },
     webAnalytics: {
       enabled: true,
     },
