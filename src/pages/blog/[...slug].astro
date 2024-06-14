@@ -8,8 +8,6 @@ import Layout from '@layouts/BaseLayout.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 
-export const prerender = true;
-
 export const getStaticPaths = (async () => {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
