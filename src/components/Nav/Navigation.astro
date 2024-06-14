@@ -13,9 +13,9 @@ const navLinks = NAV_ITEMS.filter((nav) => nav.title !== 'Home');
           <NavLink
             title={title}
             href={href}
-            class="flex gap-2 px-2 hover:text-accent"
+            class="flex gap-2 px-2 text-content hover:text-accent"
           >
-            <span class="block">{title}</span>
+            {title}
           </NavLink>
         </li>
       ))
