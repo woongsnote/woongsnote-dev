@@ -1,34 +1,54 @@
 ---
-import PostComments from '@components/Comments/PostComments.astro';
+import Comments from '@components/Article/Comments.astro';
 import BaseLayout from './BaseLayout.astro';
-import ArticleHeader from '@components/Article/ArticleHeader.astro';
-import ArticleToc from '@components/Article/ArticleToc.astro';
-import PostThumbnail from '@components/Article/ArticleThumbnail.astro';
+import Header from '@components/Article/Header.astro';
+import Toc from '@components/Article/Toc.astro';
+import Thumbnail from '@components/Article/Thumbnail.astro';
 
-const { frontmatter, ogImage, isHeadings, minutesToRead, headings } =
-  Astro.props;
+type Props = {
+  title: string;
+  description: string;
+  publishedDate: Date;
+  tags: string[];
+  category: string;
+  cover: ImageMetadata;
+  ogImage: string;
+  minutesToRead: number;
+  isHeadings: boolean;
+  headings: any;
+};
 
-const { title, description, publishedDate, tags, category, cover } =
-  frontmatter;
+const {
+  title,
+  description,
+  publishedDate,
+  tags,
+  category,
+  cover,
+  ogImage,
+  minutesToRead,
+  isHeadings,
+  headings,
+} = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={ogImage}>
-  <ArticleHeader
+  <Header
     minutesToRead={minutesToRead}
     title={title}
     description={description}
     publishedDate={publishedDate}
     tags={tags}
   />
-  {isHeadings && <ArticleToc headings={headings} />}
+  {isHeadings && <Toc headings={headings} />}
   <article class="prose mx-auto w-full max-w-3xl dark:prose-invert">
     <hr class="my-10" />
     {
       category === 'Project' && cover && (
-        <PostThumbnail image={cover} alt={title} />
+        <Thumbnail image={cover} alt={title} />
       )
     }
     <slot />
-    <PostComments />
+    <Comments />
   </article>
 </BaseLayout>

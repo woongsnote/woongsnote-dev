@@ -1,20 +1,19 @@
 ---
 import PostLayout from '@layouts/PostLayout.astro';
 import type { GetStaticPaths } from 'astro';
-import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
     params: { slug: post.slug },
-    props: post,
+    props: { post },
   }));
 }) satisfies GetStaticPaths;
 
-type Props = CollectionEntry<'blog'>;
+const { post } = Astro.props;
 
-const post = Astro.props;
+const { title, description, tags, category, cover, publishedDate } = post.data;
 
 const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
@@ -22,10 +21,16 @@ const isHeadings = headings && headings.length > 0;
 ---
 
 <PostLayout
-  frontmatter={post.data}
+  title={title}
+  description={description}
+  tags={tags}
+  category={category}
+  cover={cover}
   isHeadings={isHeadings}
+  publishedDate={publishedDate}
   minutesToRead={remarkPluginFrontmatter.minutesRead.split(' ')[0]}
   headings={headings}
+  ogImage={`/blog/${post.slug}/og.png`}
 >
   <Content />
 </PostLayout>
