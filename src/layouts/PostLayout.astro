@@ -4,6 +4,7 @@ import BaseLayout from './BaseLayout.astro';
 import Header from '@components/Article/Header.astro';
 import Toc from '@components/Article/Toc.astro';
 import Thumbnail from '@components/Article/Thumbnail.astro';
+import type { TocHeadings } from '@utils/types';
 
 type Props = {
   title: string;
@@ -15,7 +16,7 @@ type Props = {
   ogImage: string;
   minutesToRead: number;
   isHeadings: boolean;
-  headings: any;
+  headings: TocHeadings[];
 };
 
 const {
