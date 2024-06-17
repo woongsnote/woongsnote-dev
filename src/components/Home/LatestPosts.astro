@@ -12,8 +12,8 @@ const latestPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
 ---
 
 <section class="flex flex-col space-y-4">
-  <span class="pb-2 text-3xl font-black text-content">
+  <h2 class="pb-2 text-3xl font-black text-content">
     {TITLE}
-  </span>
+  </h2>
   <PostList posts={latestPosts} />
 </section>
