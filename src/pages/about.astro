@@ -6,10 +6,10 @@ import { ABOUT } from '@config/site-config';
 
 <Layout title={ABOUT.title} description={ABOUT.description}>
   <ProfileImage />
-  <div
-    class="prose mx-auto flex flex-col break-keep text-content lg:prose-lg prose-p:my-4"
+  <article
+    class="prose mx-auto flex flex-col break-keep text-content lg:prose-lg"
   >
-    <h2 class="mb-4 text-2xl font-black text-content md:text-3xl">About Me</h2>
+    <h2 class="mb-4 text-2xl font-bold text-content md:text-3xl">About Me</h2>
     <p>안녕하세요. 개발자 <b>문지웅</b>입니다.</p>
     <p>
       <b>새로운 기술에 대한 호기심</b>과 <b>끊임없는 열정</b>을 가지고 있습니다.
@@ -30,5 +30,5 @@ import { ABOUT } from '@config/site-config';
       통해 더 나은 사용자 경험을 제공하는 프론트엔드 개발자로서 성장해 나갈
       것입니다.
     </p>
-  </div>
+  </article>
 </Layout>
