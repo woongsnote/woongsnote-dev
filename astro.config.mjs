@@ -17,6 +17,9 @@ const prettyCodeOptions = {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.woongsnote.dev',
+  prefetch: {
+    prefetchAll: true,
+  },
   integrations: [
     tailwind(),
     mdx({
