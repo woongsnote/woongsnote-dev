@@ -40,3 +40,10 @@ export type Links = {
   name: string;
   url: string;
 };
+
+export type TocHeadings = {
+  text: string;
+  depth: number;
+  slug: string;
+  subHeadings?: TocHeadings[];
+};

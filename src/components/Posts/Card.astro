@@ -7,20 +7,19 @@ type Props = {
 
 const { title, description, link } = Astro.props;
 
-const ariaLabel: string = `더 읽기: ${title}`;
 ---
 
-<a href={`/blog/${link}`} aria-label={ariaLabel}>
-  <article
-    class="group relative w-full overflow-hidden break-keep rounded-lg p-2 transition-all duration-300 ease-in-out hover:animate-moveRight hover:bg-gray-100/90 hover:dark:bg-gray-700/90"
-  >
-    <h2
+<article
+  class="group relative w-full overflow-hidden break-keep rounded-lg p-2 transition-all duration-300 ease-in-out hover:animate-moveRight hover:bg-gray-100/90 hover:dark:bg-gray-700/90"
+>
+  <a href={`/blog/${link}`}>
+    <h3
       class="text-lg font-medium text-content transition-all ease-in-out hover:text-accent lg:text-2xl"
     >
       {title}
-    </h2>
+    </h3>
     <p class="line-clamp-2 break-keep text-sm text-subContent/90 sm:text-base">
       {description}
     </p>
-  </article>
-</a>
+  </a>
+</article>
