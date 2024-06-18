@@ -8,10 +8,13 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import icon from 'astro-icon';
 
 const prettyCodeOptions = {
+  defaultLang: "plaintext",
   theme: {
-    dark: 'one-dark-pro',
-    light: 'github-light',
+    dark: "github-dark-dimmed",
+    light: "github-light",
   },
+  keepBackground: true,
+  filterMetaString: (string) => string.replace(/filename="[^"]*"/, ""),
 };
 
 // https://astro.build/config
