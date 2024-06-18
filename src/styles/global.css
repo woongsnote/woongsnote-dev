@@ -74,20 +74,20 @@
 }
 
 .prose :not(pre) > code {
-  @apply rounded border-2 border-gray-200 bg-gray-200 px-1 py-0.5 align-middle font-mono font-normal text-content dark:border-gray-700 dark:bg-gray-700;
+  @apply rounded border bg-[--shiki-light-bg] px-1.5 py-1 align-middle font-mono font-semibold dark:border-none dark:bg-[--shiki-dark-bg];
 }
 
 code[data-theme*=' '],
 code[data-theme*=' '] span {
-  color: var(--shiki-light) !important;
-  background-color: var(--shiki-light-bg) !important;
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
 }
 
 .dark {
   code[data-theme*=' '],
   code[data-theme*=' '] span {
-    color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
   }
 }
 
