@@ -42,7 +42,7 @@ const {
     tags={tags}
   />
   {isHeadings && <Toc headings={headings} />}
-  <article class="prose mx-auto w-full max-w-3xl dark:prose-invert">
+  <article class="prose mx-auto w-full max-w-3xl dark:prose-invert break-keep">
     <hr class="my-10" />
     {category === 'Project' && cover && <Thumbnail image={cover} alt={title} />}
     <slot />
