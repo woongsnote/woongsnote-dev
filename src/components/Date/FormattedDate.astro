@@ -6,9 +6,11 @@ type Props = {
 
 const { date } = Astro.props;
 
-const publishedDate = format(date, 'M월 d, yyyy');
+const displayDate = format(date, 'M월 d, yyyy');
+const isoDate = format(date, 'yyyy-MM-dd');
 ---
 
-<span class="whitespace-nowrap">
-  {publishedDate}
-</span>
+<div class="flex gap-2 text-subContent">
+  <span>|</span>
+  <time datetime={isoDate}>{displayDate}</time>
+</div>
