@@ -15,15 +15,17 @@ const { minutesToRead, title, description, publishedDate, tags } = Astro.props;
 ---
 
 <section
-  class="mx-auto flex w-full flex-col gap-2 break-keep rounded-t-md text-content lg:gap-4 pt-4 lg:pt-8"
+  class="mx-auto flex w-full flex-col gap-2 break-keep rounded-t-md pt-4 text-content lg:gap-4 lg:pt-8"
 >
+  <div
+    class="flex items-center gap-2 text-sm text-subContent opacity-80 lg:text-base"
+  >
+    <FormattedDate date={publishedDate} />
+    <ReadingTimeText readingTime={minutesToRead} />
+  </div>
   <h1 class="text-3xl font-semibold lg:text-4xl">
     {title}
   </h1>
   <p>{description}</p>
-  <div class="flex items-center gap-2 text-sm lg:text-base">
-    <FormattedDate date={publishedDate} />
-    <ReadingTimeText readingTime={minutesToRead} />
-  </div>
   <TagList tags={tags} />
 </section>
