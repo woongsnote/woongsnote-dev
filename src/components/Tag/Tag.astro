@@ -5,7 +5,4 @@ type Props = {
 const { tag } = Astro.props;
 ---
 
-<span
-  class="rounded-lg border border-black px-2 py-1 text-xs text-content dark:border-gray-50 sm:text-sm"
-  >{tag}</span
->
+<span class="w-fit rounded-lg px-2 py-1 text-content">#{tag}</span>
