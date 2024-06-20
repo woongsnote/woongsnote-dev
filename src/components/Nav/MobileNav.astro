@@ -3,28 +3,22 @@ import { Icon } from 'astro-icon/components';
 import NavLink from './NavLink.astro';
 import { NAV_ITEMS } from '@config/site-config';
 
-const navIconStyle = `size-12 p-3 inline-block hover:text-accent hover:opacity-100`;
+const navIconStyle = `size-12 p-2.5 inline-block hover:text-accent hover:opacity-100`;
 ---
 
-<nav
-  class="fixed bottom-0 left-0 z-50 mx-auto w-full md:hidden"
-  role="navigation"
-  aria-label="Bottom navigation"
->
-  <ul
-    class="flex items-center justify-between border-t bg-background text-subContent"
-  >
-    {
-      NAV_ITEMS.map(({ title, href }) => (
-        <li class="flex w-full flex-col items-center justify-center">
-          <NavLink href={href} aria-label={`Go to ${title} page`}>
-            {title === 'Home' && <Icon name="home" class={navIconStyle} />}
-            {title === 'About' && <Icon name="about" class={navIconStyle} />}
-            {title === 'Blog' && <Icon name="post" class={navIconStyle} />}
-            <span class="sr-only">{title}</span>
-          </NavLink>
-        </li>
-      ))
-    }
-  </ul>
+<nav class="btm-nav bg-background md:hidden" aria-label="Bottom navigation">
+  {
+    NAV_ITEMS.map(({ title, href }) => (
+      <NavLink
+        href={href}
+        aria-label={`Go to ${title} page`}
+        class="text-subContent"
+      >
+        {title === 'Home' && <Icon name="home" class={navIconStyle} />}
+        {title === 'About' && <Icon name="about" class={navIconStyle} />}
+        {title === 'Blog' && <Icon name="post" class={navIconStyle} />}
+        <span class="sr-only">{title}</span>
+      </NavLink>
+    ))
+  }
 </nav>
