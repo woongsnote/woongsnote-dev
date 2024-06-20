@@ -4,6 +4,7 @@
 
 <theme-button>
   <button
+    id="theme-selector"
     aria-label="theme button"
     class:list={[
       'flex items-center rounded-full text-sm text-subContent hover:text-accent',
@@ -14,55 +15,13 @@
 </theme-button>
 
 <script>
-  const setTheme = (theme: 'light' | 'dark') => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
+  document.getElementById('theme-selector')?.addEventListener('click', () => {
+    if (localStorage.theme === 'dark') {
+      localStorage.theme = 'light';
       document.documentElement.classList.remove('dark');
-    }
-  };
-
-  const updateStorage = (theme: 'light' | 'dark') => {
-    if (theme === 'dark') {
-      localStorage.setItem('theme', 'dark');
     } else {
-      localStorage.setItem('theme', 'light');
+      localStorage.theme = 'dark';
+      document.documentElement.classList.add('dark');
     }
-  };
-
-  class ThemeButton extends HTMLElement {
-    constructor() {
-      super();
-
-      const themeButton = this.querySelector('button');
-
-      const currentTheme = localStorage.getItem('theme');
-
-      if (currentTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      }
-
-      themeButton?.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.contains('dark');
-        if (isDark) {
-          const changeMode = 'light';
-          setTheme(changeMode);
-          updateStorage(changeMode);
-        } else {
-          const changeMode = 'dark';
-          setTheme(changeMode);
-          updateStorage(changeMode);
-        }
-      });
-    }
-  }
-  customElements.define('theme-button', ThemeButton);
-</script>
-
-<script>
-  document.addEventListener('astro:after-swap', () => {
-    localStorage.theme === 'dark'
-      ? document.documentElement.classList.add('dark')
-      : document.documentElement.classList.remove('dark');
   });
 </script>

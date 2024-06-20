@@ -5,10 +5,7 @@ const { heading } = Astro.props;
 ---
 
 <li class="list-inside px-8 py-1.5 text-sm">
-  <a
-    href={'#' + heading.slug}
-    class="text-content underline-offset-2 hover:underline"
-  >
+  <a href={'#' + heading.slug} class="text-content underline-offset-4">
     {heading.text}
   </a>
   {
