@@ -1,3 +1,5 @@
+import type { CollectionEntry } from 'astro:content';
+
 export type MetaData = {
   title: string;
   description: string;
@@ -46,4 +48,10 @@ export type TocHeadings = {
   depth: number;
   slug: string;
   subHeadings?: TocHeadings[];
+};
+
+export type Post = CollectionEntry<'blog'>;
+
+export type PostsByYear = {
+  [year: string]: Post[];
 };
