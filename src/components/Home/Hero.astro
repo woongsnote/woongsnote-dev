@@ -1,27 +1,23 @@
 ---
+import ViewMore from './ViewMore.astro';
+
 const blogTitleText = '새로운 기술 학습을 통한 성장의 여정';
 const blogDescription =
   '새로운 기술을 학습하고, 학습한 지식을 실제 프로젝트에 적용하는 과정을 통해 성장한 경험의 기록 모음';
-const viewMore = '읽으러가기';
 ---
 
-<section
-  class="flex w-full flex-col items-center justify-center space-y-4 py-8 lg:space-y-8 lg:py-12"
->
-  <h1
-    class="break-keep text-center text-3xl font-semibold text-content lg:text-5xl"
-  >
-    {blogTitleText}
-  </h1>
-  <p
-    class="mx-auto w-full max-w-xl break-keep text-center text-subContent lg:text-lg"
-  >
-    {blogDescription}
-  </p>
-  <a
-    href="/blog"
-    class="inline-flex h-10 items-center justify-center rounded-lg bg-gray-900 px-6 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-  >
-    {viewMore}
-  </a>
+<section class="hero">
+  <div class="hero-content flex-col py-8 text-center lg:gap-8 lg:py-12">
+    <h1
+      class="break-keep text-center text-3xl font-semibold text-content lg:text-5xl"
+    >
+      {blogTitleText}
+    </h1>
+    <p
+      class="mx-auto w-full max-w-xl break-keep text-center text-subContent lg:text-lg"
+    >
+      {blogDescription}
+    </p>
+    <ViewMore />
+  </div>
 </section>

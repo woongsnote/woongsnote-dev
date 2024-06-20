@@ -1,9 +1,9 @@
 ---
-import { type CollectionEntry } from 'astro:content';
-import Post from './Card.astro';
+import PostCard from './Card.astro';
+import type { Post } from '@utils/types';
 
 type Props = {
-  posts: CollectionEntry<'blog'>[];
+  posts: Post[];
 };
 
 const { posts } = Astro.props;
@@ -13,7 +13,7 @@ const { posts } = Astro.props;
   {
     posts.map((post) => (
       <li>
-        <Post
+        <PostCard
           title={post.data.title}
           description={post.data.description}
           link={post.slug}

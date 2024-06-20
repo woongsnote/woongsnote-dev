@@ -1,6 +1,4 @@
-import type { CollectionEntry } from 'astro:content';
-
-type Post = CollectionEntry<'blog'>;
+import type { Post, PostsByYear } from './types';
 
 export const sortPostsByDateDesc = (postA: Post, postB: Post) => {
   return (
@@ -8,16 +6,10 @@ export const sortPostsByDateDesc = (postA: Post, postB: Post) => {
   );
 };
 
-type Acc = {
-  [year: string]: CollectionEntry<'blog'>[];
-};
-
-export const filterPostsByYear = (posts: Post[]) => {
-  return posts.reduce((acc: Acc, post) => {
+export const filterPostsByYear = (posts: Post[]): PostsByYear => {
+  return posts.reduce((acc: PostsByYear, post) => {
     const year = post.data.publishedDate.getFullYear().toString();
-    if (!acc[year]) {
-      acc[year] = [];
-    }
+    acc[year] = acc[year] || [];
     acc[year].push(post);
     return acc;
   }, {});

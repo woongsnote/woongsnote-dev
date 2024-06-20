@@ -11,7 +11,7 @@ const latestPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
   .slice(0, LATEST_POSTS_SIZE);
 ---
 
-<section class="flex flex-col space-y-4">
+<section class="flex flex-col space-y-4 mb-4">
   <h2 class="pb-2 text-3xl font-black text-content">
     {TITLE}
   </h2>
