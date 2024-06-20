@@ -3,13 +3,11 @@ import SocialLinks from '@components/Social/SocialLinks.astro';
 const year = new Date().getFullYear();
 ---
 
-<footer>
-  <div
-    class="container flex max-w-3xl flex-col items-center justify-between bg-background p-2 pb-16 md:pb-2"
-  >
-    <SocialLinks />
+<footer class="footer footer-center gap-2 bg-background pt-4 pb-16 md:pb-2">
+  <SocialLinks />
+  <aside>
     <p class="text-center text-sm text-subContent">
       &copy; {year}. woongsnote All rights reserved.
     </p>
-  </div>
+  </aside>
 </footer>

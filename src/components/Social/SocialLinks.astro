@@ -3,6 +3,6 @@ import { SOCIALS } from '@config/site-config';
 import SocialLink from './SocialLink.astro';
 ---
 
-<div class="flex gap-4">
+<nav class="grid grid-flow-col gap-4">
   {SOCIALS.map(({ name, url }) => <SocialLink name={name} url={url} />)}
-</div>
+</nav>
