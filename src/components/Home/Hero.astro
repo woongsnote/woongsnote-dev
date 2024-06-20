@@ -6,18 +6,18 @@ const blogDescription =
   '새로운 기술을 학습하고, 학습한 지식을 실제 프로젝트에 적용하는 과정을 통해 성장한 경험의 기록 모음';
 ---
 
-<section
-  class="flex w-full flex-col items-center justify-center space-y-4 py-8 lg:space-y-8 lg:py-12"
->
-  <h1
-    class="break-keep text-center text-3xl font-semibold text-content lg:text-5xl"
-  >
-    {blogTitleText}
-  </h1>
-  <p
-    class="mx-auto w-full max-w-xl break-keep text-center text-subContent lg:text-lg"
-  >
-    {blogDescription}
-  </p>
-  <ViewMore />
+<section class="hero">
+  <div class="hero-content flex-col py-8 text-center lg:gap-8 lg:py-12">
+    <h1
+      class="break-keep text-center text-3xl font-semibold text-content lg:text-5xl"
+    >
+      {blogTitleText}
+    </h1>
+    <p
+      class="mx-auto w-full max-w-xl break-keep text-center text-subContent lg:text-lg"
+    >
+      {blogDescription}
+    </p>
+    <ViewMore />
+  </div>
 </section>

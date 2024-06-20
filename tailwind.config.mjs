@@ -24,7 +24,10 @@ export default {
     },
   },
   daisyui: {
-    themes: ['light', 'dark'],
+    themes: false,
+    darkTheme: 'dark',
+    base: false,
+    styled: false,
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
 };
