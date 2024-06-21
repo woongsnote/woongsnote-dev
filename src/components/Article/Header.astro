@@ -9,14 +9,17 @@ type Props = {
   publishedDate: Date;
   tags: string[];
   minutesToRead: number;
+  category: string;
 };
 
-const { minutesToRead, title, description, publishedDate, tags } = Astro.props;
+const { minutesToRead, title, description, publishedDate, tags, category } =
+  Astro.props;
 ---
 
 <div
   class="mb-2 flex items-center gap-2 text-sm text-subContent opacity-80 lg:text-base"
 >
+  <span>{category}</span>
   <FormattedDate date={publishedDate} />
   <ReadingTimeText readingTime={minutesToRead} />
 </div>
