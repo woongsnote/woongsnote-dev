@@ -9,11 +9,11 @@ const navLinks = NAV_ITEMS;
   <ul class="menu menu-horizontal px-1">
     {
       navLinks.map(({ title, href }) => (
-        <li>
+        <li class="px-2">
           <NavLink
             title={title}
             href={href}
-            class="flex gap-2 px-2 text-lg text-content hover:text-accent"
+            class="btn text-lg text-content hover:text-accent"
           >
             {title}
           </NavLink>
