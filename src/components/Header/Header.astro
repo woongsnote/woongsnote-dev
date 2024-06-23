@@ -5,15 +5,13 @@ import Logo from './Logo.astro';
 ---
 
 <header
-  class="sticky top-0 z-20 flex bg-background/90 saturate-100 backdrop-blur-sm"
+  class="navbar sticky top-0 z-20 flex bg-background/90 saturate-100 backdrop-blur-sm"
 >
-  <div class="container navbar justify-between rounded-md py-2">
-    <div class="navbar-start">
-      <Logo />
-    </div>
-    <Navigation />
-    <div class="navbar-end">
-      <ThemeSwitcher />
-    </div>
+  <div class="navbar-start">
+    <Logo />
+  </div>
+  <Navigation />
+  <div class="navbar-end">
+    <ThemeSwitcher />
   </div>
 </header>
