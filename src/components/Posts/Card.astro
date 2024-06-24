@@ -11,9 +11,7 @@ type Props = {
 const { title, description, link, publishedDate } = Astro.props;
 ---
 
-<article
-  class="card card-compact break-keep hover:bg-base-200/90"
->
+<article class="card card-compact break-keep hover:bg-base-200/90">
   <a href={`/blog/${link}`} class="card-body">
     <FormattedDate date={publishedDate} />
     <h3 class="card-title lg:text-3xl">
