@@ -17,6 +17,7 @@ type Props = {
   minutesToRead: number;
   isHeadings: boolean;
   headings: TocHeadings[];
+  link?: string;
 };
 
 const {
@@ -30,12 +31,13 @@ const {
   minutesToRead,
   isHeadings,
   headings,
+  link,
 } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={ogImage}>
   <article
-    class="prose prose-slate mt-8 max-w-none break-keep dark:prose-invert"
+    class="prose max-w-none break-keep lg:prose-lg dark:prose-invert"
   >
     <Header
       category={category}
@@ -47,7 +49,11 @@ const {
     />
     {isHeadings && <Toc headings={headings} />}
     <hr />
-    {category === 'Project' && cover && <Thumbnail image={cover} alt={title} />}
+    {
+      category === 'Project' && cover && (
+        <Thumbnail image={cover} alt={title} link={link} />
+      )
+    }
     <slot />
     <Comments />
   </article>
