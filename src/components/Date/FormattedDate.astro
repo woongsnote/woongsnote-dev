@@ -10,7 +10,4 @@ const displayDate = format(date, 'M월 d, yyyy');
 const isoDate = format(date, 'yyyy-MM-dd');
 ---
 
-<div class="flex gap-2 text-sm text-subContent sm:text-base">
-  <span>|</span>
-  <time datetime={isoDate}>{displayDate}</time>
-</div>
+<time datetime={isoDate} class="text-sm sm:text-base">{displayDate}</time>

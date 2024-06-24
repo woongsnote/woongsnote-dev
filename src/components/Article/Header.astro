@@ -16,14 +16,13 @@ const { minutesToRead, title, description, publishedDate, tags, category } =
   Astro.props;
 ---
 
-<div
-  class="mb-2 flex items-center gap-2 text-sm text-subContent opacity-80 lg:text-base"
->
+<div class="mb-2 flex items-center gap-2 text-sm lg:mb-4 lg:text-base">
   <span>{category}</span>
+  <span>|</span>
   <FormattedDate date={publishedDate} />
   <ReadingTimeText readingTime={minutesToRead} />
 </div>
-<h1>
+<h1 class="!leading-tight">
   {title}
 </h1>
 <p>{description}</p>

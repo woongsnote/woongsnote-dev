@@ -2,43 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --color-background: 202 40% 96%;
-    --color-content: 0 0% 0%;
-    --color-sub-content: 220 9% 26%;
-    --color-accent: 224 86% 56%;
-    --color-white: 0 0% 98%;
-    --color-scrollbar-background: #fff;
-    --color-scrollbar-thumb-background: #e5e7ebe6;
-  }
-  :root.dark {
-    --color-background: 214 33% 9%;
-    --color-content: 360 100% 100%;
-    --color-sub-content: 210 3% 85%;
-    --color-accent: 210 100% 56%;
-    --color-scrollbar-background: #000;
-    --color-scrollbar-thumb-background: #374151d9;
-  }
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-:target {
-  scroll-margin-top: 60px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: var(--color-scrollbar-background);
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--color-scrollbar-thumb-background);
-  border-radius: 24px;
+html {
+  scroll-behavior: smooth;
 }
 
 .prose pre > code {
@@ -58,7 +23,7 @@
 }
 
 .prose code span[data-highlighted-line] {
-  @apply border-y-0 border-l-2 border-blue-400 bg-opacity-50 pl-[calc(0.5rem-2px)] dark:border-blue-500 md:pl-[calc(1rem-2px)];
+  @apply border-y-0 border-l-2 border-blue-400 bg-opacity-50 pl-[calc(0.5rem-2px)] md:pl-[calc(1rem-2px)] dark:border-blue-500;
 }
 
 .prose figcaption[data-rehype-pretty-code-title] {
@@ -83,7 +48,7 @@ code[data-theme*=' '] span {
   background-color: var(--shiki-light-bg);
 }
 
-.dark {
+[data-theme='dark'] {
   code[data-theme*=' '],
   code[data-theme*=' '] span {
     color: var(--shiki-dark);

@@ -4,22 +4,26 @@ import { Image } from 'astro:assets';
 type Props = {
   image: ImageMetadata;
   alt: string;
+  link?: string;
 };
 
-const { image, alt } = Astro.props;
+const { image, alt, link } = Astro.props;
 ---
 
-<div
-  class="relative mx-auto my-4 flex h-auto w-full items-center overflow-hidden rounded-lg lg:w-96"
->
-  <figure class="m-0">
-    <Image
-      src={image}
-      alt={alt}
-      width="960"
-      height="540"
-      loading="eager"
-      class="size-full rounded-lg object-cover"
-    />
-  </figure>
+<div class="mockup-browser border border-base-300">
+  <div class="mockup-browser-toolbar">
+    <div class="input border border-base-300">{link}</div>
+  </div>
+  <div class="flex justify-center border-t border-base-300">
+    <figure class="!m-0">
+      <Image
+        src={image}
+        alt={alt}
+        width="960"
+        height="540"
+        loading="eager"
+        class="size-full object-cover"
+      />
+    </figure>
+  </div>
 </div>
