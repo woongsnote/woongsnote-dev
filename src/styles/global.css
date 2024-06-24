@@ -63,3 +63,11 @@ code[data-theme*=' '] span {
 @view-transition {
   navigation: auto; /* enabled! */
 }
+
+.btn-ghost {
+  @apply hover:bg-transparent hover:text-accent;
+}
+
+.card-title {
+  @apply text-lg font-medium lg:text-2xl xl:text-3xl;
+}
