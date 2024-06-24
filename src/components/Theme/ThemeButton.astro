@@ -6,7 +6,7 @@
   <button
     id="theme-selector"
     aria-label="theme button"
-    class="btn btn-circle text-subContent hover:text-accent"
+    class="btn-ghost btn btn-circle btn-sm hover:bg-transparent hover:text-accent"
   >
     <slot />
   </button>
@@ -16,10 +16,10 @@
   document.getElementById('theme-selector')?.addEventListener('click', () => {
     if (localStorage.theme === 'dark') {
       localStorage.theme = 'light';
-      document.documentElement.classList.remove('dark');
+      document.documentElement.setAttribute('data-theme', 'light');
     } else {
       localStorage.theme = 'dark';
-      document.documentElement.classList.add('dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
     }
   });
 </script>

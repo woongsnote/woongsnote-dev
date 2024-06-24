@@ -4,13 +4,13 @@ import type { TocHeadings } from '@utils/types';
 const { heading } = Astro.props;
 ---
 
-<li class="list-inside px-8 py-1.5 text-sm">
-  <a href={'#' + heading.slug} class="text-content underline-offset-4">
+<li class="list-inside px-6 py-1.5 text-sm">
+  <a href={'#' + heading.slug} class="underline-offset-4">
     {heading.text}
   </a>
   {
     heading.subHeadings.length > 0 && (
-      <ul class="ps-2">
+      <ul class="pl-1">
         {heading.subHeadings.map((subHeading: TocHeadings) => (
           <Astro.self heading={subHeading} />
         ))}

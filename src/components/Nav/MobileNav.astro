@@ -6,17 +6,10 @@ import { NAV_ITEMS } from '@config/site-config';
 const navIconStyle = `size-6 hover:text-accent hover:opacity-100`;
 ---
 
-<nav
-  class="btm-nav btm-nav-sm bg-background md:hidden pt-1"
-  aria-label="Bottom navigation"
->
+<nav class="btm-nav btm-nav-sm pt-1 md:hidden" aria-label="Bottom navigation">
   {
     NAV_ITEMS.map(({ title, href }) => (
-      <NavLink
-        href={href}
-        aria-label={`Go to ${title} page`}
-        class="text-subContent"
-      >
+      <NavLink href={href} aria-label={`Go to ${title} page`} class=" ">
         {title === 'Home' && <Icon name="home" class={navIconStyle} />}
         {title === 'About' && <Icon name="about" class={navIconStyle} />}
         {title === 'Blog' && <Icon name="post" class={navIconStyle} />}
