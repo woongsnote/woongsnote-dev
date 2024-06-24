@@ -13,7 +13,8 @@ export const getStaticPaths = (async () => {
 
 const { post } = Astro.props;
 
-const { title, description, tags, category, cover, publishedDate } = post.data;
+const { title, description, tags, category, cover, publishedDate, link } =
+  post.data;
 
 const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
@@ -31,6 +32,7 @@ const isHeadings = headings && headings.length > 0;
   minutesToRead={remarkPluginFrontmatter.minutesRead.split(' ')[0]}
   headings={headings}
   ogImage={`/blog/${post.slug}/og.png`}
+  link={link}
 >
   <Content />
 </PostLayout>

@@ -4,30 +4,38 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  darkMode: 'selector',
+  darkMode: ['selector', '[data-theme=dark]'],
   theme: {
     container: {
       center: true,
       padding: '1rem',
     },
     extend: {
-      colors: {
-        background: 'hsl(var(--color-background) / <alpha-value>)',
-        content: 'hsl(var(--color-content) / <alpha-value>)',
-        accent: 'hsl(var(--color-accent) / <alpha-value>)',
-        subContent: 'hsl(var(--color-sub-content) / <alpha-value>)',
-        white: 'hsl(var(--color-white) / <alpha-value>)',
-      },
       fontFamily: {
         sans: ['PretendardVariable', ...defaultTheme.fontFamily.sans],
       },
     },
   },
   daisyui: {
-    themes: false,
+    themes: [
+      {
+        light: {
+          ...require('daisyui/src/theming/themes')['light'],
+          accent: '#2e62ef',
+        },
+        dark: {
+          ...require('daisyui/src/theming/themes')['dark'],
+          accent: '#1f8fff',
+        },
+      },
+    ],
     darkTheme: 'dark',
-    base: false,
-    styled: false,
+    base: true,
+    styled: true,
+    utils: true,
+    prefix: '',
+    logs: true,
+    themeRoot: ':root',
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
 };

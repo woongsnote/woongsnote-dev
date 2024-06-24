@@ -9,7 +9,7 @@ const toc = generateToc(headings);
 
 {
   toc && toc.length > 0 && (
-    <ul class="pt-2 pb-4">
+    <ul class="pb-4 pt-2">
       {toc.map((heading) => (
         <TOCHeading heading={heading} />
       ))}
