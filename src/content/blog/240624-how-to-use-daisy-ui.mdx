@@ -1,0 +1,89 @@
+---
+title: daisyUI 사용하기
+description: '프로젝트에 daisyUI를 설치하고, 사용하는 방법에 대한 정리'
+cover: '../../assets/blog-placeholder.jpg'
+publishedDate: 2024-06-24
+category: 'Tech'
+author: 'woongsnote'
+tags: ['daisyUI', 'TailwindCSS']
+slug: 'how-to-use-daisy-ui'
+---
+
+## 개요
+
+스타일링을 위해 `Tailwind CSS`를 사용하면 미리 정해진 클래스들을 사용해서 빠르게 스타일링이 가능하다는 장점이 있다.
+그 대신 사용하는 클래스가 많아지게 된다면 클래스 네임이 너무 길어지게 된다. 그에 대한 대안으로 Tailwind CSS 기반의 라이브러리를 추가하여 해결할 수 있다.
+
+Tailwind CSS 기반의 라이브러리 중 하나인 `daisyUI`를 사용해보자.
+
+## daisyUI 설치하기
+
+아래 명령어를 사용해서 daisyUI를 설치한다. 개발할 때만 필요한 패키지이므로, `-D`를 사용해서 `devDependency`로 추가하자.
+
+```bash
+npm i -D daisyui@latest
+```
+
+설치가 완료되면, `tailwind.config.js`의 플러그인에 `daisyUI`를 추가한다.
+
+```js
+module.exports = {
+  //...
+  plugins: [require('daisyui')],
+};
+```
+
+※ `daisyUI`는 @tailwindcss/typography에 몇몇 스타일을 추가해 서로 다른 요소들이 같은 테마를 사용할 수 있게 하기 때문에 꼭 `@tailwindcss/typography` 다음에 `daisyui`를 require 해야 한다.
+
+```js
+module.exports = {
+  //...
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+};
+```
+
+## daisyUI 컴포넌트 사용하기
+
+이제 daisyUI 공식 홈페이지에 있는 컴포넌트들의 class를 참고해서 적용하면 된다.
+
+예를 들어, 버튼을 구현하는 방법에 대해 살펴보자.
+
+- 기존 TailwindCSS의 유틸리티 클래스만으로 버튼을 구현하게 되면 대략적으로 아래와 같은 클래스들이 필요하다.
+
+  ```html
+  <button
+    class="inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900"
+  >
+    Button
+  </button>
+  ```
+
+- 아래와 같이 `btn` class를 사용해서 이를 대체할 수 있다.
+
+  ```html
+  <button class="btn">Button</button>
+  ```
+
+- 기존 `btn` class에 대해 추가적인 커스텀이 필요하다면, `btn-primary`, `btn-ghost` 처럼, 이미 만들어진 daisyUI의 유틸리티 클래스를 추가해서 커스터마이징 할 수도 있다.
+
+  ```html
+  <button class="btn-primary btn">Button</button>
+  ```
+
+  ```html
+  <button class="btn-ghost btn">Button</button>
+  ```
+
+- 또한, TailwindCSS에서 기본으로 제공하는 유틸리티 클래스를 추가해서 커스텀하는 것도 가능하다.
+
+  ```html
+  <button class="btn w-64 rounded-full">Button</button>
+  ```
+
+## 결론
+
+`daisyUI`를 사용해서 가독성 있는 코드로 개선할 수 있었다!
+
+---
+
+참고: <a href="https://daisyui.com/">daisyUI 공식 홈페이지</a>
