@@ -12,7 +12,8 @@ slug: 'project-99club-coding-study'
 
 ## 만들게 된 배경
 
-`99club`에서 코딩 테스트 준비를 위한 스터디에 참여하면서, 풀었던 문제들에 대한 기록을 한 곳에서 관리하고 싶었다. 노션의 데이터베이스와 템플릿을 활용해서 풀었던 문제들과 TIL 등을 기록했다.노션에 기록한 내용을 기록에서 끝내지 않고, 공유하고 싶어서 하나의 웹사이트로 구현하게 되었다.
+`99club`에서 코딩 테스트 준비를 위한 스터디에 참여하면서, 풀었던 문제들에 대한 기록을 한 곳에서 관리하고 싶었다.
+노션의 데이터베이스와 템플릿을 활용해서 풀었던 문제들과 TIL 등을 기록했다.노션에 기록한 내용을 기록에서 끝내지 않고, 공유하고 싶어서 하나의 웹사이트로 구현하게 되었다.
 
 ## 기술 스택
 
@@ -25,7 +26,7 @@ slug: 'project-99club-coding-study'
 
 ### 1. 프로젝트 생성
 
-- `npx create-next-app@latest` 사용해서 `Next.js` 프로젝트를 생성한다.
+- `npx create-next-app@latest` 명령어를 사용해서 `Next.js` 프로젝트를 생성한다.
 
 ### 2. 노션 데이터베이스와 연결
 
@@ -39,58 +40,14 @@ slug: 'project-99club-coding-study'
 
 사용자에게 보여줄 화면 및 컴포넌트를 구현한다.
 
-```plainText title="프로젝트 구조"
-📦app
- ┣ 📂components
- ┃ ┣ 📜Comments.tsx
- ┃ ┣ 📜Footer.tsx
- ┃ ┣ 📜FormattedDate.tsx
- ┃ ┣ 📜Header.tsx
- ┃ ┣ 📜Hero.tsx
- ┃ ┣ 📜index.tsx
- ┃ ┣ 📜Level.tsx
- ┃ ┣ 📜Levels.tsx
- ┃ ┣ 📜Loading.tsx
- ┃ ┣ 📜Logo.tsx
- ┃ ┣ 📜Post.tsx
- ┃ ┣ 📜PostCard.tsx
- ┃ ┣ 📜PostCardSkeleton.tsx
- ┃ ┣ 📜PostHeader.tsx
- ┃ ┣ 📜PostList.tsx
- ┃ ┣ 📜PostSkeleton.tsx
- ┃ ┣ 📜Providers.tsx
- ┃ ┣ 📜SocialLinks.tsx
- ┃ ┣ 📜TagList.tsx
- ┃ ┗ 📜ThemeSwitcher.tsx
- ┣ 📂posts
- ┃ ┣ 📂[slug]
- ┃ ┃ ┣ 📜loading.tsx
- ┃ ┃ ┣ 📜opengraph-image.tsx
- ┃ ┃ ┗ 📜page.tsx
- ┃ ┗ 📜page.tsx
- ┣ 📂utils
- ┃ ┗ 📜notion.ts
- ┣ 📜constants.ts
- ┣ 📜favicon.ico
- ┣ 📜globals.css
- ┣ 📜layout.tsx
- ┣ 📜opengraph-image.png
- ┣ 📜page.tsx
- ┣ 📜robots.txt
- ┣ 📜sitemap.ts
- ┗ 📜types.d.ts
-```
-
 ### 4. 배포
 
 - 원하는 플랫폼을 사용해서 완성된 프로젝트를 배포한다. 이 프로젝트의 경우 `Vercel`을 통해 배포했다.
 
 ## 추가 구현
 
-기본 구현 및 배포 이후에, 추가한 기능들
-
-1. 사용자 경험 개선을 위해, 로딩 중일 때, 스켈레톤 컴포넌트로 표시
-2. 다크 모드를 선호하는 사용자를 위해, 다크 모드 구현
+- 사용자 경험 개선을 위해, 로딩 중일 때, `Skeleton` 컴포넌트를 표시하도록 변경
+- 다크 모드를 선호하는 사용자를 위해, 다크 모드 추가
 
 ## 구현 결과
 
