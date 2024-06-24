@@ -80,9 +80,17 @@ module.exports = {
   <button class="btn w-64 rounded-full">Button</button>
   ```
 
+- css 파일에서 Tailwind의 `@apply`를 사용해서 스타일을 수정할 수도 있다. 예를 들어, 모든 버튼에 공통적으로 수정할 필요가 있다면 아래와 같이 변경할 수 있다.
+
+  ```css
+  .btn {
+    @apply rounded-full;
+  }
+  ```
+
 ## 결론
 
-`daisyUI`를 사용해서 가독성 있는 코드로 개선할 수 있었다!
+`daisyUI`를 적용해서 컴포넌트의 스타일 코드를 개선할 수 있었다!
 
 ---
 
