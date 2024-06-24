@@ -10,4 +10,5 @@ export const blogSchema = ({ image }: { image: ImageFunction }) =>
     tags: z.array(z.string()),
     author: z.string(),
     readingTime: z.number().optional(),
+    link: z.string().optional(),
   });
