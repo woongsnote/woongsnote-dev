@@ -9,7 +9,7 @@ export const SITE: SiteConfig = {
     base_path: '/',
     favicon: '/favicon.svg',
     logo: '/logo.png',
-    lang: 'kr',
+    lang: 'ko',
     description: `Woong's technical blog`,
   },
   features: {
