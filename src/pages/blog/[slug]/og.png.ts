@@ -42,7 +42,7 @@ export async function GET({ props }: Props) {
         {
           type: 'div',
           props: {
-            tw: 'absolute right-[40px] bottom-[40px] flex items-center',
+            tw: 'absolute right-[48px] bottom-[48px] flex items-center',
             children: [
               {
                 type: 'div',
