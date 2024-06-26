@@ -1,4 +1,4 @@
-import type { Post, PostsByYear } from './types';
+import type { Post } from './types';
 
 export const sortPostsByDateDesc = (postA: Post, postB: Post) => {
   return (
@@ -6,11 +6,10 @@ export const sortPostsByDateDesc = (postA: Post, postB: Post) => {
   );
 };
 
-export const filterPostsByYear = (posts: Post[]): PostsByYear => {
-  return posts.reduce((acc: PostsByYear, post) => {
-    const year = post.data.publishedDate.getFullYear().toString();
-    acc[year] = acc[year] || [];
-    acc[year].push(post);
-    return acc;
-  }, {});
+export const generateYears = (posts: Post[]): string[] => {
+  return [
+    ...new Set(
+      posts.map((post) => post.data.publishedDate.getFullYear().toString())
+    ),
+  ].sort((a, b) => b.localeCompare(a));
 };
