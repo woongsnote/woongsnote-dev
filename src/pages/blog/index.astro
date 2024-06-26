@@ -2,25 +2,21 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import Layout from '@layouts/BaseLayout.astro';
 import BlogHeader from '@components/Blog/BlogHeader.astro';
-import YearSection from '@components/Blog/YearSection.astro';
-import { sortPostsByDateDesc, filterPostsByYear } from '@utils/data-util';
+import YearList from '@components/Blog/YearList.astro';
+import { sortPostsByDateDesc, generateYears } from '@utils/data-util';
 import { BLOG } from '@config/site-config';
-import type { PostsByYear } from '@utils/types';
 
 const { title, description } = BLOG;
 
-const allPosts: CollectionEntry<'blog'>[] = (await getCollection('blog')).sort(
-  sortPostsByDateDesc
-);
+const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
 
-const postsByYear: PostsByYear = filterPostsByYear(allPosts);
+const sortedPosts: CollectionEntry<'blog'>[] =
+  allPosts.sort(sortPostsByDateDesc);
 
-const years: string[] = Object.keys(postsByYear).sort(
-  (a, b) => parseInt(b) - parseInt(a)
-);
+const years: string[] = generateYears(sortedPosts);
 ---
 
 <Layout title={title} description={description}>
   <BlogHeader />
-  {years.map((year) => <YearSection year={year} posts={postsByYear[year]} />)}
+  <YearList years={years} />
 </Layout>
