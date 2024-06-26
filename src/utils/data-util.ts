@@ -1,4 +1,4 @@
-import type { Post, PostsByYear } from './types';
+import type { Post } from './types';
 
 export const sortPostsByDateDesc = (postA: Post, postB: Post) => {
   return (
