@@ -6,7 +6,12 @@ module.exports = {
   singleQuote: true,
   endOfLine: 'lf',
   trailingComma: 'es5',
-  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
+  astroOrganizeImportsMode: 'All',
+  plugins: [
+    'prettier-plugin-astro',
+    'prettier-plugin-tailwindcss',
+    'prettier-plugin-astro-organize-imports',
+  ],
   overrides: [
     {
       files: '*.astro',

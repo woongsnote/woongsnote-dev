@@ -1,10 +1,10 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import Layout from '@layouts/BaseLayout.astro';
 import BlogHeader from '@components/Blog/BlogHeader.astro';
 import YearList from '@components/Blog/YearList.astro';
-import { sortPostsByDateDesc, generateYears } from '@utils/data-util';
 import { BLOG } from '@config/site-config';
+import Layout from '@layouts/BaseLayout.astro';
+import { generateYears, sortPostsByDateDesc } from '@utils/data-util';
+import { type CollectionEntry, getCollection } from 'astro:content';
 
 const { title, description } = BLOG;
 
