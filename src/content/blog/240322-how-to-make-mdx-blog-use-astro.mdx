@@ -291,10 +291,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ```astro title="[...slug].astro"
 ---
 import type { GetStaticPaths } from 'astro';
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 type Props = {
   post: CollectionEntry<'blog'>;
@@ -396,10 +396,10 @@ BaseLayout에 Tailwind class를 추가해서, 디자인을 수정한다.
 ```astro {27} title="[slug].astro"
 ---
 import type { GetStaticPaths } from 'astro';
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 type Props = {
   post: CollectionEntry<'blog'>;
