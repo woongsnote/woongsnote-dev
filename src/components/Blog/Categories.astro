@@ -1,0 +1,24 @@
+---
+import { CATEGORIES as categories } from '@config/site-config';
+
+type Props = {
+  currentPage: string | undefined;
+};
+
+const { currentPage } = Astro.props;
+---
+
+<div
+  class="mb-6 line-clamp-1 flex flex-row space-x-4 text-sm md:mb-4 lg:text-lg"
+>
+  {
+    categories.map(({ page, title, href }) => (
+      <a
+        href={href}
+        class={`${currentPage === page ? 'underline' : ''} underline-offset-4 duration-200 hover:text-accent hover:underline`}
+      >
+        {title}
+      </a>
+    ))
+  }
+</div>

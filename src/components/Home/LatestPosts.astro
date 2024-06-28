@@ -1,14 +1,11 @@
 ---
 import PostList from '@components/Posts/PostList.astro';
-import { sortPostsByDateDesc } from '@utils/data-util';
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { getPosts } from '@utils/data-util';
 
 const LATEST_POSTS_SIZE = 4;
 const TITLE = '최신 글';
 
-const latestPosts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
-  .sort(sortPostsByDateDesc)
-  .slice(0, LATEST_POSTS_SIZE);
+const latestPosts = await getPosts(LATEST_POSTS_SIZE);
 ---
 
 <section class="mb-4 flex flex-col space-y-4">
