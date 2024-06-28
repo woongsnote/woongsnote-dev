@@ -1,7 +1,6 @@
 ---
 import PostList from '@/components/Posts/PostList.astro';
-import { sortPostsByDateDesc } from '@utils/data-util';
-import { getCollection } from 'astro:content';
+import { getFilteredPostsByYear } from '@utils/data-util';
 
 type Props = {
   year: string;
@@ -9,12 +8,8 @@ type Props = {
 
 const { year } = Astro.props;
 
-const postsByYear = (
-  await getCollection('blog', ({ data }) => {
-    return data.publishedDate.getFullYear().toString() === year;
-  })
-).sort(sortPostsByDateDesc);
-
+const postsByYear = await getFilteredPostsByYear(year);
+console.log(postsByYear)
 const totalPosts = postsByYear.length;
 ---
 

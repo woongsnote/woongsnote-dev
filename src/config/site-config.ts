@@ -79,3 +79,26 @@ export const SOCIALS: Links[] = [
     url: '/rss.xml',
   },
 ];
+
+export const CATEGORIES = [
+  {
+    title: 'All',
+    page: undefined,
+    href: '/blog',
+  },
+  {
+    title: 'Tech',
+    page: 'tech',
+    href: '/blog/tech',
+  },
+  {
+    title: 'Diary',
+    page: 'diary',
+    href: '/blog/diary',
+  },
+  {
+    title: 'Project',
+    page: 'project',
+    href: '/blog/project',
+  },
+];

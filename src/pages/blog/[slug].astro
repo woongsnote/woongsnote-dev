@@ -1,15 +1,21 @@
 ---
 import PostLayout from '@layouts/PostLayout.astro';
+import {  sortPostsByDateDesc } from '@utils/data-util';
 import type { GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 
 export const getStaticPaths = (async () => {
-  const posts = await getCollection('blog');
+  const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }));
 }) satisfies GetStaticPaths;
+
+type Props = {
+  post: CollectionEntry<'blog'>;
+};
 
 const { post } = Astro.props;
 
@@ -19,6 +25,7 @@ const { title, description, tags, category, cover, publishedDate, link } =
 const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
 const isHeadings = headings && headings.length > 0;
+
 ---
 
 <PostLayout

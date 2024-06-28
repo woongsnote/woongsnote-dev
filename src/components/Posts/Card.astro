@@ -3,22 +3,18 @@ import FormattedDate from '@components/Date/FormattedDate.astro';
 
 type Props = {
   title: string;
-  description: string;
   link: string;
   publishedDate: Date;
 };
 
-const { title, description, link, publishedDate } = Astro.props;
+const { title, link, publishedDate } = Astro.props;
 ---
 
 <article class="card card-compact break-keep hover:bg-base-200/90">
   <a href={`/blog/${link}`} class="card-body">
-    <FormattedDate date={publishedDate} />
     <h3 class="card-title">
       {title}
     </h3>
-    <p class="line-clamp-1 text-sm sm:text-base">
-      {description}
-    </p>
+    <FormattedDate date={publishedDate} />
   </a>
 </article>
