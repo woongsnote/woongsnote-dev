@@ -9,13 +9,12 @@ type Props = {
 const { posts } = Astro.props;
 ---
 
-<ul class="mx-auto flex w-full flex-col gap-6">
+<ul class="mx-auto flex w-full flex-col gap-4">
   {
     posts.map((post) => (
       <li>
         <PostCard
           title={post.data.title}
-          description={post.data.description}
           link={post.slug}
           publishedDate={post.data.publishedDate}
         />

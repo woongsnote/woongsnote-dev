@@ -36,18 +36,18 @@ const {
 ---
 
 <BaseLayout title={title} description={description} image={ogImage}>
+  <Header
+    category={category}
+    minutesToRead={minutesToRead}
+    title={title}
+    description={description}
+    publishedDate={publishedDate}
+    tags={tags}
+  />
+  {isHeadings && <Toc headings={headings} />}
   <article
-    class="prose max-w-none break-keep lg:prose-lg xl:prose-xl dark:prose-invert prose-headings:scroll-mt-16 prose-a:underline-offset-4"
+    class="prose max-w-none break-keep dark:prose-invert prose-headings:scroll-mt-16 prose-headings:font-medium prose-a:underline-offset-4"
   >
-    <Header
-      category={category}
-      minutesToRead={minutesToRead}
-      title={title}
-      description={description}
-      publishedDate={publishedDate}
-      tags={tags}
-    />
-    {isHeadings && <Toc headings={headings} />}
     <hr />
     {
       category === 'Project' && cover && (

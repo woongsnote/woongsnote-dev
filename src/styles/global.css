@@ -69,5 +69,9 @@ code[data-theme*=' '] span {
 }
 
 .card-title {
-  @apply text-lg font-medium lg:text-2xl xl:text-3xl;
+  @apply mb-0 text-lg font-normal;
+}
+
+.card-body {
+  @apply flex-row items-center justify-between;
 }
