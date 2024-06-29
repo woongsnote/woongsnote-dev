@@ -55,3 +55,7 @@ export type Post = CollectionEntry<'blog'>;
 export type PostsByYear = {
   [year: string]: Post[];
 };
+
+export type CategoryCounts = Record<string, number>;
+
+export type CategoryPosts = Record<string, Post[]>;
