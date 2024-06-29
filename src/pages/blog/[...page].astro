@@ -3,36 +3,49 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogHeader from '@components/Blog/BlogHeader.astro';
 import Categories from '@components/Blog/Categories.astro';
 import PostList from '@components/Posts/PostList.astro';
-import { BLOG, CATEGORIES as categories } from '@config/site-config';
-import { generateYears, sortPostsByDateDesc } from '@utils/data-util';
-import type { CollectionEntry } from 'astro:content';
+import { BLOG, CATEGORIES } from '@config/site-config';
+import { getCategoryPosts, sortPostsByDateDesc } from '@utils/data-util';
+import type { CategoryCounts, Post } from '@utils/types';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
+  const allPosts = await getCollection('blog');
 
-  return categories.map(({ page }) => ({
-    params: { page },
-    props: {
-      posts: page
-        ? posts.filter((post: CollectionEntry<'blog'>) =>
-            post.data.category.toLowerCase()?.includes(page)
-          )
-        : posts,
-      currentPage: page,
+  const sortedPosts = allPosts.sort(sortPostsByDateDesc);
+  const { categoryCounts, categoryPosts } = getCategoryPosts(
+    sortedPosts,
+    CATEGORIES
+  );
+
+  return [
+    {
+      params: { page: undefined },
+      props: { posts: sortedPosts, currentPage: 'all', categoryCounts },
     },
-  }));
+    ...CATEGORIES.filter(({ page }) => page).map(({ page }) => ({
+      params: { page },
+      props: {
+        posts: categoryPosts[page],
+        currentPage: page,
+        categoryCounts,
+      },
+    })),
+  ];
 }
 
+type Props = {
+  posts: Post[];
+  currentPage: string;
+  categoryCounts: CategoryCounts;
+};
+
+const { posts, currentPage, categoryCounts } = Astro.props;
+
 const { title, description } = BLOG;
-
-const { posts, currentPage } = Astro.props;
-
-const years = generateYears(posts);
 ---
 
 <BaseLayout title={title} description={description}>
   <BlogHeader />
-  <Categories currentPage={currentPage} />
+  <Categories currentPage={currentPage} categoryCounts={categoryCounts} />
   <PostList posts={posts} />
 </BaseLayout>

@@ -83,7 +83,7 @@ export const SOCIALS: Links[] = [
 export const CATEGORIES = [
   {
     title: 'All',
-    page: undefined,
+    page: 'all',
     href: '/blog',
   },
   {

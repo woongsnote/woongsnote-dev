@@ -69,7 +69,7 @@ code[data-theme*=' '] span {
 }
 
 .card-title {
-  @apply mb-0 text-lg font-normal;
+  @apply mb-0 text-base font-normal lg:text-lg;
 }
 
 .card-body {

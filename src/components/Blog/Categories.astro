@@ -1,24 +1,31 @@
 ---
-import { CATEGORIES as categories } from '@config/site-config';
+import { CATEGORIES } from '@config/site-config';
 
 type Props = {
-  currentPage: string | undefined;
+  currentPage: string;
+  categoryCounts: Record<string, number>;
 };
 
-const { currentPage } = Astro.props;
+const { currentPage, categoryCounts } = Astro.props;
+
+const getCategoryLinkClass = (isActive: boolean): string => {
+  return `underline-offset-4 duration-200 hover:text-accent hover:underline ${
+    isActive ? 'underline' : ''
+  }`;
+};
 ---
 
-<div
-  class="mb-6 line-clamp-1 flex flex-row space-x-4 text-sm md:mb-4 lg:text-lg"
->
+<div class="mb-6 flex flex-row flex-wrap gap-4 text-sm md:mb-4 lg:text-lg">
   {
-    categories.map(({ page, title, href }) => (
-      <a
-        href={href}
-        class={`${currentPage === page ? 'underline' : ''} underline-offset-4 duration-200 hover:text-accent hover:underline`}
-      >
-        {title}
-      </a>
-    ))
+    CATEGORIES.map(({ page, title, href }) => {
+      const key = page || 'all';
+      const count = categoryCounts[key] || 0;
+      const isActive = currentPage === key;
+      return (
+        <a href={href} class={getCategoryLinkClass(isActive)}>
+          {title} ({count})
+        </a>
+      );
+    })
   }
 </div>

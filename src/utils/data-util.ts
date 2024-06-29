@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import type { Post, TocHeadings } from './types';
+import type { Post, TocHeadings, CategoryCounts, CategoryPosts } from './types';
 
 export const getPosts = async (maxPosts?: number) => {
   return (await getCollection('blog'))
@@ -13,19 +13,25 @@ export const sortPostsByDateDesc = (postA: Post, postB: Post) => {
   );
 };
 
-export const generateYears = (posts: Post[]): string[] => {
-  return [
-    ...new Set(
-      posts.map((post) => post.data.publishedDate.getFullYear().toString())
-    ),
-  ].sort((a, b) => b.localeCompare(a));
-};
+export const getCategoryPosts = (
+  allPosts: Post[],
+  categories: { page: string }[]
+): { categoryCounts: CategoryCounts; categoryPosts: CategoryPosts } => {
+  const categoryCounts: CategoryCounts = { all: allPosts.length };
+  const categoryPosts: CategoryPosts = { all: allPosts };
 
-export const getFilteredPostsByYear = async (year: string) => {
-  const filteredList = await getCollection('blog', ({ data }) => {
-    return data.publishedDate.getFullYear().toString() === year;
+  categories.forEach(({ page }) => {
+    if (page && page !== 'all') {
+      const postsInCategory = allPosts.filter((post: Post) =>
+        post.data.category.toLowerCase()?.includes(page)
+      );
+
+      categoryCounts[page] = postsInCategory.length;
+      categoryPosts[page] = postsInCategory;
+    }
   });
-  return filteredList.sort(sortPostsByDateDesc);
+
+  return { categoryCounts, categoryPosts };
 };
 
 export const generateToc = (headings: TocHeadings[]) => {
