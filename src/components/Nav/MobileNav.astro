@@ -6,14 +6,14 @@ import NavLink from './NavLink.astro';
 const navIconStyle = `size-6 hover:text-accent hover:opacity-100`;
 ---
 
-<nav class="btm-nav btm-nav-sm pt-1 md:hidden" aria-label="Bottom navigation">
+<nav class="btm-nav pt-1 md:hidden" aria-label="Bottom navigation">
   {
     NAV_ITEMS.map(({ title, href }) => (
       <NavLink href={href} aria-label={`Go to ${title} page`}>
         {title === 'Home' && <Icon name="home" class={navIconStyle} />}
         {title === 'About' && <Icon name="about" class={navIconStyle} />}
         {title === 'Blog' && <Icon name="post" class={navIconStyle} />}
-        <span class="">{title}</span>
+        <span class="btm-nav-label">{title}</span>
       </NavLink>
     ))
   }
