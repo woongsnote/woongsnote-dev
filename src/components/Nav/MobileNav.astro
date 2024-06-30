@@ -3,13 +3,17 @@ import { NAV_ITEMS } from '@config/site-config';
 import { Icon } from 'astro-icon/components';
 import NavLink from './NavLink.astro';
 
-const navIconStyle = `size-6 hover:text-accent hover:opacity-100`;
+const navIconStyle = `size-6 opacity-80 hover:opacity-100 active:opacity-100`;
 ---
 
-<nav class="btm-nav pt-1 md:hidden" aria-label="Bottom navigation">
+<nav class="btm-nav btm-nav-sm md:hidden" aria-label="Bottom navigation">
   {
     NAV_ITEMS.map(({ title, href }) => (
-      <NavLink href={href} aria-label={`Go to ${title} page`}>
+      <NavLink
+        href={href}
+        aria-label={`Go to ${title} page`}
+        class="hover:text-accent"
+      >
         {title === 'Home' && <Icon name="home" class={navIconStyle} />}
         {title === 'About' && <Icon name="about" class={navIconStyle} />}
         {title === 'Blog' && <Icon name="post" class={navIconStyle} />}
