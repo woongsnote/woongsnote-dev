@@ -1,4 +1,5 @@
 ---
+import BackToTop from '@components/BackButton/BackToTop.astro';
 import Comments from '@components/Article/Comments.astro';
 import Header from '@components/Article/Header.astro';
 import Thumbnail from '@components/Article/Thumbnail.astro';
@@ -55,6 +56,7 @@ const {
       )
     }
     <slot />
+    <BackToTop />
     <Comments />
   </article>
 </BaseLayout>

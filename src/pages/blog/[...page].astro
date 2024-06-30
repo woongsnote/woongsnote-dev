@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import BackToTop from '@components/BackButton/BackToTop.astro';
 import BlogHeader from '@components/Blog/BlogHeader.astro';
 import Categories from '@components/Blog/Categories.astro';
 import PostList from '@components/Posts/PostList.astro';
@@ -48,4 +49,5 @@ const { title, description } = BLOG;
   <BlogHeader />
   <Categories currentPage={currentPage} categoryCounts={categoryCounts} />
   <PostList posts={posts} />
+  <BackToTop />
 </BaseLayout>
