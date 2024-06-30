@@ -17,7 +17,7 @@ slug: 'enhance-ux-add-back-to-top-button-astro'
 
 ## "맨 위로" 버튼을 구현해야 하는 이유는?
 
-구현 방법을 살펴보기 전에, 이 기능을 웹사이트에 추가해야 하는 이유를 고려해 봅시다:
+구현 방법을 살펴보기 전에, 이 기능을 웹사이트에 추가해야 하는 **이유**를 고려해 보자.
 
 1. **향상된 사용자 경험**: 특히 모바일 기기나 긴 형식의 콘텐츠에서 사용자가 페이지 상단으로 빠르고 쉽게 이동할 수 있는 방법을 제공한다.
 2. **증가된 참여도**: 탐색을 쉽게 만듦으로써 사용자가 더 많은 콘텐츠를 탐색할 가능성이 높아진다.
@@ -82,7 +82,9 @@ import { Icon } from 'astro-icon/components';
 </button>
 ```
 
-만약, `astro-icon`을 사용하지 않는다면, 아래와 같이 구현할 수 있다.
+만약, `astro-icon`을 사용하지 않는다면, 아래와 같이 버튼 안에 svg를 추가해서 구현할 수 있다.
+
+※ 버튼의 class의 경우, 개발자의 취향 또는 웹사이트의 스타일, 요구사항 등에 따라 달라질 수 있다.
 
 ```
 <button
@@ -130,7 +132,7 @@ window.addEventListener('scroll', toggleBackToTopButton);
 backToTopButton.addEventListener('click', scrollToTop);
 ```
 
-이 JavaScript 코드는 두 가지 주요 기능을 처리한다
+이 JavaScript 코드는 두 가지 주요 기능을 처리한다.
 
 1. 스크롤 위치에 따른 버튼의 가시성 전환
 2. 버튼 클릭 시 페이지 상단으로의 부드러운 스크롤
