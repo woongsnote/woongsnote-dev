@@ -46,13 +46,15 @@ const { title, description, image = '/opengraph-image.png' } = Astro.props;
   <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
   <script is:inline>
-    if (localStorage.getItem('theme') === null) {
-      document.documentElement.setAttribute('data-theme', 'light');
-    } else
-      document.documentElement.setAttribute(
-        'data-theme',
-        localStorage.getItem('theme')
+    function getTheme() {
+      return (
+        localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light')
       );
+    }
+    document.documentElement.setAttribute('data-theme', getTheme());
   </script>
 
   <SpeedInsights />
