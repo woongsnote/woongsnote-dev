@@ -2,24 +2,38 @@
 
 ---
 
-<theme-button>
-  <button
-    id="theme-selector"
-    aria-label="theme button"
-    class="btn btn-circle btn-ghost btn-sm hover:bg-transparent hover:text-accent"
-  >
-    <slot />
-  </button>
-</theme-button>
+<button
+  id="theme-toggle"
+  aria-label="theme button"
+  class="btn btn-circle btn-ghost btn-sm hover:bg-transparent hover:text-accent"
+>
+  <slot />
+</button>
 
 <script>
-  document.getElementById('theme-selector')?.addEventListener('click', () => {
-    if (localStorage.theme === 'dark') {
-      localStorage.theme = 'light';
-      document.documentElement.setAttribute('data-theme', 'light');
-    } else {
-      localStorage.theme = 'dark';
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
+  type Theme = string;
+  const themeToggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  function getTheme() {
+    return (
+      localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light')
+    );
+  }
+
+  function setTheme(theme: Theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }
+
+  setTheme(getTheme());
+
+  themeToggle?.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
   });
 </script>
