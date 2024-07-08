@@ -5,8 +5,40 @@ const siteName = siteConfig.site.title;
 
 <a
   href="/"
-  class="btn btn-ghost btn-lg px-1 text-lg lg:px-2 lg:text-3xl"
+  class="flex items-center"
   aria-label={`Go to Homepage of ${siteName}`}
 >
-  {siteName}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    class="mr-3 size-8"
+  >
+    <rect
+      x="5"
+      y="5"
+      width="90"
+      height="90"
+      rx="20"
+      ry="20"
+      class="fill-black dark:fill-white"></rect>
+    <path
+      d="M25 30 L40 70 L50 50 L60 70 L75 30"
+      stroke="white"
+      stroke-width="8"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="stroke-white dark:stroke-black"></path>
+    <line
+      x1="20"
+      y1="80"
+      x2="80"
+      y2="80"
+      class="stroke-white dark:stroke-black"
+      stroke-width="8"
+      stroke-linecap="round"></line>
+  </svg>
+  <span class="sr-only">
+    {siteName}
+  </span>
 </a>
