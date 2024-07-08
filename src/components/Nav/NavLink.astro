@@ -11,7 +11,7 @@ const isActive =
   class:list={[
     className,
     { active: isActive },
-    `${isActive ? 'font-semibold opacity-100' : 'font-light opacity-80'}`,
+    `${isActive ? 'font-semibold opacity-100 active:bg-transparent' : 'font-light opacity-80'}`,
   ]}
   {...props}
   aria-label={`go to ${title} page`}
