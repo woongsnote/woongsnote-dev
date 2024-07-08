@@ -6,14 +6,14 @@ const navLinks = NAV_ITEMS;
 ---
 
 <nav class="navbar-center hidden md:flex">
-  <ul class="menu menu-horizontal px-1">
+  <ul class="menu menu-horizontal gap-8">
     {
       navLinks.map(({ title, href }) => (
         <li>
           <NavLink
             title={title}
             href={href}
-            class="btn btn-ghost btn-md lg:btn-lg hover:text-accent"
+            class="btn btn-ghost btn-sm lg:btn-md hover:text-accent"
           >
             {title}
           </NavLink>

@@ -75,3 +75,11 @@ code[data-theme*=' '] span {
 .card-body {
   @apply flex-row items-center justify-between;
 }
+
+.navbar {
+  @apply min-h-4;
+}
+
+.btn-more {
+  @apply rounded-full bg-black px-6 py-2 text-white transition hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200;
+}
