@@ -15,7 +15,9 @@ const { posts } = Astro.props;
         <PostCard
           title={post.data.title}
           link={post.slug}
+          description={post.data.description}
           publishedDate={post.data.publishedDate}
+
         />
       </li>
     ))
