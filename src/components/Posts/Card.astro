@@ -5,16 +5,22 @@ type Props = {
   title: string;
   link: string;
   publishedDate: Date;
+  description: string;
 };
 
-const { title, link, publishedDate } = Astro.props;
+const { title, link, publishedDate, description } = Astro.props;
 ---
 
 <article class="card card-compact break-keep hover:bg-base-200/90">
   <a href={`/blog/${link}`} class="card-body">
-    <h3 class="card-title">
-      {title}
-    </h3>
-    <FormattedDate date={publishedDate} />
+    <div>
+      <FormattedDate date={publishedDate} />
+      <h3 class="card-title line-clamp-1">
+        {title}
+      </h3>
+      <p class="line-clamp-1 text-ellipsis text-sm">
+        {description}
+      </p>
+    </div>
   </a>
 </article>
