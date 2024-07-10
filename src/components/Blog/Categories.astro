@@ -9,17 +9,14 @@ type Props = {
 const { currentPage, categoryCounts } = Astro.props;
 
 const getCategoryButtonClass = (isActive: boolean): string => {
-  return `btn btn-sm md:btn-md transition-all duration-200 px-2 ${
-    isActive
-      ? 'bg-black text-white hover:bg-gray-800'
-      : 'bg-white text-black border-black hover:bg-gray-100'
+  return `btn btn-sm transition-all duration-200 px-2 ${
+    isActive ? 'btn-accent' : 'btn-outline hover:btn-accent'
   }`;
 };
 
 const getCountChipClass = (isActive: boolean): string => {
-  return `badge badge-sm ${
-    isActive ? 'bg-white text-black' : 'bg-black text-white'
-  }`;
+  return `badge badge-sm
+   ${isActive ? 'badge-accent-content text-accent' : 'badge-outline'}`;
 };
 ---
 

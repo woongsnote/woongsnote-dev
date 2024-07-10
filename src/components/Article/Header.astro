@@ -23,9 +23,9 @@ const { minutesToRead, title, description, publishedDate, tags, category } =
     <FormattedDate date={publishedDate} />
     <ReadingTimeText readingTime={minutesToRead} />
   </div>
-  <h1 class="mb-4 text-3xl font-medium leading-tight">
+  <h1 class="mb-4 text-3xl font-medium leading-tight break-keep">
     {title}
   </h1>
-  <p class="mb-2">{description}</p>
+  <p class="mb-2 break-keep">{description}</p>
   <TagList tags={tags} />
 </Fragment>

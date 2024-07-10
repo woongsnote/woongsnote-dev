@@ -1,5 +1,4 @@
 ---
-import SpeedInsights from '@vercel/speed-insights/astro';
 
 type Props = {
   title: string;
@@ -56,6 +55,4 @@ const { title, description, image = '/opengraph-image.png' } = Astro.props;
     }
     document.documentElement.setAttribute('data-theme', getTheme());
   </script>
-
-  <SpeedInsights />
 </head>
