@@ -19,6 +19,7 @@ type Props = {
   isHeadings: boolean;
   headings: TocHeadings[];
   link?: string;
+  currentUrl: string;
 };
 
 const {
@@ -33,6 +34,7 @@ const {
   isHeadings,
   headings,
   link,
+  currentUrl,
 } = Astro.props;
 ---
 
@@ -44,6 +46,7 @@ const {
     description={description}
     publishedDate={publishedDate}
     tags={tags}
+    link={currentUrl}
   />
   {isHeadings && <Toc headings={headings} />}
   <hr class="my-4" />
