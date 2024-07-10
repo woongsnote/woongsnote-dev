@@ -1,4 +1,5 @@
 ---
+import ShareButton from '@components/Article/ShareButton.astro';
 import FormattedDate from '@components/Date/FormattedDate.astro';
 import ReadingTimeText from '@components/ReadingTime/ReadingTimeText.astro';
 import TagList from '@components/Tag/TagList.astro';
@@ -10,20 +11,33 @@ type Props = {
   tags: string[];
   minutesToRead: number;
   category: string;
+  link: string;
 };
 
-const { minutesToRead, title, description, publishedDate, tags, category } =
-  Astro.props;
+const {
+  minutesToRead,
+  title,
+  description,
+  publishedDate,
+  tags,
+  category,
+  link,
+} = Astro.props;
 ---
 
 <Fragment>
-  <div class="my-2 flex items-center gap-2 text-sm lg:mb-4 lg:text-base">
-    <span>{category}</span>
-    <span>|</span>
-    <FormattedDate date={publishedDate} />
-    <ReadingTimeText readingTime={minutesToRead} />
+  <div
+    class="my-2 flex items-center justify-between text-sm lg:mb-4 lg:text-base"
+  >
+    <div class="flex gap-2 items-center">
+      <span>{category}</span>
+      <span>|</span>
+      <FormattedDate date={publishedDate} />
+      <ReadingTimeText readingTime={minutesToRead} />
+    </div>
+    <ShareButton title={title} url={link} />
   </div>
-  <h1 class="mb-4 text-3xl font-medium leading-tight break-keep">
+  <h1 class="mb-4 break-keep text-3xl font-medium leading-tight">
     {title}
   </h1>
   <p class="mb-2 break-keep">{description}</p>
