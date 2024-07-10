@@ -1,0 +1,31 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+---
+
+<button
+  id="shareButton"
+  class="btn btn-circle btn-ghost btn-sm hover:bg-transparent hover:text-accent"
+  data-title={title}
+  data-url={url}
+>
+  <Icon name="share" class="inline-block size-6" />
+</button>
+
+<script>
+  import { sharePost } from '@/utils/share-util';
+
+  const shareButton = document.getElementById('shareButton');
+  if (shareButton) {
+    const title = shareButton.getAttribute('data-title') || '';
+    const url = shareButton.getAttribute('data-url') || '';
+
+    shareButton.addEventListener('click', () => sharePost(title, url));
+  }
+</script>
