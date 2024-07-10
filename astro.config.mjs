@@ -40,7 +40,6 @@ export default defineConfig({
     }),
     icon(),
   ],
-  output: 'static',
   security: {
     checkOrigin: true,
   },
