@@ -9,14 +9,9 @@ type Props = {
 const { currentPage, categoryCounts } = Astro.props;
 
 const getCategoryButtonClass = (isActive: boolean): string => {
-  return `btn btn-sm transition-all duration-200 px-2 ${
-    isActive ? 'btn-accent' : 'btn-outline hover:btn-accent'
+  return `btn btn-sm transition-all duration-200 px-2 btn-outline ${
+    isActive ? 'btn-active text-neutral-content' : 'opacity-80'
   }`;
-};
-
-const getCountChipClass = (isActive: boolean): string => {
-  return `badge badge-sm
-   ${isActive ? 'badge-accent-content text-accent' : 'badge-outline'}`;
 };
 ---
 
@@ -28,8 +23,8 @@ const getCountChipClass = (isActive: boolean): string => {
       const isActive = currentPage === key;
       return (
         <a href={href} class={getCategoryButtonClass(isActive)}>
-          {title}
-          <h2 class={getCountChipClass(isActive)}>{count}</h2>
+          <h2>{title}</h2>
+          <span class="badge badge-outline badge-sm border-none">{count}</span>
         </a>
       );
     })
