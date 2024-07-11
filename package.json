@@ -1,7 +1,7 @@
 {
   "name": "woongsnote-dev",
   "type": "module",
-  "version": "3.7.10",
+  "version": "3.7.11",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -11,7 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.8.0",
+    "@astrojs/check": "^0.8.1",
     "@astrojs/mdx": "^3.1.2",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
