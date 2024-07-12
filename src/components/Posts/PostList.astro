@@ -1,6 +1,7 @@
 ---
 import type { Post } from '@utils/types';
 import PostCard from './Card.astro';
+
 type Props = {
   posts: Post[];
 };
@@ -8,7 +9,7 @@ type Props = {
 const { posts } = Astro.props;
 ---
 
-<ul class="mx-auto flex w-full flex-col gap-4 2xl:gap-8">
+<ul class="grid gap-4 2xl:gap-8">
   {
     posts.map((post) => (
       <li>
@@ -17,7 +18,6 @@ const { posts } = Astro.props;
           link={post.slug}
           description={post.data.description}
           publishedDate={post.data.publishedDate}
-
         />
       </li>
     ))
