@@ -5,7 +5,7 @@ import NavLink from './NavLink.astro';
 const navLinks = NAV_ITEMS;
 ---
 
-<nav class="navbar-center hidden md:flex">
+<nav role="navigation" class="navbar-center hidden md:flex">
   <ul class="menu menu-horizontal gap-8">
     {
       navLinks.map(({ title, href }) => (
