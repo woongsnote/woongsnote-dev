@@ -81,5 +81,5 @@ code[data-theme*=' '] span {
 }
 
 .btn-more {
-  @apply rounded-full bg-black px-6 py-2 text-white transition hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200;
+  @apply btn rounded-full bg-black px-6 py-2 text-white hover:bg-gray-800 hover:shadow-md dark:bg-gray-800 dark:hover:bg-gray-700;
 }
