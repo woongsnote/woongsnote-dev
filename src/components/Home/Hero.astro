@@ -1,22 +1,14 @@
 ---
 import ViewMore from './ViewMore.astro';
-
-const blogTitleText = '새로운 기술 학습을 통한 성장의 여정';
-const blogDescription =
-  '새로운 기술을 학습하고, 프로젝트에 적용해서 성장하는 경험의 기록 모음';
 ---
 
 <section class="hero">
-  <div
-    class="hero-content max-w-2xl flex-col py-8 text-center lg:gap-8 lg:py-10"
-  >
-    <h1
-      class="break-keep text-3xl font-medium !leading-tight md:text-5xl md:font-bold"
-    >
-      {blogTitleText}
+  <div class="hero-content flex-col px-1 py-8 text-center lg:gap-8 lg:py-10">
+    <h1 class="mb-4 text-center text-3xl font-bold md:text-4xl lg:text-5xl lg:leading-tight">
+      새로운 기술 학습을 통한 <br /> 성장의 여정
     </h1>
     <p class="mx-auto max-w-sm break-keep lg:text-lg">
-      {blogDescription}
+      새로운 기술을 학습하고, 프로젝트에 적용해서 <br/> 성장하는 경험의 기록 모음
     </p>
     <ViewMore />
   </div>
