@@ -11,7 +11,7 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog');
-
+  console.log(allPosts);
   const sortedPosts = allPosts.sort(sortPostsByDateDesc);
   const { categoryCounts, categoryPosts } = getCategoryPosts(
     sortedPosts,
