@@ -5,7 +5,7 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 import sitemap from '@astrojs/sitemap';
 import rehypePrettyCode from 'rehype-pretty-code';
 import icon from 'astro-icon';
-import vercel from '@astrojs/vercel/static';
+import vercel from '@astrojs/vercel';
 
 const prettyCodeOptions = {
   defaultLang: 'plaintext',
