@@ -19,26 +19,5 @@ export default {
       },
     },
   },
-  daisyui: {
-    themes: [
-      {
-        light: {
-          ...require('daisyui/src/theming/themes')['light'],
-          accent: '#2e62ef',
-        },
-        dark: {
-          ...require('daisyui/src/theming/themes')['dark'],
-          accent: '#1f8fff',
-        },
-      },
-    ],
-    darkTheme: 'dark',
-    base: true,
-    styled: true,
-    utils: true,
-    prefix: '',
-    logs: true,
-    themeRoot: ':root',
-  },
-  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  plugins: [require('@tailwindcss/typography')],
 };
