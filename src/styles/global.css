@@ -64,10 +64,6 @@ code[data-theme*=' '] span {
   navigation: auto; /* enabled! */
 }
 
-.btn-ghost {
-  @apply hover:bg-transparent hover:text-accent;
-}
-
 .card-title {
   @apply mb-0 text-base font-normal lg:text-lg;
 }
@@ -78,8 +74,4 @@ code[data-theme*=' '] span {
 
 .navbar {
   @apply min-h-4;
-}
-
-.btn-more {
-  @apply btn rounded-lg bg-black px-6 py-2 text-white lg:btn-lg hover:bg-gray-800 hover:shadow-md lg:text-lg dark:bg-gray-800 dark:hover:bg-gray-700;
 }

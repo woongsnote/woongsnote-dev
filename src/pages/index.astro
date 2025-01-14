@@ -1,11 +1,20 @@
 ---
-import Hero from '@components/Home/Hero.astro';
-import LatestPosts from '@components/Home/LatestPosts.astro';
+import PostHead from '@components/Home/PostHead.astro';
+import PostList from '@components/Posts/PostList.astro';
 import { HOME } from '@config/site-config';
 import Layout from '@layouts/BaseLayout.astro';
+import { getPosts } from '@utils/data-util';
+
+const posts = await getPosts();
 ---
 
 <Layout title={HOME.title} description={HOME.description}>
-  <Hero />
-  <LatestPosts />
+  
+  <table class="w-full border-collapse">
+      <PostHead />
+      <tbody>
+        <PostList posts={posts} />
+      </tbody>
+    </table>
+  
 </Layout>
