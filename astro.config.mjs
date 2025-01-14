@@ -33,6 +33,7 @@ export default defineConfig({
       syntaxHighlight: false,
       remarkPlugins: [remarkReadingTime],
       rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
+      optimize: true,
     }),
     sitemap({
       changefreq: 'daily',
@@ -41,7 +42,6 @@ export default defineConfig({
     }),
     icon(),
   ],
-  output: 'static',
   adapter: vercel(),
   security: {
     checkOrigin: true,

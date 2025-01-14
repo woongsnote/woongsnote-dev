@@ -1,25 +1,26 @@
 ---
+import FormattedDate from '@components/Date/FormattedDate.astro';
 import type { Post } from '@utils/types';
-import PostCard from './Card.astro';
 
 type Props = {
   posts: Post[];
 };
 
 const { posts } = Astro.props;
+console.log(posts[0]);
 ---
 
-<ul class="grid gap-4 lg:gap-8">
-  {
-    posts.map((post) => (
-      <li>
-        <PostCard
-          title={post.data.title}
-          link={post.id}
-          description={post.data.description}
-          publishedDate={post.data.publishedDate}
-        />
-      </li>
-    ))
-  }
-</ul>
+{
+  posts.map((post) => (
+    <tr class="border-b border-gray-200 hover:bg-gray-50">
+      <td class="py-4 text-sm text-gray-500">
+        <FormattedDate date={post.data.publishedDate} />
+      </td>
+      <td class="px-2 py-4">
+        <a href={`/blog/${post.id}`} class="hover:underline break-keep">
+          {post.data.title}
+        </a>
+      </td>
+    </tr>
+  ))
+}

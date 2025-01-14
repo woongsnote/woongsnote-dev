@@ -5,20 +5,14 @@ import Thumbnail from '@components/Article/Thumbnail.astro';
 import Toc from '@components/Article/Toc.astro';
 import BackToTop from '@components/BackButton/BackToTop.astro';
 import type { TocHeadings } from '@utils/types';
+import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 
-type Props = {
-  title: string;
-  description: string;
-  publishedDate: Date;
-  tags: string[];
-  category: string;
-  cover: ImageMetadata;
+type Props = CollectionEntry<'blog'>['data'] & {
   ogImage: string;
   minutesToRead: number;
   isHeadings: boolean;
   headings: TocHeadings[];
-  link?: string;
   currentUrl: string;
 };
 

@@ -1,7 +1,7 @@
 {
   "name": "woongsnote-dev",
   "type": "module",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -16,11 +16,11 @@
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.4",
-    "@astrojs/vercel": "^8.0.1",
+    "@astrojs/vercel": "^8.0.2",
     "@vercel/analytics": "^1.4.1",
     "@vercel/og": "^0.6.4",
     "@vercel/speed-insights": "^1.1.0",
-    "astro": "^5.1.5",
+    "astro": "^5.1.6",
     "astro-icon": "^1.1.5",
     "date-fns": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",

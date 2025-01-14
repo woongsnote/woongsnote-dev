@@ -16,7 +16,10 @@ const blogSchema = ({ image }: { image: ImageFunction }) =>
   });
 
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.mdx', base: './src/content/blog' }),
+  loader: glob({
+    base: './src/content/blog',
+    pattern: '**/*.mdx',
+  }),
   schema: blogSchema,
 });
 
