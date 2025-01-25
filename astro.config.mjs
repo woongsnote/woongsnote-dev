@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwind from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import sitemap from '@astrojs/sitemap';
@@ -27,8 +27,13 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
+  vite: {
+    plugins: [tailwind()],
+    optimizeDeps: {
+      include: ['@tailwindcss/typography'],
+    },
+  },
   integrations: [
-    tailwind(),
     mdx({
       syntaxHighlight: false,
       remarkPlugins: [remarkReadingTime],
