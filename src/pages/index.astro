@@ -1,5 +1,4 @@
 ---
-import PostHead from '@components/Home/PostHead.astro';
 import PostList from '@components/Posts/PostList.astro';
 import { HOME } from '@config/site-config';
 import Layout from '@layouts/BaseLayout.astro';
@@ -9,12 +8,5 @@ const posts = await getPosts();
 ---
 
 <Layout title={HOME.title} description={HOME.description}>
-  
-  <table class="w-full border-collapse">
-      <PostHead />
-      <tbody>
-        <PostList posts={posts} />
-      </tbody>
-    </table>
-  
+  <PostList posts={posts} />
 </Layout>

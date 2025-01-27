@@ -21,7 +21,7 @@ const pageTitle =
 ---
 
 <!doctype html>
-<html lang={config.site.lang} class="antialiased">
+<html lang={config.site.lang} class="antialiased scroll-smooth font-display scheme-light-dark">
   <head>
     <BaseHead
       title={pageTitle}
@@ -29,9 +29,9 @@ const pageTitle =
       image={image}
     />
   </head>
-  <body class="relative flex min-h-screen flex-col max-w-3xl mx-auto">
+  <body class="relative mx-auto flex min-h-screen max-w-3xl flex-col bg-white dark:bg-gray-800">
     <Header />
-    <main role="main" class="container mx-auto max-w-3xl flex-grow mt-4">
+    <main role="main" class="container mx-auto max-w-3xl grow p-2 lg:p-0 mt-2">
       <slot />
     </main>
     <Footer />
