@@ -6,7 +6,7 @@ type Props = {
 
 const { date } = Astro.props;
 
-const displayDate = format(date, 'yyyy년 M월 d일');
+const displayDate = format(date, 'yy. MM. dd');
 const isoDate = format(date, 'yyyy-MM-dd');
 ---
 

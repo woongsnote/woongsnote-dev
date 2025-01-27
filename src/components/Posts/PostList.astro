@@ -1,26 +1,18 @@
 ---
-import FormattedDate from '@components/Date/FormattedDate.astro';
+import PostHead from '@components/Posts/PostsHead.astro';
 import type { Post } from '@utils/types';
+import Card from './Card.astro';
 
 type Props = {
   posts: Post[];
 };
 
 const { posts } = Astro.props;
-
 ---
 
-{
-  posts.map((post) => (
-    <tr class="border-b border-gray-200 hover:bg-gray-50">
-      <td class="py-4 text-sm text-gray-500">
-        <FormattedDate date={post.data.publishedDate} />
-      </td>
-      <td class="px-2 py-4">
-        <a href={`/blog/${post.id}`} class="hover:underline break-keep">
-          {post.data.title}
-        </a>
-      </td>
-    </tr>
-  ))
-}
+<table class="w-full border-collapse">
+  <PostHead />
+  <tbody>
+    {posts.map((post) => <Card post={post} />)}
+  </tbody>
+</table>

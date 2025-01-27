@@ -7,6 +7,7 @@ import BackToTop from '@components/BackButton/BackToTop.astro';
 import type { TocHeadings } from '@utils/types';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
+import '@styles/typograpy.css';
 
 type Props = CollectionEntry<'blog'>['data'] & {
   ogImage: string;

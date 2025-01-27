@@ -26,11 +26,11 @@ const {
 ---
 
 <div class="flex flex-col gap-4">
-  <h1 class="break-keep text-3xl font-medium leading-tight">
+  <h1 class="text-3xl leading-tight font-semibold text-balance md:text-4xl">
     {title}
   </h1>
   <div class="flex items-center justify-between gap-2 text-sm lg:text-base">
-    <div class="flex gap-2 text-gray-600">
+    <div class="flex gap-2 text-gray-600 dark:text-gray-400">
       <FormattedDate date={publishedDate} />
       <ReadingTimeText readingTime={minutesToRead} />
     </div>
