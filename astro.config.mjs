@@ -29,9 +29,6 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwind()],
-    optimizeDeps: {
-      include: ['@tailwindcss/typography'],
-    },
   },
   integrations: [
     mdx({
