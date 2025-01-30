@@ -1,0 +1,110 @@
+@layer base {
+  :root {
+    /* Typography Color Tokens */
+    --color-text-primary: var(--color-gray-700);
+    --color-text-headings: var(--color-gray-900);
+    --color-text-muted: var(--color-gray-500);
+    --color-border: var(--color-gray-200);
+    --color-background-code: var(--color-gray-100);
+    --color-link: var(--color-blue-600);
+    --color-link-hover: var(--color-blue-700);
+
+    /* Typography Size Tokens */
+    --font-size-h1: var(--text-4xl);
+    --font-size-h2: var(--text-3xl);
+    --font-size-h3: var(--text-2xl);
+    --font-size-base: var(--text-base);
+  }
+
+  .prose {
+    max-width: 65ch;
+    color: var(--color-text-primary);
+    line-height: var('lineHeight.relaxed');
+  }
+
+  .prose h2 {
+    color: var(--color-text-headings);
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-medium);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .prose h3 {
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-medium);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose a {
+    color: var(--color-link);
+    text-decoration: underline;
+    font-weight: var(--font-weight-medium);
+    transition: color 0.2s;
+  }
+
+  .prose a:hover {
+    color: var(--color-link-hover);
+  }
+
+  .prose p {
+    margin-bottom: 1.2rem;
+  }
+
+  .prose ol{
+    list-style: decimal;
+  }
+
+  .prose ul {
+    list-style: disc;
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose code {
+    background-color: var(--color-background-code);
+    padding: var('spacing.1') var('spacing.2');
+    border-radius: var('borderRadius.md');
+    font-size: var('fontSize.sm');
+  }
+
+  .prose pre {
+    background-color: var(--color-background-code);
+    padding: var('spacing.4');
+    border-radius: var('borderRadius.lg');
+    overflow-x: auto;
+    margin-bottom: var('spacing.6');
+  }
+
+  .prose blockquote {
+    border-left: 4px solid var(--color-border);
+    padding-left: var('spacing.4');
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin: var('spacing.6') 0;
+  }
+
+  .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var('spacing.6');
+  }
+
+  .prose th,
+  .prose td {
+    border: 1px solid var(--color-border);
+    padding: var('spacing.3');
+    text-align: left;
+  }
+
+  .prose thead {
+    background-color: var(--color-background-code);
+    font-weight: var('fontWeight.semibold');
+  }
+}
