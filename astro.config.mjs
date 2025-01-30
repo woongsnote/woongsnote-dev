@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwind from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import sitemap from '@astrojs/sitemap';
 import rehypePrettyCode from 'rehype-pretty-code';
 import icon from 'astro-icon';
-import vercel from '@astrojs/vercel/static';
+import vercel from '@astrojs/vercel';
 
 const prettyCodeOptions = {
   defaultLang: 'plaintext',
@@ -27,12 +27,15 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
+  vite: {
+    plugins: [tailwind()],
+  },
   integrations: [
-    tailwind(),
     mdx({
       syntaxHighlight: false,
       remarkPlugins: [remarkReadingTime],
       rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
+      optimize: true,
     }),
     sitemap({
       changefreq: 'daily',
@@ -41,7 +44,6 @@ export default defineConfig({
     }),
     icon(),
   ],
-  output: 'static',
   adapter: vercel(),
   security: {
     checkOrigin: true,

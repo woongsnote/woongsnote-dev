@@ -1,26 +1,26 @@
 ---
 import FormattedDate from '@components/Date/FormattedDate.astro';
-
+import type { Post } from '@utils/types';
 type Props = {
-  title: string;
-  link: string;
-  publishedDate: Date;
-  description: string;
+  post: Post;
 };
-
-const { title, link, publishedDate, description } = Astro.props;
+const { post } = Astro.props;
+const {
+  id,
+  data: { publishedDate, title },
+} = post;
 ---
 
-<article class="card card-compact break-keep bg-base-200/50 hover:bg-base-200/90">
-  <a href={`/blog/${link}`} class="card-body">
-    <div>
-      <FormattedDate date={publishedDate} />
-      <h3 class="card-title line-clamp-1">
-        {title}
-      </h3>
-      <p class="line-clamp-1 text-ellipsis text-sm">
-        {description}
-      </p>
-    </div>
-  </a>
-</article>
+<tr
+  class="border-b border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
+>
+  <td class="py-4 ps-2 text-sm text-gray-500">
+    <FormattedDate date={publishedDate} />
+  </td>
+  <td class="flex justify-between px-2 py-4">
+    <a href={`/blog/${id}`} class="break-keep hover:underline">
+      {title}
+    </a>
+    <span class="text-sm">></span>
+  </td>
+</tr>

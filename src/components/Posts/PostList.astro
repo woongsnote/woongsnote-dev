@@ -1,6 +1,7 @@
 ---
+import PostHead from '@components/Posts/PostsHead.astro';
 import type { Post } from '@utils/types';
-import PostCard from './Card.astro';
+import Card from './Card.astro';
 
 type Props = {
   posts: Post[];
@@ -9,17 +10,9 @@ type Props = {
 const { posts } = Astro.props;
 ---
 
-<ul class="grid gap-4 lg:gap-8">
-  {
-    posts.map((post) => (
-      <li>
-        <PostCard
-          title={post.data.title}
-          link={post.slug}
-          description={post.data.description}
-          publishedDate={post.data.publishedDate}
-        />
-      </li>
-    ))
-  }
-</ul>
+<table class="w-full border-collapse">
+  <PostHead />
+  <tbody>
+    {posts.map((post) => <Card post={post} />)}
+  </tbody>
+</table>
