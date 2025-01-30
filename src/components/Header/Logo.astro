@@ -1,19 +1,12 @@
 ---
 import { SITE as siteConfig } from '@config/site-config';
-import { Icon } from 'astro-icon/components';
 const siteName = siteConfig.site.title;
 ---
 
 <a
   href="/"
-  class="flex items-center"
+  class="text-2xl font-bold text-gray-900 dark:text-gray-100"
   aria-label={`Go to Homepage of ${siteName}`}
 >
-  <Icon
-    name="logo"
-    class="size-8 bg-base-100 stroke-white stroke-[4px] dark:stroke-black"
-  />
-  <span class="sr-only">
-    {siteName}
-  </span>
+  {siteName}
 </a>

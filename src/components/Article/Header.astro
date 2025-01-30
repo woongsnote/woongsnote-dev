@@ -25,21 +25,17 @@ const {
 } = Astro.props;
 ---
 
-<Fragment>
-  <div
-    class="my-2 flex items-center justify-between text-sm lg:mb-4 lg:text-base"
-  >
-    <div class="flex items-center gap-2">
-      <span>{category}</span>
-      <span>|</span>
+<div class="flex flex-col gap-4">
+  <h1 class="text-3xl leading-tight font-semibold text-balance md:text-4xl">
+    {title}
+  </h1>
+  <div class="flex items-center justify-between gap-2 text-sm lg:text-base">
+    <div class="flex gap-2 text-gray-600 dark:text-gray-400">
       <FormattedDate date={publishedDate} />
       <ReadingTimeText readingTime={minutesToRead} />
     </div>
     <ShareButton title={title} url={link} />
   </div>
-  <h1 class="mb-4 break-keep text-3xl font-medium leading-tight">
-    {title}
-  </h1>
-  <p class="mb-2 break-keep">{description}</p>
+  <p class="break-keep">{description}</p>
   <TagList tags={tags} />
-</Fragment>
+</div>

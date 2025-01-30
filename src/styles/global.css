@@ -1,85 +1,107 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-html {
-  scroll-behavior: smooth;
+@theme {
+  --font-display: 'Pretendard Variable';
 }
 
-.prose pre > code {
-  display: grid;
+@font-face {
+  font-family:
+    'Pretendard Variable',
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    'Helvetica Neue',
+    'Segoe UI',
+    'Apple SD Gothic Neo',
+    'Noto Sans KR',
+    'Malgun Gothic',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    sans-serif;
+  src: url('/fonts/PretendardVariable.woff2') format('woff2-variations');
+  font-display: swap;
 }
 
-.prose pre::-webkit-scrollbar {
-  display: none;
-}
+@layer components {
+  .prose {
+    pre {
+      background-color: var(--color-gray-50);
+      scrollbar-width: none;
+    }
+    pre::-webkit-scrollbar {
+      display: none;
+    }
 
-.prose pre {
-  scrollbar-width: none;
-}
+    h2 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-gray-950);
+      margin-bottom: 1rem;
+    }
 
-.prose pre span[data-line] {
-  @apply inline-block px-4 py-0.5 leading-snug;
-}
+    p {
+      font-size: var(--text-base);
+      color: var(--color-gray-700);
+      margin-bottom: 1rem;
+    }
+  }
+  .prose pre > code {
+    display: grid;
+    color: var(--color-gray-950);
+  }
 
-.prose code span[data-highlighted-line] {
-  @apply border-y-0 border-l-2 border-blue-400 bg-opacity-50 pl-[calc(0.5rem-2px)] md:pl-[calc(1rem-2px)] dark:border-blue-500;
-}
+  .prose pre span[data-line] {
+    @apply inline-block px-4 py-0.5 leading-snug;
+  }
 
-.prose figcaption[data-rehype-pretty-code-title] {
-  @apply rounded-t-lg border border-b-0 border-gray-200 bg-gray-200 px-5 py-3 font-mono text-sm font-bold text-gray-800 dark:border-none dark:bg-gray-800 dark:text-gray-200;
-}
-.prose figcaption[data-rehype-pretty-code-title] + pre {
-  @apply mt-0 rounded-t-none;
-}
+  .prose code span[data-highlighted-line] {
+    @apply border-y-0 border-l-2 border-blue-400 bg-black/50 pl-[calc(0.5rem-2px)] md:pl-[calc(1rem-2px)] dark:border-blue-500;
+  }
 
-.prose :not(pre) > code::before,
-.prose :not(pre) > code::after {
-  display: none;
-}
+  .prose figcaption[data-rehype-pretty-code-title] {
+    @apply rounded-t-lg border border-b-0 border-gray-200 bg-gray-200 px-5 py-3 font-mono text-sm font-bold text-gray-800 dark:border-none dark:bg-gray-800 dark:text-gray-200;
+  }
+  .prose figcaption[data-rehype-pretty-code-title] + pre {
+    @apply mt-0 rounded-t-none;
+  }
 
-.prose :not(pre) > code {
-  @apply rounded border bg-[--shiki-light-bg] px-1.5 py-1 align-middle font-mono font-semibold dark:border-none dark:bg-[--shiki-dark-bg];
-}
+  .prose :not(pre) > code::before,
+  .prose :not(pre) > code::after {
+    display: none;
+  }
 
-code[data-theme*=' '],
-code[data-theme*=' '] span {
-  color: var(--shiki-light);
-  background-color: var(--shiki-light-bg);
-}
+  .prose :not(pre) > code {
+    @apply rounded border bg-[--shiki-light-bg] px-1.5 py-1 align-middle font-mono font-semibold dark:border-none dark:bg-[--shiki-dark-bg];
+  }
 
-[data-theme='dark'] {
   code[data-theme*=' '],
   code[data-theme*=' '] span {
-    color: var(--shiki-dark);
-    background-color: var(--shiki-dark-bg);
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+  }
+
+  [data-theme='dark'] {
+    code[data-theme*=' '],
+    code[data-theme*=' '] span {
+      color: var(--shiki-dark);
+      background-color: var(--shiki-dark-bg);
+    }
+  }
+
+  [data-rehype-pretty-code-figure] pre {
+    @apply border bg-[--shiki-light-bg] px-0 dark:border-none dark:bg-[--shiki-dark-bg];
   }
 }
 
-[data-rehype-pretty-code-figure] pre {
-  @apply border bg-[--shiki-light-bg] px-0 dark:border-none dark:bg-[--shiki-dark-bg];
-}
+@layer components {
+  .mockup-browser {
+    @apply relative overflow-hidden overflow-x-auto rounded-xl border;
+  }
 
-@view-transition {
-  navigation: auto; /* enabled! */
-}
-
-.btn-ghost {
-  @apply hover:bg-transparent hover:text-accent;
-}
-
-.card-title {
-  @apply mb-0 text-base font-normal lg:text-lg;
-}
-
-.card-body {
-  @apply flex-row items-center justify-between;
-}
-
-.navbar {
-  @apply min-h-4;
-}
-
-.btn-more {
-  @apply btn rounded-lg bg-black px-6 py-2 text-white lg:btn-lg hover:bg-gray-800 hover:shadow-md lg:text-lg dark:bg-gray-800 dark:hover:bg-gray-700;
+  .mockup-browser-toolbar {
+    @apply inline-flex w-full items-center justify-between gap-2 border-b px-4 py-2;
+  }
 }

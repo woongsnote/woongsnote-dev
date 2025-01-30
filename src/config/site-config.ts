@@ -4,7 +4,7 @@ export const username = 'woongsnote';
 
 export const SITE: SiteConfig = {
   site: {
-    title: 'Woongsnote',
+    title: "woongsnote",
     base_url: 'https://www.woongsnote.dev',
     base_path: '/',
     favicon: '/favicon.svg',

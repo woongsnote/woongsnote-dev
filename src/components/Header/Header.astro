@@ -1,18 +1,7 @@
 ---
-import Navigation from '@components/Nav/Navigation.astro';
-import ThemeSwitcher from '@components/Theme/ThemeSwitcher.astro';
 import Logo from './Logo.astro';
 ---
 
-<header
-  role="banner"
-  class="container navbar sticky top-0 z-20 h-12 bg-base-100/90 saturate-100 backdrop-blur-sm"
->
-  <div class="navbar-start">
-    <Logo />
-  </div>
-  <Navigation />
-  <div class="navbar-end">
-    <ThemeSwitcher />
-  </div>
+<header role="banner" class="px-2 align-middle lg:px-0">
+  <Logo />
 </header>
