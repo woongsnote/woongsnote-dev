@@ -10,11 +10,13 @@ type Props = {
 const { image, alt, link } = Astro.props;
 ---
 
-<div class="mockup-browser border border-base-300">
+<div class="mockup-browser border-base-300 rounded-lg border">
   <div class="mockup-browser-toolbar">
-    <div class="input border border-base-300">{link}</div>
+    <span class="pl-4">
+      {link}
+    </span>
   </div>
-  <div class="flex justify-center border-t border-base-300">
+  <div class="border-base-300 flex justify-center border-t">
     <figure class="!m-0">
       <Image
         src={image}
