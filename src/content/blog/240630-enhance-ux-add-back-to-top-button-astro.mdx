@@ -35,7 +35,7 @@ import { Icon } from 'astro-icon/components';
 
 <button
   id="back-to-top"
-  class="invisible fixed bottom-16 right-5 rounded-full bg-accent p-2 text-accent-content opacity-0 shadow-lg transition-opacity duration-300 md:bottom-5"
+  class="bg-accent text-accent-content invisible fixed right-5 bottom-16 rounded-full p-2 opacity-0 shadow-lg transition-opacity duration-300 md:bottom-5"
   aria-label="Back to top"
 >
   <Icon name="arrow-up" />
@@ -75,7 +75,7 @@ import { Icon } from 'astro-icon/components';
 
 <button
   id="back-to-top"
-  class="invisible fixed bottom-16 right-5 rounded-full bg-accent p-2 text-accent-content opacity-0 shadow-lg transition-opacity duration-300 md:bottom-5"
+  class="bg-accent text-accent-content invisible fixed right-5 bottom-16 rounded-full p-2 opacity-0 shadow-lg transition-opacity duration-300 md:bottom-5"
   aria-label="Back to top"
 >
   <Icon name="arrow-up" />
@@ -84,19 +84,30 @@ import { Icon } from 'astro-icon/components';
 
 만약, `astro-icon`을 사용하지 않는다면, 아래와 같이 버튼 안에 svg를 추가해서 구현할 수 있다.
 
-※ 버튼의 class의 경우, 개발자의 취향 또는 웹사이트의 스타일, 요구사항 등에 따라 달라질 수 있다.
-
-```
+```astro title="svg를 사용한 버튼"
 <button
   id="back-to-top"
-  class="fixed bottom-5 right-5 bg-primary text-primary-content p-2 rounded-full shadow-lg transition-opacity duration-300 opacity-0 invisible"
+  class="bg-primary text-primary-content invisible fixed right-5 bottom-5 rounded-full p-2 opacity-0 shadow-lg transition-opacity duration-300"
   aria-label="맨 위로"
 >
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M5 10l7-7m0 0l7 7m-7-7v18"
+    />
   </svg>
 </button>
 ```
+
+※ 버튼의 class는 **개발자의 취향** 또는 웹사이트의 **스타일**, **요구사항** 등에 따라 달라질 수 있다.
 
 이 HTML 구조의 특징
 
@@ -108,7 +119,7 @@ import { Icon } from 'astro-icon/components';
 
 ### JavaScript 로직
 
-```javascript
+```javascript title="로직 부분"
 const backToTopButton = document.getElementById('back-to-top');
 
 function toggleBackToTopButton() {
@@ -134,8 +145,8 @@ backToTopButton.addEventListener('click', scrollToTop);
 
 이 JavaScript 코드는 두 가지 주요 기능을 처리한다.
 
-1. 스크롤 위치에 따른 버튼의 가시성 전환
-2. 버튼 클릭 시 페이지 상단으로의 부드러운 스크롤
+1. 스크롤 위치에 따른 버튼의 가시성 전환 - 스크롤이 일정 범위 이상 내려오면 버튼을 보여준다.
+2. 버튼 클릭 시 페이지 상단으로의 부드러운 스크롤 - `smooth` 하게 이동하도록 설정했다.
 
 ## 결론
 
