@@ -4,6 +4,7 @@ import Header from '@components/Article/Header.astro';
 import Thumbnail from '@components/Article/Thumbnail.astro';
 import Toc from '@components/Article/Toc.astro';
 import BackToTop from '@components/BackButton/BackToTop.astro';
+import '@styles/typograpy.css';
 import type { TocHeadings } from '@utils/types';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
@@ -45,9 +46,7 @@ const {
   />
   {isHeadings && <Toc headings={headings} />}
   <hr class="my-4" />
-  <article
-    class="prose max-w-none break-keep dark:prose-invert prose-headings:scroll-mt-16 prose-headings:font-medium prose-a:underline-offset-4"
-  >
+  <article class="prose dark:prose-invert max-w-none break-keep">
     {
       category === 'Project' && cover && (
         <Thumbnail image={cover} alt={title} link={link} />
