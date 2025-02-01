@@ -23,7 +23,6 @@
   .prose {
     color: var(--color-text-primary);
     line-height: var(--leading-relaxed);
-
   }
 
   .prose h2 {
@@ -41,7 +40,6 @@
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     border-bottom: 1px solid var(--color-border);
-
   }
 
   .prose a {
@@ -69,9 +67,9 @@
 
   .prose ul,
   .prose ol {
-    padding-left: calc(var(--spacing) * 2);
-    margin-bottom: calc(var(--spacing) * 1.5);
-    list-style-position: inside;
+    padding-left: calc(var(--spacing) * 4);
+    margin-bottom: calc(var(--spacing) * 2);
+    margin-left: calc(var(--spacing) * 2);
   }
 
   .prose li + li {
@@ -123,7 +121,6 @@
     font-style: italic;
     color: var(--color-text-muted);
     margin: calc(var(--spacing) * 6) 0;
-
   }
 
   .prose table {
