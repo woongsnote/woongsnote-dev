@@ -6,8 +6,8 @@ import BaseHead from '@layouts/BaseHead.astro';
 import Footer from '@components/Footer/Footer.astro';
 import Header from '@components/Header/Header.astro';
 
-import '@styles/global.css';
 import BackToTop from '@components/BackButton/BackToTop.astro';
+import '@styles/global.css';
 
 type Props = {
   title: string;
@@ -22,7 +22,10 @@ const pageTitle =
 ---
 
 <!doctype html>
-<html lang={config.site.lang} class="antialiased scroll-smooth font-display scheme-light-dark">
+<html
+  lang={config.site.lang}
+  class="font-display scroll-smooth antialiased scheme-light-dark"
+>
   <head>
     <BaseHead
       title={pageTitle}
@@ -30,9 +33,11 @@ const pageTitle =
       image={image}
     />
   </head>
-  <body class="relative mx-auto flex min-h-screen max-w-3xl flex-col bg-white dark:bg-gray-800">
+  <body
+    class="relative mx-auto flex min-h-screen max-w-3xl flex-col bg-white dark:bg-gray-800"
+  >
     <Header />
-    <main role="main" class="container mx-auto max-w-3xl grow p-2 lg:p-0 mt-2">
+    <main role="main" class="container mx-auto mt-2 max-w-3xl grow p-2 lg:p-0">
       <slot />
     </main>
     <BackToTop />
