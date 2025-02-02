@@ -148,10 +148,10 @@
   }
 
   .prose code span[data-highlighted-line] {
-    border-left-width: calc(var(--spacing) * 2);
+    border-left-width: calc(var(--spacing) * 0.5);
     border-left-color: light-dark(var(--color-blue-400), var(--color-blue-500));
-    background-color: var(--color-black/50);
-    padding-left: calc(0.5rem-2px);
+    background-color: calc(var(--color-black) / 50);
+    padding-left: calc(var(--spacing)-2);
   }
 
   .prose figcaption[data-rehype-pretty-code-title] {
