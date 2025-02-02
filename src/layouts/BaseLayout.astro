@@ -7,6 +7,7 @@ import Footer from '@components/Footer/Footer.astro';
 import Header from '@components/Header/Header.astro';
 
 import '@styles/global.css';
+import BackToTop from '@components/BackButton/BackToTop.astro';
 
 type Props = {
   title: string;
@@ -34,6 +35,7 @@ const pageTitle =
     <main role="main" class="container mx-auto max-w-3xl grow p-2 lg:p-0 mt-2">
       <slot />
     </main>
+    <BackToTop />
     <Footer />
   </body>
 </html>
