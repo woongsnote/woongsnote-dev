@@ -1,7 +1,7 @@
 {
   "name": "woongsnote-dev",
   "type": "module",
-  "version": "4.4.0",
+  "version": "4.4.1",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -15,13 +15,13 @@
     "@astrojs/mdx": "^4.1.0",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/vercel": "^8.1.0",
+    "@astrojs/vercel": "^8.1.1",
     "@iconify-json/carbon": "^1.2.8",
-    "@tailwindcss/vite": "^4.0.9",
+    "@tailwindcss/vite": "^4.0.12",
     "@vercel/analytics": "^1.5.0",
     "@vercel/og": "^0.6.5",
     "@vercel/speed-insights": "^1.2.0",
-    "astro": "^5.4.1",
+    "astro": "^5.4.2",
     "astro-icon": "^1.1.5",
     "date-fns": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
@@ -29,11 +29,11 @@
     "rehype-pretty-code": "^0.14.0"
   },
   "devDependencies": {
-    "prettier": "^3.5.2",
+    "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-astro-organize-imports": "^0.4.11",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.0.9",
+    "tailwindcss": "^4.0.12",
     "typescript": "^5.8.2"
   }
 }
