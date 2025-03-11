@@ -44,8 +44,10 @@ export default defineConfig({
     }),
     icon(),
   ],
-  adapter: vercel(),
   security: {
     checkOrigin: true,
   },
+  adapter: vercel({
+    imageService: true,
+  }),
 });
