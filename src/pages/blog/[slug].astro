@@ -2,23 +2,28 @@
 import PostLayout from '@layouts/PostLayout.astro';
 import { sortPostsByDateDesc } from '@utils/data-util';
 import type { GetStaticPaths } from 'astro';
-import type { CollectionEntry } from 'astro:content';
 import { getCollection, render } from 'astro:content';
 
 export const getStaticPaths = (async () => {
   const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
-  return posts.map((post: any) => ({
+  return posts.map((post) => ({
     params: { slug: post.id },
-    props: post,
+    props: { post },
   }));
 }) satisfies GetStaticPaths;
 
-type Props = CollectionEntry<'blog'>;
+const { post } = Astro.props;
 
-const post = Astro.props;
-
-const { title, description, tags, category, cover, publishedDate, link } =
-  post.data;
+const {
+  title,
+  description,
+  tags,
+  category,
+  cover,
+  publishedDate,
+  link,
+  author,
+} = post.data;
 
 const { Content, headings, remarkPluginFrontmatter } = await render(post);
 
@@ -38,7 +43,7 @@ const isHeadings = headings && headings.length > 0;
   ogImage={`/blog/${post.id}/og.png`}
   link={link}
   currentUrl={`/blog/${post.id}`}
-  author=""
+  author={author}
 >
   <Content />
 </PostLayout>
