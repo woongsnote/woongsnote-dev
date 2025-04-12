@@ -1,13 +1,27 @@
 ---
-import TOC from '@components/TOC/TOC.astro';
+import { generateToc } from '@utils/data-util';
+import Headings from './Headings.astro';
 
 const { headings } = Astro.props;
+
+const toc = generateToc(headings);
 ---
 
-<details open class="not-prose mx-auto mt-8 w-full max-w-3xl rounded-lg border">
+<details
+  open
+  class="mx-auto mt-4 w-full max-w-3xl rounded-lg border p-2 details-content:-ml-0.5"
+>
   <summary
-    class="cursor-pointer px-3 py-1.5 transition-colors hover:bg-black/5 dark:hover:bg-white/5"
+    class="cursor-pointer px-3 py-1.5 font-semibold transition-colors hover:bg-black/5 dark:hover:bg-white/5"
     >목차</summary
   >
-  <TOC headings={headings} />
+  {
+    toc && toc.length > 0 && (
+      <>
+        {toc.map((heading) => (
+          <Headings heading={heading} />
+        ))}
+      </>
+    )
+  }
 </details>
