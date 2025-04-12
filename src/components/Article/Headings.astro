@@ -4,8 +4,11 @@ import type { TocHeadings } from '@utils/types';
 const { heading } = Astro.props;
 ---
 
-<li class="list-inside px-6 py-1.5 text-sm">
-  <a href={'#' + heading.slug} class="underline-offset-4">
+<div class="w-full px-3 py-2 text-sm lg:text-base">
+  <a
+    href={'#' + heading.slug}
+    class="w-full underline-offset-8 hover:underline"
+  >
     {heading.text}
   </a>
   {
@@ -17,4 +20,4 @@ const { heading } = Astro.props;
       </ul>
     )
   }
-</li>
+</div>
