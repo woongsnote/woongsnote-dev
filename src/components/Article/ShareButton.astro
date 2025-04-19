@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import Share from '@icons/share.svg';
 
 interface Props {
   title: string;
@@ -11,12 +11,12 @@ const { title, url } = Astro.props;
 
 <button
   id="shareButton"
-  class="btn btn-circle btn-ghost btn-sm hover:bg-transparent hover:text-accent"
+  class="btn btn-circle btn-ghost btn-sm hover:text-accent hover:bg-transparent"
   data-title={title}
   data-url={url}
   aria-label="share button"
 >
-  <Icon name="share" class="inline-block size-6" />
+  <Share class="inline-block size-6" />
 </button>
 
 <script>
