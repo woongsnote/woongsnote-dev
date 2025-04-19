@@ -39,7 +39,7 @@ export type NavItem = {
 };
 
 export type Links = {
-  name: string;
+  name: 'github' | 'linkedin' | 'email' | 'rss';
   url: string;
 };
 

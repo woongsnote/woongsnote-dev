@@ -4,7 +4,6 @@ import mdx from '@astrojs/mdx';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import sitemap from '@astrojs/sitemap';
 import rehypePrettyCode from 'rehype-pretty-code';
-import icon from 'astro-icon';
 import vercel from '@astrojs/vercel';
 
 const prettyCodeOptions = {
@@ -42,7 +41,6 @@ export default defineConfig({
       priority: 1.0,
       lastmod: new Date(),
     }),
-    icon(),
   ],
   security: {
     checkOrigin: true,

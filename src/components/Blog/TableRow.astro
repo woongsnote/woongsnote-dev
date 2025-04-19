@@ -1,37 +1,22 @@
 ---
 import FormattedDate from '@components/Date/FormattedDate.astro';
 import type { Post } from '@utils/types';
-import { Icon } from 'astro-icon/components';
 
-type Props = {
-  post: Post;
-};
-
-const { post } = Astro.props;
-
-const {
-  id,
-  data: { publishedDate, title },
-} = post;
+const { post } = Astro.props as { post: Post };
 ---
 
 <tr
   class="border-b border-gray-200 text-sm hover:bg-gray-50 sm:text-base dark:border-gray-700 dark:hover:bg-gray-800"
 >
   <td class="py-4 ps-2 text-sm text-gray-500 dark:text-gray-400">
-    <FormattedDate date={publishedDate} />
+    <FormattedDate date={post.data.publishedDate} />
   </td>
   <td class="group flex justify-between px-2 py-4">
     <a
-      href={`/blog/${id}`}
+      href={`/blog/${post.id}`}
       class="w-full text-balance break-keep underline-offset-6 hover:underline"
     >
-      {title}
+      {post.data.title}
     </a>
-    <span
-      class="absolute right-2 hidden items-center bg-transparent text-lg transition-all duration-200 group-hover:block"
-    >
-      <Icon name="carbon:chevron-right" />
-    </span>
   </td>
 </tr>

@@ -1,8 +1,9 @@
 ---
 import { SOCIALS } from '@config/site-config';
+
 import SocialLink from './SocialLink.astro';
 ---
 
-<nav class="grid grid-flow-col gap-2 items-center justify-center">
+<nav class="grid grid-flow-col items-center justify-center gap-2">
   {SOCIALS.map(({ name, url }) => <SocialLink name={name} url={url} />)}
 </nav>

@@ -1,10 +1,8 @@
 import { getCollection } from 'astro:content';
 import type { Post, TocHeadings, CategoryCounts, CategoryPosts } from './types';
 
-export const getPosts = async (maxPosts?: number) => {
-  return (await getCollection('blog'))
-    .sort(sortPostsByDateDesc)
-    .slice(0, maxPosts);
+export const getPosts = async () => {
+  return (await getCollection('blog')).sort(sortPostsByDateDesc);
 };
 
 export const sortPostsByDateDesc = (postA: Post, postB: Post) => {
