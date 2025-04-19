@@ -1,7 +1,6 @@
 ---
 import FormattedDate from '@components/Date/FormattedDate.astro';
 import type { Post } from '@utils/types';
-import { Icon } from 'astro-icon/components';
 
 const { post } = Astro.props as { post: Post };
 ---
@@ -19,10 +18,5 @@ const { post } = Astro.props as { post: Post };
     >
       {post.data.title}
     </a>
-    <span
-      class="absolute right-2 hidden items-center bg-transparent text-lg transition-all duration-200 group-hover:block"
-    >
-      <Icon name="carbon:chevron-right" />
-    </span>
   </td>
 </tr>
