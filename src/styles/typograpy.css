@@ -13,9 +13,9 @@
     --color-link-hover: var(--color-blue-700);
 
     /* Typography Size Tokens */
-    --font-size-h1: var(--text-4xl);
-    --font-size-h2: var(--text-3xl);
-    --font-size-h3: var(--text-2xl);
+    --font-size-h1: var(--text-3xl);
+    --font-size-h2: var(--text-2xl);
+    --font-size-h3: var(--text-xl);
     --font-size-base: var(--text-base);
     --font-size-sm: var(--text-sm);
   }
