@@ -1,0 +1,16 @@
+---
+import type { Post } from '@utils/types';
+import TableHeader from './TableHeader.astro';
+import TableRow from './TableRow.astro';
+
+const { posts } = Astro.props as { posts: Post[] };
+---
+
+<table class="w-full table-auto border-collapse">
+  <thead>
+    <TableHeader />
+  </thead>
+  <tbody>
+    {posts.map((post) => <TableRow post={post} />)}
+  </tbody>
+</table>
