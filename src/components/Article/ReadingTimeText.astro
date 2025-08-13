@@ -8,7 +8,7 @@ type Props = {
 const { readingTime } = Astro.props;
 ---
 
-<span class="flex w-fit items-center gap-1">
-  <Timer class="inline-block size-6" />
-  {`읽는 데 ${readingTime}분`}
+<span class="flex items-center">
+  <Timer class="mr-1 size-5.5" />
+  {`${readingTime}분`}
 </span>
