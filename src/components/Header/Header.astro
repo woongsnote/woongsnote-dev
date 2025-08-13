@@ -1,9 +1,38 @@
 ---
-import About from './About.astro';
 import Logo from './Logo.astro';
+
+const { pathname } = Astro.url;
+
+const getLinkInfo = (currentPath: string) => {
+  if (currentPath === '/' || currentPath === '') {
+    return {
+      text: 'About',
+      href: '/about',
+      description: 'About 페이지로 이동',
+    };
+  } else if (currentPath === '/about' || currentPath === '/about/') {
+    return {
+      text: 'Posts',
+      href: '/',
+      description: '메인 페이지로 이동',
+    };
+  } else {
+    return {
+      text: 'Home',
+      href: '/',
+      description: '홈으로 이동',
+    };
+  }
+};
+
+const linkInfo = getLinkInfo(pathname);
 ---
 
 <header role="banner" class="flex justify-between align-middle">
   <Logo />
-  <About />
+  <nav class="nav">
+    <a href={linkInfo.href} class="text-sm" title={linkInfo.description}>
+      {linkInfo.text}
+    </a>
+  </nav>
 </header>
