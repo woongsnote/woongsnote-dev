@@ -6,15 +6,15 @@ const { post } = Astro.props as { post: Post };
 ---
 
 <tr
-  class="border-b border-gray-200 text-sm hover:bg-gray-50 sm:text-base dark:border-gray-700 dark:hover:bg-gray-800"
+  class="border-b border-gray-200 text-sm text-[#1a1a1a] hover:bg-gray-50 sm:text-base dark:border-gray-700 dark:text-[#e2e8f0] dark:hover:bg-gray-800"
 >
-  <td class="py-4 ps-2 text-sm text-gray-500 dark:text-gray-400">
+  <td class="py-4 ps-2 text-sm">
     <FormattedDate date={post.data.publishedDate} />
   </td>
-  <td class="group flex justify-between px-2 py-4">
+  <td class="group flex justify-between px-2 py-4 group-hover:text-[#2563eb] dark:group-hover:text-[#38bdf8]">
     <a
       href={`/blog/${post.id}`}
-      class="w-full text-balance break-keep underline-offset-6 hover:underline"
+      class="w-full lg:font-semibold text-balance break-keep underline-offset-6 hover:underline"
     >
       {post.data.title}
     </a>
