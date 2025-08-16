@@ -1,11 +1,8 @@
 @layer base {
   :root {
     /* Typography Color Tokens */
-    --color-text-primary: light-dark(var(--color-gray-700), var(--color-white));
-    --color-text-headings: light-dark(
-      var(--color-gray-900),
-      var(--color-white)
-    );
+    --color-text-primary: var(--color-foreground);
+    --color-text-headings: var(--color-foreground);
     --color-text-muted: var(--color-gray-500);
     --color-border: var(--color-gray-200);
     --color-background-code: var(--color-gray-100);
@@ -105,8 +102,8 @@
     font-weight: 600;
     padding-inline: calc(var(--spacing) * 1.5);
     padding-block: calc(var(--spacing) * 1);
-    border-width: light-dark(1px, 0);
-    border-color: light-dark(var(--color-black), none);
+    /* border-width: light-dark(1px, 0); */
+    /* border-color: light-dark(var(--color-black), none); */
     border-radius: var(--radius-sm);
   }
 
@@ -158,8 +155,6 @@
     border-top-left-radius: var(--radius-lg);
     border-top-right-radius: var(--radius-lg);
     border-bottom: none;
-    border-width: 1px;
-    border-color: light-dark(var(--color-gray-200), var(--color-gray-700));
     background-color: light-dark(var(--color-gray-200), var(--color-gray-800));
     color: light-dark(var(--color-gray-800), var(--color-gray-200));
     font-size: var(--text-sm);
@@ -176,8 +171,6 @@
   }
 
   [data-rehype-pretty-code-figure] pre {
-    border-width: 1px;
-    border-color: light-dark(var(--color-black), var(--color-gray-700));
     background-color: light-dark(var(--shiki-light-bg), var(--shiki-dark-bg));
     padding-inline: 0;
   }
