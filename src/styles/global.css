@@ -2,6 +2,12 @@
 
 @theme {
   --font-display: 'Pretendard Variable';
+  /* Background Colors */
+  --color-background: light-dark(#fafafa, #0f0f23);
+  /* Text Colors */
+  --color-primary: light-dark(#1a1a1a, #e2e8f0);
+  --color-accent: light-dark(#2563eb, #38bdf8);
+  
 }
 
 @font-face {
