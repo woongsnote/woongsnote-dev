@@ -1,7 +1,7 @@
 {
   "name": "woongsnote-dev",
   "type": "module",
-  "version": "4.14.3",
+  "version": "4.14.4",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -20,7 +20,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/og": "^0.8.5",
     "@vercel/speed-insights": "^1.2.0",
-    "astro": "^5.13.3",
+    "astro": "^5.13.4",
     "date-fns": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
