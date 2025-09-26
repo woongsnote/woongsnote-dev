@@ -7,7 +7,8 @@
   /* Text Colors */
   --color-primary: light-dark(#1a1a1a, #e2e8f0);
   --color-accent: light-dark(#2563eb, #38bdf8);
-  
+  --color-secondary: light-dark(#E4F1FF, #03346E);
+  --color-sub: light-dark(#6b7280, #94a3b8);
 }
 
 @font-face {

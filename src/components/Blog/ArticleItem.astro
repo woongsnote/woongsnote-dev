@@ -1,0 +1,21 @@
+---
+import FormattedDate from '@components/Date/FormattedDate.astro';
+import type { Post } from '@utils/types';
+
+const { post } = Astro.props as { post: Post };
+---
+
+<li>
+  <a
+    href={`/blog/${post.id}`}
+    class="hover:text-accent mb-8 flex w-full flex-col break-keep underline-offset-6 hover:underline"
+  >
+    <span class="mb-2 text-xl font-bold">
+      {post.data.title}
+    </span>
+    <span class="mb-4">
+      {post.data.description}
+    </span>
+    <FormattedDate date={post.data.publishedDate} />
+  </a>
+</li>
