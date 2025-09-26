@@ -28,11 +28,17 @@ const getLinkInfo = (currentPath: string) => {
 const linkInfo = getLinkInfo(pathname);
 ---
 
-<header role="banner" class="flex justify-between align-middle">
+<header
+  role="banner"
+  class="mx-auto flex w-full max-w-2xl items-center-safe justify-between p-2 md:px-0"
+>
   <Logo />
-  <nav class="nav">
-    <a href={linkInfo.href} class="text-sm pr-2 lg:pr-0" title={linkInfo.description}>
-      {linkInfo.text}
-    </a>
-  </nav>
+
+  <a
+    href={linkInfo.href}
+    class="hover:text-accent pr-2 text-center text-sm lg:pr-0 lg:text-base"
+    title={linkInfo.description}
+  >
+    {linkInfo.text}
+  </a>
 </header>
