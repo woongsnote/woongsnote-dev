@@ -43,8 +43,7 @@ const {
     link={currentUrl}
   />
   {isHeadings && <Toc headings={headings} />}
-  <hr class="my-4" />
-  <article class="prose max-w-none break-keep">
+  <article class="prose max-w-none break-keep mt-8">
     {
       category === 'Project' && cover && (
         <Thumbnail image={cover} alt={title} link={link} />
