@@ -50,7 +50,7 @@
   }
 
   .prose p {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   .prose ol {
@@ -69,7 +69,7 @@
   }
 
   .prose li + li {
-    margin-top: calc(var(--spacing) * 2.5); /* 항목 간 간격 8px */
+    margin-top: calc(var(--spacing) * 2);
   }
 
   .prose hr {
@@ -101,8 +101,6 @@
     font-weight: 600;
     padding-inline: calc(var(--spacing) * 1.5);
     padding-block: calc(var(--spacing) * 1);
-    /* border-width: light-dark(1px, 0); */
-    /* border-color: light-dark(var(--color-black), none); */
     border-radius: var(--radius-sm);
   }
 
