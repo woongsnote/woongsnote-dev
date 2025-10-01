@@ -5,6 +5,6 @@ import ArticleItem from './ArticleItem.astro';
 const { posts } = Astro.props as { posts: Post[] };
 ---
 
-<ul class="mt-2 w-full table-auto border-collapse rounded-lg shadow-sm">
+<ul class="mt-2 w-full">
   {posts.map((post) => <ArticleItem post={post} />)}
 </ul>
