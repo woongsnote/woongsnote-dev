@@ -22,10 +22,7 @@ const pageTitle =
 ---
 
 <!doctype html>
-<html
-  lang={config.site.lang}
-  class="font-display scroll-smooth antialiased scheme-light-dark"
->
+<html lang={config.site.lang}>
   <head>
     <BaseHead
       title={pageTitle}
@@ -33,11 +30,9 @@ const pageTitle =
       image={image}
     />
   </head>
-  <body
-    class="bg-background text-primary relative mx-auto flex min-h-screen flex-col"
-  >
+  <body>
     <Header />
-    <main role="main" class="mx-auto mt-2 w-full max-w-2xl p-2">
+    <main role="main">
       <slot />
     </main>
     <BackToTop />

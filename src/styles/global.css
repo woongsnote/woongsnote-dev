@@ -1,13 +1,13 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-display: 'Pretendard Variable';
+  --font-body: 'Pretendard Variable';
   /* Background Colors */
   --color-background: light-dark(#fafafa, #0f0f23);
   /* Text Colors */
   --color-primary: light-dark(#1a1a1a, #e2e8f0);
   --color-accent: light-dark(#2563eb, #38bdf8);
-  --color-secondary: light-dark(#E4F1FF, #03346E);
+  --color-secondary: light-dark(#e4f1ff, #03346e);
   --color-sub: light-dark(#6b7280, #94a3b8);
 }
 
@@ -30,4 +30,16 @@
     sans-serif;
   src: url('/fonts/PretendardVariable.woff2') format('woff2-variations');
   font-display: swap;
+}
+
+html {
+  @apply scroll-smooth antialiased scheme-light-dark;
+}
+
+body {
+  @apply bg-background font-body text-primary relative mx-auto flex min-h-screen flex-col leading-7;
+}
+
+main {
+  @apply mx-auto mt-2 w-full max-w-2xl p-2;
 }

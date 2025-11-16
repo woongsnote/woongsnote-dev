@@ -1,0 +1,19 @@
+---
+import type { Post } from '@utils/types';
+
+const { post } = Astro.props as { post: Post };
+---
+
+<a
+  href={`/${post.id}`}
+  class="group grid grid-cols-[60px_1fr] border-b border-white/5 py-3"
+>
+  <span class="content-center text-sm text-[--color-subtle]">
+    {new Date(post.data.publishedDate).getFullYear()}
+  </span>
+  <span
+    class="text-lg tracking-tight text-[--color-text] transition group-hover:tracking-wide group-hover:text-white"
+  >
+    {post.data.title}
+  </span>
+</a>
