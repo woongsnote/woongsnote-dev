@@ -1,0 +1,10 @@
+---
+import type { Post } from '@utils/types';
+import PostItem from './PostItem.astro';
+
+const { posts } = Astro.props as { posts: Post[] };
+---
+
+<div class="flex flex-col gap-3">
+  {posts.map((post) => <PostItem post={post} />)}
+</div>

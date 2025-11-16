@@ -1,7 +1,7 @@
 ---
-import ShareButton from '@components/Article/ShareButton.astro';
 import FormattedDate from '@components/Date/FormattedDate.astro';
-import ReadingTimeText from '@components/Article/ReadingTimeText.astro';
+import ReadingTimeText from '@components/Post/ReadingTimeText.astro';
+import ShareButton from '@components/Post/ShareButton.astro';
 import TagList from '@components/Tag/TagList.astro';
 
 type Props = {
@@ -19,9 +19,7 @@ const { minutesToRead, title, description, publishedDate, tags, link } =
 ---
 
 <div class="flex flex-col gap-4 break-keep">
-  <h1
-    class="text-3xl leading-tight font-semibold text-balance lg:text-4xl"
-  >
+  <h1 class="text-3xl leading-tight font-semibold text-balance lg:text-4xl">
     {title}
   </h1>
   <div class="flex items-center justify-between gap-2 text-sm lg:text-base">

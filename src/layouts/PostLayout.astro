@@ -1,7 +1,7 @@
 ---
-import Comments from '@components/Article/Comments.astro';
-import Header from '@components/Article/Header.astro';
-import Thumbnail from '@components/Article/Thumbnail.astro';
+import Comments from '@components/Post/Comments.astro';
+import Header from '@components/Post/Header.astro';
+import Thumbnail from '@components/Post/Thumbnail.astro';
 import Toc from '@components/Toc/Toc.astro';
 import '@styles/typograpy.css';
 import type { TocHeadings } from '@utils/types';
@@ -43,7 +43,7 @@ const {
     link={currentUrl}
   />
   {isHeadings && <Toc headings={headings} />}
-  <article class="prose max-w-none break-keep mt-8">
+  <article class="prose mt-8 max-w-none break-keep">
     {
       category === 'Project' && cover && (
         <Thumbnail image={cover} alt={title} link={link} />
