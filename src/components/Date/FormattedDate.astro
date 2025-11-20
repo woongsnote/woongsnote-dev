@@ -1,15 +1,13 @@
 ---
-import { format } from 'date-fns';
 type Props = {
   date: Date;
 };
 
 const { date } = Astro.props;
 
-const displayDate = format(date, 'yyyy년 MM월 dd일');
-const isoDate = format(date, 'yyyy-MM-dd');
+const displayDate = date.getFullYear();
 ---
 
-<time datetime={isoDate} class="text-sm whitespace-nowrap"
-  >{displayDate}</time
->
+<span class="content-center text-sm text-[--color-subtle]">
+  {displayDate}
+</span>
