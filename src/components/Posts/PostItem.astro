@@ -3,16 +3,21 @@ import FormattedDate from '@components/Date/FormattedDate.astro';
 import type { Post } from '@utils/types';
 
 const { post } = Astro.props as { post: Post };
+
+const link = `/${post.id}`;
+const title = post.data.title;
+const description = post.data.description || '';
+const publishedDate = post.data.publishedDate;
 ---
 
-<a
-  href={`/${post.id}`}
-  class="group grid grid-cols-[60px_1fr] border-b border-white/5 py-3"
->
-  <FormattedDate date={post.data.publishedDate} />
+<a href={link} class="group grid border-b border-white/5 py-3">
   <span
-    class="text-lg tracking-tight text-[--color-text] transition group-hover:tracking-wide group-hover:text-accent"
+    class="group-hover:text-accent text-primary text-lg tracking-tight transition group-hover:tracking-wide"
   >
-    {post.data.title}
+    {title}
   </span>
+  <p class="mt-1 text-sm text-[--color-text-secondary]">
+    {description}
+  </p>
+  <FormattedDate date={publishedDate} />
 </a>
