@@ -1,18 +1,39 @@
 ---
+import Category from '@components/Category/Category.astro';
 import FormattedDate from '@components/Date/FormattedDate.astro';
 import type { Post } from '@utils/types';
 
 const { post } = Astro.props as { post: Post };
+
+const link = `/${post.id}`;
+const title = post.data.title;
+const description = post.data.description || '';
+const publishedDate = post.data.publishedDate;
+const category = post.data.category;
+
 ---
 
-<a
-  href={`/${post.id}`}
-  class="group grid grid-cols-[60px_1fr] border-b border-white/5 py-3"
->
-  <FormattedDate date={post.data.publishedDate} />
-  <span
-    class="text-lg tracking-tight text-[--color-text] transition group-hover:tracking-wide group-hover:text-accent"
-  >
-    {post.data.title}
-  </span>
+<a href={link} class="group block p-2">
+  <div class="flex items-baseline gap-2">
+    <Category category={category} />
+
+    <span
+      class="text-primary group-hover:text-accent text-sm transition sm:text-lg"
+    >
+      {title}
+    </span>
+    <span class="text-sub ml-auto text-xs sm:hidden">
+      <FormattedDate date={publishedDate} />
+    </span>
+  </div>
+
+  <!-- 데스크탑에서만 설명 표시 -->
+  <p class="text-sub mt-1 line-clamp-2 hidden text-sm sm:block">
+    {description}
+  </p>
+
+  <!-- 모바일에서는 날짜 숨김 -->
+  <div class="hidden sm:block text-xs">
+    <FormattedDate date={publishedDate} />
+  </div>
 </a>

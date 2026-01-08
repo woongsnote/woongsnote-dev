@@ -1,0 +1,11 @@
+---
+import { CATEGORIES } from '@config/site-config';
+
+const { category } = Astro.props;
+
+const categoryIcon = CATEGORIES[category];
+---
+
+<span class={'size-4 shrink-0'}>
+  <categoryIcon.icon />
+</span>

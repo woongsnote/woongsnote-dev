@@ -5,9 +5,10 @@ type Props = {
 
 const { date } = Astro.props;
 
-const displayDate = date.getFullYear();
+const displayDate =
+  date.getFullYear() + '. ' + (date.getMonth() + 1) + '. ' + date.getDate();
 ---
 
-<span class="content-center text-sm text-[--color-subtle]">
+<span class="text-sub ml-auto">
   {displayDate}
 </span>

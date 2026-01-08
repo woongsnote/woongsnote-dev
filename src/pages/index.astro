@@ -1,5 +1,5 @@
 ---
-import ArtilceList from '@components/Posts/PostsList.astro';
+import ArticleList from '@components/Posts/PostsList.astro';
 import { HOME } from '@config/site-config';
 import Layout from '@layouts/BaseLayout.astro';
 import { getPosts } from '@utils/data-util';
@@ -8,5 +8,5 @@ const posts = await getPosts();
 ---
 
 <Layout title={HOME.title} description={HOME.description}>
-  <ArtilceList posts={posts} />
+  <ArticleList posts={posts} />
 </Layout>
