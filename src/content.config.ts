@@ -1,5 +1,6 @@
 import { defineCollection, z, type ImageFunction } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { CATEGORY_TYPES } from '@config/site-config';
 
 const blogSchema = ({ image }: { image: ImageFunction }) =>
   z.object({
@@ -8,7 +9,7 @@ const blogSchema = ({ image }: { image: ImageFunction }) =>
     publishedDate: z.date(),
     cover: image(),
     coverAlt: z.string().optional(),
-    category: z.string(),
+    category: z.enum(CATEGORY_TYPES),
     tags: z.array(z.string()),
     author: z.string(),
     readingTime: z.number().optional(),

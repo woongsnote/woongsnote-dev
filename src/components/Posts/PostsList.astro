@@ -5,6 +5,6 @@ import PostItem from './PostItem.astro';
 const { posts } = Astro.props as { posts: Post[] };
 ---
 
-<div class="flex flex-col gap-3">
+<div class="space-y-12">
   {posts.map((post) => <PostItem post={post} />)}
 </div>
