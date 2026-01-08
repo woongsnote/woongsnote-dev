@@ -1,0 +1,173 @@
+---
+title: 'Astro 블로그에서 카테고리 설계하기'
+description: 'Content Collection, 타입 안전성, UI 배지까지 Astro 블로그 카테고리 설계 방법 정리'
+cover: '../../assets/blog-placeholder.jpg'
+publishedDate: 2026-01-08
+category: 'Tech'
+author: 'woongsnote'
+tags: ['Astro', 'Content Collection', 'Category']
+slug: 'astro-blog-category-design'
+---
+
+블로그의 글 목록 가시성 개선을 위해 카테고리 컴포넌트를 추가했다.
+
+해당 컴포넌트 구현 과정을 정리하려고 한다.
+
+## 1. 카테고리 정의
+
+이번 블로그에서 사용하는 카테고리는 3가지로 고정한다.
+
+- `Diary`   : 개인적인 경험과 후기
+- `Tech`    : 기술 관련 학습 내용
+- `Project` : 사이드 프로젝트 소개 및 리뷰
+
+<br />
+
+카테고리가 고정되어 있으므로, **명확한 타입 정의**가 핵심이다.
+
+<br />
+
+## 2. 카테고리 상수 & 타입 정의
+
+```tsx title="constants.ts"
+import type { SvgComponent } from 'astro/types';
+import DiaryIcon from '@/components/icons/Diary.svg';
+import TechIcon from '@/components/icons/Tech.svg';
+import ProjectIcon from '@/components/icons/Project.svg';
+
+export const CATEGORY_TYPES = ['diary', 'tech', 'project'] as const;
+
+export type CategoryType = (typeof CATEGORY_TYPES)[number];
+
+export interface Category {
+  type: CategoryType;
+  label: string;
+  icon: SvgComponent;
+}
+
+export const CATEGORIES: Record<CategoryType, Category> = {
+  diary: {
+    type: 'diary',
+    label: 'Diary',
+    icon: DiaryIcon,
+  },
+  tech: {
+    type: 'tech',
+    label: 'Tech',
+    icon: TechIcon,
+  },
+  project: {
+    type: 'project',
+    label: 'Project',
+    icon: ProjectIcon,
+  },
+};
+```
+
+★ **이 구조의 장점**
+
+1. 카테고리 추가/수정 시 한 곳만 수정
+2. UI, 스키마, 타입 불일치 방지
+3. CATEGORIES[category] 형태로 즉시 매핑 가능
+
+<br />
+
+## 3. Content Collection 스키마 수정
+
+기존에는 카테고리를 단순 문자열로 두었으나, 타입 안정성을 위해 `z.enum` 을 사용해주었다.
+
+```tsx title="Collection"
+import { z } from 'astro:content';
+import { CATEGORY_TYPES } from '@/constants/categories';
+
+export const collections = {
+  blog: {
+    schema: z.object({
+      title: z.string(),
+      date: z.date(),
+      category: z.enum(CATEGORY_TYPES),
+    }),
+  },
+};
+```
+
+★ **enum**을 사용함으로써 얻는 효과
+
+1. 마크다운에서 잘못된 값 입력 시 빌드 에러
+2. 타입 자동 추론
+3. 에디터 자동완성 지원
+4. UI에서 `undefined` 접근 문제 제거
+
+
+## 4. 카테고리 컴포넌트
+
+```astro title="Category.astro"
+
+import { CATEGORIES, type CategoryType } from "@/constants/categories";
+
+interface Props {
+  category: CategoryType;
+}
+
+const { category } = Astro.props;
+const data = CATEGORIES[category];
+---
+
+<span class={`category-badge ${category}`}>
+  <data.icon class="category-icon" />
+  <span class="sr-only">{data.label}</span>
+</span>
+```
+
+| 접근성을 위해 텍스트는 `sr-only` 로 유지한다.
+
+
+## 5. 카테고리 컴포넌트 배치
+
+카테고리는 제목의 왼쪽, 제목의 일부처럼 배치하는 것이 가장 자연스럽다.
+
+```astro title="PostItem.astro"
+
+<a href={link} class="group block p-2">
+  <div class="flex items-center gap-2">
+    <PostCategoryBadge category={category} />
+
+    <span class="text-primary text-lg transition group-hover:text-accent">
+      {title}
+    </span>
+  </div>
+
+  <p class="text-sub my-1 text-sm">
+    {description}
+  </p>
+
+  <FormattedDate date={publishedDate} />
+</a>
+
+```
+
+<br/>
+
+## 6. 카테고리 설계 핵심 요약
+
+| 항목      | 선택                 |
+| ------- | ------------------ |
+| 카테고리 역할 | 게시글 메타 정보          |
+| 스키마 타입  | `z.enum`           |
+| 타입 관리   | `as const` 단일 소스   |
+| UI 표현   | 아이콘 중심 배지          |
+| 위치      | 제목 왼쪽              |
+| 확장성     | 색상 / 애니메이션 / 필터 가능 |
+
+
+<br/>
+
+## 7. 마무리
+
+**카테고리**는 단순한 문자열이 아니라 콘텐츠의 성격을 드러내는 핵심 메타 정보다.
+
+타입으로 보호하고 UI에서 일관되게 표현하고 구조적으로 확장 가능하게 설계하면
+
+블로그 전체의 완성도가 자연스럽게 올라간다.
+
+이 구조는 개인 기록용 블로그에 특히 잘 어울리며, 나중에 태그·필터·아카이브로 확장하기에도 부담이 없다.
