@@ -1,10 +1,14 @@
 import type { NavItem, SiteConfig, Links, MetaData } from '@utils/types';
+import type { SvgComponent } from 'astro/types';
+import DiaryIcon from '@icons/diary.svg';
+import ProjectIcon from '@icons/project.svg';
+import TechIcon from '@icons/tech.svg';
 
 export const username = 'woongsnote';
 
 export const SITE: SiteConfig = {
   site: {
-    title: "woongsnote",
+    title: 'woongsnote',
     base_url: 'https://www.woongsnote.dev',
     base_path: '/',
     favicon: '/favicon.svg',
@@ -80,25 +84,30 @@ export const SOCIALS: Links[] = [
   },
 ];
 
-export const CATEGORIES = [
-  {
-    title: 'All',
-    page: 'all',
-    href: '/blog',
+export const CATEGORY_TYPES = ['Diary', 'Tech', 'Project'] as const;
+
+export type CategoryType = (typeof CATEGORY_TYPES)[number];
+
+export interface Category {
+  type: CategoryType;
+  label: string;
+  icon: SvgComponent;
+}
+
+export const CATEGORIES: Record<CategoryType, Category> = {
+  Diary: {
+    type: 'Diary',
+    label: 'Diary',
+    icon: DiaryIcon,
   },
-  {
-    title: 'Tech',
-    page: 'tech',
-    href: '/blog/tech',
+  Tech: {
+    type: 'Tech',
+    label: 'Tech',
+    icon: TechIcon,
   },
-  {
-    title: 'Diary',
-    page: 'diary',
-    href: '/blog/diary',
+  Project: {
+    type: 'Project',
+    label: 'Project',
+    icon: ProjectIcon,
   },
-  {
-    title: 'Project',
-    page: 'project',
-    href: '/blog/project',
-  },
-];
+};
