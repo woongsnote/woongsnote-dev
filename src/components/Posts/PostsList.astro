@@ -5,6 +5,12 @@ import PostItem from './PostItem.astro';
 const { posts } = Astro.props as { posts: Post[] };
 ---
 
-<div class="space-y-12">
-  {posts.map((post) => <PostItem post={post} />)}
-</div>
+<ul class="space-y-12">
+  {
+    posts.map((post) => (
+      <li>
+        <PostItem post={post} />
+      </li>
+    ))
+  }
+</ul>
