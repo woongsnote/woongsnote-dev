@@ -3,10 +3,13 @@ import { SITE as siteConfig } from '@config/site-config';
 const siteName = siteConfig.site.title;
 ---
 
+<!-- Logo.astro -->
 <a
   href="/"
-  class="hover:text-accent text-center text-2xl font-bold"
+  class="group hover:text-accent text-2xl font-bold transition-colors"
   aria-label={`Go to Homepage of ${siteName}`}
 >
-  {siteName}
+  <span class="inline-block transition-transform group-hover:scale-105">
+    {siteName}
+  </span>
 </a>

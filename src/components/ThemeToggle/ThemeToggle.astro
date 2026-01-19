@@ -1,0 +1,82 @@
+---
+import MoonIcon from '@icons/moon.svg';
+import SunIcon from '@icons/sun.svg';
+
+const iconStyle =
+  'absolute h-5 w-5 scale-100 rotate-0 transition-all duration-300 motion-reduce:transform-none motion-reduce:transition-none';
+---
+
+<button
+  id="theme-toggle"
+  class="text-sub hover:text-accent relative flex h-9 w-9 items-center justify-center rounded-md transition"
+  aria-label="Toggle theme"
+>
+  <SunIcon class={iconStyle} id="sun-icon" />
+  <MoonIcon class={iconStyle} id="moon-icon" />
+</button>
+
+<script is:inline>
+  const STORAGE_KEY = 'theme';
+
+  function systemPrefersDark() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  function applyTheme(theme) {
+    const root = document.documentElement;
+
+    if (theme === 'light' || theme === 'dark') {
+      root.setAttribute('data-theme', theme);
+    } else {
+      root.removeAttribute('data-theme');
+    }
+
+    updateIcon(theme);
+  }
+
+  function updateIcon(theme) {
+    const sun = document.getElementById('sun-icon');
+    const moon = document.getElementById('moon-icon');
+
+    const isDark = theme ? theme === 'dark' : systemPrefersDark();
+
+    if (isDark) {
+      sun.classList.add('scale-0', 'rotate-90');
+      sun.classList.remove('scale-100', 'rotate-0');
+
+      moon.classList.add('scale-100', 'rotate-0');
+      moon.classList.remove('scale-0', 'rotate-90');
+    } else {
+      moon.classList.add('scale-0', 'rotate-90');
+      moon.classList.remove('scale-100', 'rotate-0');
+
+      sun.classList.add('scale-100', 'rotate-0');
+      sun.classList.remove('scale-0', 'rotate-90');
+    }
+  }
+
+  function toggleTheme() {
+    const current =
+      document.documentElement.getAttribute('data-theme') ??
+      (systemPrefersDark() ? 'dark' : 'light');
+
+    const next = current === 'dark' ? 'light' : 'dark';
+
+    localStorage.setItem(STORAGE_KEY, next);
+    applyTheme(next);
+  }
+
+  const saved = localStorage.getItem(STORAGE_KEY);
+  applyTheme(saved);
+
+  document
+    .getElementById('theme-toggle')
+    ?.addEventListener('click', toggleTheme);
+
+  document.addEventListener('astro:after-swap', () => {
+    document
+      .getElementById('theme-toggle')
+      ?.addEventListener('click', toggleTheme);
+    applyTheme(localStorage.getItem(STORAGE_KEY));
+  });
+</script>
