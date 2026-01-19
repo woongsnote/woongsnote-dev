@@ -23,13 +23,11 @@ const pageTitle =
 
 <!doctype html>
 <html lang={config.site.lang}>
-  <head>
-    <BaseHead
-      title={pageTitle}
-      description={description || config.metadata.meta_description}
-      image={image}
-    />
-  </head>
+  <BaseHead
+    title={pageTitle}
+    description={description || config.metadata.meta_description}
+    image={image}
+  />
   <body>
     <Header />
     <main role="main">
