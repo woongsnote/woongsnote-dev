@@ -1,6 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
-
 type Props = {
   title: string;
   description: string;
@@ -45,17 +43,11 @@ const { title, description, image = '/opengraph-image.png' } = Astro.props;
   <meta property="twitter:description" content={description} />
   <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-  <ClientRouter />
-
   <script is:inline>
-    function getTheme() {
-      return (
-        localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light')
-      );
+    const theme = localStorage.getItem('theme');
+
+    if (theme === 'light' || theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', theme);
     }
-    document.documentElement.setAttribute('data-theme', getTheme());
   </script>
 </head>

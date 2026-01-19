@@ -1,41 +1,30 @@
-@layer base {
-  :root {
-    /* Typography Color Tokens */
-    --color-text-primary: light-dark(var(--color-gray-800), var(--color-gray-100));
-    --color-text-headings: light-dark(var(--color-gray-800), var(--color-gray-50));
-    --color-text-muted: light-dark(var(--color-gray-500), var(--color-gray-400));
-    --color-border: light-dark(var(--color-gray-200), var(--color-gray-700));
-    --color-background-code: light-dark(var(--color-gray-100), var(--color-gray-800));
-    --color-link: light-dark(var(--color-blue-600), var(--color-blue-400));
-    --color-link-hover: light-dark(var(--color-blue-700), var(--color-blue-300));
+@import 'tailwindcss';
 
-    /* Typography Size Tokens */
-    --font-size-h1: var(--text-3xl);
-    --font-size-h2: var(--text-2xl);
-    --font-size-h3: var(--text-xl);
-    --font-size-base: var(--text-base);
-    --font-size-sm: var(--text-sm);
+@layer components {
+  .prose {
+    max-width: none;
+    margin-inline: auto;
+    margin-top: calc(var(--spacing) * 8);
+    line-height: 2;
+    color: var(--color-primary);
+    word-break: keep-all;
+    font-size: var(--font-size-body);
+    line-height: var(--leading-body);
   }
 
-  .prose {
-    color: var(--color-text-primary);
-    line-height: var(--leading-relaxed);
+  .prose h1 {
+    font-size: var(--font-size-h1);
+    margin-block: var(--space-12) var(--space-6);
   }
 
   .prose h2 {
-    color: var(--color-text-headings);
     font-size: var(--font-size-h2);
-    font-weight: var(--font-weight-medium);
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-block: var(--space-12) var(--space-5);
   }
 
   .prose h3 {
     font-size: var(--font-size-h3);
-    font-weight: var(--font-weight-medium);
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--color-border);
+    margin-block: var(--space-10) var(--space-6);
   }
 
   .prose a {
@@ -111,7 +100,8 @@
   }
 
   .prose blockquote {
-    border-left: 4px solid light-dark(var(--color-gray-300), var(--color-gray-600));
+    border-left: 4px solid
+      light-dark(var(--color-gray-300), var(--color-gray-600));
     padding-left: calc(var(--spacing) * 4);
     font-style: italic;
     color: var(--color-text-muted);
@@ -145,7 +135,10 @@
   .prose code span[data-highlighted-line] {
     border-left-width: calc(var(--spacing) * 0.5);
     border-left-color: light-dark(var(--color-blue-400), var(--color-blue-500));
-    background-color: light-dark(rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.2));
+    background-color: light-dark(
+      rgba(59, 130, 246, 0.1),
+      rgba(59, 130, 246, 0.2)
+    );
     padding-left: calc(var(--spacing) * 2);
   }
 
