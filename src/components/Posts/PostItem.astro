@@ -1,6 +1,5 @@
 ---
 import Category from '@components/Category/Category.astro';
-import FormattedDate from '@components/Date/FormattedDate.astro';
 import type { Post } from '@utils/types';
 
 const { post } = Astro.props as { post: Post };
@@ -8,26 +7,26 @@ const { post } = Astro.props as { post: Post };
 const link = `/${post.id}`;
 const title = post.data.title;
 const description = post.data.description || '';
-const publishedDate = post.data.publishedDate;
 const category = post.data.category;
 ---
 
-<a href={link} class="group block p-2">
-  <div class="flex items-baseline gap-2">
-    <Category category={category} />
+<a
+  href={`${link}`}
+  class="group hover:bg-surface focus-visible:ring-accent block rounded-lg p-2 transition focus-visible:ring-2"
+>
+  <article class="space-y-1">
+    <header class="flex items-baseline gap-2">
+      <Category category={category} />
 
-    <span
-      class="text-primary group-hover:text-accent text-sm transition sm:text-lg"
-    >
-      {title}
-    </span>
-    <span class="text-sub ml-auto text-xs">
-      <FormattedDate date={publishedDate} />
-    </span>
-  </div>
+      <h3
+        class="text-primary group-hover:text-accent text-sm font-medium transition sm:text-lg"
+      >
+        {title}
+      </h3>
+    </header>
 
-  <!-- 640px 이상에서 설명 표시 -->
-  <p class="text-sub mt-1 line-clamp-2 hidden text-sm sm:block">
-    {description}
-  </p>
+    <p class="text-sub hidden text-sm sm:line-clamp-2 sm:block">
+      {description}
+    </p>
+  </article>
 </a>
