@@ -11,6 +11,24 @@ export const sortPostsByDateDesc = (postA: Post, postB: Post) => {
   );
 };
 
+export function groupAndSortPostsByYear(posts: Post[]) {
+  const grouped = posts.reduce<Record<number, Post[]>>((acc, post) => {
+    const year = post.data.publishedDate.getFullYear();
+
+    acc[year] ??= [];
+    acc[year].push(post);
+
+    return acc;
+  }, {});
+
+  return Object.entries(grouped)
+    .map(([year, posts]) => ({
+      year: Number(year),
+      posts: posts.sort(sortPostsByDateDesc),
+    }))
+    .sort((a, b) => b.year - a.year);
+}
+
 export const getCategoryPosts = (
   allPosts: Post[],
   categories: { page: string }[]
