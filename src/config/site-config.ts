@@ -1,100 +1,89 @@
-import type { NavItem, SiteConfig, Links, MetaData } from '@utils/types';
-import type { SvgComponent } from 'astro/types';
+import type { NavItem, SiteConfig, SocialLink, PageMeta } from '@utils/types';
 import DiaryIcon from '@icons/diary.svg';
 import ProjectIcon from '@icons/project.svg';
 import TechIcon from '@icons/tech.svg';
+import type { Category, CategoryType } from '@utils/types';
 
 export const username = 'woongsnote';
+export const BASE_URL = 'https://www.woongsnote.dev';
+
+export const SITE_DESCRIPTION =
+  '개발 관련 학습한 지식과 구현한 프로젝트들을 기록하기 위한 공간입니다.';
 
 export const SITE: SiteConfig = {
   site: {
     title: 'woongsnote',
-    base_url: 'https://www.woongsnote.dev',
-    base_path: '/',
+    baseUrl: BASE_URL,
+    basePath: '/',
     favicon: '/favicon.svg',
     logo: '/logo.png',
     lang: 'ko',
     description: `Woong's technical blog`,
   },
   features: {
-    dark_mode: true,
+    darkMode: true,
   },
   metadata: {
-    meta_author: `${username}`,
-    meta_title: 'www.woongsnote.dev',
-    meta_description:
-      '개발 관련 학습한 지식과 구현한 프로젝트들을 기록하기 위한 공간입니다.',
+    author: `${username}`,
+    title: BASE_URL,
+    description: SITE_DESCRIPTION,
   },
   author: {
     name: `@${username}`,
     bio: `안녕하세요. 문지웅입니다. 학습한 새로운 기술과 지식으로 아이디어를 시각적으로 구현하는 것을 좋아합니다.`,
-    tech: 'React, Next.js, TypeScript',
+    tech: 'Astro, React, Next.js, TypeScript',
   },
   theme: {
     defaultTheme: 'light',
   },
 };
 
-export const NAV_ITEMS: NavItem[] = [
+export const NAV_ITEMS = [
   {
-    title: 'Home',
+    label: 'Home',
     href: '/',
+    metaKey: 'home',
   },
   {
-    title: 'Blog',
-    href: '/blog',
-  },
-  {
-    title: 'About',
+    label: 'About',
     href: '/about',
+    metaKey: 'about',
   },
-];
+] as const;
 
-export const HOME: MetaData = {
-  title: 'Home',
-  description: `Woong's technology blog with latest archived articles and projects.`,
-};
+export type PageKey = 'home' | 'about';
 
-export const BLOG: MetaData = {
-  title: 'Blog',
-  description: 'A collection of knowledge and projects related to development',
-};
+export const PAGE_META = {
+  home: {
+    title: 'Home',
+    description: SITE_DESCRIPTION,
+  },
+  about: {
+    title: 'About Me',
+    description: '저를 소개합니다.',
+  },
+} satisfies Record<PageKey, PageMeta>;
 
-export const ABOUT: MetaData = {
-  title: 'About Me',
-  description: `This is Woong's self-introduction page.`,
-};
-
-export const SOCIALS: Links[] = [
+export const SOCIALS: SocialLink[] = [
   {
-    name: 'github',
+    type: 'github',
     url: `https://www.github.com/${username}`,
   },
   {
-    name: 'linkedin',
+    type: 'linkedin',
     url: `https://www.linkedin.com/in/${username}`,
   },
   {
-    name: 'email',
+    type: 'email',
     url: 'mailto:woongsnote@gmail.com',
   },
   {
-    name: 'rss',
+    type: 'rss',
     url: '/rss.xml',
   },
 ];
 
-export const CATEGORY_TYPES = ['Diary', 'Tech', 'Project'] as const;
-
-export type CategoryType = (typeof CATEGORY_TYPES)[number];
-
-export interface Category {
-  type: CategoryType;
-  label: string;
-  icon: SvgComponent;
-}
-
-export const CATEGORIES: Record<CategoryType, Category> = {
+export const CATEGORIES = {
   Diary: {
     type: 'Diary',
     label: 'Diary',
@@ -110,4 +99,4 @@ export const CATEGORIES: Record<CategoryType, Category> = {
     label: 'Project',
     icon: ProjectIcon,
   },
-};
+} as const satisfies Record<CategoryType, Category>;

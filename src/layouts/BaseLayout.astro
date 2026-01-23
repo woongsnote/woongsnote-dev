@@ -1,5 +1,5 @@
 ---
-import { SITE as config } from '@config/site-config';
+import { SITE as config, PAGE_META } from '@config/site-config';
 
 import BaseHead from '@layouts/BaseHead.astro';
 
@@ -8,24 +8,22 @@ import Header from '@components/Header/Header.astro';
 
 import BackToTop from '@components/BackButton/BackToTop.astro';
 import '@styles/global.css';
-
-type Props = {
-  title: string;
-  description?: string;
-  image?: string;
-};
+import { getMetaKeyFromRoute } from '@utils/route';
 
 const { title, description, image } = Astro.props;
 
-const pageTitle =
-  title !== 'Home' ? `${title} | ${config.site.title}` : `${config.site.title}`;
+const pathName = Astro.url.pathname;
+
+const metaKey = getMetaKeyFromRoute(pathName);
+
+const meta = metaKey ? PAGE_META[metaKey] : null;
 ---
 
 <!doctype html>
 <html lang={config.site.lang}>
   <BaseHead
-    title={pageTitle}
-    description={description || config.metadata.meta_description}
+    title={title ?? meta?.title}
+    description={description ?? meta?.description}
     image={image}
   />
   <body>

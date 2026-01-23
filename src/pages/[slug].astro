@@ -1,11 +1,11 @@
 ---
 import PostLayout from '@layouts/PostLayout.astro';
-import { sortPostsByDateDesc } from '@utils/data-util';
+import { getAllPosts } from '@utils/content';
 import type { GetStaticPaths } from 'astro';
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 
 export const getStaticPaths = (async () => {
-  const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },

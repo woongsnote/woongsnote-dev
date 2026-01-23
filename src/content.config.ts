@@ -1,7 +1,13 @@
-import { defineCollection, z, type ImageFunction } from 'astro:content';
+// Import utilities from `astro:content`
+import { defineCollection, type ImageFunction } from 'astro:content';
+// Import loader
 import { glob } from 'astro/loaders';
-import { CATEGORY_TYPES } from '@config/site-config';
+//Import Zod
+import { z } from 'astro/zod';
 
+import { CATEGORY_TYPES } from '@utils/types';
+
+//Define a `loader` and `schema` for each collection
 const blogSchema = ({ image }: { image: ImageFunction }) =>
   z.object({
     title: z.string(),
@@ -24,4 +30,5 @@ const blog = defineCollection({
   schema: blogSchema,
 });
 
+// Export a single `collections` object to register your collection(s)
 export const collections = { blog };

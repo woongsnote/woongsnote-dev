@@ -1,5 +1,5 @@
 ---
-import type { TocHeadings } from '@utils/types';
+import type { TocNode } from '@utils/types';
 
 const { heading } = Astro.props;
 ---
@@ -14,7 +14,7 @@ const { heading } = Astro.props;
   {
     heading.subHeadings.length > 0 && (
       <ul class="pl-1">
-        {heading.subHeadings.map((subHeading: TocHeadings) => (
+        {heading.subHeadings.map((subHeading: TocNode) => (
           <Astro.self heading={subHeading} />
         ))}
       </ul>
