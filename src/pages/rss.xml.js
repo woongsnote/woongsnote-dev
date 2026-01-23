@@ -8,10 +8,11 @@ export async function GET(context) {
     title: config.metadata.title,
     description: config.metadata.description,
     site: context.site,
+    trailingSlash: false,
     items: blog.map((post) => ({
       title: post.data.title,
       description: post.data.description,
-      link: `/blog/${post.slug}/`,
+      link: `/${post.id}/`,
       pubDate: post.data.publishedDate,
     })),
   });
