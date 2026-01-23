@@ -26,7 +26,7 @@ const { title, description, image = '/opengraph-image.png' } = Astro.props;
     rel="alternate"
     type="application/rss+xml"
     title="Woongsnote"
-    href={`${Astro.site}rss.xml`}
+    href={new URL('rss.xml', Astro.site)}
   />
   <title>{title}</title>
   <meta name="title" content={title} />
