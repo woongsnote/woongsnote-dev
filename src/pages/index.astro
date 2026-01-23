@@ -1,9 +1,10 @@
 ---
 import ArticleList from '@components/Posts/PostsList.astro';
 import Layout from '@layouts/BaseLayout.astro';
-import { getAllPosts } from '@utils/content';
+import { sortPostsByDateDesc } from '@utils/content';
+import { getCollection } from 'astro:content';
 
-const posts = await getAllPosts();
+const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
 ---
 
 <Layout>

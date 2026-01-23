@@ -1,13 +1,7 @@
-import { getCollection } from 'astro:content';
 import type { Post } from '@utils/types';
 
 export const sortPostsByDateDesc = (a: Post, b: Post): number =>
   b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf();
-
-export const getAllPosts = async (): Promise<Post[]> => {
-  const posts = await getCollection('blog');
-  return posts.sort(sortPostsByDateDesc);
-};
 
 export const groupPostsByYear = (
   posts: Post[]
