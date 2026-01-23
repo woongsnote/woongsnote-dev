@@ -1,12 +1,11 @@
 ---
 import ArticleList from '@components/Posts/PostsList.astro';
-import { HOME } from '@config/site-config';
 import Layout from '@layouts/BaseLayout.astro';
-import { getPosts } from '@utils/data-util';
+import { getAllPosts } from '@utils/content';
 
-const posts = await getPosts();
+const posts = await getAllPosts();
 ---
 
-<Layout title={HOME.title} description={HOME.description}>
+<Layout>
   <ArticleList posts={posts} />
 </Layout>

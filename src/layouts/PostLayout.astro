@@ -4,7 +4,7 @@ import Header from '@components/Post/Header.astro';
 import Thumbnail from '@components/Post/Thumbnail.astro';
 import Toc from '@components/Toc/Toc.astro';
 import '@styles/typograpy.css';
-import type { TocHeadings } from '@utils/types';
+import type { TocHeading } from '@utils/types';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 
@@ -12,7 +12,7 @@ type Props = CollectionEntry<'blog'>['data'] & {
   ogImage: string;
   minutesToRead: number;
   isHeadings: boolean;
-  headings: TocHeadings[];
+  headings: TocHeading[];
   currentUrl: string;
 };
 

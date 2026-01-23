@@ -1,11 +1,13 @@
 ---
 import ProfileImage from '@components/Profile/ProfileImage.astro';
-import { ABOUT } from '@config/site-config';
+import {  PAGE_META } from '@config/site-config';
 import Layout from '@layouts/BaseLayout.astro';
 import '@styles/typograpy.css';
+
+const meta = PAGE_META['about'];
 ---
 
-<Layout title={ABOUT.title} description={ABOUT.description}>
+<Layout title={meta.title} description={meta.description}>
   <div class="flex w-full items-center justify-center">
     <ProfileImage position="content" />
   </div>
