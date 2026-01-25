@@ -1,10 +1,10 @@
 ---
 import Comments from '@components/Post/Comments.astro';
-import Header from '@components/Post/Header.astro';
-import Thumbnail from '@components/Post/Thumbnail.astro';
+import PostHeader from '@components/Post/PostHeader.astro';
+import PostThumbnail from '@components/Post/PostThumbnail.astro';
 import Toc from '@components/Toc/Toc.astro';
 import '@styles/typograpy.css';
-import type { TocHeadings } from '@utils/types';
+import type { TocHeading } from '@utils/types';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 
@@ -12,7 +12,7 @@ type Props = CollectionEntry<'blog'>['data'] & {
   ogImage: string;
   minutesToRead: number;
   isHeadings: boolean;
-  headings: TocHeadings[];
+  headings: TocHeading[];
   currentUrl: string;
 };
 
@@ -23,7 +23,6 @@ const {
   tags,
   category,
   cover,
-  ogImage,
   minutesToRead,
   isHeadings,
   headings,
@@ -32,8 +31,8 @@ const {
 } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} image={ogImage}>
-  <Header
+<BaseLayout>
+  <PostHeader
     category={category}
     minutesToRead={minutesToRead}
     title={title}
@@ -46,7 +45,7 @@ const {
   <article class="prose">
     {
       category === 'Project' && cover && (
-        <Thumbnail image={cover} alt={title} link={link} />
+        <PostThumbnail image={cover} alt={title} link={link} />
       )
     }
     <slot />
