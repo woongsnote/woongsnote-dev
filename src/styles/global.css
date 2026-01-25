@@ -10,6 +10,8 @@
   --color-secondary: light-dark(#e4f1ff, #03346e);
   --color-sub: light-dark(#6c6c6c, #94a3b8);
   --color-toc: light-dark(#0000000d, #ffffff0d);
+  --color-header: light-dark(#e5e7eb, #364153);
+  --color-divider: light-dark(#d1d5dc, #4a5565);
 
   /* ===============================
      Spacing Scale (8px base)
@@ -44,7 +46,6 @@
   --leading-snug: 1.5;
   --leading-body: 1.9;
   --leading-loose: 2.1;
-  
 }
 
 /* 강제 라이트 */

@@ -1,12 +1,9 @@
 ---
-import SocialLinks from '@components/Social/SocialLinks.astro';
+import { SocialLinks } from '@components/Social';
 const year = new Date().getFullYear();
 ---
 
-<footer
-  role="contentinfo"
-  class="footer footer-center gap-2 mt-4 mb-1"
->
+<footer role="contentinfo" class="footer footer-center mt-4 mb-1 gap-2">
   <SocialLinks />
   <p class="text-center text-sm">
     &copy; {year}. woongsnote All rights reserved.

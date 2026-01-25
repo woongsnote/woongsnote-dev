@@ -1,50 +1,25 @@
 ---
 import ThemeToggle from '@components/ThemeToggle/ThemeToggle.astro';
-import Logo from './Logo.astro';
+import HeaderNavLink from './HeaderNavLink.astro';
+
+import { Logo } from '@components/Branding';
+import { getHeaderLinkInfo } from './useHeaderLink';
 
 const { pathname } = Astro.url;
 
-const getLinkInfo = (currentPath: string) => {
-  if (currentPath === '/' || currentPath === '') {
-    return {
-      text: 'About',
-      href: '/about',
-      description: 'About 페이지로 이동',
-    };
-  } else if (currentPath === '/about' || currentPath === '/about/') {
-    return {
-      text: 'Posts',
-      href: '/',
-      description: '메인 페이지로 이동',
-    };
-  } else {
-    return {
-      text: 'Home',
-      href: '/',
-      description: '홈으로 이동',
-    };
-  }
-};
-
-const linkInfo = getLinkInfo(pathname);
+const linkInfo = getHeaderLinkInfo(pathname);
 ---
 
 <header
   role="banner"
-  class="bg-background/80 sticky top-0 z-10 mx-auto w-full max-w-3xl border-b border-gray-200/50 px-4 py-4 backdrop-blur-md lg:px-0 dark:border-gray-700/50"
+  class="bg-background/80 border-header/50 sticky top-0 z-10 mx-auto w-full max-w-3xl border-b px-4 py-4 backdrop-blur-md lg:px-0"
 >
   <div class="flex items-center justify-between">
     <Logo />
     <nav class="flex items-center gap-3">
       <ThemeToggle />
-      <div class="h-5 w-px bg-gray-300 dark:bg-gray-600"></div>
-      <a
-        href={linkInfo.href}
-        class="hover:text-accent rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:bg-gray-100 lg:text-base dark:hover:bg-gray-800"
-        title={linkInfo.description}
-      >
-        {linkInfo.text}
-      </a>
+      <div class="bg-divider h-5 w-px"></div>
+      <HeaderNavLink {...linkInfo} />
     </nav>
   </div>
 </header>
