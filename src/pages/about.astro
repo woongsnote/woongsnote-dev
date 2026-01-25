@@ -1,11 +1,10 @@
 ---
 import ProfileImage from '@components/Profile/ProfileImage.astro';
-import { ABOUT } from '@config/site-config';
-import Layout from '@layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 import '@styles/typograpy.css';
 ---
 
-<Layout title={ABOUT.title} description={ABOUT.description}>
+<BaseLayout pageKey="about">
   <div class="flex w-full items-center justify-center">
     <ProfileImage position="content" />
   </div>
@@ -32,4 +31,4 @@ import '@styles/typograpy.css';
       것입니다.
     </p>
   </article>
-</Layout>
+</BaseLayout>

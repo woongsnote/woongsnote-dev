@@ -1,33 +1,29 @@
 ---
-import { SITE as config } from '@config/site-config';
+import { PAGE_META, SITE, SITE_META } from '@config';
 
 import BaseHead from '@layouts/BaseHead.astro';
 
 import Footer from '@components/Footer/Footer.astro';
 import Header from '@components/Header/Header.astro';
 
-import BackToTop from '@components/BackButton/BackToTop.astro';
+import BackToTop from '@components/Navigation/BackToTop.astro';
 import '@styles/global.css';
 
-type Props = {
-  title: string;
-  description?: string;
-  image?: string;
-};
+interface Props {
+  pageKey?: string;
+}
 
-const { title, description, image } = Astro.props;
+const { pageKey } = Astro.props;
 
-const pageTitle =
-  title !== 'Home' ? `${title} | ${config.site.title}` : `${config.site.title}`;
+const pageMeta = pageKey ? PAGE_META[pageKey] : null;
+
+const title: string = pageMeta?.title ?? SITE.name;
+const description: string = pageMeta?.description ?? SITE_META.description;
 ---
 
 <!doctype html>
-<html lang={config.site.lang}>
-  <BaseHead
-    title={pageTitle}
-    description={description || config.metadata.meta_description}
-    image={image}
-  />
+<html lang={SITE.lang}>
+  <BaseHead title={title} description={description} />
   <body>
     <Header />
     <main role="main">

@@ -1,9 +1,9 @@
 ---
-import { SITE as siteConfig } from '@config/site-config';
-const siteName = siteConfig.site.title;
+import { SITE } from '@config';
+
+const siteName = SITE.name;
 ---
 
-<!-- Logo.astro -->
 <a
   href="/"
   class="group hover:text-accent text-2xl font-bold transition-colors"

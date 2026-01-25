@@ -1,12 +1,12 @@
 ---
 import ArticleList from '@components/Posts/PostsList.astro';
-import { HOME } from '@config/site-config';
 import Layout from '@layouts/BaseLayout.astro';
-import { getPosts } from '@utils/data-util';
+import { sortPostsByDateDesc } from '@utils/content';
+import { getCollection } from 'astro:content';
 
-const posts = await getPosts();
+const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
 ---
 
-<Layout title={HOME.title} description={HOME.description}>
+<Layout>
   <ArticleList posts={posts} />
 </Layout>

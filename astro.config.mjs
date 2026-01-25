@@ -23,9 +23,6 @@ export default defineConfig({
   build: {
     format: 'file',
   },
-  prefetch: {
-    prefetchAll: true,
-  },
   vite: {
     plugins: [tailwind()],
   },
