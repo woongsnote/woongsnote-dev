@@ -3,10 +3,13 @@ export const PAGE_META = {
     title: 'Home',
     description: '문지웅의 기술 블로그',
   },
-
   about: {
     title: 'About',
     description: '저를 소개합니다.',
+  },
+  404: {
+    title: '404 Error',
+    description: '페이지를 찾을 수 없습니다.',
   },
 } as const;
 
