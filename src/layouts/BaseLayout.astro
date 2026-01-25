@@ -1,31 +1,29 @@
 ---
-import { SITE as config, PAGE_META } from '@config/site-config';
+import { PAGE_META, SITE, SITE_META } from '@config';
 
 import BaseHead from '@layouts/BaseHead.astro';
 
 import Footer from '@components/Footer/Footer.astro';
 import Header from '@components/Header/Header.astro';
 
-import BackToTop from '@components/BackButton/BackToTop.astro';
+import BackToTop from '@components/Navigation/BackToTop.astro';
 import '@styles/global.css';
-import { getMetaKeyFromRoute } from '@utils/route';
 
-const { title, description, image } = Astro.props;
+interface Props {
+  pageKey?: string;
+}
 
-const pathName = Astro.url.pathname;
+const { pageKey } = Astro.props;
 
-const metaKey = getMetaKeyFromRoute(pathName);
+const pageMeta = pageKey ? PAGE_META[pageKey] : null;
 
-const meta = metaKey ? PAGE_META[metaKey] : null;
+const title: string = pageMeta?.title ?? SITE.name;
+const description: string = pageMeta?.description ?? SITE_META.description;
 ---
 
 <!doctype html>
-<html lang={config.site.lang}>
-  <BaseHead
-    title={title ?? meta?.title}
-    description={description ?? meta?.description}
-    image={image}
-  />
+<html lang={SITE.lang}>
+  <BaseHead title={title} description={description} />
   <body>
     <Header />
     <main role="main">
