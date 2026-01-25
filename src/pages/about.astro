@@ -1,13 +1,10 @@
 ---
 import ProfileImage from '@components/Profile/ProfileImage.astro';
-import { PAGE_META } from '@config';
-import Layout from '@layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 import '@styles/typograpy.css';
-
-const meta = PAGE_META['about'];
 ---
 
-<Layout title={meta.title} description={meta.description}>
+<BaseLayout pageKey="about">
   <div class="flex w-full items-center justify-center">
     <ProfileImage position="content" />
   </div>
@@ -34,4 +31,4 @@ const meta = PAGE_META['about'];
       것입니다.
     </p>
   </article>
-</Layout>
+</BaseLayout>
