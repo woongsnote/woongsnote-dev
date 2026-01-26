@@ -1,0 +1,54 @@
+---
+type As = 'button' | 'a';
+
+interface Props {
+  as?: As;
+  href?: string; // as="a"
+  type?: 'button' | 'submit' | 'reset'; // as="button"
+  id?: string;
+
+  label: string; // 접근성 라벨(필수)
+  title?: string;
+
+  class?: string; // 추가 클래스
+  iconClass?: string; // 아이콘 크기 등
+}
+
+const {
+  as = 'button',
+  href,
+  type = 'button',
+  id,
+  label,
+  title = label,
+  class: className = '',
+  iconClass = 'h-5 w-5',
+} = Astro.props;
+
+// ✅ ThemeToggle 베이스 룩: h-9 w-9 + rounded + hover
+// ✅ focus-visible ring 추가(접근성)
+// ✅ text 색상 통일
+const base =
+  'text-sub hover:text-accent focus-visible:ring-accent/40 relative inline-flex h-9 w-9 items-center justify-center rounded-md transition ' +
+  'focus-visible:outline-none focus-visible:ring-2';
+
+const cls = `${base} ${className}`;
+---
+
+{
+  as === 'a' ? (
+    <a id={id} href={href} class={cls} aria-label={label} title={title}>
+      <span class={iconClass} aria-hidden="true">
+        <slot />
+      </span>
+      <span class="sr-only">{label}</span>
+    </a>
+  ) : (
+    <button id={id} type={type} class={cls} aria-label={label} title={title}>
+      <span class={iconClass} aria-hidden="true">
+        <slot />
+      </span>
+      <span class="sr-only">{label}</span>
+    </button>
+  )
+}
