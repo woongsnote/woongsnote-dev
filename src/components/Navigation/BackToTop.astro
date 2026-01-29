@@ -4,32 +4,14 @@ import ToTop from '@icons/arrow-up.svg';
 
 <button
   id="back-to-top"
-  class="bg-accent invisible fixed right-6 bottom-6 rounded-full p-2 opacity-0 shadow-lg transition-opacity duration-300 hover:cursor-pointer"
+  class="invisible fixed right-6 bottom-6 z-50 rounded-full p-2 opacity-0 shadow-lg transition-opacity duration-300 hover:cursor-pointer"
   aria-label="Back to top"
 >
   <ToTop class="size-4" />
 </button>
 
-<script>
-  const backToTopButton = document.getElementById('back-to-top');
+<script type="module" is:inline>
+  import { initClientScripts } from '/src/scripts/index.ts';
 
-  function toggleBackToTopButton() {
-    if (window.scrollY > 300) {
-      backToTopButton?.classList.remove('opacity-0', 'invisible');
-      backToTopButton?.classList.add('opacity-100', 'visible');
-    } else {
-      backToTopButton?.classList.add('opacity-0', 'invisible');
-      backToTopButton?.classList.remove('opacity-100', 'visible');
-    }
-  }
-
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }
-
-  window.addEventListener('scroll', toggleBackToTopButton);
-  backToTopButton?.addEventListener('click', scrollToTop);
+  initClientScripts();
 </script>
