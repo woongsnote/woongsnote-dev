@@ -1,12 +1,15 @@
 ---
-import ArticleList from '@components/Posts/PostsList.astro';
-import Layout from '@layouts/BaseLayout.astro';
+import { PostsList } from '@components/domain/posts';
+import { PAGE_META } from '@config';
+import BaseLayout from '@layouts/BaseLayout.astro';
 import { sortPostsByDateDesc } from '@utils/content';
 import { getCollection } from 'astro:content';
+
+const head = PAGE_META.home;
 
 const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
 ---
 
-<Layout>
-  <ArticleList posts={posts} />
-</Layout>
+<BaseLayout head={head}>
+  <PostsList posts={posts} />
+</BaseLayout>

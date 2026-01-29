@@ -1,8 +1,6 @@
 ---
-import Comments from '@components/Post/Comments.astro';
-import PostHeader from '@components/Post/PostHeader.astro';
-import PostThumbnail from '@components/Post/PostThumbnail.astro';
-import Toc from '@components/Toc/Toc.astro';
+import { Comments, PostHeader, PostThumbnail } from '@components/domain/post';
+import { Toc } from '@components/navigation/toc';
 import '@styles/typograpy.css';
 import type { TocHeading } from '@utils/types';
 import type { CollectionEntry } from 'astro:content';
@@ -28,10 +26,13 @@ const {
   headings,
   link,
   currentUrl,
+  ogImage,
 } = Astro.props;
+
+const head = { title, description, ogImage };
 ---
 
-<BaseLayout>
+<BaseLayout head={head}>
   <PostHeader
     category={category}
     minutesToRead={minutesToRead}

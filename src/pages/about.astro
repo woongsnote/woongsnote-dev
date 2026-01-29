@@ -1,10 +1,13 @@
 ---
-import ProfileImage from '@components/Profile/ProfileImage.astro';
+import { ProfileImage } from '@components/domain/profile';
+import { PAGE_META } from '@config';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import '@styles/typograpy.css';
+
+const head = PAGE_META.about
 ---
 
-<BaseLayout pageKey="about">
+<BaseLayout head={head}>
   <div class="flex w-full items-center justify-center">
     <ProfileImage position="content" />
   </div>
