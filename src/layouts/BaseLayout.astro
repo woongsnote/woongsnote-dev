@@ -1,29 +1,28 @@
 ---
-import { PAGE_META, SITE, SITE_META } from '@config';
+import { Footer, Header } from '@components/layout';
+import { BackToTop } from '@components/navigation';
+import { SITE } from '@config';
 
 import BaseHead from '@layouts/BaseHead.astro';
 
-import Footer from '@components/Footer/Footer.astro';
-import Header from '@components/Header/Header.astro';
-
-import BackToTop from '@components/Navigation/BackToTop.astro';
 import '@styles/global.css';
+import type { HeadProps } from './head';
 
 interface Props {
-  pageKey?: string;
+  head: HeadProps;
 }
 
-const { pageKey } = Astro.props;
-
-const pageMeta = pageKey ? PAGE_META[pageKey] : null;
-
-const title: string = pageMeta?.title ?? SITE.name;
-const description: string = pageMeta?.description ?? SITE_META.description;
+const { head } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={SITE.lang}>
-  <BaseHead title={title} description={description} />
+  <BaseHead
+    title={head.title}
+    description={head.description}
+    ogImage={head.ogImage}
+    canonicalUrl={head.canonicalUrl}
+  />
   <body>
     <Header />
     <main role="main">
