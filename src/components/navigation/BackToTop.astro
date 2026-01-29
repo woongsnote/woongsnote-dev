@@ -10,8 +10,30 @@ import ToTop from '@icons/arrow-up.svg';
   <ToTop class="size-4" />
 </button>
 
-<script type="module" is:inline>
-  import { initClientScripts } from '/src/scripts/index.ts';
+<script>
+  const backToTopButton = document.getElementById('back-to-top');
 
-  initClientScripts();
+  let lastScrollY = window.scrollY;
+
+  function toggleBackToTopButton() {
+    const currentScrollY = window.scrollY;
+
+    const isPastThreshold = currentScrollY > 300;
+    const isScrollingUp = currentScrollY < lastScrollY;
+
+    if (isPastThreshold && isScrollingUp) {
+      backToTopButton?.classList.remove('opacity-0', 'invisible');
+      backToTopButton?.classList.add('opacity-100', 'visible');
+    } else {
+      backToTopButton?.classList.add('opacity-0', 'invisible');
+      backToTopButton?.classList.remove('opacity-100', 'visible');
+    }
+
+    lastScrollY = currentScrollY;
+  }
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  window.addEventListener('scroll', toggleBackToTopButton, { passive: true });
+  backToTopButton?.addEventListener('click', scrollToTop);
 </script>
