@@ -5,12 +5,23 @@ import { ClientRouter } from 'astro:transitions';
 type Props = {
   title?: string;
   description?: string;
-  image?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
 };
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const { title, description, ogImage, canonicalUrl } = Astro.props;
 
-const { title, description, image } = Astro.props;
+const finalTitle = title ? `${title} | ${SITE_META.title}` : SITE_META.title;
+const finalDescription = description ?? SITE_META.description;
+
+const site = Astro.site;
+
+const finalCanonical = canonicalUrl
+  ? new URL(canonicalUrl, site).toString()
+  : site?.toString();
+
+const finalOgImage =
+  ogImage && site ? new URL(ogImage, site).toString() : ogImage;
 ---
 
 <head>
@@ -22,29 +33,29 @@ const { title, description, image } = Astro.props;
   <link rel="icon" type="image/svg+xml" href="/favicon.png" />
   <meta name="generator" content={Astro.generator} />
   <link rel="sitemap" href="/sitemap-index.xml" />
-  <link rel="canonical" href={canonicalURL} />
+  {finalCanonical && <link rel="canonical" href={finalCanonical} />}
   <link
     rel="alternate"
     type="application/rss+xml"
     title="Woongsnote"
     href={new URL('rss.xml', Astro.site)}
   />
-  <title>{title}</title>
-  <meta name="title" content={title} />
-  <meta name="description" content={description} />
+  <title>{finalTitle}</title>
+  <meta name="title" content={finalTitle} />
+  <meta name="description" content={finalDescription} />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={Astro.url} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={image ?? SITE_META.defaultImage} />
+  <meta property="og:url" content={finalCanonical} />
+  <meta property="og:title" content={finalTitle} />
+  <meta property="og:description" content={finalDescription} />
+  <meta property="og:image" content={finalOgImage} />
   <meta property="og:site_name" content="Woongsnote" />
 
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content={Astro.url} />
-  <meta property="twitter:title" content={title} />
-  <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content={image ?? SITE_META.defaultImage} />
+  <meta property="twitter:url" content={finalCanonical} />
+  <meta property="twitter:title" content={finalTitle} />
+  <meta property="twitter:description" content={finalDescription} />
+  <meta property="twitter:image" content={finalOgImage} />
 
   <ClientRouter />
 

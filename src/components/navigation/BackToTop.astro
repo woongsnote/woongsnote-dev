@@ -1,0 +1,17 @@
+---
+import ToTop from '@icons/arrow-up.svg';
+---
+
+<button
+  id="back-to-top"
+  class="invisible fixed right-6 bottom-6 z-50 rounded-full p-2 opacity-0 shadow-lg transition-opacity duration-300 hover:cursor-pointer"
+  aria-label="Back to top"
+>
+  <ToTop class="size-4" />
+</button>
+
+<script type="module" is:inline>
+  import { initClientScripts } from '/src/scripts/index.ts';
+
+  initClientScripts();
+</script>
