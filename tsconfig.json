@@ -16,7 +16,8 @@
       "@icons/*": ["./src/icons/*"],
       "@utils/*": ["./src/utils/*"],
       "@assets/*": ["./src/assets/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@scripts/*": ["./src/scripts/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
