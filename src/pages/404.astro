@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+
+const head = {
+  title: '404 NOT FOUND',
+};
 ---
 
-<BaseLayout pageKey="404">
+<BaseLayout head={head}>
   <div
     class="z-20 mx-auto flex w-fit flex-col items-center justify-center gap-10 p-10"
   >
