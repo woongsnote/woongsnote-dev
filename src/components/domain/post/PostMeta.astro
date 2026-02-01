@@ -1,5 +1,5 @@
 ---
-import { FormattedDate } from '@components/primitives';
+import { FormattedDate } from '@/components/primitives';
 import ReadingTimeText from './ReadingTimeText.astro';
 import ShareButton from './ShareButton.astro';
 
@@ -7,7 +7,7 @@ const { minutesToRead, title, publishedDate, link } = Astro.props;
 ---
 
 <div class="flex items-center justify-between gap-2 text-sm lg:text-base">
-  <div class="flex gap-2 text-gray-600 dark:text-gray-400">
+  <div class="text-sub flex gap-2">
     <FormattedDate date={publishedDate} />
     <ReadingTimeText readingTime={minutesToRead} />
   </div>

@@ -17,8 +17,8 @@ slug: 'astro-blog-category-design'
 
 이번 블로그에서 사용하는 카테고리는 3가지로 고정한다.
 
-- `Diary`   : 개인적인 경험과 후기
-- `Tech`    : 기술 관련 학습 내용
+- `Diary` : 개인적인 경험과 후기
+- `Tech` : 기술 관련 학습 내용
 - `Project` : 사이드 프로젝트 소개 및 리뷰
 
 <br />
@@ -98,7 +98,6 @@ export const collections = {
 3. 에디터 자동완성 지원
 4. UI에서 `undefined` 접근 문제 제거
 
-
 ## 4. 카테고리 컴포넌트
 
 ```astro title="Category.astro"
@@ -121,18 +120,16 @@ const data = CATEGORIES[category];
 
 | 접근성을 위해 텍스트는 `sr-only` 로 유지한다.
 
-
 ## 5. 카테고리 컴포넌트 배치
 
 카테고리는 제목의 왼쪽, 제목의 일부처럼 배치하는 것이 가장 자연스럽다.
 
 ```astro title="PostItem.astro"
-
 <a href={link} class="group block p-2">
   <div class="flex items-center gap-2">
     <PostCategoryBadge category={category} />
 
-    <span class="text-primary text-lg transition group-hover:text-accent">
+    <span class="text-primary group-hover:text-accent text-lg transition">
       {title}
     </span>
   </div>
@@ -143,24 +140,22 @@ const data = CATEGORIES[category];
 
   <FormattedDate date={publishedDate} />
 </a>
-
 ```
 
-<br/>
+<br />
 
 ## 6. 카테고리 설계 핵심 요약
 
-| 항목      | 선택                 |
-| ------- | ------------------ |
-| 카테고리 역할 | 게시글 메타 정보          |
-| 스키마 타입  | `z.enum`           |
-| 타입 관리   | `as const` 단일 소스   |
-| UI 표현   | 아이콘 중심 배지          |
-| 위치      | 제목 왼쪽              |
-| 확장성     | 색상 / 애니메이션 / 필터 가능 |
+| 항목          | 선택                          |
+| ------------- | ----------------------------- |
+| 카테고리 역할 | 게시글 메타 정보              |
+| 스키마 타입   | `z.enum`                      |
+| 타입 관리     | `as const` 단일 소스          |
+| UI 표현       | 아이콘 중심 배지              |
+| 위치          | 제목 왼쪽                     |
+| 확장성        | 색상 / 애니메이션 / 필터 가능 |
 
-
-<br/>
+<br />
 
 ## 7. 마무리
 

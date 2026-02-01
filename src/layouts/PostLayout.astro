@@ -1,8 +1,7 @@
 ---
-import { Comments, PostHeader, PostThumbnail } from '@components/domain/post';
-import { Toc } from '@components/navigation/toc';
-import '@styles/typograpy.css';
-import type { TocHeading } from '@utils/types';
+import { Comments, PostHeader, PostThumbnail } from '@/components/domain/post';
+import { Toc } from '@/components/navigation/toc';
+import type { TocHeading } from '@/utils/types';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 
@@ -46,7 +45,7 @@ const head = { title, description, ogImage };
   <article class="prose">
     {
       category === 'Project' && cover && (
-        <PostThumbnail image={cover} alt={title} link={link} />
+        <PostThumbnail image={cover} alt={title} link={link} title={title} />
       )
     }
     <slot />

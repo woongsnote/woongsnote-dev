@@ -1,5 +1,5 @@
 ---
-import { SITE_META } from '@config';
+import { SITE_META } from '@/config';
 import { ClientRouter } from 'astro:transitions';
 
 type Props = {
@@ -11,7 +11,8 @@ type Props = {
 
 const { title, description, ogImage, canonicalUrl } = Astro.props;
 
-const finalTitle = title ? `${title} | ${SITE_META.title}` : SITE_META.title;
+const finalTitle =
+  title === SITE_META.title ? SITE_META.title : `${title} | ${SITE_META.title}`;
 const finalDescription = description ?? SITE_META.description;
 
 const site = Astro.site;
@@ -60,10 +61,16 @@ const finalOgImage =
   <ClientRouter />
 
   <script is:inline>
-    const theme = localStorage.getItem('theme');
-
-    if (theme === 'light' || theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', theme);
+    const stored = localStorage.getItem('theme');
+    const system = matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+    document.documentElement.setAttribute(
+      'data-theme',
+      stored === 'system' || !stored ? system : stored
+    );
+    if (stored === 'light' || stored === 'dark') {
+      document.documentElement.setAttribute('data-theme', stored);
     }
   </script>
 </head>

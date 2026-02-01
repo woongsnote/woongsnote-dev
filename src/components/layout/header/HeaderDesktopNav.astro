@@ -1,0 +1,25 @@
+---
+import SearchButton from '@/components/search/SearchButton.astro';
+import HeaderNavLink from './HeaderNavLink.astro';
+
+type Props = {
+  linkInfo: {
+    href: string;
+    text: string;
+    description: string;
+    icon: any; // 아이콘은 desktop에선 안 쓰지만 타입 유지용
+  };
+};
+
+const { linkInfo } = Astro.props;
+---
+
+<nav aria-label="Primary navigation" class="flex items-center gap-3">
+  <SearchButton variant="pill" hint="Ctrl K" />
+
+  <HeaderNavLink
+    href={linkInfo.href}
+    text={linkInfo.text}
+    description={linkInfo.description}
+  />
+</nav>

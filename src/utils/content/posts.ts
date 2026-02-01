@@ -1,4 +1,4 @@
-import type { Post } from '@utils/types';
+import type { Post } from '@/utils/types';
 
 export const sortPostsByDateDesc = (a: Post, b: Post): number =>
   b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf();

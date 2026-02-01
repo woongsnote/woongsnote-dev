@@ -1,0 +1,29 @@
+---
+import SearchButton from '@/components/search/SearchButton.astro';
+import { IconButton } from '@/components/ui';
+
+type Props = {
+  linkInfo: {
+    href: string;
+    text: string;
+    description: string;
+    icon: any;
+  };
+};
+
+const { linkInfo } = Astro.props;
+const LinkIcon = linkInfo.icon;
+---
+
+<nav aria-label="Primary navigation" class="flex items-center gap-3">
+  <SearchButton variant="icon" />
+
+  <IconButton
+    as="a"
+    href={linkInfo.href}
+    label={linkInfo.text}
+    title={linkInfo.description}
+  >
+    <LinkIcon class="h-5 w-5" />
+  </IconButton>
+</nav>

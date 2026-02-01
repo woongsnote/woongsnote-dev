@@ -1,0 +1,56 @@
+---
+type Props = {
+  /** desktop pill / mobile icon */
+  variant?: 'pill' | 'icon';
+  /** hint text (Ctrl K / ⌘ K) */
+  hint?: string;
+};
+
+const { variant = 'pill', hint = 'Ctrl K' } = Astro.props;
+---
+
+{
+  variant === 'pill' ? (
+    <button
+      type="button"
+      data-search-open
+      class="bg-search-bg border-border hover:border-border-strong inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs text-gray-700 shadow-[0_1px_2px_rgba(0,0,0,0.06)] hover:bg-gray-50 hover:text-gray-900"
+      aria-label="Open search"
+    >
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 20 20"
+        class="h-4 w-4"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8.5 3.5a5 5 0 104.001 8.001l2.749 2.749a1 1 0 001.414-1.414l-2.749-2.749A5 5 0 008.5 3.5zM5.5 8.5a3 3 0 116 0 3 3 0 01-6 0z"
+          clip-rule="evenodd"
+        />
+      </svg>
+
+      <span class="text-[11px] text-gray-500 dark:text-gray-400">{hint}</span>
+    </button>
+  ) : (
+    <button
+      type="button"
+      data-search-open
+      class="inline-flex h-9 w-9 items-center justify-center rounded-md text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-900 dark:hover:text-gray-100"
+      aria-label="Open search"
+    >
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 20 20"
+        class="h-5 w-5"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8.5 3.5a5 5 0 104.001 8.001l2.749 2.749a1 1 0 001.414-1.414l-2.749-2.749A5 5 0 008.5 3.5zM5.5 8.5a3 3 0 116 0 3 3 0 01-6 0z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </button>
+  )
+}

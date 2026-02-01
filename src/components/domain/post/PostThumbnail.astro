@@ -5,18 +5,21 @@ type Props = {
   image: ImageMetadata;
   alt: string;
   link?: string;
+  title?: string;
 };
 
-const { image, alt, link } = Astro.props;
+const { image, alt, link, title } = Astro.props;
+
+const projectLink = link ?? title;
 ---
 
-<div class="mockup-browser border-base-300 rounded-lg border">
+<div class="mockup-browser">
   <div class="mockup-browser-toolbar">
     <span class="pl-4">
-      {link}
+      {projectLink}
     </span>
   </div>
-  <div class="border-base-300 flex justify-center border-t">
+  <div class="mockup-browser-content">
     <figure>
       <Image
         src={image}
