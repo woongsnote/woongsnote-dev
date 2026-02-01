@@ -1,5 +1,6 @@
 ---
-import { formatDate } from '@utils/formatDate';
+import { formatDate } from '@/lib/date';
+
 
 type Props = {
   date: Date;
@@ -10,4 +11,4 @@ const { date } = Astro.props;
 const displayDate = formatDate(date);
 ---
 
-<span class="text-sub ml-auto">{displayDate}</span>
+<span class="ml-auto">{displayDate}</span>

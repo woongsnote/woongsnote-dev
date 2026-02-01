@@ -1,45 +1,38 @@
 ---
-import { IconButton, Logo, ThemeToggle } from '@components/ui';
-import HeaderNavLink from './HeaderNavLink.astro';
+import { Logo, ThemeToggle } from '@/components/ui';
+import HeaderDesktopNav from './HeaderDesktopNav.astro';
+import HeaderMobileNav from './HeaderMobileNav.astro';
 import { getHeaderLinkInfo } from './useHeaderLink';
 
 const { pathname } = Astro.url;
+
 const linkInfo = getHeaderLinkInfo(pathname);
-const LinkIcon = linkInfo.icon;
 ---
 
 <header
   role="banner"
   class="bg-background/80 border-header/50 sticky top-0 z-10 mx-auto w-full max-w-3xl border-b px-4 backdrop-blur-md lg:px-0"
 >
-  <div class="flex h-14 items-center justify-between">
+  <div class="flex h-14 items-center gap-3">
     <Logo />
 
-    <nav aria-label="Primary navigation" class="flex items-center gap-3">
-      <ThemeToggle />
-
-      <div class="bg-divider h-5 w-px"></div>
-
-      {/* Mobile: icon-only */}
+    {/* Nav: responsive split (takes remaining space) */}
+    <div class="flex flex-1 items-center justify-end sm:justify-end">
+      {/* Mobile (< sm) */}
       <div class="sm:hidden">
-        <IconButton
-          as="a"
-          href={linkInfo.href}
-          label={linkInfo.text}
-          title={linkInfo.description}
-        >
-          <LinkIcon class="h-5 w-5" />
-        </IconButton>
+        <HeaderMobileNav linkInfo={linkInfo} />
       </div>
 
-      {/* >= sm: text */}
+      {/* Desktop (>= sm) */}
       <div class="hidden sm:block">
-        <HeaderNavLink
-          href={linkInfo.href}
-          text={linkInfo.text}
-          description={linkInfo.description}
-        />
+        <HeaderDesktopNav linkInfo={linkInfo} />
       </div>
-    </nav>
+    </div>
+
+    {/* Right actions: divider + theme toggle (render once) */}
+    <div class="flex items-center gap-2">
+      <span class="bg-header/40 h-5 w-px" aria-hidden="true"></span>
+      <ThemeToggle />
+    </div>
   </div>
 </header>

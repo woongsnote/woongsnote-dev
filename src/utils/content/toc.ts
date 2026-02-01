@@ -1,4 +1,4 @@
-import type { TocHeading, TocNode } from '@utils/types';
+import type { TocHeading, TocNode } from '@/utils/types';
 
 export const generateToc = (headings: TocHeading[]): TocNode[] => {
   const toc: TocNode[] = [];

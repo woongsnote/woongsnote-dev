@@ -1,5 +1,5 @@
 ---
-import Share from '@icons/share.svg';
+import Share from '@/icons/share.svg';
 
 interface Props {
   title: string;
@@ -20,7 +20,7 @@ const { title, url } = Astro.props;
 </button>
 
 <script>
-  import { sharePost } from '@utils/content';
+  import { sharePost } from 'src/utils/content';
 
   const shareButton = document.getElementById('shareButton');
   if (shareButton) {

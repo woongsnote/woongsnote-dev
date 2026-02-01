@@ -1,10 +1,9 @@
 ---
-import { ProfileImage } from '@components/domain/profile';
-import { PAGE_META } from '@config';
-import BaseLayout from '@layouts/BaseLayout.astro';
-import '@styles/typograpy.css';
+import { ProfileImage } from '@/components/domain/profile';
+import { PAGE_META } from '@/config';
+import BaseLayout from '@/layouts/BaseLayout.astro';
 
-const head = PAGE_META.about
+const head = PAGE_META.about;
 ---
 
 <BaseLayout head={head}>

@@ -20,7 +20,6 @@ Next.js 프로젝트에서 `shadcn/ui`를 사용해서, 반응형 사이드바�
 ※ 해당 컴포넌트에 대한 전체 코드: <a href="https://ui.shadcn.com/blocks#dashboard-02" target="_blank">dashboard-02</a>
 
 1. 패키지 설치
-
    - 먼저, `shadcn/ui`를 설치한다.
 
    ```bash title="install shadcn/ui"
@@ -28,11 +27,9 @@ Next.js 프로젝트에서 `shadcn/ui`를 사용해서, 반응형 사이드바�
    ```
 
 2. 코드 복사
-
    - `copy code`버튼을 클릭해서, `dashboard-02`의 코드를 가져와서 `app/page.tsx`에 붙여넣어 준다.
 
 3. 컴포넌트 추가
-
    - 아직 컴포넌트가 없으므로 오류가 생길 것이다. 아래 명령어로 컴포넌트를 추가한다.
 
    ```bash title="add components"
@@ -40,7 +37,6 @@ Next.js 프로젝트에서 `shadcn/ui`를 사용해서, 반응형 사이드바�
    ```
 
 4. 컴포넌트 분리
-
    - `mobile navigation`에 해당하는 부분을 `components/ui`에 `mobile-nav.tsx` 파일을 생성해서 옮겨준다.
 
    ```tsx title="mobile-nav.tsx"
@@ -185,14 +181,14 @@ Next.js 프로젝트에서 `shadcn/ui`를 사용해서, 반응형 사이드바�
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
               <Link
                 href="#"
-                className="text-muted-foreground flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary"
+                className="text-muted-foreground hover:text-primary flex items-center gap-3 rounded-lg px-3 py-2 transition-all"
               >
                 <Home className="h-4 w-4" />
                 Dashboard
               </Link>
               <Link
                 href="#"
-                className="text-muted-foreground flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary"
+                className="text-muted-foreground hover:text-primary flex items-center gap-3 rounded-lg px-3 py-2 transition-all"
               >
                 <ShoppingCart className="h-4 w-4" />
                 Orders
@@ -202,21 +198,21 @@ Next.js 프로젝트에서 `shadcn/ui`를 사용해서, 반응형 사이드바�
               </Link>
               <Link
                 href="#"
-                className="bg-muted flex items-center gap-3 rounded-lg px-3 py-2 text-primary transition-all hover:text-primary"
+                className="bg-muted text-primary hover:text-primary flex items-center gap-3 rounded-lg px-3 py-2 transition-all"
               >
                 <Package className="h-4 w-4" />
                 Products{' '}
               </Link>
               <Link
                 href="#"
-                className="text-muted-foreground flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary"
+                className="text-muted-foreground hover:text-primary flex items-center gap-3 rounded-lg px-3 py-2 transition-all"
               >
                 <Users className="h-4 w-4" />
                 Customers
               </Link>
               <Link
                 href="#"
-                className="text-muted-foreground flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary"
+                className="text-muted-foreground hover:text-primary flex items-center gap-3 rounded-lg px-3 py-2 transition-all"
               >
                 <LineChart className="h-4 w-4" />
                 Analytics

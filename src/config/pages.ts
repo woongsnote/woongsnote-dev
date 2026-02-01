@@ -1,4 +1,4 @@
-import type { HeadProps } from '@layouts/head';
+import type { HeadProps } from '@/layouts/head';
 
 export type PageKey = 'home' | 'about';
 

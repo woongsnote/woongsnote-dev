@@ -1,11 +1,12 @@
 ---
-import { Footer, Header } from '@components/layout';
-import { BackToTop } from '@components/navigation';
-import { SITE } from '@config';
+import { Footer, Header } from '@/components/layout';
+import { BackToTop } from '@/components/navigation';
+import { SITE } from '@/config';
 
-import BaseHead from '@layouts/BaseHead.astro';
+import BaseHead from './BaseHead.astro';
 
-import '@styles/global.css';
+import SearchModal from '@/components/search/SearchModal.astro';
+import '@/styles/global.css';
 import type { HeadProps } from './head';
 
 interface Props {
@@ -30,5 +31,12 @@ const { head } = Astro.props;
     </main>
     <BackToTop />
     <Footer />
+    <SearchModal />
   </body>
 </html>
+<script>
+  import { mountSearchController } from 'src/components/search/search-controller';
+  mountSearchController({
+    devPlaceholder: true,
+  });
+</script>

@@ -1,6 +1,6 @@
-import AboutIcon from '@icons/about.svg';
-import HomeIcon from '@icons/home.svg';
-import PostIcon from '@icons/post.svg';
+import AboutIcon from '@/icons/about.svg';
+import HomeIcon from '@/icons/home.svg';
+import PostIcon from '@/icons/post.svg';
 
 type IconComponent = typeof AboutIcon;
 

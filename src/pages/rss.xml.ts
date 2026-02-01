@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { SITE, SITE_META } from '@config';
-import { buildRssXml } from '@utils/rss';
+import { SITE, SITE_META } from '@/config';
+import { buildRssXml } from '@/lib/rss';
 
 export const GET: APIRoute = async ({ site }) => {
   const posts = await getCollection('blog');
@@ -19,9 +19,11 @@ export const GET: APIRoute = async ({ site }) => {
     items: publishedPosts,
   });
 
-  return new Response(xml, {
+  const body = new TextEncoder().encode(xml);
+
+  return new Response(body, {
     headers: {
-      'Content-Type': 'application/xml; charset=utf-8',
+      'Content-Type': 'application/rss+xml; charset=utf-8',
       'Cache-Control': 'public, max-age=600',
     },
   });

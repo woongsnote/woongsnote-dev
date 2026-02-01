@@ -1,89 +1,136 @@
 @import 'tailwindcss';
+@import './typography.css';
 
+/* ================================================
+   Font Loading
+   ================================================ */
+@font-face {
+  font-family: 'Pretendard Variable';
+  src: url('/fonts/PretendardVariable.woff2') format('woff2-variations');
+  font-display: swap;
+}
+/* ================================================
+   Theme
+   ================================================ */
 @theme {
-  --font-body: 'Pretendard Variable';
-  /* Background Colors */
+  /* Font (--font-* → font-* utility 생성) */
+  --font-body:
+    'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
+    'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', sans-serif;
+
+  /* ================================================
+   Colors (light-dark()는 runtime에서 color-scheme에 따라 리졸브) 
+   ================================================ */
   --color-background: light-dark(#fafafa, #0f0f23);
-  /* Text Colors */
+
   --color-primary: light-dark(#1a1a1a, #e2e8f0);
   --color-accent: light-dark(#2563eb, #38bdf8);
   --color-secondary: light-dark(#e4f1ff, #03346e);
+
   --color-sub: light-dark(#6c6c6c, #94a3b8);
   --color-toc: light-dark(#0000000d, #ffffff0d);
   --color-header: light-dark(#e5e7eb, #364153);
   --color-divider: light-dark(#d1d5dc, #4a5565);
 
-  /* ===============================
-     Spacing Scale (8px base)
-     =============================== */
+  /* Base (기본 구분선) */
+  --color-border-base: light-dark(
+    rgba(15, 23, 42, 0.08),
+    rgba(255, 255, 255, 0.08)
+  );
+  --color-border: var(--color-border-base);
 
-  --space-0: 0;
-  --space-1: 0.25rem; /* 4px */
-  --space-2: 0.5rem; /* 8px */
-  --space-3: 0.75rem; /* 12px */
-  --space-4: 1rem; /* 16px */
-  --space-5: 1.25rem; /* 20px */
-  --space-6: 1.5rem; /* 24px */
-  --space-8: 2rem; /* 32px */
-  --space-10: 2.5rem; /* 40px */
-  --space-12: 3rem; /* 48px */
-  --space-16: 4rem; /* 64px */
+  /* Subtle (divider, 내부 구분) */
+  --color-border-subtle: light-dark(
+    rgba(15, 23, 42, 0.06),
+    rgba(255, 255, 255, 0.06)
+  );
 
-  /* ===============================
-     Font Sizes (fluid)
-     =============================== */
+  /* Emphasis (hover, focus, active) */
+  --color-border-strong: light-dark(
+    rgba(15, 23, 42, 0.12),
+    rgba(255, 255, 255, 0.12)
+  );
 
+  --color-search-bg: light-dark(#ffffff, #111827);
+  /* ================================================
+   Search modal Colors (light-dark()는 runtime에서 color-scheme에 따라 리졸브) 
+   ================================================ */
+  --color-search-modal-bg: light-dark(#ffffff, #0b1220);
+  --color-search-modal-border: light-dark(#e5e7eb, #1f2937);
+
+  --color-search-modal-text: light-dark(#0f172a, #e5e7eb);
+  --color-search-modal-subtext: light-dark(#64748b, #94a3b8);
+
+  --color-search-modal-hover: light-dark(#f8fafc, #0f172a);
+  --color-search-modal-backdrop: light-dark(
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.55)
+  );
+
+  --color-search-kbd-bg: light-dark(#f8fafc, #0f172a);
+  --color-search-kbd-border: light-dark(#e5e7eb, #1f2937);
+
+  --color-search-input-placeholder: light-dark(#94a3b8, #64748b);
+
+  /* Spacing (공식 namespace: --spacing-* → p-*, m-* 등 utility 생성) */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+
+  /* Font Sizes (--font-size-* → text-* utility 생성) */
   --font-size-body: clamp(0.95rem, 0.9rem + 0.2vw, 1rem);
-
   --font-size-h1: clamp(1.75rem, 1.4rem + 1.5vw, 2rem);
   --font-size-h2: clamp(1.35rem, 1.15rem + 0.9vw, 1.5rem);
   --font-size-h3: clamp(1.15rem, 1.05rem + 0.5vw, 1.25rem);
   --font-size-h4: clamp(1.05rem, 1rem + 0.25vw, 1.125rem);
-
   --font-size-sm: clamp(0.85rem, 0.8rem + 0.15vw, 0.9rem);
 
+  /* Line Heights (--leading-* → leading-* utility 생성) */
   --leading-tight: 1.3;
   --leading-snug: 1.5;
   --leading-body: 1.9;
+  --leading-prose: 2;
   --leading-loose: 2.1;
 }
+/* ================================================
+   Color Scheme (light-dark() 동작의 prereq)
+   ================================================ */
+html {
+  color-scheme: light dark; /* OS 기본값 동작 */
+}
+html[data-theme='light'] {
+  color-scheme: light; /* 강제 라이트 */
+}
+html[data-theme='dark'] {
+  color-scheme: dark; /* 강제 다크 */
+}
 
-/* 강제 라이트 */
-:root[data-theme='light'] {
-  color-scheme: light;
-}
-/* 강제 다크 */
-:root[data-theme='dark'] {
-  color-scheme: dark;
-}
-
-@font-face {
-  font-family:
-    'Pretendard Variable',
-    Pretendard,
-    -apple-system,
-    BlinkMacSystemFont,
-    system-ui,
-    Roboto,
-    'Helvetica Neue',
-    'Segoe UI',
-    'Apple SD Gothic Neo',
-    'Noto Sans KR',
-    'Malgun Gothic',
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    sans-serif;
-  src: url('/fonts/PretendardVariable.woff2') format('woff2-variations');
-  font-display: swap;
-}
+/* ================================================
+   Base Styles
+   ================================================ */
 
 @layer base {
   html {
     @apply scroll-smooth antialiased;
   }
   body {
-    @apply bg-background font-body text-primary relative mx-auto flex min-h-screen flex-col;
+    @apply relative mx-auto flex min-h-screen flex-col;
+
+    background: var(--color-background);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    line-height: var(--leading-body);
   }
   main {
     @apply mx-auto mt-2 w-full max-w-3xl px-4 sm:px-6 lg:px-8;

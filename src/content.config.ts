@@ -5,7 +5,7 @@ import { glob } from 'astro/loaders';
 //Import Zod
 import { z } from 'astro/zod';
 
-import { CATEGORY_TYPES } from '@utils/types';
+import { CATEGORY_TYPES } from '@/utils/types';
 
 //Define a `loader` and `schema` for each collection
 const blogSchema = ({ image }: { image: ImageFunction }) =>

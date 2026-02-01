@@ -1,5 +1,5 @@
-import type { Post, CategoryCounts, CategoryPosts } from '@utils/types';
-import type { CategoryKey } from '@utils/types';
+import type { Post, CategoryCounts, CategoryPosts } from '@/utils/types';
+import type { CategoryKey } from '@/utils/types';
 
 export const getCategoryPosts = (
   posts: Post[],

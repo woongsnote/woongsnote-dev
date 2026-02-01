@@ -1,8 +1,8 @@
 ---
-import { PostsList } from '@components/domain/posts';
-import { PAGE_META } from '@config';
-import BaseLayout from '@layouts/BaseLayout.astro';
-import { sortPostsByDateDesc } from '@utils/content';
+import { PostsList } from '@/components/domain/posts';
+import { PAGE_META } from '@/config';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { sortPostsByDateDesc } from '@/utils/content';
 import { getCollection } from 'astro:content';
 
 const head = PAGE_META.home;
