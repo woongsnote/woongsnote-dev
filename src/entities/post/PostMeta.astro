@@ -1,0 +1,15 @@
+---
+import FormattedDate from '@/shared/ui/FormattedDate.astro';
+import ReadingTimeText from './ReadingTimeText.astro';
+import ShareButton from './ShareButton.astro';
+
+const { minutesToRead, title, publishedDate, link } = Astro.props;
+---
+
+<div class="flex items-center justify-between gap-2 text-sm lg:text-base">
+  <div class="text-sub flex gap-2">
+    <FormattedDate date={publishedDate} />
+    <ReadingTimeText readingTime={minutesToRead} />
+  </div>
+  <ShareButton title={title} url={link} />
+</div>

@@ -1,11 +1,13 @@
 ---
-import PostLayout from '@layouts/PostLayout.astro';
-import { sortPostsByDateDesc } from '@utils/content';
+import PostLayout from '@/app/layouts/PostLayout.astro';
+import { parseMinutes, sortPostsByDateDesc } from '@/shared/lib/content/posts';
+import { seo } from '@/shared/lib/seo';
+import { postToSeoSource } from '@/shared/lib/seo/adapter/post';
 import type { GetStaticPaths } from 'astro';
 import { getCollection, render } from 'astro:content';
 
 export const getStaticPaths = (async () => {
-  const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
+  const posts = (await getCollection('posts')).sort(sortPostsByDateDesc);
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
@@ -14,48 +16,18 @@ export const getStaticPaths = (async () => {
 
 const { post } = Astro.props;
 
-const slug = post.id;
-
-const currentUrl = `${slug}`;
-
-const ogImage = `${slug}/og.png`;
-
-const {
-  title,
-  description,
-  tags,
-  category,
-  cover,
-  publishedDate,
-  link,
-  author,
-} = post.data;
+const meta = seo.post(postToSeoSource(post));
 
 const { Content, headings, remarkPluginFrontmatter } = await render(post);
 
-const isHeadings = (headings?.length ?? 0) > 0;
-
-const minutesToRead = Number.parseInt(
-  String(remarkPluginFrontmatter?.minutesRead ?? '').match(/\d+/)?.[0] ?? '0',
-  10
-);
-const layoutProps = {
-  title,
-  description,
-  tags,
-  category,
-  cover,
-  isHeadings,
-  publishedDate,
-  minutesToRead,
-  headings,
-  ogImage,
-  link,
-  currentUrl,
-  author,
-};
+const readingTime = parseMinutes(remarkPluginFrontmatter.minutesRead);
 ---
 
-<PostLayout {...layoutProps}>
+<PostLayout
+  meta={meta}
+  post={post}
+  headings={headings}
+  readingTime={readingTime}
+>
   <Content />
 </PostLayout>

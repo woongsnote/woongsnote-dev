@@ -4,16 +4,15 @@ import { defineCollection, type ImageFunction } from 'astro:content';
 import { glob } from 'astro/loaders';
 //Import Zod
 import { z } from 'astro/zod';
-
-import { CATEGORY_TYPES } from '@utils/types';
+import { CATEGORY_TYPES } from './shared/types/content/category';
 
 //Define a `loader` and `schema` for each collection
-const blogSchema = ({ image }: { image: ImageFunction }) =>
+const postSchema = ({ image }: { image: ImageFunction }) =>
   z.object({
     title: z.string(),
     description: z.string(),
-    publishedDate: z.date(),
-    cover: image(),
+    publishedDate: z.coerce.date(),
+    cover: image().optional(),
     coverAlt: z.string().optional(),
     category: z.enum(CATEGORY_TYPES),
     tags: z.array(z.string()),
@@ -22,13 +21,12 @@ const blogSchema = ({ image }: { image: ImageFunction }) =>
     link: z.string().optional(),
   });
 
-const blog = defineCollection({
+const posts = defineCollection({
   loader: glob({
     base: './src/content/posts',
     pattern: '**/*.mdx',
   }),
-  schema: blogSchema,
+  schema: postSchema,
 });
 
-// Export a single `collections` object to register your collection(s)
-export const collections = { blog };
+export const collections = { posts };
