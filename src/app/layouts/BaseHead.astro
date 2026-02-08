@@ -2,12 +2,8 @@
 import { siteConfig } from '@/shared/config';
 import type { HeadMeta } from '@/shared/types/site/meta';
 
-const { title, description } = Astro.props as HeadMeta;
-
-// console.log(head, 'BaseHead');
-
-// const title = head.title ?? siteConfig.name;
-// const description = head.description ?? siteConfig.description;
+const { title, description, robots, canonicalUrl, ogImageUrl } =
+  Astro.props as HeadMeta;
 ---
 
 <head>
@@ -30,20 +26,20 @@ const { title, description } = Astro.props as HeadMeta;
   <meta name="title" content={title} />
   <meta name="description" content={description} />
 
-  <!-- {robots && <meta name="robots" content={robots} />} -->
+  {robots && <meta name="robots" content={robots} />}
   <!-- Open Graph -->
   <meta property="og:site_name" content={siteConfig.name} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <!-- <meta property="og:url" content={canonicalUrl} />
-<meta property="og:image" content={ogImageUrl} /> -->
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImageUrl} />
 
   <!-- Twitter -->
   <meta property="og:locale" content={siteConfig.locale} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <!-- <meta name="twitter:image" content={ogImageUrl} /> -->
+  <meta name="twitter:image" content={ogImageUrl} />
 </head>
 
 <script is:inline>
