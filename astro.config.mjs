@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import { remarkReadingTime } from './remark-reading-time.mjs';
 import rehypePrettyCode from 'rehype-pretty-code';
 import vercel from '@astrojs/vercel';
 
@@ -28,6 +29,7 @@ export default defineConfig({
   integrations: [
     mdx({
       syntaxHighlight: false,
+      remarkPlugins: [remarkReadingTime],
       rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
       optimize: true,
     }),

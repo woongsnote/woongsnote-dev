@@ -1,12 +1,11 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import BaseLayout from '@/app/layouts/BaseLayout.astro';
+import { seo } from '@/shared/lib/seo';
 
-const head = {
-  title: '404 NOT FOUND',
-};
+const meta = seo.page('notFound');
 ---
 
-<BaseLayout head={head}>
+<BaseLayout meta={meta}>
   <div
     class="z-20 mx-auto flex w-fit flex-col items-center justify-center gap-10 p-10"
   >

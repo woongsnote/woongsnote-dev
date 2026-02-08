@@ -1,15 +1,16 @@
 ---
-import { PostsList } from '@/components/domain/posts';
-import { PAGE_META } from '@/config';
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import { sortPostsByDateDesc } from '@/utils/content';
-import { getCollection } from 'astro:content';
+import BaseLayout from '@/app/layouts/BaseLayout.astro';
+import { getAllPosts } from '@/shared/lib/content/get-posts';
+import { seo } from '@/shared/lib/seo';
+import { PostsList } from '@/widgets/posts-list/ui';
 
-const head = PAGE_META.home;
+const meta = seo.page('home');
 
-const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
+const allPosts = await getAllPosts();
 ---
 
-<BaseLayout head={head}>
-  <PostsList posts={posts} />
+<BaseLayout meta={meta}>
+  <div class="container-frame">
+    <PostsList posts={allPosts} />
+  </div>
 </BaseLayout>

@@ -1,0 +1,42 @@
+---
+import { Comments, PostHeader } from '@/entities/post';
+import Toc from '@/features/toc/ui/Toc.astro';
+import type { PostEntry } from '@/shared/types';
+import type { HeadMeta } from '@/shared/types/site/meta';
+import type { MarkdownHeading } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+
+type Props = {
+  meta: HeadMeta;
+  post: PostEntry;
+  headings: MarkdownHeading[];
+  readingTime: number | null;
+};
+
+const { meta, post, headings, readingTime } = Astro.props;
+
+const { title, description, publishedDate, tags, category, link } = post.data;
+
+const hasToc = Array.isArray(headings) && headings.length > 0;
+
+const href = link ?? post.id;
+---
+
+<BaseLayout meta={meta}>
+  <PostHeader
+    title={title}
+    description={description}
+    publishedDate={publishedDate}
+    tags={tags}
+    category={category}
+    link={href}
+    minutesToRead={readingTime ?? 0}
+  />
+  {hasToc && <Toc headings={headings} />}
+  <article class="prose mx-auto w-full max-w-4xl px-4 lg:px-0">
+    <div class="min-w-0">
+      <slot />
+      <Comments />
+    </div>
+  </article>
+</BaseLayout>
