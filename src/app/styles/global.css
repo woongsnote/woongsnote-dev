@@ -102,10 +102,8 @@
   --leading-prose: 2;
   --leading-loose: 2.1;
 
-  
-  --layout-frame: 64rem;   /* 5xl */
+  --layout-frame: 64rem; /* 5xl */
   --layout-reading: 56rem; /* 4xl */
-
 }
 /* ================================================
    Color Scheme (light-dark() 동작의 prereq)
@@ -144,22 +142,9 @@ html[data-theme='dark'] {
 
 @layer utilities {
   .container-frame {
-    @apply mx-auto w-full px-4 max-w-(--layout-frame);
+    @apply mx-auto w-full max-w-(--layout-frame) px-4;
   }
   .container-reading {
-    @apply mx-auto w-full px-4 max-w-(--layout-reading);
+    @apply mx-auto w-full max-w-(--layout-reading) px-4;
   }
-}
-
-.kbd-mac,
-.kbd-win {
-  display: none;
-}
-
-html[data-platform="mac"] .kbd-mac {
-  display: inline;
-}
-
-html[data-platform="win"] .kbd-win {
-  display: inline;
 }
