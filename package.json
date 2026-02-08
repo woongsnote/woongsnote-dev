@@ -1,12 +1,13 @@
 {
   "name": "woongsnote-dev",
   "type": "module",
-  "version": "6.3.0",
+  "version": "6.4.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
+    "postbuild": "pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro"
   },
