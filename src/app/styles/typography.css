@@ -1,0 +1,226 @@
+/* ================================================
+   Typography — .prose 스코프
+   @tailwindcss/typography 대체
+
+   사용법:
+     <article class="prose">...</article>
+
+   스코프 밖으로 빠내기:
+     <div class="not-prose">...</div>
+   ================================================ */
+
+/* ─── Shiki / rehype-pretty-code 토큰 ─── */
+/* light-dark()를 여기서 한 번만 정의하여 아래에서 단일 var()로 참조 */
+@theme {
+  --color-code-title-bg: light-dark(
+    var(--color-gray-200),
+    var(--color-gray-800)
+  );
+  --color-code-title-fg: light-dark(
+    var(--color-gray-800),
+    var(--color-gray-200)
+  );
+  --color-highlight-line: light-dark(
+    rgba(59, 130, 246, 0.1),
+    rgba(59, 130, 246, 0.2)
+  );
+  --color-highlight-bar: light-dark(
+    var(--color-blue-400),
+    var(--color-blue-500)
+  );
+}
+
+@layer components {
+  .prose {
+    margin-top: var(--spacing-8);
+    color: var(--color-primary);
+    font-size: var(--font-size-body);
+    line-height: var(--leading-body);
+    word-break: keep-all;
+
+    /* ─── Headings ─── */
+    & h1 {
+      font-size: var(--font-size-h1);
+      margin-block: var(--spacing-12) var(--spacing-6);
+    }
+
+    & h2 {
+      font-size: var(--font-size-h2);
+      margin-block: var(--spacing-12) var(--spacing-5);
+    }
+
+    & h3 {
+      font-size: var(--font-size-h3);
+      margin-block: var(--spacing-10) var(--spacing-6);
+    }
+
+    /* ─── Paragraph ─── */
+    & p {
+      margin-bottom: var(--spacing-8);
+    }
+
+    /* ─── Links ─── */
+    & a {
+      color: var(--color-link);
+      text-decoration: underline;
+      font-weight: var(--font-weight-medium);
+      transition: color 0.2s;
+    }
+
+    & a:hover {
+      color: var(--color-link-hover);
+    }
+
+    /* ─── Lists ─── */
+    & ul,
+    & ol {
+      padding-left: var(--spacing-4);
+      margin-left: var(--spacing-2);
+      margin-bottom: var(--spacing-2);
+    }
+
+    & ul {
+      list-style: disc;
+    }
+    & ol {
+      list-style: decimal;
+    }
+
+    & li + li {
+      margin-top: var(--spacing-2);
+    }
+
+    /* ─── Horizontal Rule ─── */
+    & hr {
+      margin-block: var(--spacing-4);
+      border-color: var(--color-divider);
+    }
+
+    /* ─── Blockquote ─── */
+    & blockquote {
+      border-left: 4px solid var(--color-divider);
+      padding-left: var(--spacing-4);
+      margin: var(--spacing-6) 0;
+      font-style: italic;
+      color: var(--color-sub);
+    }
+
+    /* ─── Table ─── */
+    & table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--spacing-6);
+    }
+
+    & th,
+    & td {
+      border-width: 1px;
+      border-style: solid;
+      border-color: var(--color-divider);
+      padding: var(--spacing-3);
+      text-align: left;
+    }
+
+    & thead {
+      background-color: var(--color-header);
+      font-weight: 600;
+    }
+
+    /* ─── Inline Code ─── */
+    & :not(pre) > code {
+      background-color: light-dark(var(--shiki-light-bg), var(--shiki-dark-bg));
+      vertical-align: middle;
+      font-weight: 600;
+      padding-inline: var(--spacing-1);
+      padding-block: var(--spacing-1);
+      border-radius: var(--radius-sm);
+    }
+
+    & :not(pre) > code::before,
+    & :not(pre) > code::after {
+      display: none;
+    }
+
+    /* ─── Code Block ─── */
+    & pre {
+      background-color: light-dark(var(--shiki-light-bg), var(--shiki-dark-bg));
+      padding: var(--spacing-2);
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      margin-bottom: var(--spacing-6);
+      scrollbar-width: none;
+    }
+
+    & pre::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* ─── Shiki ─── */
+    & code[data-theme*=' '],
+    & code[data-theme*=' '] span {
+      color: light-dark(var(--shiki-light), var(--shiki-dark));
+      background-color: light-dark(var(--shiki-light-bg), var(--shiki-dark-bg));
+    }
+
+    & pre span[data-line] {
+      display: inline-block;
+      padding: var(--spacing-1);
+      line-height: var(--leading-snug);
+    }
+
+    & code span[data-highlighted-line] {
+      border-left-width: var(--spacing-1);
+      border-left-color: var(--color-highlight-bar);
+      background-color: var(--color-highlight-line);
+      padding-left: var(--spacing-2);
+    }
+
+    /* ─── rehype-pretty-code ─── */
+    & figcaption[data-rehype-pretty-code-title] {
+      background-color: var(--color-code-title-bg);
+      color: var(--color-code-title-fg);
+      font-family: var(--font-mono);
+      font-size: var(--font-size-sm);
+      font-weight: 700;
+      padding-inline: var(--spacing-5);
+      padding-block: var(--spacing-3);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    & figcaption[data-rehype-pretty-code-title] + pre {
+      margin-top: 0;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    }
+
+    & [data-rehype-pretty-code-figure] pre {
+      background-color: light-dark(var(--shiki-light-bg), var(--shiki-dark-bg));
+      padding-inline: 0;
+    }
+
+    /* ─── not-prose ─── */
+    & .not-prose,
+    & .not-prose * {
+      all: revert;
+    }
+  }
+}
+/* ─── Mockup Browser ─── */
+.mockup-browser {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  border-radius: var(--radius-lg);
+}
+.mockup-browser-toolbar {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-1);
+  padding: 4px 2px;
+  background: var(--color-header);
+}
+.mockup-browser-content {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,39 @@
+---
+import { siteConfig } from '@/shared/config';
+import type { HeadMeta } from '@/shared/types/site/meta';
+import BaseHead from './BaseHead.astro';
+
+import '@/app/styles/global.css';
+
+import BackToTop from '@/features/back-to-top/ui/BackToTop.astro';
+import SearchModal from '@/features/search/ui/SearchModal.astro';
+
+import { Footer } from '@/widgets/footer';
+import { Header } from '@/widgets/header';
+
+type Props = {
+  meta: HeadMeta;
+};
+
+const { meta } = Astro.props;
+---
+
+<!doctype html>
+<html lang={siteConfig.lang}>
+  <BaseHead head={meta} />
+  <body>
+    <Header />
+    <main role="main">
+      <slot />
+    </main>
+    <BackToTop />
+    <Footer />
+    <SearchModal />
+  </body>
+</html>
+<script>
+  import { mountSearchController } from 'src/features/search/model/controller';
+  mountSearchController({
+    devPlaceholder: true,
+  });
+</script>

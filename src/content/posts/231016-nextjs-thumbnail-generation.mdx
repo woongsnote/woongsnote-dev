@@ -1,7 +1,6 @@
 ---
 title: 'Next.js에서 섬네일 이미지 쉽게 생성하기'
 description: 'Vercel/og를 사용해서 섬네일과 OG(Open Graph) image를 자동으로 생성하는 방법'
-cover: '../../assets/blog-placeholder.jpg'
 publishedDate: 2023-10-16
 category: 'Tech'
 author: 'woongsnote'
@@ -40,24 +39,21 @@ export async function GET(request: Request) {
     const size = { width: 1200, height: 630 };
 
     return new ImageResponse(
-      (
-        <div
-          style={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundImage:
-              'linear-gradient(to bottom right, #00C0FF, #4218B8)',
-            fontSize: 64,
-            fontWeight: 600,
-          }}
-        >
-          <div style={{ color: 'white' }}>{title}</div>
-        </div>
-      ),
+      <div
+        style={{
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundImage: 'linear-gradient(to bottom right, #00C0FF, #4218B8)',
+          fontSize: 64,
+          fontWeight: 600,
+        }}
+      >
+        <div style={{ color: 'white' }}>{title}</div>
+      </div>,
       {
         ...size,
       }
@@ -134,24 +130,22 @@ export const contentType = 'image/png';
 // Image generation
 export default async function Image() {
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          color: 'white',
-          textShadow: `rgba(0, 0, 0, 0.4) 2px 2px 4px`,
-          border: 'none',
-        }}
-      >
-        <h2 style={{ fontSize: 56 }}>How to make thumbnail Easy</h2>
-      </div>
-    ),
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        color: 'white',
+        textShadow: `rgba(0, 0, 0, 0.4) 2px 2px 4px`,
+        border: 'none',
+      }}
+    >
+      <h2 style={{ fontSize: 56 }}>How to make thumbnail Easy</h2>
+    </div>,
     {
       ...size,
     }

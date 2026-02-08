@@ -1,0 +1,13 @@
+---
+import { formatDate } from '@/shared/lib/date';
+
+type Props = {
+  date: Date;
+};
+
+const { date } = Astro.props;
+
+const displayDate = formatDate(date);
+---
+
+<span class="ml-auto">{displayDate}</span>
