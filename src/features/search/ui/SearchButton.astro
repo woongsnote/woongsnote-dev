@@ -1,7 +1,7 @@
 ---
 import SearchIcon from '@/shared/assets/icons/search.svg';
 
-const kbdStyle = `bg-background/40 inline-flex items-center rounded-full border border-none px-1.5 py-0.5 font-sans text-xs/4 leading-none`
+const kbdStyle = `bg-background/40 inline-flex items-center rounded-full border border-none px-1.5 py-0.5 font-sans text-xs/4 leading-none`;
 ---
 
 <!-- Mobile -->
@@ -21,10 +21,6 @@ const kbdStyle = `bg-background/40 inline-flex items-center rounded-full border 
   aria-label="검색 열기 (⌘ + K)"
   class="border-divider/40 bg-background/60 text-sub hover:bg-background/50 hover:border-divider/60 focus-visible:ring-accent hidden items-center rounded-full border px-2 py-1 focus-visible:ring-2 focus-visible:outline-none sm:inline-flex"
 >
-  <SearchIcon class="h-4 w-4 opacity-70" />
-  <kbd
-    class={`${kbdStyle} kdb-mac`}
-  >
-    ⌘K
-  </kbd>
+  <SearchIcon class="size-4 opacity-70" />
+  <kbd class={`${kbdStyle} kdb-mac`}> ⌘K </kbd>
 </button>
