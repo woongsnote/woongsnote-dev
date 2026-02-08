@@ -1,5 +1,7 @@
 ---
 import SearchIcon from '@/shared/assets/icons/search.svg';
+
+const kbdStyle = `bg-background/40 inline-flex items-center rounded-full border border-none px-1.5 py-0.5 font-sans text-xs/4 leading-none`
 ---
 
 <!-- Mobile -->
@@ -9,7 +11,7 @@ import SearchIcon from '@/shared/assets/icons/search.svg';
   aria-label="검색 열기"
   class="text-sub hover:bg-secondary/50 focus-visible:ring-accent inline-flex items-center justify-center rounded-md focus-visible:ring-2 focus-visible:outline-none sm:hidden"
 >
-  <SearchIcon class="h-5 w-5" />
+  <SearchIcon class="size-5" />
 </button>
 
 <!-- Desktop chip -->
@@ -21,8 +23,13 @@ import SearchIcon from '@/shared/assets/icons/search.svg';
 >
   <SearchIcon class="h-4 w-4 opacity-70" />
   <kbd
-    class="bg-background/40 inline-flex items-center rounded-full border border-none px-1.5 py-0.5 font-sans text-xs/4 leading-none"
+    class={`${kbdStyle} kdb-win`}
   >
     Ctrl&nbsp;K
+  </kbd>
+  <kbd
+    class={`${kbdStyle} kdb-mac`}
+  >
+    ⌘K
   </kbd>
 </button>

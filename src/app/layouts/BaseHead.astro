@@ -55,6 +55,6 @@ const { title, description, robots, canonicalUrl, ogImageUrl } =
     document.documentElement.setAttribute('data-theme', stored);
   }
 
-  const isMac = /Mac|iPhone|iPad|iPod/i.test(navigator.platform);
-  document.documentElement.dataset.platform = isMac ? 'mac' : 'win';
+  document.documentElement.dataset.platform =
+    navigator.userAgentData?.platform === 'macOS' ? 'mac' : 'win';
 </script>
