@@ -1,0 +1,64 @@
+---
+import { siteConfig } from '@/shared/config';
+import type { HeadMeta } from '@/shared/types/site/meta';
+
+const { title, description } = Astro.props as HeadMeta;
+
+// console.log(head, 'BaseHead');
+
+// const title = head.title ?? siteConfig.name;
+// const description = head.description ?? siteConfig.description;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,viewport-fit=cover"
+  />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+  <meta name="generator" content={Astro.generator} />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="Woongsnote"
+    href={new URL('rss.xml', Astro.site)}
+  />
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+
+  <!-- {robots && <meta name="robots" content={robots} />} -->
+  <!-- Open Graph -->
+  <meta property="og:site_name" content={siteConfig.name} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <!-- <meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImageUrl} /> -->
+
+  <!-- Twitter -->
+  <meta property="og:locale" content={siteConfig.locale} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <!-- <meta name="twitter:image" content={ogImageUrl} /> -->
+</head>
+
+<script is:inline>
+  const stored = localStorage.getItem('theme');
+  const system = matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+  document.documentElement.setAttribute(
+    'data-theme',
+    stored === 'system' || !stored ? system : stored
+  );
+  if (stored === 'light' || stored === 'dark') {
+    document.documentElement.setAttribute('data-theme', stored);
+  }
+
+  const isMac = /Mac|iPhone|iPad|iPod/i.test(navigator.platform);
+  document.documentElement.dataset.platform = isMac ? 'mac' : 'win';
+</script>

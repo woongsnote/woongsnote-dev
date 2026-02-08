@@ -1,0 +1,14 @@
+---
+type Props = {
+  maxWidthClass?: string;
+};
+---
+
+<header
+  class="border-divider bg-background/80 sticky top-0 z-50 border-b backdrop-blur"
+>
+  <!-- ✅ 여기만 container-frame -->
+  <div class="container-frame flex h-14 items-center">
+    <slot />
+  </div>
+</header>

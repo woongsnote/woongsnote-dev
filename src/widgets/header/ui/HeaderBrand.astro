@@ -1,0 +1,15 @@
+---
+import { siteConfig } from '@/shared/config';
+
+const siteName = siteConfig.name;
+---
+
+<a
+  href="/"
+  class="group hover:text-accent text-2xl font-bold transition-colors"
+  aria-label={`Go to Homepage of ${siteName}`}
+>
+  <span class="inline-block transition-transform group-hover:scale-105">
+    {siteName}
+  </span>
+</a>

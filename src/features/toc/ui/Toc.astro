@@ -1,0 +1,26 @@
+---
+import { generateToc } from '@/shared/lib/content/toc';
+import Headings from './Headings.astro';
+
+const { headings } = Astro.props;
+
+const toc = generateToc(headings);
+---
+
+<details
+  open
+  class={`mx-auto mt-4 w-full max-w-3xl rounded-lg p-2 details-content:-ml-0.5 bg-toc`}
+>
+  <summary class="cursor-pointer px-3 py-1.5 font-semibold transition-colors"
+    >목차</summary
+  >
+  {
+    toc && toc.length > 0 && (
+      <>
+        {toc.map((heading) => (
+          <Headings heading={heading} />
+        ))}
+      </>
+    )
+  }
+</details>
