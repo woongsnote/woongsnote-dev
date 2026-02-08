@@ -1,6 +1,6 @@
 ---
 import { groupPostsByYear } from '@/shared/lib/content/posts';
-import PostItem from './PostItem.astro';
+import YearSection from './YearSection.astro';
 
 const { posts } = Astro.props;
 
@@ -10,17 +10,7 @@ const groupedPosts = groupPostsByYear(posts);
 <section class="space-y-12">
   {
     groupedPosts.map(({ year, posts }) => (
-      <div class="space-y-4">
-        <h2 class="text-sub text-sm font-semibold">{year}</h2>
-
-        <ul class="space-y-2">
-          {posts.map((post) => (
-            <li>
-              <PostItem post={post} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <YearSection year={year} posts={posts} />
     ))
   }
 </section>

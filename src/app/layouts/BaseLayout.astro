@@ -31,8 +31,8 @@ const { meta } = Astro.props;
     <SearchModal />
   </body>
 </html>
-<script>
-  import { mountSearchController } from 'src/features/search/model/controller';
+<script type="module" is:inline>
+  import { mountSearchController } from '/src/features/search/model/controller';
   mountSearchController({
     devPlaceholder: true,
   });
