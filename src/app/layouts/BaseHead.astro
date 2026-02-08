@@ -54,7 +54,4 @@ const { title, description, robots, canonicalUrl, ogImageUrl } =
   if (stored === 'light' || stored === 'dark') {
     document.documentElement.setAttribute('data-theme', stored);
   }
-
-  document.documentElement.dataset.platform =
-    navigator.userAgentData?.platform === 'macOS' ? 'mac' : 'win';
 </script>
