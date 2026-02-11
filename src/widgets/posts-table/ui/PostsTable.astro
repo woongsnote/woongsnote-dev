@@ -1,25 +1,10 @@
 ---
-import { fmtHomeDate } from '@/shared/lib/date';
 import PostRow from './PostRow.astro';
 
 const { posts, showHeader = true } = Astro.props;
-const latest = posts[0];
 ---
 
 <section class="mt-8">
-  <!-- (A) 섹션 타이틀: 제품 느낌 -->
-  <div class="mt-6 mb-3 flex items-center justify-between px-4">
-    <h2 class="text-sub text-xs font-medium tracking-wider uppercase">
-      Latest
-    </h2>
-
-    <div class="text-sub text-xs">
-      <span>{posts.length} posts</span>
-      <span class="mx-2 opacity-40">·</span>
-      <span>Updated {fmtHomeDate(latest.data.publishedDate)}</span>
-    </div>
-  </div>
-
   <!-- Header -->
   <div
     class="text-sub border-border/60 flex items-center gap-4 border-b px-4 pb-2 text-[12px] font-medium"
