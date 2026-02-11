@@ -1,92 +1,41 @@
 ---
-type Props = { placeholder?: string };
-const { placeholder = 'Search posts…' } = Astro.props;
+const { id = 'search-modal' } = Astro.props;
 ---
 
-<dialog
-  id="search-dialog"
-  class="m-0 w-full max-w-none bg-transparent p-0"
+<div
+  id={id}
+  class="fixed inset-0 z-50 hidden"
+  aria-hidden="true"
+  data-search-modal
 >
-  <!-- Backdrop (dialog 기본 backdrop 대신, 변수 기반으로 제어) -->
-  <div class="fixed inset-0 bg-search-modal-backdrop"></div>
+  <div class="absolute inset-0 bg-black/40" data-close></div>
 
-  <div class="fixed inset-0 flex items-start justify-center px-4 pt-16 sm:pt-24">
+  <div
+    class="bg-background relative mx-auto mt-24 w-[min(720px,92vw)] rounded-2xl shadow-xl"
+  >
+    <div class="border-b p-3">
+      <input
+        type="search"
+        placeholder="검색… (⌘K / Ctrl+K)"
+        class="w-full rounded-lg border px-3 py-2 outline-none"
+        data-search-input
+      />
+    </div>
+
+    <div class="max-h-[60vh] overflow-auto p-3">
+      <ul class="space-y-2" data-results></ul>
+      <p class="text-sub mt-3 text-sm" data-empty hidden>검색 결과가 없어요.</p>
+    </div>
+
     <div
-      data-search-panel
-      class="w-full max-w-2xl overflow-hidden rounded-2xl border bg-search-modal-bg text-search-modal-text shadow-2xl"
-      style="border-color: var(--color-search-modal-border);"
+      class="text-sub flex items-center justify-between border-t p-3 text-xs"
     >
-      <!-- Top -->
-      <div
-        class="flex items-center gap-3 border-b px-4 py-3"
-        style="border-color: var(--color-search-modal-border);"
-      >
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 20 20"
-          class="h-5 w-5 text-search-modal-subtext"
-          fill="currentColor"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8.5 3.5a5 5 0 104.001 8.001l2.749 2.749a1 1 0 001.414-1.414l-2.749-2.749A5 5 0 008.5 3.5zM5.5 8.5a3 3 0 116 0 3 3 0 01-6 0z"
-            clip-rule="evenodd"
-          />
-        </svg>
-
-        <input
-          id="search-input"
-          type="search"
-          class="w-full bg-transparent py-1 text-sm outline-none placeholder:text-search-input-placeholder"
-          placeholder={placeholder}
-          autocomplete="off"
-        />
-
-        <button
-          type="button"
-          data-search-close
-          class="rounded-md px-2 py-1 text-xs text-search-modal-subtext hover:bg-(--color-search-modal-hover)"
-          aria-label="Close search"
-        >
-          ESC
-        </button>
-      </div>
-
-      <!-- Results -->
-      <div class="max-h-[60vh] overflow-auto px-2 py-2 sm:px-3">
-        <div
-          id="search-state"
-          class="px-2 py-3 text-sm text-search-modal-subtext"
-        >
-          Type to search…
-        </div>
-
-        <ul id="search-results" class="hidden">
-          <!-- JS renders <li> -->
-        </ul>
-      </div>
-
-      <!-- Footer -->
-      <div
-        class="flex items-center justify-between gap-2 border-t px-4 py-2 text-xs text-search-modal-subtext"
-        style="border-color: var(--color-search-modal-border);"
-      >
-        <span class="flex items-center gap-2">
-          <span class="inline-flex items-center gap-1">
-            <kbd
-              class="rounded px-1.5 py-0.5"
-              style="background: var(--color-search-kbd-bg); border: 1px solid var(--color-search-kbd-border);"
-            >↑</kbd>
-            <kbd
-              class="rounded px-1.5 py-0.5"
-              style="background: var(--color-search-kbd-bg); border: 1px solid var(--color-search-kbd-border);"
-            >↓</kbd>
-          </span>
-          <span>to navigate • Enter to open</span>
-        </span>
-
-        <span>Pagefind</span>
-      </div>
+      <span>ESC 닫기</span>
+      <span>⌘K / Ctrl+K 열기</span>
     </div>
   </div>
-</dialog>
+</div>
+
+<script>
+  import './SearchModal.client';
+</script>
