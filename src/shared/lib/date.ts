@@ -10,7 +10,7 @@ export const formatDate = (date: Date | string | number): string => {
   const day = String(d.getDate()).padStart(2, '0'); // 2자리 일
 
   return `${year}. ${month}. ${day}`;
-}; 
+};
 // ✅ 홈용 날짜(연도 포함) 예: 24.08.02
 export const fmtHomeDate = (d: Date) =>
   new Intl.DateTimeFormat('ko-KR', {
@@ -31,6 +31,5 @@ export const fmtHomeDateShort = (d: Date) =>
     day: '2-digit',
   })
     .format(d)
-    .replaceAll('. ', '.')
-    .replace(/\.$/, '')
-    .trim();
+    .replaceAll('. ', '-')
+    .replace('.', '');
