@@ -25,6 +25,13 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwind()],
+     build: {
+      rollupOptions: {
+        external: ['/pagefind/pagefind.js']
+      },} ,   
+      optimizeDeps: {
+        exclude: ['pagefind']
+    }
   },
   integrations: [
     mdx({

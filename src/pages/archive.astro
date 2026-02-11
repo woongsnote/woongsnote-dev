@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/app/layouts/BaseLayout.astro';
+import { getArchivePosts } from '@/shared/lib/content/posts.channels';
+import { seo } from '@/shared/lib/seo';
+import { PostsList } from '@/widgets/posts-list/ui';
+
+const meta = seo.page('archive');
+const allPosts = await getArchivePosts();
+---
+
+<BaseLayout meta={meta}>
+  <div class="container-frame">
+    <PostsList posts={allPosts} />
+  </div>
+</BaseLayout>

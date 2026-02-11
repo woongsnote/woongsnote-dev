@@ -15,8 +15,11 @@ const { linkInfo } = Astro.props;
 const LinkIcon = linkInfo.icon;
 ---
 
-<nav aria-label="Primary navigation" class="flex items-center gap-3">
-  <SearchButton hint='Ctrl K' variant="pill" />
+<nav
+  aria-label="Primary navigation"
+  class="flex flex-1 items-center justify-end gap-3"
+>
+  <SearchButton hint="Ctrl K" variant="pill" />
 
   <IconButton
     as="a"

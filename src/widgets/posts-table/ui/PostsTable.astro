@@ -1,0 +1,20 @@
+---
+import PostRow from './PostRow.astro';
+
+const { posts, showHeader = true } = Astro.props;
+---
+
+<section class="mt-8">
+  <!-- Header -->
+  <div
+    class="text-sub border-border/60 flex items-center gap-4 border-b px-4 pb-2 text-[12px] font-medium"
+  >
+    <span class="w-16">Date</span>
+    <span>Title</span>
+  </div>
+
+  <!-- Body -->
+  <ul>
+    {posts.map((post) => <PostRow post={post} />)}
+  </ul>
+</section>
