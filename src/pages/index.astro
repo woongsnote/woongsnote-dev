@@ -1,16 +1,15 @@
 ---
 import BaseLayout from '@/app/layouts/BaseLayout.astro';
-import { getAllPosts } from '@/shared/lib/content/get-posts';
+import { getHomePosts } from '@/shared/lib/content/posts.channels';
 import { seo } from '@/shared/lib/seo';
-import { PostsList } from '@/widgets/posts-list/ui';
+import PostsTable from '@/widgets/posts-table/ui/PostsTable.astro';
 
 const meta = seo.page('home');
-
-const allPosts = await getAllPosts();
+const homePosts = await getHomePosts();
 ---
 
 <BaseLayout meta={meta}>
   <div class="container-frame">
-    <PostsList posts={allPosts} />
+    <PostsTable posts={homePosts} />
   </div>
 </BaseLayout>

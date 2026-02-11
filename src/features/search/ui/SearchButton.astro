@@ -8,7 +8,7 @@ const kbdStyle = `bg-background/40 inline-flex items-center rounded-full border 
 <button
   type="button"
   data-search-open
-  aria-label="검색 열기"
+  aria-label="검색 (Ctrl 또는 ⌘ + K)"
   class="text-sub hover:bg-secondary/50 focus-visible:ring-accent inline-flex items-center justify-center rounded-md focus-visible:ring-2 focus-visible:outline-none sm:hidden"
 >
   <SearchIcon class="size-5" />
@@ -24,3 +24,16 @@ const kbdStyle = `bg-background/40 inline-flex items-center rounded-full border 
   <SearchIcon class="size-4 opacity-70" />
   <kbd class={`${kbdStyle} kdb-mac`}> ⌘K </kbd>
 </button>
+<script>
+  // 속성 없는 script => 번들링 OK
+  const btn = document.querySelector('[data-search-open]');
+  btn?.addEventListener('click', () => {
+    // 모달이 data-search-modal이므로, 열기만 토글(간단)
+    const root = document.querySelector('[data-search-modal]');
+    if (!(root instanceof HTMLElement)) return;
+    root.classList.remove('hidden');
+    root.setAttribute('aria-hidden', 'false');
+    const input = root.querySelector('[data-search-input]');
+    if (input instanceof HTMLInputElement) queueMicrotask(() => input.focus());
+  });
+</script>

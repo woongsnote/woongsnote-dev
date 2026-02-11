@@ -38,4 +38,5 @@ export const PAGE_META_OVERRIDES: Record<PageKey, PageMetaOverride> = {
     robots: 'noindex, nofollow',
     description: '페이지를 찾을 수 없습니다.',
   },
+  archive: { title: 'Archive', description: '전체 글 모음' },
 } as const satisfies Record<PageKey, PageMetaOverride>;
