@@ -1,0 +1,18 @@
+---
+type Props = {
+  postsCount: number;
+  updatedDate: string;
+};
+
+const { postsCount, updatedDate } = Astro.props;
+---
+
+<section class="mt-6 mb-3 flex items-center justify-between px-4">
+  <h2 class="text-sub text-xs font-medium tracking-wider uppercase">Latest</h2>
+
+  <div class="text-sub text-xs">
+    <span>{postsCount} posts</span>
+    <span class="mx-2 opacity-40">·</span>
+    <span>Updated {updatedDate}</span>
+  </div>
+</section>
