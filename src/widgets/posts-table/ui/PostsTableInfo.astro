@@ -7,12 +7,23 @@ type Props = {
 const { postsCount, updatedDate } = Astro.props;
 ---
 
-<section class="mt-6 mb-3 flex items-center justify-between px-4">
-  <h2 class="text-sub text-xs font-medium tracking-wider uppercase">Latest</h2>
-
+<section class="mt-10 flex items-center justify-between pb-3">
   <div class="text-sub text-xs">
     <span>{postsCount} posts</span>
     <span class="mx-2 opacity-40">·</span>
     <span>Updated {updatedDate}</span>
   </div>
+  <a
+    href="/archive"
+    class="text-sub hover:text-primary focus-visible:ring-accent/40 rounded text-xs transition focus-visible:ring-2 focus-visible:outline-none"
+  >
+    Archive
+    <span
+      class="ml-1 inline-block transition-transform group-hover:translate-x-0.5"
+    >
+      →
+    </span>
+  </a>
 </section>
+
+<div class="border-t border-white/5"></div>
