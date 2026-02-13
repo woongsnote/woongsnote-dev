@@ -1,20 +1,20 @@
 ---
+import type { PostEntry } from '@/shared/types';
 import PostRow from './PostRow.astro';
 
-const { posts, showHeader = true } = Astro.props;
+type Props = {
+  posts: PostEntry[];
+};
+
+const { posts } = Astro.props;
 ---
 
-<section class="mt-8">
-  <!-- Header -->
+<section class="mt-4">
   <div
-    class="text-sub border-border/60 flex items-center gap-4 border-b px-4 pb-2 text-[12px] font-medium"
+    class="rounded-xl border border-border-base bg-surface"
   >
-    <span class="w-16">Date</span>
-    <span>Title</span>
+    <ul>
+      {posts.map((post) => <PostRow post={post} />)}
+    </ul>
   </div>
-
-  <!-- Body -->
-  <ul>
-    {posts.map((post) => <PostRow post={post} />)}
-  </ul>
 </section>

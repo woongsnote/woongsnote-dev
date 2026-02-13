@@ -12,23 +12,21 @@ const href = post.id;
 
 const { title, publishedDate } = post.data;
 
-const date = fmtHomeDateShort(publishedDate)
+const date = fmtHomeDateShort(publishedDate);
 ---
 
-<li class="border-border/40 border-b last:border-b-0">
+<li class="border-border-subtle border-b last:border-b-0">
   <a
     href={href}
-    class="group hover:bg-secondary/40 active:bg-secondary/60 focus-visible:ring-accent/40 flex min-h-11 items-center justify-between px-4 py-3 transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none"
+    class="group focus-visible:ring-accent/40 hover:bg-surface-hover active:bg-surface-active flex min-h-12 items-center justify-between px-4 py-4 transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none"
   >
     <div class="flex min-w-0 items-center gap-4">
-      <!-- Date -->
       <span
-        class="text-sub w-16 shrink-0 text-[12px] font-normal tracking-tight"
+        class="text-sub opacity-date w-20 shrink-0 text-[12px] font-normal tracking-wide"
       >
         {date}
       </span>
 
-      <!-- Title -->
       <span
         class="text-foreground group-hover:text-accent truncate text-[15px] font-medium tracking-tight transition-colors"
       >
@@ -36,9 +34,8 @@ const date = fmtHomeDateShort(publishedDate)
       </span>
     </div>
 
-    <!-- Arrow (desktop subtle reveal) -->
     <span
-      class="text-sub translate-x-1 text-[13px] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+      class="text-sub text-[13px] opacity-0 transition-all duration-200 group-hover:opacity-100"
     >
       →
     </span>
