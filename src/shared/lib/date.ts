@@ -24,12 +24,19 @@ export const fmtHomeDate = (d: Date) =>
     .replace(/\.$/, '') // 끝에 '.' 제거
     .trim();
 // ✅ 더 미니멀한 버전(연도 제외) 예: 08.02 (원하면 교체)
-export const fmtHomeDateShort = (d: Date) =>
-  new Intl.DateTimeFormat('ko-KR', {
-    timeZone: 'Asia/Seoul',
-    month: '2-digit',
-    day: '2-digit',
-  })
-    .format(d)
-    .replaceAll('. ', '-')
-    .replace('.', '');
+export const fmtHomeDateShort = (d: Date) => {
+  const now = new Date();
+
+  const year = d.getFullYear();
+  const currentYear = now.getFullYear();
+
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+
+  if (year === currentYear) {
+    return `${month}.${day}`;
+  }
+
+  const shortYear = String(year).slice(-2);
+  return `${shortYear}.${month}.${day}`;
+};

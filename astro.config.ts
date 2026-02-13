@@ -13,25 +13,24 @@ const prettyCodeOptions = {
     light: 'github-light',
   },
   keepBackground: true,
-  filterMetaString: (string) => string.replace(/filename="[^"]*"/, ''),
+  filterMetaString: (s: string) => s.replace(/filename="[^"]*"/, ''),
 };
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.woongsnote.dev',
-  trailingSlash: 'never',
   build: {
-    format: 'file',
+    format: 'directory',
   },
+  trailingSlash: 'never',
   vite: {
     plugins: [tailwind()],
-     build: {
-      rollupOptions: {
-        external: ['/pagefind/pagefind.js']
-      },} ,   
-      optimizeDeps: {
-        exclude: ['pagefind']
-    }
+  },
+  image: {
+    responsiveStyles: true,
+    layout: 'constrained',
+    objectFit: 'cover',
+    objectPosition: 'center',
   },
   integrations: [
     mdx({
@@ -49,6 +48,7 @@ export default defineConfig({
   security: {
     checkOrigin: true,
   },
+  output: 'static',
   adapter: vercel({
     imageService: true,
   }),
