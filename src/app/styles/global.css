@@ -164,3 +164,15 @@ html[data-theme='dark'] {
     @apply mx-auto w-full max-w-(--layout-reading) px-4;
   }
 }
+
+@keyframes loadingbar {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+.animate-loadingbar { animation: loadingbar 900ms linear infinite; }
+
+mark {
+  background: transparent;
+  color: var(--accent);
+  font-weight: 500;
+}
