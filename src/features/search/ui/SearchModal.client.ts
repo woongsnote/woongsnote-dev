@@ -73,7 +73,7 @@ export function mountSearchModal(): void {
     }
 
     const results = await searchPagefind(q);
-    renderItems(listNode, emptyNode, results.slice(0, 10));
+    renderItems(listNode, emptyNode, results);
   };
 
   const debounce = (term: string) => {

@@ -37,5 +37,10 @@ export async function searchPagefind(
 
   const pf = await loadPagefind();
   const res = await pf.search(q);
-  return res.results ?? [];
+
+  const handles = (res.results ?? []).slice(0, 10);
+  const items = await Promise.all(handles.map((h) => h.data()));
+
+  return items as unknown as PagefindSearchResult[];
+
 }
