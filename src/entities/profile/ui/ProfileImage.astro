@@ -2,23 +2,13 @@
 import profile from '@/shared/assets/images/avatar.png';
 import { Image } from 'astro:assets';
 
-type Props = {
-  position: string;
-};
-
-const { position } = Astro.props;
-
-const imageHeight = {
-  header: 'h-full',
-  content: 'h-48',
-};
 ---
 
-<figure class={`${imageHeight[position]}`}>
+<figure class="m-0 size-48">
   <Image
     alt="profile"
     src={profile}
     loading="eager"
-    class="h-full w-auto rounded-full object-cover"
+    class="block size-full rounded-full object-cover"
   />
 </figure>
