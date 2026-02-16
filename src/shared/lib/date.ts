@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 /**
  * 날짜를 "YYYY. MM. DD" 형식으로 변환
  * @param date Date 객체
@@ -11,32 +12,13 @@ export const formatDate = (date: Date | string | number): string => {
 
   return `${year}. ${month}. ${day}`;
 };
-// ✅ 홈용 날짜(연도 포함) 예: 24.08.02
-export const fmtHomeDate = (d: Date) =>
-  new Intl.DateTimeFormat('ko-KR', {
-    timeZone: 'Asia/Seoul',
-    year: '2-digit',
-    month: '2-digit',
-    day: '2-digit',
-  })
-    .format(d)
-    .replaceAll('. ', '.')
-    .replace(/\.$/, '') // 끝에 '.' 제거
-    .trim();
-// ✅ 더 미니멀한 버전(연도 제외) 예: 08.02 (원하면 교체)
-export const fmtHomeDateShort = (d: Date) => {
-  const now = new Date();
 
-  const year = d.getFullYear();
-  const currentYear = now.getFullYear();
-
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-
-  if (year === currentYear) {
-    return `${month}.${day}`;
-  }
-
-  const shortYear = String(year).slice(-2);
-  return `${shortYear}.${month}.${day}`;
+/**
+ * 홈용 날짜 표시
+ * 날짜를 "YY. MM. DD" 형식으로 변환
+ * @param date Date 객체
+ * @returns "26. 01. 25" 같은 문자열
+ */
+export const fmtHomeDateShort = (date: Date) => {
+  return format(date, 'yy.MM.dd');
 };
