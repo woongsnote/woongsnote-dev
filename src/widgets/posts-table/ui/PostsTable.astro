@@ -9,12 +9,8 @@ type Props = {
 const { posts } = Astro.props;
 ---
 
-<section class="mt-4">
-  <div
-    class="rounded-xl border border-border-base bg-surface"
-  >
-    <ul>
-      {posts.map((post) => <PostRow post={post} />)}
-    </ul>
-  </div>
+<section class="mt-3">
+  <ul>
+    {posts.map((post) => <PostRow post={post} />)}
+  </ul>
 </section>

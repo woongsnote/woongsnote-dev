@@ -1,20 +1,17 @@
 ---
 import BaseLayout from '@/app/layouts/BaseLayout.astro';
 import { getHomePosts } from '@/shared/lib/content/posts.channels';
-import { fmtHomeDate } from '@/shared/lib/date';
 import { seo } from '@/shared/lib/seo';
+import ArchiveLink from '@/widgets/posts-table/ui/ArchiveLink.astro';
 import PostsTable from '@/widgets/posts-table/ui/PostsTable.astro';
-import PostsTableInfo from '@/widgets/posts-table/ui/PostsTableInfo.astro';
 
 const meta = seo.page('home');
 const homePosts = await getHomePosts();
-
-const latestDate = fmtHomeDate(homePosts[0].data.publishedDate);
 ---
 
 <BaseLayout meta={meta}>
   <div class="container-frame">
-    <PostsTableInfo postsCount={homePosts.length} updatedDate={latestDate} />
     <PostsTable posts={homePosts} />
+    <ArchiveLink />
   </div>
 </BaseLayout>
