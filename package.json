@@ -1,7 +1,7 @@
 {
   "name": "woongsnote-dev",
   "type": "module",
-  "version": "6.4.4",
+  "version": "6.4.7",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -12,15 +12,15 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.7-beta.1",
-    "@astrojs/mdx": "^5.0.0-beta.7",
+    "@astrojs/mdx": "^5.0.0-beta.8",
     "@astrojs/rss": "^4.0.15-beta.3",
     "@astrojs/sitemap": "^3.6.1-beta.3",
-    "@astrojs/vercel": "^10.0.0-beta.4",
-    "@tailwindcss/vite": "^4.1.18",
+    "@astrojs/vercel": "^10.0.0-beta.5",
+    "@tailwindcss/vite": "^4.2.0",
     "@vercel/analytics": "^1.6.1",
     "@vercel/og": "^0.8.6",
     "@vercel/speed-insights": "^1.3.1",
-    "astro": "^6.0.0-beta.11",
+    "astro": "^6.0.0-beta.14",
     "date-fns": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
@@ -33,13 +33,13 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-astro-organize-imports": "^0.4.11",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "^4.2.0",
     "typescript": "^5.9.3"
   },
   "engines": {
     "node": "24.x"
   },
   "volta": {
-    "node": "24.13.0"
+    "node": "24.13.1"
   }
 }
