@@ -1,20 +1,26 @@
 ---
 import PostLayout from '@/app/layouts/PostLayout.astro';
-import { parseMinutes, sortPostsByDateDesc } from '@/shared/lib/content/posts';
+import { parseMinutes } from '@/shared/lib/content/posts';
+import { getPostBySlug, getPosts } from '@/shared/lib/content/posts.query';
 import { seo } from '@/shared/lib/seo';
 import { postToSeoSource } from '@/shared/lib/seo/adapter/post';
 import type { GetStaticPaths } from 'astro';
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 
 export const getStaticPaths = (async () => {
-  const posts = (await getCollection('posts')).sort(sortPostsByDateDesc);
+  const posts = await getPosts();
   return posts.map((post) => ({
     params: { slug: post.id },
-    props: { post },
   }));
 }) satisfies GetStaticPaths;
 
-const { post } = Astro.props;
+const { slug } = Astro.params;
+
+const post = await getPostBySlug(slug!);
+
+if (!post) {
+  throw new Error(`Post not found: ${slug}`);
+}
 
 const meta = seo.post(postToSeoSource(post));
 

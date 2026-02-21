@@ -1,5 +1,5 @@
 import type { SvgComponent } from 'astro/types';
-import type { Post } from './post';
+import type { PostModel } from './post';
 
 export const CATEGORY_TYPES = ['Diary', 'Tech', 'Project'] as const;
 export type CategoryType = (typeof CATEGORY_TYPES)[number];
@@ -16,4 +16,5 @@ export type Category = {
 export type CategoryKey = CategoryType;
 
 export type CategoryCounts = Record<CategoryKey, number>;
-export type CategoryPosts = Record<CategoryKey, Post[]>;
+
+export type CategoryPosts = Record<CategoryKey, PostModel[]>;

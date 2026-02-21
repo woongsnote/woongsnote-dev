@@ -3,7 +3,10 @@ import { SocialLinks } from '@/entities/social';
 const year = new Date().getFullYear();
 ---
 
-<footer role="contentinfo" class="footer footer-center mt-4 mb-1 gap-2">
+<footer
+  role="contentinfo"
+  class="mx-auto mt-auto flex w-full max-w-5xl flex-col items-center gap-2 pt-16 pb-20"
+>
   <SocialLinks />
   <p class="text-center text-sm">
     &copy; {year}. woongsnote All rights reserved.

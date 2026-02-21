@@ -4,20 +4,67 @@ import ProfileImage from '@/entities/profile/ui/ProfileImage.astro';
 import { seo } from '@/shared/lib/seo';
 
 const meta = seo.page('about');
+
+const focus = [
+  '컴포넌트 구조 설계',
+  '확장 가능한 UI 아키텍처 구성',
+  '일관된 디자인 시스템 적용',
+  '유지보수를 고려한 코드 구조',
+] as const;
 ---
 
 <BaseLayout meta={meta}>
   <div class="container-reading">
-    <header class="mt-8 flex items-center gap-3">
+    <!-- HEADER -->
+    <header class="mt-8 flex items-center gap-4">
       <ProfileImage variant="about" />
-      <h1 class="text-xl font-semibold tracking-tight">About</h1>
+      <div>
+        <h1 class="text-xl font-semibold tracking-tight">문지웅</h1>
+        <p class="text-sm opacity-70">
+          구조화된 UI를 기반으로 웹 서비스를 구현하는 프론트엔드 개발자
+        </p>
+      </div>
     </header>
-    <article class="mt-6 space-y-6">
-      <p>문지웅입니다.</p>
-      <p>
-        새로운 것을 배우는 것을 좋아합니다.<br />
-        배운 것은 기록으로 남깁니다.
-      </p>
+
+    <article class="mt-10 space-y-12 leading-7">
+      <!-- INTRO -->
+      <section class="space-y-4">
+        <p>
+          UI는 단순히 화면을 구성하는 요소가 아니라,
+          서비스의 구조와 유지보수를 결정하는 기반이라고 생각합니다.
+        </p>
+
+        <p>
+          컴포넌트 구조, 정보 흐름, 확장 가능성을 고려해
+          오래 유지 가능한 UI를 만드는 것을 중요하게 생각합니다.
+        </p>
+      </section>
+
+      <div class="h-px w-full bg-white/10"></div>
+
+      <!-- FOCUS -->
+      <section class="space-y-4">
+        <h2 class="text-sm font-semibold opacity-70">Focus</h2>
+        <ul class="space-y-2">
+          {focus.map((item) => (
+            <li class="flex gap-3">
+              <span class="mt-2 h-1 w-1 rounded-full bg-white/40"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <div class="h-px w-full bg-white/10"></div>
+
+      <!-- CLOSING -->
+      <section class="space-y-4">
+        <p>
+          새로운 기술을 배우는 것을 좋아합니다.
+          배운 것은 기록으로 정리하고,
+          실제 구현을 통해 검증하려고 합니다.
+        </p>
+      </section>
     </article>
   </div>
 </BaseLayout>

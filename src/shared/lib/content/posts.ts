@@ -1,24 +1,29 @@
 import type { PostEntry } from '@/shared/types';
+import { getPosts } from './posts.query';
 
 export const sortPostsByDateDesc = (a: PostEntry, b: PostEntry): number =>
   b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf();
 
-export const groupPostsByYear = (
-  posts: PostEntry[]
-): { year: number; posts: PostEntry[] }[] => {
+export type PostsByYear = {
+  year: number;
+  posts: PostEntry[];
+};
+
+export const getPostsGroupedByYear = async (): Promise<PostsByYear[]> => {
+  const posts = await getPosts();
+
   const map = new Map<number, PostEntry[]>();
 
-  posts.forEach((post) => {
+  for (const post of posts) {
     const year = post.data.publishedDate.getFullYear();
-    map.set(year, [...(map.get(year) ?? []), post]);
-  });
+    const bucket = map.get(year);
+    if (bucket) bucket.push(post);
+    else map.set(year, [post]);
+  }
 
   return [...map.entries()]
-    .map(([year, posts]) => ({
-      year,
-      posts: posts.sort(sortPostsByDateDesc),
-    }))
-    .sort((a, b) => b.year - a.year);
+    .sort(([a], [b]) => b - a)
+    .map(([year, items]) => ({ year, posts: items }));
 };
 
 export function parseMinutes(input: string): number | null {
