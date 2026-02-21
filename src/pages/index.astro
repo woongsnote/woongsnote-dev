@@ -10,8 +10,6 @@ const homePosts = await getHomePosts();
 ---
 
 <BaseLayout meta={meta}>
-  <div class="container-frame">
-    <PostsTable posts={homePosts} />
-    <ArchiveLink />
-  </div>
+  <PostsTable posts={homePosts} />
+  <ArchiveLink />
 </BaseLayout>

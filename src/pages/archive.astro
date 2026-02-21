@@ -1,15 +1,16 @@
 ---
 import BaseLayout from '@/app/layouts/BaseLayout.astro';
-import { getArchivePosts } from '@/shared/lib/content/posts.channels';
+import { getPostsGroupedByYear } from '@/shared/lib/content/posts';
 import { seo } from '@/shared/lib/seo';
-import { PostsList } from '@/widgets/posts-list/ui';
+import { YearSection } from '@/widgets/posts-list/ui';
 
 const meta = seo.page('archive');
-const allPosts = await getArchivePosts();
+
+const sections = await getPostsGroupedByYear();
 ---
 
 <BaseLayout meta={meta}>
-  <div class="container-frame">
-    <PostsList posts={allPosts} />
+  <div class="container-frame mt-2 space-y-10">
+    {sections.map((s) => <YearSection {...s} />)}
   </div>
 </BaseLayout>
