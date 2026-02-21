@@ -33,13 +33,8 @@ const href = link ?? post.id;
     minutesToRead={readingTime ?? 0}
   />
   {hasToc && <Toc headings={headings} />}
-  <article
-    data-pagefind-body
-    class="prose mx-auto w-full max-w-4xl px-4 lg:px-0"
-  >
-    <div class="min-w-0">
-      <slot />
-      <Comments />
-    </div>
+  <article data-pagefind-body class="prose container-reading">
+    <slot />
+    <Comments />
   </article>
 </BaseLayout>
