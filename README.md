@@ -1,4 +1,4 @@
-# Woongsnote - 기술 블로그
+# woongsnote - 기술 블로그
 
 ## 개요
 
