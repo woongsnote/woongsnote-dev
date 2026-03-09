@@ -1,0 +1,17 @@
+---
+import { siteConfig } from '@/config';
+
+const siteName = siteConfig.name;
+---
+
+<a
+  href="/"
+  class="group hover:text-accent text-2xl font-bold transition-colors"
+  aria-label={`${siteName} 홈으로 이동`}
+>
+  <span
+    class="inline-block font-semibold tracking-tight transition-transform group-hover:scale-105"
+  >
+    {siteName}
+  </span>
+</a>

@@ -1,0 +1,17 @@
+---
+import IconButton from './IconButton.astro';
+import { getHeaderLink } from './lib/useHeaderLink';
+
+const { pathname } = Astro.url;
+const { href, text, icon: LinkIcon } = getHeaderLink(pathname);
+---
+
+<nav
+  aria-label="Primary navigation"
+  class="flex flex-1 items-center justify-end gap-3"
+>
+  <!-- <SearchButton hint="Ctrl K" variant="pill" /> -->
+  <IconButton as="a" href={href} label={text} title={text}>
+    <LinkIcon class="h-5 w-5" />
+  </IconButton>
+</nav>

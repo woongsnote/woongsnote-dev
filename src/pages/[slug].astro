@@ -1,9 +1,9 @@
 ---
-import PostLayout from '@/app/layouts/PostLayout.astro';
-import { parseMinutes } from '@/shared/lib/content/posts';
-import { getPostBySlug, getPosts } from '@/shared/lib/content/posts.query';
-import { seo } from '@/shared/lib/seo';
-import { postToSeoSource } from '@/shared/lib/seo/adapter/post';
+import PostLayout from '@/layouts/PostLayout.astro';
+import { parseMinutes } from '@/lib/content/posts';
+import { getPostBySlug, getPosts } from '@/lib/content/posts.query';
+import { seo } from '@/lib/seo';
+import { postToSeoSource } from '@/lib/seo/adapter/post';
 import type { GetStaticPaths } from 'astro';
 import { render } from 'astro:content';
 

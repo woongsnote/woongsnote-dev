@@ -1,0 +1,18 @@
+---
+import { SOCIALS } from '@/config';
+import SocialLink from './SocialLink.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer
+  role="contentinfo"
+  class="mx-auto mt-auto flex w-full max-w-5xl flex-col-reverse items-center justify-between gap-2 px-4 pt-16 pb-2 md:flex-row"
+>
+  <p class="text-center text-sm">
+    &copy; {year} woongsnote. All rights reserved.
+  </p>
+  <nav class="grid grid-flow-col items-center justify-center gap-2">
+    {SOCIALS.map(({ type, url }) => <SocialLink name={type} url={url} />)}
+  </nav>
+</footer>

@@ -1,0 +1,30 @@
+---
+import type { PostEntry } from '@/shared/types';
+import PostItem from '../common/PostItem.astro';
+
+type Props = {
+  posts: PostEntry[];
+};
+
+const { posts } = Astro.props;
+---
+
+<section class="mx-auto w-full max-w-3xl">
+  <ul class="list-none">
+    {posts.map((post) => <PostItem post={post} />)}
+  </ul>
+  <footer class="mt-8 pt-8">
+    <a
+      href="/archive"
+      class="text-sub hover:text-primary focus-visible:ring-accent/40 group rounded text-xs transition focus-visible:ring-2 focus-visible:outline-none"
+    >
+      모든 글 보기
+      <span
+        aria-hidden="true"
+        class="ml-1 inline-block transition-transform group-hover:translate-x-0.5"
+      >
+        →
+      </span>
+    </a>
+  </footer>
+</section>
