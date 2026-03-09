@@ -210,6 +210,7 @@
   overflow: hidden;
   border: none;
   border-radius: var(--radius-lg);
+  margin: 1rem;
 }
 .mockup-browser-toolbar {
   display: inline-flex;

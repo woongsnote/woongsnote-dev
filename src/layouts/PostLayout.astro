@@ -33,6 +33,8 @@ const hasToc = Array.isArray(headings) && headings.length > 0;
 const isProject = category === 'Project';
 
 const href = link ?? post.id;
+
+const thumbnailDesc = coverAlt ?? title;
 ---
 
 <BaseLayout meta={meta}>
@@ -46,7 +48,16 @@ const href = link ?? post.id;
     minutesToRead={readingTime ?? 0}
   />
   {hasToc && <Toc headings={headings} />}
-  {isProject && <PostThumbnail image={cover!} alt={coverAlt!} />}
+  {
+    isProject && (
+      <PostThumbnail
+        image={cover!}
+        alt={thumbnailDesc}
+        title={title}
+        link={link}
+      />
+    )
+  }
   <article data-pagefind-body class="prose container-reading">
     <slot />
     <Comments />
