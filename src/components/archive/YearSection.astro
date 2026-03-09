@@ -1,6 +1,6 @@
 ---
 import type { PostEntry } from '@/shared/types';
-import PostRow from '@/widgets/posts-table/ui/PostRow.astro';
+import PostItem from '../common/PostItem.astro';
 
 type Props = {
   year: number;
@@ -21,6 +21,6 @@ const { year, posts } = Astro.props;
   </div>
 
   <ul class="divide-y divide-white/5">
-    {posts.map((post) => <PostRow post={post} />)}
+    {posts.map((post) => <PostItem post={post} />)}
   </ul>
 </section>
