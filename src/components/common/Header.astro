@@ -1,0 +1,56 @@
+---
+// Header.astro
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<header class="bg-base-200 sticky top-0 z-50">
+  <nav class="navbar mx-auto max-w-4xl">
+    <div class="flex-1">
+      <a href="/" class="text-base-content text-lg font-bold">woongsnote</a>
+    </div>
+
+    <div class="flex items-center gap-1">
+      <!-- 검색 -->
+      <button
+        id="search-btn"
+        class="btn btn-ghost btn-square btn-sm"
+        aria-label="검색 열기"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"
+          ></path>
+        </svg>
+      </button>
+
+      <!-- 어바웃 -->
+      <a
+        href="/about"
+        class="btn btn-ghost btn-square btn-sm"
+        aria-label="소개"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle
+            cx="12"
+            cy="7"
+            r="4"></circle>
+        </svg>
+      </a>
+      <!-- 테마 토글 -->
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>

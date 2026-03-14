@@ -1,0 +1,43 @@
+---
+import { SOCIALS } from '@/config';
+import EmailIcon from '@/shared/assets/icons/email.svg';
+import GithubIcon from '@/shared/assets/icons/github.svg';
+import LinkedinIcon from '@/shared/assets/icons/linkedin.svg';
+import RssIcon from '@/shared/assets/icons/rss.svg';
+
+const icons = {
+  github: GithubIcon,
+  linkedin: LinkedinIcon,
+  email: EmailIcon,
+  rss: RssIcon,
+};
+const year = new Date().getFullYear();
+---
+
+<footer class="footer footer-center bg-base-200 mt-auto p-4">
+  <div
+    class="mx-auto flex w-full max-w-4xl flex-col-reverse items-center justify-between gap-2 md:flex-row"
+  >
+    <p class="text-base-content/70 text-sm">
+      &copy; {year} woongsnote. All rights reserved.
+    </p>
+    <nav class="grid grid-flow-col gap-1">
+      {
+        SOCIALS.map(({ type, url }) => {
+          const Icon = icons[type];
+          return (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-ghost btn-square btn-sm"
+              aria-label={`${type} 페이지로 이동`}
+            >
+              <Icon class="size-5 fill-current" />
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</footer>

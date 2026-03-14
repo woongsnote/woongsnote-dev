@@ -43,15 +43,14 @@ const { title, description, robots, canonicalUrl, ogImageUrl } =
 </head>
 
 <script is:inline>
-  const stored = localStorage.getItem('theme');
-  const system = matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light';
-  document.documentElement.setAttribute(
-    'data-theme',
-    stored === 'system' || !stored ? system : stored
-  );
-  if (stored === 'light' || stored === 'dark') {
-    document.documentElement.setAttribute('data-theme', stored);
-  }
+  (function () {
+    var saved = localStorage.getItem('theme');
+    var light =
+      saved === 'light' ||
+      (!saved && !matchMedia('(prefers-color-scheme: dark)').matches);
+    document.documentElement.setAttribute(
+      'data-theme',
+      light ? 'woong-light' : 'woong-dark'
+    );
+  })();
 </script>

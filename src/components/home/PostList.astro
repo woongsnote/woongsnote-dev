@@ -10,7 +10,7 @@ const { posts } = Astro.props;
 ---
 
 <section class="mx-auto w-full max-w-3xl">
-  <ul class="list-none">
+  <ul class="list bg-base-100 rounded-box shadow-md">
     {posts.map((post) => <PostItem post={post} />)}
   </ul>
   <footer class="mt-8 pt-8">
