@@ -1,0 +1,30 @@
+---
+import { fmtHomeDateShort } from '@/lib/date';
+import type { PostEntry } from '@/shared/types';
+
+type Props = {
+  post: PostEntry;
+};
+
+const { post } = Astro.props;
+
+const href = post.id;
+
+const { title, publishedDate } = post.data;
+
+const date = fmtHomeDateShort(publishedDate);
+---
+
+<li class="list-row">
+  <a
+    href={href}
+    class="group flex w-full items-center gap-3.5 focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:outline-none"
+  >
+    <span class="text-base-content/50 w-16 shrink-0 text-xs tabular-nums">
+      {date}
+    </span>
+    <span class="line-clamp-2 min-w-0 text-base font-medium leading-snug tracking-tight underline-offset-4 group-hover:underline">
+      {title}
+    </span>
+  </a>
+</li>

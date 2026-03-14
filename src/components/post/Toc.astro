@@ -1,0 +1,28 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+type Props = { headings: MarkdownHeading[] };
+
+const { headings } = Astro.props;
+---
+
+<div class="collapse-arrow bg-base-200 rounded-box not-prose collapse mt-4">
+  <input type="checkbox" checked />
+  <div class="collapse-title text-sm font-semibold">목차</div>
+  <div class="collapse-content">
+    <ul>
+      {
+        headings.map((h) => (
+          <li class:list={['py-1', { 'pl-4': h.depth >= 3 }]}>
+            <a
+              href={`#${h.slug}`}
+              class="text-sm underline-offset-8 hover:underline lg:text-base"
+            >
+              {h.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 ---
-import PostCard from '@/components/post/PostCard.astro';
+import PostItem from '@/components/post/PostItem.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPostsGroupedByYear } from '@/lib/content/posts';
 import { seo } from '@/lib/seo';
@@ -12,24 +12,24 @@ const sections = await getPostsGroupedByYear();
 <BaseLayout meta={meta}>
   {
     sections.length > 0 ? (
-      <div class="container-frame mt-2 space-y-10">
+      <div class="mx-auto mt-2 w-full max-w-4xl space-y-10">
         {sections.map((s) => (
           <section class="space-y-3" aria-labelledby={`y-${s.year}`}>
-            <div class="sticky top-0 z-10 -mx-4 px-4 py-2 backdrop-blur">
-              <header class="flex items-baseline gap-3">
-                <h2
-                  id={`y-${s.year}`}
-                  class="text-sm font-semibold tracking-wide"
-                >
-                  {s.year}
-                </h2>
-                <div class="h-px flex-1 bg-white/10" />
-              </header>
+            <div class="sticky top-16 z-20 -mx-4 px-4 py-2 backdrop-blur">
+              <div class="divider divider-start">
+                <header class="flex items-baseline gap-3">
+                  <h2
+                    id={`y-${s.year}`}
+                    class="text-sm font-semibold tracking-wide"
+                  >
+                    {s.year}
+                  </h2>
+                </header>
+              </div>
             </div>
-
-            <ul class="divide-y divide-white/5">
+            <ul class="list">
               {s.posts.map((post) => (
-                <PostCard post={post} />
+                <PostItem post={post} />
               ))}
             </ul>
           </section>

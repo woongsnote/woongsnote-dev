@@ -1,5 +1,5 @@
 ---
-import PostCard from '@/components/post/PostCard.astro';
+import PostItem from '@/components/post/PostItem.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getHomePosts } from '@/lib/content/posts.channels';
 import { seo } from '@/lib/seo';
@@ -10,8 +10,8 @@ const homePosts = await getHomePosts();
 
 <BaseLayout meta={meta}>
   <section class="mx-auto w-full max-w-4xl">
-    <ul class="list bg-base-100">
-      {homePosts.map((post) => <PostCard post={post} />)}
+    <ul class="list">
+      {homePosts.map((post) => <PostItem post={post} />)}
     </ul>
     <footer class="mt-8 pt-8">
       <a
