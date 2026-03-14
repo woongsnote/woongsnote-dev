@@ -1,0 +1,26 @@
+---
+import type { PostEntry } from '@/shared/types';
+import PostItem from '../common/PostItem.astro';
+
+type Props = {
+  year: number;
+  posts: PostEntry[];
+};
+
+const { year, posts } = Astro.props;
+---
+
+<section class="space-y-3" aria-labelledby={`y-${year}`}>
+  <div class="sticky top-0 z-10 -mx-4 px-4 py-2 backdrop-blur">
+    <header class="flex items-baseline gap-3">
+      <h2 id={`y-${year}`} class="text-sm font-semibold tracking-wide">
+        {year}
+      </h2>
+      <div class="h-px flex-1 bg-white/10"></div>
+    </header>
+  </div>
+
+  <ul class="divide-y divide-white/5">
+    {posts.map((post) => <PostItem post={post} />)}
+  </ul>
+</section>

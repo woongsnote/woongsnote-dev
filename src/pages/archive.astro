@@ -1,0 +1,24 @@
+---
+import YearSection from '@/components/archive/YearSection.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPostsGroupedByYear } from '@/lib/content/posts';
+import { seo } from '@/lib/seo';
+
+const meta = seo.page('archive');
+
+const sections = await getPostsGroupedByYear();
+---
+
+<BaseLayout meta={meta}>
+  {
+    sections.length > 0 ? (
+      <div class="container-frame mt-2 space-y-10">
+        {sections.map((s) => (
+          <YearSection {...s} />
+        ))}
+      </div>
+    ) : (
+      <p class="text-sub mt-8 text-center text-sm">작성된 글이 없습니다.</p>
+    )
+  }
+</BaseLayout>
