@@ -4,6 +4,7 @@ import { Comments, PostThumbnail, ReadingTimeText } from '@/components/post';
 import ShareButton from '@/components/post/share/ShareButton.astro';
 import { TagList } from '@/components/post/tag';
 import Toc from '@/components/post/Toc.astro';
+import { formatDate } from '@/lib/date';
 import type { PostEntry } from '@/shared/types';
 import type { HeadMeta } from '@/shared/types/site/meta';
 import type { MarkdownHeading } from 'astro';
@@ -30,6 +31,7 @@ const {
 
 const hasToc = headings.length > 0;
 const isProject = category === 'Project';
+const postDate = formatDate(publishedDate);
 ---
 
 <BaseLayout meta={meta}>
@@ -43,11 +45,11 @@ const isProject = category === 'Project';
         {title}
       </h1>
       <div class="flex items-center justify-between gap-2 text-sm lg:text-base">
-        <div class="text-sub flex gap-2">
-          <span>{publishedDate}</span>
+        <div class="text-base-content/60 flex gap-2">
+          <span>{postDate}</span>
           <ReadingTimeText readingTime={readingTime ?? 0} />
         </div>
-        <ShareButton title={title} url={post.id} />
+        <ShareButton title={title} url={Astro.url.href} />
       </div>
       <p class="text-base-content/70">{description}</p>
       <TagList tags={tags} />
