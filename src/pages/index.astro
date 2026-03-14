@@ -1,5 +1,5 @@
 ---
-import PostList from '@/components/home/PostList.astro';
+import PostCard from '@/components/post/PostCard.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getHomePosts } from '@/lib/content/posts.channels';
 import { seo } from '@/lib/seo';
@@ -9,5 +9,23 @@ const homePosts = await getHomePosts();
 ---
 
 <BaseLayout meta={meta}>
-  <PostList posts={homePosts} />
+  <section class="mx-auto w-full max-w-4xl">
+    <ul class="list bg-base-100">
+      {homePosts.map((post) => <PostCard post={post} />)}
+    </ul>
+    <footer class="mt-8 pt-8">
+      <a
+        href="/archive"
+        class="text-base-content/60 hover:text-primary focus-visible:ring-accent/40 group rounded text-xs transition focus-visible:ring-2 focus-visible:outline-none"
+      >
+        모든 글 보기
+        <span
+          aria-hidden="true"
+          class="ml-1 inline-block transition-transform group-hover:translate-x-0.5"
+        >
+          →
+        </span>
+      </a>
+    </footer>
+  </section>
 </BaseLayout>
