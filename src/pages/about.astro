@@ -2,10 +2,6 @@
 import ProfileImage from '@/components/about/ProfileImage.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
-import { seo } from '@/lib/seo';
-
-const meta = seo.page('about');
-
 const focus = [
   '컴포넌트 구조 설계',
   '확장 가능한 UI 아키텍처 구성',
@@ -14,7 +10,10 @@ const focus = [
 ] as const;
 ---
 
-<BaseLayout meta={meta}>
+<BaseLayout
+  title="About"
+  description="프론트엔드 개발자 Woong의 소개와 기술 스택"
+>
   <div class="mx-auto w-full max-w-4xl">
     <header class="mt-8 flex items-center gap-4">
       <ProfileImage variant="about" />

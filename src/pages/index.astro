@@ -1,14 +1,13 @@
 ---
 import PostItem from '@/components/post/PostItem.astro';
+import { siteConfig } from '@/config';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getHomePosts } from '@/lib/content/posts.channels';
-import { seo } from '@/lib/seo';
 
-const meta = seo.page('home');
 const homePosts = await getHomePosts();
 ---
 
-<BaseLayout meta={meta}>
+<BaseLayout title={siteConfig.name} description={siteConfig.description}>
   <section class="mx-auto w-full max-w-4xl">
     <ul class="list">
       {homePosts.map((post) => <PostItem post={post} />)}

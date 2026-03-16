@@ -2,14 +2,11 @@
 import PostItem from '@/components/post/PostItem.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPostsGroupedByYear } from '@/lib/content/posts';
-import { seo } from '@/lib/seo';
-
-const meta = seo.page('archive');
 
 const sections = await getPostsGroupedByYear();
 ---
 
-<BaseLayout meta={meta}>
+<BaseLayout title="Archive" description="전체 글 목록">
   {
     sections.length > 0 ? (
       <div class="mx-auto mt-2 w-full max-w-4xl space-y-10">

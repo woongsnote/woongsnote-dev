@@ -1,23 +1,25 @@
 ---
 import BackToTop from '@/components/common/BackToTop.astro';
-import { Comments, PostThumbnail, ReadingTimeText } from '@/components/post';
-import ShareButton from '@/components/post/share/ShareButton.astro';
+import {
+  Comments,
+  PostThumbnail,
+  ReadingTimeText,
+  ShareButton,
+  Toc,
+} from '@/components/post';
 import { TagList } from '@/components/post/tag';
-import Toc from '@/components/post/Toc.astro';
 import { formatDate } from '@/lib/date';
 import type { PostEntry } from '@/shared/types';
-import type { HeadMeta } from '@/shared/types/site/meta';
 import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
 
 type Props = {
-  meta: HeadMeta;
   post: PostEntry;
   headings: MarkdownHeading[];
   readingTime: number | null;
 };
 
-const { meta, post, headings, readingTime } = Astro.props;
+const { post, headings, readingTime } = Astro.props;
 const {
   title,
   description,
@@ -34,7 +36,12 @@ const isProject = category === 'Project';
 const postDate = formatDate(publishedDate);
 ---
 
-<BaseLayout meta={meta}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={`/${post.id}/og.png`}
+  articleDate={publishedDate.toDateString()}
+>
   <article data-pagefind-body class="prose mx-auto mt-4 w-full max-w-3xl">
     <header class="not-prose flex flex-col gap-4 break-keep">
       <h1

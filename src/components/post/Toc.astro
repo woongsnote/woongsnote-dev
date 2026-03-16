@@ -10,13 +10,13 @@ const { headings } = Astro.props;
   <input type="checkbox" checked />
   <div class="collapse-title text-sm font-semibold">목차</div>
   <div class="collapse-content">
-    <ul>
+    <ul class="list-none pl-0">
       {
         headings.map((h) => (
           <li class:list={['py-1', { 'pl-4': h.depth >= 3 }]}>
             <a
               href={`#${h.slug}`}
-              class="text-sm underline-offset-8 hover:underline lg:text-base"
+              class="text-base-content text-sm no-underline underline-offset-8 hover:underline lg:text-base"
             >
               {h.text}
             </a>

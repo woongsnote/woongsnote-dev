@@ -1,134 +1,32 @@
-/* ================================================
-   Typography — .prose 스코프
-   @tailwindcss/typography 대체
+/* ═══════════════════════════════════════════
+   typography.css
+   ─ Shiki / rehype-pretty-code 전용 스타일
+   ─ 기본 타이포그래피는 @tailwindcss/typography (prose)
+     + daisyUI v5 시맨틱 컬러에 위임
+   ═══════════════════════════════════════════ */
 
-   사용법:
-     <article class="prose">...</article>
+/* ─── 테마별 코드 토큰 변수 ─── */
+[data-theme='woong-light'] {
+  --color-code-title-bg: var(--color-gray-200);
+  --color-code-title-fg: var(--color-gray-800);
+  --color-highlight-line: rgba(59, 130, 246, 0.1);
+  --color-highlight-bar: var(--color-blue-400);
+}
 
-   스코프 밖으로 빠내기:
-     <div class="not-prose">...</div>
-   ================================================ */
-
-/* ─── Shiki / rehype-pretty-code 토큰 ─── */
-/* light-dark()를 여기서 한 번만 정의하여 아래에서 단일 var()로 참조 */
-@theme {
-  --color-code-title-bg: light-dark(
-    var(--color-gray-200),
-    var(--color-gray-800)
-  );
-  --color-code-title-fg: light-dark(
-    var(--color-gray-800),
-    var(--color-gray-200)
-  );
-  --color-highlight-line: light-dark(
-    rgba(59, 130, 246, 0.1),
-    rgba(59, 130, 246, 0.2)
-  );
-  --color-highlight-bar: light-dark(
-    var(--color-blue-400),
-    var(--color-blue-500)
-  );
+[data-theme='woong-dark'] {
+  --color-code-title-bg: var(--color-gray-800);
+  --color-code-title-fg: var(--color-gray-200);
+  --color-highlight-line: rgba(59, 130, 246, 0.2);
+  --color-highlight-bar: var(--color-blue-500);
 }
 
 @layer components {
   .prose {
-    margin-top: var(--spacing-8);
-    color: var(--color-primary);
-    font-size: var(--font-size-body);
-    line-height: var(--leading-body);
+    /* 한국어 줄바꿈 (prose에 없음) */
     word-break: keep-all;
-
-    /* ─── Headings ─── */
-    & h1 {
-      font-size: var(--font-size-h1);
-      margin-block: var(--spacing-12) var(--spacing-6);
-    }
-
-    & h2 {
-      font-size: var(--font-size-h2);
-      margin-block: var(--spacing-12) var(--spacing-5);
-    }
-
-    & h3 {
-      font-size: var(--font-size-h3);
-      margin-block: var(--spacing-10) var(--spacing-6);
-    }
-
-    /* ─── Paragraph ─── */
-    & p {
-      margin-bottom: var(--spacing-8);
-    }
-
-    /* ─── Links ─── */
-    & a {
-      color: var(--color-link);
-      text-decoration: underline;
-      font-weight: var(--font-weight-medium);
-      transition: color 0.2s;
-    }
-
-    & a:hover {
-      color: var(--color-link-hover);
-    }
-
-    /* ─── Lists ─── */
-    & ul,
-    & ol {
-      padding-left: var(--spacing-4);
-      margin-left: var(--spacing-2);
-      margin-bottom: var(--spacing-2);
-    }
-
-    & ul {
-      list-style: disc;
-    }
-    & ol {
-      list-style: decimal;
-    }
-
-    & li + li {
-      margin-top: var(--spacing-2);
-    }
-
-    /* ─── Horizontal Rule ─── */
-    & hr {
-      margin-block: var(--spacing-4);
-      border-color: var(--color-divider);
-    }
-
-    /* ─── Blockquote ─── */
-    & blockquote {
-      border-left: 4px solid var(--color-divider);
-      padding-left: var(--spacing-4);
-      margin: var(--spacing-6) 0;
-      font-style: italic;
-      color: var(--color-sub);
-    }
-
-    /* ─── Table ─── */
-    & table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: var(--spacing-6);
-    }
-
-    & th,
-    & td {
-      border-width: 1px;
-      border-style: solid;
-      border-color: var(--color-divider);
-      padding: var(--spacing-3);
-      text-align: left;
-    }
-
-    & thead {
-      background-color: var(--color-header);
-      font-weight: 600;
-    }
 
     /* ─── Inline Code ─── */
     & :not(pre) > code {
-      background-color: light-dark(var(--shiki-light-bg), var(--shiki-dark-bg));
       vertical-align: middle;
       font-weight: 600;
       padding-inline: var(--spacing-1);
@@ -143,7 +41,6 @@
 
     /* ─── Code Block ─── */
     & pre {
-      background-color: light-dark(var(--shiki-light-bg), var(--shiki-dark-bg));
       padding: var(--spacing-2);
       border-radius: var(--radius-lg);
       overflow-x: auto;
@@ -155,13 +52,7 @@
       display: none;
     }
 
-    /* ─── Shiki ─── */
-    & code[data-theme*=' '],
-    & code[data-theme*=' '] span {
-      color: light-dark(var(--shiki-light), var(--shiki-dark));
-      background-color: light-dark(var(--shiki-light-bg), var(--shiki-dark-bg));
-    }
-
+    /* ─── Shiki 토큰 ─── */
     & pre span[data-line] {
       display: inline-block;
       padding: var(--spacing-1);
@@ -175,7 +66,7 @@
       padding-left: var(--spacing-2);
     }
 
-    /* ─── rehype-pretty-code ─── */
+    /* ─── rehype-pretty-code title ─── */
     & figcaption[data-rehype-pretty-code-title] {
       background-color: var(--color-code-title-bg);
       color: var(--color-code-title-fg);
@@ -193,17 +84,53 @@
     }
 
     & [data-rehype-pretty-code-figure] pre {
-      background-color: light-dark(var(--shiki-light-bg), var(--shiki-dark-bg));
       padding-inline: 0;
-    }
-
-    /* ─── not-prose ─── */
-    & .not-prose,
-    & .not-prose * {
-      all: revert;
     }
   }
 }
+
+/* ═══════════════════════════════════════════
+   Shiki 테마별 색상 (data-theme 기반)
+   ═══════════════════════════════════════════ */
+
+/* ─── Light ─── */
+[data-theme='woong-light'] .prose :not(pre) > code {
+  background-color: var(--shiki-light-bg);
+}
+
+[data-theme='woong-light'] .prose pre {
+  background-color: var(--shiki-light-bg);
+}
+
+[data-theme='woong-light'] .prose code[data-theme*=' '],
+[data-theme='woong-light'] .prose code[data-theme*=' '] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+[data-theme='woong-light'] .prose [data-rehype-pretty-code-figure] pre {
+  background-color: var(--shiki-light-bg);
+}
+
+/* ─── Dark ─── */
+[data-theme='woong-dark'] .prose :not(pre) > code {
+  background-color: var(--shiki-dark-bg);
+}
+
+[data-theme='woong-dark'] .prose pre {
+  background-color: var(--shiki-dark-bg);
+}
+
+[data-theme='woong-dark'] .prose code[data-theme*=' '],
+[data-theme='woong-dark'] .prose code[data-theme*=' '] span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+[data-theme='woong-dark'] .prose [data-rehype-pretty-code-figure] pre {
+  background-color: var(--shiki-dark-bg);
+}
+
 /* ─── Mockup Browser ─── */
 .mockup-browser {
   position: relative;
