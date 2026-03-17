@@ -10,8 +10,8 @@
   default: true;
   prefersdark: true;
   color-scheme: dark;
-  --color-base-100: oklch(from #1b262c l c h);
-  --color-base-200: oklch(from #162029 l c h);
+  --color-base-100: oklch(from #0A1A2F l c h);
+  --color-base-200: oklch(from #0A1A2F  l c h);
   --color-base-300: oklch(from #0f4c75 l c h);
   --color-base-content: oklch(from #bbe1fa l c h);
   --color-primary: oklch(from #3282b8 l c h);

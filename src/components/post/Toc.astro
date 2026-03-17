@@ -4,25 +4,31 @@ import type { MarkdownHeading } from 'astro';
 type Props = { headings: MarkdownHeading[] };
 
 const { headings } = Astro.props;
+const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 ---
 
-<div class="collapse-arrow bg-base-200 rounded-box not-prose collapse mt-4">
-  <input type="checkbox" checked />
-  <div class="collapse-title text-sm font-semibold">목차</div>
-  <div class="collapse-content">
-    <ul class="list-none pl-0">
-      {
-        headings.map((h) => (
-          <li class:list={['py-1', { 'pl-4': h.depth >= 3 }]}>
-            <a
-              href={`#${h.slug}`}
-              class="text-base-content text-sm no-underline underline-offset-8 hover:underline lg:text-base"
-            >
-              {h.text}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</div>
+{
+  toc.length > 0 && (
+    <nav
+      aria-label="목차"
+      class="collapse-arrow bg-base-content/5 rounded-box not-prose collapse mt-4"
+    >
+      <input type="checkbox" checked />
+      <div class="collapse-title text-sm font-semibold">목차</div>
+      <div class="collapse-content">
+        <ul class="list-none pl-0">
+          {toc.map((h) => (
+            <li class:list={['py-1', { 'pl-4': h.depth === 3 }]}>
+              <a
+                href={`#${h.slug}`}
+                class="text-base-content text-sm no-underline underline-offset-8 hover:underline lg:text-base"
+              >
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  )
+}
