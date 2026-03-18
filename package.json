@@ -15,13 +15,14 @@
     "@astrojs/rss": "^4.0.17",
     "@astrojs/sitemap": "^3.7.1",
     "@astrojs/vercel": "^10.0.1",
-    "@vercel/og": "^0.11.1",
     "astro": "^6.0.5",
     "daisyui": "^5.5.19",
     "date-fns": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
-    "rehype-pretty-code": "^0.14.3"
+    "rehype-pretty-code": "^0.14.3",
+    "satori": "^0.25.0",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",

@@ -130,25 +130,3 @@
 [data-theme='woong-dark'] .prose [data-rehype-pretty-code-figure] pre {
   background-color: var(--shiki-dark-bg);
 }
-
-/* ─── Mockup Browser ─── */
-.mockup-browser {
-  position: relative;
-  overflow: hidden;
-  border: none;
-  border-radius: var(--radius-lg);
-  margin: 1rem;
-}
-.mockup-browser-toolbar {
-  display: inline-flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-1);
-  padding: 4px 2px;
-  background: var(--color-header);
-}
-.mockup-browser-content {
-  display: flex;
-  justify-content: center;
-}

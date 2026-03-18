@@ -1,7 +1,7 @@
 ---
 import PostItem from '@/components/post/PostItem.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getPostsGroupedByYear } from '@/lib/content/posts';
+import { getPostsGroupedByYear } from '@/lib/posts';
 
 const sections = await getPostsGroupedByYear();
 ---

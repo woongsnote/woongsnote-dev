@@ -1,7 +1,6 @@
 ---
 import PostLayout from '@/layouts/PostLayout.astro';
-import { parseMinutes } from '@/lib/content/posts';
-import { getPostBySlug, getPosts } from '@/lib/content/posts.query';
+import { getPostBySlug, getPosts, parseMinutes } from '@/lib/posts';
 import type { GetStaticPaths } from 'astro';
 import { render } from 'astro:content';
 

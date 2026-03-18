@@ -1,7 +1,8 @@
-import type { Category, CategoryType } from '@/shared/types/content/category';
-import DiaryIcon from '@/shared/assets/icons/diary.svg';
-import ProjectIcon from '@/shared/assets/icons/project.svg';
-import TechIcon from '@/shared/assets/icons/tech.svg';
+// src/config/categories.ts
+import type { Category, CategoryType } from '@/types/category';
+import DiaryIcon from '@/icons/diary.svg';
+import ProjectIcon from '@/icons/project.svg';
+import TechIcon from '@/icons/tech.svg';
 
 export const CATEGORIES = {
   Diary: { label: 'Diary', icon: DiaryIcon },

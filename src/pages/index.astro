@@ -2,7 +2,7 @@
 import PostItem from '@/components/post/PostItem.astro';
 import { siteConfig } from '@/config';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getHomePosts } from '@/lib/content/posts.channels';
+import { getHomePosts } from '@/lib/posts';
 
 const homePosts = await getHomePosts();
 ---

@@ -21,7 +21,12 @@ function escapeXml(value: string) {
     .replaceAll("'", '&apos;');
 }
 
-export function buildRssXml({ site, title, description, items }: BuildRssParams) {
+export function buildRssXml({
+  site,
+  title,
+  description,
+  items,
+}: BuildRssParams) {
   const base = String(site).replace(/\/+$/, ''); // 끝 슬래시 제거(// 방지)
 
   const itemXml = items
@@ -40,8 +45,9 @@ export function buildRssXml({ site, title, description, items }: BuildRssParams)
   <description>${toCdata(postDesc)}</description>
   <content:encoded>${toCdata(html)}</content:encoded>
   ${
-    post.data.tags?.map((tag) => `<category>${toCdata(tag)}</category>`).join('') ??
-    ''
+    post.data.tags
+      ?.map((tag) => `<category>${toCdata(tag)}</category>`)
+      .join('') ?? ''
   }
 </item>`;
     })

@@ -13,22 +13,18 @@ const { image, alt, link, title } = Astro.props;
 const projectLink = link ?? title;
 ---
 
-<div class="mockup-browser">
+<div class="mockup-browser border-base-300/50 not-prose my-4 rounded-xl border">
   <div class="mockup-browser-toolbar">
-    <span class="pl-4">
+    <div class="input">
       {projectLink}
-    </span>
+    </div>
   </div>
-  <div class="mockup-browser-content">
-    <figure>
-      <Image
-        src={image}
-        alt={alt}
-        width={960}
-        height={540}
-        loading="eager"
-        class="h-auto w-full object-contain"
-      />
-    </figure>
-  </div>
+  <Image
+    src={image}
+    alt={alt}
+    width={800}
+    height={480}
+    loading="eager"
+    class="objetct-none block h-auto w-full border-t"
+  />
 </div>

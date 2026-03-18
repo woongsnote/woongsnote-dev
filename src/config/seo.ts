@@ -1,5 +1,5 @@
-import { AUTHOR } from '../author';
-import { siteConfig } from '../site';
+// src/config/seo.ts
+import { AUTHOR, siteConfig } from './site';
 
 export const getWebsiteJsonLd = () => ({
   '@context': 'https://schema.org',
