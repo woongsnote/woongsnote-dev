@@ -2,28 +2,22 @@
 import PostItem from '@/components/post/PostItem.astro';
 import { siteConfig } from '@/config';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getHomePosts } from '@/lib/posts';
+import { getHomePosts, getPosts } from '@/lib/posts';
+
+const totalCount = (await getPosts()).length;
 
 const homePosts = await getHomePosts();
 ---
 
 <BaseLayout title={siteConfig.name} description={siteConfig.description}>
   <section class="mx-auto w-full max-w-4xl">
-    <ul class="list">
-      {homePosts.map((post) => <PostItem post={post} />)}
-    </ul>
+    {homePosts.map((post) => <PostItem post={post} />)}
     <footer class="mt-8 pt-8">
       <a
         href="/archive"
-        class="text-base-content/60 hover:text-primary focus-visible:ring-accent/40 group rounded text-xs transition focus-visible:ring-2 focus-visible:outline-none"
+        class="text-base-content/40 hover:text-primary inline-flex items-center gap-1.5 font-mono text-sm tracking-wide no-underline transition-colors duration-200"
       >
-        모든 글 보기
-        <span
-          aria-hidden="true"
-          class="ml-1 inline-block transition-transform group-hover:translate-x-0.5"
-        >
-          →
-        </span>
+        All {totalCount} Posts →
       </a>
     </footer>
   </section>

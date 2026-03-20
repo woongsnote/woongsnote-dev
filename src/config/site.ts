@@ -26,10 +26,13 @@ export type Author = typeof AUTHOR;
 
 // ── Socials ──
 export const SOCIALS = [
-  { type: 'github', url: 'https://www.github.com/woongsnote' },
-  { type: 'linkedin', url: 'https://www.linkedin.com/in/woongsnote' },
-  { type: 'email', url: 'mailto:woongsnote@gmail.com' },
-  { type: 'rss', url: '/rss.xml' },
+  { type: 'github', url: 'https://www.github.com/woongsnote', title: 'GitHub' },
+  {
+    type: 'linkedin',
+    url: 'https://www.linkedin.com/in/woongsnote',
+    title: 'LinkedIn',
+  },
+  { type: 'rss', url: '/rss.xml', title: 'RSS' },
 ] as const;
 
 export type SocialType = (typeof SOCIALS)[number]['type'];

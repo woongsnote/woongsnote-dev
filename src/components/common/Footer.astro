@@ -21,19 +21,18 @@ const year = new Date().getFullYear();
     <p class="text-base-content/70 text-sm">
       &copy; {year} woongsnote. All rights reserved.
     </p>
-    <nav class="grid grid-flow-col gap-1">
+    <nav class="flex gap-4.5">
       {
-        SOCIALS.map(({ type, url }) => {
-          const Icon = icons[type];
+        SOCIALS.map(({ title, url }) => {
           return (
             <a
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              class="btn btn-ghost btn-square btn-sm"
-              aria-label={`${type} 페이지로 이동`}
+              class="text-base-content/40 hover:text-base-content font-mono text-xs tracking-wide no-underline transition-colors duration-200"
+              aria-label={`${title} 페이지로 이동`}
             >
-              <Icon class="size-5 fill-current" />
+              <span>{title}</span>
             </a>
           );
         })

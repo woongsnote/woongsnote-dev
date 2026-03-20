@@ -1,9 +1,11 @@
+// @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import rehypePrettyCode from 'rehype-pretty-code';
+import pagefindIntegration from './src/integrations/pagefind';
 
 const prettyCodeOptions = {
   defaultLang: 'plaintext',
@@ -23,7 +25,7 @@ export default defineConfig({
   },
   trailingSlash: 'never',
   vite: {
-    plugins: [tailwind()],
+    plugins: [tailwindcss()],
   },
   image: {
     responsiveStyles: true,
@@ -43,6 +45,7 @@ export default defineConfig({
       priority: 1.0,
       lastmod: new Date(),
     }),
+    pagefindIntegration(),
   ],
   security: {
     checkOrigin: true,

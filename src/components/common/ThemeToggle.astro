@@ -3,35 +3,37 @@ import MoonIcon from '@/icons/moon.svg';
 import SunIcon from '@/icons/sun.svg';
 ---
 
-<label class="swap swap-rotate">
-  <input
-    id="theme-toggle"
-    type="checkbox"
-    class="theme-controller"
-    value="woong-light"
-  />
-  <SunIcon class="swap-off h-6 w-6 fill-current" />
-  <MoonIcon class="swap-on h-6 w-6 fill-current" />
-</label>
+<button
+  id="theme-toggle"
+  class="text-base-content/40 hover:text-base-content flex cursor-pointer items-center justify-center border-none bg-transparent p-0 transition-colors duration-200"
+  aria-label="테마 전환"
+>
+  <SunIcon class="icon-sun hidden size-6" />
+  <MoonIcon class="icon-moon hidden size-6" />
+</button>
+
+<!-- Theme toggle script -->
 <script is:inline>
   (function () {
-    var STORAGE_KEY = 'theme';
+    const toggle = document.getElementById('theme-toggle');
+    const sunIcon = toggle.querySelector('.icon-sun');
+    const moonIcon = toggle.querySelector('.icon-moon');
 
-    function init() {
-      var checkbox = document.getElementById('theme-toggle');
-      if (!checkbox) return;
-
-      var isLight =
-        document.documentElement.getAttribute('data-theme') === 'woong-light';
-      checkbox.checked = isLight;
-
-      checkbox.addEventListener('change', function () {
-        var theme = checkbox.checked ? 'light' : 'dark';
-        localStorage.setItem(STORAGE_KEY, theme);
-      });
+    function updateIcons() {
+      const theme = document.documentElement.getAttribute('data-theme');
+      const isDark = theme === 'woong-dark';
+      sunIcon.classList.toggle('hidden', !isDark);
+      moonIcon.classList.toggle('hidden', isDark);
     }
 
-    init();
-    document.addEventListener('astro:after-swap', init);
+    updateIcons();
+
+    toggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'woong-dark' ? 'woong-light' : 'woong-dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcons();
+    });
   })();
 </script>

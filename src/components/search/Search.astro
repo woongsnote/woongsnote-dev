@@ -1,20 +1,237 @@
 ---
-
+/**
+ * Search.astro — Pagefind ⌘K 검색 모달
+ *
+ * 사용법: Header 등 레이아웃에 <Search /> 삽입
+ * 의존성: pagefind (빌드 후 자동 생성)
+ */
 ---
 
+<!-- 검색 트리거 버튼 -->
 <button
-  id="search-btn"
-  class="btn btn-ghost btn-square btn-sm"
+  id="search-trigger"
+  type="button"
+  class="btn btn-ghost btn-sm gap-2"
   aria-label="검색 열기"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="h-5 w-5"
+    class="size-4"
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
     stroke-width="2"
   >
-    <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"></path>
   </svg>
+  <span class="hidden text-sm sm:inline">검색</span>
+  <kbd class="kbd kbd-xs hidden sm:inline-flex">⌘K</kbd>
 </button>
+
+<!-- 검색 모달 (dialog) -->
+<dialog id="search-modal" class="modal modal-top">
+  <div class="modal-box max-w-2xl overflow-hidden p-0">
+    <!-- 검색 입력 영역 -->
+    <div
+      class="border-base-content/10 flex items-center gap-3 border-b px-4 py-3"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="text-base-content/40 size-5 shrink-0"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"></path>
+      </svg>
+      <input
+        id="search-input"
+        type="text"
+        placeholder="글 검색..."
+        class="input input-ghost w-full text-base focus:outline-none"
+        autocomplete="off"
+      />
+      <kbd class="kbd kbd-sm shrink-0">ESC</kbd>
+    </div>
+
+    <!-- 검색 결과 영역 -->
+    <div id="search-results" class="max-h-[60vh] overflow-y-auto p-2">
+      <div
+        id="search-empty"
+        class="text-base-content/50 px-4 py-12 text-center"
+      >
+        <p class="text-sm">키워드를 입력하면 블로그 글을 검색합니다.</p>
+      </div>
+      <div id="search-loading" class="hidden px-4 py-12 text-center">
+        <span class="loading loading-dots loading-md"></span>
+      </div>
+      <ul id="search-list" class="menu menu-sm gap-1"></ul>
+      <div
+        id="search-no-results"
+        class="text-base-content/50 hidden px-4 py-12 text-center"
+      >
+        <p class="text-sm">검색 결과가 없습니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 배경 클릭으로 닫기 -->
+  <form method="dialog" class="modal-backdrop">
+    <button>닫기</button>
+  </form>
+</dialog>
+
+<script>
+  // ── Pagefind 초기화 ──────────────────────────────────
+  let pagefind: any = null;
+
+  async function initPagefind() {
+    if (pagefind) return pagefind;
+    try {
+      // Pagefind는 빌드 후 /pagefind/pagefind.js 에 생성됨
+      pagefind = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
+      await pagefind.init();
+    } catch {
+      console.warn('Pagefind를 불러올 수 없습니다. 빌드 후 사용 가능합니다.');
+      pagefind = null;
+    }
+    return pagefind;
+  }
+
+  // ── DOM 요소 ─────────────────────────────────────────
+  const trigger = document.getElementById('search-trigger')!;
+  const modal = document.getElementById('search-modal') as HTMLDialogElement;
+  const input = document.getElementById('search-input') as HTMLInputElement;
+  const resultsList = document.getElementById('search-list')!;
+  const emptyState = document.getElementById('search-empty')!;
+  const loadingState = document.getElementById('search-loading')!;
+  const noResults = document.getElementById('search-no-results')!;
+
+  // ── 모달 열기 / 닫기 ────────────────────────────────
+  function openSearch() {
+    modal.showModal();
+    input.value = '';
+    input.focus();
+    resetUI();
+    initPagefind();
+  }
+
+  function resetUI() {
+    resultsList.innerHTML = '';
+    emptyState.classList.remove('hidden');
+    loadingState.classList.add('hidden');
+    noResults.classList.add('hidden');
+  }
+
+  trigger.addEventListener('click', openSearch);
+
+  // ⌘K / Ctrl+K 단축키
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      if (modal.open) {
+        modal.close();
+      } else {
+        openSearch();
+      }
+    }
+  });
+
+  // ── 검색 실행 (debounced) ───────────────────────────
+  let debounceTimer: ReturnType<typeof setTimeout>;
+
+  input.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    const query = input.value.trim();
+
+    if (!query) {
+      resetUI();
+      return;
+    }
+
+    debounceTimer = setTimeout(() => performSearch(query), 200);
+  });
+
+  async function performSearch(query: string) {
+    const pf = await initPagefind();
+    if (!pf) return;
+
+    // UI 상태: 로딩
+    emptyState.classList.add('hidden');
+    noResults.classList.add('hidden');
+    loadingState.classList.remove('hidden');
+    resultsList.innerHTML = '';
+
+    const search = await pf.search(query);
+
+    // 상위 8개 결과만 로드
+    const results = await Promise.all(
+      search.results.slice(0, 8).map((r: any) => r.data())
+    );
+
+    loadingState.classList.add('hidden');
+
+    if (results.length === 0) {
+      noResults.classList.remove('hidden');
+      return;
+    }
+
+    resultsList.innerHTML = results
+      .map(
+        (result: any) => `
+        <li>
+          <a href="${result.url}" class="flex flex-col items-start gap-1 rounded-lg px-3 py-2.5">
+            <span class="font-medium text-base-content">${result.meta?.title ?? '제목 없음'}</span>
+            <span class="text-xs text-base-content/60 line-clamp-2">${result.excerpt}</span>
+          </a>
+        </li>
+      `
+      )
+      .join('');
+  }
+
+  // ── 키보드 네비게이션 (↑↓ 방향키) ──────────────────
+  input.addEventListener('keydown', (e) => {
+    const items = resultsList.querySelectorAll('a');
+    if (!items.length) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      (items[0] as HTMLElement).focus();
+    }
+  });
+
+  resultsList.addEventListener('keydown', (e) => {
+    const items = Array.from(resultsList.querySelectorAll('a'));
+    const current = document.activeElement as HTMLElement;
+    const idx = items.indexOf(current);
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const next = items[idx + 1];
+      if (next) (next as HTMLElement).focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (idx === 0) {
+        input.focus();
+      } else {
+        (items[idx - 1] as HTMLElement).focus();
+      }
+    } else if (e.key === 'Enter') {
+      // 기본 링크 동작 (이동)
+    }
+  });
+
+  // ── View Transition 지원 ────────────────────────────
+  document.addEventListener('astro:after-swap', () => {
+    // 페이지 전환 후 모달 닫기
+    modal.close();
+  });
+</script>

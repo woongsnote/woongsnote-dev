@@ -1,5 +1,4 @@
 ---
-import AboutIcon from '@/icons/about.svg';
 import Search from '../search/Search.astro';
 import ThemeToggle from './ThemeToggle.astro';
 ---
@@ -10,16 +9,19 @@ import ThemeToggle from './ThemeToggle.astro';
       <a href="/" class="text-base-content text-lg font-bold">woongsnote</a>
     </div>
 
-    <div class="flex items-center gap-1">
+    <nav class="flex items-center gap-3">
       <Search />
       <a
         href="/about"
-        class="btn btn-ghost btn-square btn-sm"
-        aria-label="소개"
+        class="text-base-content/40 hover:text-base-content font-mono text-sm tracking-wide no-underline transition-colors duration-200"
+        >about</a
       >
-        <AboutIcon />
-      </a>
+      <a
+        href="/archive"
+        class="text-base-content/40 hover:text-base-content font-mono text-sm tracking-wide no-underline transition-colors duration-200"
+        >archive</a
+      >
       <ThemeToggle />
-    </div>
+    </nav>
   </nav>
 </header>
