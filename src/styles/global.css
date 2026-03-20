@@ -1,29 +1,30 @@
+/* ── 1. Imports ── */
 @import 'tailwindcss';
 @import './typography.css';
+
+/* ── 2. Plugins ── */
 @plugin '@tailwindcss/typography';
 @plugin 'daisyui' {
   themes: woong-dark, woong-light;
 }
+
 @plugin 'daisyui/theme' {
   name: 'woong-dark';
   default: true;
   prefersdark: true;
   color-scheme: dark;
 
-  /* ── Base: 거의 순수 블랙 (채도 거의 0) ── */
-  --color-base-100: oklch(0.13 0.005 260); /* #111113 근처 — 극미량 블루 틴트 */
-  --color-base-200: oklch(0.16 0.005 260); /* #1a1a1c 근처 */
-  --color-base-300: oklch(0.22 0.008 260); /* #2a2a2e 근처 */
-  --color-base-content: oklch(0.88 0.01 250); /* #d9dce0 — 살짝 쿨한 화이트 */
+  --color-base-100: oklch(0.13 0.005 260);
+  --color-base-200: oklch(0.16 0.005 260);
+  --color-base-300: oklch(0.22 0.008 260);
+  --color-base-content: oklch(0.88 0.01 250);
 
-  /* ── Accent: 블루 계열만 ── */
-  --color-primary: oklch(0.65 0.15 245); /* 메인 블루 */
+  --color-primary: oklch(0.65 0.15 245);
   --color-primary-content: oklch(0.13 0.005 260);
-  --color-secondary: oklch(0.5 0.12 250); /* 딥 블루 */
+  --color-secondary: oklch(0.5 0.12 250);
   --color-secondary-content: oklch(0.9 0.02 250);
-  --color-accent: oklch(0.72 0.14 240); /* 밝은 스카이 블루 */
+  --color-accent: oklch(0.72 0.14 240);
 
-  /* ── Neutral ── */
   --color-neutral: oklch(0.18 0.005 260);
   --color-neutral-content: oklch(0.65 0 0);
 }
@@ -32,25 +33,34 @@
   name: 'woong-light';
   color-scheme: light;
 
-  /* ── Base: 거의 순수 화이트 ── */
-  --color-base-100: oklch(0.98 0.003 250); /* #fafbfc 근처 */
-  --color-base-200: oklch(0.95 0.005 250); /* #f0f2f4 근처 */
-  --color-base-300: oklch(0.9 0.008 250); /* #e2e5e9 근처 */
-  --color-base-content: oklch(0.2 0.01 250); /* #1a1c1e 근처 */
+  --color-base-100: oklch(0.98 0.003 250);
+  --color-base-200: oklch(0.95 0.005 250);
+  --color-base-300: oklch(0.9 0.008 250);
+  --color-base-content: oklch(0.2 0.01 250);
 
-  /* ── Accent ── */
-  --color-primary: oklch(0.45 0.18 250); /* 진한 블루 */
+  --color-primary: oklch(0.45 0.18 250);
   --color-primary-content: oklch(0.98 0.003 250);
   --color-secondary: oklch(0.55 0.14 245);
   --color-secondary-content: oklch(0.98 0.003 250);
   --color-accent: oklch(0.48 0.16 245);
 
-  /* ── Neutral ── */
   --color-neutral: oklch(0.45 0.01 250);
   --color-neutral-content: oklch(0.45 0 0);
 }
 
-/* 검색 모달 안에서 강조 표시 */
+/* ── 3. Font & Theme ── */
+@font-face {
+  font-family: 'Pretendard Variable';
+  src: url('/fonts/PretendardVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: 'Pretendard Variable', system-ui, sans-serif;
+}
+
+/* ── 4. Custom Styles ── */
 [data-search-modal] mark {
   background: none;
   color: var(--color-accent);

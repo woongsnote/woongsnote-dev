@@ -8,14 +8,14 @@
 /* ─── 테마별 코드 토큰 변수 ─── */
 [data-theme='woong-light'] {
   --color-code-title-bg: var(--color-gray-200);
-  --color-code-title-fg: var(--color-gray-800);
+  --color-code-title-fg: var(--color-blue-700);
   --color-highlight-line: rgba(59, 130, 246, 0.1);
   --color-highlight-bar: var(--color-blue-400);
 }
 
 [data-theme='woong-dark'] {
   --color-code-title-bg: var(--color-gray-800);
-  --color-code-title-fg: var(--color-gray-200);
+  --color-code-title-fg: var(--color-blue-300);
   --color-highlight-line: rgba(59, 130, 246, 0.2);
   --color-highlight-bar: var(--color-blue-500);
 }
@@ -29,8 +29,8 @@
     & :not(pre) > code {
       vertical-align: middle;
       font-weight: 600;
-      padding-inline: var(--spacing-1);
-      padding-block: var(--spacing-1);
+      padding-inline: calc(var(--spacing) * 1);
+      padding-block: calc(var(--spacing) * 1);
       border-radius: var(--radius-sm);
     }
 
@@ -44,7 +44,7 @@
       padding: var(--spacing-2);
       border-radius: var(--radius-lg);
       overflow-x: auto;
-      margin-bottom: var(--spacing-6);
+      margin-bottom: calc(var(--spacing) * 6);
       scrollbar-width: none;
     }
 
@@ -55,12 +55,12 @@
     /* ─── Shiki 토큰 ─── */
     & pre span[data-line] {
       display: inline-block;
-      padding: var(--spacing-1);
+      padding: calc(var(--spacing) * 1);
       line-height: var(--leading-snug);
     }
 
     & code span[data-highlighted-line] {
-      border-left-width: var(--spacing-1);
+      border-left-width: calc(var(--spacing) * 1);
       border-left-color: var(--color-highlight-bar);
       background-color: var(--color-highlight-line);
       padding-left: var(--spacing-2);
@@ -68,19 +68,20 @@
 
     /* ─── rehype-pretty-code title ─── */
     & figcaption[data-rehype-pretty-code-title] {
-      background-color: var(--color-code-title-bg);
-      color: var(--color-code-title-fg);
+      background-color: var(--color-code-title-bg) !important;
+      color: var(--color-code-title-fg) !important;
       font-family: var(--font-mono);
       font-size: var(--font-size-sm);
       font-weight: 700;
-      padding-inline: var(--spacing-5);
-      padding-block: var(--spacing-3);
+      padding-inline: calc(var(--spacing) * 5);
+      padding-block: calc(var(--spacing) * 4);
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
 
     & figcaption[data-rehype-pretty-code-title] + pre {
       margin-top: 0;
-      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
     }
 
     & [data-rehype-pretty-code-figure] pre {
