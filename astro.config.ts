@@ -5,7 +5,6 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import rehypePrettyCode from 'rehype-pretty-code';
-import pagefindIntegration from './src/integrations/pagefind';
 
 const prettyCodeOptions = {
   defaultLang: 'plaintext',
@@ -45,7 +44,6 @@ export default defineConfig({
       priority: 1.0,
       lastmod: new Date(),
     }),
-    pagefindIntegration(),
   ],
   security: {
     checkOrigin: true,

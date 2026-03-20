@@ -2,6 +2,8 @@ import type { APIContext, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import satori from 'satori';
 import sharp from 'sharp';
+import fs from 'node:fs';
+import path from 'node:path';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getCollection('posts');
@@ -29,13 +31,12 @@ export async function GET({ props }: APIContext) {
   });
 
   // 폰트 파일 로드 (프로젝트에 맞게 경로 수정)
-  const fontRegular = await fetch(
-    'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/public/static/Pretendard-Regular.subset.woff'
-  ).then((res) => res.arrayBuffer());
-
-  const fontBold = await fetch(
-    'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/public/static/Pretendard-Bold.subset.woff'
-  ).then((res) => res.arrayBuffer());
+  const fontRegular = fs.readFileSync(
+    path.resolve('./public/fonts/Pretendard-Regular.otf')
+  );
+  const fontBold = fs.readFileSync(
+    path.resolve('./public/fonts/Pretendard-Bold.otf')
+  );
 
   const svg = await satori(
     {

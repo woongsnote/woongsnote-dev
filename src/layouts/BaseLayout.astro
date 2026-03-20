@@ -1,6 +1,7 @@
 ---
 import Footer from '@/components/common/Footer.astro';
 import Header from '@/components/common/Header.astro';
+import SearchModal from '@/components/search/SearchModal.astro';
 import { siteConfig } from '@/config';
 import '@/styles/global.css';
 import type { PageMeta } from '@/types';
@@ -32,10 +33,10 @@ const { title, description, image, articleDate, noindex } = Astro.props;
   </head>
   <body class="flex min-h-screen flex-col">
     <Header />
-    <main class="">
+    <main class="px-2">
       <slot />
     </main>
     <Footer />
-    <!-- <SearchModal /> -->
+    <SearchModal />
   </body>
 </html>

@@ -49,3 +49,10 @@
   --color-neutral: oklch(0.45 0.01 250);
   --color-neutral-content: oklch(0.98 0.003 250);
 }
+
+/* 검색 모달 안에서 강조 표시 */
+[data-search-modal] mark {
+  background: none;
+  color: var(--color-accent);
+  font-weight: 600;
+}

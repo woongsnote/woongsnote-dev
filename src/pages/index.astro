@@ -12,7 +12,7 @@ const homePosts = await getHomePosts();
 <BaseLayout title={siteConfig.name} description={siteConfig.description}>
   <section class="mx-auto w-full max-w-4xl">
     {homePosts.map((post) => <PostItem post={post} />)}
-    <footer class="mt-8 pt-8">
+    <footer class="my-8 md:pt-8">
       <a
         href="/archive"
         class="text-base-content/40 hover:text-primary inline-flex items-center gap-1.5 font-mono text-sm tracking-wide no-underline transition-colors duration-200"
