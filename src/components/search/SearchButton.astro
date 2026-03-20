@@ -1,0 +1,33 @@
+---
+/**
+ * 검색 버튼 – 모바일 전용 (sm 이상에서는 ⌘K 사용)
+ * search:open CustomEvent 를 dispatch → search-modal.ts 에서 수신
+ */
+---
+
+<button
+  type="button"
+  data-search-open
+  aria-label="검색 (Ctrl 또는 ⌘ + K)"
+  class="btn btn-ghost btn-sm sm:hidden"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="size-5"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2"
+  >
+    <circle cx="11" cy="11" r="8"></circle>
+    <path d="m21 21-4.3-4.3"></path>
+  </svg>
+</button>
+
+<script>
+  document
+    .querySelector('[data-search-open]')
+    ?.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('search:open'));
+    });
+</script>

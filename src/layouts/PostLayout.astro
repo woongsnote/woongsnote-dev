@@ -1,0 +1,80 @@
+---
+import BackToTop from '@/components/common/BackToTop.astro';
+import {
+  Comments,
+  PostThumbnail,
+  ReadingTimeText,
+  ShareButton,
+  Toc,
+} from '@/components/post';
+import { TagList } from '@/components/post/tag';
+import { formatDate } from '@/lib/date';
+import type { PostEntry } from '@/types';
+import type { MarkdownHeading } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+
+type Props = {
+  post: PostEntry;
+  headings: MarkdownHeading[];
+  readingTime: number | null;
+};
+
+const { post, headings, readingTime } = Astro.props;
+const {
+  title,
+  description,
+  publishedDate,
+  tags,
+  category,
+  link,
+  cover,
+  coverAlt,
+} = post.data;
+
+const hasToc = headings.length > 0;
+const isProject = category === 'Project';
+const postDate = formatDate(publishedDate);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={`/${post.id}/og.png`}
+  articleDate={publishedDate.toDateString()}
+>
+  <article data-pagefind-body class="prose mx-auto mt-4 w-full max-w-3xl">
+    <header class="not-prose flex flex-col gap-4 break-keep">
+      <h1
+        data-pagefind-weight="10"
+        data-pagefind-meta="title"
+        class="text-3xl leading-tight text-balance lg:text-4xl lg:font-semibold"
+      >
+        {title}
+      </h1>
+      <div class="flex items-center justify-between gap-2 text-sm lg:text-base">
+        <div class="text-base-content/60 flex gap-2">
+          <span>{postDate}</span>
+          <ReadingTimeText readingTime={readingTime ?? 0} />
+        </div>
+        <ShareButton title={title} url={Astro.url.href} />
+      </div>
+      <p class="text-base-content/70">{description}</p>
+      <TagList tags={tags} />
+    </header>
+    <div class="divider"></div>
+    {hasToc && <Toc headings={headings} />}
+    {
+      isProject && (
+        <PostThumbnail
+          image={cover!}
+          alt={coverAlt ?? title}
+          title={title}
+          link={link}
+        />
+      )
+    }
+    <slot />
+    <Comments />
+  </article>
+  <BackToTop />
+</BaseLayout>

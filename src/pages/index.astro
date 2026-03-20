@@ -1,15 +1,24 @@
 ---
-import BaseLayout from '@/app/layouts/BaseLayout.astro';
-import { getHomePosts } from '@/shared/lib/content/posts.channels';
-import { seo } from '@/shared/lib/seo';
-import ArchiveLink from '@/widgets/posts-table/ui/ArchiveLink.astro';
-import PostsTable from '@/widgets/posts-table/ui/PostsTable.astro';
+import PostItem from '@/components/post/PostItem.astro';
+import { siteConfig } from '@/config';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getHomePosts, getPosts } from '@/lib/posts';
 
-const meta = seo.page('home');
+const totalCount = (await getPosts()).length;
+
 const homePosts = await getHomePosts();
 ---
 
-<BaseLayout meta={meta}>
-  <PostsTable posts={homePosts} />
-  <ArchiveLink />
+<BaseLayout title={siteConfig.name} description={siteConfig.description}>
+  <section class="mx-auto w-full max-w-4xl">
+    {homePosts.map((post) => <PostItem post={post} />)}
+    <footer class="my-8 md:pt-8">
+      <a
+        href="/archive"
+        class="text-base-content/40 hover:text-primary inline-flex items-center gap-1.5 font-mono text-sm tracking-wide no-underline transition-colors duration-200"
+      >
+        All {totalCount} Posts →
+      </a>
+    </footer>
+  </section>
 </BaseLayout>

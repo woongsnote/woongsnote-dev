@@ -1,9 +1,6 @@
 ---
-import BaseLayout from '@/app/layouts/BaseLayout.astro';
-import ProfileImage from '@/entities/profile/ui/ProfileImage.astro';
-import { seo } from '@/shared/lib/seo';
-
-const meta = seo.page('about');
+import ProfileImage from '@/components/about/ProfileImage.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
 
 const focus = [
   '컴포넌트 구조 설계',
@@ -13,9 +10,11 @@ const focus = [
 ] as const;
 ---
 
-<BaseLayout meta={meta}>
-  <div class="container-reading">
-    <!-- HEADER -->
+<BaseLayout
+  title="About"
+  description="프론트엔드 개발자 Woong의 소개와 기술 스택"
+>
+  <div class="mx-auto w-full max-w-4xl">
     <header class="mt-8 flex items-center gap-4">
       <ProfileImage variant="about" />
       <div>
@@ -27,41 +26,36 @@ const focus = [
     </header>
 
     <article class="mt-10 space-y-12 leading-7">
-      <!-- INTRO -->
       <section class="space-y-4">
         <p>
-          UI는 단순히 화면을 구성하는 요소가 아니라,
-          서비스의 구조와 유지보수를 결정하는 기반이라고 생각합니다.
+          UI는 단순히 화면을 구성하는 요소가 아니라, 서비스의 구조와 유지보수를
+          결정하는 기반이라고 생각합니다.
         </p>
 
         <p>
-          컴포넌트 구조, 정보 흐름, 확장 가능성을 고려해
-          오래 유지 가능한 UI를 만드는 것을 중요하게 생각합니다.
+          컴포넌트 구조, 정보 흐름, 확장 가능성을 고려해 오래 유지 가능한 UI를
+          만드는 것을 중요하게 생각합니다.
         </p>
       </section>
 
       <div class="h-px w-full bg-white/10"></div>
-
-      <!-- FOCUS -->
       <section class="space-y-4">
         <h2 class="text-sm font-semibold opacity-70">Focus</h2>
         <ul class="space-y-2">
-          {focus.map((item) => (
-            <li class="flex gap-3">
-              <span class="mt-2 h-1 w-1 rounded-full bg-white/40"></span>
-              <span>{item}</span>
-            </li>
-          ))}
+          {
+            focus.map((item) => (
+              <li class="flex gap-3">
+                <span class="mt-2 h-1 w-1 rounded-full bg-white/40" />
+                <span>{item}</span>
+              </li>
+            ))
+          }
         </ul>
       </section>
-
       <div class="h-px w-full bg-white/10"></div>
-
-      <!-- CLOSING -->
       <section class="space-y-4">
         <p>
-          새로운 기술을 배우는 것을 좋아합니다.
-          배운 것은 기록으로 정리하고,
+          새로운 기술을 배우는 것을 좋아합니다. 배운 것은 기록으로 정리하고,
           실제 구현을 통해 검증하려고 합니다.
         </p>
       </section>

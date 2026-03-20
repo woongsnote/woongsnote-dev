@@ -1,11 +1,12 @@
 ---
-import BaseLayout from '@/app/layouts/BaseLayout.astro';
-import { seo } from '@/shared/lib/seo';
-
-const meta = seo.page('notFound');
+import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
-<BaseLayout meta={meta}>
+<BaseLayout
+  title="페이지를 찾을 수 없습니다"
+  description="요청하신 페이지가 존재하지 않거나 이동되었습니다"
+  noindex
+>
   <div
     class="z-20 mx-auto flex w-fit flex-col items-center justify-center gap-10 p-10"
   >

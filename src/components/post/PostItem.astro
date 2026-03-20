@@ -1,0 +1,39 @@
+---
+import { formatDate } from '@/lib/date';
+import type { PostEntry } from '@/types';
+
+type Props = {
+  post: PostEntry;
+};
+
+const { post } = Astro.props;
+
+const href = post.id;
+
+const { title, description, publishedDate } = post.data;
+
+const date = formatDate(publishedDate);
+---
+
+<a
+  href={`/${href}`}
+  class="group border-base-300 hover:bg-base-200 relative grid grid-cols-[auto_1fr] items-baseline gap-7 border-b px-1 py-5 no-underline transition-colors duration-200 max-[480px]:grid-cols-1 max-[480px]:gap-1"
+>
+  <span
+    class="text-neutral-content pt-px font-mono text-xs tracking-tight whitespace-nowrap max-[480px]:text-[11px]"
+  >
+    {date}
+  </span>
+  <div>
+    <h2
+      class="text-base-content group-hover:text-primary mb-1 text-base leading-snug font-semibold -tracking-tight transition-colors duration-200"
+    >
+      {title}
+    </h2>
+    <p
+      class="text-neutral-content group-hover:text-base-content/70 text-sm leading-normal break-keep transition-colors duration-200"
+    >
+      {description}
+    </p>
+  </div>
+</a>

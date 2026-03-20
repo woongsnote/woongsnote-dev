@@ -1,0 +1,32 @@
+---
+import { SOCIALS } from '@/config';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer bg-base-200 mt-auto p-4">
+  <div
+    class="mx-auto flex w-full max-w-4xl flex-col-reverse items-center justify-between gap-3.5 md:flex-row"
+  >
+    <p class="text-base-content/70 text-sm">
+      &copy; {year} woongsnote.
+    </p>
+    <nav class="flex gap-4.5">
+      {
+        SOCIALS.map(({ title, url }) => {
+          return (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-base-content/40 hover:text-base-content font-mono text-xs tracking-wide no-underline transition-colors duration-200"
+              aria-label={`${title} 페이지로 이동`}
+            >
+              <span>{title}</span>
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</footer>

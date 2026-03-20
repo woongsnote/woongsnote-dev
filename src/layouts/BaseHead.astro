@@ -1,0 +1,69 @@
+---
+import { siteConfig } from '@/config';
+import type { PageMeta } from '@/types';
+
+interface Props extends PageMeta {
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/opengraph-image.png',
+  articleDate,
+  noindex,
+  slug,
+} = Astro.props;
+
+const ogImage = image ?? (slug ? `/${slug}/og.png` : '/opengraph-image.png');
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const pageTitle =
+  title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
+---
+
+<meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover"
+/>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="canonical" href={canonicalURL} />
+<meta name="generator" content={Astro.generator} />
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="woongsnote"
+  href={new URL('rss.xml', Astro.site)}
+/>
+<title>{pageTitle}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph -->
+<meta property="og:site_name" content={siteConfig.name} />
+<meta property="og:type" content={articleDate ? 'article' : 'website'} />
+<meta property="og:locale" content={siteConfig.locale} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(ogImage, Astro.site)} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+{
+  articleDate && (
+    <meta property="article:published_time" content={articleDate} />
+  )
+}
+{noindex && <meta name="robots" content="noindex,nofollow" />}
