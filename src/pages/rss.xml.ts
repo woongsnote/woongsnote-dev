@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { siteConfig } from '@/shared/config';
-import { buildRssXml } from '@/shared/lib/feed/rss';
+import { siteConfig } from '@/config';
+import { buildRssXml } from '@/lib/rss';
 
 export const GET: APIRoute = async ({ site }) => {
   const posts = await getCollection('posts');

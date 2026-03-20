@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+
+type Props = {
+  image: ImageMetadata;
+  alt: string;
+  link?: string;
+  title?: string;
+};
+
+const { image, alt, link, title } = Astro.props;
+
+const projectLink = link ?? title;
+---
+
+<div class="mockup-browser border-base-300/50 not-prose my-4 rounded-xl border">
+  <div class="mockup-browser-toolbar">
+    <div class="input">
+      {projectLink}
+    </div>
+  </div>
+  <Image
+    src={image}
+    alt={alt}
+    width={800}
+    height={480}
+    loading="eager"
+    class="objetct-none block h-auto w-full border-t"
+  />
+</div>

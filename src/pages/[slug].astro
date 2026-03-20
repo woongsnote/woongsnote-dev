@@ -1,9 +1,6 @@
 ---
-import PostLayout from '@/app/layouts/PostLayout.astro';
-import { parseMinutes } from '@/shared/lib/content/posts';
-import { getPostBySlug, getPosts } from '@/shared/lib/content/posts.query';
-import { seo } from '@/shared/lib/seo';
-import { postToSeoSource } from '@/shared/lib/seo/adapter/post';
+import PostLayout from '@/layouts/PostLayout.astro';
+import { getPostBySlug, getPosts, parseMinutes } from '@/lib/posts';
 import type { GetStaticPaths } from 'astro';
 import { render } from 'astro:content';
 
@@ -22,18 +19,11 @@ if (!post) {
   throw new Error(`Post not found: ${slug}`);
 }
 
-const meta = seo.post(postToSeoSource(post));
-
 const { Content, headings, remarkPluginFrontmatter } = await render(post);
 
 const readingTime = parseMinutes(remarkPluginFrontmatter.minutesRead);
 ---
 
-<PostLayout
-  meta={meta}
-  post={post}
-  headings={headings}
-  readingTime={readingTime}
->
+<PostLayout post={post} headings={headings} readingTime={readingTime}>
   <Content />
 </PostLayout>

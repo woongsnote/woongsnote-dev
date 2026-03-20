@@ -1,5 +1,6 @@
+// @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkReadingTime } from './remark-reading-time.mjs';
@@ -23,7 +24,7 @@ export default defineConfig({
   },
   trailingSlash: 'never',
   vite: {
-    plugins: [tailwind()],
+    plugins: [tailwindcss()],
   },
   image: {
     responsiveStyles: true,

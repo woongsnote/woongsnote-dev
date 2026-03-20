@@ -1,0 +1,133 @@
+/* ═══════════════════════════════════════════
+   typography.css
+   ─ Shiki / rehype-pretty-code 전용 스타일
+   ─ 기본 타이포그래피는 @tailwindcss/typography (prose)
+     + daisyUI v5 시맨틱 컬러에 위임
+   ═══════════════════════════════════════════ */
+
+/* ─── 테마별 코드 토큰 변수 ─── */
+[data-theme='woong-light'] {
+  --color-code-title-bg: var(--color-gray-200);
+  --color-code-title-fg: var(--color-blue-700);
+  --color-highlight-line: rgba(59, 130, 246, 0.1);
+  --color-highlight-bar: var(--color-blue-400);
+}
+
+[data-theme='woong-dark'] {
+  --color-code-title-bg: var(--color-gray-800);
+  --color-code-title-fg: var(--color-blue-300);
+  --color-highlight-line: rgba(59, 130, 246, 0.2);
+  --color-highlight-bar: var(--color-blue-500);
+}
+
+@layer components {
+  .prose {
+    /* 한국어 줄바꿈 (prose에 없음) */
+    word-break: keep-all;
+
+    /* ─── Inline Code ─── */
+    & :not(pre) > code {
+      vertical-align: middle;
+      font-weight: 600;
+      padding-inline: calc(var(--spacing) * 1);
+      padding-block: calc(var(--spacing) * 1);
+      border-radius: var(--radius-sm);
+    }
+
+    & :not(pre) > code::before,
+    & :not(pre) > code::after {
+      display: none;
+    }
+
+    /* ─── Code Block ─── */
+    & pre {
+      padding: var(--spacing-2);
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      margin-bottom: calc(var(--spacing) * 6);
+      scrollbar-width: none;
+    }
+
+    & pre::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* ─── Shiki 토큰 ─── */
+    & pre span[data-line] {
+      display: inline-block;
+      padding: calc(var(--spacing) * 1);
+      line-height: var(--leading-snug);
+    }
+
+    & code span[data-highlighted-line] {
+      border-left-width: calc(var(--spacing) * 1);
+      border-left-color: var(--color-highlight-bar);
+      background-color: var(--color-highlight-line);
+      padding-left: var(--spacing-2);
+    }
+
+    /* ─── rehype-pretty-code title ─── */
+    & figcaption[data-rehype-pretty-code-title] {
+      background-color: var(--color-code-title-bg) !important;
+      color: var(--color-code-title-fg) !important;
+      font-family: var(--font-mono);
+      font-size: var(--font-size-sm);
+      font-weight: 700;
+      padding-inline: calc(var(--spacing) * 5);
+      padding-block: calc(var(--spacing) * 4);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    & figcaption[data-rehype-pretty-code-title] + pre {
+      margin-top: 0;
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+    }
+
+    & [data-rehype-pretty-code-figure] pre {
+      padding-inline: 0;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Shiki 테마별 색상 (data-theme 기반)
+   ═══════════════════════════════════════════ */
+
+/* ─── Light ─── */
+[data-theme='woong-light'] .prose :not(pre) > code {
+  background-color: var(--shiki-light-bg);
+}
+
+[data-theme='woong-light'] .prose pre {
+  background-color: var(--shiki-light-bg);
+}
+
+[data-theme='woong-light'] .prose code[data-theme*=' '],
+[data-theme='woong-light'] .prose code[data-theme*=' '] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+[data-theme='woong-light'] .prose [data-rehype-pretty-code-figure] pre {
+  background-color: var(--shiki-light-bg);
+}
+
+/* ─── Dark ─── */
+[data-theme='woong-dark'] .prose :not(pre) > code {
+  background-color: var(--shiki-dark-bg);
+}
+
+[data-theme='woong-dark'] .prose pre {
+  background-color: var(--shiki-dark-bg);
+}
+
+[data-theme='woong-dark'] .prose code[data-theme*=' '],
+[data-theme='woong-dark'] .prose code[data-theme*=' '] span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+[data-theme='woong-dark'] .prose [data-rehype-pretty-code-figure] pre {
+  background-color: var(--shiki-dark-bg);
+}

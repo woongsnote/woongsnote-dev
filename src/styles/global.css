@@ -1,0 +1,68 @@
+/* ── 1. Imports ── */
+@import 'tailwindcss';
+@import './typography.css';
+
+/* ── 2. Plugins ── */
+@plugin '@tailwindcss/typography';
+@plugin 'daisyui' {
+  themes: woong-dark, woong-light;
+}
+
+@plugin 'daisyui/theme' {
+  name: 'woong-dark';
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: oklch(0.13 0.005 260);
+  --color-base-200: oklch(0.16 0.005 260);
+  --color-base-300: oklch(0.22 0.008 260);
+  --color-base-content: oklch(0.88 0.01 250);
+
+  --color-primary: oklch(0.65 0.15 245);
+  --color-primary-content: oklch(0.13 0.005 260);
+  --color-secondary: oklch(0.5 0.12 250);
+  --color-secondary-content: oklch(0.9 0.02 250);
+  --color-accent: oklch(0.72 0.14 240);
+
+  --color-neutral: oklch(0.18 0.005 260);
+  --color-neutral-content: oklch(0.65 0 0);
+}
+
+@plugin 'daisyui/theme' {
+  name: 'woong-light';
+  color-scheme: light;
+
+  --color-base-100: oklch(0.98 0.003 250);
+  --color-base-200: oklch(0.95 0.005 250);
+  --color-base-300: oklch(0.9 0.008 250);
+  --color-base-content: oklch(0.2 0.01 250);
+
+  --color-primary: oklch(0.45 0.18 250);
+  --color-primary-content: oklch(0.98 0.003 250);
+  --color-secondary: oklch(0.55 0.14 245);
+  --color-secondary-content: oklch(0.98 0.003 250);
+  --color-accent: oklch(0.48 0.16 245);
+
+  --color-neutral: oklch(0.45 0.01 250);
+  --color-neutral-content: oklch(0.45 0 0);
+}
+
+/* ── 3. Font & Theme ── */
+@font-face {
+  font-family: 'Pretendard Variable';
+  src: url('/fonts/PretendardVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: 'Pretendard Variable', system-ui, sans-serif;
+}
+
+/* ── 4. Custom Styles ── */
+[data-search-modal] mark {
+  background: none;
+  color: var(--color-accent);
+  font-weight: 600;
+}

@@ -1,16 +1,39 @@
 ---
-import BaseLayout from '@/app/layouts/BaseLayout.astro';
-import { getPostsGroupedByYear } from '@/shared/lib/content/posts';
-import { seo } from '@/shared/lib/seo';
-import { YearSection } from '@/widgets/posts-list/ui';
-
-const meta = seo.page('archive');
+import PostItem from '@/components/post/PostItem.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPostsGroupedByYear } from '@/lib/posts';
 
 const sections = await getPostsGroupedByYear();
 ---
 
-<BaseLayout meta={meta}>
-  <div class="container-frame mt-2 space-y-10">
-    {sections.map((s) => <YearSection {...s} />)}
-  </div>
+<BaseLayout title="Archive" description="전체 글 목록">
+  {
+    sections.length > 0 ? (
+      <div class="mx-auto mt-2 w-full max-w-4xl space-y-10">
+        {sections.map((s) => (
+          <section class="space-y-3" aria-labelledby={`y-${s.year}`}>
+            <div class="sticky top-16 z-20 -mx-4 px-4 py-2 backdrop-blur">
+              <div class="divider divider-start">
+                <header class="flex items-baseline gap-3">
+                  <h2
+                    id={`y-${s.year}`}
+                    class="text-sm font-semibold tracking-wide"
+                  >
+                    {s.year}
+                  </h2>
+                </header>
+              </div>
+            </div>
+            <ul class="list">
+              {s.posts.map((post) => (
+                <PostItem post={post} />
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    ) : (
+      <p class="text-sub mt-8 text-center text-sm">작성된 글이 없습니다.</p>
+    )
+  }
 </BaseLayout>

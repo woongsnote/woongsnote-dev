@@ -4,7 +4,7 @@ import { defineCollection, type ImageFunction } from 'astro:content';
 import { glob } from 'astro/loaders';
 //Import Zod
 import { z } from 'astro/zod';
-import { CATEGORY_TYPES } from './shared/types/content/category';
+import { CATEGORY_TYPES } from './types/category';
 
 //Define a `loader` and `schema` for each collection
 const postSchema = ({ image }: { image: ImageFunction }) =>

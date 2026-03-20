@@ -1,0 +1,48 @@
+---
+/**
+ * 검색 모달 – native <dialog> + daisyUI modal
+ *
+ * - ESC 닫기: <dialog> 네이티브
+ * - 배경 클릭 닫기: <form method="dialog"> 네이티브
+ * - ⌘K / Ctrl+K: search-modal.ts 에서 처리
+ */
+---
+
+<dialog data-search-modal class="modal">
+  <div class="modal-box max-w-2xl p-0">
+    <!-- 검색 입력 -->
+    <div class="border-base-300 border-b p-3">
+      <input
+        type="search"
+        placeholder="검색… (⌘K / Ctrl+K)"
+        class="input input-ghost w-full focus:outline-none"
+        data-search-input
+      />
+    </div>
+
+    <!-- 결과 목록 -->
+    <div class="max-h-[60vh] overflow-auto p-3">
+      <ul class="flex flex-col gap-1" data-results></ul>
+      <p class="py-4 text-center text-sm opacity-60" data-empty hidden>
+        검색 결과가 없어요.
+      </p>
+    </div>
+
+    <!-- 하단 힌트 -->
+    <div
+      class="border-base-300 flex items-center justify-between border-t p-3 text-xs opacity-60"
+    >
+      <span>ESC 닫기</span>
+      <span>⌘K / Ctrl+K 열기</span>
+    </div>
+  </div>
+
+  <!-- daisyUI 배경 클릭 닫기 -->
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+
+<script>
+  import './search-modal';
+</script>

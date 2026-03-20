@@ -1,0 +1,45 @@
+---
+import Footer from '@/components/common/Footer.astro';
+import Header from '@/components/common/Header.astro';
+import SearchModal from '@/components/search/SearchModal.astro';
+import { siteConfig } from '@/config';
+import '@/styles/global.css';
+import type { PageMeta } from '@/types';
+import BaseHead from './BaseHead.astro';
+
+interface Props extends PageMeta {
+  noindex?: boolean;
+}
+
+const { title, description, image, articleDate, noindex } = Astro.props;
+---
+
+<!doctype html>
+<html lang={siteConfig.lang}>
+  <head>
+    <script is:inline>
+      function applyTheme() {
+        const saved = localStorage.getItem('theme');
+        const isLight =
+          saved === 'light' ||
+          (!saved && !matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute(
+          'data-theme',
+          isLight ? 'woong-light' : 'woong-dark'
+        );
+      }
+
+      applyTheme();
+      document.addEventListener('astro:after-swap', applyTheme);
+    </script>
+    <BaseHead {title} {description} {image} {articleDate} {noindex} />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <Header />
+    <main class="px-2">
+      <slot />
+    </main>
+    <Footer />
+    <SearchModal />
+  </body>
+</html>
