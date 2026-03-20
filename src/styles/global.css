@@ -25,7 +25,7 @@
 
   /* ── Neutral ── */
   --color-neutral: oklch(0.18 0.005 260);
-  --color-neutral-content: oklch(0.6 0.02 250);
+  --color-neutral-content: oklch(0.65 0 0);
 }
 
 @plugin 'daisyui/theme' {
@@ -47,7 +47,7 @@
 
   /* ── Neutral ── */
   --color-neutral: oklch(0.45 0.01 250);
-  --color-neutral-content: oklch(0.98 0.003 250);
+  --color-neutral-content: oklch(0.45 0 0);
 }
 
 /* 검색 모달 안에서 강조 표시 */

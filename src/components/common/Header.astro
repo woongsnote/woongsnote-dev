@@ -1,6 +1,14 @@
 ---
 import SearchButton from '../search/SearchButton.astro';
 import ThemeToggle from './ThemeToggle.astro';
+
+const navLinks = [
+  { href: '/about', label: 'about' },
+  { href: '/archive', label: 'archive' },
+] as const;
+
+const linkClass =
+  'text-base-content/60 hover:text-base-content font-mono text-sm transition-colors';
 ---
 
 <header class="bg-base-200 sticky top-0 z-50 h-16">
@@ -9,19 +17,16 @@ import ThemeToggle from './ThemeToggle.astro';
       <a href="/" class="text-base-content text-lg font-bold">woongsnote</a>
     </div>
 
-    <nav class="flex items-center gap-3">
+    <div class="flex items-center gap-3">
       <SearchButton />
-      <a
-        href="/about"
-        class="text-base-content/40 hover:text-base-content font-mono text-sm tracking-wide no-underline transition-colors duration-200"
-        >about</a
-      >
-      <a
-        href="/archive"
-        class="text-base-content/40 hover:text-base-content font-mono text-sm tracking-wide no-underline transition-colors duration-200"
-        >archive</a
-      >
+      {
+        navLinks.map(({ href, label }) => (
+          <a href={href} class={linkClass}>
+            {label}
+          </a>
+        ))
+      }
       <ThemeToggle />
-    </nav>
+    </div>
   </nav>
 </header>
