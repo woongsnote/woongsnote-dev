@@ -34,7 +34,7 @@ const { title, description, image, articleDate, noindex } = Astro.props;
     </script>
     <BaseHead {title} {description} {image} {articleDate} {noindex} />
   </head>
-  <body class="flex min-h-screen flex-col">
+  <body class="flex min-h-dvh flex-col">
     <Header />
     <main class="px-2">
       <slot />
