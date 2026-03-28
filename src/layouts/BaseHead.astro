@@ -9,7 +9,7 @@ interface Props extends PageMeta {
 const {
   title,
   description,
-  image = '/opengraph-image.png',
+  image,
   articleDate,
   noindex,
   slug,
@@ -28,6 +28,8 @@ const pageTitle =
   name="viewport"
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 />
+<meta name="theme-color" content="#060709" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#f7f9fa" media="(prefers-color-scheme: light)" />
 
 <link rel="icon" type="image/png" href="/favicon.png" />
 <link rel="canonical" href={canonicalURL} />
@@ -64,6 +66,7 @@ const pageTitle =
 {
   articleDate && (
     <meta property="article:published_time" content={articleDate} />
+    <meta property="article:author" content={siteConfig.name} />
   )
 }
 {noindex && <meta name="robots" content="noindex,nofollow" />}
