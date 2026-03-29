@@ -40,21 +40,24 @@ const postDate = formatDate(publishedDate);
   title={title}
   description={description}
   image={`/${post.id}/og.png`}
-  articleDate={publishedDate.toDateString()}
+  articleDate={publishedDate.toISOString()}
 >
-  <article data-pagefind-body class="prose mx-auto mt-4 w-full max-w-3xl">
-    <header class="not-prose flex flex-col gap-4 break-keep">
+  <article
+    data-pagefind-body
+    class="prose mx-auto mt-4 w-full max-w-3xl p-2 break-keep"
+  >
+    <header class="not-prose flex flex-col gap-4">
       <h1
         data-pagefind-weight="10"
         data-pagefind-meta="title"
-        class="text-3xl leading-tight text-balance lg:text-4xl lg:font-semibold"
+        class="text-base-content text-3xl leading-tight font-bold text-balance lg:text-4xl"
       >
         {title}
       </h1>
       <div class="flex items-center justify-between gap-2 text-sm lg:text-base">
         <div class="text-base-content/60 flex gap-2">
           <span>{postDate}</span>
-          <ReadingTimeText readingTime={readingTime ?? 0} />
+          {readingTime && <ReadingTimeText readingTime={readingTime} />}
         </div>
         <ShareButton title={title} url={Astro.url.href} />
       </div>
@@ -64,9 +67,9 @@ const postDate = formatDate(publishedDate);
     <div class="divider"></div>
     {hasToc && <Toc headings={headings} />}
     {
-      isProject && (
+      isProject && cover && (
         <PostThumbnail
-          image={cover!}
+          image={cover}
           alt={coverAlt ?? title}
           title={title}
           link={link}
