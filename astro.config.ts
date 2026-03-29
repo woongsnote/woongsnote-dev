@@ -39,14 +39,7 @@ export default defineConfig({
       rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
       optimize: true,
     }),
-    sitemap({
-      changefreq: 'daily',
-      priority: 1.0,
-      lastmod: new Date(),
-    }),
+    sitemap(),
   ],
-  security: {
-    checkOrigin: true,
-  },
   output: 'static',
 });

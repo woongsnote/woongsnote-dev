@@ -9,31 +9,50 @@ type Props = {
 const { post } = Astro.props;
 
 const href = post.id;
-
-const { title, description, publishedDate } = post.data;
-
+const { title, description, publishedDate, category } = post.data;
 const date = formatDate(publishedDate);
+
+const categoryVar: Record<string, string> = {
+  Tech: 'tech',
+  Project: 'project',
+  Diary: 'diary',
+};
+const catKey = category ? (categoryVar[category] ?? 'tech') : null;
 ---
 
 <a
   href={`/${href}`}
-  class="group border-base-300 hover:bg-base-200 relative grid grid-cols-[auto_1fr] items-baseline gap-7 border-b px-1 py-5 no-underline transition-colors duration-200 max-[480px]:grid-cols-1 max-[480px]:gap-1"
+  class="group border-base-content/6 hover:bg-base-content/3 m-2 block border-b px-1 py-5 break-keep no-underline transition-colors duration-200"
 >
-  <span
-    class="text-neutral-content pt-px font-mono text-xs tracking-tight whitespace-nowrap max-[480px]:text-[11px]"
-  >
-    {date}
-  </span>
-  <div>
-    <h2
-      class="text-base-content group-hover:text-primary mb-1 text-base leading-snug font-semibold -tracking-tight transition-colors duration-200"
+  {/* 날짜 + 카테고리 */}
+  <div class="mb-2 flex items-center gap-2.5">
+    <time
+      datetime={publishedDate.toISOString()}
+      class="text-base-content/28 font-mono text-xs tracking-wide"
     >
-      {title}
-    </h2>
-    <p
-      class="text-neutral-content group-hover:text-base-content/70 text-sm leading-normal break-keep transition-colors duration-200"
-    >
-      {description}
-    </p>
+      {date}
+    </time>
+    {
+      catKey && (
+        <span
+          class="inline-block rounded-full px-2.5 py-px font-mono text-[11px] font-medium tracking-wide"
+          style={`background: var(--cat-${catKey}-bg); color: var(--cat-${catKey}-text);`}
+        >
+          {category}
+        </span>
+      )
+    }
   </div>
+
+  {/* 제목 */}
+  <h2
+    class="text-base-content/82 mb-1 text-base leading-snug font-semibold -tracking-tight text-balance"
+  >
+    {title}
+  </h2>
+
+  {/* 설명 */}
+  <p class="text-base-content/38 text-sm leading-relaxed break-keep">
+    {description}
+  </p>
 </a>
