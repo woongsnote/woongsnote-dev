@@ -163,3 +163,21 @@
 [data-theme='woong-dark'] .prose [data-rehype-pretty-code-figure] pre {
   background-color: var(--shiki-dark-bg);
 }
+
+[data-theme='woong-light'] {
+  --cat-tech-bg: rgba(59, 130, 246, 0.09);
+  --cat-tech-text: #4b8fe0;
+  --cat-project-bg: rgba(16, 185, 129, 0.09);
+  --cat-project-text: #0fa87a;
+  --cat-diary-bg: rgba(245, 158, 11, 0.09);
+  --cat-diary-text: #d08b0a;
+}
+
+[data-theme='woong-dark'] {
+  --cat-tech-bg: rgba(96, 165, 250, 0.12);
+  --cat-tech-text: #7db8f5;
+  --cat-project-bg: rgba(110, 231, 183, 0.1);
+  --cat-project-text: #6ad4a8;
+  --cat-diary-bg: rgba(252, 211, 77, 0.1);
+  --cat-diary-text: #e0c055;
+}
