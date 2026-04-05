@@ -44,17 +44,6 @@ export const THEME = {
   storageKey: 'theme',
 } as const;
 
-// ── Giscus (댓글) ──
-export const GISCUS = {
-  repo: 'woongsnote/woongsnote-dev',
-  repoId: 'R_kgDOIZVQXA',
-  category: 'Comments',
-  categoryId: 'DIC_kwDOIZVQXM4Caihi',
-  mapping: 'url',
-  theme: 'dark_tritanopia',
-  lang: 'en',
-} as const;
-
 // ── OG Image ──
 export const OG_IMAGE = {
   width: 1200,
