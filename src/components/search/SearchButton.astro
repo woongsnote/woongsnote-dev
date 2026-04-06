@@ -25,9 +25,16 @@
 </button>
 
 <script>
-  document
-    .querySelector('[data-search-open]')
-    ?.addEventListener('click', () => {
-      window.dispatchEvent(new CustomEvent('search:open'));
-    });
+  function bindSearchButton(): void {
+    document
+      .querySelector('[data-search-open]')
+      ?.addEventListener('click', () => {
+        window.dispatchEvent(new CustomEvent('search:open'));
+      });
+  }
+
+  bindSearchButton();
+  
+  document.addEventListener('astro:after-swap', bindSearchButton);
+
 </script>
