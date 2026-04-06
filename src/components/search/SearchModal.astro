@@ -15,16 +15,21 @@
     <!-- 검색 입력 -->
     <div class="border-base-300 flex items-center gap-2 border-b p-3">
       <input
-        type="search"
-        placeholder="검색… (⌘K / Ctrl+K)"
+        type="text"
+        placeholder="Search..."
         class="input input-ghost w-full focus:outline-none"
         data-search-input
       />
+      <kbd
+        class="border-base-content/20 text-base-content/50 hidden rounded border px-1.5 py-0.5 font-mono text-[10px] sm:inline"
+      >
+        ESC
+      </kbd>
       <button
         type="button"
         data-search-close
         aria-label="닫기"
-        class="btn btn-ghost btn-sm sm:hidden"
+        class="text-base-content/40 hover:text-base-content flex items-center justify-center p-1 transition-colors duration-200 sm:hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +56,6 @@
     <div
       class="border-base-300 flex items-center justify-between border-t p-3 text-xs opacity-60"
     >
-      <span>ESC 닫기</span>
       <span>↑↓ 탐색 · Enter 이동</span>
       <span class="hidden sm:inline">⌘K / Ctrl+K 열기</span>
     </div>
