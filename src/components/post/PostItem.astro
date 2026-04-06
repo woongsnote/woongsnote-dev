@@ -4,6 +4,7 @@ import type { PostEntry } from '@/types';
 
 type Props = {
   post: PostEntry;
+  headingLevel?: 'h2' | 'h3';
 };
 
 const {
@@ -11,42 +12,36 @@ const {
     id,
     data: { title, description, publishedDate, category },
   },
+  headingLevel: Tag = 'h2',
 } = Astro.props;
-
-const date = formatDate(publishedDate);
-
-const categoryVar: Record<string, string> = {
-  Tech: 'tech',
-  Project: 'project',
-  Diary: 'diary',
-};
-const catKey = category ? (categoryVar[category] ?? 'tech') : null;
 ---
 
-<a
-  href={`/${id}`}
-  class="group border-base-content/6 hover:bg-base-content/3 block border-b px-1 py-5 break-keep no-underline transition-colors duration-200"
->
-  <div class="mb-2 flex items-center gap-2.5">
-    <time
-      datetime={publishedDate.toISOString()}
-      class="text-base-content/50 font-mono text-xs tracking-wide"
-    >
-      {date}
-    </time>
-    <span
-      data-cat={category}
-      class="inline-block rounded-full px-2.5 py-px font-mono text-[11px] font-medium tracking-wide"
-    >
-      {category}
-    </span>
-  </div>
-  <h2
-    class="text-base-content/82 mb-1 text-base leading-snug font-semibold -tracking-tight text-balance"
+<li>
+  <a
+    href={`/${id}`}
+    class="group border-base-content/6 hover:bg-base-content/3 block border-b px-1 py-5 break-keep no-underline transition-colors duration-200"
   >
-    {title}
-  </h2>
-  <p class="text-base-content/58 text-sm leading-relaxed break-keep">
-    {description}
-  </p>
-</a>
+    <div class="mb-2 flex items-center gap-2.5">
+      <time
+        datetime={publishedDate.toISOString()}
+        class="text-base-content/50 font-mono text-xs tracking-wide"
+      >
+        {formatDate(publishedDate)}
+      </time>
+      <span
+        data-cat={category}
+        class="inline-block rounded-full px-2.5 py-px font-mono text-xs font-medium tracking-wide"
+      >
+        {category}
+      </span>
+    </div>
+    <Tag
+      class="text-base-content/82 mb-1 text-base leading-snug font-semibold -tracking-tight text-balance"
+    >
+      {title}
+    </Tag>
+    <p class="text-base-content/58 text-sm leading-relaxed break-keep">
+      {description}
+    </p>
+  </a>
+</li>

@@ -21,8 +21,8 @@ const { title, description, image, articleDate, noindex } = Astro.props;
       function applyTheme() {
         const saved = localStorage.getItem('theme');
         const isLight =
-          saved === 'light' ||
-          (!saved && !matchMedia('(prefers-color-scheme: dark)').matches);
+          saved === 'woong-light' ||
+          (!saved && matchMedia('(prefers-color-scheme: light)').matches);
         document.documentElement.setAttribute(
           'data-theme',
           isLight ? 'woong-light' : 'woong-dark'
@@ -36,7 +36,7 @@ const { title, description, image, articleDate, noindex } = Astro.props;
   </head>
   <body class="flex min-h-dvh flex-col">
     <Header />
-    <main class="px-4">
+    <main class="px-2">
       <slot />
     </main>
     <Footer />
