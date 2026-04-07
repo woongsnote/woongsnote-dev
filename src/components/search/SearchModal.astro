@@ -5,19 +5,43 @@
  * - ESC 닫기: <dialog> 네이티브
  * - 배경 클릭 닫기: <form method="dialog"> 네이티브
  * - ⌘K / Ctrl+K: search-modal.ts 에서 처리
+ * - 모바일 닫기 버튼: data-search-close
+ * - ↑↓ Enter 키보드 탐색: search-modal.ts 에서 처리
  */
 ---
 
 <dialog data-search-modal class="modal">
   <div class="modal-box max-w-2xl p-0">
     <!-- 검색 입력 -->
-    <div class="border-base-300 border-b p-3">
+    <div class="border-base-300 flex items-center gap-2 border-b p-3">
       <input
-        type="search"
-        placeholder="검색… (⌘K / Ctrl+K)"
+        type="text"
+        placeholder="Search..."
         class="input input-ghost w-full focus:outline-none"
         data-search-input
       />
+      <kbd
+        class="border-base-content/20 text-base-content/50 hidden rounded border px-1.5 py-0.5 font-mono text-[10px] sm:inline"
+      >
+        ESC
+      </kbd>
+      <button
+        type="button"
+        data-search-close
+        aria-label="닫기"
+        class="text-base-content/40 hover:text-base-content flex items-center justify-center p-1 transition-colors duration-200 sm:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M18 6 6 18M6 6l12 12"></path>
+        </svg>
+      </button>
     </div>
 
     <!-- 결과 목록 -->
@@ -32,8 +56,8 @@
     <div
       class="border-base-300 flex items-center justify-between border-t p-3 text-xs opacity-60"
     >
-      <span>ESC 닫기</span>
-      <span>⌘K / Ctrl+K 열기</span>
+      <span>↑↓ 탐색 · Enter 이동</span>
+      <span class="hidden sm:inline">⌘K / Ctrl+K 열기</span>
     </div>
   </div>
 

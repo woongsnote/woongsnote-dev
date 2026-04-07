@@ -11,29 +11,29 @@ const sections = await getPostsGroupedByYear();
     sections.length > 0 ? (
       <div class="mx-auto mt-2 w-full max-w-4xl space-y-10">
         {sections.map((s) => (
-          <section class="space-y-3 m-2" aria-labelledby={`y-${s.year}`}>
+          <section class="m-2 space-y-3" aria-labelledby={`y-${s.year}`}>
             <div class="sticky top-16 z-20 -mx-4 px-4 py-2 backdrop-blur">
               <div class="divider divider-start">
-                <header class="flex items-baseline gap-3">
-                  <h2
-                    id={`y-${s.year}`}
-                    class="text-sm font-semibold tracking-wide"
-                  >
-                    {s.year}
-                  </h2>
-                </header>
+                <h2
+                  id={`y-${s.year}`}
+                  class="text-sm font-semibold tracking-wide"
+                >
+                  {s.year}
+                </h2>
               </div>
             </div>
-            <ul class="list">
+            <ul class="list-none p-0">
               {s.posts.map((post) => (
-                <PostItem post={post} />
+                <PostItem post={post} headingLevel="h3" />
               ))}
             </ul>
           </section>
         ))}
       </div>
     ) : (
-      <p class="text-sub mt-8 text-center text-sm">작성된 글이 없습니다.</p>
+      <p class="text-base-content/60 mt-8 text-center text-sm">
+        작성된 글이 없습니다.
+      </p>
     )
   }
 </BaseLayout>
