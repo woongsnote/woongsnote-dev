@@ -11,11 +11,13 @@ const homePosts = await getHomePosts();
 
 <BaseLayout title={siteConfig.name} description={siteConfig.description}>
   <section class="mx-auto w-full max-w-4xl px-2 lg:px-4">
-    {homePosts.map((post) => <PostItem post={post} />)}
+    <ul>
+      {homePosts.map((post) => <PostItem post={post} />)}
+    </ul>
     <footer class="my-8 md:pt-8">
       <a
         href="/archive"
-        class="text-accent inline-flex items-center gap-1.5 font-mono text-sm tracking-wide no-underline transition-colors duration-200"
+        class="text-accent hover:text-accent/85 inline-flex items-center gap-1.5 font-mono text-sm tracking-wide no-underline transition-colors duration-200 hover:underline"
       >
         All {totalCount} Posts →
       </a>

@@ -9,7 +9,7 @@
   type="button"
   data-search-open
   aria-label="검색 (Ctrl 또는 ⌘ + K)"
-  class="btn btn-ghost btn-sm sm:hidden"
+  class="text-base-content/40 hover:text-base-content flex items-center justify-center p-1 transition-colors duration-200 sm:hidden"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -25,9 +25,15 @@
 </button>
 
 <script>
-  document
-    .querySelector('[data-search-open]')
-    ?.addEventListener('click', () => {
-      window.dispatchEvent(new CustomEvent('search:open'));
-    });
+  function bindSearchButton(): void {
+    document
+      .querySelector('[data-search-open]')
+      ?.addEventListener('click', () => {
+        window.dispatchEvent(new CustomEvent('search:open'));
+      });
+  }
+
+  bindSearchButton();
+
+  document.addEventListener('astro:after-swap', bindSearchButton);
 </script>

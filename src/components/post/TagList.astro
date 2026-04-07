@@ -9,8 +9,8 @@ const { tags } = Astro.props;
 <div class="flex flex-wrap items-center gap-2">
   {
     tags.map((tag) => (
-      <span class="bg-secondary font-medium inline-flex items-center rounded-md px-2 py-1 text-xs">
-        {tag}
+      <span class="border-base-content/20 text-base-content/60 inline-flex items-center rounded-md border px-2 py-1 font-mono text-xs font-medium">
+        #{tag}
       </span>
     ))
   }

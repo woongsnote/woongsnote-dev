@@ -21,8 +21,8 @@ const { title, description, image, articleDate, noindex } = Astro.props;
       function applyTheme() {
         const saved = localStorage.getItem('theme');
         const isLight =
-          saved === 'light' ||
-          (!saved && !matchMedia('(prefers-color-scheme: dark)').matches);
+          saved === 'woong-light' ||
+          (!saved && matchMedia('(prefers-color-scheme: light)').matches);
         document.documentElement.setAttribute(
           'data-theme',
           isLight ? 'woong-light' : 'woong-dark'
