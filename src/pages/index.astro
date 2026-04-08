@@ -14,7 +14,7 @@ const homePosts = await getHomePosts();
     <ul>
       {homePosts.map((post) => <PostItem post={post} />)}
     </ul>
-    <footer class="my-8 md:pt-8">
+    <footer class="mt-2 md:pt-4">
       <a
         href="/archive"
         class="text-accent hover:text-accent/85 inline-flex items-center gap-1.5 font-mono text-sm tracking-wide no-underline transition-colors duration-200 hover:underline"
@@ -22,6 +22,5 @@ const homePosts = await getHomePosts();
         All {totalCount} Posts →
       </a>
     </footer>
-  </section>   
-</BaseLayout> 
-                                                                                     
+  </section>
+</BaseLayout>
