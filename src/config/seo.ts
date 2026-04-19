@@ -9,10 +9,35 @@ export const getWebsiteJsonLd = () => ({
   description: siteConfig.description,
 });
 
-export const getAuthorJsonLd = () => ({
+type ArticleJsonLdParams = {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  datePublished: string;
+};
+
+export const getArticleJsonLd = ({
+  title,
+  description,
+  url,
+  image,
+  datePublished,
+}: ArticleJsonLdParams) => ({
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: AUTHOR.name,
-  url: siteConfig.url,
-  knowsAbout: AUTHOR.tech,
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  url,
+  image,
+  datePublished,
+  author: {
+    '@type': 'Person',
+    name: AUTHOR.name,
+    url: siteConfig.url,
+  },
+  publisher: {
+    '@type': 'Person',
+    name: AUTHOR.name,
+  },
 });
