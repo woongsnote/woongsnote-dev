@@ -1,7 +1,5 @@
-// src/lib/posts.ts
 // ─── 포스트 조회 · 그룹핑 · 채널(홈/아카이브/RSS 등) ───
 
-import { LIMITS } from '@/config';
 import type { PostEntry } from '@/types';
 import { getCollection } from 'astro:content';
 
@@ -59,14 +57,6 @@ export const getPostsGroupedByYear = async (): Promise<PostsByYear[]> => {
     .sort(([a], [b]) => b - a)
     .map(([year, items]) => ({ year, posts: items }));
 };
-
-// ── 채널별 조회 ──
-
-export const getHomePosts = () => getPosts(LIMITS.homePostCount);
-export const getArchivePosts = () => getPosts();
-export const getRssPosts = () => getPosts(LIMITS.rssItemCount);
-export const getSitemapPosts = () => getPosts();
-export const getSearchPosts = () => getPosts();
 
 // ── 유틸 ──
 

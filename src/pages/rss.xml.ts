@@ -1,16 +1,10 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
 import { siteConfig } from '@/config';
 import { buildRssXml } from '@/lib/rss';
+import { getPosts } from '@/lib/posts';
 
 export const GET: APIRoute = async ({ site }) => {
-  const posts = await getCollection('posts');
-
-  const publishedPosts = posts
-    .sort(
-      (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
-    )
-    .slice(0, 30);
+  const publishedPosts = await getPosts();
 
   const xml = buildRssXml({
     site: site ?? siteConfig.url,
