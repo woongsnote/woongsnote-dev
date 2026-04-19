@@ -27,7 +27,9 @@ const hasPosts = postsByYear.length > 0;
               </div>
             </div>
             {group.posts.map((post) => (
-              <PostItem post={post} />
+              <ul>
+                <PostItem post={post} />
+              </ul>
             ))}
           </section>
         ))
