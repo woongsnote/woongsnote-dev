@@ -1,5 +1,5 @@
 ---
-import { siteConfig } from '@/config';
+import { getArticleJsonLd, getWebsiteJsonLd, siteConfig } from '@/config';
 import type { PageMeta } from '@/types';
 
 interface Props extends PageMeta {
@@ -21,6 +21,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const pageTitle =
   title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
+
+  const jsonLd = articleDate
+  ? getArticleJsonLd({
+      title,
+      description,
+      url: canonicalURL.href,
+      image: new URL(ogImage, Astro.site).href,
+      datePublished: articleDate,
+    })
+  : getWebsiteJsonLd();
 ---
 
 <meta charset="utf-8" />
@@ -70,3 +80,5 @@ const pageTitle =
   )
 }
 {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

@@ -51,7 +51,7 @@
 /* ── 3. Font & Theme ── */
 @font-face {
   font-family: 'Pretendard Variable';
-  src: url('/fonts/PretendardVariable.woff2') format('woff2');
+  src: url('../assets/fonts/PretendardVariable.woff2') format('woff2');
   font-weight: 100 900;
   font-display: swap;
 }

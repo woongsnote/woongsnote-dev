@@ -3,37 +3,39 @@ import PostItem from '@/components/post/PostItem.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPostsGroupedByYear } from '@/lib/posts';
 
-const sections = await getPostsGroupedByYear();
+const postsByYear = await getPostsGroupedByYear();
+const hasPosts = postsByYear.length > 0;
 ---
 
 <BaseLayout title="Archive" description="전체 글 목록">
-  {
-    sections.length > 0 ? (
-      <div class="mx-auto mt-2 w-full max-w-4xl space-y-10">
-        {sections.map((s) => (
-          <section class="m-2 space-y-3" aria-labelledby={`y-${s.year}`}>
+  <section
+    class="mx-auto w-full max-w-4xl space-y-10 px-2 lg:px-4"
+    aria-label="Archive"
+  >
+    {
+      hasPosts ? (
+        postsByYear.map((group) => (
+          <section class="space-y-3" aria-labelledby={`y-${group.year}`}>
             <div class="sticky top-16 z-20 -mx-4 px-4 py-2 backdrop-blur">
               <div class="divider divider-start">
                 <h2
-                  id={`y-${s.year}`}
+                  id={`y-${group.year}`}
                   class="text-sm font-semibold tracking-wide"
                 >
-                  {s.year}
+                  {group.year}
                 </h2>
               </div>
             </div>
-            <ul class="list-none p-0">
-              {s.posts.map((post) => (
-                <PostItem post={post} headingLevel="h3" />
-              ))}
-            </ul>
+            {group.posts.map((post) => (
+              <PostItem post={post} />
+            ))}
           </section>
-        ))}
-      </div>
-    ) : (
-      <p class="text-base-content/60 mt-8 text-center text-sm">
-        작성된 글이 없습니다.
-      </p>
-    )
-  }
+        ))
+      ) : (
+        <p class="text-base-content/60 mt-8 text-center text-sm">
+          작성된 글이 없습니다.
+        </p>
+      )
+    }
+  </section>
 </BaseLayout>

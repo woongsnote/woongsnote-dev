@@ -32,10 +32,10 @@ export async function GET({ props }: APIContext) {
 
   // 폰트 파일 로드 (프로젝트에 맞게 경로 수정)
   const fontRegular = fs.readFileSync(
-    path.resolve('./public/fonts/Pretendard-Regular.otf')
+    path.resolve('./src/assets/fonts/Pretendard-Regular.otf')
   );
   const fontBold = fs.readFileSync(
-    path.resolve('./public/fonts/Pretendard-Bold.otf')
+    path.resolve('./src/assets/fonts/Pretendard-Bold.otf')
   );
 
   const svg = await satori(
