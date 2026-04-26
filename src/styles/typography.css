@@ -12,14 +12,6 @@
   --color-code-title-fg: var(--color-blue-700);
   --color-highlight-line: rgba(59, 130, 246, 0.1);
   --color-highlight-bar: var(--color-blue-400);
-
-  /* 카테고리 배지 */
-  --cat-tech-bg: rgba(59, 130, 246, 0.09);
-  --cat-tech-text: #4b8fe0;
-  --cat-project-bg: rgba(16, 185, 129, 0.09);
-  --cat-project-text: #0fa87a;
-  --cat-diary-bg: rgba(245, 158, 11, 0.09);
-  --cat-diary-text: #d08b0a;
 }
 
 [data-theme='woong-dark'] {
@@ -28,28 +20,6 @@
   --color-code-title-fg: var(--color-blue-300);
   --color-highlight-line: rgba(59, 130, 246, 0.2);
   --color-highlight-bar: var(--color-blue-500);
-
-  /* 카테고리 배지 */
-  --cat-tech-bg: rgba(96, 165, 250, 0.15);
-  --cat-tech-text: #93c5fd;
-  --cat-project-bg: rgba(110, 231, 183, 0.13);
-  --cat-project-text: #6ee7b7;
-  --cat-diary-bg: rgba(252, 211, 77, 0.13);
-  --cat-diary-text: #fcd34d;
-}
-
-/* ─── 카테고리 배지 ─── */
-[data-cat='Tech'] {
-  background: var(--cat-tech-bg);
-  color: var(--cat-tech-text);
-}
-[data-cat='Project'] {
-  background: var(--cat-project-bg);
-  color: var(--cat-project-text);
-}
-[data-cat='Diary'] {
-  background: var(--cat-diary-bg);
-  color: var(--cat-diary-text);
 }
 
 @layer components {
@@ -73,7 +43,7 @@
 
     /* ─── Code Block ─── */
     & pre {
-      padding: var(--spacing-2);
+      padding: calc(var(--spacing) * 2);
       border-radius: var(--radius-lg);
       overflow-x: auto;
       margin-bottom: calc(var(--spacing) * 6);
@@ -88,14 +58,14 @@
     & pre span[data-line] {
       display: inline-block;
       padding: calc(var(--spacing) * 1);
-      line-height: var(--leading-snug);
+      line-height: 1.375; /* leading-snug */
     }
 
     & code span[data-highlighted-line] {
       border-left-width: calc(var(--spacing) * 1);
       border-left-color: var(--color-highlight-bar);
       background-color: var(--color-highlight-line);
-      padding-left: var(--spacing-2);
+      padding-left: calc(var(--spacing) * 2);
     }
 
     /* ─── rehype-pretty-code title ─── */
@@ -103,7 +73,7 @@
       background-color: var(--color-code-title-bg) !important;
       color: var(--color-code-title-fg) !important;
       font-family: var(--font-mono);
-      font-size: var(--font-size-sm);
+      font-size: var(--text-sm);
       font-weight: 700;
       padding-inline: calc(var(--spacing) * 5);
       padding-block: calc(var(--spacing) * 4);

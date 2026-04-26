@@ -32,10 +32,10 @@ export async function GET({ props }: APIContext) {
 
   // 폰트 파일 로드 (프로젝트에 맞게 경로 수정)
   const fontRegular = fs.readFileSync(
-    path.resolve('./src/assets/fonts/Pretendard-Regular.otf')
+    path.resolve('./src/assets/fonts/WantedSans-Regular.otf')
   );
   const fontBold = fs.readFileSync(
-    path.resolve('./src/assets/fonts/Pretendard-Bold.otf')
+    path.resolve('./src/assets/fonts/WantedSans-Bold.otf')
   );
 
   const svg = await satori(
@@ -52,7 +52,7 @@ export async function GET({ props }: APIContext) {
           background:
             'linear-gradient(145deg, #1a1b2e 0%, #16172b 50%, #1a1b2e 100%)',
           color: '#e2e8f0',
-          fontFamily: 'Pretendard',
+          fontFamily: 'WantedSans',
         },
         children: [
           // 상단: 태그
@@ -144,8 +144,8 @@ export async function GET({ props }: APIContext) {
       width: 1200,
       height: 630,
       fonts: [
-        { name: 'Pretendard', data: fontRegular, weight: 400, style: 'normal' },
-        { name: 'Pretendard', data: fontBold, weight: 700, style: 'normal' },
+        { name: 'WantedSans', data: fontRegular, weight: 400, style: 'normal' },
+        { name: 'WantedSans', data: fontBold, weight: 700, style: 'normal' },
       ],
     }
   );

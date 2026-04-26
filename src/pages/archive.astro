@@ -26,7 +26,7 @@ const hasPosts = postsByYear.length > 0;
                 </h2>
               </div>
             </div>
-            <ul>
+            <ul class="flex flex-col gap-8">
               {group.posts.map((post) => (
                 <PostItem post={post} />
               ))}

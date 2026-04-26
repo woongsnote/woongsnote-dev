@@ -17,26 +17,21 @@ const {
 ---
 
 <li>
-  <a
-    href={`/${id}`}
-    class="group border-base-content/6 hover:bg-base-content/3 block border-b px-1 py-5 break-keep no-underline transition-colors duration-200"
-  >
-    <div class="mb-2 flex items-center gap-2.5">
-      <time
-        datetime={publishedDate.toISOString()}
-        class="text-base-content/50 font-mono text-xs tracking-wide"
-      >
+  <a href={`/${id}`} class="group block break-keep no-underline">
+    <div
+      class="text-base-content/55 mb-2.5 flex items-center gap-3.5 font-mono text-xs"
+    >
+      <time datetime={publishedDate.toISOString()}>
         {formatDate(publishedDate)}
       </time>
       <span
-        data-cat={category}
-        class="inline-block rounded-full px-2.5 py-px font-mono text-xs font-medium tracking-wide"
+        class="relative pl-3.5 tracking-[0.14em] uppercase before:absolute before:top-1/2 before:left-0 before:h-px before:w-1 before:-translate-y-1/2 before:bg-current"
       >
         {category}
       </span>
     </div>
     <Tag
-      class="text-base-content mb-1 text-base leading-snug font-semibold -tracking-tight text-balance"
+      class="text-base-content group-hover:text-primary mb-1.5 text-base leading-snug font-semibold tracking-tight text-balance transition-colors"
     >
       {title}
     </Tag>
