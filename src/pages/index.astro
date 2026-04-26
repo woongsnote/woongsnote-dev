@@ -18,10 +18,10 @@ const totalPostsCount = allPosts.length;
     <ul class="flex flex-col gap-10">
       {homePosts.map((post) => <PostItem post={post} />)}
     </ul>
-    <footer class="mt-2">
+    <footer class="my-4">
       <a
         href="/archive"
-        class="text-accent inline-flex items-center gap-1.5 font-mono text-sm tracking-wide no-underline transition-colors duration-200 hover:underline"
+        class="text-primary inline-flex items-center gap-1.5 font-mono text-sm duration-200 hover:gap-3"
       >
         All {totalPostsCount} Posts →
       </a>
