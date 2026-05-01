@@ -8,5 +8,4 @@ export interface PageMeta {
   description: string;
   image?: string;
   articleDate?: string;
-  slug?: string;
 }
