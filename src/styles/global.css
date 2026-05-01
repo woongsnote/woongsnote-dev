@@ -51,7 +51,7 @@
 /* ── 3. Font & Theme ── */
 @font-face {
   font-family: 'Wanted Sans Variable';
-  src: url('../assets/fonts/WantedSansVariable.woff2')
+  src: url('/fonts/WantedSansVariable.woff2')
     format('woff2-variations');
   font-weight: 100 900;
   font-style: normal;
@@ -60,7 +60,7 @@
 
 @font-face {
   font-family: 'Geist Mono Variable';
-  src: url('../assets/fonts/GeistMono-Variable.woff2')
+  src: url('/fonts/GeistMono-Variable.woff2')
     format('woff2-variations');
   font-weight: 100 900;
   font-style: normal;

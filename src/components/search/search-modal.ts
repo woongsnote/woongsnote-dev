@@ -167,11 +167,9 @@ function mountSearchModal(): void {
 const FLAG = '__search_modal_mounted__';
 
 function init(): void {
-  (window as unknown as Record<string, boolean>)[FLAG] = false;
-  if (!(window as unknown as Record<string, boolean>)[FLAG]) {
-    (window as unknown as Record<string, boolean>)[FLAG] = true;
-    mountSearchModal();
-  }
+  if ((window as unknown as Record<string, boolean>)[FLAG]) return;
+  (window as unknown as Record<string, boolean>)[FLAG] = true;
+  mountSearchModal();
 }
 
 init();

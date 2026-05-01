@@ -1,42 +1,53 @@
 import type { APIContext, GetStaticPaths } from 'astro';
-import { getCollection } from 'astro:content';
+import { getPosts } from '@/lib/posts';
+import { formatDate } from '@/lib/date';
 import satori from 'satori';
 import sharp from 'sharp';
 import fs from 'node:fs';
 import path from 'node:path';
 
+// ── 모듈 로드 시 한 번만 실행 ──
+const fontSemiBold = fs.readFileSync(
+  path.resolve('./src/assets/fonts/WantedSans-SemiBold.otf')
+);
+
+// 블로그 토큰과 일치하는 색상
+const FG = '#fafafa';
+const FG_MUTED = '#737373';
+const BG = '#0a0a0a';
+
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getCollection('posts');
+  const posts = await getPosts();
   return posts.map((post) => ({
     params: { slug: post.id },
     props: {
       title: post.data.title,
       date: post.data.publishedDate,
-      tags: post.data.tags ?? [],
+      category: post.data.category,
     },
   }));
 };
 
 export async function GET({ props }: APIContext) {
-  const { title, date, tags } = props as {
+  const { title, date, category } = props as {
     title: string;
     date: Date;
-    tags: string[];
+    category: string;
   };
 
-  const formattedDate = new Date(date).toLocaleDateString('ko-KR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const formattedDate = formatDate(date);
 
-  // 폰트 파일 로드 (프로젝트에 맞게 경로 수정)
-  const fontRegular = fs.readFileSync(
-    path.resolve('./src/assets/fonts/WantedSans-Regular.otf')
-  );
-  const fontBold = fs.readFileSync(
-    path.resolve('./src/assets/fonts/WantedSans-Bold.otf')
-  );
+  // 글자수별 폰트 크기 (5단계, 두 줄 허용)
+  const titleFontSize =
+    title.length <= 12
+      ? 72 // 매우 짧음 — "Read Magic"
+      : title.length <= 20
+        ? 60 // 짧음 — "생애 첫 아이폰 사용 도전"
+        : title.length <= 30
+          ? 52 // 보통 — "Astro 블로그에서 카테고리 설계하기"
+          : title.length <= 42
+            ? 46 // 긴 편 — "Astro 6, Tailwind CSS v4..."
+            : 40; // 매우 긴 — 보통 두 줄
 
   const svg = await satori(
     {
@@ -48,63 +59,13 @@ export async function GET({ props }: APIContext) {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          padding: '60px',
-          background:
-            'linear-gradient(145deg, #1a1b2e 0%, #16172b 50%, #1a1b2e 100%)',
-          color: '#e2e8f0',
+          padding: '80px',
+          backgroundColor: BG,
+          color: FG,
           fontFamily: 'WantedSans',
         },
         children: [
-          // 상단: 태그
-          {
-            type: 'div',
-            props: {
-              style: { display: 'flex', gap: '10px', flexWrap: 'wrap' },
-              children: tags.slice(0, 3).map((tag) => ({
-                type: 'span',
-                props: {
-                  style: {
-                    background: 'rgba(99, 102, 241, 0.15)',
-                    color: '#818cf8',
-                    padding: '6px 16px',
-                    borderRadius: '20px',
-                    fontSize: '18px',
-                    border: '1px solid rgba(99, 102, 241, 0.25)',
-                  },
-                  children: tag,
-                },
-              })),
-            },
-          },
-          // 중앙: 제목
-          {
-            type: 'div',
-            props: {
-              style: {
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px',
-              },
-              children: [
-                {
-                  type: 'h1',
-                  props: {
-                    style: {
-                      fontSize: title.length > 30 ? '42px' : '52px',
-                      fontWeight: 700,
-                      lineHeight: 1.3,
-                      color: '#f1f5f9',
-                      margin: 0,
-                      letterSpacing: '-0.02em',
-                      wordBreak: 'keep-all',
-                    },
-                    children: title,
-                  },
-                },
-              ],
-            },
-          },
-          // 하단: 날짜 + 사이트
+          // ─── 상단: 카테고리 + 사이트명 ───
           {
             type: 'div',
             props: {
@@ -112,29 +73,60 @@ export async function GET({ props }: APIContext) {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                borderTop: '1px solid rgba(148, 163, 184, 0.15)',
-                paddingTop: '24px',
               },
               children: [
                 {
-                  type: 'span',
+                  type: 'div',
                   props: {
-                    style: { fontSize: '20px', color: '#94a3b8' },
-                    children: formattedDate,
+                    style: {
+                      display: 'flex',
+                      fontSize: '20px',
+                      letterSpacing: '0.18em',
+                      textTransform: 'uppercase',
+                      color: FG_MUTED,
+                    },
+                    children: category,
                   },
                 },
                 {
-                  type: 'span',
+                  type: 'div',
                   props: {
                     style: {
-                      fontSize: '22px',
-                      fontWeight: 700,
-                      color: '#818cf8',
+                      display: 'flex',
+                      fontSize: '20px',
+                      color: FG_MUTED,
                     },
                     children: 'woongsnote.dev',
                   },
                 },
               ],
+            },
+          },
+          // ─── 중앙: 제목 ───
+          {
+            type: 'div',
+            props: {
+              style: {
+                display: 'flex',
+                fontSize: `${titleFontSize}px`,
+                lineHeight: 1.25,
+                letterSpacing: '-0.02em',
+                color: FG,
+                wordBreak: 'keep-all',
+              },
+              children: title,
+            },
+          },
+          // ─── 하단: 날짜 ───
+          {
+            type: 'div',
+            props: {
+              style: {
+                display: 'flex',
+                fontSize: '22px',
+                color: FG_MUTED,
+              },
+              children: formattedDate,
             },
           },
         ],
@@ -144,8 +136,12 @@ export async function GET({ props }: APIContext) {
       width: 1200,
       height: 630,
       fonts: [
-        { name: 'WantedSans', data: fontRegular, weight: 400, style: 'normal' },
-        { name: 'WantedSans', data: fontBold, weight: 700, style: 'normal' },
+        {
+          name: 'WantedSans',
+          data: fontSemiBold,
+          weight: 600,
+          style: 'normal',
+        },
       ],
     }
   );
