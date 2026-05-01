@@ -15,7 +15,7 @@ const {
   slug,
 } = Astro.props;
 
-const ogImage = image ?? (slug ? `/${slug}/og.png` : '/opengraph-image.png');
+const ogImage = image ?? '/opengraph-image.png';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -40,7 +40,13 @@ const pageTitle =
 />
 <meta name="theme-color" content="#060709" media="(prefers-color-scheme: dark)" />
 <meta name="theme-color" content="#f7f9fa" media="(prefers-color-scheme: light)" />
-
+<link
+  rel="preload"
+  href="/fonts/WantedSansVariable.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
 <link rel="icon" type="image/png" href="/favicon.png" />
 <link rel="canonical" href={canonicalURL} />
 <meta name="generator" content={Astro.generator} />
