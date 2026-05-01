@@ -7,6 +7,8 @@ export const getWebsiteJsonLd = () => ({
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
+  inLanguage: siteConfig.lang,
+  image: `${siteConfig.url}/opengraph-image.png`,
 });
 
 type ArticleJsonLdParams = {
@@ -15,6 +17,7 @@ type ArticleJsonLdParams = {
   url: string;
   image: string;
   datePublished: string;
+  dateModified?: string;
 };
 
 export const getArticleJsonLd = ({
@@ -23,21 +26,34 @@ export const getArticleJsonLd = ({
   url,
   image,
   datePublished,
+  dateModified,
 }: ArticleJsonLdParams) => ({
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: title,
   description,
   url,
-  image,
+  inLanguage: siteConfig.lang,
+  image: {
+    '@type': 'ImageObject',
+    url: image,
+    width: 1200,
+    height: 630,
+  },
   datePublished,
+  dateModified: dateModified ?? datePublished,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': url,
+  },
   author: {
     '@type': 'Person',
-    name: AUTHOR.name,
-    url: siteConfig.url,
+    name: [AUTHOR.name, AUTHOR.nameEn],
+    url: `${siteConfig.url}/about`,
   },
   publisher: {
     '@type': 'Person',
-    name: AUTHOR.name,
+    name: [AUTHOR.name, AUTHOR.nameEn],
+    url: siteConfig.url,
   },
 });
