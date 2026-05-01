@@ -12,8 +12,27 @@
   data-reactions-enabled="1"
   data-emit-metadata="0"
   data-input-position="top"
-  data-theme="dark_tritanopia"
-  data-lang="en"
+  data-theme="preferred_color_scheme"
+  data-lang="ko"
   data-loading="lazy"
   crossorigin="anonymous"
   async></script>
+
+<script>
+  // data-theme 변경을 감지해서 Giscus iframe에 postMessage
+  const observer = new MutationObserver(() => {
+    const theme = document.documentElement.getAttribute('data-theme');
+    const giscusTheme = theme === 'woong-dark' ? 'dark_tritanopia' : 'light';
+    const iframe = document.querySelector<HTMLIFrameElement>(
+      'iframe.giscus-frame'
+    );
+    iframe?.contentWindow?.postMessage(
+      { giscus: { setConfig: { theme: giscusTheme } } },
+      'https://giscus.app'
+    );
+  });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
+</script>
