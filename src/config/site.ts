@@ -39,25 +39,9 @@ export const SOCIALS = [
 
 export type SocialType = (typeof SOCIALS)[number]['type'];
 
-// ── Theme ──
-export const THEME = {
-  light: 'woong-light',
-  dark: 'woong-dark',
-  storageKey: 'theme',
-} as const;
-
-// ── OG Image ──
-export const OG_IMAGE = {
-  width: 1200,
-  height: 630,
-  bgColor: '#0074FF',
-  label: 'Blog',
-} as const;
-
 // ── 수량 제한 ──
 export const LIMITS = {
   homePostCount: 10,
-  rssItemCount: 30,
 } as const;
 
 // ── TOC ──
