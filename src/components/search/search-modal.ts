@@ -57,6 +57,8 @@ function setActive(results: HTMLAnchorElement[], index: number): void {
 
 /* ── 모달 마운트 ──────────────────────────────────── */
 
+let currentOpen: (() => void) | null = null;
+
 function mountSearchModal(): void {
   const dialog = document.querySelector<HTMLDialogElement>(
     '[data-search-modal]'
@@ -142,39 +144,28 @@ function mountSearchModal(): void {
     }
   });
 
-  /* ⌘K / Ctrl+K ─────────────────────────────────── */
-
-  window.addEventListener('keydown', (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-      e.preventDefault();
-      open();
-    }
-  });
-
   /* 모바일 닫기 버튼 ────────────────────────────── */
 
   if (closeBtn) {
     closeBtn.addEventListener('click', close);
   }
 
-  /* SearchButton 연동 (CustomEvent) ──────────────── */
-
-  window.addEventListener('search:open', open);
+  /* 매 swap마다 새 dialog의 open()을 노출 */
+  currentOpen = open;
 }
 
-/* ── View Transitions 대응 + 초기 마운트 ─────────── */
+/* ── 전역 리스너 (1회만 등록) ──────────────────────── */
 
-const FLAG = '__search_modal_mounted__';
-
-function init(): void {
-  if ((window as unknown as Record<string, boolean>)[FLAG]) return;
-  (window as unknown as Record<string, boolean>)[FLAG] = true;
-  mountSearchModal();
-}
-
-init();
-
-document.addEventListener('astro:after-swap', () => {
-  (window as unknown as Record<string, boolean>)[FLAG] = false;
-  init();
+window.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    currentOpen?.();
+  }
 });
+
+window.addEventListener('search:open', () => currentOpen?.());
+
+/* ── 초기 + swap 마운트 ───────────────────────────── */
+
+mountSearchModal();
+document.addEventListener('astro:after-swap', mountSearchModal);

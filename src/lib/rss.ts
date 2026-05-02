@@ -1,68 +1,76 @@
-import type { CollectionEntry } from 'astro:content';
+import type { PostEntry } from '@/types';
 
 type BuildRssParams = {
-  site: URL | string;
+  site: string;
+  feedUrl: string;
   title: string;
   description: string;
-  items: CollectionEntry<'posts'>[];
+  language: string;
+  author: string;
+  items: PostEntry[];
 };
 
-function toCdata(value: string) {
-  return `<![CDATA[${value.replaceAll(']]>', ']]]]><![CDATA[>')}]]>`;
-}
+const XML_ESCAPES: Record<string, string> = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&apos;',
+};
 
-// CDATA를 쓰지 않는 필드(링크 등)에는 escape가 필요할 때가 있음
-function escapeXml(value: string) {
-  return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&apos;');
+const escape = (s: string) => s.replace(/[&<>"']/g, (c) => XML_ESCAPES[c]);
+
+const cdata = (s: string) =>
+  `<![CDATA[${s.replaceAll(']]>', ']]]]><![CDATA[>')}]]>`;
+
+function renderItem(post: PostEntry, base: string, author: string): string {
+  const url = `${base}/${post.id}`;
+  const categories = (post.data.tags ?? []).map(
+    (t) => `    <category>${cdata(t)}</category>`
+  );
+
+  return [
+    '  <item>',
+    `    <title>${cdata(post.data.title)}</title>`,
+    `    <link>${escape(url)}</link>`,
+    `    <guid isPermaLink="true">${escape(url)}</guid>`,
+    `    <pubDate>${post.data.publishedDate.toUTCString()}</pubDate>`,
+    `    <dc:creator>${cdata(author)}</dc:creator>`,
+    `    <description>${cdata(post.data.description)}</description>`,
+    ...categories,
+    '  </item>',
+  ].join('\n');
 }
 
 export function buildRssXml({
   site,
+  feedUrl,
   title,
   description,
+  language,
+  author,
   items,
-}: BuildRssParams) {
-  const base = String(site).replace(/\/+$/, ''); // 끝 슬래시 제거(// 방지)
+}: BuildRssParams): string {
+  const base = site.replace(/\/+$/, '');
+  const lastBuild =
+    items[0]?.data.publishedDate.toUTCString() ?? new Date().toUTCString();
 
-  const itemXml = items
-    .map((post) => {
-      const url = `${base}/${post.id}`;
-      const postTitle = post.data.title ?? '';
-      const postDesc = post.data.description ?? '';
-      const html = post.rendered?.html ?? '';
-
-      return `
-<item>
-  <title>${toCdata(postTitle)}</title>
-  <link>${escapeXml(url)}</link>
-  <guid isPermaLink="true">${escapeXml(url)}</guid>
-  <pubDate>${post.data.publishedDate.toUTCString()}</pubDate>
-  <description>${toCdata(postDesc)}</description>
-  <content:encoded>${toCdata(html)}</content:encoded>
-  ${
-    post.data.tags
-      ?.map((tag) => `<category>${toCdata(tag)}</category>`)
-      .join('') ?? ''
-  }
-</item>`;
-    })
-    .join('\n');
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/"
->
-  <channel>
-    <title>${toCdata(title)}</title>
-    <link>${escapeXml(base)}</link>
-    <description>${toCdata(description)}</description>
-    <language>ko</language>
-${itemXml}
-  </channel>
-</rss>`;
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<rss version="2.0"',
+    '  xmlns:atom="http://www.w3.org/2005/Atom"',
+    '  xmlns:dc="http://purl.org/dc/elements/1.1/">',
+    '<channel>',
+    `  <title>${cdata(title)}</title>`,
+    `  <link>${escape(base)}</link>`,
+    `  <description>${cdata(description)}</description>`,
+    `  <language>${escape(language)}</language>`,
+    `  <lastBuildDate>${lastBuild}</lastBuildDate>`,
+    `  <atom:link href="${escape(feedUrl)}" rel="self" type="application/rss+xml" />`,
+    '  <generator>Astro</generator>',
+    '  <docs>https://www.rssboard.org/rss-specification</docs>',
+    ...items.map((item) => renderItem(item, base, author)),
+    '</channel>',
+    '</rss>',
+  ].join('\n');
 }

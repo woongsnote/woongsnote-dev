@@ -1,6 +1,12 @@
 ---
-import { getArticleJsonLd, getWebsiteJsonLd, siteConfig } from '@/config';
+import {
+  AUTHOR,
+  getArticleJsonLd,
+  getWebsiteJsonLd,
+  siteConfig,
+} from '@/config';
 import type { PageMeta } from '@/types';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props extends PageMeta {
   noindex?: boolean;
@@ -8,15 +14,20 @@ interface Props extends PageMeta {
 
 const { title, description, image, articleDate, noindex } = Astro.props;
 
-const ogImage = image ?? '/opengraph-image.png';
+// ── URLs ──
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL(ogImage, Astro.site).href;
+const ogImageURL = new URL(image ?? '/opengraph-image.png', Astro.site).href;
+const feedURL = new URL('rss.xml', Astro.site).href;
+const authorURL = `${siteConfig.url}/about`;
 
+// ── Page metadata ──
+const isProfile = (Astro.url.pathname.replace(/\/$/, '') || '/') === '/about';
+const ogType = isProfile ? 'profile' : articleDate ? 'article' : 'website';
+const ogLocale = siteConfig.locale.replace('-', '_');
 const pageTitle =
   title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
 
-const ogLocale = siteConfig.locale.replace('-', '_');
-
+// ── JSON-LD ──
 const jsonLd = articleDate
   ? getArticleJsonLd({
       title,
@@ -33,16 +44,7 @@ const jsonLd = articleDate
   name="viewport"
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 />
-<meta
-  name="theme-color"
-  content="#060709"
-  media="(prefers-color-scheme: dark)"
-/>
-<meta
-  name="theme-color"
-  content="#f7f9fa"
-  media="(prefers-color-scheme: light)"
-/>
+<ClientRouter />
 
 <link
   rel="preload"
@@ -53,22 +55,32 @@ const jsonLd = articleDate
 />
 <link rel="icon" type="image/png" href="/favicon.png" />
 <link rel="canonical" href={canonicalURL.href} />
-<meta name="generator" content={Astro.generator} />
-
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
   rel="alternate"
   type="application/rss+xml"
   title={siteConfig.name}
-  href={new URL('rss.xml', Astro.site).href}
+  href={feedURL}
 />
 
 <title>{pageTitle}</title>
 <meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />
+
+<meta
+  name="theme-color"
+  content="#0b0d11"
+  media="(prefers-color-scheme: dark)"
+/>
+<meta
+  name="theme-color"
+  content="#f7f9fa"
+  media="(prefers-color-scheme: light)"
+/>
 
 <!-- Open Graph -->
 <meta property="og:site_name" content={siteConfig.name} />
-<meta property="og:type" content={articleDate ? 'article' : 'website'} />
+<meta property="og:type" content={ogType} />
 <meta property="og:locale" content={ogLocale} />
 <meta property="og:url" content={canonicalURL.href} />
 <meta property="og:title" content={title} />
@@ -90,7 +102,15 @@ const jsonLd = articleDate
   articleDate && (
     <>
       <meta property="article:published_time" content={articleDate} />
-      <meta property="article:author" content={siteConfig.name} />
+      <meta property="article:author" content={authorURL} />
+    </>
+  )
+}
+{
+  isProfile && (
+    <>
+      <meta property="profile:first_name" content={AUTHOR.firstName} />
+      <meta property="profile:last_name" content={AUTHOR.lastName} />
     </>
   )
 }

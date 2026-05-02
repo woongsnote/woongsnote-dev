@@ -11,29 +11,33 @@ import ToTop from '@/icons/arrow-up.svg';
 </button>
 
 <script>
-  const backToTopButton = document.getElementById('back-to-top');
+  let scrollHandler: (() => void) | null = null;
 
-  let lastScrollY = window.scrollY;
+  function bindBackToTop() {
+    // 이전 페이지의 scroll 리스너 정리
+    if (scrollHandler) window.removeEventListener('scroll', scrollHandler);
 
-  function toggleBackToTopButton() {
-    const currentScrollY = window.scrollY;
+    const button = document.getElementById('back-to-top');
+    if (!button) return;
 
-    const isPastThreshold = currentScrollY > 300;
-    const isScrollingUp = currentScrollY < lastScrollY;
+    let lastScrollY = window.scrollY;
 
-    if (isPastThreshold && isScrollingUp) {
-      backToTopButton?.classList.remove('opacity-0', 'invisible');
-      backToTopButton?.classList.add('opacity-100', 'visible');
-    } else {
-      backToTopButton?.classList.add('opacity-0', 'invisible');
-      backToTopButton?.classList.remove('opacity-100', 'visible');
-    }
+    scrollHandler = () => {
+      const y = window.scrollY;
+      const visible = y > 300 && y < lastScrollY;
+      button.classList.toggle('opacity-0', !visible);
+      button.classList.toggle('invisible', !visible);
+      button.classList.toggle('opacity-100', visible);
+      button.classList.toggle('visible', visible);
+      lastScrollY = y;
+    };
 
-    lastScrollY = currentScrollY;
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+    button.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    );
   }
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-  window.addEventListener('scroll', toggleBackToTopButton, { passive: true });
-  backToTopButton?.addEventListener('click', scrollToTop);
+
+  bindBackToTop();
+  document.addEventListener('astro:after-swap', bindBackToTop);
 </script>
