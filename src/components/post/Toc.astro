@@ -1,10 +1,13 @@
 ---
+import { TOC } from '@/config';
 import type { MarkdownHeading } from 'astro';
 
 type Props = { headings: MarkdownHeading[] };
 
 const { headings } = Astro.props;
-const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+const toc = headings.filter(
+  (h) => h.depth >= TOC.minDepth && h.depth <= TOC.maxDepth
+);
 ---
 
 {

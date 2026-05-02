@@ -1,15 +1,11 @@
 ---
 import PostItem from '@/components/post/PostItem.astro';
-import { siteConfig } from '@/config';
+import { LIMITS, siteConfig } from '@/config';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPosts } from '@/lib/posts';
 
-const HOME_POSTS_LIMIT = 10;
-
 const allPosts = await getPosts();
-
-const homePosts = allPosts.slice(0, HOME_POSTS_LIMIT);
-
+const homePosts = allPosts.slice(0, LIMITS.homePostCount);
 const totalPostsCount = allPosts.length;
 ---
 
