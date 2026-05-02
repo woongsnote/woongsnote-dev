@@ -23,17 +23,8 @@ const escape = (s: string) => s.replace(/[&<>"']/g, (c) => XML_ESCAPES[c]);
 const cdata = (s: string) =>
   `<![CDATA[${s.replaceAll(']]>', ']]]]><![CDATA[>')}]]>`;
 
-// 본문 내 root-relative URL(/...)만 절대 URL로 변환.
-// 절대 URL, 프로토콜 상대(//), 앵커, mailto: 는 그대로 둠.
-const absolutize = (html: string, base: string) =>
-  html.replace(
-    /(href|src)="(\/(?!\/)[^"]*)"/g,
-    (_, attr, path) => `${attr}="${base}${path}"`
-  );
-
 function renderItem(post: PostEntry, base: string, author: string): string {
   const url = `${base}/${post.id}`;
-  const html = absolutize(post.rendered?.html ?? '', base);
   const categories = (post.data.tags ?? []).map(
     (t) => `    <category>${cdata(t)}</category>`
   );
@@ -46,7 +37,6 @@ function renderItem(post: PostEntry, base: string, author: string): string {
     `    <pubDate>${post.data.publishedDate.toUTCString()}</pubDate>`,
     `    <dc:creator>${cdata(author)}</dc:creator>`,
     `    <description>${cdata(post.data.description)}</description>`,
-    `    <content:encoded>${cdata(html)}</content:encoded>`,
     ...categories,
     '  </item>',
   ].join('\n');
@@ -68,7 +58,6 @@ export function buildRssXml({
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<rss version="2.0"',
-    '  xmlns:content="http://purl.org/rss/1.0/modules/content/"',
     '  xmlns:atom="http://www.w3.org/2005/Atom"',
     '  xmlns:dc="http://purl.org/dc/elements/1.1/">',
     '<channel>',
