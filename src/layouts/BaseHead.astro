@@ -1,6 +1,7 @@
 ---
 import { getArticleJsonLd, getWebsiteJsonLd, siteConfig } from '@/config';
 import type { PageMeta } from '@/types';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props extends PageMeta {
   noindex?: boolean;
@@ -95,6 +96,8 @@ const jsonLd = articleDate
   )
 }
 {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+<ClientRouter />
 
 <script
   is:inline
