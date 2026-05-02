@@ -1,21 +1,22 @@
 import type { APIRoute } from 'astro';
-import { siteConfig } from '@/config';
-import { buildRssXml } from '@/lib/rss';
+import { AUTHOR, siteConfig } from '@/config';
 import { getPosts } from '@/lib/posts';
+import { buildRssXml } from '@/lib/rss';
 
 export const GET: APIRoute = async ({ site }) => {
-  const publishedPosts = await getPosts();
+  const base = (site ?? new URL(siteConfig.url)).href.replace(/\/+$/, '');
 
   const xml = buildRssXml({
-    site: site ?? siteConfig.url,
+    site: base,
+    feedUrl: `${base}/rss.xml`,
     title: siteConfig.name,
     description: siteConfig.description,
-    items: publishedPosts,
+    language: siteConfig.lang,
+    author: AUTHOR.name,
+    items: await getPosts(),
   });
 
-  const body = new TextEncoder().encode(xml);
-
-  return new Response(body, {
+  return new Response(xml, {
     headers: {
       'Content-Type': 'application/rss+xml; charset=utf-8',
       'Cache-Control': 'public, max-age=600',

@@ -17,6 +17,8 @@ export type SiteConfig = typeof siteConfig;
 export const AUTHOR = {
   name: '문지웅',
   nameEn: 'Jiwoong Moon',
+  firstName: 'Jiwoong',
+  lastName: 'Moon',
   nickname: 'woongsnote',
   bio: '학습한 새로운 기술과 지식으로 아이디어를 시각적으로 구현하는 것을 좋아합니다.',
   tech: ['Astro', 'React', 'Next.js', 'TypeScript'],
@@ -37,25 +39,9 @@ export const SOCIALS = [
 
 export type SocialType = (typeof SOCIALS)[number]['type'];
 
-// ── Theme ──
-export const THEME = {
-  light: 'woong-light',
-  dark: 'woong-dark',
-  storageKey: 'theme',
-} as const;
-
-// ── OG Image ──
-export const OG_IMAGE = {
-  width: 1200,
-  height: 630,
-  bgColor: '#0074FF',
-  label: 'Blog',
-} as const;
-
 // ── 수량 제한 ──
 export const LIMITS = {
   homePostCount: 10,
-  rssItemCount: 30,
 } as const;
 
 // ── TOC ──

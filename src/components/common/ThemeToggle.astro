@@ -12,19 +12,20 @@ import SunIcon from '@/icons/sun.svg';
   <MoonIcon class="icon-moon hidden size-6" />
 </button>
 
-<!-- Theme toggle script -->
-<script is:inline>
-  (function () {
+<script>
+  function bindThemeToggle() {
     const toggle = document.getElementById('theme-toggle');
-    const sunIcon = toggle.querySelector('.icon-sun');
-    const moonIcon = toggle.querySelector('.icon-moon');
+    if (!toggle) return;
 
-    function updateIcons() {
-      const theme = document.documentElement.getAttribute('data-theme');
-      const isDark = theme === 'woong-dark';
-      sunIcon.classList.toggle('hidden', !isDark);
-      moonIcon.classList.toggle('hidden', isDark);
-    }
+    const sunIcon = toggle.querySelector<HTMLElement>('.icon-sun');
+    const moonIcon = toggle.querySelector<HTMLElement>('.icon-moon');
+
+    const updateIcons = () => {
+      const isDark =
+        document.documentElement.getAttribute('data-theme') === 'woong-dark';
+      sunIcon?.classList.toggle('hidden', !isDark);
+      moonIcon?.classList.toggle('hidden', isDark);
+    };
 
     updateIcons();
 
@@ -35,5 +36,8 @@ import SunIcon from '@/icons/sun.svg';
       localStorage.setItem('theme', next);
       updateIcons();
     });
-  })();
+  }
+
+  bindThemeToggle();
+  document.addEventListener('astro:after-swap', bindThemeToggle);
 </script>

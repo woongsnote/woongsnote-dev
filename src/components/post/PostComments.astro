@@ -2,6 +2,7 @@
 
 <script
   is:inline
+  data-astro-rerun
   src="https://giscus.app/client.js"
   data-repo="woongsnote/woongsnote-dev"
   data-repo-id="R_kgDOIZVQXA"
@@ -18,21 +19,24 @@
   crossorigin="anonymous"
   async></script>
 
-<script>
-  // data-theme 변경을 감지해서 Giscus iframe에 postMessage
-  const observer = new MutationObserver(() => {
-    const theme = document.documentElement.getAttribute('data-theme');
-    const giscusTheme = theme === 'woong-dark' ? 'dark_tritanopia' : 'light';
-    const iframe = document.querySelector<HTMLIFrameElement>(
-      'iframe.giscus-frame'
-    );
-    iframe?.contentWindow?.postMessage(
-      { giscus: { setConfig: { theme: giscusTheme } } },
-      'https://giscus.app'
-    );
-  });
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['data-theme'],
-  });
+<script is:inline>
+  // 한 번만 등록 — 페이지 전환되어도 <html data-theme> 변화 감시는 영구
+  if (!window.__giscusObserverMounted) {
+    window.__giscusObserverMounted = true;
+
+    const observer = new MutationObserver(() => {
+      const theme = document.documentElement.getAttribute('data-theme');
+      const giscusTheme = theme === 'woong-dark' ? 'dark_tritanopia' : 'light';
+      const iframe = document.querySelector('iframe.giscus-frame');
+      iframe?.contentWindow?.postMessage(
+        { giscus: { setConfig: { theme: giscusTheme } } },
+        'https://giscus.app'
+      );
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+  }
 </script>
