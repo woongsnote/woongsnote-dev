@@ -1,4 +1,5 @@
-// src/config/seo.ts
+import { OG } from '@/lib/og';
+
 import { AUTHOR, siteConfig } from './site';
 
 export const getWebsiteJsonLd = () => ({
@@ -8,7 +9,7 @@ export const getWebsiteJsonLd = () => ({
   url: siteConfig.url,
   description: siteConfig.description,
   inLanguage: siteConfig.lang,
-  image: `${siteConfig.url}/opengraph-image.png`,
+  image: `${siteConfig.url}${siteConfig.defaultOgImage}`,
 });
 
 type ArticleJsonLdParams = {
@@ -37,8 +38,8 @@ export const getArticleJsonLd = ({
   image: {
     '@type': 'ImageObject',
     url: image,
-    width: 1200,
-    height: 630,
+    width: OG.width,
+    height: OG.height,
   },
   datePublished,
   dateModified: dateModified ?? datePublished,

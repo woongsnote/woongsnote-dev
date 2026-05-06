@@ -16,6 +16,8 @@ import SearchIcon from '@/icons/search.svg';
 </button>
 
 <script>
+  import { onPageReady } from '@/lib/lifecycle';
+
   function bindSearchButton(): void {
     document
       .querySelector('[data-search-open]')
@@ -24,7 +26,5 @@ import SearchIcon from '@/icons/search.svg';
       });
   }
 
-  bindSearchButton();
-
-  document.addEventListener('astro:after-swap', bindSearchButton);
+  onPageReady(bindSearchButton);
 </script>
