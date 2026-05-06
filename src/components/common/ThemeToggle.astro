@@ -13,6 +13,9 @@ import SunIcon from '@/icons/sun.svg';
 </button>
 
 <script>
+  import { onPageReady } from '@/lib/lifecycle';
+  import { THEME } from '@/lib/theme';
+
   function bindThemeToggle() {
     const toggle = document.getElementById('theme-toggle');
     if (!toggle) return;
@@ -22,7 +25,7 @@ import SunIcon from '@/icons/sun.svg';
 
     const updateIcons = () => {
       const isDark =
-        document.documentElement.getAttribute('data-theme') === 'woong-dark';
+        document.documentElement.getAttribute('data-theme') === THEME.dark;
       sunIcon?.classList.toggle('hidden', !isDark);
       moonIcon?.classList.toggle('hidden', isDark);
     };
@@ -31,13 +34,12 @@ import SunIcon from '@/icons/sun.svg';
 
     toggle.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'woong-dark' ? 'woong-light' : 'woong-dark';
+      const next = current === THEME.dark ? THEME.light : THEME.dark;
       document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
+      localStorage.setItem(THEME.storageKey, next);
       updateIcons();
     });
   }
 
-  bindThemeToggle();
-  document.addEventListener('astro:after-swap', bindThemeToggle);
+  onPageReady(bindThemeToggle);
 </script>

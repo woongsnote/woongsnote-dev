@@ -7,6 +7,7 @@ import '@/styles/global.css';
 import type { PageMeta } from '@/types';
 import BaseHead from './BaseHead.astro';
 import BackToTop from '@/components/common/BackToTop.astro';
+import { THEME } from '@/lib/theme';
 
 interface Props extends PageMeta {
   noindex?: boolean;
@@ -18,15 +19,15 @@ const { title, description, image, articleDate, noindex } = Astro.props;
 <!doctype html>
 <html lang={siteConfig.lang}>
   <head>
-    <script is:inline>
+    <script is:inline define:vars={THEME}>
       function applyTheme() {
-        const saved = localStorage.getItem('theme');
+        const saved = localStorage.getItem(THEME.storageKey);
         const isLight =
-          saved === 'woong-light' ||
+          saved === THEME.light ||
           (!saved && matchMedia('(prefers-color-scheme: light)').matches);
         document.documentElement.setAttribute(
           'data-theme',
-          isLight ? 'woong-light' : 'woong-dark'
+          isLight ? THEME.light : THEME.dark
         );
       }
 

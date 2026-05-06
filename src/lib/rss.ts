@@ -19,7 +19,6 @@ const XML_ESCAPES: Record<string, string> = {
 };
 
 const escape = (s: string) => s.replace(/[&<>"']/g, (c) => XML_ESCAPES[c]);
-
 const cdata = (s: string) =>
   `<![CDATA[${s.replaceAll(']]>', ']]]]><![CDATA[>')}]]>`;
 
@@ -28,7 +27,6 @@ function renderItem(post: PostEntry, base: string, author: string): string {
   const categories = (post.data.tags ?? []).map(
     (t) => `    <category>${cdata(t)}</category>`
   );
-
   return [
     '  <item>',
     `    <title>${cdata(post.data.title)}</title>`,

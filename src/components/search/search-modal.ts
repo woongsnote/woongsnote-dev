@@ -1,3 +1,4 @@
+import { onPageReady } from '@/lib/lifecycle';
 import { searchPagefind } from './pagefind';
 import type { PagefindResultData } from './pagefind';
 
@@ -167,5 +168,4 @@ window.addEventListener('search:open', () => currentOpen?.());
 
 /* ── 초기 + swap 마운트 ───────────────────────────── */
 
-mountSearchModal();
-document.addEventListener('astro:after-swap', mountSearchModal);
+onPageReady(mountSearchModal);
