@@ -5,6 +5,7 @@ import {
   getWebsiteJsonLd,
   siteConfig,
 } from '@/config';
+import { OG } from '@/lib/og';
 import type { PageMeta } from '@/types';
 import { ClientRouter } from 'astro:transitions';
 
@@ -69,12 +70,12 @@ const jsonLd = articleDate
 
 <meta
   name="theme-color"
-  content="#0b0d11"
+  content="#121417"
   media="(prefers-color-scheme: dark)"
 />
 <meta
   name="theme-color"
-  content="#f7f9fa"
+  content="#eceff2"
   media="(prefers-color-scheme: light)"
 />
 
@@ -87,8 +88,8 @@ const jsonLd = articleDate
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImageURL} />
 <meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
+<meta property="og:image:width" content={String(OG.width)} />
+<meta property="og:image:height" content={String(OG.height)} />
 <meta property="og:image:alt" content={title} />
 
 <!-- Twitter -->

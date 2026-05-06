@@ -11,6 +11,8 @@ import ToTop from '@/icons/arrow-up.svg';
 </button>
 
 <script>
+  import { onPageReady } from '@/lib/lifecycle';
+
   let scrollHandler: (() => void) | null = null;
 
   function bindBackToTop() {
@@ -38,6 +40,5 @@ import ToTop from '@/icons/arrow-up.svg';
     );
   }
 
-  bindBackToTop();
-  document.addEventListener('astro:after-swap', bindBackToTop);
+  onPageReady(bindBackToTop);
 </script>
