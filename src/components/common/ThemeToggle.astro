@@ -23,9 +23,11 @@ import SunIcon from '@/icons/sun.svg';
     const sunIcon = toggle.querySelector<HTMLElement>('.icon-sun');
     const moonIcon = toggle.querySelector<HTMLElement>('.icon-moon');
 
+    const currentTheme = () =>
+      document.documentElement.getAttribute('data-theme') ?? THEME.dark;
+
     const updateIcons = () => {
-      const isDark =
-        document.documentElement.getAttribute('data-theme') === THEME.dark;
+      const isDark = currentTheme() === THEME.dark;
       sunIcon?.classList.toggle('hidden', !isDark);
       moonIcon?.classList.toggle('hidden', isDark);
     };
@@ -33,8 +35,7 @@ import SunIcon from '@/icons/sun.svg';
     updateIcons();
 
     toggle.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === THEME.dark ? THEME.light : THEME.dark;
+      const next = currentTheme() === THEME.dark ? THEME.light : THEME.dark;
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem(THEME.storageKey, next);
       updateIcons();
