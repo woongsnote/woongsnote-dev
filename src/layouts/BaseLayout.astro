@@ -7,6 +7,7 @@ import '@/styles/global.css';
 import type { PageMeta } from '@/types';
 import BaseHead from './BaseHead.astro';
 import BackToTop from '@/components/common/BackToTop.astro';
+import { THEME } from '@/lib/theme';
 
 interface Props extends PageMeta {
   noindex?: boolean;
@@ -18,20 +19,28 @@ const { title, description, image, articleDate, noindex } = Astro.props;
 <!doctype html>
 <html lang={siteConfig.lang}>
   <head>
-    <script is:inline>
-      function applyTheme() {
-        const saved = localStorage.getItem('theme');
+    <script is:inline define:vars={{ THEME }}>
+      function getTheme() {
+        const saved = localStorage.getItem(THEME.storageKey);
         const isLight =
-          saved === 'woong-light' ||
+          saved === THEME.light ||
           (!saved && matchMedia('(prefers-color-scheme: light)').matches);
-        document.documentElement.setAttribute(
-          'data-theme',
-          isLight ? 'woong-light' : 'woong-dark'
-        );
+
+        return isLight ? THEME.light : THEME.dark;
+      }
+
+      function applyTheme() {
+        document.documentElement.setAttribute('data-theme', getTheme());
       }
 
       applyTheme();
-      document.addEventListener('astro:after-swap', applyTheme);
+
+      document.addEventListener('astro:before-swap', (event) => {
+        event.newDocument.documentElement.setAttribute(
+          'data-theme',
+          getTheme()
+        );
+      });
     </script>
     <BaseHead {title} {description} {image} {articleDate} {noindex} />
   </head>

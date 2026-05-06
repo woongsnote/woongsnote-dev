@@ -13,6 +13,12 @@ export const siteConfig = {
 
 export type SiteConfig = typeof siteConfig;
 
+// 'https://www.woongsnote.dev' → 'woongsnote.dev
+export const BRAND_DOMAIN = new URL(siteConfig.url).hostname.replace(
+  /^www\./,
+  ''
+);
+
 // ── Author ──
 export const AUTHOR = {
   name: '문지웅',
