@@ -14,17 +14,17 @@ const toc = headings.filter(
   toc.length > 0 && (
     <nav
       aria-label="목차"
-      class="collapse-arrow bg-base-content/5 rounded-box not-prose collapse mt-4"
+      class="collapse-arrow border-base-content/10 not-prose collapse mt-6 rounded-lg border bg-transparent"
     >
       <input type="checkbox" checked />
-      <div class="collapse-title text-sm font-semibold">목차</div>
+      <div class="collapse-title min-h-0 py-3 text-sm font-semibold">목차</div>
       <div class="collapse-content">
-        <ul class="list-none pl-0">
+        <ul class="list-none space-y-2 pl-0">
           {toc.map((h) => (
             <li class:list={['py-1', { 'pl-4': h.depth === 3 }]}>
               <a
                 href={`#${h.slug}`}
-                class="text-base-content text-sm no-underline underline-offset-8 hover:underline lg:text-base"
+                class="text-base-content/70 hover:text-primary text-sm no-underline transition-colors"
               >
                 {h.text}
               </a>

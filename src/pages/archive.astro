@@ -1,5 +1,5 @@
 ---
-import PostItem from '@/components/post/PostItem.astro';
+import { PostItem } from '@/components/post';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPostsGroupedByYear } from '@/lib/posts';
 
@@ -9,14 +9,14 @@ const hasPosts = postsByYear.length > 0;
 
 <BaseLayout title="Archive" description="전체 글 목록">
   <section
-    class="mx-auto w-full max-w-4xl space-y-10 px-2 lg:px-4 pb-4"
+    class="mx-auto w-full max-w-4xl space-y-10 px-2 pb-4 lg:px-4"
     aria-label="Archive"
   >
     {
       hasPosts ? (
         postsByYear.map((group) => (
           <section class="space-y-3" aria-labelledby={`y-${group.year}`}>
-            <div class="sticky top-16 z-20 -mx-4 px-4 py-2 backdrop-blur">
+            <div class="bg-base-100 sticky top-16 z-20 -mx-4 px-4 py-2">
               <div class="divider divider-start">
                 <h2
                   id={`y-${group.year}`}

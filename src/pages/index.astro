@@ -1,5 +1,5 @@
 ---
-import PostItem from '@/components/post/PostItem.astro';
+import { PostItem } from '@/components/post';
 import { LIMITS, siteConfig } from '@/config';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPosts } from '@/lib/posts';
@@ -10,14 +10,14 @@ const totalPostsCount = allPosts.length;
 ---
 
 <BaseLayout title={siteConfig.name} description={siteConfig.description}>
-  <section class="mx-auto w-full max-w-4xl px-2 lg:px-4">
+  <section class="mx-auto w-full max-w-4xl px-2 pb-12 lg:px-4 lg:pb-16">
     <ul class="mt-4 flex flex-col gap-8">
       {homePosts.map((post) => <PostItem post={post} />)}
     </ul>
-    <footer class="mt-8">
+    <footer class="mt-10">
       <a
         href="/archive"
-        class="text-primary inline-flex items-center gap-1.5 font-mono text-sm duration-200 hover:gap-3"
+        class="text-primary hover:text-accent inline-flex items-center gap-1.5 font-mono text-sm transition-colors duration-200"
       >
         All {totalPostsCount} Posts →
       </a>
