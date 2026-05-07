@@ -9,9 +9,9 @@ const year = new Date().getFullYear();
     class="mx-auto flex w-full max-w-4xl flex-col-reverse items-center justify-between gap-3.5 md:flex-row"
   >
     <p class="text-base-content/70 text-sm">
-      &copy; {year} woongsnote.
+      &copy; {year} woongsnote
     </p>
-    <nav class="flex gap-4.5">
+    <nav aria-label="소셜 링크" class="flex gap-4.5">
       {
         SOCIALS.map(({ title, url }) => {
           return (
