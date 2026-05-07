@@ -11,7 +11,7 @@ const totalPostsCount = allPosts.length;
 
 <BaseLayout title={siteConfig.name} description={siteConfig.description}>
   <section class="mx-auto w-full max-w-4xl px-2 pb-12 lg:px-4 lg:pb-16">
-    <ul class="mt-4 flex flex-col gap-8">
+    <ul class="mt-4 flex flex-col gap-6">
       {homePosts.map((post) => <PostItem post={post} />)}
     </ul>
     <footer class="mt-10">
