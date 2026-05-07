@@ -17,18 +17,18 @@ const {
 ---
 
 <li>
-  <a href={`/${id}`} class="group block break-keep no-underline">
+  <a
+    href={`/${id}`}
+    class="group focus-visible:ring-primary/40 block break-keep no-underline transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none"
+  >
     <div
-      class="text-base-content/55 mb-2.5 flex items-center gap-3.5 font-mono text-xs"
+      class="text-base-content/55 mb-2.5 flex items-center gap-2 font-mono text-xs"
     >
       <time datetime={publishedDate.toISOString()}>
         {formatDate(publishedDate)}
       </time>
-      <span
-        class="relative pl-3.5 tracking-[0.14em] uppercase before:absolute before:top-1/2 before:left-0 before:h-px before:w-1 before:-translate-y-1/2 before:bg-current"
-      >
-        {category}
-      </span>
+      <span aria-hidden="true" class="select-none">—</span>
+      <span class="tracking-[0.14em] uppercase">{category}</span>
     </div>
     <Tag
       class="text-base-content group-hover:text-primary mb-1.5 text-base leading-snug font-semibold tracking-tight text-balance transition-colors"

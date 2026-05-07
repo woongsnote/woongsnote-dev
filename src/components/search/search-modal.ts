@@ -23,7 +23,7 @@ function renderResults(
     const a = document.createElement('a');
     a.href = item.url;
     a.className =
-      'block rounded-lg p-3 hover:bg-base-200 transition-colors search-result';
+      'block rounded-md p-3 hover:bg-base-200 transition-colors search-result';
     a.setAttribute('data-search-result', '');
 
     const title = document.createElement('span');

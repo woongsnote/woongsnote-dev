@@ -43,7 +43,7 @@ const postDate = formatDate(publishedDate);
 >
   <article
     data-pagefind-body
-    class="prose mx-auto mt-4 w-full max-w-3xl p-2 break-keep"
+    class="prose mx-auto mt-5 w-full max-w-3xl break-keep"
   >
     <header class="not-prose flex flex-col gap-4">
       <h1
@@ -63,7 +63,7 @@ const postDate = formatDate(publishedDate);
       <p class="text-base-content/70">{description}</p>
       <TagList tags={tags} />
     </header>
-    <div class="divider"></div>
+    <div class="border-base-content/10 my-6 border-t"></div>
     {hasToc && <Toc headings={headings} />}
     {
       isProject && cover && (
