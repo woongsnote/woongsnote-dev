@@ -4,3 +4,4 @@ export { default as Comments } from './PostComments.astro';
 export { default as ShareButton } from './PostShareButton.astro';
 export { default as Toc } from './Toc.astro';
 export { default as TagList } from './TagList.astro';
+export { default as PostItem } from './PostItem.astro';
