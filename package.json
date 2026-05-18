@@ -1,7 +1,7 @@
 {
   "name": "woongsnote-dev",
   "type": "module",
-  "version": "7.5.1",
+  "version": "7.5.2",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -11,10 +11,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/mdx": "^5.0.6",
     "@astrojs/sitemap": "^3.7.2",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.3.1",
+    "astro": "^6.3.3",
     "daisyui": "^5.5.19",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
