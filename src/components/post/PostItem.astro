@@ -22,13 +22,13 @@ const {
     class="group focus-visible:ring-primary/40 block break-keep no-underline transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none"
   >
     <div
-      class="text-base-content/55 mb-2.5 flex items-center gap-2 font-mono text-xs"
+      class="text-base-content/55 mb-2.5 flex items-center gap-2 text-xs font-medium tracking-wide"
     >
       <time datetime={publishedDate.toISOString()}>
         {formatDate(publishedDate)}
       </time>
       <span aria-hidden="true" class="select-none">—</span>
-      <span class="tracking-widest uppercase">{category}</span>
+      <span class="uppercase">{category}</span>
     </div>
     <Tag
       class="text-base-content group-hover:text-primary mb-1.5 text-base leading-snug font-semibold tracking-tight text-balance transition-colors"
