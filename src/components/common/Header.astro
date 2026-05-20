@@ -8,7 +8,7 @@ const navLinks = [
 ] as const;
 
 const linkClass =
-  'text-neutral-content hover:text-base-content font-mono text-xs sm:text-sm transition-colors';
+  'text-neutral-content hover:text-base-content text-xs font-medium tracking-wide sm:text-sm transition-colors';
 ---
 
 <header
@@ -16,7 +16,12 @@ const linkClass =
 >
   <div class="navbar mx-auto max-w-4xl px-2 lg:px-0">
     <div class="flex-1">
-      <a href="/" class="text-base-content text-lg font-bold">woongsnote</a>
+      <a
+        href="/"
+        class="text-base-content text-lg font-semibold tracking-tight"
+      >
+        woongsnote
+      </a>
     </div>
 
     <div class="flex items-center gap-2 sm:gap-3">
