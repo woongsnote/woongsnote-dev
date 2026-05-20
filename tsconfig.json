@@ -3,14 +3,13 @@
   "include": [".astro/types.d.ts", "src/**/*"],
   "exclude": ["dist", "node_modules", ".astro"],
   "compilerOptions": {
-    "baseUrl": ".",
     "strictNullChecks": true,
     "allowJs": false,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   }
 }

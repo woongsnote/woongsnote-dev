@@ -74,7 +74,7 @@
       color: var(--color-code-title-fg) !important;
       font-family: var(--font-mono);
       font-size: var(--text-sm);
-      font-weight: 700;
+      font-weight: 600;
       padding-inline: calc(var(--spacing) * 5);
       padding-block: calc(var(--spacing) * 4);
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
