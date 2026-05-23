@@ -49,16 +49,6 @@
   --font-sans: var(--font-asta-sans);
 }
 
-/* @theme {
-  --font-sans:
-    'Wanted Sans', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
-    'Malgun Gothic', system-ui, sans-serif;
-
-  --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-    monospace;
-} */
-
 /* ── 4. Custom Styles ── */
 [data-search-modal] mark {
   background: none;
