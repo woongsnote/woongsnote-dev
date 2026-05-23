@@ -45,31 +45,11 @@
 }
 
 /* ── 3. Font & Theme ── */
-@font-face {
-  font-family: 'Wanted Sans';
-  src: url('/fonts/WantedSans-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+@theme inline {
+  --font-sans: var(--font-asta-sans);
 }
 
-@font-face {
-  font-family: 'Wanted Sans';
-  src: url('/fonts/WantedSans-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Wanted Sans';
-  src: url('/fonts/WantedSans-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@theme {
+/* @theme {
   --font-sans:
     'Wanted Sans', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
     'Malgun Gothic', system-ui, sans-serif;
@@ -77,7 +57,7 @@
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     monospace;
-}
+} */
 
 /* ── 4. Custom Styles ── */
 [data-search-modal] mark {
