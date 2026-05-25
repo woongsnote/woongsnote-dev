@@ -22,11 +22,14 @@ const { title, url } = Astro.props;
 <script>
   import { sharePost } from '@/lib/share';
 
-  const shareButton = document.getElementById('shareButton');
-  if (shareButton) {
-    const title = shareButton.getAttribute('data-title') || '';
-    const url = shareButton.getAttribute('data-url') || '';
+  // 이벤트 위임 — DOM이 View Transition으로 교체돼도 document 리스너는 유지됨
+  document.addEventListener('click', (event) => {
+    const target = event.target as Element | null;
+    const button = target?.closest('#shareButton');
+    if (!button) return;
 
-    shareButton.addEventListener('click', () => sharePost(title, url));
-  }
+    const title = button.getAttribute('data-title') ?? '';
+    const url = button.getAttribute('data-url') ?? '';
+    sharePost(title, url);
+  });
 </script>
