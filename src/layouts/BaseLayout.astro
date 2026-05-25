@@ -20,7 +20,7 @@ const { title, description, image, articleDate, noindex } = Astro.props;
 <html lang={siteConfig.lang}>
   <head>
     <script is:inline define:vars={{ THEME }}>
-      // @ts-nocheck
+      // @ts-nocheck — THEME via define:vars, window flags via global state
       function getTheme() {
         const saved = localStorage.getItem(THEME.storageKey);
         const isLight =
