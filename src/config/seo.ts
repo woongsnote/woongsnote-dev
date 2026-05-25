@@ -10,6 +10,12 @@ export const getWebsiteJsonLd = () => ({
   description: siteConfig.description,
   inLanguage: siteConfig.lang,
   image: `${siteConfig.url}${siteConfig.defaultOgImage}`,
+  author: {
+    '@type': 'Person',
+    name: AUTHOR.name,
+    alternateName: AUTHOR.nameEn,
+    url: `${siteConfig.url}/about`,
+  },
 });
 
 type ArticleJsonLdParams = {
