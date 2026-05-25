@@ -20,17 +20,27 @@ const { title, description, image, articleDate, noindex } = Astro.props;
 <html lang={siteConfig.lang}>
   <head>
     <script is:inline define:vars={{ THEME }}>
+      // @ts-nocheck
       function getTheme() {
         const saved = localStorage.getItem(THEME.storageKey);
         const isLight =
           saved === THEME.light ||
           (!saved && matchMedia('(prefers-color-scheme: light)').matches);
-
         return isLight ? THEME.light : THEME.dark;
+      }
+
+      function syncThemeColor() {
+        const theme = document.documentElement.getAttribute('data-theme');
+        const color =
+          theme === THEME.light ? THEME.colors.light : THEME.colors.dark;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute('content', color);
       }
 
       function applyTheme() {
         document.documentElement.setAttribute('data-theme', getTheme());
+        syncThemeColor();
       }
 
       applyTheme();
@@ -41,6 +51,14 @@ const { title, description, image, articleDate, noindex } = Astro.props;
           getTheme()
         );
       });
+
+      if (!window.__themeColorObserverMounted) {
+        window.__themeColorObserverMounted = true;
+        new MutationObserver(syncThemeColor).observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme'],
+        });
+      }
     </script>
     <BaseHead {title} {description} {image} {articleDate} {noindex} />
   </head>
