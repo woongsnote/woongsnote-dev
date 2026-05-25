@@ -27,12 +27,6 @@ type OgSlots = {
  * OG 이미지 외곽을 책임지는 헬퍼.
  * 모든 OG는 상단 / 중앙 / 하단의 3행 space-between 레이아웃을 공유한다.
  * 각 라우트는 세 영역의 콘텐츠만 제공한다.
- *
- * @remarks
- * satori는 JSX(ReactNode)와 plain object 입력을 모두 공식 지원하지만,
- * 타입 시그니처는 ReactNode 한쪽만 노출되어 있다.
- * 여기서는 plain object로 호출하므로 satori 호출 시 `as any` 단언이 필요하며,
- * 이는 라이브러리 한계 회피용으로 그 한 줄에서만 lint를 비활성화한다.
  */
 export async function renderOgResponse(slots: OgSlots): Promise<Response> {
   const node = {
@@ -53,6 +47,7 @@ export async function renderOgResponse(slots: OgSlots): Promise<Response> {
     },
   };
 
+  // satori는 plain object 입력을 지원하지만 타입 시그니처는 ReactNode만 노출 → as any로 우회
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const svg = await satori(node as any, {
     width: OG.width,
@@ -62,8 +57,10 @@ export async function renderOgResponse(slots: OgSlots): Promise<Response> {
     ],
   });
 
+  // satori는 SVG를 반환하지만 OG 이미지는 PNG/JPEG만 안정 지원 (Twitter/Facebook 등 SVG 미지원)
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
 
+  // Buffer<ArrayBufferLike> → BodyInit 타입 호환을 위한 wrapping (Node 타입 vs DOM 타입 variance)
   return new Response(new Uint8Array(png), {
     headers: {
       'Content-Type': 'image/png',

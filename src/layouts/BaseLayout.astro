@@ -20,27 +20,51 @@ const { title, description, image, articleDate, noindex } = Astro.props;
 <html lang={siteConfig.lang}>
   <head>
     <script is:inline define:vars={{ THEME }}>
+      // @ts-nocheck — THEME via define:vars, window flags via global state
+
+      /** localStorage + 시스템 선호도로 적용할 테마 결정 */
       function getTheme() {
         const saved = localStorage.getItem(THEME.storageKey);
         const isLight =
           saved === THEME.light ||
           (!saved && matchMedia('(prefers-color-scheme: light)').matches);
-
         return isLight ? THEME.light : THEME.dark;
       }
 
+      /** 현재 data-theme에 맞춰 browser theme-color 메타 동기화 */
+      function syncThemeColor() {
+        const theme = document.documentElement.getAttribute('data-theme');
+        const color =
+          theme === THEME.light ? THEME.colors.light : THEME.colors.dark;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute('content', color);
+      }
+
+      /** 부트스트랩: 테마 적용 + 메타 동기화 1회 실행 */
       function applyTheme() {
         document.documentElement.setAttribute('data-theme', getTheme());
+        syncThemeColor();
       }
 
       applyTheme();
 
+      // View Transition 시 새 문서에 미리 테마 적용 (FOUC 방지)
       document.addEventListener('astro:before-swap', (event) => {
         event.newDocument.documentElement.setAttribute(
           'data-theme',
           getTheme()
         );
       });
+      
+      // data-theme 변경 자동 추적 (테마 토글 + swap 후 새 문서 모두 커버)
+      if (!window.__themeColorObserverMounted) {
+        window.__themeColorObserverMounted = true;
+        new MutationObserver(syncThemeColor).observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme'],
+        });
+      }
     </script>
     <BaseHead {title} {description} {image} {articleDate} {noindex} />
   </head>
