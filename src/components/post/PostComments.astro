@@ -21,6 +21,9 @@
   async></script>
 
 <script is:inline>
+  // @ts-nocheck — window flags via global state
+  
+  /** 현재 data-theme에 맞춰 Giscus iframe 테마 동기화 */
   function syncGiscusTheme() {
     const theme = document.documentElement.getAttribute('data-theme');
     const giscusTheme = theme === 'woong-dark' ? 'dark_tritanopia' : 'light';
