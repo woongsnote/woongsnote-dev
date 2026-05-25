@@ -6,6 +6,10 @@ export const THEME = {
   dark: 'woong-dark',
   light: 'woong-light',
   storageKey: 'theme',
+  colors: {
+    light: '#eceff2',
+    dark: '#121417',
+  },
 } as const;
 
 export type ThemeName = typeof THEME.dark | typeof THEME.light;
