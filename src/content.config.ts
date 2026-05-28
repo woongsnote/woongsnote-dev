@@ -24,7 +24,7 @@ const postSchema = ({ image }: { image: ImageFunction }) =>
 const posts = defineCollection({
   loader: glob({
     base: './src/content/posts',
-    pattern: '**/*.mdx',
+    pattern: '**/*.md',
   }),
   schema: postSchema,
 });

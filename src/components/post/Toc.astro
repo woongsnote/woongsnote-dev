@@ -5,13 +5,12 @@ import type { MarkdownHeading } from 'astro';
 type Props = { headings: MarkdownHeading[] };
 
 const { headings } = Astro.props;
-const toc = headings.filter(
-  (h) => h.depth >= TOC.minDepth && h.depth <= TOC.maxDepth
-);
+
+const toc = headings.filter((h) => (h.depth = TOC.depth));
 ---
 
 {
-  toc.length > 0 && (
+  toc.length >= 2 && (
     <nav
       aria-label="목차"
       data-pagefind-ignore
@@ -22,7 +21,7 @@ const toc = headings.filter(
       <div class="collapse-content">
         <ul class="list-none space-y-2 pl-0">
           {toc.map((h) => (
-            <li class:list={['py-1', { 'pl-4': h.depth === 3 }]}>
+            <li class="py-1">
               <a
                 href={`#${h.slug}`}
                 class="text-base-content/70 hover:text-primary text-sm no-underline transition-colors"

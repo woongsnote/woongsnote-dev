@@ -107,7 +107,7 @@ Local 상태에서 `yarn build && yarn start`로 build해서 test했을 때는, 
 
 섬네일 이미지의 src의 경로를 `/og?title=${title}`에서 `${"배포한 url 주소"}/og?title=${title}` 로 수정 후 다시 배포해서 정상적으로 동작하는 것을 확인했다.
 
-<div style={{ width: '100%', height: '1px', backgroundColor: 'gray' }}></div>
+---
 
 ## 최신 버전 내용 추가(2024.05)
 
