@@ -10,7 +10,7 @@ const toc = headings.filter((h) => (h.depth = TOC.depth));
 ---
 
 {
-  toc.length > 0 && (
+  toc.length >= 2 && (
     <nav
       aria-label="목차"
       data-pagefind-ignore
