@@ -1,10 +1,10 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import rehypePrettyCode from 'rehype-pretty-code';
+import { unified } from '@astrojs/markdown-remark';
 
 const prettyCodeOptions = {
   defaultLang: 'plaintext',
@@ -43,14 +43,15 @@ export default defineConfig({
     objectFit: 'cover',
     objectPosition: 'center',
   },
-  integrations: [
-    mdx({
-      syntaxHighlight: false,
+  markdown: {
+    processor: unified({
       remarkPlugins: [remarkReadingTime],
       rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
-      optimize: true,
+      gfm: true, // 기존 기본값 보존
+      smartypants: true, // 기존 기본값 보존
     }),
-    sitemap(),
-  ],
+    syntaxHighlight: false,
+  },
+  integrations: [sitemap()],
   output: 'static',
 });
