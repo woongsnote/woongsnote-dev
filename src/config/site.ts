@@ -51,7 +51,4 @@ export const LIMITS = {
 } as const;
 
 // ── TOC ──
-export const TOC = {
-  minDepth: 2,
-  maxDepth: 3,
-} as const;
+export const TOC = { depth: 2 } as const;
