@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import rehypePrettyCode from 'rehype-pretty-code';
@@ -53,11 +52,6 @@ export default defineConfig({
     }),
     syntaxHighlight: false,
   },
-  integrations: [
-    mdx({
-      optimize: true,
-    }),
-    sitemap(),
-  ],
+  integrations: [sitemap()],
   output: 'static',
 });
