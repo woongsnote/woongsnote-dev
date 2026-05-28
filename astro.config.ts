@@ -47,8 +47,6 @@ export default defineConfig({
     processor: unified({
       remarkPlugins: [remarkReadingTime],
       rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
-      gfm: true, // 기존 기본값 보존
-      smartypants: true, // 기존 기본값 보존
     }),
     syntaxHighlight: false,
   },
