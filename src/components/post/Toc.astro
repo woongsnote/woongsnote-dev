@@ -6,7 +6,7 @@ type Props = { headings: MarkdownHeading[] };
 
 const { headings } = Astro.props;
 
-const toc = headings.filter((h) => (h.depth = TOC.depth));
+const toc = headings.filter((h) => h.depth === TOC.depth);
 ---
 
 {
