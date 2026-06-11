@@ -1,81 +1,183 @@
-# woongsnote - 기술 블로그
+# woongsnote
 
-## 개요
+A Korean personal blog for documenting development, projects, and lessons learned.
 
-**개발** 관련 학습한 지식들과 구현한 프로젝트들을 정리하고 공유하기 위해 구현한 **기술 블로그**
+[Live Site](https://www.woongsnote.dev) · [Repository](https://github.com/woongsnote/woongsnote-dev)
 
+## Overview
+
+woongsnote is a personal blog built to organize and share what I learn through development and personal projects.
+
+The blog focuses on a minimal reading experience, static-first performance, and a maintainable content workflow using Markdown and Astro Content Collections.
+
+## Features
+
+* Static site generation with Astro
+* Markdown-based post management
+* Type-safe content schema
+* Full-text search powered by Pagefind
+* Light and dark themes
+* Responsive layout
+* Reading time calculation
+* Syntax highlighting for code blocks
+* Automatically generated Open Graph images
+* SEO metadata and structured page titles
+* RSS feed and sitemap
+* Giscus-powered comments
+* Accessible keyboard navigation
+* Deployed with Vercel
+
+## Tech Stack
+
+* [Astro](https://astro.build)
+* [TypeScript](https://www.typescriptlang.org)
+* [Tailwind CSS](https://tailwindcss.com)
+* [DaisyUI](https://daisyui.com)
+* [Pagefind](https://pagefind.app)
+* [rehype-pretty-code](https://github.com/atomiks/rehype-pretty-code)
+* [Satori](https://github.com/vercel/satori)
+* [Sharp](https://sharp.pixelplumbing.com)
+* [Giscus](https://giscus.app)
+* [Vercel](https://vercel.com)
+
+## Getting Started
+
+### Prerequisites
+
+* Node.js 24
+* npm
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/woongsnote/woongsnote-dev.git
+```
+
+Move into the project directory:
+
+```bash
+cd woongsnote-dev
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:4321` in your browser.
+
+## Available Scripts
+
+```bash
+npm run dev
+```
+
+Starts the local development server.
+
+```bash
+npm run build
+```
+
+Runs Astro checks, builds the static site, and generates the Pagefind search index.
+
+```bash
+npm run preview
+```
+
+Previews the production build locally.
+
+## Project Structure
+
+```text
+woongsnote-dev/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── config/
+│   ├── content/
+│   │   └── posts/
+│   ├── icons/
+│   ├── layouts/
+│   ├── lib/
+│   ├── pages/
+│   ├── styles/
+│   ├── types/
+│   └── content.config.ts
+├── astro.config.ts
+├── remark-reading-time.mjs
+├── package.json
+└── tsconfig.json
+```
+
+## Writing a Post
+
+Create a Markdown file inside:
+
+```text
+src/content/posts/
+```
+
+Example frontmatter:
+
+```yaml
 ---
-
-## 기술 스택
-
-- `Astro`, `TypeScript`, `Tailwind CSS`
-
+title: Post title
+description: Short description of the post
+publishedDate: 2026-01-01
+category: Tech
+tags:
+  - Astro
+  - TypeScript
+author: Jiwoong Moon
 ---
+```
 
-## 주요 기능
+Available categories:
 
-- `Tailwind CSS` 기반 반응형 UI
-- `SEO` 적용
-- `Dark` 모드 지원
-- `Giscus` 기반 댓글 작성 가능
-- `Sitemap` 지원
-- `RSS` 지원
+* `Diary`
+* `Tech`
+* `Project`
 
----
+## Technical Highlights
 
-## 구현 결과
+### Static-first architecture
 
-- [사이트 바로가기](https://www.woongsnote.dev)
+The blog is generated as a static site with Astro, keeping the client-side JavaScript footprint small while providing fast navigation and content delivery.
 
----
+### Content-driven structure
 
-## 트러블 슈팅
+Posts are managed through Astro Content Collections with a typed schema, making frontmatter validation and content organization more predictable.
 
-<details>
-<summary>OG Image 생성 in Next.js</summary>
+### Static search
 
-- 문제: 게시글의 섬네일 이미지 400 Error 발생
-- 원인: **next.config.js**에 이미지의 주소 누락
-- 해결: 이미지 주소 추가
+Pagefind creates the search index after the Astro build, allowing full-text search without a separate server or external search service.
 
-</details>
+### Theme handling
 
-<details>
-<summary>remark-GFM inTable issue</summary>
+The light and dark themes are implemented without a client framework and remain synchronized across page transitions.
 
-- 문제: remark-gfm **inTable** issue로 빌드 실패
-- 원인: Contentlayer와의 호환성
-- 해결: 3버전으로 다운그레이드.
-</details>
+### SEO and social previews
 
-<details>
-<summary>package dependency 충돌</summary>
+Each page includes SEO metadata, while post-specific Open Graph images are generated from content data.
 
-- 문제: Next.js와 Contentlayer 간의 package dependency 충돌
-- 원인: Contentlayer issue
-- 해결: Astro로 프레임워크 migration.
-</details>
+## History
 
-<details>
-<summary>Dark 모드 구현</summary>
+The blog was originally built with Next.js and later migrated to Astro for a simpler content workflow and a more static-first architecture.
 
-- 문제: migration 하는 과정에서, next-themes 사용 불가
-- 원인: Next.js 프레임워크용 패키지
-- 해결: 라이브러리를 사용하지 않고 js로 직접 구현
-</details>
+## Author
 
-<details>
-<summary>프로젝트 배포 실패</summary>
+**Jiwoong Moon**
 
-- 문제: 프레임워크 변경 후, Vercel에서 배포 실패
-- 원인: 기존 Next.js로 배포했을 때 캐싱된 데이터 존재
-- 해결: 캐시를 제거하고 다시 배포
-</details>
-
----
-
-## 참고 자료
-
-- [NextJS 공식 문서](https://nextjs.org/docs)
-- [ContentLayer 공식 문서](https://www.contentlayer.dev)
-- [Astro 공식 문서](https://astro.build)
+* Blog: [woongsnote.dev](https://www.woongsnote.dev)
+* GitHub: [@woongsnote](https://github.com/woongsnote)
+* LinkedIn: [Jiwoong Moon](https://www.linkedin.com/in/woongsnote)
