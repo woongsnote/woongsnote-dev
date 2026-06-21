@@ -1,7 +1,7 @@
 {
   "name": "woongsnote-dev",
   "type": "module",
-  "version": "7.6.4",
+  "version": "7.6.5",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -12,15 +12,15 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.4.5",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^6.4.8",
     "daisyui": "^5.5.23",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
     "rehype-pretty-code": "^0.14.3",
     "satori": "^0.26.0",
-    "sharp": "^0.34.5",
-    "tailwindcss": "^4.3.0"
+    "sharp": "^0.35.2",
+    "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
