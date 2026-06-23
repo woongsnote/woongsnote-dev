@@ -2,6 +2,7 @@
 
 import type { PostEntry } from '@/types';
 import { getCollection } from 'astro:content';
+import getReadingTime from 'reading-time';
 
 // ── 내부 캐시 (빌드 중 중복 호출 방지) ──
 
@@ -64,3 +65,8 @@ export function parseMinutes(input: string): number | null {
   const m = input.match(/\d+/);
   return m ? Number(m[0]) : null;
 }
+
+export function getPostReadingTime(body?: string) {
+  return parseMinutes(getReadingTime(body ?? '').text);
+}
+
