@@ -1,6 +1,6 @@
 ---
 import PostLayout from '@/layouts/PostLayout.astro';
-import { getPostBySlug, getPosts, parseMinutes } from '@/lib/posts';
+import { getPostBySlug, getPostReadingTime, getPosts } from '@/lib/posts';
 import type { GetStaticPaths } from 'astro';
 import { render } from 'astro:content';
 
@@ -19,9 +19,9 @@ if (!post) {
   throw new Error(`Post not found: ${slug}`);
 }
 
-const { Content, headings, remarkPluginFrontmatter } = await render(post);
+const { Content, headings } = await render(post);
 
-const readingTime = parseMinutes(remarkPluginFrontmatter.minutesRead);
+const readingTime = getPostReadingTime(post.body);
 ---
 
 <PostLayout post={post} headings={headings} readingTime={readingTime}>

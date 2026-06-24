@@ -2,7 +2,6 @@
 import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import { remarkReadingTime } from './remark-reading-time.mjs';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { unified } from '@astrojs/markdown-remark';
 
@@ -45,7 +44,7 @@ export default defineConfig({
   },
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkReadingTime],
+      remarkPlugins: [],
       rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
     }),
     syntaxHighlight: false,
