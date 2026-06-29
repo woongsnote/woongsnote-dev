@@ -10,9 +10,10 @@ const year = new Date().getFullYear();
   <div
     class="mx-auto flex w-full max-w-4xl flex-col-reverse items-center justify-between gap-3.5 text-xs tracking-wide md:flex-row md:items-baseline"
   >
-    <p class="text-base-content/70">
+    <p class="text-meta">
       &copy; {year} woongsnote
     </p>
+
     <nav aria-label="소셜 링크" class="flex gap-4.5">
       {
         SOCIALS.map(({ title, url }) => {
@@ -21,7 +22,7 @@ const year = new Date().getFullYear();
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-base-content/80 hover:text-base-content font-medium no-underline transition-colors duration-200"
+              class="link-muted font-medium no-underline"
               aria-label={`${title} 페이지로 이동`}
             >
               <span>{title}</span>
