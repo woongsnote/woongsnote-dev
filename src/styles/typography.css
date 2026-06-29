@@ -8,24 +8,36 @@
 /* ─── 테마별 커스텀 변수 ─── */
 [data-theme='woong-light'] {
   /* 코드 블록 */
-  --color-code-title-bg: var(--color-gray-200);
-  --color-code-title-fg: var(--color-blue-700);
-  --color-highlight-line: rgba(59, 130, 246, 0.1);
-  --color-highlight-bar: var(--color-blue-400);
+  --color-code-title-bg: var(--color-base-200);
+  --color-code-title-fg: var(--color-primary);
+  --color-highlight-line: color-mix(
+    in oklab,
+    var(--color-accent) 18%,
+    transparent
+  );
+  --color-highlight-bar: var(--color-accent);
 }
 
 [data-theme='woong-dark'] {
   /* 코드 블록 */
-  --color-code-title-bg: var(--color-gray-800);
-  --color-code-title-fg: var(--color-blue-300);
-  --color-highlight-line: rgba(59, 130, 246, 0.2);
-  --color-highlight-bar: var(--color-blue-500);
+  --color-code-title-bg: var(--color-base-200);
+  --color-code-title-fg: var(--color-primary);
+  --color-highlight-line: color-mix(
+    in oklab,
+    var(--color-accent) 24%,
+    transparent
+  );
+  --color-highlight-bar: var(--color-accent);
 }
 
 @layer components {
   .prose {
     /* 한국어 줄바꿈 (prose에 없음) */
     word-break: keep-all;
+
+    & h2 {
+      margin-top: calc(var(--spacing) * 12);
+    }
 
     /* ─── Inline Code ─── */
     & :not(pre) > code {
