@@ -7,8 +7,18 @@ const navLinks = [
   { href: '/archive', label: 'archive' },
 ] as const;
 
-const linkClass =
-  'text-neutral-content hover:text-base-content text-xs font-medium tracking-wide sm:text-sm transition-colors';
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const isActivePath = (href: string) => {
+  const normalizedHref = href.replace(/\/$/, '') || '/';
+
+  return (
+    pathname === normalizedHref || pathname.startsWith(`${normalizedHref}/`)
+  );
+};
+
+const navLinkBaseClass =
+  'focus-ring rounded-sm text-xs font-medium tracking-wide transition-colors sm:text-sm';
 ---
 
 <header
@@ -18,7 +28,7 @@ const linkClass =
     <div class="flex-1">
       <a
         href="/"
-        class="text-base-content text-lg font-semibold tracking-tight"
+        class="focus-ring text-base-content hover:text-primary rounded-sm text-lg font-semibold tracking-tight transition-colors"
       >
         woongsnote
       </a>
@@ -27,11 +37,24 @@ const linkClass =
     <div class="flex items-center gap-2 sm:gap-3">
       <nav aria-label="주 메뉴" class="flex items-center gap-4 sm:gap-5">
         {
-          navLinks.map(({ href, label }) => (
-            <a href={href} class={linkClass}>
-              {label}
-            </a>
-          ))
+          navLinks.map(({ href, label }) => {
+            const isActive = isActivePath(href);
+
+            return (
+              <a
+                href={href}
+                class:list={[
+                  navLinkBaseClass,
+                  isActive
+                    ? 'text-base-content'
+                    : 'text-neutral-content hover:text-base-content',
+                ]}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {label}
+              </a>
+            );
+          })
         }
       </nav>
       <SearchButton />
