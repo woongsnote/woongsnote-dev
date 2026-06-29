@@ -4,52 +4,152 @@
 
 /* ── 2. Plugins ── */
 @plugin '@tailwindcss/typography';
+
 @plugin 'daisyui' {
-  themes: woong-dark, woong-light;
+  themes: false;
 }
 
+@custom-variant dark (&:where([data-theme='woong-dark'], [data-theme='woong-dark'] *));
+
+/* ── 3. Themes ── */
+
+/* Light Theme */
+@plugin 'daisyui/theme' {
+  name: 'woong-light';
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: oklch(0.985 0.004 250);
+  --color-base-200: oklch(0.96 0.006 250);
+  --color-base-300: oklch(0.9 0.01 250);
+  --color-base-content: oklch(0.18 0.015 250);
+
+  --color-primary: oklch(0.56 0.09 235);
+  --color-primary-content: oklch(0.98 0.004 250);
+
+  --color-secondary: oklch(0.72 0.06 235);
+  --color-secondary-content: oklch(0.18 0.015 250);
+
+  --color-accent: oklch(0.853 0.043 227);
+  --color-accent-content: oklch(0.18 0.015 250);
+
+  --color-neutral: oklch(0.24 0.012 250);
+  --color-neutral-content: oklch(0.5 0.015 250);
+
+  --color-info: oklch(0.72 0.11 235);
+  --color-info-content: oklch(0.18 0.015 250);
+
+  --color-success: oklch(0.64 0.11 155);
+  --color-success-content: oklch(0.98 0.004 250);
+
+  --color-warning: oklch(0.78 0.14 75);
+  --color-warning-content: oklch(0.18 0.015 250);
+
+  --color-error: oklch(0.58 0.18 25);
+  --color-error-content: oklch(0.98 0.004 250);
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* Dark Theme */
 @plugin 'daisyui/theme' {
   name: 'woong-dark';
-  default: true;
+  default: false;
   prefersdark: true;
   color-scheme: dark;
 
-  --color-base-100: oklch(0.16 0.008 260);
-  --color-base-200: oklch(0.19 0.008 260);
-  --color-base-300: oklch(0.25 0.01 260);
-  --color-base-content: oklch(0.88 0.01 250);
+  --color-base-100: oklch(0.18 0 0); /* #121212 느낌 */
+  --color-base-200: oklch(0.24 0 0); /* #1d1d1d 느낌 */
+  --color-base-300: oklch(0.32 0 0);
+  --color-base-content: oklch(0.94 0.006 250);
 
-  --color-primary: oklch(0.65 0.15 245);
-  --color-primary-content: oklch(0.13 0.005 260);
-  --color-accent: oklch(0.72 0.14 240);
+  --color-primary: oklch(0.853 0.043 227);
+  --color-primary-content: oklch(0.12 0.008 250);
 
-  --color-neutral: oklch(0.18 0.005 260);
-  --color-neutral-content: oklch(0.65 0 0);
+  --color-secondary: oklch(0.62 0.055 235);
+  --color-secondary-content: oklch(0.94 0.006 250);
+
+  --color-accent: oklch(0.853 0.043 227);
+  --color-accent-content: oklch(0.12 0.008 250);
+
+  --color-neutral: oklch(0.86 0.006 250);
+  --color-neutral-content: oklch(0.64 0.012 250);
+
+  --color-info: oklch(0.74 0.08 235);
+  --color-info-content: oklch(0.12 0.008 250);
+
+  --color-success: oklch(0.68 0.1 155);
+  --color-success-content: oklch(0.12 0.008 250);
+
+  --color-warning: oklch(0.78 0.13 75);
+  --color-warning-content: oklch(0.12 0.008 250);
+
+  --color-error: oklch(0.68 0.16 25);
+  --color-error-content: oklch(0.12 0.008 250);
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
 }
 
-@plugin 'daisyui/theme' {
-  name: 'woong-light';
-  color-scheme: light;
-
-  --color-base-100: oklch(0.98 0.003 250);
-  --color-base-200: oklch(0.95 0.005 250);
-  --color-base-300: oklch(0.9 0.008 250);
-  --color-base-content: oklch(0.2 0.01 250);
-
-  --color-primary: oklch(0.45 0.18 250);
-  --color-primary-content: oklch(0.98 0.003 250);
-  --color-accent: oklch(0.48 0.16 245);
-
-  --color-neutral: oklch(0.45 0.01 250);
-  --color-neutral-content: oklch(0.45 0 0);
-}
-
-/* ── 3. Font & Theme ── */
+/* ── 4. Font & Theme ── */
 @theme inline {
   --font-sans: var(--font-asta-sans);
 }
 
-/* ── 4. Custom Styles ── */
+/* ── 5. Base ── */
+
+/* 기본 배경/텍스트 명시 */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base-100 text-base-content antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent text-accent-content;
+  }
+}
+
+/* ── 6. Utilities ── */
+
+@utility link-muted {
+  @apply text-neutral-content hover:text-base-content transition-colors;
+}
+
+@utility text-meta {
+  @apply text-neutral-content text-xs sm:text-sm;
+}
+
+@utility tag-chip {
+  @apply border-base-content/20 text-neutral-content hover:border-primary/40 hover:text-primary inline-flex items-center rounded-md border px-2 py-1 text-xs font-medium tracking-wide transition-colors;
+}
+
+@utility focus-ring {
+  @apply focus-visible:ring-primary focus-visible:ring-offset-base-100 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none;
+}
+
+/* ── 7. Custom Styles ── */
 [data-search-modal] mark {
   background: none;
   color: var(--color-accent);
