@@ -1,25 +1,26 @@
 ---
-import { PostItem } from '@/components/post';
+import { PostCompactItem } from '@/components/post';
 import { LIMITS, siteConfig } from '@/config';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPosts } from '@/lib/posts';
 
 const allPosts = await getPosts();
 const homePosts = allPosts.slice(0, LIMITS.homePostCount);
-const totalPostsCount = allPosts.length;
+const totalPostCount = allPosts.length;
 ---
 
 <BaseLayout title={siteConfig.name} description={siteConfig.description}>
   <section class="mx-auto w-full max-w-4xl px-2 pb-12 lg:px-4 lg:pb-16">
-    <ul class="mt-4 flex flex-col gap-6">
-      {homePosts.map((post) => <PostItem post={post} />)}
+    <ul class="mt-4 flex flex-col gap-1 md:gap-6">
+      {homePosts.map((post) => <PostCompactItem post={post} />)}
     </ul>
+
     <footer class="mt-10">
       <a
         href="/archive"
-        class="focus-ring text-base-content/70 hover:text-primary inline-flex items-center gap-1 text-sm font-semibold transition-colors"
+        class="focus-ring text-base-content/70 hover:text-primary inline-flex items-center gap-1 rounded-sm text-sm font-semibold transition-colors"
       >
-        All {totalPostsCount} Posts →
+        All {totalPostCount} Posts →
       </a>
     </footer>
   </section>
