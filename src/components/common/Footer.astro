@@ -10,9 +10,12 @@ const year = new Date().getFullYear();
   <div
     class="mx-auto flex w-full max-w-4xl flex-col-reverse items-center justify-between gap-3.5 text-xs tracking-wide md:flex-row md:items-baseline"
   >
-    <p class="text-meta">
-      &copy; {year} woongsnote
-    </p>
+    <div class="flex flex-col items-center gap-1 md:items-start">
+      <p class="text-meta">
+        &copy; {year} woongsnote
+      </p>
+      <p class="text-neutral-content/70">Build. Learn. Record.</p>
+    </div>
 
     <nav aria-label="소셜 링크" class="flex gap-4.5">
       {
@@ -22,7 +25,7 @@ const year = new Date().getFullYear();
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              class="link-muted font-medium no-underline"
+              class="link-muted focus-ring rounded-sm font-medium no-underline"
               aria-label={`${title} 페이지로 이동`}
             >
               <span>{title}</span>
