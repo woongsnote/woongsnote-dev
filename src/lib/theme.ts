@@ -7,8 +7,8 @@ export const THEME = {
   light: 'woong-light',
   storageKey: 'theme',
   colors: {
-    light: '#eceff2',
-    dark: '#121417',
+    light: '#fafafa',
+    dark: '#121212',
   },
 } as const;
 
