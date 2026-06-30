@@ -1,0 +1,57 @@
+---
+import { formatDate } from '@/lib/date';
+import type { PostEntry } from '@/types';
+
+type Props = {
+  post: PostEntry;
+  headingLevel?: 'h2' | 'h3';
+};
+
+const {
+  post: {
+    id,
+    data: { title, description, publishedDate, category },
+  },
+  headingLevel: Tag = 'h2',
+} = Astro.props;
+---
+
+<li>
+  <a
+    href={`/${id}`}
+    class="focus-ring group flex items-baseline gap-4 rounded-sm py-1.5 text-sm no-underline transition-colors md:block md:py-0"
+  >
+    <time
+      datetime={publishedDate.toISOString()}
+      class="text-neutral-content w-24 shrink-0 tabular-nums md:hidden"
+    >
+      {formatDate(publishedDate)}
+    </time>
+
+    <div class="min-w-0 flex-1">
+      <div
+        class="text-meta mb-2.5 hidden items-center gap-2 font-medium tracking-wide md:flex"
+      >
+        <time datetime={publishedDate.toISOString()}>
+          {formatDate(publishedDate)}
+        </time>
+
+        <span aria-hidden="true" class="select-none">—</span>
+
+        <span class="uppercase">{category}</span>
+      </div>
+
+      <Tag
+        class="text-base-content group-hover:text-primary text-sm leading-snug font-medium transition-colors md:mb-1.5 md:text-base md:font-semibold md:tracking-tight"
+      >
+        {title}
+      </Tag>
+
+      <p
+        class="text-base-content/65 line-clamp-2 hidden text-sm leading-relaxed break-keep md:block"
+      >
+        {description}
+      </p>
+    </div>
+  </a>
+</li>
