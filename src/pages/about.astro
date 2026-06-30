@@ -10,17 +10,14 @@ const focus = [
 ] as const;
 ---
 
-<BaseLayout
-  title="About"
-  description="프론트엔드 개발자 Woong의 소개와 기술 스택"
->
-  <div class="mx-auto w-full max-w-4xl">
+<BaseLayout title="About" description="문지웅의 소개와 기록 공간">
+  <div class="mx-auto w-full max-w-3xl">
     <header class="mt-8 flex items-center gap-4">
       <ProfileImage />
       <div>
         <h1 class="text-xl font-semibold tracking-tight">문지웅</h1>
         <p class="text-base-content/70 text-sm">
-          구조화된 UI를 기반으로 웹 서비스를 구현하는 프론트엔드 개발자
+          만들고, 배우고, 기록하는 프론트엔드 개발자
         </p>
       </div>
     </header>
@@ -28,19 +25,18 @@ const focus = [
     <article class="mt-10 space-y-12 leading-7">
       <section class="space-y-4">
         <p>
-          UI는 화면을 구성하는 요소를 넘어, 서비스의 구조와 유지보수를 결정하는
-          기반이라고 생각합니다.
+          화면을 구성하는 작은 요소부터 서비스의 구조까지, 오래 유지할 수 있는
+          인터페이스를 만드는 데 관심이 있습니다.
         </p>
         <p>
-          컴포넌트 구조와 정보 흐름을 설계하며, 오래 유지 가능한 인터페이스를
-          만드는 데 집중합니다.
+          배운 것은 기록으로 남기고, 직접 구현하며 이해하는 방식을 좋아합니다.
         </p>
       </section>
 
       <hr class="border-base-content/10" />
 
       <section class="space-y-4">
-        <h2 class="text-base-content/70 text-sm font-semibold">Focus</h2>
+        <h2 class="text-meta font-semibold">Focus</h2>
         <ul class="marker:text-base-content/40 list-disc space-y-2 pl-5">
           {focus.map((item) => <li>{item}</li>)}
         </ul>
@@ -50,8 +46,8 @@ const focus = [
 
       <section class="space-y-4">
         <p>
-          새로운 기술을 배우는 것을 좋아합니다. 배운 것은 기록으로 정리하고,
-          실제 구현을 통해 검증하려고 합니다.
+          이곳에는 개발하며 배운 것, 사이드 프로젝트를 만들며 고민한 것, 그리고
+          오래 남기고 싶은 생각들을 정리합니다.
         </p>
       </section>
     </article>
