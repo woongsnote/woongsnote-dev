@@ -4,20 +4,21 @@ import { SOCIALS } from '@/config';
 const year = new Date().getFullYear();
 ---
 
-<footer
-  class="footer bg-base-200 border-base-content/5 mt-auto border-t px-4 py-5"
->
+<footer class="border-base-content/5 mt-auto border-t px-4 py-4">
   <div
-    class="mx-auto flex w-full max-w-4xl flex-col-reverse items-center justify-between gap-3.5 text-xs tracking-wide md:flex-row md:items-baseline"
+    class="mx-auto flex w-full max-w-4xl flex-col-reverse items-center justify-between gap-3 text-xs tracking-wide md:flex-row md:items-baseline"
   >
-    <div class="flex flex-col items-center gap-1 md:items-start">
+    <div
+      class="flex flex-col items-center gap-1 md:flex-row md:items-baseline md:gap-2"
+    >
       <p class="text-meta">
         &copy; {year} woongsnote
       </p>
+      <span class="text-neutral-content/50 hidden md:inline">·</span>
       <p class="text-neutral-content/70">Build. Learn. Record.</p>
     </div>
 
-    <nav aria-label="소셜 링크" class="flex gap-4.5">
+    <nav aria-label="소셜 링크" class="flex gap-4">
       {
         SOCIALS.map(({ title, url }) => {
           return (
