@@ -1,4 +1,7 @@
-<section class="giscus mx-auto w-full pt-6 pb-10 lg:px-4 lg:pt-10 lg:pb-12">
+<section
+  data-pagefind-ignore
+  class="giscus mx-auto w-full pt-6 pb-10 lg:px-4 lg:pt-10 lg:pb-12"
+>
 </section>
 
 <script
@@ -22,12 +25,13 @@
 
 <script is:inline>
   // @ts-nocheck — window flags via global state
-  
+
   /** 현재 data-theme에 맞춰 Giscus iframe 테마 동기화 */
   function syncGiscusTheme() {
     const theme = document.documentElement.getAttribute('data-theme');
     const giscusTheme = theme === 'woong-dark' ? 'dark_tritanopia' : 'light';
     const iframe = document.querySelector('iframe.giscus-frame');
+
     iframe?.contentWindow?.postMessage(
       { giscus: { setConfig: { theme: giscusTheme } } },
       'https://giscus.app'
@@ -39,16 +43,20 @@
     window.__giscusBindingsMounted = true;
 
     // 1) Giscus iframe ready 신호 수신 시 초기 sync
-    //    iframe이 로드되면 giscus.app origin에서 message를 보냄
     window.addEventListener('message', (event) => {
       if (event.origin !== 'https://giscus.app') return;
       if (event.data?.giscus) syncGiscusTheme();
     });
 
     // 2) data-theme 변경 시 sync
-    new MutationObserver(syncGiscusTheme).observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['data-theme'],
-    });
+    new MutationObserver(() => syncGiscusTheme()).observe(
+      document.documentElement,
+      {
+        attributes: true,
+        attributeFilter: ['data-theme'],
+      }
+    );
   }
+
+  queueMicrotask(() => syncGiscusTheme());
 </script>
