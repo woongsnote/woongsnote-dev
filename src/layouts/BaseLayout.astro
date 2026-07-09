@@ -1,13 +1,14 @@
 ---
+import BackToTop from '@/components/common/BackToTop.astro';
 import Footer from '@/components/common/Footer.astro';
 import Header from '@/components/common/Header.astro';
 import SearchModal from '@/components/search/SearchModal.astro';
 import { siteConfig } from '@/config';
+import { THEME } from '@/lib/theme';
 import '@/styles/global.css';
 import type { PageMeta } from '@/types';
+
 import BaseHead from './BaseHead.astro';
-import BackToTop from '@/components/common/BackToTop.astro';
-import { THEME } from '@/lib/theme';
 
 interface Props extends PageMeta {
   noindex?: boolean;
@@ -25,6 +26,7 @@ const { title, description, image, articleDate, noindex } = Astro.props;
       /** localStorage + 시스템 선호도로 적용할 테마 결정 */
       function getTheme() {
         const saved = localStorage.getItem(THEME.storageKey);
+
         const isLight =
           saved === THEME.light ||
           (!saved && matchMedia('(prefers-color-scheme: light)').matches);
@@ -57,7 +59,7 @@ const { title, description, image, articleDate, noindex } = Astro.props;
       applyTheme();
 
       // BaseHead가 뒤에 있어서 첫 실행 때 meta가 없을 수 있으므로 한 번 더 보정
-      document.addEventListener('DOMContentLoaded', syncThemeColor, {
+      document.addEventListener('DOMContentLoaded', () => syncThemeColor(), {
         once: true,
       });
 
@@ -73,20 +75,26 @@ const { title, description, image, articleDate, noindex } = Astro.props;
       if (!window.__themeColorObserverMounted) {
         window.__themeColorObserverMounted = true;
 
-        new MutationObserver(syncThemeColor).observe(document.documentElement, {
-          attributes: true,
-          attributeFilter: ['data-theme'],
-        });
+        new MutationObserver(() => syncThemeColor()).observe(
+          document.documentElement,
+          {
+            attributes: true,
+            attributeFilter: ['data-theme'],
+          }
+        );
       }
     </script>
 
     <BaseHead {title} {description} {image} {articleDate} {noindex} />
   </head>
+
   <body class="flex min-h-dvh flex-col">
     <Header />
+
     <main class="px-4">
       <slot />
     </main>
+
     <Footer />
     <SearchModal />
     <BackToTop />

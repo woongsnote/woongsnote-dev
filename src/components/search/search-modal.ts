@@ -4,12 +4,20 @@ import type { PagefindResultData } from './pagefind';
 
 /* ── 결과 렌더링 ──────────────────────────────────── */
 
+function toPlainText(value?: string): string {
+  if (!value) return '';
+  
+  const doc = new DOMParser().parseFromString(value, 'text/html');
+
+  return doc.body.textContent?.replace(/\s+/g, ' ').trim() ?? '';
+}
+
 function renderResults(
   list: HTMLUListElement,
   empty: HTMLElement | null,
   items: PagefindResultData[]
 ): void {
-  list.innerHTML = '';
+  list.replaceChildren();
 
   if (items.length === 0) {
     if (empty) empty.hidden = false;
@@ -23,7 +31,7 @@ function renderResults(
     const a = document.createElement('a');
     a.href = item.url;
     a.className =
-      'block rounded-md p-3 hover:bg-base-200 transition-colors search-result';
+      'search-result block rounded-md p-3 transition-colors hover:bg-base-200';
     a.setAttribute('data-search-result', '');
 
     const title = document.createElement('span');
@@ -31,8 +39,8 @@ function renderResults(
     title.textContent = item.meta?.title ?? item.url;
 
     const excerpt = document.createElement('span');
-    excerpt.className = 'mt-1 block text-sm opacity-60 line-clamp-2';
-    excerpt.innerHTML = item.excerpt ?? '';
+    excerpt.className = 'mt-1 block line-clamp-2 text-sm opacity-60';
+    excerpt.textContent = toPlainText(item.excerpt);
 
     a.append(title, excerpt);
     li.appendChild(a);
@@ -50,6 +58,7 @@ function getResults(list: HTMLUListElement): HTMLAnchorElement[] {
 
 function setActive(results: HTMLAnchorElement[], index: number): void {
   for (const r of results) r.classList.remove('bg-base-200');
+
   if (results[index]) {
     results[index].classList.add('bg-base-200');
     results[index].scrollIntoView({ block: 'nearest' });
@@ -72,6 +81,7 @@ function mountSearchModal(): void {
   const closeBtn = dialog.querySelector<HTMLButtonElement>(
     '[data-search-close]'
   );
+
   if (!input || !list) return;
 
   let timer: number | null = null;
@@ -80,13 +90,20 @@ function mountSearchModal(): void {
 
   /* open / close ─────────────────────────────────── */
 
-  const open = () => {
-    if (!dialog.open) dialog.showModal();
+  const reset = () => {
     input.value = '';
     lastQuery = '';
     activeIndex = -1;
-    list.innerHTML = '';
+    list.replaceChildren();
+
     if (empty) empty.hidden = true;
+  };
+
+  const open = () => {
+    if (!dialog.open) dialog.showModal();
+
+    reset();
+
     queueMicrotask(() => input.focus());
   };
 
@@ -98,18 +115,24 @@ function mountSearchModal(): void {
 
   const search = async (term: string) => {
     const q = term.trim();
+
     if (!q) {
-      list.innerHTML = '';
+      list.replaceChildren();
+
       if (empty) empty.hidden = true;
+
       activeIndex = -1;
       return;
     }
+
     try {
       const results = await searchPagefind(q);
+
       renderResults(list, empty, results);
       activeIndex = -1;
     } catch (err) {
       console.error('[search]', err);
+
       renderResults(list, empty, []);
       activeIndex = -1;
     }
@@ -117,9 +140,12 @@ function mountSearchModal(): void {
 
   input.addEventListener('input', () => {
     const value = input.value;
+
     if (timer !== null) clearTimeout(timer);
+
     timer = window.setTimeout(() => {
       if (value === lastQuery) return;
+
       lastQuery = value;
       search(value);
     }, 150);
@@ -129,27 +155,29 @@ function mountSearchModal(): void {
 
   input.addEventListener('keydown', (e) => {
     const results = getResults(list);
+
     if (!results.length) return;
 
     if (e.key === 'ArrowDown') {
       e.preventDefault();
+
       activeIndex = activeIndex < results.length - 1 ? activeIndex + 1 : 0;
       setActive(results, activeIndex);
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
+
       activeIndex = activeIndex > 0 ? activeIndex - 1 : results.length - 1;
       setActive(results, activeIndex);
     } else if (e.key === 'Enter' && activeIndex >= 0 && results[activeIndex]) {
       e.preventDefault();
+
       results[activeIndex].click();
     }
   });
 
   /* 모바일 닫기 버튼 ────────────────────────────── */
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', close);
-  }
+  closeBtn?.addEventListener('click', close);
 
   /* 매 swap마다 새 dialog의 open()을 노출 */
   currentOpen = open;
@@ -160,6 +188,7 @@ function mountSearchModal(): void {
 window.addEventListener('keydown', (e) => {
   if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
     e.preventDefault();
+
     currentOpen?.();
   }
 });
