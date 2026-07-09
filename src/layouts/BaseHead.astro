@@ -7,8 +7,9 @@ import {
 } from '@/config';
 import { OG } from '@/lib/og';
 import type { PageMeta } from '@/types';
-import { ClientRouter } from 'astro:transitions';
+
 import { Font } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props extends PageMeta {
   noindex?: boolean;
@@ -17,19 +18,24 @@ interface Props extends PageMeta {
 const { title, description, image, articleDate, noindex } = Astro.props;
 
 // ── URLs ──
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(image ?? '/opengraph-image.png', Astro.site).href;
 const feedURL = new URL('rss.xml', Astro.site).href;
 const authorURL = `${siteConfig.url}/about`;
 
 // ── Page metadata ──
+
 const isProfile = (Astro.url.pathname.replace(/\/$/, '') || '/') === '/about';
 const ogType = isProfile ? 'profile' : articleDate ? 'article' : 'website';
+
 const ogLocale = siteConfig.locale.replace('-', '_');
+
 const pageTitle =
   title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
 
 // ── JSON-LD ──
+
 const jsonLd = articleDate
   ? getArticleJsonLd({
       title,
@@ -42,17 +48,22 @@ const jsonLd = articleDate
 ---
 
 <meta charset="utf-8" />
+
 <meta
   name="viewport"
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 />
+
 <ClientRouter />
 
 <Font cssVariable="--font-asta-sans" preload />
 
 <link rel="icon" type="image/png" href="/favicon.png" />
+
 <link rel="canonical" href={canonicalURL.href} />
+
 <link rel="sitemap" href="/sitemap-index.xml" />
+
 <link
   rel="alternate"
   type="application/rss+xml"
@@ -61,28 +72,42 @@ const jsonLd = articleDate
 />
 
 <title>{pageTitle}</title>
+
 <meta name="description" content={description} />
-<meta name="generator" content={Astro.generator} />
 
 <meta name="theme-color" content="#121212" />
 
 <!-- Open Graph -->
+
 <meta property="og:site_name" content={siteConfig.name} />
+
 <meta property="og:type" content={ogType} />
+
 <meta property="og:locale" content={ogLocale} />
+
 <meta property="og:url" content={canonicalURL.href} />
+
 <meta property="og:title" content={title} />
+
 <meta property="og:description" content={description} />
+
 <meta property="og:image" content={ogImageURL} />
 <meta property="og:image:type" content="image/png" />
+
 <meta property="og:image:width" content={String(OG.width)} />
+
 <meta property="og:image:height" content={String(OG.height)} />
+
 <meta property="og:image:alt" content={title} />
 
 <!-- Twitter -->
+
 <meta name="twitter:card" content="summary_large_image" />
+
 <meta name="twitter:title" content={title} />
+
 <meta name="twitter:description" content={description} />
+
 <meta name="twitter:image" content={ogImageURL} />
 <meta name="twitter:image:alt" content={title} />
 
@@ -94,6 +119,7 @@ const jsonLd = articleDate
     </>
   )
 }
+
 {
   isProfile && (
     <>
@@ -102,6 +128,7 @@ const jsonLd = articleDate
     </>
   )
 }
+
 {noindex && <meta name="robots" content="noindex,nofollow" />}
 
 <script

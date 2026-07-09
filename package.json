@@ -1,7 +1,7 @@
 {
   "name": "woongsnote-dev",
   "type": "module",
-  "version": "8.0.8",
+  "version": "8.0.9",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -14,8 +14,8 @@
     "@astrojs/markdown-remark": "^7.2.1",
     "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/vite": "^4.3.2",
-    "astro": "^7.0.6",
-    "daisyui": "^5.6.14",
+    "astro": "^7.0.7",
+    "daisyui": "^5.6.16",
     "reading-time": "^1.5.0",
     "rehype-pretty-code": "^0.14.4",
     "satori": "^0.26.0",
