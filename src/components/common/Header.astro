@@ -18,17 +18,17 @@ const isActivePath = (href: string) => {
 };
 
 const navLinkBaseClass =
-  'focus-ring rounded-sm text-xs font-medium tracking-wide transition-colors sm:text-sm';
+  'focus-ring rounded-sm text-xs font-medium tracking-wide transition-colors duration-150 ease-out sm:text-sm';
 ---
 
 <header
-  class="bg-base-200 border-base-content/5 sticky top-0 z-50 h-16 border-b"
+  class="bg-base-200/90 border-base-content/5 sticky top-0 z-50 h-16 border-b backdrop-blur-md"
 >
   <div class="navbar mx-auto max-w-4xl px-2 lg:px-0">
     <div class="flex-1">
       <a
         href="/"
-        class="focus-ring text-base-content hover:text-primary rounded-sm text-lg font-semibold tracking-tight transition-colors"
+        class="focus-ring text-base-content hover:text-primary rounded-sm text-lg font-semibold tracking-tight transition-colors duration-150 ease-out"
       >
         woongsnote
       </a>
