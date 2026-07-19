@@ -156,3 +156,11 @@
   color: var(--color-accent);
   font-weight: 600;
 }
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
