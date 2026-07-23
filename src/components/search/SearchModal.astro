@@ -10,26 +10,35 @@
  */
 ---
 
-<dialog data-pagefind-ignore data-search-modal class="modal">
-  <div class="modal-box max-w-2xl p-0">
+<dialog data-pagefind-ignore data-search-modal class="modal px-3">
+  <div
+    class="modal-box border-base-content/10 bg-base-100/95 max-w-2xl overflow-hidden rounded-2xl border p-0 shadow-2xl backdrop-blur-xl"
+  >
     <!-- 검색 입력 -->
-    <div class="border-base-300 flex items-center gap-2 border-b p-3">
+    <div
+      class="border-base-content/10 flex items-center gap-2 border-b px-4 py-3"
+    >
       <input
         type="text"
         placeholder="Search..."
-        class="input input-ghost w-full focus:outline-none"
+        aria-label="검색어"
+        autocomplete="off"
+        spellcheck="false"
+        class="input input-ghost h-11 w-full px-0 focus:outline-none"
         data-search-input
       />
+
       <kbd
-        class="border-base-content/20 text-base-content/50 hidden rounded border px-1.5 py-0.5 font-mono text-[10px] sm:inline"
+        class="border-base-content/20 text-base-content/50 hidden rounded-md border px-1.5 py-0.5 font-mono text-[10px] sm:inline"
       >
         ESC
       </kbd>
+
       <button
         type="button"
         data-search-close
         aria-label="닫기"
-        class="text-base-content/40 hover:text-base-content focus-visible:ring-primary/40 flex size-9 items-center justify-center rounded-full transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none sm:hidden"
+        class="text-base-content/40 hover:text-base-content focus-visible:ring-primary/40 flex size-9 shrink-0 items-center justify-center rounded-full transition-colors duration-150 ease-out focus-visible:ring-2 focus-visible:outline-none sm:hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -38,6 +47,7 @@
           viewBox="0 0 24 24"
           stroke="currentColor"
           stroke-width="2"
+          aria-hidden="true"
         >
           <path d="M18 6 6 18M6 6l12 12"></path>
         </svg>
@@ -45,25 +55,30 @@
     </div>
 
     <!-- 결과 목록 -->
-    <div class="max-h-[60vh] overflow-auto p-3">
+    <div class="max-h-[min(60vh,32rem)] overflow-y-auto overscroll-contain p-2">
       <ul class="flex flex-col gap-1" data-results></ul>
-      <p class="py-4 text-center text-sm opacity-60" data-empty hidden>
+
+      <p
+        class="text-base-content/60 py-8 text-center text-sm"
+        data-empty
+        hidden
+      >
         검색 결과가 없어요.
       </p>
     </div>
 
     <!-- 하단 힌트 -->
     <div
-      class="border-base-300 flex items-center justify-between border-t p-3 text-xs opacity-60"
+      class="border-base-content/10 bg-base-200/40 text-base-content/50 flex items-center justify-between border-t px-4 py-2.5 text-xs"
     >
       <span>↑↓ 탐색 · Enter 이동</span>
       <span class="hidden sm:inline">⌘K / Ctrl+K 열기</span>
     </div>
   </div>
 
-  <!-- daisyUI 배경 클릭 닫기 -->
+  <!-- 배경 클릭 닫기 -->
   <form method="dialog" class="modal-backdrop">
-    <button>close</button>
+    <button aria-label="검색 닫기">close</button>
   </form>
 </dialog>
 
