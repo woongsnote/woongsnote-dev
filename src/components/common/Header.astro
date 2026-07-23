@@ -1,5 +1,6 @@
 ---
 import SearchButton from '../search/SearchButton.astro';
+
 import ThemeToggle from './ThemeToggle.astro';
 
 const navLinks = [
@@ -18,7 +19,7 @@ const isActivePath = (href: string) => {
 };
 
 const navLinkBaseClass =
-  'focus-ring rounded-sm text-xs font-medium tracking-wide transition-colors duration-150 ease-out sm:text-sm';
+  'focus-ring relative rounded-sm py-1 text-xs font-medium tracking-wide transition-colors duration-150 ease-out sm:text-sm';
 ---
 
 <header
@@ -52,11 +53,18 @@ const navLinkBaseClass =
                 aria-current={isActive ? 'page' : undefined}
               >
                 {label}
+                {isActive && (
+                  <span
+                    aria-hidden="true"
+                    class="bg-base-content absolute inset-x-1 -bottom-1.5 h-px rounded-full"
+                  />
+                )}
               </a>
             );
           })
         }
       </nav>
+
       <SearchButton />
       <ThemeToggle />
     </div>
