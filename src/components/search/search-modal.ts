@@ -6,7 +6,7 @@ import type { PagefindResultData } from './pagefind';
 
 function toPlainText(value?: string): string {
   if (!value) return '';
-  
+
   const doc = new DOMParser().parseFromString(value, 'text/html');
 
   return doc.body.textContent?.replace(/\s+/g, ' ').trim() ?? '';
@@ -31,7 +31,7 @@ function renderResults(
     const a = document.createElement('a');
     a.href = item.url;
     a.className =
-      'search-result block rounded-md p-3 transition-colors hover:bg-base-200';
+      'search-result block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out hover:bg-base-200/70 focus-visible:bg-base-200/70 focus-visible:outline-none motion-reduce:transition-none';
     a.setAttribute('data-search-result', '');
 
     const title = document.createElement('span');
@@ -57,11 +57,15 @@ function getResults(list: HTMLUListElement): HTMLAnchorElement[] {
 }
 
 function setActive(results: HTMLAnchorElement[], index: number): void {
-  for (const r of results) r.classList.remove('bg-base-200');
+  for (const result of results) {
+    result.classList.remove('bg-base-200/70');
+  }
 
-  if (results[index]) {
-    results[index].classList.add('bg-base-200');
-    results[index].scrollIntoView({ block: 'nearest' });
+  const activeResult = results[index];
+
+  if (activeResult) {
+    activeResult.classList.add('bg-base-200/70');
+    activeResult.scrollIntoView({ block: 'nearest' });
   }
 }
 
