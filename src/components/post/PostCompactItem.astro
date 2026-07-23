@@ -19,7 +19,7 @@ const {
 <li>
   <a
     href={`/${id}`}
-    class="focus-ring group flex items-baseline gap-4 rounded-sm py-1.5 text-sm no-underline transition-opacity duration-150 ease-out active:opacity-70 motion-reduce:transition-none md:block md:py-0"
+    class="focus-ring group hover:bg-base-200/60 active:bg-base-200/80 -mx-2 flex items-baseline gap-4 rounded-lg px-2 py-2 text-sm no-underline transition-[background-color,opacity] duration-200 ease-out active:opacity-80 motion-reduce:transition-none md:block md:py-2.5"
   >
     <time
       datetime={publishedDate.toISOString()}
@@ -37,12 +37,11 @@ const {
         </time>
 
         <span aria-hidden="true" class="select-none">—</span>
-
         <span class="uppercase">{category}</span>
       </div>
 
       <Tag
-        class="text-base-content group-hover:text-primary text-sm leading-snug transition-colors duration-150 ease-out md:mb-1.5 md:text-base md:font-semibold md:tracking-tight"
+        class="text-base-content group-hover:text-primary text-sm leading-snug font-medium transition-colors duration-150 ease-out md:mb-1.5 md:text-base md:font-semibold md:tracking-tight"
       >
         {title}
       </Tag>
