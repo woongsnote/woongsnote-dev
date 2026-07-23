@@ -45,7 +45,7 @@ const postDate = formatDate(publishedDate);
     data-pagefind-body
     class="prose mx-auto mt-5 w-full max-w-3xl break-keep"
   >
-    <header class="not-prose flex flex-col gap-4">
+    <header class="not-prose mb-8 flex flex-col gap-4">
       <h1
         data-pagefind-weight="10"
         data-pagefind-meta="title"
@@ -63,7 +63,6 @@ const postDate = formatDate(publishedDate);
       <p class="text-base-content/70">{description}</p>
       <TagList tags={tags} />
     </header>
-    <div class="border-base-content/10 my-6 border-t"></div>
     {hasToc && <Toc headings={headings} />}
     {
       isProject && cover && (
