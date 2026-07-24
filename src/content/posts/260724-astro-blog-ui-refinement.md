@@ -111,7 +111,7 @@ a.className =
   'search-result block rounded-xl px-3 py-2.5 transition-colors duration-150 ease-out hover:bg-base-200/70 focus-visible:bg-base-200/70 focus-visible:outline-none motion-reduce:transition-none';
 ```
 
-마우스를 올렸을 때와 키보드로 이동했을 때 같은 배경색을 사용하도록 했다. 마우스와 키보드 중 어떤 입력 방식을 사용하더라도 선택된 항목이 동일하게 보이도록 했다. `aria-label`, `autocomplete`, `spellcheck` 같은 입력 속성도 함께 보완했다. 겉으로 보이는 차이는 작지만, 모달의 역할과 조작 방식은 이전보다 조금 더 분명해졌다.
+마우스와 키보드 중 어떤 입력 방식을 사용하더라도 선택된 항목이 동일하게 보이도록 했다. `aria-label`, `autocomplete`, `spellcheck` 같은 입력 속성도 함께 보완했다. 겉으로 보이는 차이는 작지만, 모달의 역할과 조작 방식은 이전보다 조금 더 분명해졌다.
 
 ## 상세 페이지에서는 선 하나를 덜어냈다
 
