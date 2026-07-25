@@ -23,7 +23,7 @@ export default defineConfig({
       provider: fontProviders.fontsource(),
       name: 'Asta Sans',
       cssVariable: '--font-asta-sans',
-      weights: [400, 500, 600],
+      weights: [400, 600],
       styles: ['normal'],
       subsets: ['korean', 'latin'],
       fallbacks: ['system-ui', 'sans-serif'],
