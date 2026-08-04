@@ -35,7 +35,7 @@ function renderResults(
     a.setAttribute('data-search-result', '');
 
     const title = document.createElement('span');
-    title.className = 'text-sm font-medium';
+    title.className = 'text-sm font-semibold';
     title.textContent = item.meta?.title ?? item.url;
 
     const excerpt = document.createElement('span');
@@ -89,12 +89,18 @@ function mountSearchModal(): void {
   if (!input || !list) return;
 
   let timer: number | null = null;
+  let requestId = 0;
   let lastQuery = '';
   let activeIndex = -1;
 
   /* open / close ─────────────────────────────────── */
 
   const reset = () => {
+    if (timer !== null) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    requestId += 1;
     input.value = '';
     lastQuery = '';
     activeIndex = -1;
@@ -119,6 +125,7 @@ function mountSearchModal(): void {
 
   const search = async (term: string) => {
     const q = term.trim();
+    const currentRequestId = ++requestId;
 
     if (!q) {
       list.replaceChildren();
@@ -132,9 +139,14 @@ function mountSearchModal(): void {
     try {
       const results = await searchPagefind(q);
 
+      // 이후에 시작된 검색이 있으면 현재 결과는 무시
+      if (currentRequestId !== requestId) return;
+
       renderResults(list, empty, results);
       activeIndex = -1;
     } catch (err) {
+      if (currentRequestId !== requestId) return;
+
       console.error('[search]', err);
 
       renderResults(list, empty, []);
@@ -148,10 +160,12 @@ function mountSearchModal(): void {
     if (timer !== null) clearTimeout(timer);
 
     timer = window.setTimeout(() => {
+      timer = null;
+
       if (value === lastQuery) return;
 
       lastQuery = value;
-      search(value);
+      void search(value);
     }, 150);
   });
 
