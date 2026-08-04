@@ -23,12 +23,12 @@ slug: 'astro-blog-debugging-roundup'
 ```ts title="src/config/seo.ts"
 author: {
   '@type': 'Person',
-  name: [AUTHOR.name, AUTHOR.nameEn], // ['문지웅', 'Jiwoong Moon']
-  url: ...,
+  name: [AUTHOR.name, AUTHOR.nameEn],
+  url: `${siteConfig.url}/about`,
 }
 ```
 
-빌드는 통과하지만 Google Rich Results Test가 경고를 띄운다.
+배열로 작성하는 경우, 빌드는 통과하지만 Google Rich Results Test가 경고를 띄운다.
 
 ### 원인
 
@@ -41,9 +41,9 @@ schema.org에서 `name`은 **single-value** 속성이다. 배열은 명세 위�
 ```ts title="src/config/seo.ts"
 author: {
   '@type': 'Person',
-  name: AUTHOR.name,            // '문지웅'
-  alternateName: AUTHOR.nameEn, // 'Jiwoong Moon'
-  url: ...,
+  name: AUTHOR.name,
+  alternateName: AUTHOR.nameEn,
+  url: `${siteConfig.url}/about`,
 }
 ```
 
