@@ -8,14 +8,12 @@ const hasPosts = postsByYear.length > 0;
 ---
 
 <BaseLayout title="Archive" description="전체 글 목록">
-  <section
-    class="mx-auto w-full max-w-4xl space-y-10 px-2 pb-4 lg:px-4"
-    aria-label="Archive"
-  >
+  <div class="mx-auto max-w-4xl pt-5 pb-12">
+    <h1 class="text-meta leading-relaxed break-keep">Archive</h1>
     {
       hasPosts ? (
         postsByYear.map((group) => (
-          <section class="space-y-3" aria-labelledby={`y-${group.year}`}>
+          <section class="mt-5 space-y-3" aria-labelledby={`y-${group.year}`}>
             <div class="bg-base-100 sticky top-16 z-20 -mx-4 px-4 py-2">
               <div class="divider divider-start">
                 <h2
@@ -39,5 +37,5 @@ const hasPosts = postsByYear.length > 0;
         </p>
       )
     }
-  </section>
+  </div>
 </BaseLayout>
