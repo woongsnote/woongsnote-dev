@@ -100,8 +100,8 @@ export const collections = {
 ## 4. 카테고리 컴포넌트
 
 ```astro title="Category.astro"
-
-import { CATEGORIES, type CategoryType } from "@/constants/categories";
+---
+import { CATEGORIES, type CategoryType } from '@/constants/categories';
 
 interface Props {
   category: CategoryType;
