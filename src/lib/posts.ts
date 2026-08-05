@@ -69,4 +69,3 @@ export function parseMinutes(input: string): number | null {
 export function getPostReadingTime(body?: string) {
   return parseMinutes(getReadingTime(body ?? '').text);
 }
-
