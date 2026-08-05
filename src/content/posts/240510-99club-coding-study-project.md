@@ -32,9 +32,7 @@ slug: '99club-coding-study-project'
 
 - 노션에 새로운 데이터베이스를 생성하거나 이미 연결할 데이터베이스가 존재한다면, 해당 데이터베이스와 Next.js 프로젝트에 연동한다.
 - `Log`를 남겨서 노션 데이터베이스에 연동된 데이터가 정상적으로 들어오는 지 확인한다.
-- <a href="/blog/how-to-use-notion-database-in-nextjs" target="_blank">
-    Next.js에서 노션 데이터베이스를 사용하는 방법
-  </a>
+- [Next.js에서 노션 데이터베이스를 사용하는 방법](/notion-database-nextjs)
 
 ### 3. 컴포넌트 및 페이지 구현
 
