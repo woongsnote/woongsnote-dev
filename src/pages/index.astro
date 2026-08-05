@@ -17,7 +17,7 @@ const totalPostCount = allPosts.length;
     <ul class="mt-5 flex flex-col gap-1 md:gap-3">
       {homePosts.map((post) => <PostCompactItem post={post} />)}
     </ul>
-    <nav class="mt-10">
+    <nav class="mt-10" aria-label="게시물 탐색">
       <a
         href="/archive"
         class="focus-ring text-base-content/70 hover:text-primary rounded-sm text-sm font-semibold transition-colors duration-150 ease-out active:opacity-70 motion-reduce:transition-none"
