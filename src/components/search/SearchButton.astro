@@ -1,7 +1,7 @@
 ---
 /**
- * 검색 버튼 – 모바일 전용 (sm 이상에서는 ⌘K 사용)
- * search:open CustomEvent 를 dispatch → search-modal.ts 에서 수신
+ * 검색 버튼
+ * 클릭 또는 Ctrl/⌘ + K로 검색 모달 열기
  */
 import SearchIcon from '@/icons/search.svg';
 ---
@@ -10,7 +10,7 @@ import SearchIcon from '@/icons/search.svg';
   type="button"
   data-search-open
   aria-label="검색 (Ctrl 또는 ⌘ + K)"
-  class="text-base-content/40 hover:text-base-content focus-visible:ring-primary/40 flex size-9 cursor-pointer items-center justify-center rounded-full transition duration-150 ease-out focus-visible:ring-2 focus-visible:outline-none active:scale-95 active:opacity-70 motion-reduce:transition-none motion-reduce:active:scale-100 lg:hidden"
+  class="text-base-content/40 hover:text-base-content focus-visible:ring-primary/40 flex size-9 cursor-pointer items-center justify-center rounded-full transition duration-150 ease-out focus-visible:ring-2 focus-visible:outline-none active:scale-95 active:opacity-70 motion-reduce:transition-none motion-reduce:active:scale-100"
 >
   <SearchIcon class="size-5" />
 </button>
