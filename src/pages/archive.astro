@@ -1,5 +1,6 @@
 ---
 import { PostItem } from '@/components/post';
+import ChevronDownIcon from '@/icons/chevron-down.svg';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPostsGroupedByYear } from '@/lib/posts';
 
@@ -10,25 +11,44 @@ const hasPosts = postsByYear.length > 0;
 <BaseLayout title="Archive" description="전체 글 목록">
   <div class="mx-auto max-w-4xl pt-5 pb-12">
     <h1 class="text-meta leading-relaxed break-keep">Archive</h1>
+
     {
       hasPosts ? (
-        postsByYear.map((group) => (
-          <section class="mt-5 space-y-3" aria-labelledby={`y-${group.year}`}>
-            <div class="bg-base-100 sticky top-16 z-20 -mx-4 px-4 py-2">
-              <div class="divider divider-start">
+        postsByYear.map((group, index) => (
+          <section class="mt-5" aria-labelledby={`y-${group.year}`}>
+            <details class="group/archive" open={index === 0}>
+              <summary class="focus-ring bg-base-100 hover:text-primary sticky top-16 z-20 -mx-4 cursor-pointer list-none rounded-sm px-4 py-3 transition-colors duration-150 ease-out select-none focus-visible:ring-offset-0 focus-visible:ring-inset motion-reduce:transition-none md:py-2 [&::-webkit-details-marker]:hidden">
                 <h2
                   id={`y-${group.year}`}
-                  class="text-sm font-semibold tracking-wide"
+                  class="flex min-w-0 items-center gap-3 text-sm font-semibold tracking-wide"
                 >
-                  {group.year}
+                  <span>{group.year}</span>
+
+                  <span
+                    class="text-neutral-content shrink-0 text-xs font-normal tabular-nums sm:text-sm"
+                    aria-label={`${group.posts.length}개의 글`}
+                  >
+                    · {group.posts.length}
+                  </span>
+
+                  <span
+                    aria-hidden="true"
+                    class="bg-base-content/10 h-px min-w-4 flex-1"
+                  />
+
+                  <ChevronDownIcon
+                    aria-hidden="true"
+                    class="text-neutral-content size-4 shrink-0 transition-transform duration-150 ease-out group-open/archive:rotate-180 motion-reduce:transition-none"
+                  />
                 </h2>
-              </div>
-            </div>
-            <ul class="flex flex-col gap-8">
-              {group.posts.map((post) => (
-                <PostItem post={post} />
-              ))}
-            </ul>
+              </summary>
+
+              <ul class="mt-3 flex flex-col gap-8">
+                {group.posts.map((post) => (
+                  <PostItem post={post} />
+                ))}
+              </ul>
+            </details>
           </section>
         ))
       ) : (

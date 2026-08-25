@@ -25,13 +25,14 @@
   --color-base-300: oklch(0.9 0.01 250);
   --color-base-content: oklch(0.18 0.015 250);
 
-  --color-primary: oklch(0.56 0.09 235);
+  /* Midnight Blue palette — seed: #102552 */
+  --color-primary: #315fa8;
   --color-primary-content: oklch(0.98 0.004 250);
 
-  --color-secondary: oklch(0.72 0.06 235);
-  --color-secondary-content: oklch(0.18 0.015 250);
+  --color-secondary: #3d5c99;
+  --color-secondary-content: oklch(0.98 0.004 250);
 
-  --color-accent: oklch(0.853 0.043 227);
+  --color-accent: #bacbec;
   --color-accent-content: oklch(0.18 0.015 250);
 
   --color-neutral: oklch(0.24 0.012 250);
@@ -68,18 +69,19 @@
   prefersdark: true;
   color-scheme: dark;
 
-  --color-base-100: oklch(0.18 0 0); /* #121212 느낌 */
-  --color-base-200: oklch(0.24 0 0); /* #1d1d1d 느낌 */
+  --color-base-100: oklch(0.18 0 0);
+  --color-base-200: oklch(0.24 0 0);
   --color-base-300: oklch(0.32 0 0);
   --color-base-content: oklch(0.94 0.006 250);
 
-  --color-primary: oklch(0.853 0.043 227);
+  /* Midnight Blue palette — seed: #102552 */
+  --color-primary: #90abde;
   --color-primary-content: oklch(0.12 0.008 250);
 
-  --color-secondary: oklch(0.62 0.055 235);
-  --color-secondary-content: oklch(0.94 0.006 250);
+  --color-secondary: #7592ca;
+  --color-secondary-content: oklch(0.12 0.008 250);
 
-  --color-accent: oklch(0.853 0.043 227);
+  --color-accent: #bacbec;
   --color-accent-content: oklch(0.12 0.008 250);
 
   --color-neutral: oklch(0.86 0.006 250);
@@ -116,7 +118,6 @@
 
 /* ── 5. Base ── */
 
-/* 기본 배경/텍스트 명시 */
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -151,9 +152,10 @@
 }
 
 /* ── 7. Custom Styles ── */
+
 [data-search-modal] mark {
   background: none;
-  color: var(--color-accent);
+  color: var(--color-primary);
   font-weight: 600;
 }
 
