@@ -1,18 +1,24 @@
 ---
 import PostLayout from '@/layouts/PostLayout.astro';
-import { getPostBySlug, getPostReadingTime, getPosts } from '@/lib/posts';
+import {
+  getPostBySlug,
+  getPostNavigation,
+  getPostReadingTime,
+  getPosts,
+  getRelatedPosts,
+} from '@/lib/posts';
 import type { GetStaticPaths } from 'astro';
 import { render } from 'astro:content';
 
 export const getStaticPaths = (async () => {
   const posts = await getPosts();
+
   return posts.map((post) => ({
     params: { slug: post.id },
   }));
 }) satisfies GetStaticPaths;
 
 const { slug } = Astro.params;
-
 const post = await getPostBySlug(slug!);
 
 if (!post) {
@@ -20,10 +26,20 @@ if (!post) {
 }
 
 const { Content, headings } = await render(post);
-
 const readingTime = getPostReadingTime(post.body);
+const [{ previousPost, nextPost }, relatedPosts] = await Promise.all([
+  getPostNavigation(post.id),
+  getRelatedPosts(post.id, 3),
+]);
 ---
 
-<PostLayout post={post} headings={headings} readingTime={readingTime}>
+<PostLayout
+  post={post}
+  headings={headings}
+  readingTime={readingTime}
+  previousPost={previousPost}
+  nextPost={nextPost}
+  relatedPosts={relatedPosts}
+>
   <Content />
 </PostLayout>

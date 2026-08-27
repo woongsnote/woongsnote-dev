@@ -1,0 +1,83 @@
+<div
+  data-reading-progress
+  class="bg-primary pointer-events-none fixed inset-x-0 top-16 z-40 h-px origin-left scale-x-0"
+  aria-hidden="true"
+>
+</div>
+
+<script>
+  import { onPageReady } from '@/lib/lifecycle';
+
+  let cleanup = () => {};
+
+  const setupReadingProgress = () => {
+    cleanup();
+
+    const content = document.querySelector<HTMLElement>(
+      '[data-reading-progress-content]'
+    );
+    const progress = document.querySelector<HTMLElement>(
+      '[data-reading-progress]'
+    );
+
+    if (!content || !progress) return;
+
+    const controller = new AbortController();
+    let frame = 0;
+    let start = 0;
+    let end = 0;
+
+    const update = () => {
+      frame = 0;
+
+      const distance = end - start;
+      // 한 화면에 모두 들어오는 짧은 글은 이미 끝까지 보이는 상태다.
+      const value =
+        distance <= 0
+          ? Number(window.scrollY >= end)
+          : Math.min(1, Math.max(0, (window.scrollY - start) / distance));
+
+      progress.style.transform = `scaleX(${value})`;
+    };
+
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    const measure = () => {
+      const rect = content.getBoundingClientRect();
+      const top = window.scrollY + rect.top;
+      const headerOffset = progress.getBoundingClientRect().top;
+
+      start = Math.max(0, top - headerOffset);
+      end = Math.max(0, top + rect.height - window.innerHeight);
+      requestUpdate();
+    };
+
+    window.addEventListener('scroll', requestUpdate, {
+      passive: true,
+      signal: controller.signal,
+    });
+    window.addEventListener('resize', measure, {
+      passive: true,
+      signal: controller.signal,
+    });
+    document.addEventListener('astro:page-load', measure, {
+      signal: controller.signal,
+    });
+
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(content);
+    measure();
+
+    cleanup = () => {
+      controller.abort();
+      resizeObserver.disconnect();
+      if (frame) window.cancelAnimationFrame(frame);
+      cleanup = () => {};
+    };
+  };
+
+  document.addEventListener('astro:before-swap', () => cleanup());
+  onPageReady(setupReadingProgress);
+</script>

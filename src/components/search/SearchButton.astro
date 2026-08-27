@@ -1,30 +1,74 @@
 ---
-/**
- * 검색 버튼
- * 클릭 또는 Ctrl/⌘ + K로 검색 모달 열기
- */
 import SearchIcon from '@/icons/search.svg';
 ---
 
-<button
-  type="button"
-  data-search-open
-  aria-label="검색 (Ctrl 또는 ⌘ + K)"
-  class="text-base-content/40 hover:text-base-content focus-visible:ring-primary/40 flex size-9 cursor-pointer items-center justify-center rounded-full transition duration-150 ease-out focus-visible:ring-2 focus-visible:outline-none active:scale-95 active:opacity-70 motion-reduce:transition-none motion-reduce:active:scale-100"
->
-  <SearchIcon class="size-5" />
-</button>
+<div class="search-shortcut relative">
+  <button
+    type="button"
+    data-search-open
+    aria-label="검색 열기"
+    aria-describedby="search-shortcut-hint"
+    class="focus-ring text-neutral-content hover:text-base-content focus-visible:text-base-content flex size-9 cursor-pointer items-center justify-center rounded-full transition-colors duration-150 ease-out active:opacity-70 motion-reduce:transition-none"
+  >
+    <SearchIcon aria-hidden="true" class="size-5" />
+  </button>
+
+  <span
+    id="search-shortcut-hint"
+    role="tooltip"
+    class="search-shortcut__hint absolute top-full right-0 z-50 pt-2"
+  >
+    <span
+      class="bg-base-300 text-base-content block rounded-sm px-2 py-1.5 text-xs whitespace-nowrap"
+    >
+      Search · <kbd class="font-mono">Ctrl/⌘ K</kbd>
+    </span>
+  </span>
+</div>
 
 <script>
   import { onPageReady } from '@/lib/lifecycle';
 
-  function bindSearchButton(): void {
-    document
-      .querySelector('[data-search-open]')
-      ?.addEventListener('click', () => {
-        window.dispatchEvent(new CustomEvent('search:open'));
-      });
-  }
+  let cleanup = () => {};
 
+  const bindSearchButton = () => {
+    cleanup();
+
+    const controller = new AbortController();
+    document
+      .querySelectorAll<HTMLButtonElement>('[data-search-open]')
+      .forEach((button) => {
+        button.addEventListener(
+          'click',
+          () => window.dispatchEvent(new CustomEvent('search:open')),
+          { signal: controller.signal }
+        );
+      });
+
+    cleanup = () => {
+      controller.abort();
+      cleanup = () => {};
+    };
+  };
+
+  document.addEventListener('astro:before-swap', () => cleanup());
   onPageReady(bindSearchButton);
 </script>
+
+<style>
+  .search-shortcut__hint {
+    display: none;
+    visibility: hidden;
+  }
+
+  @media (min-width: 48rem) {
+    .search-shortcut__hint {
+      display: block;
+    }
+
+    .search-shortcut:hover .search-shortcut__hint,
+    .search-shortcut:focus-within .search-shortcut__hint {
+      visibility: visible;
+    }
+  }
+</style>
