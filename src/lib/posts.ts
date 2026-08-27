@@ -69,3 +69,71 @@ export function parseMinutes(input: string): number | null {
 export function getPostReadingTime(body?: string) {
   return parseMinutes(getReadingTime(body ?? '').text);
 }
+
+// ── 이전 / 다음 글 ──
+
+export type PostNavigation = {
+  previousPost: PostEntry | null;
+  nextPost: PostEntry | null;
+};
+
+export const getPostNavigation = async (
+  slug: string
+): Promise<PostNavigation> => {
+  const posts = await getPosts();
+  const currentIndex = posts.findIndex((post) => post.id === slug);
+
+  if (currentIndex === -1) {
+    return { previousPost: null, nextPost: null };
+  }
+
+  return {
+    // publishedDate 내림차순: 뒤쪽이 더 오래된 글
+    previousPost: posts[currentIndex + 1] ?? null,
+    nextPost: posts[currentIndex - 1] ?? null,
+  };
+};
+
+// ── 관련 글: 동일 태그 → 동일 카테고리, 최신 글 fallback 없음 ──
+
+export const getRelatedPosts = async (
+  slug: string,
+  limit = 3
+): Promise<PostEntry[]> => {
+  const posts = await getPosts();
+  const currentPost = posts.find((post) => post.id === slug);
+
+  if (!currentPost || limit <= 0) return [];
+
+  const candidates = posts.filter((post) => post.id !== slug);
+  const selected: PostEntry[] = [];
+  const selectedIds = new Set<string>();
+  const normalizeTag = (tag: string) => tag.trim().toLowerCase();
+  const currentTags = new Set(
+    currentPost.data.tags.map(normalizeTag).filter(Boolean)
+  );
+
+  const select = (matches: PostEntry[]) => {
+    for (const post of matches) {
+      if (selected.length >= limit) break;
+      if (selectedIds.has(post.id)) continue;
+
+      selected.push(post);
+      selectedIds.add(post.id);
+    }
+  };
+
+  select(
+    candidates.filter((post) =>
+      post.data.tags.some((tag) => currentTags.has(normalizeTag(tag)))
+    )
+  );
+
+  select(
+    candidates.filter(
+      (post) => post.data.category === currentPost.data.category
+    )
+  );
+
+  return selected;
+};

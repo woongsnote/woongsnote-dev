@@ -140,11 +140,11 @@
 }
 
 @utility text-meta {
-  @apply text-neutral-content text-xs sm:text-sm;
+  @apply text-neutral-content text-xs leading-relaxed;
 }
 
 @utility tag-chip {
-  @apply border-base-content/20 text-neutral-content hover:border-primary/40 hover:text-primary inline-flex items-center rounded-md border px-2 py-1 text-xs font-semibold tracking-wide transition-colors;
+  @apply border-base-content/15 text-neutral-content inline-flex items-center rounded-sm border px-1.5 py-0.5 text-xs font-normal tracking-wide;
 }
 
 @utility focus-ring {
