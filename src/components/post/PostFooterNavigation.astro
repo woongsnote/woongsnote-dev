@@ -1,0 +1,92 @@
+---
+import { formatDate } from '@/lib/date';
+import type { PostEntry } from '@/types';
+
+type Props = {
+  previousPost?: PostEntry | null;
+  nextPost?: PostEntry | null;
+  relatedPosts?: PostEntry[];
+};
+
+const { previousPost = null, nextPost = null, relatedPosts = [] } = Astro.props;
+
+const hasRelated = relatedPosts.length > 0;
+const hasNavigation = Boolean(previousPost || nextPost);
+---
+
+{
+  (hasRelated || hasNavigation) && (
+    <footer data-pagefind-ignore class="not-prose mt-16 sm:mt-20">
+      {hasRelated && (
+        <section
+          aria-labelledby="related-posts-title"
+          class="border-base-content/10 border-t pt-8"
+        >
+          <h2
+            id="related-posts-title"
+            class="text-meta font-semibold tracking-wide"
+          >
+            Related posts
+          </h2>
+
+          <ul class="mt-4 space-y-1">
+            {relatedPosts.map((post) => (
+              <li>
+                <a
+                  href={`/${post.id}`}
+                  class="focus-ring group -mx-1 block rounded-sm px-1 py-2 no-underline"
+                >
+                  <span class="text-base-content group-hover:text-primary group-focus-visible:text-primary block text-sm leading-snug font-medium break-words transition-colors duration-150 motion-reduce:transition-none sm:text-base">
+                    {post.data.title}
+                  </span>
+                  <time
+                    datetime={post.data.publishedDate.toISOString()}
+                    class="text-meta mt-1 block"
+                  >
+                    {formatDate(post.data.publishedDate)}
+                  </time>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {hasNavigation && (
+        <nav
+          aria-label="이전 글과 다음 글"
+          class:list={[
+            'border-base-content/10 border-t pt-8',
+            hasRelated && 'mt-10',
+          ]}
+        >
+          <div class="grid gap-6 sm:grid-cols-2 sm:gap-10">
+            {previousPost && (
+              <a
+                href={`/${previousPost.id}`}
+                class="focus-ring group min-w-0 rounded-sm py-2 no-underline"
+              >
+                <span class="text-meta block">Previous</span>
+                <span class="text-base-content group-hover:text-primary group-focus-visible:text-primary mt-1.5 block text-sm leading-snug font-medium break-words transition-colors duration-150 motion-reduce:transition-none sm:text-base">
+                  ← {previousPost.data.title}
+                </span>
+              </a>
+            )}
+
+            {nextPost && (
+              <a
+                href={`/${nextPost.id}`}
+                class="focus-ring group min-w-0 rounded-sm py-2 text-right no-underline sm:col-start-2"
+              >
+                <span class="text-meta block">Next</span>
+                <span class="text-base-content group-hover:text-primary group-focus-visible:text-primary mt-1.5 block text-sm leading-snug font-medium break-words transition-colors duration-150 motion-reduce:transition-none sm:text-base">
+                  {nextPost.data.title} →
+                </span>
+              </a>
+            )}
+          </div>
+        </nav>
+      )}
+    </footer>
+  )
+}

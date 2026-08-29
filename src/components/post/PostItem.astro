@@ -10,7 +10,7 @@ type Props = {
 const {
   post: {
     id,
-    data: { title, description, publishedDate, category },
+    data: { title, publishedDate, category },
   },
   headingLevel: Tag = 'h2',
 } = Astro.props;
@@ -19,28 +19,22 @@ const {
 <li>
   <a
     href={`/${id}`}
-    class="group focus-ring block break-keep no-underline transition-colors duration-200"
+    class="focus-ring group -mx-2 block rounded-sm px-2 py-2.5 no-underline transition-opacity duration-150 ease-out active:opacity-80 motion-reduce:transition-none"
   >
-    <div class="text-meta mb-2.5 flex items-center gap-2 tracking-wide">
-      <time datetime={publishedDate.toISOString()}>
-        {formatDate(publishedDate)}
-      </time>
-
-      <span aria-hidden="true" class="select-none">—</span>
-
-      <span class="uppercase">{category}</span>
-    </div>
-
     <Tag
-      class="text-base-content group-hover:text-primary mb-1.5 text-base leading-snug font-semibold tracking-tight text-balance transition-colors"
+      class="text-base-content group-hover:text-primary group-focus-visible:text-primary text-sm leading-snug font-semibold tracking-tight break-words transition-colors duration-150 ease-out motion-reduce:transition-none sm:text-base"
     >
       {title}
     </Tag>
 
-    <p
-      class="text-base-content/65 line-clamp-2 text-sm leading-relaxed break-keep"
+    <div
+      class="text-meta mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 tracking-wide"
     >
-      {description}
-    </p>
+      <time datetime={publishedDate.toISOString()} class="tabular-nums">
+        {formatDate(publishedDate)}
+      </time>
+      <span aria-hidden="true">·</span>
+      <span class="uppercase">{category}</span>
+    </div>
   </a>
 </li>

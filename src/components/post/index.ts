@@ -6,3 +6,6 @@ export { default as Toc } from './Toc.astro';
 export { default as TagList } from './TagList.astro';
 export { default as PostItem } from './PostItem.astro';
 export { default as PostCompactItem } from './PostCompactItem.astro';
+export { default as HeadingAnchorCopy } from './HeadingAnchorCopy.astro';
+export { default as PostFooterNavigation } from './PostFooterNavigation.astro';
+export { default as ReadingProgress } from './ReadingProgress.astro';

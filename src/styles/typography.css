@@ -35,8 +35,52 @@
     /* 한국어 줄바꿈 (prose에 없음) */
     word-break: keep-all;
 
-    & h2 {
-      margin-top: calc(var(--spacing) * 12);
+    & :where(p):not(:where(.not-prose, .not-prose *)) {
+      line-height: 1.8;
+    }
+
+    & :where(h2):not(:where(.not-prose, .not-prose *)) {
+      margin-top: calc(var(--spacing) * 14);
+      margin-bottom: calc(var(--spacing) * 4);
+      font-weight: 600;
+      line-height: 1.35;
+      scroll-margin-top: calc(var(--spacing) * 24);
+    }
+
+    & :where(h3):not(:where(.not-prose, .not-prose *)) {
+      margin-top: calc(var(--spacing) * 10);
+      margin-bottom: calc(var(--spacing) * 3);
+      font-weight: 600;
+      line-height: 1.4;
+      scroll-margin-top: calc(var(--spacing) * 24);
+    }
+
+    & :where(a):not(:where(.not-prose, .not-prose *)) {
+      color: var(--color-primary);
+      text-decoration-color: color-mix(
+        in oklab,
+        var(--color-primary) 45%,
+        transparent
+      );
+      text-underline-offset: 0.2em;
+      transition: text-decoration-color 150ms ease-out;
+    }
+
+    & :where(a):not(:where(.not-prose, .not-prose *)):hover {
+      text-decoration-color: currentColor;
+    }
+
+    & :where(a):not(:where(.not-prose, .not-prose *)):focus-visible {
+      text-decoration-color: currentColor;
+      border-radius: 2px;
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      & :where(a):not(:where(.not-prose, .not-prose *)) {
+        transition: none;
+      }
     }
 
     /* ─── Inline Code ─── */

@@ -19,38 +19,28 @@ const {
 <li>
   <a
     href={`/${id}`}
-    class="focus-ring group -mx-2 flex items-baseline gap-4 rounded-lg px-2 py-2 text-sm no-underline transition-opacity duration-150 ease-out active:opacity-80 motion-reduce:transition-none md:block md:py-2.5"
+    class="focus-ring group -mx-2 block rounded-sm px-2 py-4 no-underline transition-opacity duration-150 ease-out active:opacity-80 motion-reduce:transition-none md:py-5"
   >
-    <time
-      datetime={publishedDate.toISOString()}
-      class="text-neutral-content shrink-0 whitespace-nowrap tabular-nums md:hidden"
+    <Tag
+      class="text-base-content group-hover:text-primary group-focus-visible:text-primary text-base leading-snug font-semibold tracking-tight break-words transition-colors duration-150 ease-out motion-reduce:transition-none md:text-lg"
     >
-      {formatDate(publishedDate)}
-    </time>
+      {title}
+    </Tag>
 
-    <div class="min-w-0 flex-1">
-      <div
-        class="text-meta mb-2.5 hidden items-center gap-2 tracking-wide md:flex"
-      >
-        <time datetime={publishedDate.toISOString()}>
-          {formatDate(publishedDate)}
-        </time>
+    <p
+      class="text-base-content/65 mt-1.5 line-clamp-2 text-sm leading-relaxed break-keep"
+    >
+      {description}
+    </p>
 
-        <span aria-hidden="true" class="select-none">—</span>
-        <span class="uppercase">{category}</span>
-      </div>
-
-      <Tag
-        class="text-base-content group-hover:text-primary text-sm leading-snug font-semibold transition-colors duration-150 ease-out motion-reduce:transition-none md:mb-1.5 md:text-base md:tracking-tight"
-      >
-        {title}
-      </Tag>
-
-      <p
-        class="text-base-content/65 line-clamp-2 hidden text-sm leading-relaxed break-keep md:block"
-      >
-        {description}
-      </p>
+    <div
+      class="text-meta mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 tracking-wide"
+    >
+      <time datetime={publishedDate.toISOString()} class="tabular-nums">
+        {formatDate(publishedDate)}
+      </time>
+      <span aria-hidden="true">·</span>
+      <span class="uppercase">{category}</span>
     </div>
   </a>
 </li>

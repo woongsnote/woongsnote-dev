@@ -11,12 +11,13 @@ const { title, url } = Astro.props;
 
 <button
   id="shareButton"
-  class="btn btn-circle btn-ghost btn-sm hover:text-accent hover:bg-transparent"
+  type="button"
+  class="focus-ring btn btn-circle btn-ghost btn-sm hover:text-primary focus-visible:text-primary hover:bg-transparent"
   data-title={title}
   data-url={url}
-  aria-label="share button"
+  aria-label="글 공유"
 >
-  <Share class="inline-block size-6" />
+  <Share aria-hidden="true" class="inline-block size-6" />
 </button>
 
 <script>
