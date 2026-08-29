@@ -11,7 +11,7 @@ const focus = [
 ---
 
 <BaseLayout title="About" description="문지웅의 소개와 기록 공간">
-  <div class="mx-auto max-w-3xl pt-5 pb-12">
+  <div class="mx-auto max-w-3xl pt-8 pb-16 sm:pt-10">
     <header class="flex items-center gap-4">
       <ProfileImage />
       <div>
@@ -36,7 +36,7 @@ const focus = [
       <hr class="border-base-content/10" />
 
       <section class="space-y-4">
-        <h2 class="text-meta font-semibold">Focus</h2>
+        <h2 class="text-base-content/80 text-sm font-semibold">Focus</h2>
         <ul class="marker:text-base-content/40 list-disc space-y-2 pl-5">
           {focus.map((item) => <li>{item}</li>)}
         </ul>

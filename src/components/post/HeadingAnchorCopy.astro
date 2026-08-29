@@ -1,0 +1,174 @@
+<span
+  data-heading-copy-status
+  data-pagefind-ignore
+  class="sr-only"
+  role="status"
+  aria-live="polite"
+  aria-atomic="true"></span>
+
+<script>
+  import { onPageReady } from '@/lib/lifecycle';
+  import { copyText } from '@/lib/share';
+
+  let cleanup = () => {};
+
+  const setupHeadingAnchors = () => {
+    cleanup();
+
+    const body = document.querySelector<HTMLElement>('[data-post-body]');
+    const status = document.querySelector<HTMLElement>(
+      '[data-heading-copy-status]'
+    );
+
+    if (!body || !status) return;
+
+    const controller = new AbortController();
+    const buttons: HTMLButtonElement[] = [];
+    const timers = new Set<number>();
+
+    body.querySelectorAll<HTMLElement>('h2[id], h3[id]').forEach((heading) => {
+      const headingText = heading.textContent?.trim() || '제목';
+      const button = document.createElement('button');
+      const icon = document.createElement('span');
+      const feedback = document.createElement('span');
+      let resetTimer: number | undefined;
+      let copying = false;
+
+      button.type = 'button';
+      button.dataset.headingCopy = '';
+      button.dataset.pagefindIgnore = '';
+      button.className = 'heading-anchor-copy';
+      button.title = '제목 링크 복사';
+      button.setAttribute('aria-label', `${headingText} 제목 링크 복사`);
+
+      icon.textContent = '#';
+      icon.setAttribute('aria-hidden', 'true');
+      feedback.className = 'heading-anchor-copy__feedback';
+      feedback.setAttribute('aria-hidden', 'true');
+      button.append(icon, feedback);
+
+      button.addEventListener(
+        'click',
+        async () => {
+          if (copying) return;
+          copying = true;
+
+          if (resetTimer !== undefined) {
+            window.clearTimeout(resetTimer);
+            timers.delete(resetTimer);
+          }
+
+          status.textContent = '';
+          delete button.dataset.state;
+          feedback.textContent = '';
+          const url = new URL(window.location.href);
+          url.hash = heading.id;
+
+          try {
+            await copyText(url.href);
+            if (controller.signal.aborted) return;
+
+            button.dataset.state = 'copied';
+            feedback.textContent = '복사됨';
+            status.textContent = `${headingText} 제목 링크를 복사했습니다.`;
+          } catch {
+            if (controller.signal.aborted) return;
+
+            button.dataset.state = 'failed';
+            feedback.textContent = '복사 실패';
+            status.textContent =
+              '링크를 복사하지 못했습니다. 브라우저 권한을 확인해 주세요.';
+          } finally {
+            copying = false;
+          }
+
+          resetTimer = window.setTimeout(() => {
+            delete button.dataset.state;
+            feedback.textContent = '';
+            timers.delete(resetTimer!);
+            resetTimer = undefined;
+          }, 1800);
+          timers.add(resetTimer);
+        },
+        { signal: controller.signal }
+      );
+
+      heading.append(button);
+      buttons.push(button);
+    });
+
+    cleanup = () => {
+      controller.abort();
+      timers.forEach((timer) => window.clearTimeout(timer));
+      buttons.forEach((button) => button.remove());
+      status.textContent = '';
+      cleanup = () => {};
+    };
+  };
+
+  document.addEventListener('astro:before-swap', () => cleanup());
+  onPageReady(setupHeadingAnchors);
+</script>
+
+<style is:global>
+  .heading-anchor-copy {
+    position: relative;
+    display: inline-flex;
+    inline-size: 2rem;
+    block-size: 2rem;
+    margin-inline-start: 0.25rem;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 2px;
+    background: transparent;
+    color: var(--color-neutral-content);
+    font: inherit;
+    font-size: 0.8em;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+
+  .heading-anchor-copy:hover,
+  .heading-anchor-copy:focus-visible {
+    color: var(--color-primary);
+  }
+
+  .heading-anchor-copy:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .heading-anchor-copy__feedback {
+    position: absolute;
+    inset-inline-end: 0;
+    inset-block-start: 100%;
+    z-index: 1;
+    padding: 0.25rem 0.5rem;
+    border-radius: 2px;
+    background: var(--color-base-300);
+    color: var(--color-base-content);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    white-space: nowrap;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  .heading-anchor-copy[data-state] .heading-anchor-copy__feedback {
+    visibility: visible;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .heading-anchor-copy {
+      opacity: 0;
+    }
+
+    [data-post-body] :is(h2, h3)[id]:hover > .heading-anchor-copy,
+    .heading-anchor-copy:focus-visible,
+    .heading-anchor-copy[data-state] {
+      opacity: 1;
+    }
+  }
+</style>

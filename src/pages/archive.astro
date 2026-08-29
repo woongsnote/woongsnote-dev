@@ -9,51 +9,53 @@ const hasPosts = postsByYear.length > 0;
 ---
 
 <BaseLayout title="Archive" description="전체 글 목록">
-  <div class="mx-auto max-w-4xl pt-5 pb-12">
-    <h1 class="text-meta leading-relaxed break-keep">Archive</h1>
+  <div class="mx-auto max-w-4xl pt-8 pb-16 sm:pt-10">
+    <h1 class="text-base-content text-2xl font-semibold tracking-tight">
+      Archive
+    </h1>
 
     {
       hasPosts ? (
-        postsByYear.map((group, index) => (
-          <section class="mt-5" aria-labelledby={`y-${group.year}`}>
+        postsByYear.map(({ year, posts }, index) => (
+          <section
+            class:list={[index === 0 ? 'mt-6' : 'mt-8']}
+            aria-labelledby={`y-${year}`}
+          >
             <details class="group/archive" open={index === 0}>
-              <summary class="focus-ring bg-base-100 hover:text-primary sticky top-16 z-20 -mx-4 cursor-pointer list-none rounded-sm px-4 py-3 transition-colors duration-150 ease-out select-none focus-visible:ring-offset-0 focus-visible:ring-inset motion-reduce:transition-none md:py-2 [&::-webkit-details-marker]:hidden">
+              <summary class="focus-ring bg-base-100 hover:text-primary focus-visible:text-primary sticky top-16 z-20 -mx-4 cursor-pointer list-none rounded-sm px-4 py-3 transition-colors duration-150 ease-out select-none focus-visible:ring-offset-0 focus-visible:ring-inset motion-reduce:transition-none [&::-webkit-details-marker]:hidden">
                 <h2
-                  id={`y-${group.year}`}
-                  class="flex min-w-0 items-center gap-3 text-sm font-semibold tracking-wide"
+                  id={`y-${year}`}
+                  class="flex min-w-0 items-center gap-3 text-base font-semibold tracking-tight"
                 >
-                  <span>{group.year}</span>
-
+                  <span>{year}</span>
                   <span
-                    class="text-neutral-content shrink-0 text-xs font-normal tabular-nums sm:text-sm"
-                    aria-label={`${group.posts.length}개의 글`}
+                    class="text-neutral-content shrink-0 text-xs font-normal tabular-nums"
+                    aria-label={`${posts.length}개의 글`}
                   >
-                    · {group.posts.length}
+                    · {posts.length}
                   </span>
-
                   <span
                     aria-hidden="true"
                     class="bg-base-content/10 h-px min-w-4 flex-1"
                   />
-
                   <ChevronDownIcon
                     aria-hidden="true"
-                    class="text-neutral-content size-4 shrink-0 transition-transform duration-150 ease-out group-open/archive:rotate-180 motion-reduce:transition-none"
+                    class="size-4 shrink-0 transition-transform duration-150 ease-out group-open/archive:rotate-180 motion-reduce:transition-none"
                   />
                 </h2>
               </summary>
 
-              <ul class="mt-3 flex flex-col gap-8">
-                {group.posts.map((post) => (
-                  <PostItem post={post} />
+              <ul class="mt-2 flex flex-col gap-1 pb-2">
+                {posts.map((post) => (
+                  <PostItem post={post} headingLevel="h3" />
                 ))}
               </ul>
             </details>
           </section>
         ))
       ) : (
-        <p class="text-base-content/60 mt-8 text-center text-sm">
-          작성된 글이 없습니다.
+        <p class="text-neutral-content mt-8 text-sm">
+          아직 작성된 글이 없습니다.
         </p>
       )
     }
