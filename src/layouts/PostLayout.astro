@@ -1,12 +1,11 @@
 ---
 import {
   Comments,
-  PostFooterNavigation,
-  PostThumbnail,
+  FooterNavigation,
   ReadingProgress,
-  ReadingTimeText,
   ShareButton,
   TagList,
+  Thumbnail,
   Toc,
 } from '@/components/post';
 import { formatDate } from '@/lib/date';
@@ -43,7 +42,6 @@ const {
   coverAlt,
 } = post.data;
 
-const hasToc = headings.length > 0;
 const isProject = category === 'Project';
 const postDate = formatDate(publishedDate);
 ---
@@ -90,7 +88,7 @@ const postDate = formatDate(publishedDate);
               readingTime !== null && (
                 <>
                   <span aria-hidden="true">·</span>
-                  <ReadingTimeText readingTime={readingTime} />
+                  <span>{`${readingTime}분 읽기`}</span>
                 </>
               )
             }
@@ -98,11 +96,10 @@ const postDate = formatDate(publishedDate);
           <ShareButton title={title} url={Astro.url.href} />
         </div>
       </header>
-
-      {hasToc && <Toc headings={headings} />}
+      <Toc headings={headings} />
       {
         isProject && cover && (
-          <PostThumbnail
+          <Thumbnail
             image={cover}
             alt={coverAlt ?? title}
             title={title}
@@ -116,7 +113,7 @@ const postDate = formatDate(publishedDate);
       </div>
     </div>
 
-    <PostFooterNavigation
+    <FooterNavigation
       previousPost={previousPost}
       nextPost={nextPost}
       relatedPosts={relatedPosts}
