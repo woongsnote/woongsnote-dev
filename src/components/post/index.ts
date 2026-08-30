@@ -1,10 +1,14 @@
-export { default as PostThumbnail } from './PostThumbnail.astro';
-export { default as ReadingTimeText } from './ReadingTimeText.astro';
-export { default as Comments } from './PostComments.astro';
-export { default as ShareButton } from './PostShareButton.astro';
-export { default as Toc } from './Toc.astro';
+// Card
+export { default as PostItem } from './card/PostItem.astro';
+export { default as PostCompactItem } from './card/PostCompactItem.astro';
+
+// Detail
+export { default as Comments } from './detail/Comments.astro';
+export { default as FooterNavigation } from './detail/FooterNavigation.astro';
+export { default as ShareButton } from './detail/ShareButton.astro';
+export { default as Thumbnail } from './detail/Thumbnail.astro';
+export { default as ReadingProgress } from './detail/ReadingProgress.astro';
+export { default as Toc } from './detail/Toc.astro';
+
+// Shared
 export { default as TagList } from './TagList.astro';
-export { default as PostItem } from './PostItem.astro';
-export { default as PostCompactItem } from './PostCompactItem.astro';
-export { default as PostFooterNavigation } from './PostFooterNavigation.astro';
-export { default as ReadingProgress } from './ReadingProgress.astro';
