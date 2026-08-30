@@ -3,8 +3,8 @@ import path from 'node:path';
 import satori from 'satori';
 import sharp from 'sharp';
 
-// ── 모듈 로드 시 한 번만 실행 ──
-const fontSemiBold = fs.readFileSync(
+// ── OG 이미지 렌더링 전용 폰트 ──
+const ogFontSemiBold = fs.readFileSync(
   path.resolve('./src/assets/fonts/WantedSans-SemiBold.otf')
 );
 
@@ -53,7 +53,12 @@ export async function renderOgResponse(slots: OgSlots): Promise<Response> {
     width: OG.width,
     height: OG.height,
     fonts: [
-      { name: 'WantedSans', data: fontSemiBold, weight: 600, style: 'normal' },
+      {
+        name: 'WantedSans',
+        data: ogFontSemiBold,
+        weight: 600,
+        style: 'normal',
+      },
     ],
   });
 

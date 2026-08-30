@@ -11,17 +11,19 @@ const toc = headings.filter((h) => h.depth === TOC.depth);
 
 {
   toc.length >= 2 && (
-    <nav
-      aria-label="목차"
+    <details
+      open
       data-pagefind-ignore
-      class="collapse-arrow border-base-content/10 not-prose collapse mt-6 rounded-lg border bg-transparent"
+      class="collapse-arrow not-prose bg-base-200/35 collapse mt-6 rounded-lg"
     >
-      <input type="checkbox" checked />
-      <div class="collapse-title min-h-0 py-3 text-sm font-semibold">목차</div>
-      <div class="collapse-content">
-        <ul class="list-none space-y-2 pl-0">
+      <summary class="focus-ring collapse-title min-h-0 py-3 text-sm font-semibold after:scale-90 after:opacity-60">
+        목차
+      </summary>
+
+      <nav aria-label="목차" class="collapse-content">
+        <ul class="list-none space-y-1.5 pl-0">
           {toc.map((h) => (
-            <li class="py-1">
+            <li class="py-0.5">
               <a
                 href={`#${h.slug}`}
                 class="text-base-content/70 hover:text-primary text-sm no-underline transition-colors"
@@ -31,7 +33,7 @@ const toc = headings.filter((h) => h.depth === TOC.depth);
             </li>
           ))}
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </details>
   )
 }

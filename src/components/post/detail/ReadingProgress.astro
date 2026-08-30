@@ -37,7 +37,7 @@
           ? Number(window.scrollY >= end)
           : Math.min(1, Math.max(0, (window.scrollY - start) / distance));
 
-      progress.style.transform = `scaleX(${value})`;
+      progress.style.scale = `${value} 1`;
     };
 
     const requestUpdate = () => {
