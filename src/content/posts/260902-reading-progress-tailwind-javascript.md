@@ -1,13 +1,11 @@
 ---
 title: 'Reading Progress가 움직이지 않았던 이유'
-description: 'Tailwind CSS와 JavaScript의 scale 처리 방식 때문에 움직이지 않던 Reading Progress를 수정한 기록'
+description: 'Tailwind CSS의 scale과 JavaScript의 transform이 겹치면서 움직이지 않던 Reading Progress를 수정한 기록'
 publishedDate: 2026-09-02
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Astro', 'TailwindCSS', 'JavaScript']
+tags: ['Astro', 'Tailwind CSS', 'JavaScript']
 slug: reading-progress-tailwind-javascript
----
-
 ---
 
 글을 얼마나 읽었는지 보여주는 `Reading Progress`를 추가했다.
@@ -18,7 +16,7 @@ slug: reading-progress-tailwind-javascript
 
 ## 먼저 진행률 계산을 확인했다
 
-현재 컴포넌트에서는 글의 시작과 끝을 미리 계산해두고, 스크롤 위치에 따라 0부터 1 사이의 값을 만든다.
+수정 전 컴포넌트에서는 글의 시작과 끝을 미리 계산해두고, 스크롤 위치에 따라 0부터 1 사이의 값을 만든다.
 
 ```ts
 const update = () => {
@@ -35,11 +33,9 @@ const update = () => {
 };
 ```
 
-스크롤 이벤트도 정상적으로 발생했고 `value`도 예상대로 변하고 있었다.
+코드를 확인해보니 스크롤 이벤트 처리와 진행률 계산 자체에는 문제가 없어 보였다.
 
-진행률 계산에는 문제가 없었다.
-
-그런데 값이 바뀌는데도 바는 계속 보이지 않았다.
+그런데 화면에서는 바가 계속 보이지 않았다.
 
 ## 문제는 `scale-x-0`이었다
 
