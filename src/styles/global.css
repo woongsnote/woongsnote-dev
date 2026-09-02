@@ -26,7 +26,7 @@
   --color-base-content: oklch(0.18 0.015 250);
 
   /* Midnight Blue palette — seed: #102552 */
-  --color-primary: #315fa8;
+  --color-primary: #3567b7;
   --color-primary-content: oklch(0.98 0.004 250);
 
   --color-secondary: #3d5c99;
@@ -75,7 +75,7 @@
   --color-base-content: oklch(0.94 0.006 250);
 
   /* Midnight Blue palette — seed: #102552 */
-  --color-primary: #90abde;
+  --color-primary: #8eafe8;
   --color-primary-content: oklch(0.12 0.008 250);
 
   --color-secondary: #7592ca;
