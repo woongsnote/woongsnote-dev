@@ -9,9 +9,22 @@
   themes: false;
 }
 
-@custom-variant dark (&:where([data-theme='woong-dark'], [data-theme='woong-dark'] *));
+/* ── 3. Shared daisyUI Tokens ── */
 
-/* ── 3. Themes ── */
+:root {
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* ── 4. Themes ── */
 
 /* Light Theme */
 @plugin 'daisyui/theme' {
@@ -26,13 +39,13 @@
   --color-base-content: oklch(0.18 0.015 250);
 
   /* Midnight Blue palette — seed: #102552 */
-  --color-primary: #3567b7;
+  --color-primary: oklch(0.5209 0.1375 259.43);
   --color-primary-content: oklch(0.98 0.004 250);
 
-  --color-secondary: #3d5c99;
+  --color-secondary: oklch(0.4809 0.1053 262.71);
   --color-secondary-content: oklch(0.98 0.004 250);
 
-  --color-accent: #bacbec;
+  --color-accent: oklch(0.84 0.0499 263.7);
   --color-accent-content: oklch(0.18 0.015 250);
 
   --color-neutral: oklch(0.24 0.012 250);
@@ -49,17 +62,6 @@
 
   --color-error: oklch(0.58 0.18 25);
   --color-error-content: oklch(0.98 0.004 250);
-
-  --radius-selector: 0.5rem;
-  --radius-field: 0.5rem;
-  --radius-box: 1rem;
-
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
-
-  --border: 1px;
-  --depth: 0;
-  --noise: 0;
 }
 
 /* Dark Theme */
@@ -75,13 +77,13 @@
   --color-base-content: oklch(0.94 0.006 250);
 
   /* Midnight Blue palette — seed: #102552 */
-  --color-primary: #8eafe8;
+  --color-primary: oklch(0.751 0.0904 261.12);
   --color-primary-content: oklch(0.12 0.008 250);
 
-  --color-secondary: #7592ca;
+  --color-secondary: oklch(0.6602 0.0902 263.05);
   --color-secondary-content: oklch(0.12 0.008 250);
 
-  --color-accent: #bacbec;
+  --color-accent: oklch(0.84 0.0499 263.7);
   --color-accent-content: oklch(0.12 0.008 250);
 
   --color-neutral: oklch(0.86 0.006 250);
@@ -98,25 +100,15 @@
 
   --color-error: oklch(0.68 0.16 25);
   --color-error-content: oklch(0.12 0.008 250);
-
-  --radius-selector: 0.5rem;
-  --radius-field: 0.5rem;
-  --radius-box: 1rem;
-
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
-
-  --border: 1px;
-  --depth: 0;
-  --noise: 0;
 }
 
-/* ── 4. Font & Theme ── */
+/* ── 5. Font & Theme ── */
+
 @theme inline {
   --font-sans: var(--font-asta-sans);
 }
 
-/* ── 5. Base ── */
+/* ── 6. Base ── */
 
 @layer base {
   html {
@@ -133,7 +125,7 @@
   }
 }
 
-/* ── 6. Utilities ── */
+/* ── 7. Utilities ── */
 
 @utility link-muted {
   @apply text-neutral-content hover:text-base-content transition-colors;
@@ -151,7 +143,7 @@
   @apply focus-visible:ring-primary focus-visible:ring-offset-base-100 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none;
 }
 
-/* ── 7. Custom Styles ── */
+/* ── 8. Custom Styles ── */
 
 [data-search-modal] mark {
   background: none;

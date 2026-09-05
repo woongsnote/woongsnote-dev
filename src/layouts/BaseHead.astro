@@ -6,6 +6,7 @@ import {
   siteConfig,
 } from '@/config';
 import { OG } from '@/lib/og';
+import { THEME } from '@/lib/theme';
 import type { PageMeta } from '@/types';
 
 import { Font } from 'astro:assets';
@@ -75,7 +76,7 @@ const jsonLd = articleDate
 
 <meta name="description" content={description} />
 
-<meta name="theme-color" content="#121212" />
+<meta name="theme-color" content={THEME.colors.dark} />
 
 <!-- Open Graph -->
 
