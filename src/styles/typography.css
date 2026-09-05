@@ -5,34 +5,29 @@
      + daisyUI v5 시맨틱 컬러에 위임
    ═══════════════════════════════════════════ */
 
-/* ─── 테마별 커스텀 변수 ─── */
+/* ── Theme-specific highlight ── */
+
 [data-theme='woong-light'] {
-  /* 코드 블록 */
-  --color-code-title-bg: var(--color-base-200);
-  --color-code-title-fg: var(--color-primary);
   --color-highlight-line: color-mix(
     in oklab,
     var(--color-accent) 18%,
     transparent
   );
-  --color-highlight-bar: var(--color-accent);
 }
 
 [data-theme='woong-dark'] {
-  /* 코드 블록 */
-  --color-code-title-bg: var(--color-base-200);
-  --color-code-title-fg: var(--color-primary);
   --color-highlight-line: color-mix(
     in oklab,
     var(--color-accent) 24%,
     transparent
   );
-  --color-highlight-bar: var(--color-accent);
 }
+
+/* ── Prose ── */
 
 @layer components {
   .prose {
-    /* 한국어 줄바꿈 (prose에 없음) */
+    /* 한국어 줄바꿈 */
     word-break: keep-all;
 
     & :where(p):not(:where(.not-prose, .not-prose *)) {
@@ -54,6 +49,8 @@
       line-height: 1.4;
       scroll-margin-top: calc(var(--spacing) * 24);
     }
+
+    /* ── Links ── */
 
     & :where(a):not(:where(.not-prose, .not-prose *)) {
       color: var(--color-primary);
@@ -83,7 +80,8 @@
       }
     }
 
-    /* ─── Inline Code ─── */
+    /* ── Inline Code ── */
+
     & :not(pre) > code {
       vertical-align: middle;
       font-weight: 600;
@@ -97,7 +95,8 @@
       display: none;
     }
 
-    /* ─── Code Block ─── */
+    /* ── Code Block ── */
+
     & pre {
       padding: calc(var(--spacing) * 2);
       border-radius: var(--radius-lg);
@@ -110,24 +109,26 @@
       display: none;
     }
 
-    /* ─── Shiki 토큰 ─── */
+    /* ── Shiki Lines ── */
+
     & pre span[data-line] {
       display: inline-block;
       padding: calc(var(--spacing) * 1);
-      line-height: 1.375; /* leading-snug */
+      line-height: 1.375;
     }
 
     & code span[data-highlighted-line] {
       border-left-width: calc(var(--spacing) * 1);
-      border-left-color: var(--color-highlight-bar);
+      border-left-color: var(--color-accent);
       background-color: var(--color-highlight-line);
       padding-left: calc(var(--spacing) * 2);
     }
 
-    /* ─── rehype-pretty-code title ─── */
+    /* ── rehype-pretty-code Title ── */
+
     & figcaption[data-rehype-pretty-code-title] {
-      background-color: var(--color-code-title-bg) !important;
-      color: var(--color-code-title-fg) !important;
+      background-color: var(--color-base-200) !important;
+      color: var(--color-primary) !important;
       font-family: var(--font-mono);
       font-size: var(--text-sm);
       font-weight: 600;
@@ -149,14 +150,12 @@
 }
 
 /* ═══════════════════════════════════════════
-   Shiki 테마별 색상 (data-theme 기반)
+   Shiki Theme Colors
    ═══════════════════════════════════════════ */
 
-/* ─── Light ─── */
-[data-theme='woong-light'] .prose :not(pre) > code {
-  background-color: var(--shiki-light-bg);
-}
+/* ── Light ── */
 
+[data-theme='woong-light'] .prose :not(pre) > code,
 [data-theme='woong-light'] .prose pre {
   background-color: var(--shiki-light-bg);
 }
@@ -167,15 +166,9 @@
   background-color: var(--shiki-light-bg);
 }
 
-[data-theme='woong-light'] .prose [data-rehype-pretty-code-figure] pre {
-  background-color: var(--shiki-light-bg);
-}
+/* ── Dark ── */
 
-/* ─── Dark ─── */
-[data-theme='woong-dark'] .prose :not(pre) > code {
-  background-color: var(--shiki-dark-bg);
-}
-
+[data-theme='woong-dark'] .prose :not(pre) > code,
 [data-theme='woong-dark'] .prose pre {
   background-color: var(--shiki-dark-bg);
 }
@@ -183,9 +176,5 @@
 [data-theme='woong-dark'] .prose code[data-theme*=' '],
 [data-theme='woong-dark'] .prose code[data-theme*=' '] span {
   color: var(--shiki-dark);
-  background-color: var(--shiki-dark-bg);
-}
-
-[data-theme='woong-dark'] .prose [data-rehype-pretty-code-figure] pre {
   background-color: var(--shiki-dark-bg);
 }
