@@ -5,7 +5,7 @@ cover: '../../assets/images/read-magic.png'
 publishedDate: 2024-07-08
 category: 'Project'
 author: 'woongsnote'
-tags: ['Nextjs', 'TypeScript', 'TailwindCSS', 'Vercel']
+tags: ['Next.js', 'TypeScript']
 link: https://read-magic.vercel.app
 slug: 'read-magic'
 ---

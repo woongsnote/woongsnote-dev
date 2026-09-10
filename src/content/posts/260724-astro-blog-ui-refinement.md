@@ -4,7 +4,7 @@ description: '기존의 미니멀한 구조를 유지하면서 헤더와 게시�
 publishedDate: 2026-07-24
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Astro', 'Tailwind CSS', 'UI', 'Responsive Design', 'Blog']
+tags: ['Astro', 'UI']
 slug: 'astro-blog-ui-refinement'
 ---
 

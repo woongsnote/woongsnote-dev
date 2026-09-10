@@ -4,7 +4,7 @@ description: 'Content Collection, 타입 안전성, UI 배지까지 Astro 블로
 publishedDate: 2026-01-08
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Astro', 'Content Collection', 'Category']
+tags: ['Astro', 'Blog']
 slug: 'astro-blog-category-design'
 ---
 

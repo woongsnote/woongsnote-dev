@@ -4,7 +4,7 @@ description: 'Tailwind CSS의 scale과 JavaScript의 transform이 겹치면서 �
 publishedDate: 2026-09-02
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Astro', 'Tailwind CSS', 'JavaScript']
+tags: ['Tailwind CSS', 'JavaScript']
 slug: reading-progress-tailwind-javascript
 ---
 
