@@ -5,7 +5,7 @@ cover: '../../assets/images/mini-pick.png'
 publishedDate: 2023-08-31
 category: 'Project'
 author: 'woongsnote'
-tags: [Nextjs, TypeScript, html-to-image]
+tags: ['Next.js', 'TypeScript']
 slug: 'mini-pick'
 ---
 

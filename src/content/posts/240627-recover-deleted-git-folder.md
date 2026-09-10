@@ -4,7 +4,7 @@ description: '.git 폴더를 실수로 삭제했을 때 커밋을 복구하는 �
 publishedDate: 2024-06-27
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Git', '버전 관리', '복구', '개발 팁']
+tags: ['Git']
 slug: 'recover-deleted-git-folder'
 ---
 

@@ -5,7 +5,7 @@ cover: '../../assets/images/movie-critic.png'
 publishedDate: 2022-10-30
 category: 'Project'
 author: 'woongsnote'
-tags: [React, JavaScript, React-Query]
+tags: [React]
 slug: 'movie-critics'
 ---
 

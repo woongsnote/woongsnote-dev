@@ -4,7 +4,7 @@ description: 'Context API에 관한 정리'
 publishedDate: 2023-03-06
 category: 'Tech'
 author: 'woongsnote'
-tags: ['React', 'Context API']
+tags: ['React']
 slug: 'react-context-api'
 ---
 

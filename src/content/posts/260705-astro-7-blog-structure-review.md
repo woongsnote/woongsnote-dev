@@ -4,7 +4,7 @@ description: 'Astro 7 업그레이드와 함께 블로그 구조와 읽는 시�
 publishedDate: 2026-07-06
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Astro', 'Astro 7', 'TypeScript', 'Blog', 'Reading Time']
+tags: ['Astro', 'Blog']
 slug: 'astro-7-blog-structure-review'
 ---
 

@@ -4,7 +4,7 @@ description: 'Astro에서 Tailwind CSS와 light-dark()를 사용해 라이트/�
 publishedDate: 2026-01-19
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Astro', 'Tailwind CSS', 'DarkMode', 'light-dark']
+tags: ['Astro', 'Tailwind CSS']
 slug: 'astro-tailwind-v4-dark-mode'
 ---
 

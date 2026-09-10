@@ -4,7 +4,7 @@ description: 'HTML에서 시맨틱 태그(Semantic Tag)의 종류에 관하여'
 publishedDate: 2023-01-16
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Web', 'Html', 'Semantic']
+tags: ['HTML']
 slug: 'semantic-html-tag'
 ---
 

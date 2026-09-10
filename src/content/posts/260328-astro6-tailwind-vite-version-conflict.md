@@ -4,7 +4,7 @@ description: 'Astro 6.1이 Vite 7을 사용하는데 Tailwind CSS v4.2.2가 Vite
 publishedDate: 2026-03-28
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Astro', 'Tailwind CSS', 'Vite']
+tags: ['Astro', 'Vite']
 slug: 'astro6-tailwind-vite-version-conflict'
 ---
 
