@@ -35,10 +35,17 @@ const robots: RobotsDirective =
 
 <BaseLayout title={`${tag} 관련 글`} {description} {robots}>
   <div class="mx-auto max-w-4xl pt-8 pb-16 sm:pt-10">
-    <h1 class="text-base-content text-2xl font-semibold tracking-tight">
-      {tag}
+    <h1
+      class="text-base-content flex min-w-0 items-baseline gap-3 text-2xl font-semibold tracking-tight"
+    >
+      <span class="min-w-0 break-words">{tag}</span>
+      <span
+        class="text-meta shrink-0 font-normal tabular-nums"
+        aria-label={`${posts.length}개의 글`}
+      >
+        · {posts.length}
+      </span>
     </h1>
-    <p class="text-meta mt-2 tabular-nums">{posts.length} posts</p>
 
     {
       postsByYear.map(({ year, posts: yearPosts }, index) => (
