@@ -1,6 +1,8 @@
 ---
+import { TAG_SLUGS, type TagType } from '@/types/tag';
+
 type Props = {
-  tags: string[];
+  tags: TagType[];
 };
 
 const { tags } = Astro.props;
@@ -11,7 +13,12 @@ const { tags } = Astro.props;
     <ul aria-label="태그" class="flex flex-wrap items-center gap-1.5">
       {tags.map((tag) => (
         <li>
-          <span class="tag-chip">#{tag}</span>
+          <a
+            href={`/tags/${TAG_SLUGS[tag]}`}
+            class="tag-chip focus-ring hover:text-primary focus-visible:text-primary no-underline transition-colors duration-150 ease-out motion-reduce:transition-none"
+          >
+            #{tag}
+          </a>
         </li>
       ))}
     </ul>

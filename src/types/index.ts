@@ -3,9 +3,13 @@ import type { CollectionEntry } from 'astro:content';
 
 export type PostEntry = CollectionEntry<'posts'>;
 
+export type RobotsDirective =
+  'index,follow' | 'noindex,follow' | 'noindex,nofollow';
+
 export interface PageMeta {
   title: string;
   description: string;
   image?: string;
   articleDate?: string;
+  robots?: RobotsDirective;
 }
