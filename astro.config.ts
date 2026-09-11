@@ -1,9 +1,27 @@
 // @ts-check
+import { readFile } from 'node:fs/promises';
 import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import sitemap from '@astrojs/sitemap';
+import sitemap, { type SitemapItem } from '@astrojs/sitemap';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { unified } from '@astrojs/markdown-remark';
+
+const outputDirectory = new URL('./dist/', import.meta.url);
+
+const serializeSitemapItem = async (item: SitemapItem) => {
+  const { pathname } = new URL(item.url);
+
+  if (!pathname.startsWith('/tags/')) return item;
+
+  const page = await readFile(
+    new URL(`.${pathname}/index.html`, outputDirectory),
+    'utf8'
+  );
+
+  return page.includes('<meta name="robots" content="noindex,follow">')
+    ? undefined
+    : item;
+};
 
 const prettyCodeOptions = {
   defaultLang: 'plaintext',
@@ -49,6 +67,6 @@ export default defineConfig({
     }),
     syntaxHighlight: false,
   },
-  integrations: [sitemap()],
+  integrations: [sitemap({ serialize: serializeSitemapItem })],
   output: 'static',
 });
