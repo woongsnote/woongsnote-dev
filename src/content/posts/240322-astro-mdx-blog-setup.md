@@ -4,7 +4,7 @@ description: Astro와 Tailwind CSS를 사용해서 MDX 블로그를 구현하는
 publishedDate: 2024-03-22
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Astro', 'Blog', 'MDX', 'TailwindCSS']
+tags: ['Astro', 'MDX']
 slug: 'astro-mdx-blog-setup'
 ---
 

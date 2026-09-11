@@ -4,7 +4,7 @@ description: '리액트 서버 컴포넌트에 대한 정리'
 publishedDate: 2023-07-10
 category: 'Tech'
 author: 'woongsnote'
-tags: ['React', 'Nextjs', 'RSC']
+tags: ['Next.js', 'React']
 slug: 'react-server-component'
 ---
 

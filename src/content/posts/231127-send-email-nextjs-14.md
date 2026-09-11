@@ -5,7 +5,7 @@ description: 'Next.js의 App Router 및 Server Actions를 사용하여 이메일
 publishedDate: 2023-11-27
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Nextjs', 'Server Actions', 'Resend', 'React Email']
+tags: ['Next.js']
 slug: 'send-email-nextjs-14'
 ---
 

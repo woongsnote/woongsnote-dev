@@ -4,7 +4,7 @@ description: 'Next.js 프로젝트에서 shadcn/ui를 사용해서 반응형 사
 publishedDate: 2024-06-25
 category: 'Tech'
 author: 'woongsnote'
-tags: ['TailwindCSS', 'shadcn/ui']
+tags: ['shadcn/ui', 'Next.js']
 slug: 'responsive-sidebar-design'
 ---
 

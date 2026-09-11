@@ -4,7 +4,7 @@ description: 'Vercel/og를 사용해서 섬네일과 OG(Open Graph) image를 자
 publishedDate: 2023-10-16
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Nextjs', 'thumbnail', 'OgImage', 'Vercel']
+tags: ['Next.js', 'SEO']
 slug: 'nextjs-thumbnail-generation'
 ---
 

@@ -5,7 +5,7 @@ cover: '../../assets/images/woongsnote.jpg'
 publishedDate: 2024-03-11
 category: 'Project'
 author: 'woongsnote'
-tags: ['Astro', 'TypeScript', 'TailwindCSS', 'Vercel']
+tags: ['Astro', 'Blog']
 link: https://woongsnote.dev
 slug: 'woongsnote-introduction'
 ---

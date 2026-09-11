@@ -4,7 +4,7 @@ description: '아이폰 16 프로 한 달 사용기'
 publishedDate: 2025-04-28
 category: 'Diary'
 author: 'woongsnote'
-tags: ['애플', '아이폰', '아이폰16프로']
+tags: ['Apple']
 slug: 'apple-ecosystem-getting-started'
 ---
 

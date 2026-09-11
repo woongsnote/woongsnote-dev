@@ -4,7 +4,7 @@ description: 'daisyUI를 활용하여 Astro 프로젝트에 세련되고 접근�
 publishedDate: 2024-06-30
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Astro', 'UX', 'JavaScript', 'Tailwind CSS', 'daisyUI', 'Web Design']
+tags: ['Astro', 'JavaScript']
 slug: 'astro-back-to-top-button'
 ---
 

@@ -4,7 +4,7 @@ description: 'Next.js로 온라인 포트폴리오를 구축하면서 얻은 경
 publishedDate: 2023-11-08
 category: 'Diary'
 author: 'woongsnote'
-tags: [Nextjs, TypeScript, TailwindCSS]
+tags: ['Next.js']
 slug: 'developer-portfolio-review'
 ---
 

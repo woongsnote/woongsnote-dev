@@ -5,8 +5,6 @@ publishedDate: 2026-08-04
 category: Diary
 tags:
   - Frontend
-  - Career
-  - Development
   - Blog
 author: woongsnote
 slug: frontend-developer-growth
