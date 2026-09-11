@@ -5,7 +5,7 @@ coverAlt: '프레임워크 별 TailWind CSS v4 적용 방법'
 publishedDate: 2024-03-14
 category: 'Tech'
 author: 'woongsnote'
-tags: ['TailwindCSS', 'Nextjs', 'Vite', 'Astro']
+tags: ['Tailwind CSS']
 slug: 'tailwind-css-v4-guide'
 ---
 

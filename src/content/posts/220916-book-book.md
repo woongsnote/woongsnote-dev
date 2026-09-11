@@ -5,7 +5,7 @@ cover: '../../assets/images/book-book.png'
 publishedDate: 2022-09-16
 category: 'Project'
 author: 'woongsnote'
-tags: ['React', 'JavaScript', 'Redux-Toolkit']
+tags: ['React', 'TypeScript']
 slug: 'book-book'
 ---
 

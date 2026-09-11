@@ -5,7 +5,7 @@ cover: '../../assets/images/qr-code-gen.png'
 publishedDate: 2023-09-11
 category: 'Project'
 author: 'woongsnote'
-tags: [Nextjs, TypeScript]
+tags: ['Next.js', 'TypeScript']
 slug: 'qr-code-generator'
 ---
 

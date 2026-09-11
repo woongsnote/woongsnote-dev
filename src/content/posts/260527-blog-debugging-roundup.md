@@ -4,7 +4,7 @@ description: '블로그 코드 점검 중 발견한 SEO 규격 위반, 테마 �
 publishedDate: 2026-05-27
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Astro', 'TypeScript', 'SEO', 'JSON-LD', 'View Transitions']
+tags: ['Astro', 'SEO']
 slug: 'astro-blog-debugging-roundup'
 ---
 

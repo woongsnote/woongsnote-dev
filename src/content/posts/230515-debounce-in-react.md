@@ -4,7 +4,7 @@ description: 'Debounce(디바운스)에 관한 정리'
 publishedDate: 2023-05-15
 category: 'Tech'
 author: 'woongsnote'
-tags: ['React', 'Debounce']
+tags: ['React']
 slug: 'debounce-in-react'
 ---
 

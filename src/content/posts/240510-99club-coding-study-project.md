@@ -5,7 +5,7 @@ cover: '../../assets/images/project-99club-coding-study.jpg'
 publishedDate: 2024-05-10
 category: 'Project'
 author: 'woongsnote'
-tags: ['Nextjs', 'Notion', '99club']
+tags: ['Next.js', 'Notion']
 link: 'https://99club-coding-study.vercel.app/'
 slug: '99club-coding-study-project'
 ---

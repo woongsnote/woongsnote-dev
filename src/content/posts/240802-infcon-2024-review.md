@@ -5,7 +5,7 @@ cover: '../../assets/images/infcon-2024.jpg'
 publishedDate: 2024-08-02
 category: 'Diary'
 author: 'woongsnote'
-tags: ['인프콘', '인프콘 2024', '인프런']
+tags: ['Frontend']
 slug: 'infcon-2024-review'
 ---
 

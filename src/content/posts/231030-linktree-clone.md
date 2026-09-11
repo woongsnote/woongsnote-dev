@@ -5,7 +5,7 @@ cover: '../../assets/images/link-tree.png'
 publishedDate: 2023-10-30
 category: 'Project'
 author: 'woongsnote'
-tags: ['Vite', 'React', 'Vercel', 'LinkTree']
+tags: ['Vite', 'React']
 slug: 'linktree-clone'
 ---
 

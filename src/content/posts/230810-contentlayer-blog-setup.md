@@ -4,7 +4,7 @@ description: 'Next.js와 Contentlayer를 사용해서 블로그 템플릿 구현
 publishedDate: 2023-08-10
 category: 'Tech'
 author: 'woongsnote'
-tags: [Nextjs, TypeScript, Contentlayer]
+tags: ['Next.js', 'Blog']
 slug: 'contentlayer-blog-setup'
 ---
 

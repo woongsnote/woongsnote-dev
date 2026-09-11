@@ -4,7 +4,7 @@ description: '아이폰, 아이패드, 그리고 맥북으로 완성한 애플 �
 publishedDate: 2025-09-01
 category: 'Diary'
 author: 'woongsnote'
-tags: ['아이폰', '아이패드', '맥북']
+tags: ['Apple', 'Mac']
 slug: 'apple-ecosystem-completed'
 ---
 

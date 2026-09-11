@@ -5,6 +5,7 @@ import { glob } from 'astro/loaders';
 //Import Zod
 import { z } from 'astro/zod';
 import { CATEGORY_TYPES } from './types/category';
+import { TAG_TYPES } from './types/tag';
 
 //Define a `loader` and `schema` for each collection
 const postSchema = ({ image }: { image: ImageFunction }) =>
@@ -15,7 +16,7 @@ const postSchema = ({ image }: { image: ImageFunction }) =>
     cover: image().optional(),
     coverAlt: z.string().optional(),
     category: z.enum(CATEGORY_TYPES),
-    tags: z.array(z.string()),
+    tags: z.array(z.enum(TAG_TYPES)).min(1).max(2),
     author: z.string(),
     readingTime: z.number().optional(),
     link: z.url().optional(),

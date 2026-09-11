@@ -4,7 +4,7 @@ description: 'Next.js 프로젝트에서 노션 데이터베이스를 사용하�
 publishedDate: 2024-04-24
 category: 'Tech'
 author: 'woongsnote'
-tags: ['Nextjs', 'Notion', 'TailwindCSS']
+tags: ['Next.js', 'Notion']
 slug: 'notion-database-nextjs'
 ---
 
