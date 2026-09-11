@@ -43,9 +43,7 @@ export type PostsByYear = {
   posts: PostEntry[];
 };
 
-export const getPostsGroupedByYear = async (): Promise<PostsByYear[]> => {
-  const posts = await getPosts();
-
+export const groupPostsByYear = (posts: PostEntry[]): PostsByYear[] => {
   const map = new Map<number, PostEntry[]>();
   for (const post of posts) {
     const year = post.data.publishedDate.getFullYear();
@@ -58,6 +56,9 @@ export const getPostsGroupedByYear = async (): Promise<PostsByYear[]> => {
     .sort(([a], [b]) => b - a)
     .map(([year, items]) => ({ year, posts: items }));
 };
+
+export const getPostsGroupedByYear = async (): Promise<PostsByYear[]> =>
+  groupPostsByYear(await getPosts());
 
 // ── 유틸 ──
 

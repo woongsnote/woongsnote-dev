@@ -1,0 +1,83 @@
+---
+import { PostItem } from '@/components/post';
+import ChevronDownIcon from '@/icons/chevron-down.svg';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPosts, groupPostsByYear } from '@/lib/posts';
+import type { RobotsDirective } from '@/types';
+import { TAGS_BY_SLUG, type TagSlug } from '@/types/tag';
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const posts = await getPosts();
+  const tagSlugs = Object.keys(TAGS_BY_SLUG) as TagSlug[];
+
+  return tagSlugs.flatMap((slug) => {
+    const tag = TAGS_BY_SLUG[slug];
+    const taggedPosts = posts.filter((post) => post.data.tags.includes(tag));
+
+    if (taggedPosts.length === 0) return [];
+
+    return {
+      params: { tag: slug },
+      props: { tag, posts: taggedPosts },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { tag, posts } = Astro.props as Props;
+const postsByYear = groupPostsByYear(posts);
+const description = `Woongsnote에 작성된 ${tag} 관련 글을 모아봅니다.`;
+const robots: RobotsDirective =
+  posts.length >= 2 ? 'index,follow' : 'noindex,follow';
+---
+
+<BaseLayout title={`${tag} 관련 글`} {description} {robots}>
+  <div class="mx-auto max-w-4xl pt-8 pb-16 sm:pt-10">
+    <h1 class="text-base-content text-2xl font-semibold tracking-tight">
+      {tag}
+    </h1>
+    <p class="text-meta mt-2 tabular-nums">{posts.length} posts</p>
+
+    {
+      postsByYear.map(({ year, posts: yearPosts }, index) => (
+        <section
+          class:list={[index === 0 ? 'mt-6' : 'mt-8']}
+          aria-labelledby={`y-${year}`}
+        >
+          <details class="group/archive" open={index === 0}>
+            <summary class="focus-ring bg-base-100 hover:text-primary focus-visible:text-primary sticky top-16 z-20 -mx-4 cursor-pointer list-none rounded-sm px-4 py-3 transition-colors duration-150 ease-out select-none focus-visible:ring-offset-0 focus-visible:ring-inset motion-reduce:transition-none [&::-webkit-details-marker]:hidden">
+              <h2
+                id={`y-${year}`}
+                class="flex min-w-0 items-center gap-3 text-base font-semibold tracking-tight"
+              >
+                <span>{year}</span>
+                <span
+                  class="text-neutral-content shrink-0 text-xs font-normal tabular-nums"
+                  aria-label={`${yearPosts.length}개의 글`}
+                >
+                  · {yearPosts.length}
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="bg-base-content/10 h-px min-w-4 flex-1"
+                />
+                <ChevronDownIcon
+                  aria-hidden="true"
+                  class="size-4 shrink-0 transition-transform duration-150 ease-out group-open/archive:rotate-180 motion-reduce:transition-none"
+                />
+              </h2>
+            </summary>
+
+            <ul class="mt-2 flex flex-col gap-1 pb-2">
+              {yearPosts.map((post) => (
+                <PostItem post={post} headingLevel="h3" />
+              ))}
+            </ul>
+          </details>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>

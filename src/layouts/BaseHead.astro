@@ -16,7 +16,8 @@ interface Props extends PageMeta {
   noindex?: boolean;
 }
 
-const { title, description, image, articleDate, noindex } = Astro.props;
+const { title, description, image, articleDate, robots, noindex } = Astro.props;
+const robotsContent = robots ?? (noindex ? 'noindex,nofollow' : undefined);
 
 // ── URLs ──
 
@@ -130,7 +131,7 @@ const jsonLd = articleDate
   )
 }
 
-{noindex && <meta name="robots" content="noindex,nofollow" />}
+{robotsContent && <meta name="robots" content={robotsContent} />}
 
 <script
   is:inline
