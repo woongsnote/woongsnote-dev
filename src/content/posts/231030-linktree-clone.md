@@ -4,7 +4,6 @@ description: 'Vite로 구현한 Linktree 프로젝트'
 cover: '../../assets/images/link-tree.png'
 publishedDate: 2023-10-30
 category: 'Project'
-author: 'woongsnote'
 tags: ['Vite', 'React']
 slug: 'linktree-clone'
 ---

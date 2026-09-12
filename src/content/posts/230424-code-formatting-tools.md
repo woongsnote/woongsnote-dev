@@ -3,7 +3,6 @@ title: 'ESLint와 Prettier'
 description: '코드 스타일링 도구의 소개 및 사용 방법'
 publishedDate: 2023-04-24
 category: 'Tech'
-author: 'woongsnote'
 tags: ['JavaScript', 'TypeScript']
 slug: 'code-formatting-tools'
 ---

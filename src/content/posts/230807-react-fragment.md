@@ -3,7 +3,6 @@ title: 'React.Fragment에 관하여'
 description: 'React.Fragment에 대한 정리'
 publishedDate: 2023-08-07
 category: 'Tech'
-author: 'woongsnote'
 tags: ['React']
 slug: 'react-fragment'
 ---

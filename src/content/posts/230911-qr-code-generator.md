@@ -4,7 +4,6 @@ description: 'QR Code 라이브러리를 활용해서, 구현한 QR Code 생성�
 cover: '../../assets/images/qr-code-gen.png'
 publishedDate: 2023-09-11
 category: 'Project'
-author: 'woongsnote'
 tags: ['Next.js', 'TypeScript']
 slug: 'qr-code-generator'
 ---

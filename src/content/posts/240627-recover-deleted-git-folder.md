@@ -3,7 +3,6 @@ title: '실수로 지워진 .git 폴더 복구하기'
 description: '.git 폴더를 실수로 삭제했을 때 커밋을 복구하는 방법과 유용한 Git 명령어에 대해 알아보기'
 publishedDate: 2024-06-27
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Git']
 slug: 'recover-deleted-git-folder'
 ---

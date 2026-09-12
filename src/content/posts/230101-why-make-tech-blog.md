@@ -3,7 +3,6 @@ title: '왜 기술 블로그를 만들었는가?'
 description: 'Next.js로 기술 블로그를 구현했던 후기'
 publishedDate: 2023-01-01
 category: 'Diary'
-author: 'woongsnote'
 tags: ['Next.js', 'Blog']
 slug: 'why-make-tech-blog'
 ---

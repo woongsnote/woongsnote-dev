@@ -3,7 +3,6 @@ title: 'Astro 7로 올리면서 블로그 구조를 다시 점검했다'
 description: 'Astro 7 업그레이드와 함께 블로그 구조와 읽는 시간 계산 로직을 정리한 기록'
 publishedDate: 2026-07-06
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Astro', 'Blog']
 slug: 'astro-7-blog-structure-review'
 ---

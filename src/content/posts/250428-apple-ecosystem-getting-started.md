@@ -3,7 +3,6 @@ title: '생애 첫 아이폰 사용 도전'
 description: '아이폰 16 프로 한 달 사용기'
 publishedDate: 2025-04-28
 category: 'Diary'
-author: 'woongsnote'
 tags: ['Apple']
 slug: 'apple-ecosystem-getting-started'
 ---

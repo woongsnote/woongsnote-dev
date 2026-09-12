@@ -4,7 +4,6 @@ description: '영화에 대한 정보를 검색할 수 있고, 영화와 영화�
 cover: '../../assets/images/movie-critic.png'
 publishedDate: 2022-10-30
 category: 'Project'
-author: 'woongsnote'
 tags: [React]
 slug: 'movie-critics'
 ---

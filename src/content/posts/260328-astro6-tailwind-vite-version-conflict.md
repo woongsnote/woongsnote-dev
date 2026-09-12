@@ -3,7 +3,6 @@ title: 'Astro 6, Tailwind CSS v4, Vite 8 버전 충돌 해결하기'
 description: 'Astro 6.1이 Vite 7을 사용하는데 Tailwind CSS v4.2.2가 Vite 8을 끌어오면서 발생하는 버전 충돌 문제와 해결 방법 정리'
 publishedDate: 2026-03-28
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Astro', 'Vite']
 slug: 'astro6-tailwind-vite-version-conflict'
 ---
