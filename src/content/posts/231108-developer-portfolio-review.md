@@ -3,7 +3,6 @@ title: 'Next.js 포트폴리오에 대한 회고'
 description: 'Next.js로 온라인 포트폴리오를 구축하면서 얻은 경험과, 교훈에 대한 개인적인 회고'
 publishedDate: 2023-11-08
 category: 'Diary'
-author: 'woongsnote'
 tags: ['Next.js']
 slug: 'developer-portfolio-review'
 ---

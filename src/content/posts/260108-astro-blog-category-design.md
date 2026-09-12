@@ -3,7 +3,6 @@ title: 'Astro 블로그에서 카테고리 설계하기'
 description: 'Content Collection, 타입 안전성, UI 배지까지 Astro 블로그 카테고리 설계 방법 정리'
 publishedDate: 2026-01-08
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Astro', 'Blog']
 slug: 'astro-blog-category-design'
 ---

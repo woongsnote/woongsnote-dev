@@ -3,7 +3,6 @@ title: 'Astro 블로그 디버깅: JSON-LD, theme-color, Giscus, View Transition
 description: '블로그 코드 점검 중 발견한 SEO 규격 위반, 테마 동기화 누락, View Transition 이벤트 손실, TypeScript variance까지 4건의 실제 버그와 해결 정리'
 publishedDate: 2026-05-27
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Astro', 'SEO']
 slug: 'astro-blog-debugging-roundup'
 ---

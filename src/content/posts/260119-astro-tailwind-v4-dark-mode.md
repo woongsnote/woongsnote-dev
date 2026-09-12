@@ -3,7 +3,6 @@ title: 'Astro + Tailwind v4 다크모드 구현'
 description: 'Astro에서 Tailwind CSS와 light-dark()를 사용해 라이트/다크를 안정적으로 토글하는 방법'
 publishedDate: 2026-01-19
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Astro', 'Tailwind CSS']
 slug: 'astro-tailwind-v4-dark-mode'
 ---
