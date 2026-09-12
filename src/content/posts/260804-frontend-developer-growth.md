@@ -6,7 +6,6 @@ category: Diary
 tags:
   - Frontend
   - Blog
-author: woongsnote
 slug: frontend-developer-growth
 ---
 

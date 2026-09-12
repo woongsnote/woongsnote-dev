@@ -3,7 +3,6 @@ title: 'Reading Progress가 움직이지 않았던 이유'
 description: 'Tailwind CSS의 scale과 JavaScript의 transform이 겹치면서 움직이지 않던 Reading Progress를 수정한 기록'
 publishedDate: 2026-09-02
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Tailwind CSS', 'JavaScript']
 slug: reading-progress-tailwind-javascript
 ---

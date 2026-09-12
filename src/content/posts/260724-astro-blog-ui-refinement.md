@@ -3,7 +3,6 @@ title: 'Astro 블로그 UI를 다시 다듬었다'
 description: '기존의 미니멀한 구조를 유지하면서 헤더와 게시물 목록, 검색 모달, 상세 페이지를 다듬고 실기기에서 확인한 기록'
 publishedDate: 2026-07-24
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Astro', 'UI']
 slug: 'astro-blog-ui-refinement'
 ---

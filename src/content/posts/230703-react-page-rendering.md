@@ -3,7 +3,6 @@ title: 'CSR vs SSR vs SSG'
 description: 'CSR, SSR, SSG에 관한 비교'
 publishedDate: 2023-07-03
 category: 'Tech'
-author: 'woongsnote'
 tags: ['React']
 slug: 'react-page-rendering'
 ---

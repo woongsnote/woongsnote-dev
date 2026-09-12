@@ -4,7 +4,6 @@ description: '99Club에서 진행했던 스터디 기록으로 구현한 프로�
 cover: '../../assets/images/project-99club-coding-study.jpg'
 publishedDate: 2024-05-10
 category: 'Project'
-author: 'woongsnote'
 tags: ['Next.js', 'Notion']
 link: 'https://99club-coding-study.vercel.app/'
 slug: '99club-coding-study-project'
