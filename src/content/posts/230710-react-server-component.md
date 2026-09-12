@@ -3,7 +3,6 @@ title: 'Next.js 13과 리액트 서버 컴포넌트'
 description: '리액트 서버 컴포넌트에 대한 정리'
 publishedDate: 2023-07-10
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Next.js', 'React']
 slug: 'react-server-component'
 ---

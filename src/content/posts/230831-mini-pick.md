@@ -4,7 +4,6 @@ description: '간단하게 Thumbnail을 생성할 수 있는 웹 서비스'
 cover: '../../assets/images/mini-pick.png'
 publishedDate: 2023-08-31
 category: 'Project'
-author: 'woongsnote'
 tags: ['Next.js', 'TypeScript']
 slug: 'mini-pick'
 ---

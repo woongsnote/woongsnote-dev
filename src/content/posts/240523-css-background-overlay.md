@@ -3,7 +3,6 @@ title: CSS 한 줄로 배경 이미지에 오버레이 추가하기
 description: 'border-image를 사용해서 배경 이미지에 오버레이를 추가하는 방법'
 publishedDate: 2024-05-23
 category: 'Tech'
-author: 'woongsnote'
 tags: ['CSS']
 slug: 'css-background-overlay'
 ---

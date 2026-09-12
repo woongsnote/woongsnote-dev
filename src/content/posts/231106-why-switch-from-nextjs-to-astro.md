@@ -3,7 +3,6 @@ title: 'Next.js에서 Astro로 전환하기'
 description: '기존 Next.js 블로그의 프레임워크를 Astro로 전환한 후기'
 publishedDate: 2023-11-06
 category: 'Diary'
-author: 'woongsnote'
 tags: ['Astro', 'Next.js']
 slug: 'why-switch-from-nextjs-to-astro'
 ---

@@ -4,7 +4,6 @@ description: '인프콘 2024에 참석해서 들었던 세션들에 대한 회�
 cover: '../../assets/images/infcon-2024.jpg'
 publishedDate: 2024-08-02
 category: 'Diary'
-author: 'woongsnote'
 tags: ['Frontend']
 slug: 'infcon-2024-review'
 ---

@@ -3,7 +3,6 @@ title: daisyUI 사용하기
 description: '프로젝트에 daisyUI를 설치하고, 사용하는 방법에 대한 정리'
 publishedDate: 2024-06-24
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Tailwind CSS', 'UI']
 slug: 'daisyui-guide'
 ---

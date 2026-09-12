@@ -3,7 +3,6 @@ title: '애플 에코시스템 완성하기'
 description: '아이폰, 아이패드, 그리고 맥북으로 완성한 애플 에코 시스템'
 publishedDate: 2025-09-01
 category: 'Diary'
-author: 'woongsnote'
 tags: ['Apple', 'Mac']
 slug: 'apple-ecosystem-completed'
 ---

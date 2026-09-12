@@ -3,7 +3,6 @@ title: 반응형 사이드바 구현하기
 description: 'Next.js 프로젝트에서 shadcn/ui를 사용해서 반응형 사이드바를 구현하는 방법'
 publishedDate: 2024-06-25
 category: 'Tech'
-author: 'woongsnote'
 tags: ['shadcn/ui', 'Next.js']
 slug: 'responsive-sidebar-design'
 ---

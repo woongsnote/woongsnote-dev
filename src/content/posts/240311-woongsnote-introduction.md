@@ -4,7 +4,6 @@ description: '개발 관련 학습한 지식 공유를 위한 기술 블로그'
 cover: '../../assets/images/woongsnote.jpg'
 publishedDate: 2024-03-11
 category: 'Project'
-author: 'woongsnote'
 tags: ['Astro', 'Blog']
 link: https://woongsnote.dev
 slug: 'woongsnote-introduction'

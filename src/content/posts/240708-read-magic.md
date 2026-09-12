@@ -4,7 +4,6 @@ description: 'README 초안 작성을 쉽고 빠르게 작성할 수 있게 도�
 cover: '../../assets/images/read-magic.png'
 publishedDate: 2024-07-08
 category: 'Project'
-author: 'woongsnote'
 tags: ['Next.js', 'TypeScript']
 link: https://read-magic.vercel.app
 slug: 'read-magic'

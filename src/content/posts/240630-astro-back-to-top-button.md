@@ -3,7 +3,6 @@ title: 'Astro 프로젝트에 "맨 위로" 버튼 추가하기'
 description: 'daisyUI를 활용하여 Astro 프로젝트에 세련되고 접근성 높은 "맨 위로" 버튼을 구현하는 방법'
 publishedDate: 2024-06-30
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Astro', 'JavaScript']
 slug: 'astro-back-to-top-button'
 ---

@@ -4,7 +4,6 @@ coverAlt: 'Tailwind CSS를 사용할 때 유용한 팁들에 대한 정리'
 description: 'Tailwind CSS를 사용할 때 유용한 팁들에 대한 정리'
 publishedDate: 2024-02-21
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Tailwind CSS']
 slug: 'tailwind-css-best-practices'
 ---

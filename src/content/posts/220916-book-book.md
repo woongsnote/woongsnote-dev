@@ -4,7 +4,6 @@ description: '도서 후기 작성 서비스'
 cover: '../../assets/images/book-book.png'
 publishedDate: 2022-09-16
 category: 'Project'
-author: 'woongsnote'
 tags: ['React', 'TypeScript']
 slug: 'book-book'
 ---

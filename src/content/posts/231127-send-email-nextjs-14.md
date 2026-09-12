@@ -4,7 +4,6 @@ coverAlt: 'Next.js 14에서 이메일을 보내는 방법'
 description: 'Next.js의 App Router 및 Server Actions를 사용하여 이메일을 보내는 방법'
 publishedDate: 2023-11-27
 category: 'Tech'
-author: 'woongsnote'
 tags: ['Next.js']
 slug: 'send-email-nextjs-14'
 ---
