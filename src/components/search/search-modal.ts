@@ -1,4 +1,3 @@
-import { onPageReady } from '@/lib/lifecycle';
 import { searchPagefind } from './pagefind';
 import type { PagefindResultData } from './pagefind';
 
@@ -71,8 +70,6 @@ function setActive(results: HTMLAnchorElement[], index: number): void {
 
 /* ── 모달 마운트 ──────────────────────────────────── */
 
-let currentOpen: (() => void) | null = null;
-
 function mountSearchModal(): void {
   const dialog = document.querySelector<HTMLDialogElement>(
     '[data-search-modal]'
@@ -82,9 +79,6 @@ function mountSearchModal(): void {
   const input = dialog.querySelector<HTMLInputElement>('[data-search-input]');
   const list = dialog.querySelector<HTMLUListElement>('[data-results]');
   const empty = dialog.querySelector<HTMLElement>('[data-empty]');
-  const closeBtn = dialog.querySelector<HTMLButtonElement>(
-    '[data-search-close]'
-  );
 
   if (!input || !list) return;
 
@@ -110,15 +104,10 @@ function mountSearchModal(): void {
   };
 
   const open = () => {
-    if (!dialog.open) dialog.showModal();
-
     reset();
 
-    queueMicrotask(() => input.focus());
-  };
-
-  const close = () => {
-    if (dialog.open) dialog.close();
+    if (!dialog.open) dialog.showModal();
+    else input.focus();
   };
 
   /* search + debounce ────────────────────────────── */
@@ -193,26 +182,26 @@ function mountSearchModal(): void {
     }
   });
 
-  /* 모바일 닫기 버튼 ────────────────────────────── */
+  document
+    .querySelectorAll<HTMLButtonElement>('[data-search-open]')
+    .forEach((button) => {
+      button.addEventListener('click', open);
+    });
 
-  closeBtn?.addEventListener('click', close);
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      open();
+    }
+  });
 
-  /* 매 swap마다 새 dialog의 open()을 노출 */
-  currentOpen = open;
+  // 뒤로가기로 복원된 페이지에서 이전 검색 모달이 남지 않도록 처리
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      dialog.close();
+      reset();
+    }
+  });
 }
 
-/* ── 전역 리스너 (1회만 등록) ──────────────────────── */
-
-window.addEventListener('keydown', (e) => {
-  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-    e.preventDefault();
-
-    currentOpen?.();
-  }
-});
-
-window.addEventListener('search:open', () => currentOpen?.());
-
-/* ── 초기 + swap 마운트 ───────────────────────────── */
-
-onPageReady(mountSearchModal);
+mountSearchModal();

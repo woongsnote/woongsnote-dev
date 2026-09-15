@@ -26,35 +26,6 @@ import SearchIcon from '@/icons/search.svg';
   </span>
 </div>
 
-<script>
-  import { onPageReady } from '@/lib/lifecycle';
-
-  let cleanup = () => {};
-
-  const bindSearchButton = () => {
-    cleanup();
-
-    const controller = new AbortController();
-    document
-      .querySelectorAll<HTMLButtonElement>('[data-search-open]')
-      .forEach((button) => {
-        button.addEventListener(
-          'click',
-          () => window.dispatchEvent(new CustomEvent('search:open')),
-          { signal: controller.signal }
-        );
-      });
-
-    cleanup = () => {
-      controller.abort();
-      cleanup = () => {};
-    };
-  };
-
-  document.addEventListener('astro:before-swap', () => cleanup());
-  onPageReady(bindSearchButton);
-</script>
-
 <style>
   .search-shortcut__hint {
     display: none;
