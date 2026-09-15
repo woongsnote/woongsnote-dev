@@ -13,7 +13,6 @@ import SunIcon from '@/icons/sun.svg';
 </button>
 
 <script>
-  import { onPageReady } from '@/lib/lifecycle';
   import { THEME } from '@/lib/theme';
 
   function bindThemeToggle() {
@@ -33,6 +32,7 @@ import SunIcon from '@/icons/sun.svg';
     };
 
     updateIcons();
+    window.addEventListener('pageshow', updateIcons);
 
     toggle.addEventListener('click', () => {
       const next = currentTheme() === THEME.dark ? THEME.light : THEME.dark;
@@ -42,5 +42,5 @@ import SunIcon from '@/icons/sun.svg';
     });
   }
 
-  onPageReady(bindThemeToggle);
+  bindThemeToggle();
 </script>
