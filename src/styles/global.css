@@ -151,6 +151,14 @@
   font-weight: 600;
 }
 
+/* ── Native page transitions ── */
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
 /* ── Reduced motion ── */
 
 @media (prefers-reduced-motion: reduce) {

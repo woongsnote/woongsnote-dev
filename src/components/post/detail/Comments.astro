@@ -6,7 +6,6 @@
 
 <script
   is:inline
-  data-astro-rerun
   src="https://giscus.app/client.js"
   data-repo="woongsnote/woongsnote-dev"
   data-repo-id="R_kgDOIZVQXA"
@@ -24,8 +23,6 @@
   async></script>
 
 <script is:inline>
-  // @ts-nocheck — window flags via global state
-
   /** 현재 data-theme에 맞춰 Giscus iframe 테마 동기화 */
   function syncGiscusTheme() {
     const theme = document.documentElement.getAttribute('data-theme');
@@ -38,25 +35,20 @@
     );
   }
 
-  // 한 번만 등록 — View Transition 후에도 유지
-  if (!window.__giscusBindingsMounted) {
-    window.__giscusBindingsMounted = true;
+  // 1) Giscus iframe ready 신호 수신 시 초기 sync
+  window.addEventListener('message', (event) => {
+    if (event.origin !== 'https://giscus.app') return;
+    if (event.data?.giscus) syncGiscusTheme();
+  });
 
-    // 1) Giscus iframe ready 신호 수신 시 초기 sync
-    window.addEventListener('message', (event) => {
-      if (event.origin !== 'https://giscus.app') return;
-      if (event.data?.giscus) syncGiscusTheme();
-    });
+  // 2) data-theme 변경 시 sync
+  new MutationObserver(() => syncGiscusTheme()).observe(
+    document.documentElement,
+    {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    }
+  );
 
-    // 2) data-theme 변경 시 sync
-    new MutationObserver(() => syncGiscusTheme()).observe(
-      document.documentElement,
-      {
-        attributes: true,
-        attributeFilter: ['data-theme'],
-      }
-    );
-  }
-
-  queueMicrotask(() => syncGiscusTheme());
+  syncGiscusTheme();
 </script>

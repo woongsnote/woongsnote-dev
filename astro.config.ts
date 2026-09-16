@@ -53,6 +53,12 @@ export default defineConfig({
   trailingSlash: 'never',
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      rolldownOptions: {
+        // Pagefind is generated after Astro builds; load it natively at runtime.
+        external: ['/pagefind/pagefind.js'],
+      },
+    },
   },
   image: {
     responsiveStyles: true,
