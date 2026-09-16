@@ -27,8 +27,8 @@ let instance: PagefindAPI | null = null;
 
 async function load(): Promise<PagefindAPI> {
   if (instance) return instance;
-  const url = new URL('/pagefind/pagefind.js', window.location.origin).href;
-  const mod = await import(/* @vite-ignore */ url);
+  // @ts-expect-error Pagefind is generated after the Astro build.
+  const mod = await import('/pagefind/pagefind.js');
   const api: unknown = 'default' in mod ? mod.default : mod;
 
   if (!api || typeof (api as Record<string, unknown>).search !== 'function') {
