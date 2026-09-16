@@ -10,7 +10,6 @@ import { THEME } from '@/lib/theme';
 import type { PageMeta } from '@/types';
 
 import { Font } from 'astro:assets';
-import { ClientRouter } from 'astro:transitions';
 
 interface Props extends PageMeta {
   noindex?: boolean;
@@ -55,8 +54,6 @@ const jsonLd = articleDate
   name="viewport"
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 />
-
-<ClientRouter />
 
 <Font cssVariable="--font-asta-sans" preload />
 

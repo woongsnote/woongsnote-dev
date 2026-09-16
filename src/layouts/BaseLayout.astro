@@ -21,7 +21,7 @@ const { title, description, image, articleDate, robots, noindex } = Astro.props;
 <html lang={siteConfig.lang}>
   <head>
     <script is:inline define:vars={{ THEME }}>
-      // @ts-nocheck — THEME via define:vars, window flags via global state
+      // @ts-nocheck — THEME via define:vars
 
       /** localStorage + 시스템 선호도로 적용할 테마 결정 */
       function getTheme() {
@@ -40,12 +40,11 @@ const { title, description, image, articleDate, robots, noindex } = Astro.props;
       }
 
       /** 현재 data-theme에 맞춰 browser theme-color 메타 동기화 */
-      function syncThemeColor(targetDocument = document) {
+      function syncThemeColor() {
         const theme =
-          targetDocument.documentElement.getAttribute('data-theme') ??
-          getTheme();
+          document.documentElement.getAttribute('data-theme') ?? getTheme();
 
-        targetDocument
+        document
           .querySelector('meta[name="theme-color"]')
           ?.setAttribute('content', getThemeColor(theme));
       }
@@ -63,26 +62,17 @@ const { title, description, image, articleDate, robots, noindex } = Astro.props;
         once: true,
       });
 
-      // View Transition 시 새 문서에 미리 테마 + theme-color 적용
-      document.addEventListener('astro:before-swap', (event) => {
-        const theme = getTheme();
-
-        event.newDocument.documentElement.setAttribute('data-theme', theme);
-        syncThemeColor(event.newDocument);
-      });
+      // 뒤로/앞으로 가기로 복원된 문서에도 저장된 테마 적용
+      window.addEventListener('pageshow', applyTheme);
 
       // data-theme 변경 자동 추적
-      if (!window.__themeColorObserverMounted) {
-        window.__themeColorObserverMounted = true;
-
-        new MutationObserver(() => syncThemeColor()).observe(
-          document.documentElement,
-          {
-            attributes: true,
-            attributeFilter: ['data-theme'],
-          }
-        );
-      }
+      new MutationObserver(() => syncThemeColor()).observe(
+        document.documentElement,
+        {
+          attributes: true,
+          attributeFilter: ['data-theme'],
+        }
+      );
     </script>
 
     <BaseHead {title} {description} {image} {articleDate} {robots} {noindex} />

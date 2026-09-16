@@ -6,13 +6,7 @@
 </div>
 
 <script>
-  import { onPageReady } from '@/lib/lifecycle';
-
-  let cleanup = () => {};
-
   const setupReadingProgress = () => {
-    cleanup();
-
     const content = document.querySelector<HTMLElement>(
       '[data-reading-progress-content]'
     );
@@ -22,7 +16,6 @@
 
     if (!content || !progress) return;
 
-    const controller = new AbortController();
     let frame = 0;
     let start = 0;
     let end = 0;
@@ -56,28 +49,16 @@
 
     window.addEventListener('scroll', requestUpdate, {
       passive: true,
-      signal: controller.signal,
     });
     window.addEventListener('resize', measure, {
       passive: true,
-      signal: controller.signal,
     });
-    document.addEventListener('astro:page-load', measure, {
-      signal: controller.signal,
-    });
+    window.addEventListener('pageshow', measure);
 
     const resizeObserver = new ResizeObserver(measure);
     resizeObserver.observe(content);
     measure();
-
-    cleanup = () => {
-      controller.abort();
-      resizeObserver.disconnect();
-      if (frame) window.cancelAnimationFrame(frame);
-      cleanup = () => {};
-    };
   };
 
-  document.addEventListener('astro:before-swap', () => cleanup());
-  onPageReady(setupReadingProgress);
+  setupReadingProgress();
 </script>
