@@ -64,7 +64,9 @@
         data-empty
         hidden
       >
-        검색 결과가 없어요.
+        {import.meta.env.DEV
+          ? '개발 환경에서는 검색을 사용할 수 없어요. 빌드 후 preview에서 확인해 주세요.'
+          : '검색 결과가 없어요.'}
       </p>
     </div>
 
