@@ -52,7 +52,22 @@ export default defineConfig({
   },
   trailingSlash: 'never',
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      {
+        name: 'pagefind-dev-fallback',
+        apply: 'serve',
+        // Build-only external rules do not apply to dev import analysis.
+        resolveId(id) {
+          if (id === '/pagefind/pagefind.js') return '\0pagefind-dev';
+        },
+        load(id) {
+          if (id === '\0pagefind-dev') {
+            return 'export async function search() { return { results: [] }; }';
+          }
+        },
+      },
+    ],
     build: {
       rolldownOptions: {
         // Pagefind is generated after Astro builds; load it natively at runtime.
