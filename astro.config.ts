@@ -1,6 +1,6 @@
 // @ts-check
 import { readFile } from 'node:fs/promises';
-import { defineConfig, fontProviders } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap, { type SitemapItem } from '@astrojs/sitemap';
 import rehypePrettyCode from 'rehype-pretty-code';
@@ -36,17 +36,6 @@ const prettyCodeOptions = {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.woongsnote.dev',
-  fonts: [
-    {
-      provider: fontProviders.fontsource(),
-      name: 'Asta Sans',
-      cssVariable: '--font-asta-sans',
-      weights: [400, 600],
-      styles: ['normal'],
-      subsets: ['korean', 'latin'],
-      fallbacks: ['system-ui', 'sans-serif'],
-    },
-  ],
   build: {
     format: 'directory',
   },
