@@ -9,8 +9,6 @@ import { OG } from '@/lib/og';
 import { THEME } from '@/lib/theme';
 import type { PageMeta } from '@/types';
 
-import { Font } from 'astro:assets';
-
 interface Props extends PageMeta {
   noindex?: boolean;
 }
@@ -54,8 +52,6 @@ const jsonLd = articleDate
   name="viewport"
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 />
-
-<Font cssVariable="--font-asta-sans" preload />
 
 <link rel="icon" type="image/png" href="/favicon.png" />
 

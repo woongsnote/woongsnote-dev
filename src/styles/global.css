@@ -102,12 +102,6 @@
   --color-error-content: oklch(0.12 0.008 250);
 }
 
-/* ── 5. Font & Theme ── */
-
-@theme inline {
-  --font-sans: var(--font-asta-sans);
-}
-
 /* ── 6. Base ── */
 
 @layer base {
@@ -117,7 +111,7 @@
   }
 
   body {
-    @apply bg-base-100 text-base-content antialiased;
+    @apply bg-base-100 text-base-content font-sans antialiased;
   }
 
   ::selection {
