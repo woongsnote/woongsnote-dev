@@ -8,7 +8,7 @@ export const THEME = {
   storageKey: 'theme',
   colors: {
     light: '#f8fafd',
-    dark: '#121212',
+    dark: '#25272C',
   },
 } as const;
 
