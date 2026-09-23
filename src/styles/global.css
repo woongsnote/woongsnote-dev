@@ -71,9 +71,10 @@
   prefersdark: true;
   color-scheme: dark;
 
-  --color-base-100: oklch(0.18 0 0);
-  --color-base-200: oklch(0.24 0 0);
-  --color-base-300: oklch(0.32 0 0);
+  /* Graphite background and matching dark surfaces */
+  --color-base-100: #25272C;
+  --color-base-200: #303238;
+  --color-base-300: #41434A;
   --color-base-content: oklch(0.94 0.006 250);
 
   /* Midnight Blue palette — seed: #102552 */
