@@ -1,5 +1,6 @@
 ---
 import SearchIcon from '@/icons/search.svg';
+import HeaderTooltip from '@/components/common/HeaderTooltip.astro';
 ---
 
 <div class="search-shortcut relative">
@@ -8,38 +9,13 @@ import SearchIcon from '@/icons/search.svg';
     data-search-open
     aria-label="검색 열기"
     aria-describedby="search-shortcut-hint"
-    class="focus-ring text-neutral-content hover:text-base-content focus-visible:text-base-content flex size-9 cursor-pointer items-center justify-center rounded-full transition-colors duration-150 ease-out active:opacity-70 motion-reduce:transition-none"
+    class="header-icon focus-ring text-neutral-content hover:text-base-content focus-visible:text-base-content flex size-11 cursor-pointer items-center justify-center rounded-full transition-colors duration-150 ease-out active:opacity-70 motion-reduce:transition-none"
   >
     <SearchIcon aria-hidden="true" class="size-5" />
   </button>
-
-  <span
+  <HeaderTooltip
     id="search-shortcut-hint"
-    role="tooltip"
-    class="search-shortcut__hint absolute top-full right-0 z-50 pt-2"
-  >
-    <span
-      class="bg-base-300 text-base-content block rounded-sm px-2 py-1.5 text-xs whitespace-nowrap"
-    >
-      Search · <kbd class="font-mono">Ctrl/⌘ K</kbd>
-    </span>
-  </span>
+    label="검색 · Ctrl/⌘ K"
+    align="end"
+  />
 </div>
-
-<style>
-  .search-shortcut__hint {
-    display: none;
-    visibility: hidden;
-  }
-
-  @media (min-width: 48rem) {
-    .search-shortcut__hint {
-      display: block;
-    }
-
-    .search-shortcut:hover .search-shortcut__hint,
-    .search-shortcut:focus-within .search-shortcut__hint {
-      visibility: visible;
-    }
-  }
-</style>
