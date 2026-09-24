@@ -161,3 +161,16 @@
     scroll-behavior: auto;
   }
 }
+
+/* Header icon tooltips: hover on pointer devices, keyboard focus elsewhere. */
+.header-icon:focus-visible + .header-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .header-icon:hover + .header-tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+}
