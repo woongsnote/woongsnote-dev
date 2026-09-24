@@ -1,0 +1,20 @@
+---
+interface Props {
+  label: string;
+  id?: string;
+  align?: 'center' | 'end';
+}
+
+const { label, id, align = 'center' } = Astro.props;
+---
+
+<span
+  {id}
+  role="tooltip"
+  class:list={[
+    'header-tooltip border-base-content/10 bg-base-300 text-base-content pointer-events-none invisible absolute top-full z-50 mt-1 rounded-md border px-2.5 py-1.5 text-xs font-medium whitespace-nowrap opacity-0 shadow-sm transition-opacity duration-150 motion-reduce:transition-none',
+    align === 'end' ? 'right-2' : 'left-1/2 -translate-x-1/2',
+  ]}
+>
+  {label}
+</span>

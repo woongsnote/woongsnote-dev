@@ -1,16 +1,22 @@
 ---
 import MoonIcon from '@/icons/moon.svg';
 import SunIcon from '@/icons/sun.svg';
+import HeaderTooltip from './HeaderTooltip.astro';
 ---
 
-<button
-  id="theme-toggle"
-  class="focus-ring text-neutral-content hover:text-base-content focus-visible:text-base-content flex size-9 cursor-pointer items-center justify-center rounded-full border-none bg-transparent transition duration-150 ease-out active:scale-95 active:opacity-70 motion-reduce:transition-none motion-reduce:active:scale-100"
-  aria-label="테마 전환"
->
-  <SunIcon class="icon-sun hidden size-6" />
-  <MoonIcon class="icon-moon hidden size-6" />
-</button>
+<div class="relative">
+  <button
+    id="theme-toggle"
+    type="button"
+    class="header-icon focus-ring text-neutral-content hover:text-base-content focus-visible:text-base-content flex size-11 cursor-pointer items-center justify-center rounded-full border-none bg-transparent transition duration-150 ease-out active:scale-95 active:opacity-70 motion-reduce:transition-none motion-reduce:active:scale-100"
+    aria-label="테마 전환"
+    aria-describedby="theme-toggle-hint"
+  >
+    <SunIcon aria-hidden="true" class="icon-sun hidden size-5" />
+    <MoonIcon aria-hidden="true" class="icon-moon hidden size-5" />
+  </button>
+  <HeaderTooltip id="theme-toggle-hint" label="테마 전환" align="end" />
+</div>
 
 <script>
   import { THEME } from '@/lib/theme';
@@ -21,6 +27,7 @@ import SunIcon from '@/icons/sun.svg';
 
     const sunIcon = toggle.querySelector<HTMLElement>('.icon-sun');
     const moonIcon = toggle.querySelector<HTMLElement>('.icon-moon');
+    const hint = document.getElementById('theme-toggle-hint');
 
     const currentTheme = () =>
       document.documentElement.getAttribute('data-theme') ?? THEME.dark;
@@ -29,6 +36,9 @@ import SunIcon from '@/icons/sun.svg';
       const isDark = currentTheme() === THEME.dark;
       sunIcon?.classList.toggle('hidden', !isDark);
       moonIcon?.classList.toggle('hidden', isDark);
+      if (hint) {
+        hint.textContent = isDark ? '라이트 모드로 전환' : '다크 모드로 전환';
+      }
     };
 
     updateIcons();
