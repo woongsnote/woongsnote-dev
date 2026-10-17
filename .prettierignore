@@ -1,0 +1,4 @@
+# Editorial content: preserve existing prose and version-specific code examples.
+src/content/posts/**
+dist/
+.astro/

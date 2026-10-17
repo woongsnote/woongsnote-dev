@@ -102,11 +102,43 @@
       border-radius: var(--radius-lg);
       overflow-x: auto;
       margin-bottom: calc(var(--spacing) * 6);
-      scrollbar-width: none;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-base-300) transparent;
+      max-width: 100%;
+      overscroll-behavior-x: contain;
     }
 
-    & pre::-webkit-scrollbar {
-      display: none;
+    & .code-block {
+      position: relative;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    & .code-block pre {
+      padding-top: 3.5rem;
+    }
+
+    & .code-copy {
+      position: absolute;
+      inset-block-start: 0.25rem;
+      inset-inline-end: 0.5rem;
+      min-width: 44px;
+      min-height: 44px;
+      padding-inline: 0.75rem;
+      border-radius: var(--radius-sm);
+      background: var(--color-base-200);
+      color: var(--color-base-content);
+      font: 500 0.75rem/1.4 var(--font-sans);
+      cursor: pointer;
+    }
+
+    & .code-copy:disabled {
+      cursor: wait;
+    }
+
+    & pre:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
     }
 
     /* ── Shiki Lines ── */
@@ -137,7 +169,8 @@
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
 
-    & figcaption[data-rehype-pretty-code-title] + pre {
+    & figcaption[data-rehype-pretty-code-title] + pre,
+    & figcaption[data-rehype-pretty-code-title] + .code-block pre {
       margin-top: 0;
       border-top-left-radius: 0 !important;
       border-top-right-radius: 0 !important;

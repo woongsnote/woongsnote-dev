@@ -26,9 +26,7 @@ const mobileIconClass =
   'header-icon focus-ring flex size-11 items-center justify-center rounded-full transition-colors duration-150 ease-out active:opacity-70 motion-reduce:transition-none';
 ---
 
-<header
-  class="bg-base-200/90 border-base-content/5 sticky top-0 z-50 h-16 border-b backdrop-blur-md"
->
+<header class="bg-base-200/90 border-base-content/5 sticky top-0 z-50 h-16 border-b backdrop-blur-md">
   <div class="mx-auto flex h-full w-full max-w-4xl items-center px-4">
     <a
       href="/"
@@ -75,32 +73,30 @@ const mobileIconClass =
       </nav>
 
       <nav aria-label="주 메뉴" class="hidden items-center gap-2 md:flex">
-        {
-          navLinks.map(({ href, label }) => {
-            const isActive = isActivePath(href);
+        {navLinks.map(({ href, label }) => {
+          const isActive = isActivePath(href);
 
-            return (
-              <a
-                href={href}
-                class:list={[
-                  navLinkBaseClass,
-                  isActive
-                    ? 'text-base-content'
-                    : 'text-neutral-content hover:text-base-content',
-                ]}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                {label}
-                {isActive && (
-                  <span
-                    aria-hidden="true"
-                    class="bg-primary absolute inset-x-2 bottom-1 h-px rounded-full"
-                  />
-                )}
-              </a>
-            );
-          })
-        }
+          return (
+            <a
+              href={href}
+              class:list={[
+                navLinkBaseClass,
+                isActive
+                  ? 'text-base-content'
+                  : 'text-neutral-content hover:text-base-content',
+              ]}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {label}
+              {isActive && (
+                <span
+                  aria-hidden="true"
+                  class="bg-primary absolute inset-x-2 bottom-1 h-px rounded-full"
+                />
+              )}
+            </a>
+          );
+        })}
       </nav>
 
       <SearchButton />
