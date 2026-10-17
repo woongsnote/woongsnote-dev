@@ -50,8 +50,17 @@ export function buildRssXml({
   items,
 }: BuildRssParams): string {
   const base = site.replace(/\/+$/, '');
-  const lastBuild =
-    items[0]?.data.publishedDate.toUTCString() ?? new Date().toUTCString();
+  // Item pubDate and order remain tied to publication; only the channel reflects updates.
+  const latestDate = items.reduce(
+    (latest, { data }) =>
+      Math.max(
+        latest,
+        data.publishedDate.valueOf(),
+        data.updatedDate?.valueOf() ?? 0
+      ),
+    0
+  );
+  const lastBuild = new Date(latestDate || Date.now()).toUTCString();
 
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',

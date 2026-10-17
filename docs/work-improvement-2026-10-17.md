@@ -40,3 +40,53 @@
 - `src/components/search/SearchModal.astro`, `search-modal.ts`, `pagefind.ts`
 - `src/layouts/PostLayout.astro`, `src/styles/typography.css`
 - `.prettierignore` 및 기존 소스의 서식 정리
+
+### Phase 1 원격 반영 확인
+
+- 원격 dev 커밋: `1e2d449a45a3712d2d938d5a43312fff7e50ad86`.
+- 일반 CLI push는 인증 정보가 없어 실패. 연결된 GitHub로 동일 파일 트리의 커밋을 생성하고 `force=false`와 예상 원격 SHA 확인으로 기존 dev를 fast-forward 갱신.
+- 원격 조회와 fetch로 SHA 확인, 검증한 로컬 트리와 동일함을 확인한 후 로컬 dev 동기화.
+- Phase 1 Vercel 상태: `success`, 설명 `Deployment has completed` 확인.
+- 원격 확인을 완료한 뒤 Phase 2 시작.
+
+## Phase 2 — 품질 및 유지보수
+
+- 기존 build와 Vercel 설정은 유지. dev push와 후속 dev/main 대상 PR에서 검증하는 GitHub Actions 1개 추가.
+- `npm run validate`: 포맷 → 격리된 콘텐츠 fixture → 기존 build(Astro check 포함) → 생성물 검사 → 단일 Chromium smoke 검사.
+- 빌드 산출물을 HTML 파서로 검사. 홈·아카이브·소개·게시글·태그, 내부 링크/앵커/에셋, RSS·사이트맵·Pagefind, 기존 43개 글의 slug/URL/발행일을 검증.
+- 선택적 `updatedDate` 스키마와 조건부 화면 표시. 기존 JSON-LD 생성기의 `dateModified` 인자를 연결하고 실제 수정일이 있을 때만 Open Graph 수정 시각 출력.
+- RSS item의 발행일·GUID와 전체 정렬을 보존. 채널의 `lastBuildDate`에 실제 수정일 반영.
+- 최신화 후보 4개를 실제 본문과 현재 구현 차이에 근거하여 `docs/content-maintenance.md`에 기록. 본문은 변경하지 않음.
+- 회귀 검증에서 발견한 Tab 포커스 이탈과 CSS layer 우선순위로 코드 복사 버튼 여백이 덮이는 문제를 최소 범위 수정. 앞으로 같은 문제가 발생하면 브라우저 검사가 실패하도록 검증 추가.
+- 테스트 전용 devDependency: HTML 파서 `parse5`, 브라우저 드라이버 `playwright-core`. 별도 E2E 러너와 다중 브라우저 환경은 도입하지 않음.
+
+### 최종 로컬 검증 결과
+
+- `npm ci`: 변경한 lockfile로 재설치 성공.
+- `npm run validate`: 전체 통과. Chromium 바이너리는 이 환경에 설치한 실행 파일을 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`로 지정.
+- `npm run format:check`, `git diff --check`: 통과.
+- Astro: 0 errors, 0 warnings, 기존의 구형 복사 API deprecation hint 1개.
+- HTML 66개, 게시글 URL·발행일 43개, 태그 19개, 내부 참조 1,393개 검사 통과.
+- RSS item 수·발행일·GUID·발행일 정렬, 사이트맵 필수 URL·태그 noindex 정책, Pagefind 게시글 수·실제 검색 통과.
+- 수정일 유무 화면·SEO와 RSS 채널 변경일/발행일 정렬: 격리된 저장소 복사본에 fixture 글을 넣어 실제 Astro 빌드로 통과. 테스트가 운영 소스나 최종 dist를 바꾸지 않음.
+- 1440px/390px × 두 테마에서 실제 클립보드 비교, 모바일 터치/키보드 복사, 제목·하이라이팅, 긴 코드 스크롤, 버튼 크기·코드 겹침 없음, 테마별 색상 변화, 실제 Pagefind 검색, 결과 없음, 포커스 순환·복원, 방향키·Enter, Ctrl+K·Meta+K 통과.
+- Clipboard 권한 거부·API 부재(native copy 대체 경로 실제 복사)·대체 경로 실패, 검색 오류와 재시도 성공, 늦은 응답 무시·대기 중 닫기/다시 열기 통과.
+- 원본 main 대비 기존 Markdown 콘텐츠 diff 없음. 기존 발행일·slug 수정 없음.
+
+### 주요 변경 파일
+
+- `.github/workflows/validate.yml`, `package.json`, `package-lock.json`
+- `scripts/{html,validate-build,test-content,test-browser}.mjs`
+- `tests/fixtures/published-posts.json`
+- `src/content.config.ts`, `src/types/index.ts`
+- `src/layouts/{PostLayout,BaseLayout,BaseHead}.astro`, `src/lib/rss.ts`
+- `src/components/search/search-modal.ts`, `src/styles/typography.css`
+- `README.md`, `docs/content-maintenance.md`, 본 검증 기록
+
+### 확인 범위와 후속 후보
+
+1. `docs/content-maintenance.md`의 기술 글 후보를 우선순위대로 검토. 당시 버전 설명은 보존하고 새 안내 또는 버전 표기 여부부터 결정.
+2. 실제 iOS Safari/Android 및 화면낭독기 음성 출력은 별도 확인 필요. 현재 반응형·키보드·접근성 속성 검증은 headless Chromium 기반.
+3. 외부 giscus 인증/댓글 등록은 수행하지 않음. 환경의 외부 연결 제한으로 댓글 서비스 자체는 검증하지 않았으며 관련 소스는 서식 외 변경 없음.
+
+main 직접 변경, 새 브랜치 생성, PR 생성·병합 및 강제 푸시는 수행하지 않았다. GitHub Actions 실행 결과와 최종 원격 SHA는 원격 반영 후 최종 보고에서 별도로 확인한다.
