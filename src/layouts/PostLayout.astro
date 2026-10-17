@@ -8,6 +8,7 @@ import {
   Thumbnail,
   Toc,
 } from '@/components/post';
+import CodeCopy from '@/components/post/detail/CodeCopy.astro';
 import { formatDate } from '@/lib/date';
 import type { PostEntry } from '@/types';
 import type { MarkdownHeading } from 'astro';
@@ -73,40 +74,32 @@ const postDate = formatDate(publishedDate);
           {title}
         </h1>
 
-        <p
-          class="text-base-content/70 mt-4 text-base leading-relaxed break-keep sm:text-lg"
-        >
+        <p class="text-base-content/70 mt-4 text-base leading-relaxed break-keep sm:text-lg">
           {description}
         </p>
 
-        <div
-          class="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-3"
-        >
+        <div class="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
           <div class="text-meta flex flex-wrap items-center gap-2">
             <time datetime={publishedDate.toISOString()}>{postDate}</time>
-            {
-              readingTime !== null && (
-                <>
-                  <span aria-hidden="true">·</span>
-                  <span>{`${readingTime}분 읽기`}</span>
-                </>
-              )
-            }
+            {readingTime !== null && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span>{`${readingTime}분 읽기`}</span>
+              </>
+            )}
           </div>
           <ShareButton title={title} url={Astro.url.href} />
         </div>
       </header>
       <Toc headings={headings} />
-      {
-        isProject && cover && (
-          <Thumbnail
-            image={cover}
-            alt={coverAlt ?? title}
-            title={title}
-            link={link}
-          />
-        )
-      }
+      {isProject && cover && (
+        <Thumbnail
+          image={cover}
+          alt={coverAlt ?? title}
+          title={title}
+          link={link}
+        />
+      )}
 
       <div data-post-body>
         <slot />
@@ -119,6 +112,7 @@ const postDate = formatDate(publishedDate);
       relatedPosts={relatedPosts}
     />
 
+    <CodeCopy />
     <Comments />
   </article>
 </BaseLayout>

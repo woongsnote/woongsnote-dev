@@ -10,18 +10,22 @@
  */
 ---
 
-<dialog data-pagefind-ignore data-search-modal class="modal px-3">
-  <div
-    class="modal-box border-base-content/10 bg-base-100/95 max-w-2xl overflow-hidden rounded-2xl border p-0 shadow-2xl backdrop-blur-xl"
-  >
+<dialog
+  aria-label="블로그 검색"
+  data-pagefind-ignore
+  data-search-modal
+  class="modal px-3"
+>
+  <div class="modal-box border-base-content/10 bg-base-100/95 max-w-2xl overflow-hidden rounded-2xl border p-0 shadow-2xl backdrop-blur-xl">
     <!-- 검색 입력 -->
-    <div
-      class="border-base-content/10 flex items-center gap-2 border-b px-4 py-3"
-    >
+    <div class="border-base-content/10 flex items-center gap-2 border-b px-4 py-3">
       <input
         type="text"
         placeholder="Search..."
         aria-label="검색어"
+        aria-controls="search-results"
+        aria-describedby="search-status"
+        enterkeyhint="search"
         autocomplete="off"
         spellcheck="false"
         class="input input-ghost h-11 w-full px-0 focus:outline-none"
@@ -29,9 +33,7 @@
         data-search-input
       />
 
-      <kbd
-        class="border-base-content/20 text-base-content/50 hidden rounded-md border px-1.5 py-0.5 font-mono text-[10px] sm:inline"
-      >
+      <kbd class="border-base-content/20 text-base-content/50 hidden rounded-md border px-1.5 py-0.5 font-mono text-[10px] sm:inline">
         ESC
       </kbd>
 
@@ -57,7 +59,32 @@
 
     <!-- 결과 목록 -->
     <div class="max-h-[min(60vh,32rem)] overflow-y-auto overscroll-contain p-2">
-      <ul class="flex flex-col gap-1" data-results></ul>
+      <p
+        id="search-status"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        class="text-base-content/60 px-3 py-2 text-sm"
+        data-search-status
+      >
+        검색어를 입력해 주세요.
+      </p>
+      <ul
+        id="search-results"
+        aria-label="검색 결과"
+        class="flex flex-col gap-1"
+        data-results
+      ></ul>
+      <div class="px-3 py-4 text-sm" data-search-error hidden>
+        <p>검색하지 못했어요. 잠시 후 다시 시도해 주세요.</p>
+        <button
+          type="button"
+          class="focus-ring mt-2 min-h-11 rounded-md px-3"
+          data-search-retry
+        >
+          다시 검색
+        </button>
+      </div>
 
       <p
         class="text-base-content/60 py-8 text-center text-sm"
@@ -71,9 +98,7 @@
     </div>
 
     <!-- 하단 힌트 -->
-    <div
-      class="border-base-content/10 bg-base-200/40 text-base-content/50 flex items-center justify-between border-t px-4 py-2.5 text-xs"
-    >
+    <div class="border-base-content/10 bg-base-200/40 text-base-content/50 flex items-center justify-between border-t px-4 py-2.5 text-xs">
       <span>↑↓ 탐색 · Enter 이동</span>
       <span class="hidden sm:inline">⌘K / Ctrl+K 열기</span>
     </div>
