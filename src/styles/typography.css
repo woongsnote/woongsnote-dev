@@ -114,10 +114,6 @@
       max-width: 100%;
     }
 
-    & .code-block pre {
-      padding-top: 3.5rem;
-    }
-
     & .code-copy {
       position: absolute;
       inset-block-start: 0.25rem;
@@ -210,4 +206,9 @@
 [data-theme='woong-dark'] .prose code[data-theme*=' '] span {
   color: var(--shiki-dark);
   background-color: var(--shiki-dark-bg);
+}
+
+/* Typography's pre padding is emitted in utilities; reserve toolbar space after layers. */
+.prose .code-block pre {
+  padding-top: 3.5rem;
 }

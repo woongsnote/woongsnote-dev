@@ -9,6 +9,7 @@ const postSchema = ({ image }: { image: ImageFunction }) =>
     title: z.string(),
     description: z.string(),
     publishedDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
     cover: image().optional(),
     coverAlt: z.string().optional(),
     category: z.enum(CATEGORY_TYPES),

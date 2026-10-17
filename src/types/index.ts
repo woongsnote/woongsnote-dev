@@ -11,5 +11,6 @@ export interface PageMeta {
   description: string;
   image?: string;
   articleDate?: string;
+  articleModifiedDate?: string;
   robots?: RobotsDirective;
 }

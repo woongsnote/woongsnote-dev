@@ -14,7 +14,15 @@ interface Props extends PageMeta {
   noindex?: boolean;
 }
 
-const { title, description, image, articleDate, robots, noindex } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  articleDate,
+  articleModifiedDate,
+  robots,
+  noindex,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -74,7 +82,15 @@ const { title, description, image, articleDate, robots, noindex } = Astro.props;
         }
       );
     </script>
-    <BaseHead {title} {description} {image} {articleDate} {robots} {noindex} />
+    <BaseHead
+      {title}
+      {description}
+      {image}
+      {articleDate}
+      {articleModifiedDate}
+      {robots}
+      {noindex}
+    />
   </head>
 
   <body class="flex min-h-dvh flex-col">

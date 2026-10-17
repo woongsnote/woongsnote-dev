@@ -189,6 +189,26 @@ function mountSearchModal(): void {
   /* 키보드 탐색 (↑↓ Enter) ───────────────────────── */
 
   dialog.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+      const focusable = Array.from(
+        dialog.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex="0"]'
+        )
+      ).filter((element) => element.getClientRects().length > 0);
+      const first = focusable[0];
+      const last = focusable.at(-1);
+      if (
+        first &&
+        last &&
+        (e.shiftKey
+          ? document.activeElement === first
+          : document.activeElement === last)
+      ) {
+        e.preventDefault();
+        (e.shiftKey ? last : first).focus();
+      }
+      return;
+    }
     if (e.isComposing) return;
     if (
       e.target !== input &&
