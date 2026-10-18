@@ -1,7 +1,7 @@
 {
   "name": "woongsnote-dev",
   "type": "module",
-  "version": "8.3.10",
+  "version": "8.4.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -18,14 +18,14 @@
     "validate": "npm run format:check && npm run test:content && npm run build && npm run test:build && npm run test:browser"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.3.2",
+    "@astrojs/markdown-remark": "^7.3.3",
     "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.3.8",
+    "astro": "^7.4.0",
     "daisyui": "^5.7.50",
     "reading-time": "^1.5.0",
     "rehype-pretty-code": "^0.14.5",
-    "satori": "^0.55.1",
+    "satori": "^0.62.0",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3"
   },
