@@ -64,14 +64,10 @@ The blog was originally built with Next.js and later migrated to Astro for a sim
 - Blog: [woongsnote.dev](https://www.woongsnote.dev)
 - GitHub: [@woongsnote](https://github.com/woongsnote)
 
-## Validation and Content Maintenance
+## Validation
 
 ```bash
 npm ci
 npx playwright-core install chromium
 npm run validate
 ```
-
-`validate` runs formatting, an isolated updated-date content fixture, the existing production build (including Astro checks and Pagefind), generated-page/link/URL checks, and a single-browser smoke suite. GitHub Actions runs the same checks on `dev` pushes and PRs targeting `dev` or `main`; Vercel configuration is preserved.
-
-Posts may specify `updatedDate` only after a substantive edit. Publication dates, URLs, RSS GUIDs, and publication-based ordering remain unchanged. See [content maintenance](docs/content-maintenance.md) for the policy, validation commands, and review candidates.
