@@ -41,12 +41,15 @@ async function load(): Promise<PagefindAPI> {
 
 export async function searchPagefind(
   term: string
-): Promise<PagefindResultData[]> {
+): Promise<{ items: PagefindResultData[]; total: number }> {
   const q = term.trim();
-  if (!q) return [];
+  if (!q) return { items: [], total: 0 };
 
   const pf = await load();
   const { results } = await pf.search(q);
 
-  return Promise.all(results.slice(0, 10).map((h) => h.data()));
+  return {
+    items: await Promise.all(results.slice(0, 10).map((h) => h.data())),
+    total: results.length,
+  };
 }

@@ -11,14 +11,14 @@ const totalPostCount = allPosts.length;
 
 <BaseLayout title={siteConfig.name} description={siteConfig.description}>
   <div class="mx-auto max-w-4xl pt-8 pb-16 sm:pt-10">
-    <h1
-      class="text-base-content/75 max-w-xl text-base leading-relaxed break-keep sm:text-lg"
-    >
+    <h1 class="text-base-content/75 max-w-xl text-base leading-relaxed break-keep sm:text-lg">
       직접 만든 블로그로, 직접 쓰는 개발 기록.
     </h1>
 
     <ul class="divide-base-content/10 mt-8 divide-y">
-      {homePosts.map((post) => <PostCompactItem post={post} />)}
+      {homePosts.map((post) => (
+        <PostCompactItem post={post} />
+      ))}
     </ul>
 
     <nav class="mt-10" aria-label="게시물 탐색">

@@ -13,7 +13,15 @@ interface Props extends PageMeta {
   noindex?: boolean;
 }
 
-const { title, description, image, articleDate, robots, noindex } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  articleDate,
+  articleModifiedDate,
+  robots,
+  noindex,
+} = Astro.props;
 const robotsContent = robots ?? (noindex ? 'noindex,nofollow' : undefined);
 
 // ── URLs ──
@@ -42,6 +50,7 @@ const jsonLd = articleDate
       url: canonicalURL.href,
       image: ogImageURL,
       datePublished: articleDate,
+      dateModified: articleModifiedDate,
     })
   : getWebsiteJsonLd();
 ---
@@ -106,23 +115,23 @@ const jsonLd = articleDate
 <meta name="twitter:image" content={ogImageURL} />
 <meta name="twitter:image:alt" content={title} />
 
-{
-  articleDate && (
-    <>
-      <meta property="article:published_time" content={articleDate} />
-      <meta property="article:author" content={authorURL} />
-    </>
-  )
-}
+{articleDate && (
+  <>
+    <meta property="article:published_time" content={articleDate} />
+    <meta property="article:author" content={authorURL} />
+  </>
+)}
 
-{
-  isProfile && (
-    <>
-      <meta property="profile:first_name" content={AUTHOR.firstName} />
-      <meta property="profile:last_name" content={AUTHOR.lastName} />
-    </>
-  )
-}
+{articleModifiedDate && (
+  <meta property="article:modified_time" content={articleModifiedDate} />
+)}
+
+{isProfile && (
+  <>
+    <meta property="profile:first_name" content={AUTHOR.firstName} />
+    <meta property="profile:last_name" content={AUTHOR.lastName} />
+  </>
+)}
 
 {robotsContent && <meta name="robots" content={robotsContent} />}
 
