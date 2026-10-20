@@ -1,10 +1,10 @@
-import { defineCollection, type ImageFunction } from 'astro:content';
+import { defineCollection, type SchemaContext } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { CATEGORY_TYPES } from './types/category';
 import { TAG_TYPES } from './types/tag';
 
-const postSchema = ({ image }: { image: ImageFunction }) =>
+const postSchema = ({ image }: SchemaContext) =>
   z.object({
     title: z.string(),
     description: z.string(),

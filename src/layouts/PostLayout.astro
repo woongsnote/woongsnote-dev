@@ -8,7 +8,6 @@ import {
   Thumbnail,
   Toc,
 } from '@/components/post';
-import CodeCopy from '@/components/post/detail/CodeCopy.astro';
 import { formatDate } from '@/lib/date';
 import type { PostEntry } from '@/types';
 import type { MarkdownHeading } from 'astro';
@@ -125,7 +124,6 @@ const postDate = formatDate(publishedDate);
       relatedPosts={relatedPosts}
     />
 
-    <CodeCopy />
     <Comments />
   </article>
 </BaseLayout>
