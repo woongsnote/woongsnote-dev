@@ -39,7 +39,11 @@ try {
   ]) {
     await cp(name, join(sandbox, name), { recursive: true });
   }
-  await symlink(resolve('node_modules'), join(sandbox, 'node_modules'), 'dir');
+  await symlink(
+    resolve('node_modules'),
+    join(sandbox, 'node_modules'),
+    'junction'
+  );
   await writeFile(
     join(sandbox, 'src/content/posts/__validation-updated-date.md'),
     `---\ntitle: Updated date validation\ndescription: Temporary validation fixture\npublishedDate: 2020-01-01\nupdatedDate: ${modifiedDay}\ncategory: Tech\ntags: ['Astro']\nslug: validation-updated-date\n---\n\nValidation fixture.\n`,
