@@ -63,3 +63,11 @@ The blog was originally built with Next.js and later migrated to Astro for a sim
 
 - Blog: [woongsnote.dev](https://www.woongsnote.dev)
 - GitHub: [@woongsnote](https://github.com/woongsnote)
+
+## Validation
+
+```bash
+npm ci
+npx playwright-core install chromium
+npm run validate
+```

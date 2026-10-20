@@ -64,6 +64,7 @@ function setActive(results: HTMLAnchorElement[], index: number): void {
 
   if (activeResult) {
     activeResult.classList.add('bg-base-200/70');
+    activeResult.focus({ preventScroll: true });
     activeResult.scrollIntoView({ block: 'nearest' });
   }
 }
@@ -79,6 +80,9 @@ function mountSearchModal(): void {
   const input = dialog.querySelector<HTMLInputElement>('[data-search-input]');
   const list = dialog.querySelector<HTMLUListElement>('[data-results]');
   const empty = dialog.querySelector<HTMLElement>('[data-empty]');
+  const status = dialog.querySelector<HTMLElement>('[data-search-status]');
+  const error = dialog.querySelector<HTMLElement>('[data-search-error]');
+  const retry = dialog.querySelector<HTMLButtonElement>('[data-search-retry]');
 
   if (!input || !list) return;
 
@@ -86,6 +90,19 @@ function mountSearchModal(): void {
   let requestId = 0;
   let lastQuery = '';
   let activeIndex = -1;
+  let returnFocus: HTMLElement | null = null;
+
+  const announce = (message: string, busy = false) => {
+    if (status) status.textContent = message;
+    list.setAttribute('aria-busy', String(busy));
+  };
+
+  const clearResults = () => {
+    list.replaceChildren();
+    activeIndex = -1;
+    if (empty) empty.hidden = true;
+    if (error) error.hidden = true;
+  };
 
   /* open / close ─────────────────────────────────── */
 
@@ -97,17 +114,17 @@ function mountSearchModal(): void {
     requestId += 1;
     input.value = '';
     lastQuery = '';
-    activeIndex = -1;
-    list.replaceChildren();
-
-    if (empty) empty.hidden = true;
+    clearResults();
+    announce('검색어를 입력해 주세요.');
   };
 
   const open = () => {
-    reset();
-
-    if (!dialog.open) dialog.showModal();
-    else input.focus();
+    if (!dialog.open) {
+      returnFocus = document.activeElement as HTMLElement | null;
+      reset();
+      dialog.showModal();
+    }
+    input.focus();
   };
 
   /* search + debounce ────────────────────────────── */
@@ -116,52 +133,90 @@ function mountSearchModal(): void {
     const q = term.trim();
     const currentRequestId = ++requestId;
 
+    clearResults();
     if (!q) {
-      list.replaceChildren();
-
-      if (empty) empty.hidden = true;
-
-      activeIndex = -1;
+      announce('검색어를 입력해 주세요.');
       return;
     }
+    announce('검색 중이에요…', true);
 
     try {
-      const results = await searchPagefind(q);
+      const { items, total } = await searchPagefind(q);
 
       // 이후에 시작된 검색이 있으면 현재 결과는 무시
       if (currentRequestId !== requestId) return;
 
-      renderResults(list, empty, results);
+      renderResults(list, empty, items);
+      announce(
+        total > items.length
+          ? `검색 결과 ${total}개 중 ${items.length}개를 표시해요.`
+          : `검색 결과 ${total}개예요.`
+      );
       activeIndex = -1;
     } catch (err) {
       if (currentRequestId !== requestId) return;
 
       console.error('[search]', err);
 
-      renderResults(list, empty, []);
-      activeIndex = -1;
+      clearResults();
+      if (error) error.hidden = false;
+      lastQuery = '';
+      announce('검색 오류가 발생했어요. 다시 검색해 주세요.');
     }
   };
 
   input.addEventListener('input', () => {
-    const value = input.value;
+    const value = input.value.trim();
+    if (value === lastQuery) return;
+    lastQuery = value;
+    // Invalidate before debounce so older responses cannot replace a newer query.
+    requestId += 1;
+    clearResults();
+    announce(
+      value ? '검색 중이에요…' : '검색어를 입력해 주세요.',
+      Boolean(value)
+    );
 
     if (timer !== null) clearTimeout(timer);
 
     timer = window.setTimeout(() => {
       timer = null;
 
-      if (value === lastQuery) return;
-
-      lastQuery = value;
       void search(value);
     }, 150);
   });
 
   /* 키보드 탐색 (↑↓ Enter) ───────────────────────── */
 
-  input.addEventListener('keydown', (e) => {
+  dialog.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+      const focusable = Array.from(
+        dialog.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex="0"]'
+        )
+      ).filter((element) => element.getClientRects().length > 0);
+      const first = focusable[0];
+      const last = focusable.at(-1);
+      if (
+        first &&
+        last &&
+        (e.shiftKey
+          ? document.activeElement === first
+          : document.activeElement === last)
+      ) {
+        e.preventDefault();
+        (e.shiftKey ? last : first).focus();
+      }
+      return;
+    }
+    if (e.isComposing) return;
+    if (
+      e.target !== input &&
+      !(e.target instanceof Element && e.target.closest('[data-search-result]'))
+    )
+      return;
     const results = getResults(list);
+    activeIndex = results.indexOf(document.activeElement as HTMLAnchorElement);
 
     if (!results.length) return;
 
@@ -175,11 +230,19 @@ function mountSearchModal(): void {
 
       activeIndex = activeIndex > 0 ? activeIndex - 1 : results.length - 1;
       setActive(results, activeIndex);
-    } else if (e.key === 'Enter' && activeIndex >= 0 && results[activeIndex]) {
-      e.preventDefault();
-
-      results[activeIndex].click();
     }
+  });
+
+  retry?.addEventListener('click', () => {
+    input.focus();
+    lastQuery = input.value.trim();
+    void search(lastQuery);
+  });
+
+  dialog.addEventListener('close', () => {
+    if (dialog.open) return;
+    reset();
+    if (returnFocus?.isConnected) returnFocus.focus({ preventScroll: true });
   });
 
   document
