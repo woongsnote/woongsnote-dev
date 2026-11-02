@@ -28,12 +28,13 @@ Astro · TypeScript · Tailwind CSS · Pagefind · Giscus · Vercel
 
 ### Prerequisites
 
-- Node.js 24
+- mise
 - npm
 
 ```bash
 git clone https://github.com/woongsnote/woongsnote-dev.git
 cd woongsnote-dev
+mise install
 npm install
 npm run dev
 ```

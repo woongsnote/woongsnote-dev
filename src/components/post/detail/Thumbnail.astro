@@ -15,13 +15,15 @@ const projectLink = link ?? title;
 
 <div class="mockup-browser border-base-300/50 not-prose my-4 rounded-xl border">
   <div class="mockup-browser-toolbar">
-    <div class="input">{projectLink}</div>
+    <div class="input min-w-0 flex-1">
+      <span class="min-w-0 flex-1 truncate">{projectLink}</span>
+    </div>
   </div>
   <Image
     src={image}
     alt={alt}
     width={800}
     height={480}
-    class="block h-auto w-full border-t object-none"
+    class="block h-auto w-full border-t"
   />
 </div>
