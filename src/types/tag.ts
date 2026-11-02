@@ -1,29 +1,4 @@
-export const TAG_TYPES = [
-  'Astro',
-  'Next.js',
-  'React',
-  'TypeScript',
-  'JavaScript',
-  'Tailwind CSS',
-  'CSS',
-  'HTML',
-  'Vite',
-  'Vercel',
-  'Git',
-  'SEO',
-  'MDX',
-  'shadcn/ui',
-  'Notion',
-  'UI',
-  'Frontend',
-  'Blog',
-  'Apple',
-  'Mac',
-] as const;
-
-export type TagType = (typeof TAG_TYPES)[number];
-
-export const TAG_SLUGS = {
+export const TAGS = {
   Astro: 'astro',
   'Next.js': 'nextjs',
   React: 'react',
@@ -44,10 +19,18 @@ export const TAG_SLUGS = {
   Blog: 'blog',
   Apple: 'apple',
   Mac: 'mac',
-} as const satisfies Record<TagType, string>;
+  'Node.js': 'nodejs',
+  Tooling: 'tooling',
+} as const;
+
+export type TagType = keyof typeof TAGS;
+
+export const TAG_TYPES = Object.keys(TAGS) as [TagType, ...TagType[]];
+
+export const TAG_SLUGS = TAGS;
 
 export type TagSlug = (typeof TAG_SLUGS)[TagType];
 
 export const TAGS_BY_SLUG = Object.fromEntries(
-  TAG_TYPES.map((tag) => [TAG_SLUGS[tag], tag])
+  Object.entries(TAGS).map(([name, slug]) => [slug, name])
 ) as Record<TagSlug, TagType>;
