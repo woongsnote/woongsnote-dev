@@ -33,35 +33,22 @@
   prefersdark: false;
   color-scheme: light;
 
-  --color-base-100: oklch(0.985 0.004 250);
-  --color-base-200: oklch(0.96 0.006 250);
-  --color-base-300: oklch(0.9 0.01 250);
-  --color-base-content: oklch(0.18 0.015 250);
+  /* Background & Text */
+  --color-base-100: oklch(98.5% 0.004 250);
+  --color-base-200: oklch(96% 0.006 250);
+  --color-base-300: oklch(90% 0.01 250);
+  --color-base-content: oklch(23.094% 0.00595 271.15);
 
-  /* Midnight Blue palette — seed: #102552 */
-  --color-primary: oklch(0.5209 0.1375 259.43);
-  --color-primary-content: oklch(0.98 0.004 250);
+  /* Brand Blue */
+  --color-primary: oklch(53.5% 0.19 253);
+  --color-primary-content: oklch(100% 0 0);
 
-  --color-secondary: oklch(0.4809 0.1053 262.71);
-  --color-secondary-content: oklch(0.98 0.004 250);
+  /* Highlight */
+  --color-accent: oklch(92.015% 0.03816 264.37);
+  --color-accent-content: oklch(23.094% 0.00595 271.15);
 
-  --color-accent: oklch(0.84 0.0499 263.7);
-  --color-accent-content: oklch(0.18 0.015 250);
-
-  --color-neutral: oklch(0.24 0.012 250);
-  --color-neutral-content: oklch(0.5 0.015 250);
-
-  --color-info: oklch(0.72 0.11 235);
-  --color-info-content: oklch(0.18 0.015 250);
-
-  --color-success: oklch(0.64 0.11 155);
-  --color-success-content: oklch(0.98 0.004 250);
-
-  --color-warning: oklch(0.78 0.14 75);
-  --color-warning-content: oklch(0.18 0.015 250);
-
-  --color-error: oklch(0.58 0.18 25);
-  --color-error-content: oklch(0.98 0.004 250);
+  /* Muted Text */
+  --color-neutral-content: oklch(48.661% 0.01486 255.57);
 }
 
 /* Dark Theme */
@@ -71,39 +58,25 @@
   prefersdark: true;
   color-scheme: dark;
 
-  /* Graphite background and matching dark surfaces */
-  --color-base-100: #25272c;
-  --color-base-200: #303238;
-  --color-base-300: #41434a;
-  --color-base-content: oklch(0.94 0.006 250);
+  /* Background & Text */
+  --color-base-100: oklch(27.2751% 0.00968 268.32);
+  --color-base-200: oklch(31.753% 0.01102 271.05);
+  --color-base-300: oklch(38.361% 0.01214 273.09);
+  --color-base-content: oklch(95.447% 0.00456 258.32);
 
-  /* Midnight Blue palette — seed: #102552 */
-  --color-primary: oklch(0.751 0.0904 261.12);
-  --color-primary-content: oklch(0.12 0.008 250);
+  /* Brand Blue */
+  --color-primary: oklch(71% 0.1469 256.2);
+  --color-primary-content: oklch(23.094% 0.00595 271.15);
 
-  --color-secondary: oklch(0.6602 0.0902 263.05);
-  --color-secondary-content: oklch(0.12 0.008 250);
+  /* Highlight */
+  --color-accent: oklch(81.668% 0.0931 255.66);
+  --color-accent-content: oklch(23.094% 0.00595 271.15);
 
-  --color-accent: oklch(0.84 0.0499 263.7);
-  --color-accent-content: oklch(0.12 0.008 250);
-
-  --color-neutral: oklch(0.86 0.006 250);
-  --color-neutral-content: oklch(0.64 0.012 250);
-
-  --color-info: oklch(0.74 0.08 235);
-  --color-info-content: oklch(0.12 0.008 250);
-
-  --color-success: oklch(0.68 0.1 155);
-  --color-success-content: oklch(0.12 0.008 250);
-
-  --color-warning: oklch(0.78 0.13 75);
-  --color-warning-content: oklch(0.12 0.008 250);
-
-  --color-error: oklch(0.68 0.16 25);
-  --color-error-content: oklch(0.12 0.008 250);
+  /* Muted Text */
+  --color-neutral-content: oklch(70% 0.012 250);
 }
 
-/* ── 6. Base ── */
+/* ── 5. Base ── */
 
 @layer base {
   html {
@@ -120,7 +93,7 @@
   }
 }
 
-/* ── 7. Utilities ── */
+/* ── 6. Utilities ── */
 
 @utility link-muted {
   @apply text-neutral-content hover:text-base-content transition-colors;
@@ -138,7 +111,7 @@
   @apply focus-visible:ring-primary focus-visible:ring-offset-base-100 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none;
 }
 
-/* ── 8. Custom Styles ── */
+/* ── 7. Custom Styles ── */
 
 [data-search-modal] mark {
   background: none;
@@ -162,7 +135,8 @@
   }
 }
 
-/* Header icon tooltips: hover on pointer devices, keyboard focus elsewhere. */
+/* Header icon tooltips */
+
 .header-icon:focus-visible + .header-tooltip {
   visibility: visible;
   opacity: 1;

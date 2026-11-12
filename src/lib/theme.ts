@@ -1,13 +1,18 @@
-// src/lib/theme.ts
-// ─── 테마 식별자 SSOT ───
-// daisyUI 테마명, localStorage 키, 브라우저 theme-color를 한 곳에서 관리.
+/**
+ * Theme configuration
+ *
+ * daisyUI theme names, localStorage key,
+ * and browser theme colors.
+ */
 
 export const THEME = {
   dark: 'woong-dark',
   light: 'woong-light',
+
   storageKey: 'theme',
+
   colors: {
-    light: '#f8fafd',
+    light: '#F8FAFD',
     dark: '#25272C',
   },
 } as const;
