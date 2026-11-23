@@ -23,7 +23,10 @@ for (const name of await readdir('src/content/posts')) {
     sourceDates.push(Date.parse(match[1]));
   }
 }
-const modified = new Date(Math.max(...sourceDates) + 86400000);
+// Put a new publication in its own year, ahead of the real posts on the home page.
+const boundaryYear = new Date(Math.max(...sourceDates)).getUTCFullYear() + 1;
+const boundaryDay = `${boundaryYear}-01-02`;
+const modified = new Date(Date.UTC(boundaryYear, 0, 3));
 const modifiedISO = modified.toISOString();
 const modifiedDay = modifiedISO.slice(0, 10);
 
@@ -49,10 +52,48 @@ try {
     `---\ntitle: Updated date validation\ndescription: Temporary validation fixture\npublishedDate: 2020-01-01\nupdatedDate: ${modifiedDay}\ncategory: Tech\ntags: ['Astro']\nslug: validation-updated-date\n---\n\nValidation fixture.\n`,
     { flag: 'wx' }
   );
+  await writeFile(
+    join(sandbox, 'src/content/posts/__validation-home-year.md'),
+    `---\ntitle: Home year boundary\ndescription: Temporary validation fixture\npublishedDate: ${boundaryDay}\ncategory: Tech\ntags: ['Astro']\nslug: validation-home-year\n---\n`,
+    { flag: 'wx' }
+  );
   execFileSync(
     process.execPath,
     [resolve('node_modules/astro/bin/astro.mjs'), 'build'],
     { cwd: sandbox, stdio: 'pipe' }
+  );
+  const home = elements(
+    await readFile(join(sandbox, 'dist/index.html'), 'utf8')
+  );
+  const dates = home.filter((node) => node.tagName === 'time');
+  assert.equal(dates.length, 10);
+  assert.equal(attr(dates[0].parentNode, 'href'), '/validation-home-year');
+  let previousYear;
+  for (const time of dates) {
+    const date = new Date(attr(time, 'datetime'));
+    const year = date.getFullYear();
+    const row = time.parentNode;
+    const label = row.childNodes.find((node) => node.tagName === 'span');
+    assert.equal(
+      label && text(label).trim(),
+      year === previousYear ? undefined : String(year)
+    );
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const title = row.childNodes.find((node) => node.tagName === 'h2');
+    assert.ok(title && text(title).trim());
+    assert.equal(text(time).replace(/\s/g, ''), `${year}년${month}.${day}`);
+    assert.deepEqual(
+      row.childNodes.filter((node) => node.tagName),
+      label ? [label, time, title] : [time, title]
+    );
+    previousYear = year;
+  }
+  assert.ok(
+    home.some(
+      (node) =>
+        attr(node, 'href') === '/archive' && text(node).trim() === 'More →'
+    )
   );
   const updated = elements(
     await readFile(
@@ -105,7 +146,7 @@ try {
     ) > rss.lastIndexOf('<link>https://www.woongsnote.dev/book-book</link>')
   );
   console.log(
-    'Content validation passed: real schema, optional updated date rendering/SEO, publication dates/order, RSS lastBuildDate.'
+    'Content validation passed: home post list/year boundaries, real schema, optional updated date rendering/SEO, publication dates/order, RSS lastBuildDate.'
   );
 } finally {
   await rm(sandbox, { recursive: true, force: true });

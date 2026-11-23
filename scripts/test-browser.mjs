@@ -68,6 +68,45 @@ try {
     return ctx;
   };
 
+  const homeCtx = await context();
+  const home = await homeCtx.newPage();
+  await home.goto(origin);
+  const rows = home.locator('main li > a');
+  assert.equal(await rows.count(), 10);
+  const first = rows.first();
+  await first.locator('h2').evaluate((title) => {
+    title.textContent = '긴 제목 '.repeat(8) + 'unbroken'.repeat(20);
+  });
+  for (const width of [320, 390, 768, 1440]) {
+    await home.setViewportSize({ width, height: 900 });
+    const year = await first.locator(':scope > span').boundingBox();
+    const date = await first.locator('time').boundingBox();
+    const title = await first.locator('h2').boundingBox();
+    const nextTitle = await rows.nth(1).locator('h2').boundingBox();
+    assert.ok(
+      width < 768
+        ? year.y + year.height <= date.y
+        : year.x + year.width <= date.x
+    );
+    assert.equal(title.x, nextTitle.x);
+    assert.ok(date.x + date.width <= title.x);
+    const lineHeight = await first
+      .locator('h2')
+      .evaluate((element) => parseFloat(getComputedStyle(element).lineHeight));
+    assert.ok(title.height > lineHeight, 'Long titles should wrap');
+    assert.ok(
+      await home.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth
+      )
+    );
+  }
+  await home.getByRole('link', { name: 'More →' }).click();
+  assert.equal(new URL(home.url()).pathname.replace(/\/$/, ''), '/archive');
+  console.log(
+    'PASS home: four viewports, year and date alignment, title wrapping, overflow, archive link.'
+  );
+  await homeCtx.close();
+
   const themeColors = new Map();
 
   /* ── Responsive / Shiki / Search ── */
