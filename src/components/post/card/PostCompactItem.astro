@@ -26,7 +26,7 @@ const {
 >
   <a
     href={`/${id}`}
-    class="focus-ring group grid min-h-11 grid-cols-[5ch_minmax(0,1fr)] items-baseline gap-x-4 gap-y-3 py-3 text-sm md:grid-cols-[6ch_5ch_minmax(0,1fr)] md:gap-x-6 md:py-4"
+    class="focus-ring group grid min-h-11 grid-cols-[5ch_minmax(0,1fr)] items-baseline gap-x-3 gap-y-3 py-3 text-sm md:grid-cols-[6ch_5ch_minmax(0,1fr)] md:gap-x-6 md:py-4"
   >
     {yearLabel !== undefined && (
       <span
@@ -43,7 +43,7 @@ const {
       <span class="sr-only">{publishedDate.getFullYear()}년 </span>
       {formatDate(publishedDate, 'month-day')}
     </time>
-    <Tag class="text-base-content group-hover:text-primary group-focus-visible:text-primary text-base leading-snug font-semibold tracking-tight wrap-anywhere break-keep md:text-lg">
+    <Tag class="text-base-content group-hover:text-primary group-focus-visible:text-primary text-base leading-snug font-medium tracking-normal wrap-anywhere break-keep md:text-lg">
       {title}
     </Tag>
   </a>
