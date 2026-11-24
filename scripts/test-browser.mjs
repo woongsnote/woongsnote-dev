@@ -38,6 +38,73 @@ const server = createServer(async (request, response) => {
   }
 });
 
+async function checkArchive(page) {
+  const groups = page.locator('main details');
+  const links = groups.locator('li > a');
+  const archivePaths = await links.evaluateAll((rows) =>
+    rows.map((row) => row.pathname)
+  );
+  const feedPaths = await page.evaluate(async () => {
+    const xml = await (await fetch('/rss.xml')).text();
+    const feed = new DOMParser().parseFromString(xml, 'application/xml');
+    return [...feed.querySelectorAll('item > link')].map(
+      (link) => new URL(link.textContent).pathname
+    );
+  });
+  assert.deepEqual(
+    archivePaths,
+    feedPaths,
+    'Archive should list every published post in order'
+  );
+  assert.equal(new Set(archivePaths).size, archivePaths.length);
+  let previousYear = Infinity;
+  for (const [index, group] of (await groups.all()).entries()) {
+    const year = Number(
+      await group.locator('summary h2 span').first().textContent()
+    );
+    assert.ok(year < previousYear);
+    previousYear = year;
+    const dates = await group
+      .locator('li time')
+      .evaluateAll((nodes) => nodes.map((node) => node.dateTime));
+    assert.ok(
+      dates.length &&
+        dates.every((date) => new Date(date).getFullYear() === year)
+    );
+    assert.equal(
+      await group.locator('summary [aria-label]').getAttribute('aria-label'),
+      `${dates.length}개의 글`
+    );
+    assert.equal((await group.getAttribute('open')) !== null, index === 0);
+  }
+
+  const first = links.first();
+  const date = first.locator('time');
+  const title = first.locator('h3');
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    const rowBox = await first.boundingBox();
+    const dateBox = await date.boundingBox();
+    const titleBox = await title.boundingBox();
+    assert.equal(dateBox.x, rowBox.x, 'Archive rows must start with the date');
+    assert.equal(titleBox.x - dateBox.x - dateBox.width, width < 768 ? 12 : 24);
+  }
+  const summary = groups.first().locator('summary');
+  await summary.focus();
+  await page.keyboard.press('Enter');
+  assert.equal(await first.isVisible(), false);
+  await page.keyboard.press('Space');
+  await page.keyboard.press('Tab');
+  assert.ok(await first.evaluate((row) => row.matches(':focus-visible')));
+  await page.keyboard.press('Enter');
+  await page.waitForURL(
+    (url) => url.pathname.replace(/\/$/, '') === archivePaths[0]
+  );
+  console.log(
+    'PASS archive: post coverage and order, year counts, two-column layout and keyboard navigation.'
+  );
+}
+
 await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 
 const origin = `http://127.0.0.1:${server.address().port}`;
@@ -105,6 +172,7 @@ try {
   console.log(
     'PASS home: four viewports, year and date alignment, title wrapping, overflow, archive link.'
   );
+  await checkArchive(home);
   await homeCtx.close();
 
   const themeColors = new Map();
