@@ -4,6 +4,7 @@ import type { PostEntry } from '@/types';
 
 type Props = {
   post: PostEntry;
+  layout?: 'home' | 'archive';
   yearLabel?: number;
   headingLevel?: 'h2' | 'h3';
 };
@@ -13,22 +14,29 @@ const {
     id,
     data: { title, publishedDate },
   },
+  layout = 'home',
   yearLabel,
   headingLevel: Tag = 'h2',
 } = Astro.props;
+
+const homeLayout = layout === 'home';
+const startsYear = homeLayout && yearLabel !== undefined;
 ---
 
 <li
   class:list={[
     'border-base-content/10 border-b',
-    yearLabel !== undefined && 'not-first:mt-6 md:not-first:mt-0',
+    startsYear && 'not-first:mt-6 md:not-first:mt-0',
   ]}
 >
   <a
     href={`/${id}`}
-    class="focus-ring group grid min-h-11 grid-cols-[5ch_minmax(0,1fr)] items-baseline gap-x-3 gap-y-3 py-3 text-sm md:grid-cols-[6ch_5ch_minmax(0,1fr)] md:gap-x-6 md:py-4"
+    class:list={[
+      'focus-ring group grid min-h-11 grid-cols-[5ch_minmax(0,1fr)] items-baseline gap-x-3 gap-y-3 py-3 text-sm md:gap-x-6 md:py-4',
+      homeLayout && 'md:grid-cols-[6ch_5ch_minmax(0,1fr)]',
+    ]}
   >
-    {yearLabel !== undefined && (
+    {startsYear && (
       <span
         aria-hidden="true"
         class="border-base-content/10 text-neutral-content col-span-full border-b pb-2 font-semibold tabular-nums md:col-span-1 md:border-0 md:pb-0"
@@ -38,7 +46,10 @@ const {
     )}
     <time
       datetime={publishedDate.toISOString()}
-      class="text-neutral-content tabular-nums md:col-start-2"
+      class:list={[
+        'text-neutral-content tabular-nums',
+        homeLayout && 'md:col-start-2',
+      ]}
     >
       <span class="sr-only">{publishedDate.getFullYear()}년 </span>
       {formatDate(publishedDate, 'month-day')}
