@@ -1,5 +1,5 @@
 ---
-import { PostItem } from '@/components/post';
+import { PostCompactItem } from '@/components/post';
 import ChevronDownIcon from '@/icons/chevron-down.svg';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPostsGroupedByYear } from '@/lib/posts';
@@ -44,9 +44,13 @@ const hasPosts = postsByYear.length > 0;
               </h2>
             </summary>
 
-            <ul class="mt-2 flex flex-col gap-1 pb-2">
+            <ul class="mt-1">
               {posts.map((post) => (
-                <PostItem post={post} headingLevel="h3" />
+                <PostCompactItem
+                  post={post}
+                  layout="archive"
+                  headingLevel="h3"
+                />
               ))}
             </ul>
           </details>

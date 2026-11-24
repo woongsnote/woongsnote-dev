@@ -4,9 +4,7 @@ import { LIMITS, siteConfig } from '@/config';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPosts } from '@/lib/posts';
 
-const allPosts = await getPosts();
-const homePosts = allPosts.slice(0, LIMITS.homePostCount);
-const totalPostCount = allPosts.length;
+const homePosts = await getPosts(LIMITS.homePostCount);
 ---
 
 <BaseLayout title={siteConfig.name} description={siteConfig.description}>
@@ -15,18 +13,26 @@ const totalPostCount = allPosts.length;
       직접 만든 블로그로, 직접 쓰는 개발 기록.
     </h1>
 
-    <ul class="divide-base-content/10 mt-8 divide-y">
-      {homePosts.map((post) => (
-        <PostCompactItem post={post} />
-      ))}
+    <ul class="mt-6">
+      {homePosts.map((post, index) => {
+        const year = post.data.publishedDate.getFullYear();
+        const previousYear =
+          homePosts[index - 1]?.data.publishedDate.getFullYear();
+        return (
+          <PostCompactItem
+            post={post}
+            yearLabel={year !== previousYear ? year : undefined}
+          />
+        );
+      })}
     </ul>
 
-    <nav class="mt-10" aria-label="게시물 탐색">
+    <nav class="mt-6 text-right" aria-label="게시물 탐색">
       <a
         href="/archive"
         class="focus-ring text-neutral-content hover:text-primary focus-visible:text-primary rounded-sm text-sm font-semibold transition-colors duration-150 ease-out active:opacity-70 motion-reduce:transition-none"
       >
-        All {totalPostCount} Posts →
+        More →
       </a>
     </nav>
   </div>

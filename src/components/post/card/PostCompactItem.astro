@@ -4,37 +4,58 @@ import type { PostEntry } from '@/types';
 
 type Props = {
   post: PostEntry;
+  layout?: 'home' | 'archive';
+  yearLabel?: number;
   headingLevel?: 'h2' | 'h3';
 };
 
 const {
   post: {
     id,
-    data: { title, description, publishedDate, category },
+    data: { title, publishedDate },
   },
+  layout = 'home',
+  yearLabel,
   headingLevel: Tag = 'h2',
 } = Astro.props;
+
+const homeLayout = layout === 'home';
+const startsYear = homeLayout && yearLabel !== undefined;
 ---
 
-<li>
+<li
+  class:list={[
+    'border-base-content/10 border-b',
+    startsYear && 'not-first:mt-6 md:not-first:mt-0',
+  ]}
+>
   <a
     href={`/${id}`}
-    class="focus-ring group -mx-2 block rounded-sm px-2 py-4 no-underline transition-opacity duration-150 ease-out active:opacity-80 motion-reduce:transition-none md:py-5"
+    class:list={[
+      'focus-ring group grid min-h-11 grid-cols-[5ch_minmax(0,1fr)] items-baseline gap-x-3 gap-y-3 py-3 text-sm md:gap-x-6 md:py-4',
+      homeLayout && 'md:grid-cols-[6ch_5ch_minmax(0,1fr)]',
+    ]}
   >
-    <Tag class="text-base-content group-hover:text-primary group-focus-visible:text-primary text-base leading-snug font-semibold tracking-tight break-words transition-colors duration-150 ease-out motion-reduce:transition-none md:text-lg">
+    {startsYear && (
+      <span
+        aria-hidden="true"
+        class="border-base-content/10 text-neutral-content col-span-full border-b pb-2 font-semibold tabular-nums md:col-span-1 md:border-0 md:pb-0"
+      >
+        {yearLabel}
+      </span>
+    )}
+    <time
+      datetime={publishedDate.toISOString()}
+      class:list={[
+        'text-neutral-content tabular-nums',
+        homeLayout && 'md:col-start-2',
+      ]}
+    >
+      <span class="sr-only">{publishedDate.getFullYear()}년 </span>
+      {formatDate(publishedDate, 'month-day')}
+    </time>
+    <Tag class="text-base-content group-hover:text-primary group-focus-visible:text-primary text-base leading-snug font-medium tracking-normal wrap-anywhere break-keep md:text-lg">
       {title}
     </Tag>
-
-    <p class="text-base-content/65 mt-1.5 line-clamp-1 text-sm leading-relaxed break-keep sm:line-clamp-2">
-      {description}
-    </p>
-
-    <div class="text-meta mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 tracking-wide">
-      <time datetime={publishedDate.toISOString()} class="tabular-nums">
-        {formatDate(publishedDate)}
-      </time>
-      <span aria-hidden="true">·</span>
-      <span class="uppercase">{category}</span>
-    </div>
   </a>
 </li>
